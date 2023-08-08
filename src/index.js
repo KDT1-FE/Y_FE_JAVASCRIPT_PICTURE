@@ -2,7 +2,7 @@ import "./styles/style.scss";
 
 // firebase
 import "./firebase";
-import "./ref";
+import "./imageDownload";
 import "./upload";
 
 console.log("connected");

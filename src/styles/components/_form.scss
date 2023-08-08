@@ -1,0 +1,19 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+
+  .form__input-image {
+    .fa-solid {
+      padding: 3rem;
+      background-color: $bg-gray-100;
+
+      &:hover {
+        background-color: $bg-gray-200;
+      }
+    }
+
+    .form__input-hidden {
+      visibility: hidden;
+    }
+  }
+}
