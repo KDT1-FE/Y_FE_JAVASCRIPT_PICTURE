@@ -1,0 +1,79 @@
+@import "reset.css";
+
+body {
+  background-image: url("/assets/graphics/backgroundImage.jpg");
+}
+
+.header-logo {
+  width: 25rem;
+  height: 9.5rem;
+  margin-top: 1.5rem;
+}
+
+.villagers-list {
+  margin: 0 auto;
+  width: 90%;
+  background-color: #fcf1e0;
+  margin-top: 3rem;
+  border-radius: 3rem;
+  height: 90rem;
+}
+
+.main-wrap {
+  padding: 4rem;
+}
+
+.main-top-text {
+  margin-bottom: 2.5rem;
+  color: #456252;
+}
+
+.add-button,
+.delete-button {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 1rem;
+  border-style: none;
+  font-size: 1rem;
+  margin-right: 1rem;
+  background-color: #71b38f;
+  color: #3f5d4d;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-button:hover,
+.delete-button:hover {
+  background-color: #547a66;
+  color: #71b38f;
+}
+
+.main-middle {
+  margin-top: 3.5rem;
+}
+
+.main-middle-header {
+  margin-bottom: 3rem;
+}
+
+.main-middle-hr {
+  border: solid 0.15rem #3f5d4d;
+}
+
+.villagers-info {
+  margin: 0 auto;
+}
+
+.main-middle-header .villagers-info-ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.villagers-info-li {
+  float: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
