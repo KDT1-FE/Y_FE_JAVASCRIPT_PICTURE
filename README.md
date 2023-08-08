@@ -28,7 +28,6 @@
   * 상대수치 사용(rem, em)
 * JavaScript
   * DOM event 조작
-  * LocalStorage 사용
 
 ## [선택 요구사항]
 - 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
@@ -37,6 +36,7 @@
 - 직원 검색 기능을 추가해 보세요.
 - infinity scroll 기능을 추가해 보세요.
 - 사진을 편집할 수 있는 기능을 추가해 보세요.
+- LocalStorage 사용
 
 ## [화면 예시]
 ![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
