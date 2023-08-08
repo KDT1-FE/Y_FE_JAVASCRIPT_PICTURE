@@ -4,7 +4,9 @@
 # production
 dist
 
-# testing
+# test
+src/styles/style.css
+src/styles/style.css.map
 
 # misc
 .DS_Store

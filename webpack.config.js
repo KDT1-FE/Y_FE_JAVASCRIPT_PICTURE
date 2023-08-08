@@ -1,20 +1,23 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
+const { resolve, join } = require("path");
 
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
     publicPath: "/",
     clean: true,
     assetModuleFilename: "[name][ext]",
   },
+  devtool: "source-map",
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: join(__dirname, "dist"),
     },
     compress: true,
     port: 5500,
@@ -42,21 +45,7 @@ module.exports = {
       // SASS 로더
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
@@ -66,5 +55,7 @@ module.exports = {
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css",
     }),
+    new NodePolyfillPlugin(),
+    new Dotenv(),
   ],
 };
