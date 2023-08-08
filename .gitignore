@@ -13,3 +13,4 @@ src/styles/style.css.map
 
 # env
 .env
+.vercel
