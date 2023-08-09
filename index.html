@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header> 
+        <h1 class="title">E-CHECK</h1>
+    </header>
+    <main>
+        <div class="bar_container">
+            <div class="ex_btn_container">
+                <button class="ex_create_btn" onclick="location.href='create.html'" ><span>NEW</span></button>
+                <button class="ex_delete_btn">DELETE</button>
+            </div>
+    
+
+            <input class="search_input" type="search" placeholder="이름 또는 이메일로 검색하기">
+            
+
+        </div>
+        <div class="list_container"> 
+            <div class="list_wrap">
+                <div class="list_header">
+                    <div class="list_header_item list_checkbox"><input type="checkbox"></div>
+                    <div class="list_header_item list_profile"><span>Profile</span></div>
+                    <div class="list_header_item list_name"><span>Name</span></div>
+                    <div class="list_header_item list_email"><span>E-mail</span></div>
+                    <div class="list_header_item list_phoneNumber"><span>Phone Number</span></div>
+                    <div class="list_header_item list_status"><span>Status</span></div>
+                </div>
+                <div class="list">
+
+                </div>
+            </div>
+
+        </div>
+        
+    </main>
+    <script src="js/main.js"></script>
+    <script src="js/list.js"></script>
+</body>
+</html>

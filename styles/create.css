@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    background-color: #6495ed;
+}
+
+.create_container {
+    margin-top: 80px;
+}
+.title {
+    position: relative;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+}
+.title > p {
+
+    font-size: 2em;
+    font-weight: 600;
+}
+.info_container {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1;
+    justify-content: space-around;
+    margin: 40px auto;
+    background-color: white;
+    background-clip: content-box;
+    width: 900px;
+    height: 400px;
+    border-radius: 15px;
+
+}
+.info_profile {
+    position: relative;
+    padding: 40px 0;
+    background-color: #aaaaaa88;
+    width: 300px;
+    background-clip: content-box;
+
+}
+.info {
+    position : relative;
+    width: 300px; 
+    margin : 30px 50px;
+
+}
+.info_contents{
+    margin : 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+input {
+    font-size: 15px;
+    color: #222222;
+    width: 300px;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+    background: none;
+    z-index: 5;
+}
+  
+input::placeholder { color: #aaaaaa; }
+input:focus { outline: none; }
+  
+span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+    background-color: #666;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+  
+label {
+    position: absolute;
+    color: #aaa;
+    left: 10px;
+    font-size: 17px;
+    bottom: 8px;
+    transition: all .2s;
+}
+  
+input:focus ~ label, input:valid ~ label {
+    font-size: 16px;
+    bottom: 40px;
+    color: #666;
+    font-weight: bold;
+}
+  
+input:focus ~ span, input:valid ~ span {
+    width: 100%;
+}
+.btn_container {
+    max-width: 1280px;
+    text-align: end;
+    padding: 0 80px;
+}
+
+.submit_btn{
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: normal;
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,1),0px 1px 3px rgba(0,0,0,0.3);
+    outline: none;
+    border: 1px solid #ba6;
+    backface-visibility: hidden;
+    border-color: #7c7c7c;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(#e6e6e6));
+  }
+
+  .submit_btn:active{
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  }

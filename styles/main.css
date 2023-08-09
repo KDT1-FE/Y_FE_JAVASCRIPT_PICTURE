@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    background-color: #6495ed;
+}
+header {
+    padding: 20px 0;
+}
+.title {
+    margin: 0;
+    color: white;
+    padding-left: 20px;
+    
+}
+main {
+    position: relative;
+    margin-top: 40px;
+}
+.bar_container {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1280px;
+    justify-content: space-between;
+}
+
+.ex_create_btn {
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 20px;
+    text-align: center;
+    border-radius: 5%;
+    border: 0;
+    
+}
+.ex_delete_btn {
+    color: #6495ed;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 20px;
+    text-align: center;
+    border-radius: 5%;
+    border: 0;
+    
+}
+
+.ex_create_btn {
+  background-color: #6495ed;
+  box-shadow: 0 0 0 1px #6495ed inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 rgba(100, 149, 237, .6),
+        0 8px 0 1px rgba(0,0,0,.4),
+        0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.ex_create_btn:active {
+  box-shadow: 0 0 0 1px #6495ed inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+.ex_delete_btn {
+    background-color: whitesmoke;
+    box-shadow: 0 0 0 1px whitesmoke inset,
+          0 0 0 2px rgba(255,255,255,0.15) inset,
+          0 8px 0 0 rgba(100, 149, 237, .6),
+          0 8px 0 1px rgba(0,0,0,.4),
+          0 8px 8px 1px rgba(0,0,0,0.5);
+  }
+  .ex_delete_btn:active {
+    box-shadow: 0 0 0 1px whitesmoke inset,
+          0 0 0 2px rgba(255,255,255,0.15) inset,
+          0 0 0 1px rgba(0,0,0,0.4);
+  }
+.search_input {
+    width: 250px;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 2px;
+    border: 0;
+}
+.list_container {
+    background-color: wheat;
+    background-clip: content-box;
+    max-width: 1280px;
+    overflow: hidden;
+    padding: 0 20px;
+    margin: 40px auto;
+    height: 500px;
+}
+
+.list_wrap {
+    display: grid;
+    grid-template-columns: repeat( 1, 1fr );
+    padding:20px;
+}
+.list_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
