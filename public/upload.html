@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🙋‍♀️employee picture</title>
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="reset.css">
+    
+  <style>
+
+  </style>
+</head>
+<body>
+
+    <header>
+        <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️</h1>
+        <nav class="nav">
+          <ul>
+            <li><a href="/index.html">직원목록</a></li>
+            <li><a href="/upload.html">업로드</a></li>
+            <li><a href="/login.html">로그인</a></li>
+            <li><a href="/">검색</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+
+  <div class="container input-col">
+    <input type="text" class="form-input" id="name" placeholder="이름">
+    <input type="text" class="form-input" id="phone" placeholder="010-0000-0000">
+    <input type="text" class="form-input" id="email" placeholder="id@email.com">
+    <input type="text" class="form-input" id="rank" placeholder="직급">
+    <textarea class="form-text" id="memo" placeholder="memo"></textarea>
+
+    <input class="form-file" type="file" id="image">
+    <div class="btn-area">
+        <button class="btn btn-send" id="send">올리기</button>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   <!-- 제이쿼리 -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="common.js"></script>
+  <script src="upload.js"></script>
+
+
+
+</script>
+
+  
+</body>
+</html>

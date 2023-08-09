@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin: 40px auto;
+}
+
+.pos-r {
+  position: relative;
+}
+.nav ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 40px auto;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.employee {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+}
+
+.employee .profile {
+  font-size: 1rem;
+  line-height: 1.6rem;
+  margin-left: 4%;
+}
+
+.employee .profile .name {
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 3rem;
+}
+
+.thumbnail {
+  max-width: 200px;
+  width: 100%;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
