@@ -1,7 +1,7 @@
 @import "reset.css";
 
 body {
-  background-image: url("/assets/graphics/backgroundImage.jpg");
+  background-image: url("../assets/graphics/backgroundImage.jpg");
 }
 
 .header-logo {

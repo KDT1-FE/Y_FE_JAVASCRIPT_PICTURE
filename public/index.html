@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>모동숲 주민 관리</title>
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="icon" href="./assets/icons/favicon.png" />
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" />
   </head>
   <body>
     <header class="logo">
@@ -36,5 +36,20 @@
         </div>
       </div>
     </main>
+    <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBC6vTaKHAwv7yvmgbyzoBTzMX7HogZP6Q",
+        authDomain: "villagers-list.firebaseapp.com",
+        projectId: "villagers-list",
+        storageBucket: "villagers-list.appspot.com",
+        messagingSenderId: "801279538668",
+        appId: "1:801279538668:web:7c3b90b1610b9abf65bcc9",
+        measurementId: "G-8990L2805Z",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
