@@ -1,0 +1,113 @@
+@import "reset.css";
+
+body {
+  background-image: url("../assets/graphics/profileBackgroundImage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-logo {
+  width: 25rem;
+  height: 9.5rem;
+  margin-top: 1.5rem;
+}
+
+.profile-wrap {
+  width: 70%;
+  height: 43rem;
+  background-color: rgba(252, 241, 224, 0.8);
+  margin: 0 auto;
+  margin-top: 1rem;
+  border-radius: 3rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+}
+
+.profile-main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+}
+
+.profile-left {
+  padding: 0 3rem 0 3rem;
+}
+
+.villager-img {
+  width: 15rem;
+}
+
+.profile-right {
+  padding: 4rem 5rem 3rem 5rem;
+}
+
+.profile-info-h2 {
+  font-size: 2rem;
+  color: #3f5d4d;
+}
+
+.profile-info-hr {
+  border: solid 0.15rem #3f5d4d;
+  margin: 2rem 0;
+  width: 25rem;
+}
+
+.profile-info-ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-info,
+.villagers-info {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+}
+
+.profile-info {
+  margin-right: 5rem;
+}
+
+.profile-info-li,
+.villagers-info-li {
+  margin: 0.7rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.profile-info-li {
+  font-weight: bold;
+}
+
+.edit-btn {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 1rem;
+  border-style: none;
+  font-size: 1.5rem;
+  background-color: #71b38f;
+  color: #3f5d4d;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #547a66;
+  color: #71b38f;
+  transition: 0.4s;
+}

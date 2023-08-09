@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <title>주민 상세 프로필</title>
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" />
+  </head>
+  <body>
+    <header class="logo">
+      <a href="/">
+        <img class="header-logo" src="./assets/graphics/logo.webp" />
+      </a>
+    </header>
+    <div class="profile-wrap">
+      <header class="header-text">
+        <h1 class="profile-top-text">주민 상세 프로필</h1>
+      </header>
+      <main class="profile-main">
+        <div class="profile-left">
+          <img class="villager-img" id="villager-img" src="" />
+        </div>
+        <div class="profile-right">
+          <h2 class="profile-info-h2">주민 정보🪪</h2>
+          <hr class="profile-info-hr" />
+          <ul class="profile-info-ul">
+            <ul class="profile-info">
+              <li><p class="profile-info-li">이름</p></li>
+              <li><p class="profile-info-li">성별</p></li>
+              <li><p class="profile-info-li">생일</p></li>
+              <li><p class="profile-info-li">성격</p></li>
+              <li><p class="profile-info-li">좋아하는 색</p></li>
+            </ul>
+            <ul class="villagers-info">
+              <li><p class="villagers-info-li">애플</p></li>
+              <li><p class="villagers-info-li">여자</p></li>
+              <li><p class="villagers-info-li">9월 23일</p></li>
+              <li><p class="villagers-info-li">아이돌</p></li>
+              <li><p class="villagers-info-li">컬러풀/빨간색</p></li>
+            </ul>
+          </ul>
+        </div>
+      </main>
+      <button class="edit-btn">정보 수정</button>
+    </div>
+
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBC6vTaKHAwv7yvmgbyzoBTzMX7HogZP6Q",
+        authDomain: "villagers-list.firebaseapp.com",
+        projectId: "villagers-list",
+        storageBucket: "villagers-list.appspot.com",
+        messagingSenderId: "801279538668",
+        appId: "1:801279538668:web:7c3b90b1610b9abf65bcc9",
+        measurementId: "G-8990L2805Z",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./src/profile.js"></script>
+  </body>
+</html>
