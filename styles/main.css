@@ -58,3 +58,58 @@
   height: 100%;
   margin: 0 0.5rem;
 }
+
+.member-info {
+  display: table;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.member-info__header {
+  display: table-row;
+  width: 100%;
+}
+
+.member-info__header > div {
+  display: table-cell;
+  padding: 0.5rem;
+  border: 1px solid gray;
+}
+
+.member-info__main {
+  display: table-row;
+  width: 100%;
+}
+
+.member-info__main > div {
+  display: table-cell;
+  padding: 0.5rem;
+}
+
+.member-info__img {
+  width: 25%;
+}
+.member-info__name {
+  width: 15%;
+}
+.member-info__phone {
+  width: 15%;
+}
+.member-info__email {
+  width: 15%;
+}
+.member-info__position {
+  width: 10%;
+}
+
+@media (max-width: 800px) {
+  .member-info__header {
+    display: none;
+  }
+  .member-info__main > div {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+}
