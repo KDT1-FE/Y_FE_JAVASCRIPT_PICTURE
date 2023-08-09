@@ -10,7 +10,7 @@ body {
   margin-top: 1.5rem;
 }
 
-.villagers-list {
+.main {
   margin: 0 auto;
   width: 90%;
   background-color: #fcf1e0;
@@ -26,6 +26,7 @@ body {
 .main-top-text {
   margin-bottom: 2.5rem;
   color: #456252;
+  font-size: 3rem;
 }
 
 .add-button,
@@ -46,6 +47,7 @@ body {
 .delete-button:hover {
   background-color: #547a66;
   color: #71b38f;
+  transition: 0.4s;
 }
 
 .main-middle {
@@ -74,6 +76,46 @@ body {
 
 .villagers-info-li {
   float: left;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.villagers-list {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.villager {
+  width: 100%;
+  height: 20%;
+  margin: 0 auto;
+  border-radius: 3rem;
+  border-style: none;
+  background-color: #fdf6e8;
+  cursor: pointer;
+  color: #71b38f;
+  margin-bottom: 3rem;
+}
+
+.villager:hover {
+  transition: 0.4s;
+  background-color: #ebedae;
+}
+
+.villager .villager-img {
+  width: 8rem;
+}
+
+.villager .villager-info-ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+
+.villager-info-li {
+  float: left;
+  font-size: 1.4rem;
   font-weight: 600;
 }
