@@ -6,7 +6,6 @@ export function routeRender() {
   const currentRoute = routes.find((route) =>
     new RegExp(`${route.path}/?$`).test(pathname)
   );
-  console.log(currentRoute, 'currentRoute');
   routerView.innerHTML = '';
   routerView.append(new currentRoute.component().el);
   window.scrollTo(0, 0);
