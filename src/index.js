@@ -4,6 +4,7 @@ import "./styles/style.scss";
 import "./firebase";
 import "./downloadImage";
 import "./upload";
+import "./displayUserList";
 
 // event
 import "./previewImage";

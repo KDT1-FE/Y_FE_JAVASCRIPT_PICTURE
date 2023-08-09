@@ -25,8 +25,9 @@ export function uploadImageToStorage(imageFile) {
 
 export async function uploadInfoToDatabase(userData) {
   try {
-    await addDoc(collection(db, "users"), userData);
+    const docRef = await addDoc(collection(db, "users"), userData);
     console.log("Added successfully");
+    return docRef.id;
   } catch (err) {
     console.error(err);
   }
