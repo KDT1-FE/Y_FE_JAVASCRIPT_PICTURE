@@ -19,12 +19,16 @@ const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
           <h3 class="user__name">${user.name}</h3>
           <p class="user__email">${user.email}</p>
         </div>
-        <div class="user__menu">
+        <div class="user__menu-icon">
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
-        <div class="user__menu-toggle">
-              <p>EDIT</p>
-              <p>DELETE</p>
+        <div class="user__menu-items flex-center hidden">
+          <p class="user__menu-edit flex-center pointer">
+            <i class="fa-solid fa-pen"></i>
+          </p>
+          <p class="user__menu-delete flex-center pointer">
+            <i class="fa-solid fa-minus"></i>
+          </p>
         </div>
       </div>
     `;

@@ -8,5 +8,6 @@ import "./displayUserList";
 
 // event
 import "./previewImage";
+import "./menuToggle";
 
 console.log("connected");

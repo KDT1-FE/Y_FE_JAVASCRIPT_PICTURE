@@ -50,6 +50,34 @@
         }
 
         .user__menu-items {
+          column-gap: 5px;
+          position: absolute;
+          right: 33px;
+          top: 10px;
+          padding: 2px 4px;
+          background-color: $bg-gray-50;
+          box-shadow: $card-shadow;
+          border-radius: 5px;
+
+          .user__menu-edit {
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            padding: 3px;
+          }
+
+          .user__menu-delete {
+            font-size: 14px;
+            width: 20px;
+            height: 20px;
+            padding: 3px;
+            border-radius: 50%;
+            background-color: $bg-gray-200;
+          }
+
+          &.hidden {
+            display: none;
+          }
         }
       }
     }
