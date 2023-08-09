@@ -3,17 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="./style.css" rel="stylesheet" />
+    <title>동물의 숲 주민 관리 시스템</title>
+    <link rel="icon" href="./images/animalcrossinglogo.png" />
+    <link href="./styles/index.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/4ee7f6a3e5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="container mt-3"></div>
+    <!-- Header -->
+    <header class="header">
+      <img
+        class="header__logo__img"
+        alt="logo"
+        src="./images/animalcrossinglogo.png"
+      />
+      <h3 class="header__logo__text">동물의 숲 주민 관리</h3>
+    </header>
+    <!-- Main -->
+    <main class="main">
+      <!-- list -->
+      <section class="list">
+        <div class="list__etc">
+          <div class="list__btn">
+            <form
+              class="list__registration__form"
+              method="get"
+              action="./upload.html"
+            >
+              <button class="list__registration">주민 등록</button>
+            </form>
+            <button class="list__delete">주민 삭제</button>
+          </div>
+          <form class="list__form" method="post" action="./index.html">
+            <input
+              class="list__search"
+              type="text"
+              placeholder="이름으로 검색하기"
+            />
+          </form>
+        </div>
+        <ul class="list__container first">
+          <li class="list__member top"><input type="checkbox" /></li>
+          <li class="list__member top">프로필 사진</li>
+          <li class="list__member top">이름</li>
+          <li class="list__member top">성별</li>
+          <li class="list__member top">생일</li>
+          <li class="list__member top">말버릇</li>
+          <li class="list__member top">취미</li>
+        </ul>
+        <ul class="list__container detail">
+          <li class="list__member"><input type="checkbox" /></li>
+          <li class="list__member">
+            <img
+              class="list__member__img"
+              src="./images/Deirdre.png"
+              alt="프로필 사진"
+            />
+          </li>
+          <li class="list__member">이름</li>
+          <li class="list__member">성별</li>
+          <li class="list__member">생일</li>
+          <li class="list__member">말버릇</li>
+          <li class="list__member">취미</li>
+        </ul>
+        <ul class="list__container detail">
+          <li class="list__member"><input type="checkbox" /></li>
+          <li class="list__member">
+            <img
+              class="list__member__img"
+              src="./images/Pate.png"
+              alt="프로필 사진"
+            />
+          </li>
+          <li class="list__member">이름</li>
+          <li class="list__member">성별</li>
+          <li class="list__member">생일</li>
+          <li class="list__member">말버릇</li>
+          <li class="list__member">취미</li>
+        </ul>
+        <ul class="list__container detail">
+          <li class="list__member"><input type="checkbox" /></li>
+          <li class="list__member">
+            <img
+              class="list__member__img"
+              src="./images/Gala.png"
+              alt="프로필 사진"
+            />
+          </li>
+          <li class="list__member">이름</li>
+          <li class="list__member">성별</li>
+          <li class="list__member">생일</li>
+          <li class="list__member">말버릇</li>
+          <li class="list__member">취미</li>
+        </ul>
+      </section>
+    </main>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyA1KMljZ1SjEuXDKq5NUOLD3R27e7DVHBU",
