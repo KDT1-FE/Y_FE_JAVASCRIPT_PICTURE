@@ -1,3 +1,4 @@
+import MemberList from '../components/MemberList';
 import { Component } from '../core/component';
 
 export default class Home extends Component {
@@ -10,14 +11,8 @@ export default class Home extends Component {
       <button class="button-home delete-person">삭제</button>
     </div>
     </header>
-    <div class='table'>
-  <div class='checkbox-container'>
-    <input class='checkbox' type='checkbox'></input>
-  </div>
-  <p class='photo-title'>PHOTO</p>
-  <p class="name-title">NAME</p>
-  <p class="email-title">EMAIL</p>
-</div>
     `;
+    const memberList = new MemberList().el;
+    this.el.append(memberList);
   }
 }
