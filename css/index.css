@@ -1,4 +1,3 @@
-
 /* ------------------첫번째 섹션----------------- */
 .first {
   color: #ffffff;
@@ -27,9 +26,9 @@
   width: 100%;
   height: 100%;
   background: url("../asset/pictures/main_picture.avif") center/cover no-repeat;
-  filter: blur(8px); /* 흐림 처리 효과를 적용 */
-  opacity: 0.6; /* 흐림 처리 효과의 투명도 조절 */
-  z-index: -1; /* 배경 이미지가 컨텐츠 위에 보이도록 설정 */
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
 }
 
 .first-content {
@@ -43,37 +42,39 @@
   font-size: 8rem;
   margin: 0;
   opacity: 0;
-  transform: translateY(20px); /* 애니메이션 시작 위치 설정 */
-  animation: fadeInUp 1.5s forwards; /* 페이지 로딩 후 애니메이션 적용 */
-  animation-delay: 1.5s; /* 애니메이션 지연 설정 */
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 1.5s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .first-description {
-  font-size: 25px;
-  margin-top: 10px;
+  font-size: 24px;
+  margin-top: 20px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.5s forwards;
   animation-delay: 1.5s;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .action-button {
   margin-top: 8rem;
-  padding: 15px 20px;
-  width: 50vh;
+  padding: 20px 5px;
+  width: 53vh;
   background-color: #3da557;
   color: #ffffff;
   text-decoration: none;
   border-radius: 15px;
-  font-size: 30px;
+  font-size: 20px;
   transition: background-color 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 2s forwards;
   animation-delay: 2s;
-  display: flex; /* 내부 요소들을 수직으로 정렬하기 위해 flex를 사용합니다. */
-  justify-content: center; /* 가로 축에서 가운데 정렬 */
-  align-items: center; /* 세로 축에서 가운데 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-button:hover {
@@ -93,13 +94,15 @@
 
   .first-description {
     font-size: 1rem;
+    width: 15rem;
+    line-height: 1.5rem;
   }
 
   .action-button {
     padding: 20px;
-    font-size: 25px;
+    font-size: 1rem;
     margin-top: 4rem;
-    width: 37vh;
+    width: 22vh;
   }
 }
 
@@ -113,19 +116,27 @@
 /* ------------------두번째 섹션----------------- */
 .second {
   background-color: #f7f7f7;
-  padding: 150px 0;
+  padding: 100px 0;
+  display: flex;
+  position: relative;
+  align-items: center;
 }
 
 .second-content {
-    justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+.left-column,
+.right-column {
+  flex: 1; /* 두 컬럼이 동일한 너비를 가지도록 설정 */
+  padding: 20px;
+}
+
 .left-column {
-  width: 100%;
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
 }
 
@@ -136,9 +147,8 @@
 }
 
 .right-column {
-  width: 100%;
+  width: 60%;
 }
-
 .right-column p {
   font-size: 1.25rem;
   line-height: 1.6;
@@ -148,11 +158,10 @@
 
 @media (max-width: 767px) {
   .second {
-    padding: 200px 0;
+    padding: 100px 0;
   }
 
   .second-content {
-    display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 1200px;
@@ -160,15 +169,26 @@
     padding: 0 20px;
   }
 
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 20px;
+  }
+
   .left-column {
+    text-align: center;
     margin-bottom: 10px;
   }
 
   .right-column {
-    margin-top: 80px;
-    font-size: 1rem;
+    text-align: center;
+    margin-top: 40px;
   }
 
+  .right-column p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
   .split-title {
     display: flex;
     flex-direction: column; /* 화면 줄어들 때 세로로 나열 */
