@@ -1,0 +1,16 @@
+.button{
+
+}
+.preview{
+  width:150px;
+  height:150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+label {
+  cursor: pointer;
+}
+#avatar {
+  visibility: hidden;
+}
