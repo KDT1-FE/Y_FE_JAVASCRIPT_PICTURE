@@ -22,9 +22,9 @@
   <body>
     <form class="form">
       <div class="form__container">
-        <div class="form__input-image input">
-          <label for="chooseFile">
-            <i class="fa-solid fa-plus pointer"></i>
+        <div class="form__input-image input show">
+          <label class="form__label pointer" for="chooseFile">
+            <i class="fa-solid fa-plus"></i>
           </label>
           <input
             type="file"
@@ -33,6 +33,9 @@
             class="form__input-hidden"
             id="chooseFile"
           />
+        </div>
+        <div class="form__image-box hidden">
+          <img src="" alt="image preview" class="form__image-preview" />
         </div>
         <div class="form__input-name input input-text">
           <label for="name">이름</label>

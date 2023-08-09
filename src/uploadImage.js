@@ -3,24 +3,29 @@ import { db, storage } from "./firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 export function uploadImageToStorage() {
-  const imageUrl = document.getElementById("chooseFile").files[0];
+  return new Promise((resolve, reject) => {
+    const imageInput = document.getElementById("chooseFile");
+    const imageUrl = imageInput.files[0];
+    const uniqueImageUrl = new Date().getTime() + "-" + imageUrl.name;
 
-  const uniqueImageUrl = new Date().getTime() + "-" + imageUrl.name;
-
-  const storageRef = ref(storage, "profile_images/" + uniqueImageUrl);
-
-  uploadBytes(storageRef, imageUrl)
-    .then((snapshot) => {
-      console.log("Uploaded successfully");
-      getDownloadURL(storageRef).then((downloadURL) => {
-        console.log("Download URL:", downloadURL);
-        // You can now use the downloadURL to display the image or save it to your database
+    const storageRef = ref(storage, "profile_images/" + uniqueImageUrl);
+    // 스토리지에 이미지 업로드 및 URL 생성
+    uploadBytes(storageRef, imageUrl)
+      .then(async (snapshot) => {
+        console.log("Uploaded successfully");
+        getDownloadURL(storageRef).then((downloadURL) => {
+          console.log("Download URL:", downloadURL);
+          resolve(downloadURL);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
       });
-    })
-    .catch((err) => console.log(err));
+  });
 }
 
-export async function uploadInfoToDatabase() {
+export async function uploadInfoToDatabase(imageUrl) {
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const rankInput = document.getElementById("rank");
@@ -29,12 +34,14 @@ export async function uploadInfoToDatabase() {
   const email = emailInput.value;
   const rank = rankInput.value;
 
-  // form validation
+  // form validation later
 
   const data = {
     name,
     email,
     rank,
+    // how to put imageUrl here
+    imageUrl,
   };
 
   try {

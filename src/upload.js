@@ -5,6 +5,9 @@ const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  uploadImageToStorage();
-  uploadInfoToDatabase();
+  uploadImageToStorage().then((imageUrl) => {
+    if (imageUrl) {
+      uploadInfoToDatabase(imageUrl);
+    }
+  });
 });

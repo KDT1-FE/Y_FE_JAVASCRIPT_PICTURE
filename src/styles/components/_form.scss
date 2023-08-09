@@ -3,8 +3,12 @@
   flex-direction: column;
 
   .form__input-image {
-    .fa-solid {
-      padding: 3rem;
+    .form__label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 120px;
       background-color: $bg-gray-100;
 
       &:hover {
@@ -12,8 +16,24 @@
       }
     }
 
+    // 기존 인풋 박스 없애기
     .form__input-hidden {
       visibility: hidden;
     }
   }
+
+  // 이미지 선택시 보이게
+  .form__image-box {
+    width: 120px;
+    height: 120px;
+    border: 1px solid;
+
+    .form__image-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
+
+// 이미지 업로드 시, 이미지 폼 없애고 이미지 보여지게
