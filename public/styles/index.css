@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 70px;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 1px solid transparent;
+}
+
+/* header,
+section {
+  margin: 0 70px;
+} */
+
+/* Header */
+.header {
+  font-family: "GoryeongStrawberry";
+  font-size: 1.5rem;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__logo__img {
+  width: 50px;
+  height: 50px;
+}
+
+/* list */
+.list {
+  margin: 50px 0 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list__etc {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list__btn {
+  display: flex;
+  gap: 20px;
+}
+
+.list__registration {
+  background-color: #1dbf04;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.list__registration:hover {
+  background-color: #a3cc7a;
+}
+
+.list__delete {
+  background-color: lightgray;
+  padding: 15px;
+  border-radius: 8px;
+  color: gray;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.list__delete:hover {
+  background-color: #e2e2e2;
+}
+
+.list__form {
+  position: relative;
+}
+
+.list__search {
+  padding: 15px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
+
+.list__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px 0;
+  position: relative;
+}
+
+.list__container.first {
+  color: grey;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.list__container::after {
+  position: absolute;
+  bottom: -30px;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: gray;
+}
+
+.list__container.first::before {
+  position: absolute;
+  top: -30px;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: gray;
+}
+
+.list__container.detail::after {
+  height: 1px;
+  background-color: lightgray;
+}
+
+.list__member__img {
+  width: 80px;
+}
+
+@font-face {
+  font-family: "GoryeongStrawberry";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/GoryeongStrawberry.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
