@@ -11,6 +11,7 @@ html {
   --color-navy: #001f28;
   --color-white: #fff;
   --color-gray: #e2e8f0;
+  --color-font: #4a5568;
   --color-primary: #3584f4;
 }
 
@@ -73,4 +74,39 @@ html {
   font-size: 0.87em;
   font-weight: 500;
   line-height: 16px;
+}
+
+.table {
+  max-width: 1030px;
+  height: 75px;
+
+  margin: 25px auto 0 auto;
+  border-top: 2px solid var(--color-gray);
+  border-bottom: 2px solid var(--color-gray);
+
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.checkbox-container {
+  width: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+.photo-title,
+.name-title,
+.email-title {
+  width: 290px;
+  border: 1px solid red;
+
+  color: var(--color-font);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1;
 }
