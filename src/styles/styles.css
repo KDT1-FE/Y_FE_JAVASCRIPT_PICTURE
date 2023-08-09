@@ -97,6 +97,7 @@ html {
 .row-member {
   height: 150px;
   border-radius: 15px;
+  cursor: pointer;
 }
 .row-member:hover {
   background-color: var(--color-hover);
@@ -122,3 +123,5 @@ html {
   font-weight: 700;
   letter-spacing: 1;
 }
+
+/*detail 페이지*/
