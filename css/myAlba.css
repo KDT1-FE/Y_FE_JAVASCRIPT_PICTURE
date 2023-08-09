@@ -1,0 +1,46 @@
+/* ------------------myAlba 페이지----------------- */
+.myalba-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .alba-button {
+    display: inline-block;
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: #3da557;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .alba-button:hover {
+    background-color: #023f32;
+  }
+  
+  /* 모바일 화면 스타일 */
+  @media (max-width: 767px) {
+    .myalba-section {
+      padding: 20px;
+    }
+  
+    .button-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .alba-button {
+      padding: 15px 25px;
+      font-size: 18px;
+    }
+  }
