@@ -1,0 +1,44 @@
+.user {
+  .user__container {
+    .user__list {
+      padding: 2rem;
+
+      .user__user {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1rem;
+        border-radius: $card-border-radius;
+        box-shadow: $card-shadow;
+        padding: 0.5rem;
+
+        .user__image {
+          width: 80px;
+          height: 80px;
+          background-color: $bg-gray-400;
+          margin-right: 0.5rem;
+          border-radius: 50%;
+        }
+
+        .user__info {
+          .user__name {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+          }
+
+          .user__email {
+            font-size: 0.9rem;
+          }
+        }
+
+        .user__menu {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
