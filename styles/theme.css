@@ -1,0 +1,55 @@
+/* background-color */
+.bg-main100 {
+  background-color: #e8f5dd;
+}
+.bg-main150 {
+  background-color: #d4ffb1;
+}
+.bg-main200 {
+  background-color: #c0fa93;
+}
+.bg-pink {
+  background-color: #e9caca;
+}
+.bg-blue {
+  background-color: #cae7e9;
+}
+.bg-gray {
+  background-color: #ebede9;
+}
+
+/* text-size & weight*/
+
+.text-xl {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.text-l {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text-m {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.text-s {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.text-xs {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* text-color */
+
+.text-white {
+  color: #ffff;
+}
+.text-gray {
+  color: #c2c2c2;
+}
