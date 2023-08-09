@@ -1,0 +1,76 @@
+@import 'reset.css';
+body {
+  font-family: 'Pretendard Variable';
+  box-sizing: border-box;
+}
+button {
+  cursor: pointer;
+}
+html {
+  --color-black: #1a1a1a;
+  --color-navy: #001f28;
+  --color-white: #fff;
+  --color-gray: #e2e8f0;
+  --color-primary: #3584f4;
+}
+
+.header {
+  max-width: 1030px;
+  margin: 80px auto 0 auto;
+  height: 116px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 2px solid red;
+}
+.title {
+  color: var(--color-primary);
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.container {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+.search {
+  display: flex;
+  height: 40px;
+  padding: 0px 16px;
+
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid var(--color-gray);
+  background: var(--color-white);
+
+  color: var(--gray-400, #a0aec0);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.search::placeholder {
+  color: var(--gray-400, #a0aec0);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.button-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100px;
+  height: 37px;
+  padding: 0px 8px;
+  border-radius: 6px;
+
+  background-color: var(--color-primary);
+  border: none;
+
+  color: var(--color-white);
+  font-size: 0.87em;
+  font-weight: 500;
+  line-height: 16px;
+}
