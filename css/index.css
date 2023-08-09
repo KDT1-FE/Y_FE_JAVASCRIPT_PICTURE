@@ -1,0 +1,180 @@
+
+/* ------------------첫번째 섹션----------------- */
+.first {
+  color: #ffffff;
+  text-align: center;
+  padding: 300px 0; /* 섹션의 길이를 화면을 다 덮을 정도로 늘림 */
+  position: relative;
+}
+
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0); /* 배경 이미지 위에 검은색 반투명 레이어 생성 */
+  z-index: -1;
+  padding: 300px 0;
+}
+
+.first::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../asset/pictures/main_picture.avif") center/cover no-repeat;
+  filter: blur(8px); /* 흐림 처리 효과를 적용 */
+  opacity: 0.6; /* 흐림 처리 효과의 투명도 조절 */
+  z-index: -1; /* 배경 이미지가 컨텐츠 위에 보이도록 설정 */
+}
+
+.first-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.first h1 {
+  font-family: "KBO-Dia-Gothic_bold";
+  font-size: 8rem;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px); /* 애니메이션 시작 위치 설정 */
+  animation: fadeInUp 1.5s forwards; /* 페이지 로딩 후 애니메이션 적용 */
+  animation-delay: 1.5s; /* 애니메이션 지연 설정 */
+}
+
+.first-description {
+  font-size: 25px;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  animation-delay: 1.5s;
+}
+
+.action-button {
+  margin-top: 8rem;
+  padding: 15px 20px;
+  width: 50vh;
+  background-color: #3da557;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 15px;
+  font-size: 30px;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 2s forwards;
+  animation-delay: 2s;
+  display: flex; /* 내부 요소들을 수직으로 정렬하기 위해 flex를 사용합니다. */
+  justify-content: center; /* 가로 축에서 가운데 정렬 */
+  align-items: center; /* 세로 축에서 가운데 정렬 */
+}
+
+.action-button:hover {
+  background-color: #023f32;
+}
+
+/* 모바일 화면 스타일 */
+
+@media (max-width: 767px) {
+  .first {
+    padding: 350px 10px;
+  }
+
+  .first h1 {
+    font-size: 3.9rem;
+  }
+
+  .first-description {
+    font-size: 1rem;
+  }
+
+  .action-button {
+    padding: 20px;
+    font-size: 25px;
+    margin-top: 4rem;
+    width: 37vh;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0); /* 최종 위치로 이동 */
+    opacity: 1;
+  }
+}
+
+/* ------------------두번째 섹션----------------- */
+.second {
+  background-color: #f7f7f7;
+  padding: 150px 0;
+}
+
+.second-content {
+    justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-column {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.left-column h2 {
+  font-family: "KBO-Dia-Gothic_bold";
+  font-size: 2rem;
+  margin: 0; /* 기존 margin을 제거하여 간격을 조정 */
+}
+
+.right-column {
+  width: 100%;
+}
+
+.right-column p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+/* 모바일 화면 스타일 */
+
+@media (max-width: 767px) {
+  .second {
+    padding: 200px 0;
+  }
+
+  .second-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .left-column {
+    margin-bottom: 10px;
+  }
+
+  .right-column {
+    margin-top: 80px;
+    font-size: 1rem;
+  }
+
+  .split-title {
+    display: flex;
+    flex-direction: column; /* 화면 줄어들 때 세로로 나열 */
+  }
+
+  .split-title h2 {
+    font-size: 1.75rem; /* 제목 글씨 크기 조절 */
+  }
+}
