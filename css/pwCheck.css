@@ -36,6 +36,7 @@ body {
   border-radius: 5px;
   width: 23.3rem;
   font-size: 25px;
+  text-align: center;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.7s forwards;
