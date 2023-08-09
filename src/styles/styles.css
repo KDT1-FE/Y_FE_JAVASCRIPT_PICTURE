@@ -13,6 +13,7 @@ html {
   --color-gray: #e2e8f0;
   --color-font: #4a5568;
   --color-primary: #3584f4;
+  --color-hover: #f9f9f9;
 }
 
 .header {
@@ -23,8 +24,6 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border: 2px solid red;
 }
 .title {
   color: var(--color-primary);
@@ -78,15 +77,29 @@ html {
 
 .table {
   max-width: 1030px;
+  margin: 25px auto 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+.row,
+.row-member {
+  max-width: 1030px;
   height: 75px;
 
-  margin: 25px auto 0 auto;
   border-top: 2px solid var(--color-gray);
-  border-bottom: 2px solid var(--color-gray);
 
   display: flex;
   align-items: center;
   gap: 36px;
+}
+
+.row-member {
+  height: 150px;
+  border-radius: 15px;
+}
+.row-member:hover {
+  background-color: var(--color-hover);
 }
 .checkbox-container {
   width: 100px;
@@ -103,7 +116,6 @@ html {
 .name-title,
 .email-title {
   width: 290px;
-  border: 1px solid red;
 
   color: var(--color-font);
   font-size: 20px;
