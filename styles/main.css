@@ -1,0 +1,60 @@
+.control-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 1rem;
+}
+
+.add-profile {
+  width: 100%;
+  display: none;
+}
+
+.add-profile__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 20rem;
+  margin: 1rem 0;
+  padding: 2rem 0;
+}
+
+.add-profile__photoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  margin: 0 0.5rem;
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+}
+
+.photo-input__label {
+  margin-top: 30px;
+  text-align: center;
+  padding: 10px 0;
+  width: 65%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#photo-input {
+  visibility: hidden;
+}
+
+#preview {
+  max-width: 80%;
+}
+
+.add-profile__inputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 100%;
+  margin: 0 0.5rem;
+}

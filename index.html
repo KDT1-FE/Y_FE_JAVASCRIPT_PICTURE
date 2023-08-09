@@ -6,27 +6,44 @@
     <title>Document</title>
     <link rel="stylesheet" href="/styles/general.css" />
     <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
     <header class="header bg-main100"></header>
-    <main class="bg-main200">
+    <main>
       <h1 class="title text-xl">직원 관리</h1>
       <div class="control-container">
         <div class="control-container_button-container">
-          <button
-            class="control-container__button bg-blue text-m"
-            id="add-profile__button"
-          >
-            등록
-          </button>
-          <button
-            class="control-container__button bg-pink text-m"
-            id="add-profile__button"
-          >
-            삭제
-          </button>
+          <button class="bg-blue text-m" id="enroll-profile-btn">등록</button>
+          <button class="bg-pink text-m" id="remove-profile-btn">삭제</button>
         </div>
       </div>
+      <form class="add-profile bg-main100">
+        <div class="add-profile__container">
+          <div class="add-profile__photoBox">
+            <img id="preview" />
+            <label
+              class="photo-input__label bg-main200 text-s"
+              for="photo-input"
+              >Upload Image</label
+            >
+            <input id="photo-input" type="file" accept=".jpg, .png, .jpeg" />
+          </div>
+          <div class="add-profile__inputBox">
+            <label for="name-input">이름</label>
+            <input id="name-input" />
+            <label for="email-input">이메일</label>
+            <input id="email-input" />
+            <label for="phoneNumber-input">전화번호</label>
+            <input id="phoneNumber-input" />
+            <button class="add-profile__submit bg-blue text-s" type="submit">
+              submit
+            </button>
+            <button class="add-profile__cancel bg-pink text-s">cancel</button>
+          </div>
+        </div>
+      </form>
     </main>
   </body>
+  <script type="module" src="/function/addProfile.js"></script>
 </html>
