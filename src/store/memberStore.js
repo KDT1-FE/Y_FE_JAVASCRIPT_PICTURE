@@ -12,3 +12,8 @@ export const renderMemberList = () => {
   memberStore.state.members = [...members];
   memberStore.state.loading = false;
 };
+
+export const getMemberDetail = (id) => {
+  const { member } = data;
+  memberStore.state.member = member;
+};
