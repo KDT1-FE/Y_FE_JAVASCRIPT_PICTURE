@@ -1,0 +1,106 @@
+/* ------------------비밀번호 확인 섹션----------------- */
+
+body {
+  background-color: #3da557;
+}
+
+.password-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 20px; /* 화면 좌우 여백 추가 */
+  box-sizing: border-box; /* 내부 padding 포함한 전체 크기 설정 */
+}
+
+.password-check h2 {
+  font-family: "KBO-Dia-Gothic_bold";
+  font-size: 6rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+  width: 36rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 1s;
+  line-height: 6rem;
+}
+
+.password-check input {
+  padding: 10px;
+  margin-bottom: 1rem;
+  color: #3da557;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 23.3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.7s forwards;
+  animation-delay: 1.7s;
+}
+
+.password-check button {
+  padding: 10px 20px;
+  background-color: #3da557;
+  color: #ffffff;
+  border: 1px solid #ffffff ;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 24.67rem;
+  opacity: 0;
+  transition: background-color 0.3s ease;
+  transform: translateY(20px);
+  animation: fadeInUp 1.7s forwards;
+  animation-delay: 1.7s;
+}
+
+#loginButton:hover {
+    background-color: #023f32;
+  }
+  
+
+.password-check button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.password-check .error-message {
+  color: #d9534f;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: none;
+  margin-top: 1rem;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0); /* 최종 위치로 이동 */
+    opacity: 1;
+  }
+}
+
+/* 모바일 화면 스타일 */
+@media (max-width: 767px) {
+  .password-check input,
+  .password-check button {
+    max-width: 100%; /* input과 button의 최대 가로폭 설정 */
+  }
+
+  .password-check h2 {
+    text-align: left;
+    font-size: 4rem;
+    width: 20rem;
+    line-height: 4rem;
+    margin-bottom: 30px;
+  }
+
+  .password-check input {
+    width: 18.5rem;
+  }
+  .password-check button {
+    width: 19.9rem;
+  }
+}

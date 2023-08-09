@@ -6,15 +6,24 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/loading.css" />
+    <link rel="stylesheet" href="../css/pwCheck.css" />
     <script src="../js/loading.js"></script>
-    <title>우리 알바 - 비밀번호 확인</title>
+    
+    <title>우리 알바 - 매장 관리자 비밀번호 확인</title>
   </head>
   <body>
     <!-- 로딩 화면 추가 -->
     <div class="loading-screen">
       <div class="loading-bar"></div>
     </div>
-
-    <!-- 화면 중간에 비밀번호 확인용 페이지 추가 -->
+    <!-- 화면 중간 비밀번호 확인용 섹션 -->
+    <section class="password-check">
+      <h2>매장 관리자 비밀번호 확인</h2>
+      <input type="password" id="passwordInput" placeholder="비밀번호 입력 (4자리 이상)" />
+      <button id="loginButton" >로그인 하기</button>
+      <!-- 비밀번호 오류시 에러메세지 출력 -->
+      <div class="error-message" id="errorMessage"></div>
+    </section>
+    <script src="../js/pwCheck.js"></script>
   </body>
 </html>
