@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    Upload
+    <div class="container mt-3">
+      <input
+        type="text"
+        class="form-control mt-2"
+        id="title"
+        placeholder="title"
+      />
+      <textarea class="form-control mt-2" id="content">content</textarea>
+      <input
+        type="text"
+        class="form-control mt-2"
+        id="price"
+        placeholder="price"
+      />
+      <input class="form-control mt-2" type="file" id="image" />
+      <button class="btn btn-danger mt-3" id="send">올리기</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyA1KMljZ1SjEuXDKq5NUOLD3R27e7DVHBU",
+        authDomain: "js-service-b5998.firebaseapp.com",
+        projectId: "js-service-b5998",
+        storageBucket: "js-service-b5998.appspot.com",
+        messagingSenderId: "476239971933",
+        appId: "1:476239971933:web:5e5234ee4574818c0c6fb4",
+        measurementId: "G-FD1WPXWRGL",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      const send = document.querySelector("#send");
+      const title = document.querySelector("#title");
+      const price = document.querySelector("#price");
+
+      send.addEventListener("click", () => {
+        const imgFile = document.querySelector("#image").files[0];
+        const storageRef = storage.ref();
+        const imgRef = storageRef.child("image/" + imgFile.name);
+        const uploadImg = imgRef.put(imgFile);
+
+        uploadImg.on(
+          "state_changed",
+          // 변화시 동작하는 함수
+          null,
+          //에러시 동작하는 함수
+          (error) => {
+            console.error("실패사유는", error);
+          },
+          // 성공시 동작하는 함수
+          () => {
+            uploadImg.snapshot.ref.getDownloadURL().then((url) => {
+              console.log("업로드된 경로는", url);
+
+              const save = {
+                이름: title.value,
+                성별: price.value,
+                이미지: url,
+              };
+              db.collection("product")
+                .add(save)
+                .then((result) => {
+                  console.log(result);
+                  // window.location.href = "./index.html";
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

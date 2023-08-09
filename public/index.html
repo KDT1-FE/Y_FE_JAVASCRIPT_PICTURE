@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container mt-3"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyA1KMljZ1SjEuXDKq5NUOLD3R27e7DVHBU",
+        authDomain: "js-service-b5998.firebaseapp.com",
+        projectId: "js-service-b5998",
+        storageBucket: "js-service-b5998.appspot.com",
+        messagingSenderId: "476239971933",
+        appId: "1:476239971933:web:5e5234ee4574818c0c6fb4",
+        measurementId: "G-FD1WPXWRGL",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+      const db = firebase.firestore();
+      const container = document.querySelector(".container");
+      db.collection("product")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            // console.log(doc.data());
+            // container.append(template);
+            console.log(doc.data().이름);
+          });
+        });
+    </script>
+  </body>
+</html>
