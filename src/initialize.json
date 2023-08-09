@@ -1,0 +1,16 @@
+{
+  "char":[
+          {
+            "name" : "가렌",
+            "region":"데마시아",
+            "position":"탑",
+            "role": "전사",
+            "nickname": "데마시아의 힘",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2F%EA%B0%80%EB%A0%8Cthumb.jpg?alt=media&token=187b07de-1529-4c45-8111-62f57dc32769",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2F%EA%B0%80%EB%A0%8C.jpg?alt=media&token=f5dd05f5-1036-44d3-9787-6abe2a42cc90"
+          },
+          {
+
+          }
+        ]
+}
