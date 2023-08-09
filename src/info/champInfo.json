@@ -1,0 +1,67 @@
+{
+  "char":[
+          {
+            "name" : "가렌",
+            "region":"데마시아",
+            "position":"탑",
+            "role": "전사",
+            "nickname": "데마시아의 힘",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2F%EA%B0%80%EB%A0%8Cthumb.jpg?alt=media&token=187b07de-1529-4c45-8111-62f57dc32769",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2F%EA%B0%80%EB%A0%8C.jpg?alt=media&token=f5dd05f5-1036-44d3-9787-6abe2a42cc90"
+          },
+          {
+            "name" : "갈리오",
+            "region":"데마시아",
+            "position":"미드",
+            "role": "탱커",
+            "nickname": "위대한 석상",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_galio.jpg?alt=media&token=cd2b0729-8a90-4f4f-a61a-8105bff49c07",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FGalio_0.jpg?alt=media&token=ca57257f-0ef5-4d74-8bae-dc0a7e10c574"
+          },
+          {
+            "name" : "갱플랭크",
+            "region":"빌지워터",
+            "position":"탑",
+            "role": "전사",
+            "nickname": "바다의 무법자",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_gangplank.jpg?alt=media&token=782e3b64-4a34-4139-9f46-50dc853413d2",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FGangplank_0.jpg?alt=media&token=6a67a28c-c69f-4eca-94e7-b19033d494b8"
+          },
+          {
+            "name" : "그웬",
+            "region":"그림자 군도",
+            "position":"탑",
+            "role": "전사",
+            "nickname": "신성한 재봉사",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_gwen.jpg?alt=media&token=d1d95c25-bd9f-44b1-8c3d-a7ddb641a89a",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FGwen_0.jpg?alt=media&token=5591cded-a91a-41d6-8801-0ff3601953a5"
+          },
+          {
+            "name" : "나미",
+            "region":"룬테라",
+            "position":"서폿",
+            "role": "서포터",
+            "nickname": "파도 소환사",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_nami.jpg?alt=media&token=f0f31497-afd4-487d-acf2-684da9474027",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FNami_0.jpg?alt=media&token=d748afda-5851-4b33-8014-6cb2663130d8"
+          },
+          {
+            "name" : "니달리",
+            "region":"이쉬탈",
+            "position":"정글",
+            "role": "암살자",
+            "nickname": "야성의 사냥꾼",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_nidalee.jpg?alt=media&token=2c842c6d-704f-4668-9231-e82495e72032",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FNidalee_0.jpg?alt=media&token=39a75c8e-9d6d-4933-a30e-cede2d51a404"
+          },
+          {
+            "name" : "드레이븐",
+            "region":"녹서스",
+            "position":"바텀",
+            "role": "원거리",
+            "nickname": "화려한 처형자",
+            "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_draven.jpg?alt=media&token=038de7b2-a96c-4ebd-a625-e7960912f308",
+            "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FDraven_0.jpg?alt=media&token=0cef3310-51ce-432c-b877-9378ce5f1262"
+          }
+        ]
+}

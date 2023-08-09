@@ -109,3 +109,7 @@ body{
 .info h2{
   font-size: 0.8em;
 }
+
+.icon{
+  height: 40px;
+}

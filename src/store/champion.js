@@ -1,5 +1,5 @@
 import { Store } from "../core/core";
-import champInfo from "../asset/champInfo.json"
+import champInfo from "../info/champInfo.json"
 
 const store = new Store({
   searchText: "",
@@ -13,6 +13,7 @@ const store = new Store({
 
 export default store
 export const searchChampions = (page = 1) =>{
+  setLocalStorage()
   store.state.loading = true
   store.state.page = page
   try{
