@@ -1,0 +1,613 @@
+/* 모바일용 CSS */
+/* 기본 CSS */
+.container {
+  width: 90%;
+  max-width: 1132px;
+  margin: 0 auto;
+}
+
+.cfixed:after,
+.container:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.blind {
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.sec-tit {
+  font-size: 42px;
+  color: rgb(255, 55, 115);
+  font-weight: normal;
+}
+
+.divider {
+  width: 90%;
+  max-width: 1132px;
+  margin: 0 auto;
+  margin-top: 77px;
+  background: #eee;
+}
+
+.m-divider {
+  width: 20px;
+  margin: 0 auto;
+  margin-top: 77px;
+  background: rgb(255, 55, 115);
+}
+
+/* 헤더 영역 CSS */
+.header {
+  position: relative;
+  padding: 18px 5%;
+}
+
+.header .logo {
+  float: left;
+}
+
+.header .logo a {
+  font-size: 26px;
+  color: rgb(255, 55, 115);
+  font-weight: normal;
+}
+
+.logo a:hover {
+  background-color: rgb(255, 55, 115);
+  color: #fff;
+  transition: 0.5s;
+  border-radius: 4px;
+}
+
+.header .nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgb(255, 55, 115);
+}
+
+.header .nav li {
+  border-bottom: 1px solid #fff;
+}
+
+.header .nav li a {
+  display: block;
+  padding: 14px 0 14px 5%;
+  font-size: 14px;
+  color: #fff;
+}
+
+.nav li a:hover {
+  color: rgb(255, 55, 115);
+  background-color: whitesmoke;
+}
+
+.header .menu-toggle-btn {
+  float: right;
+  width: 20px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.header .menu-toggle-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgb(255, 55, 115);
+}
+
+.header .menu-toggle-btn span:nth-child(2) {
+  margin: 5px 0;
+}
+
+/* 슬라이더 영역 CSS */
+.slider img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 디스플레이 영역 CSS */
+.display-section {
+  margin-top: 59px;
+  text-align: center;
+}
+
+.display-section .sec-tit {
+  margin-bottom: 30px;
+}
+
+.display-section .desc {
+  font-family: "PT Serif";
+  color: #616161;
+  line-height: 1.9;
+}
+
+/* 프로모션 영역 CSS */
+.promotion-section {
+  margin-top: 68px;
+}
+
+.promo-list li:hover {
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.promotion-section .promo-list li {
+  margin-top: 52px;
+  text-align: center;
+}
+
+.promotion-section .promo-list li:first-child {
+  margin-top: 0;
+}
+
+.promotion-section .promo-list li img {
+  height: 52px;
+}
+
+.promotion-section .promo-list li h3 {
+  margin: 29px 0 20px 0;
+  color: rgb(255, 55, 115);
+  font-weight: normal;
+}
+
+.promotion-section .promo-list li p {
+  font-size: 14px;
+  font-family: "PT Serif";
+  color: #616161;
+  line-height: 1.5;
+}
+
+/* 슬라이드 영역 CSS*/
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  vertical-align: middle;
+}
+
+.slideshow-container {
+  max-width: 600px;
+  position: relative;
+  margin: auto;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hw-move {
+  padding: 50px 0;
+}
+
+/* 프로덕트 영역 CSS */
+.product-section {
+  margin-top: 73px;
+  margin: 73px 10% 0 10%;
+}
+
+.product-section .sec-tit {
+  width: 90%;
+  max-width: 1132px;
+  margin: 0 auto;
+  margin-bottom: 47px;
+  text-align: center;
+}
+
+.product-section .product-list li {
+  width: 100%;
+}
+
+.product-section .product-list li a {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.product-section .product-list li a:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: lightskyblue;
+  content: "";
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.product-section .product-list li a:hover:before {
+  opacity: 0.85;
+}
+
+.product-section .product-list li .info {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  z-index: 20;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.product-section .product-list li a:hover .info {
+  transform: translateY(23px);
+  opacity: 1;
+}
+
+.product-section .product-list li .info h3 {
+  margin-bottom: 8px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.product-section .product-list li .info span {
+  font-size: 15px;
+  color: #fff;
+}
+
+.product-section .product-list li img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 여행 영역 CSS */
+.travel-section {
+  margin-top: 77px;
+}
+
+.travel-section .sec-tit {
+  margin-bottom: 47px;
+  text-align: center;
+}
+
+.travel-section .travel-list li {
+  width: 100%;
+  margin-top: 45px;
+}
+
+.travel-section .travel-list li:first-child {
+  margin-top: 0;
+}
+
+.travel-section .travel-list li img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.travel-section .travel-list li time {
+  display: block;
+  margin: 11px 0 10px 0;
+  font-size: 11px;
+  color: #9e9e9e;
+}
+
+.travel-section .travel-list li h3 {
+  color: #424242;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+/* 문의 영역 CSS */
+.contact-section {
+  margin-top: 109px;
+}
+
+.contact-section .sec-tit {
+  margin-bottom: 47px;
+  text-align: center;
+}
+
+.contact-section .form-box .form input {
+  padding-bottom: 13px;
+  margin-bottom: 38px;
+}
+
+.contact-section .form-box .textarea textarea {
+  height: 165px;
+}
+
+.contact-section .form-box .send-btn {
+  margin-top: 36px;
+  text-align: right;
+}
+
+.contact-section .form-box .send-btn button {
+  padding: 15px;
+  margin: 0;
+  border: 0;
+  font-size: 12px;
+  color: #fff;
+  background: rgb(255, 55, 115);
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+/* 푸터 영역 CSS */
+.footer {
+  margin-top: 104px;
+}
+
+.footer iframe {
+  width: 100%;
+  height: 320px;
+}
+
+.footer p {
+  margin: 21px 0;
+  color: rgb(255, 55, 115);
+  text-align: center;
+}
+
+/* 태블릿용 CSS */
+@media all and (min-width: 768px) {
+  /* 기본 CSS */
+  .divider {
+    margin-top: 124px;
+  }
+
+  .m-divider {
+    margin-top: 124px;
+  }
+
+  /* 헤더 영역 CSS */
+  .header {
+    position: static;
+    padding: 28px 52px;
+  }
+
+  .header .nav {
+    display: block !important;
+    position: static;
+    float: right;
+    width: auto;
+    margin-top: 6px;
+    background: none;
+  }
+
+  .header .nav li {
+    float: left;
+    margin-left: 21px;
+    border-bottom: 0;
+  }
+
+  .header .nav li a {
+    padding: 0;
+    font-size: 16px;
+    color: rgb(255, 55, 115);
+  }
+
+  .nav li a:hover {
+    background-color: rgb(255, 55, 115);
+    color: #fff;
+    transition: 0.5s;
+    border-radius: 4px;
+    padding: 2px 0;
+  }
+
+  .header .menu-toggle-btn {
+    display: none !important;
+  }
+
+  /* 디스플레이 영역 CSS */
+  .display-section {
+    margin-top: 95px;
+  }
+
+  /* 프로모션 영역 CSS */
+  .promotion-section {
+    margin-top: 110px;
+  }
+
+  .promotion-section .promo-list li {
+    float: left;
+    width: 23.046875%;
+    /* 177px ÷ 768px*/
+    margin-left: 2.604166666666667%;
+    /* 20px ÷ 768px*/
+    margin-top: 0;
+  }
+
+  .promotion-section .promo-list li:first-child {
+    margin-left: 0;
+  }
+
+  /* 프로덕트 영역 CSS */
+  .product-section {
+    margin-top: 118px;
+  }
+
+  .product-section .sec-tit {
+    margin-bottom: 76px;
+  }
+
+  .product-section .product-list li {
+    float: left;
+    width: 50%;
+  }
+
+  .product-section .product-list li .info {
+    left: 37px;
+  }
+
+  .product-section .product-list li a:hover .info {
+    transform: translateY(37px);
+  }
+
+  /* 여행 영역 CSS */
+  .travel-section {
+    margin-top: 124px;
+  }
+
+  .travel-section .sec-tit {
+    margin-bottom: 76px;
+  }
+
+  .travel-section .travel-list li {
+    float: left;
+    width: 31.59722222222222%;
+    /* 242.6666666666667px ÷ 768px*/
+    margin-left: 2.604166666666667%;
+    /* 20px ÷ 768px*/
+    margin-top: 0;
+  }
+
+  .travel-section .travel-list li:first-child {
+    margin-left: 0;
+  }
+
+  /* 문의 영역 CSS */
+  .contact-section {
+    margin-top: 176px;
+  }
+
+  .contact-section .sec-tit {
+    margin-bottom: 76px;
+  }
+
+  .contact-section .form-box .form,
+  .contact-section .form-box .textarea {
+    float: left;
+    width: 48.69791666666667%;
+    /* 374px ÷ 768px*/
+  }
+
+  .contact-section .form-box .form {
+    margin-right: 2.604166666666667%;
+    /* 20px ÷ 768px*/
+  }
+
+  .contact-section .form-box .form input:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 푸터 영역 CSS */
+  .footer iframe {
+    height: 432px;
+  }
+
+  .footer p {
+    margin: 34px 0;
+  }
+}
+
+/* PC용 CSS */
+@media all and (min-width: 1132px) {
+  /* 디스플레이 영역 CSS */
+  .display-section {
+    text-align: left;
+  }
+
+  .display-section .sec-tit {
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .display-section .desc {
+    position: relative;
+    float: right;
+    padding-left: 20px;
+    font-family: "PT Serif";
+    color: #616161;
+    line-height: 1.9;
+  }
+
+  .display-section .desc:before {
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 2px;
+    height: 44px;
+    background: #e0e0e0;
+    content: "";
+  }
+
+  /* 프로모션 영역 CSS */
+  .promotion-section .promo-list li {
+    width: 23.67491166077739%;
+    /* 268px ÷ 1132px*/
+    margin-left: 1.76678445229682%;
+    /* 20px ÷ 1132px*/
+  }
+
+  /* 프로덕트 영역 CSS */
+  .product-section .sec-tit {
+    text-align: left;
+  }
+
+  .product-section .product-list li {
+    width: 25%;
+  }
+
+  /* 여행 영역 CSS */
+  .travel-section .sec-tit {
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .travel-section .travel-list {
+    float: right;
+    width: 74.5583038869258%;
+    /* 844px ÷ 1132px*/
+  }
+
+  .travel-section .travel-list li {
+    width: 31.75355450236967%;
+    /* 268px ÷ 844px*/
+    margin-left: 2.369668246445498%;
+    /* 20px ÷ 844px*/
+  }
+
+  /* 문의 영역 CSS */
+  .contact-section .sec-tit {
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .contact-section .form-box {
+    float: right;
+    width: 74.5583038869258%;
+    /* 844px ÷ 1132px*/
+  }
+
+  .contact-section .form-box .form,
+  .contact-section .form-box .textarea {
+    width: 48.81516587677725%;
+    /* 412px ÷ 844px*/
+  }
+
+  .contact-section .form-box .form {
+    margin-right: 2.369668246445498%;
+    /* 20px ÷ 844px*/
+  }
+}
