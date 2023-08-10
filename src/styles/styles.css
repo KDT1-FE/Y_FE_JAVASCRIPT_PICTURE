@@ -134,7 +134,7 @@ html {
   display: flex;
   justify-content: space-between;
 }
-.photo {
+.photo-detail {
   width: 400px;
   height: 480px;
   background-color: black;
