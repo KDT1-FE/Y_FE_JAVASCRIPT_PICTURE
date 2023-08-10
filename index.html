@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이돌 멤버 관리 서비스</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/loading.css">
+  <link rel="stylesheet" href="./css/section.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script defer type="module" src="./js/header.js"></script>
+  <script defer type="module" src="./js/nav.js"></script>
+  <script defer src="./js/section.js"></script>
+  <script defer type="module" src="./js/firebase.js"></script>
+</head>
+<body>
+  <div class="spin-container">
+    <div class="square">
+      <div class="spin"></div>
+    </div>
+  </div>
+  <header>
+    <div class="headertitle">아이돌 멤버 관리 서비스</div>
+    <div class="check">
+      <div class="checkuser">게스트</div>
+      <button class="checklogin">로그인</button>
+    </div>
+  </header>
+  <main>
+    <nav>
+      <div class="modal" id="insertmodal">
+        <div class="modal-window">
+          <div class="title">
+              <h2>정보 등록</h2>
+          </div>
+          <div class="content">
+            <label for="imageInput" class="upload-button">사진</label>
+            <input type="file" id="imageInput" style="display: none;" accept="image/*">
+          </div>
+          <input type="text" class="content" id="nameInput" placeholder="이름"></input>
+          <input type="text" class="content" id="groupInput" placeholder="그룹"></input>
+          <div class="buttons">
+            <button id="modalinsert">등록</button>
+            <button id="modaldelete">취소</button>
+          </div>
+      </div>
+      </div>
+      <div class="button_container">
+        <button class="button" id="insert">정보 등록</button>
+        <button class="button" id="delete">정보 삭제</button>
+      </div>
+    </nav>
+    <section>
+      <div class="profile-list" id="list"></div>
+    </section>
+  </main>
+  
+</body>
+</html>

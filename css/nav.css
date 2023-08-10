@@ -1,0 +1,232 @@
+main {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button {
+  font-size: 1.3rem;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 19px;
+  color: black;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid black;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+}
+
+.button:hover {
+  background-color: black;
+  color: #fff;
+}
+
+#insertmodal .modal-window {
+  display: none;
+  background: rgba(69, 139, 197, 0.70);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  z-index: 1;
+}
+
+#insertmodal .title {
+  margin: auto;
+  display: inline;
+  text-shadow: 1px 1px 2px gray;
+  color: white;
+  cursor: default;
+}
+
+#insertmodal .title h2 {
+  display: inline;
+}
+
+#insertmodal .content {
+  width: 90%;
+  display: block;
+  margin-top: 20px;
+  padding: 0px 10px;
+  text-shadow: 1px 1px 2px gray;
+  color: black;
+}
+
+#insertmodal .buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1rem;
+}
+
+#insertmodal .buttons > button {
+  cursor: pointer;
+  border-radius: 16px;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.upload-button {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media ( max-width: 1023px ) {
+  main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 5rem;
+  }
+
+  .button {
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+
+  #insertmodal .modal-window {
+    display: none;
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  #insertmodal .title {
+    margin: auto;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    cursor: default;
+  }
+  
+  #insertmodal .title h2 {
+    display: inline;
+  }
+  
+  #insertmodal .content {
+    width: 90%;
+    display: block;
+    margin-top: 20px;
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+  }
+  
+  #insertmodal .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+  
+  #insertmodal .buttons > button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-size: 1rem;
+  }
+  
+}
+@media ( max-width: 767px ) {
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+  .button {
+    font-size: .5rem;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+
+  #insertmodal .modal-window {
+    display: none;
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  #insertmodal .title {
+    margin: auto;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    cursor: default;
+    font-size: .7em;
+  }
+  
+  #insertmodal .title h2 {
+    display: inline;
+  }
+  
+  #insertmodal .content {
+    width: 90%;
+    font-size: .7em;
+    display: block;
+    margin-top: 20px;
+    padding: 0px 5px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+  }
+  
+  #insertmodal .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: .7rem;
+  }
+  
+  #insertmodal .buttons > button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-size: .7rem;
+  }
+  
+}
