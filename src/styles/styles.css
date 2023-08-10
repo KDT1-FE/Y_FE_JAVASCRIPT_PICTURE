@@ -271,3 +271,17 @@ html {
 
   align-self: flex-end;
 }
+
+/*edit 페이지*/
+.edit-name,
+.edit-email {
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+.photo-edit {
+  width: 400px;
+  height: 480px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+}
