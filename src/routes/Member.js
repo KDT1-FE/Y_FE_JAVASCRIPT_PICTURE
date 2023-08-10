@@ -11,7 +11,7 @@ export default class Member extends Component {
     <header class="header">
   <div class="title">직원 관리 시스템</div></header>
   <main class="detail">
-    <div class='photo-detail'></div>
+    <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
     <section class='information-container'>
       <section class='information-title'>
         INFORMATION
