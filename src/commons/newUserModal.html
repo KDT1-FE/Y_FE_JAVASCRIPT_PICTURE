@@ -1,0 +1,89 @@
+<dialog
+  class="container mx-auto h-screen max-w-3xl md:h-[96vh] md:rounded-xl"
+  id="newUserModal"
+>
+  <div class="h-full w-full overflow-auto px-4 pb-4">
+    <div class="flex items-center justify-between">
+      <h3 class="py-4 text-xl font-bold">직원 추가</h3>
+      <div
+        class="dialog-close flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-gray-200"
+      >
+        <span class="material-icons"> close </span>
+      </div>
+    </div>
+    <form method="dialog" class="md:grid md:grid-cols-2 md:gap-3">
+      <div class="mb-4">
+        <h4 class="mb-2">프로필 사진</h4>
+        <div
+          id="drop_zone"
+          class="flex h-[200px] items-center rounded-md border-2 border-dashed border-blue-500 text-center"
+        >
+          <div class="w-full">
+            <span class="material-icons"> cloud_upload </span><br />
+            <p class="mb-3 text-gray-500">파일을 이곳으로 드래그 해주세요</p>
+            <label
+              for="fileUpload"
+              class="choose-file inline-block cursor-pointer bg-blue-600 p-3 text-white"
+            >
+              파일 선택
+            </label>
+            <input
+              type="file"
+              class="hidden w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+              id="fileUpload"
+              name="file"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <h4 class="mb-2">업로드 미리보기</h4>
+        <div class="flex justify-center">
+          <div class="h-[200px] w-[200px]" id="img-thumb"></div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <h4 class="mb-2">성명</h4>
+        <input
+          type="text"
+          placeholder="이름을 입력해주세요"
+          name="fullName"
+          class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+        />
+      </div>
+      <div class="mb-4">
+        <h4 class="mb-2">이메일</h4>
+        <input
+          type="email"
+          placeholder="이메일 주소를 입력해주세요"
+          name="email"
+          class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+        />
+      </div>
+      <div class="mb-4">
+        <h4 class="mb-2">연락처</h4>
+        <input
+          type="text"
+          placeholder="연락처를 입력해주세요"
+          name="phone"
+          class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+        />
+      </div>
+      <div class="mb-4">
+        <h4 class="mb-2">직책</h4>
+        <select name="category" id="" class="w-full py-2">
+          <option value="CEO">CEO</option>
+          <option value="Manager">Manager</option>
+          <option value="Senior">Senior</option>
+          <option value="Junior">Junior</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="col-span-2 w-full rounded-md bg-blue-600 p-3 text-white"
+      >
+        추가 완료
+      </button>
+    </form>
+  </div>
+</dialog>
