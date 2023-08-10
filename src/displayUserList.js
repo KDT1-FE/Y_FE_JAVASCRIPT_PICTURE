@@ -27,7 +27,7 @@ const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
             <i class="fa-solid fa-pen"></i>
           </p>
           <p class="user__menu-delete flex-center pointer">
-            <i class="fa-solid fa-minus"></i>
+            <i class="fa-solid fa-xmark"></i>
           </p>
         </div>
       </div>
