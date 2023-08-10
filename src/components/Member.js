@@ -15,7 +15,7 @@ export default class Member extends Component {
       <div class="row-member">  <div class='checkbox-container'>
       <input class='checkbox' type='checkbox'></input>
     </div>
-    <p class='photo-title'>${member.id}</p>
+    <p class='photo-title'>${member.photoUrl}</p>
     <p class="name-title">${member.name}</p>
     <p class="email-title">${member.email}</p></div>
     `;
