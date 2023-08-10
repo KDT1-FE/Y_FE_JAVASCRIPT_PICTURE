@@ -1,9 +1,7 @@
-import { addDoc, collection, collectionGroup } from 'firebase/firestore';
-import { db, storage } from '../api/firebase';
+import { getDownloadURL } from 'firebase/storage';
 import { Component } from '../core/component';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
 import { routeRender } from '../core/router';
+import { uploadData, uploadImage } from '../store/memberStore';
 
 export default class Write extends Component {
   render() {
@@ -32,19 +30,6 @@ export default class Write extends Component {
     });
     const form = this.el.querySelector('.write-container');
 
-    const uploadImage = async (fileData) => {
-      const storageRef = ref(storage, uuidv4());
-      await uploadBytes(storageRef, fileData);
-      return storageRef;
-    };
-    const uploadData = async (data) => {
-      const docRef = await addDoc(collection(db, 'list'), {
-        name: data.name,
-        email: data.email,
-        photoUrl: data.photoUrl,
-      });
-      console.log(docRef);
-    };
     const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
