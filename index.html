@@ -4,6 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>고객 관리</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">고객 관리</a>
+        <div>
+          <a class="regist btn" href="regist.html">고객 등록</a>
+          <button class="remove btn">고객 삭제</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">고객 목록</h2>
+        <form class="search-container">
+          <button class="search-btn">
+            <img
+              class="search-icon"
+              alt="검색 아이콘"
+              src="./assets/icons/searchIcon.svg"
+            />
+          </button>
+          <input
+            class="search-input"
+            placeholder="이름, 이메일, 전화번호로 검색하기"
+          />
+        </form>
+      </div>
+      <section>
+        <div></div>
+      </section>
+    </main>
+  </body>
 </html>

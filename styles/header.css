@@ -1,0 +1,43 @@
+.header-container {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  padding: 1.5rem;
+
+  z-index: 100;
+  background-color: white;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.875rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+}
+
+.btn {
+  border: none;
+  height: 1.875rem;
+  padding: 7px 9px;
+
+  font-size: 0.8125rem;
+  line-height: 1.0625rem;
+}
+
+.regist {
+  background-color: #109010;
+  color: white;
+}
+
+@media only screen and (min-width: 1025px) {
+  .header-nav {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
