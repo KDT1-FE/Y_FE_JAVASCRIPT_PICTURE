@@ -14,5 +14,10 @@ export default class Home extends Component {
     `;
     const memberList = new MemberList().el;
     this.el.append(memberList);
+    const title = this.el.querySelector('.title');
+    title.addEventListener('click', () => {
+      window.history.pushState(null, null, '/');
+      routeRender();
+    });
   }
 }
