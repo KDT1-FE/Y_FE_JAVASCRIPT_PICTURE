@@ -1,5 +1,6 @@
 import Home from './Home';
 import Member from './Member';
+import Write from './Write';
 export const routes = [
   {
     path: '/',
