@@ -18,7 +18,8 @@ const unsub = onSnapshot(nameOrderQuery, (snapshot) => {
         <img src=${user.imageUrl} alt="profile image" class="user__image" />
         <div class="user__info">
           <h3 class="user__name">${user.name}</h3>
-          <p class="user__email show">${user.email}</p>
+          <p class="user__email">${user.email}</p>
+          <p class="user__position">${user.position}</p>
         </div>
         <div class="user__menu-icon">
           <i class="fa-solid fa-ellipsis-vertical"></i>

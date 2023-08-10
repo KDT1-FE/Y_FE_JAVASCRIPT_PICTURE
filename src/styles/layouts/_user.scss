@@ -15,21 +15,79 @@
         box-shadow: $card-shadow;
         padding: 1rem;
         background-color: #fff;
+        overflow: hidden;
 
         &.detail {
-          
+          position: relative;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 0;
+
+          .user__image {
+            width: 100%;
+            height: 150px;
+            margin: 0;
+            border-radius: 10px;
+          }
+
+          .user__info {
+            padding: 1rem;
+            position: relative;
+
+            .user__name {
+              &::before {
+                content: "name";
+                opacity: 0.5;
+                font-size: 0.9rem;
+                margin-right: 5px;
+                font-weight: $font-light;
+              }
+            }
+
+            .user__email {
+              font-size: 1.1rem;
+
+              &::before {
+                content: "email";
+                opacity: 0.5;
+                font-size: 0.9rem;
+                margin-right: 5px;
+                font-weight: $font-light;
+              }
+            }
+
+            .user__position {
+              font-size: 1.1rem;
+              font-weight: $font-semi;
+              padding: 0;
+              border-radius: 0;
+              background-color: transparent;
+
+              &::before {
+                content: "position";
+                opacity: 0.5;
+                font-size: 0.9rem;
+                margin-right: 5px;
+                font-weight: $font-light;
+              }
+            }
+          }
         }
 
         .user__image {
           width: 50px;
           height: 50px;
-          background-color: $bg-gray-400;
           margin-right: 0.5rem;
           border-radius: 50%;
           object-fit: cover;
         }
 
         .user__info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
           .user__name {
             font-size: 1.1rem;
             margin-bottom: 5px;
@@ -37,6 +95,16 @@
 
           .user__email {
             font-size: 0.9rem;
+            font-weight: $font-normal;
+            margin-bottom: 5px;
+          }
+
+          .user__position {
+            font-size: 0.7rem;
+            font-weight: $font-normal;
+            padding: 3px 5px;
+            border-radius: 3px;
+            background-color: $bg-gray-200;
           }
         }
 
@@ -67,6 +135,10 @@
           box-shadow: $card-shadow;
           border-radius: 5px;
 
+          &.hidden {
+            display: none;
+          }
+
           .user__menu-edit {
             font-size: 14px;
             width: 25px;
@@ -89,10 +161,6 @@
             &:hover {
               background-color: $bg-gray-200;
             }
-          }
-
-          &.hidden {
-            display: none;
           }
         }
       }
