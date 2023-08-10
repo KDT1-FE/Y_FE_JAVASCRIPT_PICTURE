@@ -95,12 +95,17 @@ button,input {
     font-family: Pretendard,Noto Sans KR,arial,sans-serif
 }
 
+.icon {
+    pointer-events: none;
+}
+
 * {
     -webkit-appearance: none;
     appearance: none;
     box-sizing: border-box;
     outline: none
 }
+
 
 /* color */
 :root{
