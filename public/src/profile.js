@@ -19,6 +19,7 @@ villagerDocRef
       const birthday = data.birthday;
       const personality = data.personality;
       const favoriteColor = data.favoriteColor;
+      const speechHabit = data.speechHabit;
 
       // ul 새로 만들기
       const profileContainer = document.createElement("ul");
@@ -32,6 +33,7 @@ villagerDocRef
         <li class="villager-info-li"><p>${birthday}</p></li>
         <li class="villager-info-li"><p>${personality}</p></li>
         <li class="villager-info-li"><p>${favoriteColor}</p></li>
+        <li class="villager-info-li"><p>${speechHabit}</p></li>
     `;
 
       // div 추가
