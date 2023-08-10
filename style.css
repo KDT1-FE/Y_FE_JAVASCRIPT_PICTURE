@@ -1,3 +1,160 @@
+:root {
+    --main-color-focus : rgb(0,102,227);
+    --color--white : white;
+    --color--gray : gray;
+}
+
+/* css 초기화  */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+code,
+del,
+dfn,
+em,
+img,
+q,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Noto Sans KR', sans-serif; 
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+}
+/* main */
+
+/* employees__main */
+
+.employees{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.employees__title {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.employees__action__btns{
+    display: flex;
+    gap: 5px;
+    justify-content: end;
+    margin-bottom: 1rem;
+}
+
+.btn__add,.btn__del {
+    border: 1px solid var(--main-color-focus);
+    border-radius: 2px;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    color: var(--main-color-focus);
+    cursor: pointer;
+}
+
+.btn__add:hover, .btn__del:hover {
+    background-color: var(--main-color-focus);
+    color: var(--color--white);
+}
+
+.employees__action__search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.search__total {
+    font-size: 1.6rem;
+}
+
+.search__input {
+    font-size: 1.6rem;
+    border: 1px solid var(--main-color-focus);
+    border-radius: 5px;
+    padding: 8px 4px;
+}
+
+/* employees__content */
+
+.employees__table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.employees__table__row--header {
+    border-top: 1px solid var(--color--gray);
+}
+
+.employees__table__row {
+    font-size: 1.6rem;
+    border-bottom: 1px solid var(--color--gray);
+}
+
+.employees__table__row > * {
+    padding: 1rem;
 }

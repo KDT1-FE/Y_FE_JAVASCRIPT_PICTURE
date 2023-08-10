@@ -21,18 +21,18 @@
       <div class="employees">
         <div class="employees__main">
           <h1 class="employees__title">직원관리</h1>
-          <div class="employees__action__btn">
-            <button>추가</button>
-            <button>삭제</button>
+          <div class="employees__action__btns">
+            <button class="btn__add">직원 추가</button>
+            <button class="btn__del">직원 삭제</button>
           </div>
-          <div class="employees__action__input">
-            <p>총 직원수 : 0</p>
+          <div class="employees__action__search">
+            <p class="search__total">총 직원수 : 0</p>
+            <input class="search__input" type="text" placeholder="이름으로 검색하기" />
           </div>
-          <input type="text" placeholder="이름으로 검색하기" />
         </div>
         <section class="employees__content">
-          <table>
-            <tr>
+          <table class="employees__table">
+            <tr class="employees__table__row employees__table__row--header">
               <th><input type="checkbox" /></th>
               <th>사진</th>
               <th>이름</th>
@@ -41,7 +41,7 @@
               <th>전화번호</th>
               <th>이메일</th>
             </tr>
-            <tr>
+            <tr class="employees__table__row">
               <td><input type="checkbox" /></td>
               <td>사진</td>
               <td>배경규</td>
@@ -50,7 +50,7 @@
               <td>01012345678</td>
               <td>qorudrb14@naver.com</td>
             </tr>
-            <tr>
+            <tr class="employees__table__row">
               <td><input type="checkbox" /></td>
               <td>사진</td>
               <td>배경규</td>
@@ -59,7 +59,7 @@
               <td>01012345678</td>
               <td>qorudrb14@naver.com</td>
             </tr>
-            <tr>
+            <tr class="employees__table__row">
               <td><input type="checkbox" /></td>
               <td>사진</td>
               <td>배경규</td>
