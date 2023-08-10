@@ -23,7 +23,7 @@ export async function getMemberList() {
   const limits = 4;
   const q = query(
     collection(db, "Members"),
-    orderBy("createdAt", "desc"),
+    orderBy("createdAt"),
     limit(limits),
   );
   const querySn = await getDocs(q);
@@ -49,7 +49,7 @@ export async function getMemberListMore(key) {
   const limits = 4;
   const q = query(
     collection(db, "Members"),
-    orderBy("createdAt", "desc"),
+    orderBy("createdAt"),
     startAfter(key),
     limit(limits),
   );
@@ -87,6 +87,4 @@ export async function getMemberListMore(key) {
       lastKey: "",
     };
   }
-
-  return { memberArr, lastKey };
 }
