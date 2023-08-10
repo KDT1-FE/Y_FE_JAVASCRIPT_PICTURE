@@ -39,3 +39,9 @@ input {
 input:focus {
   outline: 2px solid #cae7e9;
 }
+
+@media (max-width: 800px) {
+  main {
+    margin: 0 1.5rem;
+  }
+}
