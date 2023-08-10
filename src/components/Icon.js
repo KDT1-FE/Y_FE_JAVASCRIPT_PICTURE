@@ -9,7 +9,6 @@ export default class Icon extends Component{
     })
   }
   render(){
-    console.log(this.props)
     this.el.classList.add('icon')
     this.el.setAttribute("src", iconInfo[this.props])
   }

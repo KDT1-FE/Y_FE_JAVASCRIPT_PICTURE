@@ -9,7 +9,6 @@ export default class ChampionItem extends Component{
     })
   }
   render(){
-    console.log(this.props)
     const champion = this.props
 
     this.el.classList.add('champion')

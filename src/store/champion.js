@@ -21,7 +21,7 @@ export const searchChampions = (page = 1) =>{
       store.state.storage = JSON.parse(localStorage.getItem('champ'))['char']
     }
     // if(page === 1){
-    //   store.state.storage 
+      
     // }
     store.state.maxLength = store.state.storage.length
     store.state.champions = [...store.state.storage
@@ -39,7 +39,7 @@ export const searchChampions = (page = 1) =>{
 // 챔피언 정보를 LocalStorage에 저장
 export const setLocalStorage = () => {
   // 개발용
-  localStorage.clear()
+  // localStorage.clear()
 
   if(!localStorage.length){
     localStorage.setItem('champ',JSON.stringify(champInfo))
