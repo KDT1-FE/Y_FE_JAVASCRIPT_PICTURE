@@ -1,0 +1,17 @@
+{
+  "name": "y_fe_javascript_picture",
+  "version": "1.0.0",
+  "description": "야놀자 테크스쿨 과제: 직원들의 사진을 관리할 수 있는 사진 관리자 서비스 만들기",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "author": "flamozzi",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
