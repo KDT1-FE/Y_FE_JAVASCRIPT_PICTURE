@@ -1,18 +1,10 @@
-import {
-  collection,
-  onSnapshot,
-  query,
-  orderBy,
-  limit,
-  doc,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 
 const userListContainer = document.querySelector(".user__list");
 
 // 이름순 정렬
 const userRef = collection(db, "users");
-console.log(userRef);
 const nameOrderQuery = query(userRef, orderBy("name"));
 
 const unsub = onSnapshot(nameOrderQuery, (snapshot) => {
@@ -32,12 +24,12 @@ const unsub = onSnapshot(nameOrderQuery, (snapshot) => {
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div class="user__menu-items flex-center hidden">
-          <p class="user__menu-edit flex-center pointer">
+          <div class="user__menu-edit flex-center pointer">
             <i class="fa-solid fa-pen"></i>
-          </p>
-          <p class="user__menu-delete flex-center pointer">
+          </div>
+          <div class="user__menu-delete flex-center pointer">
             <i class="fa-solid fa-eraser"></i>
-          </p>
+          </div>
         </div>
       </div>
     `;

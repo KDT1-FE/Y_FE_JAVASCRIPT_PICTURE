@@ -3,8 +3,11 @@ import { db } from "./firebase";
 
 const userList = document.querySelector(".user__list");
 let userId;
+const addForm = document.querySelector(".form-add");
+const editForm = document.querySelector(".form-edit");
 
 userList.addEventListener("click", (e) => {
+  e.stopPropagation();
   const editBtn = e.target.closest(".user__menu-edit");
 
   // 수정 버튼 클릭 시 폼 변경
@@ -20,8 +23,8 @@ userList.addEventListener("click", (e) => {
     document.getElementById("edit-name").value = userName;
     document.getElementById("edit-email").value = userEmail;
 
-    document.querySelector(".form-add").classList.add("hidden");
-    document.querySelector(".form-edit").classList.remove("hidden");
+    addForm.classList.add("hidden");
+    editForm.classList.remove("hidden");
   }
 });
 
@@ -41,12 +44,12 @@ function handleEditSubmit(e) {
   const userRef = doc(db, "users", userId);
   try {
     updateDoc(userRef, updatedData);
-    console.log(updatedData);
+    editForm.classList.add("hidden");
+    addForm.classList.remove("hidden");
     console.log("success");
   } catch (err) {
     console.log("error", err);
   }
 }
 
-const editForm = document.querySelector(".form-edit");
 editForm.addEventListener("submit", handleEditSubmit);
