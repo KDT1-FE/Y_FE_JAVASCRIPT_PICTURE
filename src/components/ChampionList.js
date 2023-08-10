@@ -1,5 +1,5 @@
 import { Component } from "../core/core";
-import championStore, { searchChampions } from "../store/champion";
+import championStore, { searchChampions} from "../store/champion";
 import championItem from "./ChampionItem"
 
 export default class ChampionList extends Component{
@@ -15,10 +15,6 @@ export default class ChampionList extends Component{
       <div class="champions"></div>
       <p class="champions-end"> </p>
     `
-    if(championStore.state.page === 1){
-      searchChampions(championStore.state.page)
-    }
-    
     const championsEl = this.el.querySelector('.champions')
     
     championsEl.append(
@@ -26,18 +22,17 @@ export default class ChampionList extends Component{
     )
     
     const endEl = this.el.querySelector('.champions-end')
-    const observer1 = new IntersectionObserver(entries=>observercb(entries[0]))
-    
-    const observercb = entry => {
-        if(championStore.state.page*10 >= championStore.state.maxLength){
-          observer1.unobserve(endEl)
-        }
-        if(entry.isIntersecting){
-          searchChampions(++championStore.state.page)
-        }
-    }
-    
-    observer1.observe(endEl)
-  
+    const observer = new IntersectionObserver(entries=>{
+      if(championStore.state.page*10 >= championStore.state.maxLength){
+        observer.unobserve(endEl)
+      }
+      if(entries[0].isIntersecting){
+        searchChampions(++championStore.state.page)
+      }
+      },{threshold:1})
+
+      if(championStore.state.storage.length>10){
+        observer.observe(endEl)
+      }
   }
 }

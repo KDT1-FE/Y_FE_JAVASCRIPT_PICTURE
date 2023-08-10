@@ -1,5 +1,5 @@
 import { Component } from "../core/core";
-import store, {setLocalStorage} from "../store/champion"
+import store, {setLocalStorage , searchChampionsbyName } from "../store/champion"
 
 export default class Search extends Component{
   render(){
@@ -17,10 +17,14 @@ export default class Search extends Component{
     inputEl.addEventListener('input',()=>{
       store.state.searchText = inputEl.value
     })
-
+    inputEl.addEventListener("keydown", event=>{
+      if(event.key === "Enter"){
+        searchChampionsbyName(store.state.searchText)
+      }
+    })
     const searchBtnEl = this.el.querySelector('.btn-search')
     searchBtnEl.addEventListener('click',()=>{
-      
+      searchChampionsbyName(store.state.searchText)
     })
 
     const resetBtnEl = this.el.querySelector('.btn-reset')

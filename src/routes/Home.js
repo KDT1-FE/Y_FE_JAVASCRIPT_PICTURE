@@ -2,6 +2,7 @@ import { Component } from "../core/core";
 import Headline from "../components/Headline";
 import Search from "../components/Search";
 import ChampionList from "../components/ChampionList";
+import { initializeChampionList } from "../store/champion";
 
 export default class Home extends Component{
   render(){
@@ -14,5 +15,7 @@ export default class Home extends Component{
       search,
       championlist
       )
+      
+    initializeChampionList()
   }
 }
