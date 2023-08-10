@@ -65,7 +65,7 @@
           },
           {
             "name" : "람머스",
-            "region":"슈리아",
+            "region":"슈리마",
             "position":"정글",
             "role": "탱커",
             "nickname": "중무장 아르마딜로",
@@ -83,10 +83,10 @@
           },
           {
             "name" : "럼블",
-            "region":"",
-            "position":"",
-            "role": "",
-            "nickname": "",
+            "region":"밴틀 시티",
+            "position":"탑",
+            "role": "전사",
+            "nickname": "기계 악동",
             "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_rumble.jpg?alt=media&token=3aaf084d-5a36-422d-a246-e102701d2f9f",
             "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FRumble_0.jpg?alt=media&token=b4254df7-f1b7-40b6-9a82-5415475e12a6"
           },
