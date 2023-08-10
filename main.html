@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>직원 사진 관리 서비스</title>
+</head>
+<body>
+    <header>
+        <span>
+            <a href="./main.html">🏠</a>
+        </span>
+    </header>
+    <div class="wrap">
+        <nav>
+            <ul>
+                <li><a>직원 조회</a></li>
+                <li><a>직원 평가</a></li>
+            </ul>
+        </nav>
+        <div class="contents-wrap">
+            <div class="contents-top">
+                <div class="navigation">
+                    <div class="navigation-title">직원 조회</div>
+                </div>
+                <div class="contents-header">
+                    <div class="search-wrap">
+                        <input class="search-input" placeholder="이름이나 이메일을 검색하세요"/>
+                        <button class="search-button">🔍</button>
+                    </div>
+                    <div class="button-wrap">
+                        <button class="table-button">등록</button>
+                        <button class="table-button">삭제</button>
+                    </div>  
+                </div>  
+            </div>
+            <section class="employee-view">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr class="head-tr">
+                                <th>선택</th>
+                                <th>사진</th>
+                                <th>이름</th>
+                                <th>이메일</th>
+                                <th>부서</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="body-tr">
+                                <td class="td-checkbox"><input type="checkbox"></td>
+                                <td class="td-image">
+                                    <div class="image-container">
+                                        <img class="profile-image" src="./assets/sample.jpg" alt="직원 사진">
+                                    </div>     
+                                </td>
+                                <td class="td-name">짱구</td>
+                                <td class="td-emial">asdf@naver.com</td>
+                                <td class="td-department">떡잎마을부서</td>
+                            </tr>
+                            <tr class="body-tr">
+                                <td class="td-checkbox"><input type="checkbox"></td>
+                                <td class="td-image">
+                                    <div class="image-container">
+                                        <img class="profile-image" src="./assets/sample.jpg" alt="직원 사진">
+                                    </div>     
+                                </td>
+                                <td class="td-name">철수</td>
+                                <td class="td-emial">asdf@naver.com</td>
+                                <td class="td-department">떡잎마을부서</td>
+                            </tr>
+                            <tr class="body-tr">
+                                <td class="td-checkbox"><input type="checkbox"></td>
+                                <td class="td-image">
+                                    <div class="image-container">
+                                        <img class="profile-image" src="./assets/sample.jpg" alt="직원 사진">
+                                    </div>     
+                                </td>
+                                <td class="td-name">유리</td>
+                                <td class="td-emial">asdf@naver.com</td>
+                                <td class="td-department">떡잎마을부서</td>
+                            </tr>
+                            <tr class="body-tr">
+                                <td class="td-checkbox"><input type="checkbox"></td>
+                                <td class="td-image">
+                                    <div class="image-container">
+                                        <img class="profile-image" src="./assets/sample.jpg" alt="직원 사진">
+                                    </div>     
+                                </td>
+                                <td class="td-name">훈이</td>
+                                <td class="td-emial">asdf@naver.com</td>
+                                <td class="td-department">떡잎마을부서</td>
+                            </tr>
+                            <tr class="body-tr">
+                                <td class="td-checkbox"><input type="checkbox"></td>
+                                <td class="td-image">
+                                    <div class="image-container">
+                                        <img class="profile-image" src="./assets/sample.jpg" alt="직원 사진">
+                                    </div>     
+                                </td>
+                                <td class="td-name">맹구</td>
+                                <td class="td-emial">asdf@naver.com</td>
+                                <td class="td-department">떡잎마을부서</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>  
+        </div>
+    </div>
+    <button class="scroll-button">⬆️</button>
+</body>
+</html>
