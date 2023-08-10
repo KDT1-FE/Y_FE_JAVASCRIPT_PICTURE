@@ -13,7 +13,7 @@ imageInput.addEventListener("change", (e) => {
     };
     reader.readAsDataURL(file);
 
-    imageInputBox.classList.add("hidden");
     imageBox.classList.remove("hidden");
+    imageInputBox.classList.add("invisible");
   }
 });

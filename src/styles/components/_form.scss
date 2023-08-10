@@ -5,6 +5,7 @@ form {
   position: fixed;
   top: 50%;
   left: 50%;
+  min-width: 300px;
   transform: translate(-50%, -50%);
   background-color: #fff;
   border: 1px solid $bg-gray-700;
@@ -13,11 +14,11 @@ form {
   z-index: 1000;
 
   .form__container {
+    width: 100%;
     position: relative;
     display: flex;
     padding: 1.2rem;
     flex-direction: column;
-    margin: auto;
 
     .close-btn {
       position: absolute;
@@ -34,12 +35,23 @@ form {
     }
 
     .form__input-image {
+      position: relative;
+      z-index: 2;
+
+      &.invisible {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        opacity: 0;
+      }
+
       .form__label-image {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 120px;
         height: 120px;
+        margin-bottom: 1rem;
         border-radius: $card-border-radius;
         background-color: $bg-gray-100;
 
@@ -47,23 +59,22 @@ form {
           background-color: $bg-gray-200;
         }
       }
-
       // 기존 인풋 박스 없애기
       .form__input-hidden {
-        visibility: hidden;
+        display: none;
       }
     }
 
     // 이미지 선택시 보이게
     .form__image-box {
-      width: 120px;
-      height: 120px;
-      border: 1px solid;
+      width: 100%;
+      margin-bottom: 1rem;
 
       .form__image-preview {
-        width: 100%;
-        height: 100%;
+        width: 120px;
+        height: 120px;
         object-fit: cover;
+        border-radius: $card-border-radius;
       }
     }
 
@@ -71,8 +82,8 @@ form {
       width: 100%;
 
       input {
-        font-size: 1rem;
         position: relative;
+        font-size: 1rem;
         width: 100%;
         height: 100%;
         background-color: $bg-gray-100;
@@ -86,6 +97,16 @@ form {
       label {
         display: none;
       }
+    }
+
+    .form__input-submit {
+      font-size: 1rem;
+      font-weight: $font-semi;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      background-color: map-get($map: $theme-colors, $key: bg-primary);
+      width: auto;
     }
   }
 }

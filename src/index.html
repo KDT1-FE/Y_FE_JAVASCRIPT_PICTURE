@@ -71,19 +71,40 @@
         </div>
         <div class="form__input-name input input-text">
           <label for="name">이름</label>
-          <input type="text" name="name" id="name" autocomplete="off" />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="name"
+            autocomplete="off"
+            required
+          />
         </div>
         <div class="form__input-email input input-text">
           <label for="email">이메일</label>
-          <input type="email" name="email" id="email" autocomplete="off" />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email"
+            autocomplete="off"
+            required
+          />
         </div>
         <!-- 학교 정보 등 추가 -->
-        <div class="form__input-rank input input-text">
-          <label for="rank">등급</label>
-          <input type="number" name="rank" id="rank" autocomplete="off" />
+        <div class="form__input-position input input-text">
+          <label for="position">등급</label>
+          <input
+            type="text"
+            name="position"
+            id="position"
+            placeholder="position"
+            autocomplete="off"
+            required
+          />
         </div>
         <button type="submit" class="form__input-submit input input-submit">
-          등록하기
+          Create
         </button>
       </div>
     </form>
@@ -92,7 +113,7 @@
     <form class="form-edit hidden">
       <div class="form__container">
         <i class="fa-solid fa-xmark close-btn"></i>
-        <div class="form__input-image input">
+        <div class="form__input-image input invisible">
           <label class="form__label-image pointer" for="edit-chooseFile">
             <i class="fa-solid fa-plus"></i>
           </label>
@@ -104,7 +125,7 @@
             id="edit-chooseFile"
           />
         </div>
-        <div class="form__image-box hidden">
+        <div class="form__image-box">
           <img
             src=""
             alt="image preview"
@@ -114,19 +135,37 @@
         </div>
         <div class="form__input-name input input-text">
           <label for="edit-name">이름</label>
-          <input type="text" name="name" id="edit-name" autocomplete="off" />
+          <input
+            type="text"
+            name="name"
+            id="edit-name"
+            autocomplete="off"
+            required
+          />
         </div>
         <div class="form__input-email input input-text">
           <label for="edit-email">이메일</label>
-          <input type="email" name="email" id="edit-email" autocomplete="off" />
+          <input
+            type="email"
+            name="email"
+            id="edit-email"
+            autocomplete="off"
+            required
+          />
         </div>
         <!-- 학교 정보 등 추가 -->
-        <div class="form__input-rank input input-text">
-          <label for="edit-rank">등급</label>
-          <input type="number" name="rank" id="edit-rank" autocomplete="off" />
+        <div class="form__input-position input input-text">
+          <label for="edit-position">직책</label>
+          <input
+            type="text"
+            name="position"
+            id="edit-position"
+            autocomplete="off"
+            required
+          />
         </div>
         <button type="submit" class="form__input-submit input input-submit">
-          수정하기
+          Update
         </button>
       </div>
     </form>

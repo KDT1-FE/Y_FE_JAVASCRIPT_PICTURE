@@ -2,21 +2,6 @@ import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from "./firebase";
 import { addDoc, collection } from "firebase/firestore";
 
-const addForm = document.querySelector(".form-add");
-const editForm = document.querySelector(".form-edit");
-const addUserBtn = document.querySelector(".header__btn-add-user");
-addUserBtn.addEventListener("click", () => {
-  addForm.classList.remove("hidden");
-});
-
-const closeInputBtns = document.querySelectorAll(".close-btn");
-closeInputBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    addForm.classList.add("hidden");
-    editForm.classList.add("hidden");
-  });
-});
-
 export function uploadImageToStorage(imageFile) {
   return new Promise((resolve, reject) => {
     const uniqueImageUrl = new Date().getTime() + "-" + imageFile.name;

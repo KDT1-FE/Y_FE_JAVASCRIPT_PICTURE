@@ -15,6 +15,14 @@ p {
   font-weight: $font-normal;
 }
 
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
 .pointer {
   cursor: pointer;
 }

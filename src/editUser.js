@@ -16,11 +16,13 @@ userList.addEventListener("click", (e) => {
     userId = userEl.dataset.id;
     const userName = userEl.querySelector(".user__name").textContent;
     const userEmail = userEl.querySelector(".user__email").textContent;
+    // const userPosition = userEl.querySelector('user__position').textContent;
     const userProfileImage = userEl.querySelector(".user__image").src;
 
     document.getElementById("edit-image-preview").src = userProfileImage;
     document.getElementById("edit-name").value = userName;
     document.getElementById("edit-email").value = userEmail;
+    // document.getElementById("edit-position").value = userPosition;
 
     addForm.classList.add("hidden");
     editForm.classList.remove("hidden");
@@ -32,6 +34,7 @@ async function handleEditSubmit(e) {
 
   const editName = document.getElementById("edit-name").value;
   const editEmail = document.getElementById("edit-email").value;
+  const editPosition = document.getElementById("edit-position").value;
   const editImageFile = document.getElementById("edit-chooseFile").files[0];
 
   const editImageUrl = editImageFile
@@ -41,6 +44,7 @@ async function handleEditSubmit(e) {
   const updatedData = {
     name: editName,
     email: editEmail,
+    position: editPosition,
     ...(editImageUrl && { imageUrl: editImageUrl }),
   };
 

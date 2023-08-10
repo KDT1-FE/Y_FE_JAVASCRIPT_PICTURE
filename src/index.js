@@ -10,5 +10,6 @@ import "./previewImage";
 import "./menuEvents";
 import "./deleteUser";
 import "./editUser";
+import "./btnEvents";
 
 console.log("connected");
