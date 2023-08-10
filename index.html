@@ -1,14 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 구글 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="employees">
+        <div class="employees__main">
+          <h1 class="employees__title">직원관리</h1>
+          <div class="employees__action__btn">
+            <button>추가</button>
+            <button>삭제</button>
+          </div>
+          <div class="employees__action__input">
+            <p>총 직원수 : 0</p>
+          </div>
+          <input type="text" placeholder="이름으로 검색하기" />
+        </div>
+        <section class="employees__content">
+          <table>
+            <tr>
+              <th><input type="checkbox" /></th>
+              <th>사진</th>
+              <th>이름</th>
+              <th>사원번호</th>
+              <th>직급</th>
+              <th>전화번호</th>
+              <th>이메일</th>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>사진</td>
+              <td>배경규</td>
+              <td>230001</td>
+              <td>과장</td>
+              <td>01012345678</td>
+              <td>qorudrb14@naver.com</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>사진</td>
+              <td>배경규</td>
+              <td>230001</td>
+              <td>과장</td>
+              <td>01012345678</td>
+              <td>qorudrb14@naver.com</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>사진</td>
+              <td>배경규</td>
+              <td>230001</td>
+              <td>과장</td>
+              <td>01012345678</td>
+              <td>qorudrb14@naver.com</td>
+            </tr>
+          </table>
+        </section>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script>
+      firebase.initializeApp({
+        apiKey: 'AIzaSyCJLmKKFtwdZb0b-p_iB3uFQrnSDy1MofE',
+        authDomain: 'adminpage-b1d7c.firebaseapp.com',
+        projectId: 'adminpage-b1d7c',
+        storageBucket: 'adminpage-b1d7c.appspot.com',
+        messagingSenderId: '419603405921',
+        appId: '1:419603405921:web:be975288296d3c49aede20',
+      });
+    </script>
+    <script>
+      const db = firebase.firestore();
+      db.collection('profile')
+        .get()
+        .then((res) => {
+          res.forEach((item) => {
+            console.log(item.data());
+          });
+        });
+    </script>
+  </body>
 </html>
