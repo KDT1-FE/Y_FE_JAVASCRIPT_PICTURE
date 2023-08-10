@@ -1,7 +1,7 @@
 import { Store } from '../core/store';
 import { data } from '../../test';
 import { db } from '../api/firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 export const memberStore = new Store({
   members: [],
   loading: false,
@@ -28,7 +28,9 @@ export const renderMemberList = async () => {
 export const getMemberDetail = async (id) => {
   const { member } = data;
   memberStore.state.member = member;
-  const q = query(collection(db, 'list'), where('list', '==', id));
-  const res = await getDocs(q);
-  console.log(res);
+  const docRef = doc(db, 'list', `${id}`);
+  const docSnap = await getDoc(docRef);
+  // console.log(userRef);
+  // const res = await getDoc(id);
+  // console.log(res);
 };
