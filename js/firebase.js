@@ -45,7 +45,6 @@ export async function uploadInfo() {
         group: group,
         imageUrl: downloadURL // 다운로드 URL도 함께 저장
       });
-
       console.log('이미지 및 정보 업로드 완료');
       modalOff();
     } catch (error) {
