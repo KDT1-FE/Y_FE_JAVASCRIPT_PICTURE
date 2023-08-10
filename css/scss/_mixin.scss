@@ -1,0 +1,11 @@
+@mixin font($fs, $fc:#333, $fw:400){
+  font-size: $fs;
+  color: $fc;
+  font-weight: $fw;
+}
+@mixin flex($jc:flex-start, $ai:flex-start, $fd:row){
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+}

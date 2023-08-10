@@ -4,11 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>직원사진관리서비스</title>
+  <!--폰트-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">  
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  
-
+  <aside>
+    <div class="logo"></div>
+    <nav class="nav__main">
+      <ul>
+        <li>
+          메인메뉴 1
+        </li>
+        <li>
+          메인메뉴 2
+          <ul class="nav__sub">
+            <li>서브메뉴</li>
+            <li>서브메뉴</li>
+            <li>서브메뉴</li>
+            <li>서브메뉴</li>
+          </ul>
+        </li>
+        <li>
+          메인메뉴 3
+        </li>
+        <li>
+          메인메뉴 4
+        </li>
+          메인메뉴 5
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="container">
+    <header class="header">
+      <div class="header__left">
+        <label class="main-search-bar">
+          <input type="search" placeholder="전체검색"/>
+          <button type="button" class="search-clear"></button>
+        </label>
+      </div>
+      <div class="header__right">
+        <div class="user-pic"></div>
+        <div class="user-name">user-name</div>
+      </div>
+    </header>
+    <div class="content-wrap">
+      <h3>직원 관리</h3>
+      <div class="controll-wrap">
+        <label class="employee-list__search">
+          <input type="search">
+        </label>
+        <div class="button-box">
+          <button type="button">등록</button>
+          <button type="button">삭제</button>
+        </div>
+      </div>
+      <div class="employee-list">
+        <header class="employee-list__header">
+          <div class="picture"></div>
+          <div class="name">이름</div>
+          <div class="mail">메일</div>
+          <div class="phone">번호</div>
+          <div class="group">부서/팀</div>
+          <div class="position">직급</div>
+          <div class="etc">비고</div>
+        </header>
+        <div class="employee-list__content">
+          <div class="list">
+            <div class="picture">
+              <img src="https://via.placeholder.com/100x100" alt="">
+            </div>
+            <div class="name">이름</div>
+            <div class="mail">메일</div>
+            <div class="phone">번호</div>
+            <div class="group">부서/팀</div>
+            <div class="position">직급</div>
+            <div class="etc">비고</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/scripts.js"></script>
 </body>
 </html>
