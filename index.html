@@ -9,8 +9,31 @@
 
 </head>
 <body>
-    
-
+    <header class="header">
+       <h1 class="title">임직원관리</h1>
+       <p class="right-tab">관리자님</p>
+    </header>
+    <nav class="nav">
+        <button class="nav-btn1">임직원 등록</button>
+        <button class="nav-btn2">임직원 삭제</button>
+        <input type="text" id="searchInput" placeholder="이름 또는 이메일로 검색하기     ">
+        <!-- <button onclick="performSearch()">Search</button> -->
+    </nav>
+    <main>
+        <ul class="profile-list">
+            <li class="profile-item">
+                <input type="checkbox" class="checkbox">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-picture">
+                <div class="profile-info">
+                    <div class="name">John Doe</div>
+                    <div class="email">john.doe@example.com</div>
+                    <div class="phone">123-456-7890</div>
+                    <div class="category">User</div>
+                </div>
+            </li>
+            <!-- 다른 프로필 항목들도 추가할 수 있습니다. -->
+        </ul>
+    </main>
     
 </body>
 </html>
