@@ -107,7 +107,10 @@
         </div>
         <!-- 직원 목록 영역 -->
         <div class="inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl">
-          <div class="mb-3 flex justify-end">
+          <div class="mb-3 flex items-center justify-between">
+            <h3 class="mb-3 text-xl font-bold">
+              <span class="material-icons align-middle"> list </span> 직원 목록
+            </h3>
             <button
               id="delUserBtn"
               class="rounded-md bg-red-500 p-3 text-white"
@@ -116,22 +119,26 @@
               선택 직원 삭제
             </button>
           </div>
-          <div class="grid grid-cols-12 gap-2 bg-stone-100 py-2 text-center">
+          <div
+            class="grid grid-cols-7 gap-2 bg-stone-100 py-2 text-center md:grid-cols-12"
+          >
             <p class="col-span-1">
               <input type="checkbox" id="chkAllMember" />
             </p>
-            <p class="col-span-3">프로필 사진</p>
+            <p class="col-span-2 md:col-span-3">프로필 사진</p>
             <p class="col-span-2">성명</p>
-            <p class="col-span-2">이메일</p>
-            <p class="col-span-2">연락처</p>
+            <p class="hidden md:col-span-2 md:block">이메일</p>
+            <p class="hidden md:col-span-2 md:block">연락처</p>
             <p class="col-span-2">직책</p>
           </div>
-          <div id="memberList">직원이 없습니다.</div>
+          <div id="memberList"></div>
         </div>
       </div>
     </main>
     <!-- 직원 추가 모달창 영역 -->
     <include src="./src/commons/newUserModal.html"></include>
+    <!-- 직원 상세보기 모달창 영역 -->
+    <include src="./src/commons/detailModal.html"></include>
     <!-- 직원 삭제 모달창 영역 -->
     <include src="./src/commons/deleteModal.html"></include>
     <!-- Footer 영역 -->

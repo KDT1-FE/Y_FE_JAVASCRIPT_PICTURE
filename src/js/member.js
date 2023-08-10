@@ -7,5 +7,10 @@ class Member {
     this.fileUrl = fileUrl;
     this.fileName = fileName;
   }
+  isNotEmpty() {
+    if (this.fullName === "" || this.email === "" || this.phone === "")
+      return false;
+    return true;
+  }
 }
 export default Member;

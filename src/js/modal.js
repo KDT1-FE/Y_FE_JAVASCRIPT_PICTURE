@@ -10,8 +10,14 @@ function Modal(clickedButton, modalName) {
   const closeBtn = modal.querySelector(".dialog-close");
   return {
     init() {
-      callBtn.addEventListener("click", () => {
+      callBtn.addEventListener("click", (e) => {
         modal.showModal();
+        if (e.target.closest(".grid")?.id === undefined) return;
+        modal.dispatchEvent(
+          new CustomEvent("clickDetailModal", {
+            detail: e.target.closest(".grid")?.id,
+          }),
+        );
       });
       modal.addEventListener("click", (e) => {
         if (e.target === e.currentTarget) modal.close();
