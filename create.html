@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
     <link rel="stylesheet" href="styles/create.css">
+
 </head>
 <body>
     <div class="create_container">
@@ -12,7 +13,9 @@
         <br>
         <div class="info_container">
             <div class="info_profile">
-                <img alt="추가하기">
+                <label for="fileInput">Select Image</label>
+                <input type="file" id="fileInput">
+                <img id="profile_img" style="display: none;"  alt="profile">
             </div>
             <div class="info_contents">
                 <div class="info name">
@@ -38,12 +41,14 @@
         </div>
         <div class="btn_container">
             <button class="submit_btn" type="submit">Submit</button>
-
-
         </div>
 
     </div>
-    <script src="js/create.js"></script>
+    <!-- Firebase 스크립트 로드 -->
+<script src="js/create.js" type="module">
     
+</script>
+
+
 </body>
 </html>

@@ -1,17 +1,16 @@
 const list = document.querySelector(".list");
-const createBtn = document.querySelector(".ex_create_btn");
 const deleteBtn = document.querySelector(".ex_delete_btn");
 
 let people_list = [];
 
 class Info {
-    constructor(isChecked,profileImg, name, email, phoneNumber, isActive) {
+    constructor(isChecked, profileImgUrl, name, email, phoneNumber, isActive) {
         this.isChecked = isChecked;
-        this.profileImg = profileImg;
+        this.profileImgUrl = profileImgUrl;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.isActive = this.isActive;
+        this.isActive = isActive;
     }
 }
 

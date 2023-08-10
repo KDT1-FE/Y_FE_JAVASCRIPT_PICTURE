@@ -13,9 +13,9 @@ body {
     text-align: center;
 }
 .title > p {
-
-    font-size: 2em;
+    font-size: 3em;
     font-weight: 600;
+    margin-bottom: 0;
 }
 .info_container {
     display: flex;
@@ -25,19 +25,62 @@ body {
     margin: 40px auto;
     background-color: white;
     background-clip: content-box;
-    width: 900px;
+    width: 800px;
     height: 400px;
     border-radius: 15px;
 
 }
 .info_profile {
     position: relative;
-    padding: 40px 0;
     background-color: #aaaaaa88;
-    width: 300px;
+    width: 200px;
+    height: 210px;
     background-clip: content-box;
+    margin : auto 40px;
+    display: flex; /* 추가된 부분 */
+    justify-content: center; /* 추가된 부분 */
+    align-items: center; /* 추가된 부분 */
+}
+
+#profile_img {
+    width: 170px;
+    height: 180px;
+    position: relative;    
 
 }
+
+
+
+.info_profile label{
+    display: inline-block;
+    position: absolute;
+    height: fit-content;
+    right: 0;
+    left : auto;
+    bottom: -50px;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+
+}
+
+.info_profile input[type="file"] {  /* 파일 필드 숨기기 */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip:rect(0,0,0,0);
+        border: 0;
+  }
 .info {
     position : relative;
     width: 300px; 
@@ -45,7 +88,7 @@ body {
 
 }
 .info_contents{
-    margin : 20px 0;
+    margin : 50px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
