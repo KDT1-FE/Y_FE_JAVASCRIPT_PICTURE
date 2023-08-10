@@ -9,4 +9,8 @@ export const routes = [
     path: '/member',
     component: Member,
   },
+  {
+    path: '/write',
+    component: Write,
+  },
 ];
