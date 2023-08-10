@@ -1,4 +1,5 @@
 import { innerHTML } from "./header.js";
+import { uploadInfo } from "./firebase.js";
 const insertbutton=document.getElementById('insert');
 const deletebutton=document.getElementById('delete');
 const insertmodal = document.getElementById('modalinsert');
@@ -19,24 +20,11 @@ function handleImageSelect(event) {
     }
 }
 
-function uploadInfo() {
-  const image = imageInput.files[0];
-  const name = nameInput.value;
-  const group = groupInput.value;
-  if(image && name && group){
-    // 파이어베이스에 업로드하기
-    modalOff();
-  }
-  else{
-    uploadError();
-  }
-}
-
 function modalOn(){
   modal.style.display="block";
 }
 
-function modalOff(){
+export function modalOff(){
   modal.style.display="none";
 }
 
@@ -75,7 +63,7 @@ function deleteBoard(seq){
     cancelButtonText: '취소'
   }).then((result) => {
     if (result.value) {
-            // 체크된 프로필만큼 삭제하는 로직
+      // 체크된 프로필만큼 삭제하는 로직
     }
   })
 }
@@ -90,10 +78,20 @@ function login(){
   })
 }
 
-function uploadError(){
+export function uploadError(){
   Swal.fire({
     title: '업로드 오류',
     text: "요소를 전부 작성해주세요.",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+  })
+}
+
+export function firebaseError(){
+  Swal.fire({
+    title: '업로드 오류',
+    text: "다시 작성해주세요.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',
