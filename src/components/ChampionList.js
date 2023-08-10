@@ -29,11 +29,11 @@ export default class ChampionList extends Component{
     const observer1 = new IntersectionObserver(entries=>observercb(entries[0]))
     
     const observercb = entry => {
-        if(entry.isIntersecting){
-          searchChampions(++championStore.state.page)
-        }
         if(championStore.state.page*10 >= championStore.state.maxLength){
           observer1.unobserve(endEl)
+        }
+        if(entry.isIntersecting){
+          searchChampions(++championStore.state.page)
         }
     }
     
