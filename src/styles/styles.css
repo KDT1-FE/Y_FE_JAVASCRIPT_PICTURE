@@ -285,3 +285,17 @@ html {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.editButton {
+  width: 136px;
+  height: 50px;
+  margin: 2rem 0 0 29rem;
+
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 6px;
+
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1rem; /* 80% */
+  letter-spacing: 0.125rem;
+}

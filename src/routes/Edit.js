@@ -25,7 +25,9 @@ export default class Edit extends Component {
         <span class='detail-category'>EMAIL</span>
         <input class="detail-value edit-email" placeholder="${member.email}" name="email"/>
       </p>
+      <button class="editButton" type="submit">완료</button>
     </section>
+
   </form> 
     `;
   }
