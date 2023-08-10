@@ -11,6 +11,6 @@ export function routeRender() {
   window.scrollTo(0, 0);
 }
 
-export const getUrlParam = () => {
-  return window.location.pathname.split('/')[2];
+export const getUrlParam = (params) => {
+  return new URL(location.href).searchParams.get(params);
 };
