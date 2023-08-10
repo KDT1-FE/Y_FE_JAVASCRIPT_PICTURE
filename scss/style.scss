@@ -264,6 +264,51 @@ $url-images : "/assets/image/";
     
 }
 
+.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        display: none;
+    }
+
+    label {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0;
+    }
+
+    span {
+        content: "";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 2px;
+        border: 1px solid var(--color-gray400);
+        cursor: pointer;
+        background-color: var(--color-white);
+    }
+
+    &:hover {
+        span {
+            border-color: var(--color-blue100);
+        }
+    }
+
+    &--checked{
+        span {
+            background-color: var(--color-blue400);
+            border: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m11.06 15.46 5.4-5.4a.65.65 0 1 0-.919-.919l-4.941 4.94-2.818-2.818a.65.65 0 1 0-.919.919l3.278 3.278a.651.651 0 0 0 .919 0" style="fill:%23ffffff"/></svg>');
+            background-position: 50% 50%;
+        }
+    }
+
+
+}
+
 
 .scrolltop {
     position: absolute;
@@ -282,6 +327,8 @@ $url-images : "/assets/image/";
         padding: 1rem;
         background: rgba(255,255,255,.5);
     }
+
+
 }
 
 
@@ -307,7 +354,35 @@ $url-images : "/assets/image/";
                 background-color: #0003;
             }
         }
+
     }
+
+    &--open {
+
+        &.dropdown--account {
+            .dropdown__display {
+                background-color: var(--color-gray200);
+            }
+
+            .dropdown__wrap {
+                display: list-item;
+            }
+        }
+
+        &.dropdown--sort{
+            .dropdown__display {
+                border-color: var(--color-blue400);
+                border-width: 2px;
+                padding: 13px;
+            }
+            .dropdown__wrap {
+                display: block;
+            }
+
+        }
+        
+    }
+
 
     &--account {
         .dropdown{
@@ -329,9 +404,6 @@ $url-images : "/assets/image/";
                 word-break: break-all;
                 cursor: pointer;
 
-                &[data-id=open] {
-                    background-color: var(--color-gray200);
-                }
 
                 span {
                     grid-column: 1;
@@ -349,7 +421,6 @@ $url-images : "/assets/image/";
 
             &__wrap {
                 position: absolute;
-                // display: list-item;
                 display: none;
                 width: 11.2rem;
                 height: auto;
@@ -601,6 +672,7 @@ $url-images : "/assets/image/";
             padding: 0.6rem 1rem;
             text-align: center;
             font-weight: 700;
+            vertical-align: middle;
         }
     }
 
