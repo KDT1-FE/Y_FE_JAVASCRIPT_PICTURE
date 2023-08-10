@@ -1,5 +1,6 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { uploadImageToStorage } from "./uploadImage";
 
 const userList = document.querySelector(".user__list");
 let userId;
@@ -8,8 +9,6 @@ const editForm = document.querySelector(".form-edit");
 
 userList.addEventListener("click", (e) => {
   const editBtn = e.target.closest(".user__menu-edit");
-
-  // 수정 직후 유저 메뉴만 눌러도 폼이 변경 됨
   // 수정 버튼 클릭 시 폼 변경
   if (editBtn) {
     const userEl = editBtn.closest(".user__user");
@@ -28,15 +27,21 @@ userList.addEventListener("click", (e) => {
   }
 });
 
-function handleEditSubmit(e) {
+async function handleEditSubmit(e) {
   e.preventDefault();
 
   const editName = document.getElementById("edit-name").value;
   const editEmail = document.getElementById("edit-email").value;
+  const editImageFile = document.getElementById("edit-chooseFile").files[0];
+
+  const editImageUrl = editImageFile
+    ? await uploadImageToStorage(editImageFile)
+    : null;
 
   const updatedData = {
     name: editName,
     email: editEmail,
+    ...(editImageUrl && { imageUrl: editImageUrl }),
   };
 
   console.log("updatedData", updatedData);
