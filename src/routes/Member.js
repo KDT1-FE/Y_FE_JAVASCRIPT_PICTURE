@@ -15,7 +15,7 @@ export default class Member extends Component {
     <section class='information-container'>
       <section class='information-title'>
         INFORMATION
-        <button class='button'>수정</button>
+        <button class='navigate-edit'>수정</button>
       </section>
       <p class='information'>
         <span class='detail-category'>NAME</span>
@@ -32,6 +32,12 @@ export default class Member extends Component {
     const title = this.el.querySelector('.title');
     title.addEventListener('click', () => {
       window.history.pushState(null, null, '/');
+      routeRender();
+    });
+
+    const navigateEditButton = this.el.querySelector('button');
+    navigateEditButton.addEventListener('click', () => {
+      window.history.pushState(null, null, '/edit');
       routeRender();
     });
   }

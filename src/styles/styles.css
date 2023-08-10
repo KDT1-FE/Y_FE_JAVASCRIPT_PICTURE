@@ -165,7 +165,7 @@ html {
   border-bottom: 2px solid var(--color-gray);
   padding-bottom: 10px;
 }
-.button {
+.navigate-edit {
   background-color: var(--color-primary);
   color: var(--color-white);
 
