@@ -40,19 +40,28 @@ export default class Write extends Component {
       ) {
         alert('모든 값을 입력해주세요');
         return;
-      }
+      } //submit을 누르면  모두 입력이 되었는 지 확인
+
+      const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+      if (!emailRegex.test(formData.get('email'))) {
+        alert('이메일 형식을 지켜주세요');
+        return;
+      } // 이메일 형식을 확인
+
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
       };
       const fileData = formData.get('file');
+
       const storageRef = await uploadImage(fileData, data);
       const photoUrl = await getDownloadURL(storageRef);
       data.photoUrl = photoUrl;
       await uploadData(data);
+
       window.history.pushState(null, null, '/');
-      routeRender();
-    }; // submit을 누르면  모두 입력이 되었는 지 확인하는 함수
+      routeRender(); // 메인 페이지로 이동
+    }; // submit을 누르면  모두 입력이 되었는 지 확인
 
     form.addEventListener('submit', handleSubmit);
   }
