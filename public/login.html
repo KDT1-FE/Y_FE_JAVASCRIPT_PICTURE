@@ -21,44 +21,38 @@
             <li><a href="/index.html">직원목록</a></li>
             <li><a href="/upload.html">업로드</a></li>
             <li><a href="/login.html">로그인</a></li>
-            <li><a href="/detail.html">상세정보</a></li>
             <li><a href="/">검색</a></li>
           </ul>
         </nav>
       </header>
       
       <!-- 가입 -->
-      <section id="join" >
+      <section id="join input-col" >
         <h2> 회원가입 </h2>
-        <form class="input-col">
           <input type="text" class="form-input" placeholder="name" id="join__name">
           <input type="email" class="form-input" placeholder="email" id="join__email">
           <input type="password" class="form-input" placeholder="pw" id="join__pw">
           <div class="btn-area">
               <button type="submit" class="btn btn-join" id="join-btn">가입</button>
           </div>
-        </form>
      </section>
 
      <!-- 로그인 -->
-     <section id="login">
+     <section id="login input-col">
       <h2> 로그인 </h2>
-      <form class="input-col">
         <input type="email" class="form-input" placeholder="email" id="login__email">
         <input type="password" class="form-input" placeholder="pw" id="login__pw">
           <div class="btn-area">
               <button type="submit" class="btn btn-login" id="login-btn">로그인</button>
               <button type="submit" class="btn btn-logout" id="logout-btn">로그아웃</button>
           </div>
-      </form>
       </section>
 
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   <!-- 제이쿼리 -->
-  <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-  <script defer src="common.js"></script>
-  <script defer src="login.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="common.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>
