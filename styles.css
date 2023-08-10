@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    font-family: 'Noto Light', sans-serif;
+    align-items: center;
+    padding: 10px;
+}
+.nav {
+    padding: 10px;
+}
+.profile-container {
+    display: flex;
+    width: 700px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 10px;
+    margin: 10px;
+}
+
+.profile-info {
+    display: flex;
+}
+
+.img,
+.name,
+.email,
+.phone,
+.category {
+    padding-left: 70px;
+}
