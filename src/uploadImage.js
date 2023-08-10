@@ -2,6 +2,21 @@ import { uploadBytes, getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from "./firebase";
 import { addDoc, collection } from "firebase/firestore";
 
+const addForm = document.querySelector(".form-add");
+const editForm = document.querySelector(".form-edit");
+const addUserBtn = document.querySelector(".header__btn-add-user");
+addUserBtn.addEventListener("click", () => {
+  addForm.classList.remove("hidden");
+});
+
+const closeInputBtn = document.querySelector(".close-btn");
+closeInputBtn.addEventListener("click", () => {
+  addForm.classList.add("hidden");
+  if (editForm) {
+    editForm.classList.add("hidden");
+  }
+});
+
 export function uploadImageToStorage(imageFile) {
   return new Promise((resolve, reject) => {
     const uniqueImageUrl = new Date().getTime() + "-" + imageFile.name;
@@ -23,6 +38,7 @@ export function uploadImageToStorage(imageFile) {
   });
 }
 
+// 데이터베이스에 데이터 저장
 export async function uploadInfoToDatabase(userData) {
   try {
     const docRef = await addDoc(collection(db, "users"), userData);

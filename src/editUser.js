@@ -7,10 +7,9 @@ const addForm = document.querySelector(".form-add");
 const editForm = document.querySelector(".form-edit");
 
 userList.addEventListener("click", (e) => {
-  e.stopPropagation();
   const editBtn = e.target.closest(".user__menu-edit");
 
-  if (!editBtn) return;
+  // 수정 직후 유저 메뉴만 눌러도 폼이 변경 됨
   // 수정 버튼 클릭 시 폼 변경
   if (editBtn) {
     const userEl = editBtn.closest(".user__user");
@@ -46,7 +45,6 @@ function handleEditSubmit(e) {
   try {
     updateDoc(userRef, updatedData);
     editForm.classList.add("hidden");
-    addForm.classList.remove("hidden");
     console.log("success");
   } catch (err) {
     console.log("error", err);

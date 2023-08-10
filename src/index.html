@@ -26,6 +26,17 @@
     <!-- <link rel="stylesheet" href="./styles/style.css" /> -->
   </head>
   <body>
+    <!-- OPEN FORM -->
+    <header>
+      <div class="header__container">
+        <nav class="header__nav">
+          <button type="button" class="header__btn-add-user flex-center">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
     <!-- USER LIST -->
     <section class="user">
       <div class="user__container">
@@ -35,10 +46,11 @@
 
     <!-- FORM CONTROL -->
     <!-- 유저 추가 -->
-    <form class="form form-add">
+    <form class="form form-add hidden">
       <div class="form__container">
-        <div class="form__input-image input show">
-          <label class="form__label pointer" for="chooseFile">
+        <i class="fa-solid fa-xmark close-btn"></i>
+        <div class="form__input-image input">
+          <label class="form__label-image pointer" for="chooseFile">
             <i class="fa-solid fa-plus"></i>
           </label>
           <input
@@ -70,7 +82,6 @@
           <label for="rank">등급</label>
           <input type="number" name="rank" id="rank" autocomplete="off" />
         </div>
-
         <button type="submit" class="form__input-submit input input-submit">
           등록하기
         </button>
@@ -80,8 +91,9 @@
     <!-- 유저 수정 -->
     <form class="form-edit hidden">
       <div class="form__container">
-        <div class="form__input-image input show">
-          <label class="form__label pointer" for="edit-chooseFile">
+        <i class="fa-solid fa-xmark close-btn"></i>
+        <div class="form__input-image input">
+          <label class="form__label-image pointer" for="edit-chooseFile">
             <i class="fa-solid fa-plus"></i>
           </label>
           <input
@@ -113,7 +125,6 @@
           <label for="edit-rank">등급</label>
           <input type="number" name="rank" id="edit-rank" autocomplete="off" />
         </div>
-
         <button type="submit" class="form__input-submit input input-submit">
           수정하기
         </button>

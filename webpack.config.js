@@ -34,14 +34,6 @@ module.exports = {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
         type: "asset/resource",
       },
-      // 웹폰트 로더
-      // {
-      //   test: /\.(woff|woff2|eot|ttf|otf)$/i,
-      //   type: "asset/resource",
-      //   generator: {
-      //     filename: "src/fonts/[name].[hash:8].[ext]",
-      //   },
-      // },
       // SASS 로더
       {
         test: /\.s[ac]ss$/i,

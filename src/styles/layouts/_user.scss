@@ -1,7 +1,9 @@
 .user {
+  margin-top: 80px;
+
   .user__container {
     .user__list {
-      padding: 2rem;
+      padding: 0 2rem;
 
       .user__user {
         position: relative;
@@ -12,6 +14,7 @@
         border-radius: $card-border-radius;
         box-shadow: $card-shadow;
         padding: 1rem;
+        background-color: #fff;
 
         .user__image {
           width: 50px;
