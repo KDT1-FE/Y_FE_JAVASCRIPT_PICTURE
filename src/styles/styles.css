@@ -12,6 +12,7 @@ html {
   --color-white: #fff;
   --color-gray: #e2e8f0;
   --color-font: #4a5568;
+  --color-dark-gray: #a0aec0;
   --color-primary: #3584f4;
   --color-hover: #f9f9f9;
 }
@@ -31,6 +32,8 @@ html {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  cursor: pointer;
 }
 .container {
   display: flex;
@@ -67,7 +70,6 @@ html {
   border-radius: 6px;
 
   background-color: var(--color-primary);
-  border: none;
 
   color: var(--color-white);
   font-size: 0.87em;
@@ -119,9 +121,69 @@ html {
   width: 290px;
 
   color: var(--color-font);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 1;
 }
 
 /*detail 페이지*/
+.detail {
+  max-width: 1060px;
+  margin: 60px auto 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+.photo {
+  width: 400px;
+  height: 480px;
+  background-color: black;
+}
+.information-container {
+  width: 630px;
+  padding-bottom: 2px;
+}
+.information-title {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-primary);
+
+  border-bottom: 2px solid var(--color-gray);
+  padding-bottom: 10px;
+}
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+
+  width: 100px;
+  height: 37px;
+  padding: 0px 8px;
+
+  border-radius: 6px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.information {
+  margin-top: 20px;
+  height: 100px;
+  padding-left: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.detail-category {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-dark-gray);
+}
+.detail-value {
+  color: var(--color-black);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
