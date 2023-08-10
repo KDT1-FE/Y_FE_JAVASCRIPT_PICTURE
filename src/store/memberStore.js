@@ -15,7 +15,6 @@ export const renderMemberList = async () => {
   let array = [];
   res.forEach((doc) => {
     let memberData = doc.data();
-    console.log(memberData);
     array.push({
       name: memberData.name,
       photoUrl: memberData.photoUrl,
