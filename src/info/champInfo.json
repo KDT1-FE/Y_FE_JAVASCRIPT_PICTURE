@@ -93,8 +93,8 @@
           {
             "name" : "렝가",
             "region":"이쉬탈",
-            "position":"암살자",
-            "role": "탑",
+            "position" : "탑",
+            "role": "암살자",
             "nickname": "추적하는 사자",
             "thumbnail" : "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/thumbnail%2FRiotX_ChampionList_rengar.jpg?alt=media&token=7a06984b-9df7-40d9-927a-e2e71f03c346",
             "image": "https://firebasestorage.googleapis.com/v0/b/employee-management-c0a21.appspot.com/o/bigimage%2FRengar_0.jpg?alt=media&token=fff65de2-da22-4d07-8945-be44d5650f29"
