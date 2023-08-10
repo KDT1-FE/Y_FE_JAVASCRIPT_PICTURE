@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="./modal.css">
+</head>
+<body>
+    <div class="modal-wrap">
+        <div class="modal">
+            <div class="close-button-wrap">
+                <button class="close-button">X</button>
+            </div>
+            <div class="modal-header">
+                <h1>새 직원 등록</h1>
+            </div>
+            <div class="modal-content">     
+                <div class="input-wrap">
+                    <h2>사진</h2>
+                    <div class="file-container">
+                        <label for="file-upload">
+                            <div class="file-upload-button">+</div>
+                            <input id="file-upload" type="file" accept="image/*">
+                        </label>
+                        <img class="profile-image"></img>
+                    </div>
+                </div>
+                <div class="input-wrap">
+                    <h2>이름</h2>
+                    <input placeholder="이름을 입력하세요">
+                </div>
+                <div class="input-wrap">
+                    <h2>이메일</h2>
+                    <input placeholder="이메일을 입력하세요">
+                </div>
+                <div class="input-wrap">
+                    <h2>부서</h2>
+                    <input placeholder="부서를 입력하세요">
+                </div>
+            </div>
+            <div class="register-button-wrap">
+                <button class="register-button">등록</button>
+            </div>
+        </div>
+    </div>
+    <script src="./modal.js"></script>
+</body>
+</html>
