@@ -40,7 +40,6 @@ collectionRef.get().then((querySnapshot) => {
     // img 가져오기
     const imageElement = villagerContainer.querySelector(".villager-img");
     const imageRef = storage.ref().child(engName + ".webp");
-    console.log(engName);
     imageRef
       .getDownloadURL()
       .then((url) => {
