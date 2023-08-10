@@ -7,16 +7,17 @@ body {
 .header-logo {
   width: 25rem;
   height: 9.5rem;
-  margin-top: 1.5rem;
+  padding-top: 2rem;
 }
 
 .main {
-  margin: 0 auto;
   width: 90%;
   background-color: #fcf1e0;
-  margin-top: 3rem;
   border-radius: 3rem;
   height: 90rem;
+  display: inline-block;
+  height: auto;
+  margin: 3rem 5rem 4rem 5rem;
 }
 
 .main-wrap {

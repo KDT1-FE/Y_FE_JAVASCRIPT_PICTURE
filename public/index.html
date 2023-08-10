@@ -31,42 +31,7 @@
             </ul>
             <hr class="main-middle-hr" />
           </div>
-          <div class="villagers-list">
-            <div class="villager" data-id="apple">
-              <ul class="villager-info-ul">
-                <li class="villager-info-li">
-                  <img
-                    id="villager-img"
-                    class="villager-img"
-                    src=""
-                    alt="Firebase 이미지"
-                  />
-                </li>
-                <li><p class="villager-info-li">애플</p></li>
-                <li><p class="villager-info-li">여자</p></li>
-                <li><p class="villager-info-li">9월 23일</p></li>
-                <li><p class="villager-info-li">아이돌</p></li>
-                <li><p class="villager-info-li">컬러풀/빨간색</p></li>
-              </ul>
-            </div>
-            <div class="villager" data-id="poyami">
-              <ul class="villager-info-ul">
-                <li class="villager-info-li">
-                  <img
-                    id="villager-img1"
-                    class="villager-img"
-                    src=""
-                    alt="Firebase 이미지"
-                  />
-                </li>
-                <li><p class="villager-info-li">뽀야미</p></li>
-                <li><p class="villager-info-li">여자</p></li>
-                <li><p class="villager-info-li">1월 30일</p></li>
-                <li><p class="villager-info-li">친절함</p></li>
-                <li><p class="villager-info-li">빨간색/분홍색</p></li>
-              </ul>
-            </div>
-          </div>
+          <div class="villagers-list"></div>
         </div>
       </div>
     </main>
@@ -87,7 +52,7 @@
       firebase.initializeApp(firebaseConfig);
       const firestore = firebase.firestore();
     </script>
-    <script src="./src/downloadImg.js"></script>
+    <script src="./src/downloadData.js"></script>
     <script src="./src/navigation.js"></script>
   </body>
 </html>
