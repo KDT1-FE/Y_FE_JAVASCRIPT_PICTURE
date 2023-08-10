@@ -33,8 +33,9 @@ export default class Write extends Component {
     const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
+      console.log(formData.get('file'));
       if (
-        formData.get('file') === '' ||
+        formData.get('file').name === '' ||
         formData.get('name') === '' ||
         formData.get('email') === ''
       ) {
