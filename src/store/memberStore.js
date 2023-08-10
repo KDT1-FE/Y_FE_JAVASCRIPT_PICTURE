@@ -28,4 +28,7 @@ export const renderMemberList = async () => {
 export const getMemberDetail = async (id) => {
   const { member } = data;
   memberStore.state.member = member;
+  const q = query(collection(db, 'list'), where('list', '==', id));
+  const res = await getDocs(q);
+  console.log(res);
 };
