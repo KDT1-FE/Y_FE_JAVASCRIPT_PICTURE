@@ -39,7 +39,7 @@ export const searchChampions = (page = 1) =>{
 // 챔피언 정보를 LocalStorage에 저장
 export const setLocalStorage = () => {
   // 개발용
-  // localStorage.clear()
+  localStorage.clear()
 
   if(!localStorage.length){
     localStorage.setItem('champ',JSON.stringify(champInfo))

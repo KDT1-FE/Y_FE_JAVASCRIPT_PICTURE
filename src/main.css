@@ -17,6 +17,10 @@ body{
   opacity:0.7
 }
 
+.hide{
+  display:none;
+}
+
 .container{
   width: 92%;
   max-width: 1100px;
@@ -112,4 +116,17 @@ body{
 
 .icon{
   height: 40px;
+  cursor:pointer;
+}
+
+.info-div{
+  display: none;
+  position:absolute;
+  top: -40px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.icon:hover + .info-div{
+  display: block;
 }
