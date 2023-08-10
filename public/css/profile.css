@@ -71,7 +71,7 @@ body {
 }
 
 .profile-info,
-.villagers-info {
+.villager-info {
   padding: 0;
   margin: 0;
   display: flex;
@@ -84,7 +84,7 @@ body {
 }
 
 .profile-info-li,
-.villagers-info-li {
+.villager-info-li {
   margin: 0.7rem;
   text-align: center;
   font-size: 1.5rem;
