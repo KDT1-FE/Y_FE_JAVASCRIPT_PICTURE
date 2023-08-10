@@ -14,9 +14,9 @@
   border-right: 1px solid var(--color-border-color);
   grid-column: 1;
   grid-row: 1/3;
-  max-width: 17rem;
   z-index: 1;
   padding: 1.6rem;
+  transition: width 0.3s linear;
 }
 .wrap .nav__inner {
   margin-top: 10.3vh;
@@ -100,6 +100,31 @@
   cursor: pointer;
   background-color: var(--color-gray50);
 }
+.wrap .nav.close .nav__head {
+  grid-template-columns: 1fr 0;
+  transform: translate(0.2rem);
+}
+.wrap .nav.close .nav__list a {
+  width: 3.2rem;
+  padding: 0 0.8rem;
+}
+.wrap .nav.close .nav__list a span {
+  display: none;
+}
+.wrap .nav.close .nav__control a {
+  width: 2.8rem;
+  height: auto;
+  border-radius: 0 0.5rem 0.5rem 0;
+  transform: translate(1.4rem);
+  background: var(--color-white);
+  padding: 0.8rem;
+  border-top: 1px solid var(--color-border-color);
+  border-right: 1px solid var(--color-border-color);
+  border-bottom: 1px solid var(--color-border-color);
+}
+.wrap .nav.close .nav__control a svg {
+  transform: rotate(180deg);
+}
 .wrap .container {
   position: relative;
   width: 100%;
@@ -142,6 +167,7 @@
   margin: 1.5rem 0 2rem;
   display: flex;
   justify-content: space-between;
+  gap: 0.8rem;
 }
 .wrap .container__head .head-inner {
   display: flex;
@@ -250,10 +276,11 @@
 
 .scrolltop {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   width: 3.7rem;
   margin: 0 1rem 1rem;
+  transition: transform 300ms ease-out 0s;
 }
 .scrolltop__button {
   width: 3.7rem;
@@ -290,7 +317,7 @@
   display: list-item;
 }
 .dropdown--open.dropdown--sort .dropdown__display {
-  border-color: var(--color-blue400);
+  border-color: var(--color-blue400) !important;
   border-width: 2px;
   padding: 13px;
 }
@@ -341,6 +368,7 @@
   border: solid 1px var(--color-gray200);
   background-color: var(--color-white);
   color: var(--color-gray900);
+  z-index: 1;
 }
 .dropdown--account .dropdown__inner {
   height: 100%;
@@ -438,9 +466,7 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: normal;
-  overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   cursor: pointer;
   border: 1px solid var(--color-border-color);
 }
@@ -497,8 +523,8 @@
   border-width: 2px;
   padding: 13px;
 }
-.search__container[data-id=select] {
-  border-color: var(--color-blue400);
+.search__container--focus {
+  border-color: var(--color-blue400) !important;
   border-width: 2px;
   padding: 13px;
 }
@@ -590,8 +616,11 @@
   background-color: var(--color-gray50);
   pointer-events: none;
 }
+.pagination__item:hover {
+  background-color: var(--color-blue50);
+}
 .pagination__item--selected {
   border: 0;
-  background-color: var(--color-blue400);
+  background-color: var(--color-blue400) !important;
   color: var(--color-white);
 }/*# sourceMappingURL=style.css.map */
