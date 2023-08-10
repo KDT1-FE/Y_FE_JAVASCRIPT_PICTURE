@@ -28,28 +28,37 @@ body {
   line-height: 6rem;
 }
 
-.password-check input {
+.password-check > input {
   padding: 10px;
   margin-bottom: 1rem;
-  color: #3da557;
+  background-color: #00000000;
+  color: #ffffff;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px;
   width: 23.3rem;
+  height: 2rem;
   font-size: 25px;
   text-align: center;
+  outline: none;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.7s forwards;
   animation-delay: 1.7s;
 }
+.password-check > input::placeholder{
+  color: #ffffff;
+  font-size: 20px;
+}
 
 .password-check button {
-  padding: 10px 20px;
-  background-color: #3da557;
-  color: #ffffff;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  color: #000000;
   border: 1px solid #ffffff ;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
   cursor: pointer;
   width: 24.67rem;
   opacity: 0;
@@ -59,8 +68,10 @@ body {
   animation-delay: 1.7s;
 }
 
+
 #loginButton:hover {
     background-color: #023f32;
+    color: #ffffff;
   }
   
 
@@ -92,7 +103,7 @@ body {
   }
 
   .password-check h2 {
-    text-align: left;
+    text-align: right;
     font-size: 4rem;
     width: 20rem;
     line-height: 4rem;

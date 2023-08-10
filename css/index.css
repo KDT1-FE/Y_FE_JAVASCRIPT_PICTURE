@@ -4,6 +4,7 @@
   text-align: center;
   padding: 300px 0; /* 섹션의 길이를 화면을 다 덮을 정도로 늘림 */
   position: relative;
+  height: 100%;
 }
 
 &::before {
@@ -65,13 +66,13 @@
   background-color: #3da557;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 15px;
+  border-radius: 20px;
   font-size: 20px;
-  transition: background-color 0.3s ease;
-  opacity: 0;
+  transition: all 0.3s;
   transform: translateY(20px);
   animation: fadeInUp 2s forwards;
   animation-delay: 2s;
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,14 +118,12 @@
 .second {
   background-color: #f7f7f7;
   padding: 100px 0;
-  display: flex;
-  position: relative;
-  align-items: center;
+  height: 100%;
+  
 }
 
-.second-content {
+.second-content {display: flex;
   justify-content: space-between;
-  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -142,7 +141,7 @@
 
 .left-column h2 {
   font-family: "KBO-Dia-Gothic_bold";
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0; /* 기존 margin을 제거하여 간격을 조정 */
 }
 
@@ -172,16 +171,23 @@
   .left-column,
   .right-column {
     width: 100%;
-    padding: 20px;
+    padding: 20px 0 20px 0;
   }
 
   .left-column {
     text-align: center;
     margin-bottom: 10px;
   }
+  .left-column h2{
+    font-size: 2rem;
+  }
 
   .right-column {
+    margin: 0 auto;
+    width: 20em;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     margin-top: 40px;
   }
 
@@ -191,10 +197,10 @@
   }
   .split-title {
     display: flex;
-    flex-direction: column; /* 화면 줄어들 때 세로로 나열 */
-  }
+    flex-direction: column; 
+ }
 
   .split-title h2 {
-    font-size: 1.75rem; /* 제목 글씨 크기 조절 */
+    font-size: 1.75rem; 
   }
 }
