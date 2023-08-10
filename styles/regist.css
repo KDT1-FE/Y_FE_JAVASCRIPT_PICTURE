@@ -1,0 +1,55 @@
+.regist-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.regist-label {
+  font-size: 1.125rem;
+  margin-bottom: 0.625rem;
+}
+
+#profile_pic,
+.regist-text-input {
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  margin-bottom: 1.875rem;
+}
+
+#profile_pic {
+  width: 21.875rem;
+  height: 21.875rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.regist-text-input {
+  height: 2.5rem;
+  padding: 1.25rem 0.625rem;
+}
+
+.submit-btn {
+  background: #000000;
+  border-radius: 5px;
+  height: 2.8125rem;
+  color: white;
+  font-size: 1.125rem;
+}
+
+.submit-btn:hover {
+  background: #292929;
+}
+
+@media only screen and (min-width: 769px) {
+  .regist-form {
+    flex-direction: row;
+  }
+
+  #profile_pic {
+    margin-right: 1.875rem;
+    margin-bottom: 0;
+  }
+}

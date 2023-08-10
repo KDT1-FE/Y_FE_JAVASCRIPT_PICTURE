@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/regist.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">&lt; 홈으로</a>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">고객 등록</h2>
+      </div>
+      <form class="regist-form">
+        <div class="input-box">
+          <label class="regist-label">프로필 이미지</label>
+          <input
+            type="file"
+            id="profile_pic"
+            name="profile_pic"
+            accept=".jpg, .jpeg, .png"
+          />
+        </div>
+        <div class="input-box">
+          <label class="hidden">프로필 이미지 URL</label>
+          <input class="regist-text-input hidden" placeholder="이름" />
+          <label class="regist-label">이름</label>
+          <input class="regist-text-input" placeholder="이름" />
+          <label class="regist-label">이메일</label>
+          <input class="regist-text-input" placeholder="이메일" />
+          <label class="regist-label">구분</label>
+          <input class="regist-text-input" placeholder="구분" />
+          <button class="submit-btn">완료</button>
+        </div>
+      </form>
+    </main>
+
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./regist.js"></script>
+  </body>
+</html>
