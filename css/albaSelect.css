@@ -1,0 +1,54 @@
+/* 알바생 관리 페이지 스타일 */
+.alba-manage {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.alba-list {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.alba-list th,
+.alba-list td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.select-checkbox {
+  text-align: center;
+}
+
+.alba-info {
+  text-align: center;
+}
+
+.edit-button {
+  background-color: #3da557;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.no-alba-message {
+  display: none;
+  color: #777;
+}
+
+.selected {
+  background-color: #f0f0f0;
+}
+
+/* 모바일 화면에 대한 반응형 스타일 */
+@media (max-width: 768px) {
+  .alba-list {
+    width: 100%;
+  }
+
+  .alba-list th,
+  .alba-list td {
+    font-size: 0.8rem;
+  }
+}
