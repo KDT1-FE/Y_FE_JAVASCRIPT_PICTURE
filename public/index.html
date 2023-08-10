@@ -73,6 +73,7 @@
     <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
     <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
     <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyBC6vTaKHAwv7yvmgbyzoBTzMX7HogZP6Q",
@@ -84,6 +85,7 @@
         measurementId: "G-8990L2805Z",
       };
       firebase.initializeApp(firebaseConfig);
+      const firestore = firebase.firestore();
     </script>
     <script src="./src/downloadImg.js"></script>
     <script src="./src/navigation.js"></script>
