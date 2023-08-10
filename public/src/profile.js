@@ -15,6 +15,7 @@ villagerDocRef
       console.log(data);
 
       const name = data.name;
+      const engName = data.engName;
       const sex = data.sex;
       const birthday = data.birthday;
       const personality = data.personality;
@@ -29,6 +30,7 @@ villagerDocRef
       // 어떤 구조로 들어갈지
       profileContainer.innerHTML = `
         <li class="villager-info-li"><p>${name}</p></li>
+        <li class="villager-info-li"><p>${engName}</p></li>
         <li class="villager-info-li"><p>${sex}</p></li>
         <li class="villager-info-li"><p>${birthday}</p></li>
         <li class="villager-info-li"><p>${personality}</p></li>
