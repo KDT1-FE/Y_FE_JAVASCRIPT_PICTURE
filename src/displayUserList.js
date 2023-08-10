@@ -1,12 +1,21 @@
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  limit,
+  doc,
+} from "firebase/firestore";
 import { db } from "./firebase";
-// User add his information
-// name, email, rank, imageUrl
-// how to get and display them?
-// how to always track and display the user list
+
 const userListContainer = document.querySelector(".user__list");
 
-const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
+// 이름순 정렬
+const userRef = collection(db, "users");
+console.log(userRef);
+const nameOrderQuery = query(userRef, orderBy("name"));
+
+const unsub = onSnapshot(nameOrderQuery, (snapshot) => {
   userListContainer.innerHTML = "";
 
   snapshot.forEach((doc) => {
@@ -17,7 +26,7 @@ const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
         <img src=${user.imageUrl} alt="profile image" class="user__image" />
         <div class="user__info">
           <h3 class="user__name">${user.name}</h3>
-          <p class="user__email">${user.email}</p>
+          <p class="user__email show">${user.email}</p>
         </div>
         <div class="user__menu-icon">
           <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -27,7 +36,7 @@ const unsub = onSnapshot(collection(db, "users"), (snapshot) => {
             <i class="fa-solid fa-pen"></i>
           </p>
           <p class="user__menu-delete flex-center pointer">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-eraser"></i>
           </p>
         </div>
       </div>

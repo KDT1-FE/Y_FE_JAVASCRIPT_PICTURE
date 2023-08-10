@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  &.hidden {
+    display: none;
+  }
+
   .form__input-image {
     .form__label {
       display: flex;

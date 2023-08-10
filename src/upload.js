@@ -1,8 +1,9 @@
 import { uploadImageToStorage, uploadInfoToDatabase } from "./uploadImage";
 
-const form = document.querySelector(".form");
+const addForm = document.querySelector(".form-add");
 
-form.addEventListener("submit", async (e) => {
+addForm.addEventListener("submit", async (e) => {
+  console.log("form submitted");
   e.preventDefault();
 
   const name = document.getElementById("name").value;

@@ -49,7 +49,8 @@
     </section>
 
     <!-- FORM CONTROL -->
-    <form class="form">
+    <!-- 유저 추가 -->
+    <form class="form form-add">
       <div class="form__container">
         <div class="form__input-image input show">
           <label class="form__label pointer" for="chooseFile">
@@ -64,7 +65,12 @@
           />
         </div>
         <div class="form__image-box hidden">
-          <img src="" alt="image preview" class="form__image-preview" />
+          <img
+            src=""
+            alt="image preview"
+            class="form__image-preview"
+            id="image-preview"
+          />
         </div>
         <div class="form__input-name input input-text">
           <label for="name">이름</label>
@@ -81,7 +87,50 @@
         </div>
 
         <button type="submit" class="form__input-submit input input-submit">
-          확인
+          등록하기
+        </button>
+      </div>
+    </form>
+
+    <!-- 유저 수정 -->
+    <form class="form-edit hidden">
+      <div class="form__container">
+        <div class="form__input-image input show">
+          <label class="form__label pointer" for="edit-chooseFile">
+            <i class="fa-solid fa-plus"></i>
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            name="chooseFile"
+            class="form__input-hidden"
+            id="edit-chooseFile"
+          />
+        </div>
+        <div class="form__image-box hidden">
+          <img
+            src=""
+            alt="image preview"
+            class="form__image-preview"
+            id="edit-image-preview"
+          />
+        </div>
+        <div class="form__input-name input input-text">
+          <label for="edit-name">이름</label>
+          <input type="text" name="name" id="edit-name" autocomplete="off" />
+        </div>
+        <div class="form__input-email input input-text">
+          <label for="edit-email">이메일</label>
+          <input type="email" name="email" id="edit-email" autocomplete="off" />
+        </div>
+        <!-- 학교 정보 등 추가 -->
+        <div class="form__input-rank input input-text">
+          <label for="edit-rank">등급</label>
+          <input type="number" name="rank" id="edit-rank" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="form__input-submit input input-submit">
+          수정하기
         </button>
       </div>
     </form>

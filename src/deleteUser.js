@@ -1,6 +1,19 @@
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
-export async function deleteUser(userId) {
+const userListContainer = document.querySelector(".user__list");
+
+userListContainer.addEventListener("click", (e) => {
+  const menuToggle = e.target.closest(".user__menu-icon");
+
+  if (menuToggle) {
+    const menuItems = menuToggle.nextElementSibling;
+    const userId = menuToggle.closest(".user__user").getAttribute("data-id");
+    const deleteBtn = menuItems.querySelector(".user__menu-delete");
+    deleteBtn.addEventListener("click", () => deleteUser(userId));
+  }
+});
+
+async function deleteUser(userId) {
   await deleteDoc(doc(db, "users", userId));
 }
