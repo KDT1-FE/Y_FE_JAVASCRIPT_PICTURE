@@ -1,11 +1,11 @@
 import { Component } from '../core/component';
-import { memberStore, renderMemberList } from '../store/memberStore';
+import { memberStore } from '../store/memberStore';
 import Member from './Member';
 
 export default class MemberList extends Component {
   constructor() {
     super();
-    memberStore.subscribe('member', () => {
+    memberStore.subscribe('members', () => {
       this.render();
     });
     memberStore.subscribe('loading', () => {
@@ -21,7 +21,6 @@ export default class MemberList extends Component {
       <p class="name-title">NAME</p>
       <p class="email-title">EMAIL</p></div>`;
 
-    renderMemberList();
     this.el.append(
       ...memberStore.state.members.map((member) => new Member({ member }).el)
     );
