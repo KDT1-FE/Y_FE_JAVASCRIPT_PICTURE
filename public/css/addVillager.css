@@ -1,0 +1,130 @@
+@import "reset.css";
+
+body {
+  background-image: url("../assets/graphics/addVillager-backgroundImg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-logo {
+  width: 25rem;
+  height: 9.5rem;
+  margin-top: 2rem;
+}
+
+.profile-wrap {
+  width: 70%;
+  height: 44rem;
+  background-color: rgba(252, 241, 224, 0.8);
+  margin: 0 auto;
+  margin-top: 1rem;
+  border-radius: 3rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+  color: #3f5d4d;
+}
+
+.profile-main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  margin: 1rem 3rem 3rem 3rem;
+}
+
+.profile-left {
+  padding: 0 0 0 3rem;
+}
+
+.villager-img {
+  width: 18rem;
+  cursor: pointer;
+}
+
+.villager-img:hover {
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.profile-right {
+  padding: 2rem 5rem 0 6rem;
+}
+
+.profile-ul {
+  display: flex;
+  gap: 5rem;
+}
+
+.villager-info,
+.villager-info-input {
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+}
+
+.villager-info-li {
+  margin: 0.9rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.villager-info-input-li {
+  margin: 0.5rem;
+}
+
+.villager-info-name,
+.villager-info-engName,
+.villager-info-birthday,
+.villager-info-sex,
+.villager-info-personality,
+.villager-info-favoriteColor,
+.villager-info-speechHabit {
+  height: 1.8rem;
+  border: none;
+  border-bottom: solid 1px #547a66;
+  background-color: #00ff0000;
+  font-size: 1rem;
+}
+
+.villager-info-name:focus,
+.villager-info-engName:focus,
+.villager-info-birthday:focus,
+.villager-info-sex:focus,
+.villager-info-personality:focus,
+.villager-info-favoriteColor:focus,
+.villager-info-speechHabit:focus {
+  outline: none;
+  border-bottom: solid 3.5px #547a66;
+  transition: 0.3s;
+}
+
+.add-btn {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 1rem;
+  border-style: none;
+  font-size: 1.5rem;
+  background-color: #71b38f;
+  color: #3f5d4d;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.add-btn:hover {
+  background-color: #547a66;
+  color: #71b38f;
+  transition: 0.4s;
+}
