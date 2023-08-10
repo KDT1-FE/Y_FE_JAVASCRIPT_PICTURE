@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/loading.css" />
+    <link rel="stylesheet" href="../css/albaSelect.css" />
+    <script src="../js/loading.js"></script>
+    <title>우리 알바 - 알바생 관리 페이지</title>
+  </head>
+  <body>
+    <!-- 로딩 화면 추가 -->
+    <div class="loading-screen">
+      <div class="loading-bar"></div>
+    </div>
+    <!-- 알바생 관리 페이지 -->
+    <section class="alba-manage">
+      <h2>알바생 관리하기</h2>
+      <table class="alba-list">
+        <thead>
+          <tr>
+            <th>선택</th>
+            <th>사진</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>직급</th>
+            <th>근무시간</th>
+            <th>수정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 알바생 리스트 아이템 -->
+          <tr>
+            <td class="select-checkbox"><input type="checkbox" /></td>
+            <td class="alba-photo">
+              <img src="../asset/pictures/no-image.png" alt="알바생 사진" /></td>
+            <td class="alba-info">알바생1</td>
+            <td class="alba-info">010-1234-5678</td>
+            <td class="alba-info">매니저</td>
+            <td class="alba-info">09:00 - 18:00</td>
+            <td><button class="edit-button">수정</button></td>
+          </tr>
+          <!-- 다른 알바생 리스트 아이템들... -->
+        </tbody>
+      </table>
+      <!-- 등록된 알바생이 없을 때 메시지 -->
+      <p class="no-alba-message">
+        등록된 알바생이 없습니다. 먼저 알바생을 추가해보세요!
+      </p>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const photoInput = document.getElementById("photoInput");
+        const preview = document.getElementById("preview");
+
+        // 사진을 등록 후 등록한 이미지 바로 띄우기 기능
+        photoInput.addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            // 파일 등록 시 등록된 사진의 주소값 할당
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              preview.setAttribute("src", e.target.result);
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      });
+      // '이전으로' 버튼 기능
+      const backButton = document.querySelector(".back-button");
+      backButton.addEventListener("click", () => {
+        // window.history.back(); // 브라우저의 이전 페이지로 이동
+        window.location.href = "./myAlba.html"; //
+      });
+    </script>
+  </body>
+</html>

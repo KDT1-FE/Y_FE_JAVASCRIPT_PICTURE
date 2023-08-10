@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/loading.css" />
+    <link rel="stylesheet" href="../css/albaRegister.css" />
+    <title>우리 알바 - 알바생 등록 페이지</title>
+  </head>
+  <body>
+    <!-- 로딩 화면 추가 -->
+    <div class="loading-screen">
+      <div class="loading-bar"></div>
+    </div>
+
+    <!-- 알바생 등록 폼 -->
+    <section class="alba-register">
+      <div class="registerForm">
+        <h2>알바생 등록</h2>
+        <form id="albaForm" class="albaForm">
+          <div class="inputForm">
+            <div class="image-upload">
+              <img id="imagePreview" src="../asset/pictures/no-image.png" alt="아르바이트생 사진" />
+              <input type="file" name="image" id="photoInput" accept="image/*" onchange="handleImageChange(event)" />
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">이</span>
+                <span class="label-char" style="--index: 1">름</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">연</span>
+                <span class="label-char" style="--index: 1">락</span>
+                <span class="label-char" style="--index: 2">처</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">직</span>
+                <span class="label-char" style="--index: 1">급</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">근</span>
+                <span class="label-char" style="--index: 1">무</span>
+                <span class="label-char" style="--index: 2">시</span>
+                <span class="label-char" style="--index: 3">간</span>
+              </label>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="submit-button">등록</button>
+              <button type="button" class="back-button">이전으로</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="../js/loading.js"></script>
+    <script src="../js/albaRegister.js"></script>
+  </body>
+</html>
