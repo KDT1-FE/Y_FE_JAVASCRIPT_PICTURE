@@ -1,8 +1,9 @@
 import MemberList from '../components/MemberList';
 import { Component } from '../core/component';
+import { renderMemberList } from '../store/memberStore';
 
 export default class Home extends Component {
-  render() {
+  async render() {
     this.el.innerHTML = `<header class="header">
     <div class="title">직원 관리 시스템</div>
     <div class="container">
@@ -12,6 +13,7 @@ export default class Home extends Component {
     </div>
     </header>
     `;
+    await renderMemberList();
     const memberList = new MemberList().el;
     this.el.append(memberList);
     const title = this.el.querySelector('.title');
