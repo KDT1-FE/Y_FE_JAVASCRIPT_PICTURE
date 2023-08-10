@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🙋‍♀️employee picture</title>
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="reset.css"> 
-    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="main.css">
-      <!-- <link rel="preload" as="style" href="reset.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🙋‍♀️employee picture</title>
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+      href="reset.css"
+    />
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+      href="main.css"
+    />
+    <!-- <link rel="preload" as="style" href="reset.css">
       <link rel="stylesheet" href="main.css"> -->
-      <!-- <link rel="preload" as="style" href="reset.css">
+    <!-- <link rel="preload" as="style" href="reset.css">
       <link rel="preload" as="style" href="main.css">    -->
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️ </h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="/index.html">직원목록</a></li>
+          <li><a href="/upload.html">업로드</a></li>
+          <li><a href="/login.html">로그인</a></li>
+          <li><a href="/">검색</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <header>
-    <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️</h1>
-    <nav class="nav">
-      <ul>
-        <li><a href="/index.html">직원목록</a></li>
-        <li><a href="/upload.html">업로드</a></li>
-        <li><a href="/login.html">로그인</a></li>
-        <li><a href="/detail.html">상세정보</a></li>
-        <li><a href="/">검색</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main id="employee" class="container">
+      <div class="profile_title">
+          <h6>이미지</h6>
+          <h6>이름</h6>
+          <h6>소속/직급</h6>
+          <h6>내선번호</h6>
+          <h6>상세정보</h6>   
+      </div>
+    </main>
 
-
-  <main class="container">
-
-  </main>
-
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   <!-- 제이쿼리 -->
-
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"
+    ></script>
+    <!-- 폰트어썸 -->
+    <script src="https://kit.fontawesome.com/3e1fab0201.js" crossorigin="anonymous"></script>
     <script defer src="common.js"></script>
     <script defer src="main.js"></script>
-
-  
-</body>
-
+  </body>
 </html>

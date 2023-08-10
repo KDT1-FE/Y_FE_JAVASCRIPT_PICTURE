@@ -22,17 +22,20 @@
                     console.log('업로드된 경로는', url);
 
                     const name =  document.getElementById("name").value;
+                    const tel =  document.getElementById("tel").value;
                     const phone = document.getElementById("phone").value;
                     const email= document.getElementById("email").value;
+                    const team= document.getElementById("team").value;
                     const rank= document.getElementById("rank").value;
                     const memo =  document.getElementById("memo").value;
 
-
                     const saveData ={
                       이름 : name,
+                      내선번호 : tel,                  
+                      소속팀 : team,  
+                      직급 : rank,   
                       연락처 : phone,
                       이메일 : email,
-                      직급 : rank,   
                       기타 : memo,   
                       이미지: url
                     }

@@ -39,6 +39,8 @@ a {
  font-size:100%;
  vertical-align:baseline;
  background:transparent;
+ color:#000;
+ text-decoration:none;
 }
 /* change colors to suit your needs */
 ins {
