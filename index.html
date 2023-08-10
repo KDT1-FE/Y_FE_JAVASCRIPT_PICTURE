@@ -8,13 +8,22 @@
   <script type="module" src="./index.js"></script>
 </head>
 <body>
-  <img id="myimg" src="" alt="test">
   <div>
+    <img id="myimg" src="" alt="test">
+  </div>
+  
+  <div class="image">
     <img class="preview" src="./assets/images/human_icon.png" alt="">
+    <input type="file" id="avatar" name="avatar" accept="image/*" />
+    <label for="avatar">📷 이미지 선택하기 📷</label>
+    <button class="btn__image__upload">사진 업로드</button>
   </div>
-  <div class="button">
-    <label for="avatar">📷 Choose a profile picture 📷</label>
+
+  <div class="profile">
+    <input type="text" class="profile__name">
+    <input type="text" class="profile__introduce">
+    <input type="text" class="profile__position">
+    <input type="button" class="btn__upload" value="저장">
   </div>
-  <input type="file" id="avatar" name="avatar" accept="image/*" />
 </body>
 </html>
