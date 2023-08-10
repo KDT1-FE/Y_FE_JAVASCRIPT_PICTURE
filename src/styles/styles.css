@@ -126,6 +126,14 @@ html {
   letter-spacing: 1;
 }
 
+.photo {
+  width: 290px;
+  height: 110px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /*detail 페이지*/
 .detail {
   max-width: 1060px;

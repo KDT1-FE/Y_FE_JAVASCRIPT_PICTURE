@@ -14,7 +14,7 @@ export default class Home extends Component {
     </div>
     </header>
     `;
-    // await renderMemberList(); // renderMemberList 함수를 통해 store 업데이트 (store에 memberList를 담음)
+    await renderMemberList(); // renderMemberList 함수를 통해 store 업데이트 (store에 memberList를 담음)
     const memberList = new MemberList().el;
     this.el.append(memberList);
     //memberList 컴포넌트 등록
