@@ -21,4 +21,10 @@ addForm.addEventListener("submit", async (e) => {
   };
 
   uploadInfoToDatabase(userData);
+
+  addForm.reset();
+  document.querySelector(".form__image-box").classList.add("show");
+  document.querySelector(".form__image-box").classList.remove("hidden");
+  document.querySelector(".form__input-image").classList.add("show");
+  document.querySelector(".form__input-image").classList.remove("hidden");
 });

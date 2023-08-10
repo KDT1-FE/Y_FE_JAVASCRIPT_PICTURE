@@ -10,6 +10,7 @@ userList.addEventListener("click", (e) => {
   e.stopPropagation();
   const editBtn = e.target.closest(".user__menu-edit");
 
+  if (!editBtn) return;
   // 수정 버튼 클릭 시 폼 변경
   if (editBtn) {
     const userEl = editBtn.closest(".user__user");
