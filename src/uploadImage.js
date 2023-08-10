@@ -9,12 +9,12 @@ addUserBtn.addEventListener("click", () => {
   addForm.classList.remove("hidden");
 });
 
-const closeInputBtn = document.querySelector(".close-btn");
-closeInputBtn.addEventListener("click", () => {
-  addForm.classList.add("hidden");
-  if (editForm) {
+const closeInputBtns = document.querySelectorAll(".close-btn");
+closeInputBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    addForm.classList.add("hidden");
     editForm.classList.add("hidden");
-  }
+  });
 });
 
 export function uploadImageToStorage(imageFile) {
