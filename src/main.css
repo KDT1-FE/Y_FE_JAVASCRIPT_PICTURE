@@ -1,0 +1,15 @@
+:root {
+  --color-black: #1a1a1a;
+  --color-white: #fff;
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+
+  --color-highlight: #eb4c78;
+  --color-background: #f2f2f2;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-black);
+}
