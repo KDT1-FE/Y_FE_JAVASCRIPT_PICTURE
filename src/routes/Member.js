@@ -37,7 +37,7 @@ export default class Member extends Component {
 
     const navigateEditButton = this.el.querySelector('button');
     navigateEditButton.addEventListener('click', () => {
-      window.history.pushState(null, null, '/edit');
+      window.history.pushState(null, null, `/edit?id=${member.id}`);
       routeRender();
     });
   }
