@@ -14,6 +14,7 @@ export const memberStore = new Store({
   members: [],
   loading: false,
   member: {},
+  deleteMembers: [],
 });
 export const renderMemberList = async () => {
   // memberStore.state.loading = true;
