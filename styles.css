@@ -9,21 +9,34 @@
 }
 .profile-container {
     display: flex;
-    width: 700px;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    padding: 10px;
+    flex-direction: column; /* 직원 정보를 세로로 나열 */
+    width: 1000px;
+}
+.profile-info {
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+
+}
+.profile-container input {
     margin: 10px;
 }
 
-.profile-info {
+.employee {
     display: flex;
+    align-items: center;
+    margin: 20px;
 }
 
-.img,
-.name,
-.email,
-.phone,
-.category {
-    padding-left: 70px;
+.divText {
+    display: flex;
+    align-items: center;
 }
+
+.p-img,
+.p-name,
+.p-email,
+.p-phone,
+.p-category{
+    padding: 20px;
+}
+
