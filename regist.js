@@ -15,16 +15,16 @@ imageInputEl.addEventListener("change", (event) => {
       // 프로필 이미지 url input에 저장
       registForm.elements[1].value = url;
       // 프로필 이미지가 있으면 <img> 삭제
-      const avartarImg = document.querySelector(".avatar");
-      if (avartarImg) {
-        avartarImg.remove();
+      const avatarImg = document.querySelector(".avatar");
+      if (avatarImg) {
+        avatarImg.remove();
       }
       // 프로필 이미지 추가
-      const avartarBox = document.getElementById("avatarBox");
+      const avatarBox = document.getElementById("avatarBox");
       const imgTag = document.createElement("img");
       imgTag.src = url;
       imgTag.className = "avatar";
-      avartarBox.appendChild(imgTag);
+      avatarBox.appendChild(imgTag);
     });
   });
 });
