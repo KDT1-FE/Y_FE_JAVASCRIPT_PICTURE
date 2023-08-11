@@ -5,6 +5,14 @@ export default class Footer {
   }
 
   render() {
-    this.el.innerText = 'this is footer';
+    this.el.innerHTML = `
+    <a class="github" href="https://github.com/noSPkeepgoing">
+      Gitbub
+      <span class="material-symbols-outlined">
+        arrow_outward
+      </span>
+      </a>
+    <p class="copyright">${new Date().getFullYear()} &copySunpaaaa</p>
+    `;
   }
 }
