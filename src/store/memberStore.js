@@ -2,7 +2,6 @@ import { Store } from '../core/store';
 import { collection, doc, getDoc, getDocs, addDoc } from 'firebase/firestore';
 import { db, storage } from '../api/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid';
 
 export const memberStore = new Store({
   members: [],

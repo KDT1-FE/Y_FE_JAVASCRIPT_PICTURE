@@ -5,8 +5,6 @@ import {
   memberStore,
   uploadImage,
 } from '../store/memberStore';
-import { storage } from '../api/firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 export default class Edit extends Component {
   async render() {
