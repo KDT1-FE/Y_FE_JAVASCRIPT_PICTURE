@@ -4,6 +4,12 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase
 import { getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
+import {showPreview} from "./js/showPreview.js"
+import * as addModal from "./js/addModal.js";
+//import {fetchProfileIds} from "./js/fetchProfileIds.js";
+
+export {imgFileInput} ;
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
@@ -21,10 +27,9 @@ const analytics = getAnalytics(app);
 const storage = getStorage(app);
 const db = getFirestore(app);
 
-
-//선택 이미지 화면에 띄우기
+//선택 이미지 preview 띄우기
 const imgFileInput = document.querySelector('#avatar');
-imgFileInput.addEventListener('change', showImage);
+imgFileInput.addEventListener('change', showPreview);
 
 //저장 버튼 : 텍스트&이미지url -> db 업로드 && 이미지 -> storage 업로드
 document.querySelector('.btn__upload').addEventListener('click', async function(){
@@ -61,49 +66,6 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
   }
 })
 
-function showImage(){
-  const selectedFile = imgFileInput.files[0];
-  console.log(selectedFile)
-  const file = URL.createObjectURL(selectedFile);
-  document.querySelector(".preview").src = file;
-}
-
-//id통해서 문서 갖고오는 거 테스트
-/*const docId = "17Hpoi66Q58jJVHiPzRs"; // 가져올 문서의 ID
-const docRef = doc(db, "profiles", docId); // 'profiles' 컬렉션에서 해당 ID의 문서 참조 생성
-
-getDoc(docRef)
-  .then((doc) => {
-    if (doc.exists()) {
-      console.log("Document data:", doc.data());
-      console.log("date", doc.data().date.seconds)
-      const img = document.getElementById('myimg');
-      img.setAttribute('src', doc.data().image);
-    } else {
-      console.log("No such document!");
-    }
-  })
-  .catch((error) => {
-    console.log("Error getting document:", error);
-  });*/
-
-  //profile collection 내에서 문서들 id 가져오기
-  async function fetchProfileIds() {
-    const profilesCollectionRef = collection(db, 'profiles');
-    
-    try {
-      const querySnapshot = await getDocs(profilesCollectionRef);
-      const profileIds = [];
-      querySnapshot.forEach((doc) => {
-      profileIds.push(doc.id);
-      });
-      return profileIds;
-    } catch (error) {
-      console.error("Error fetching profile IDs:", error);
-      return [];
-    }
-  }
-
 //profile카드 추가하기 관련 선언
 const profileContainer = document.querySelector('.container');
 let template = `
@@ -112,9 +74,9 @@ let template = `
       <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
       <div class="text-container">
         <h1>{{__profile_name__}}</h1>
-        <span>{{__profile_position__}}</span>
-        <span>{{__profile_github__}}</span>
-        <span>{{__profile_email__}}</span>
+        <span>position : {{__profile_position__}}</span>
+        <span>github : {{__profile_github__}}</span>
+        <span>email : {{__profile_email__}}</span>
       </div>
     </div>
   </a>
@@ -140,49 +102,3 @@ onSnapshot(q,(querySnapshot) => {
                         .replace(doc.data().email,'{{__profile_email__}}');
   });
 })
-
-
-//등록 모달 띄우기
-const addProfileBtn = document.querySelector(".btn__add");
-const addProfileModal = document.querySelector(".modal__add-profile");
-const closeBtn = document.querySelector(".close");
-addProfileBtn.addEventListener("click",()=>{
-  addProfileModal.showModal();
-})
-closeBtn.addEventListener("click",()=>{
-  addProfileModal.close();
-})
-
-
-//사진 불러오기
-// getDownloadURL(ref(storage, 'image/싸인.png'))
-//   .then((url) => {
-//     //This can be downloaded directly:
-//     const xhr = new XMLHttpRequest();
-//     xhr.responseType = 'blob';
-//     xhr.onload = (event) => {
-//       const blob = xhr.response;
-//     };
-//     xhr.open('GET', url);
-//     xhr.send();
-
-//     // Or inserted into an <img> element
-  //   const img = document.getElementById('myimg');
-  //   img.setAttribute('src', url);
-  // })
-  // .catch((error) => {
-  //   // Handle any errors
-  // });
-
-
-//db 추가/불러오기
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//   console.error("Error adding document: ", e);
-// }

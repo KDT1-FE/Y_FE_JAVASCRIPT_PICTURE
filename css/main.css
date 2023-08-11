@@ -1,11 +1,10 @@
 .container{
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, minmax(250px,450px));
+  grid-template-columns: repeat(2, minmax(20em,27em));
   column-gap: 50px;
   row-gap: 100px;
   margin:100px 30px;
-  text-align: center;
 }
 .item {
   background-color:rgba(255, 248, 210, 0.747);
@@ -27,22 +26,26 @@
 .item:nth-child(5){
   grid-row:5/7;
 }
+.item:nth-child(6){
+  grid-row:6/8;
+}
 .profile-image{
-  max-width: 200px;
-  margin:30px 20px;
+  max-width: 70%;
+  margin:50px auto 30px;
+  display: block;
 }
 
 .text-container{
   display: flex;
   flex-direction: column;
-  margin:0px 20px 50px 20px;
+  margin:0px 20% 50px 20%;
+  line-height: 25px;
+}
+.text-container h1{
   text-align: center;
+  padding-bottom: 20px;
 }
 
-.image{
-  display: flex;
-  flex-direction: column;
-}
 .button{
   width:10px;
 }
