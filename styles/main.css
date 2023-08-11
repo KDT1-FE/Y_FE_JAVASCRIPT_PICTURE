@@ -6,22 +6,22 @@
   margin: 1rem;
 }
 
-.add-profile {
+.enroll-form {
   width: 100%;
+  height: 45%;
   display: none;
 }
 
-.add-profile__container {
+.enroll-form__container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
   margin: 1rem 0;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
-.add-profile__photoBox {
+.enroll-form__photoBox {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
   width: 30%;
   height: 100%;
   margin: 0 0.5rem;
-  border: 1px solid gray;
+  border: 1px dashed gray;
   border-radius: 0.3rem;
 }
 
@@ -52,7 +52,7 @@
   margin: 2rem;
 }
 
-.add-profile__inputBox {
+.enroll-form__inputBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,25 +62,28 @@
 }
 
 @media (max-width: 800px) {
-  .add-profile__container {
+  .enroll-form {
+    height: auto;
+  }
+  .enroll-form__container {
     flex-direction: column;
     height: auto;
   }
-  .add-profile__photoBox {
+  .enroll-form__photoBox {
     width: 70%;
     height: 100%;
   }
-  .add-profile__inputBox {
+  .enroll-form__inputBox {
     width: 70%;
     height: auto;
   }
-  .add-profile__inputBox > input {
+  .enroll-form__inputBox > input {
     margin-bottom: 0.5rem;
   }
-  .add-profile__inputBox > label {
+  .enroll-form__inputBox > label {
     margin-top: 0.5rem;
   }
-  .add-profile__inputBox > button {
+  .enroll-form__inputBox > button {
     margin: 0.5rem 0;
   }
 }

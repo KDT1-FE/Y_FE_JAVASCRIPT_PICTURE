@@ -14,37 +14,38 @@
       <h1 class="title text-xl">직원 관리</h1>
       <div class="control-container">
         <div class="control-container_button-container">
-          <button class="bg-blue text-m" id="enroll-profile-btn">등록</button>
-          <button class="bg-pink text-m" id="remove-profile-btn">삭제</button>
+          <button class="bg-blue text-m" id="open-enroll-form">등록</button>
         </div>
       </div>
-      <form class="add-profile bg-main100">
-        <div class="add-profile__container">
-          <div class="add-profile__photoBox">
-            <img id="preview" />
-            <label
-              class="photo-input__label bg-main200 text-s"
-              for="photo-input"
-              >Upload Image</label
-            >
-            <input id="photo-input" type="file" accept=".jpg, .png, .jpeg" />
+  
+        <form class="enroll-form bg-main100">
+          <div class="enroll-form__container">
+            <div class="enroll-form__photoBox bg-gray">
+              <img id="preview" />
+              <label
+                class="photo-input__label bg-main150 text-s"
+                for="photo-input"
+                >Upload Image</label
+              >
+              <input id="photo-input" type="file" accept=".jpg, .png, .jpeg" />
+            </div>
+            <div class="enroll-form__inputBox">
+              <label for="name-input">이름</label>
+              <input id="name-input" />
+              <label for="email-input">이메일</label>
+              <input id="email-input" />
+              <label for="phoneNumber-input">전화번호</label>
+              <input id="phoneNumber-input" />
+              <label for="position-input">포지션</label>
+              <input id="position-input" />
+              <button class="enroll-form__submit bg-blue text-s" type="submit">
+                submit
+              </button>
+              <button class="enroll-form__cancel bg-pink text-s">cancel</button>
+            </div>
           </div>
-          <div class="add-profile__inputBox">
-            <label for="name-input">이름</label>
-            <input id="name-input" />
-            <label for="email-input">이메일</label>
-            <input id="email-input" />
-            <label for="phoneNumber-input">전화번호</label>
-            <input id="phoneNumber-input" />
-            <label for="position-input">포지션</label>
-            <input id="position-input" />
-            <button class="add-profile__submit bg-blue text-s" type="submit">
-              submit
-            </button>
-            <button class="add-profile__cancel bg-pink text-s">cancel</button>
-          </div>
-        </div>
-      </form>
+        </form>
+   
 
       <div class="member-info">
         <div class="member-info__header bg-main100">
@@ -64,5 +65,6 @@
 
     </main>
   </body>
+  <script type="module" src="/constant.js"></script>
   <script type="module" src="/function/addProfile.js"></script>
 </html>
