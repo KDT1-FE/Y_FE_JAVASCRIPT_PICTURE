@@ -40,7 +40,6 @@ registForm.addEventListener("submit", async (event) => {
       phone: registForm.elements[4].value,
       grade: registForm.elements[5].value,
     });
-    console.log("Document written with ID: ", docRef.id);
     location.href = "/";
   } catch (e) {
     console.error("Error adding document: ", e);
