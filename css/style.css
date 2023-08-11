@@ -442,7 +442,8 @@
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
   display: none;
 }
-.dropdown--sort .dropdown__list {
+.dropdown--sort .dropdown__list a {
+  display: block;
   border-radius: 8px;
   padding: 12px;
   margin: 0 8px;
@@ -451,10 +452,10 @@
   font-weight: 500;
   color: var(--theme-gray900);
 }
-.dropdown--sort .dropdown__list[data-id=select] {
+.dropdown--sort .dropdown__list a[data-id=select] {
   background-color: var(--color-gray200);
 }
-.dropdown--sort .dropdown__list:hover {
+.dropdown--sort .dropdown__list a:hover {
   background-color: var(--color-gray50);
 }
 

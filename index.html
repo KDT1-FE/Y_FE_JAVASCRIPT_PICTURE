@@ -90,14 +90,15 @@
                             <div class="dropdown dropdown--sort">
                                 <div class="dropdown__container">
                                     <div class="dropdown__display">
-                                        <span>이름순 정렬</span>
+                                        <span>최신순 정렬</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--arrow" viewBox="0 0 24 24"><path d="m12 15 5-6H7z" style="fill: var(--color-gray900);"></path></svg>
                                     </div>
+                                    <input type="hidden" value="0">
                                     <div class="dropdown__wrap">
                                         <ul class="dropdown__inner">
+                                            <li class="dropdown__list"><a>최신순 정렬</a></li>
                                             <li class="dropdown__list"><a>이름순 정렬</a></li>
-                                            <li class="dropdown__list"><a>아이디순 정렬</a></li>
-                                            <li class="dropdown__list"><a>등록순 정렬</a></li>
+                                            <li class="dropdown__list"><a>이메일순 정렬</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -105,7 +106,7 @@
         
                             <div class="search">
                                 <div class="search__container">
-                                    <input type="search" placeholder="임직원 이름 or 아이디">
+                                    <input type="search" placeholder="임직원 이름 or 이메일">
                                 </div>
                                 <button class="button button--lg button--gray800">조회</button>
                             </div>
@@ -113,7 +114,7 @@
                         </div>
 
                         <div class="head-inner head-inner--right">
-                            <a class="button button--lg button--blue400">임직원 등록</a>
+                            <a href="/employee_write.html" class="button button--lg button--blue400">임직원 등록</a>
                             <a class="button button--lg button--gray200">임직원 삭제</a>
                         </div>
                 
@@ -133,7 +134,7 @@
                                 <tr>
                                     <th class="center">
                                         <div id="checkbox" class="checkbox">
-                                            <input type="checkbox" id="" name="">
+                                            <input type="checkbox" value="all">
                                             <label for=""><span></span>전체선택</label>
                                         </div>
                                     </th>
@@ -208,14 +209,15 @@
         </button>
     </div>
 
-    <!-- firebase 설치 파일 -->
+<!-- 
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
-    <!-- 필요한 서비스들 -->
+
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-storage-compat.js"></script> -->
 
-    <script src="/js/firebase.js"></script>
+    <script src="/js/common.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/firebase.js" type="module"></script>
 </body>
 </html>

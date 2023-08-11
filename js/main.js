@@ -1,47 +1,3 @@
-// 메뉴 열고 닫기
-const menuButton = document.querySelector('.nav__control a')
-const menuWrap = document.querySelector('.nav__wrap')
-menuButton.addEventListener("click",(e)=>{
-    e.preventDefault();
-    menuWrap.parentElement.classList.toggle('close')
-})
-
-
-// 메뉴 스크롤 따라다니기
- window.addEventListener("scroll", ()=>{
-     menuWrap.style.transform = 'translateY('+document.documentElement.scrollTop+'px)'
- })
-
-
-// 메뉴 브라우저 사이즈에 맞게 열고 닫기
-function menuClose () {
-    const BrowserWidth = window.innerWidth;
-    if (BrowserWidth <= 1200) menuWrap.parentElement.classList.add('close')
-    if (BrowserWidth >= 1400) menuWrap.parentElement.classList.remove('close')
-}
-menuClose()
-
-// 브라우저 사이즈 실시간 감지 및 메뉴 축소/확대
-window.addEventListener("resize", ()=>{
-    menuClose()
-})
-
-
-// 드롭다운 열고 닫기
-const dropDown = document.querySelectorAll('.dropdown')
-for (i = 0; i<dropDown.length; i++) {
-
-    const dropWrap = dropDown[i]
-    const dropClick = dropWrap.lastElementChild.firstElementChild // dropdown__display
-
-     dropClick.addEventListener("click",()=>{
-        dropWrap.classList.toggle('dropdown--open');
-     })
-     document.addEventListener("mouseup", (e) => {
-        if (!dropWrap.contains(e.target)) dropWrap.classList.remove('dropdown--open');
-    })
-}
-
 
 // 검색창 포커스
 const search = document.querySelector('.search__container')
@@ -53,28 +9,48 @@ searchInput.onblur = () => {
     search.classList.remove('search__container--focus');
 }
 
+// 검색창 value 값 입력
+const searchButton = document.querySelector('.search button')
+let searchValue = false;
+searchButton.addEventListener("click", ()=>{
+    searchValue = searchInput.value
+    console.log(searchValue)
+})
 
-// 탑버튼 처음 위치 잡기
-const scrollTop = document.querySelector('.scrolltop')
-function scrollTopTransition (){
-    const TopHeight = window.innerHeight + document.documentElement.scrollTop - 70
-    scrollTop.style.transform = 'translateY('+ TopHeight+'px)'
+
+
+const sort = document.querySelector('.dropdown--sort')
+const sortWrap = sort.children[0].lastElementChild
+const sortArr = sortWrap.querySelectorAll('.dropdown__list')
+
+// drop list value 값 지정
+for(i=0; i<sortArr.length; i++){
+    const sortLi = sortWrap.children[0].children[i]
+    sortLi.value = i 
 }
-scrollTopTransition()
 
-// 탑버튼 스크롤 따라다니기
-window.addEventListener("scroll", ()=>{
-    scrollTopTransition()
+// 정렬창 select 된 값으로 span 값 바꾸기
+function sortOption (optionEl){
+    const sortBox = sort.querySelector(".dropdown__display")
+    const sortEl = sortBox.firstElementChild
+    sortEl.textContent = optionEl.textContent;
+}
+
+// 클릭 시 타겟 지정, 드랍다운 닫기
+sortArr.forEach(sortList => {
+    sortList.addEventListener("click", (e)=>{
+        const targetEl = e.target.parentElement;
+        const isOptionEl = targetEl.classList.contains("dropdown__list")
+        if(isOptionEl) sortOption(targetEl)
+        sort.classList.remove('dropdown--open');
+        valueReturn(targetEl)
+    })
 })
 
+// value값 input으로 보내기
+function valueReturn(optionEl){
+    const value = optionEl.value
+    sort.children[0].children[1].value = value
+}
 
-// 탑버튼 윈도우 스크롤탑
-scrollTop.firstElementChild.addEventListener("click", ()=>{
-    const BrowserTop = document.documentElement.scrollTop
-    if (BrowserTop != 0) {
-        window.scrollTo(0, 0);
-    }
-})
 
-// 체크박스 span 대체
-// const checkbox = document.querySelector()
