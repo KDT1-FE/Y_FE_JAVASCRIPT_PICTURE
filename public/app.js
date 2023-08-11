@@ -21,7 +21,7 @@ function handleFormSubmit(event) {
 
 async function registerMember(formData) {
   try {
-    const response = await fetch('/member/register', {
+    const response = await fetch('http://localhost:3000/member/register', {
       method: 'POST',
       body: formData,
     });
@@ -93,7 +93,7 @@ function createDeleteButton(data) {
 
 async function deleteMember(id) {
   try {
-    const response = await fetch(`/member/delete/`, {
+    const response = await fetch(`http://localhost:3000/member/delete/`, {
       method: 'DELETE',
       body: JSON.stringify({ id }),
     });
@@ -107,7 +107,7 @@ async function deleteMember(id) {
 async function deleteImageFromS3(imgKey) {
   if (imgKey) {
     try {
-      const deleteS3Response = await fetch(`/member/deleteImage/`, {
+      const deleteS3Response = await fetch(`http://localhost:3000/member/deleteImage/`, {
         method: 'DELETE',
         body: JSON.stringify({ imgKey: imgKey }),
       });

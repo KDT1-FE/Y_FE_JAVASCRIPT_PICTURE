@@ -3,15 +3,15 @@ const app = express();
 const s3ImageUploader = require('./middlewares/imageUploader');
 const deleteImageFromS3 = require('./middlewares/deleteProfileImage');
 const multer = require('multer');
-const storage = multer.memoryStorage();
-const imageGetter = require('./routes/imageGetter');
-const memberGetter = require('./routes/memberGetter');
+// const storage = multer.memoryStorage();
+// const imageGetter = require('./routes/imageGetter');
+// const memberGetter = require('./routes/memberGetter');
 const port = 3000;
 const cors = require('cors');
 
 app.use(cors());
-app.use('/image', imageGetter);
-app.use('/member', memberGetter);
+// app.use('/image', imageGetter);
+// app.use('/member', memberGetter);
 app.use(express.static('public'));
 
 app.use(express.json());
