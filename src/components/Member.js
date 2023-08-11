@@ -1,4 +1,5 @@
 import { Component } from '../core/component';
+import { memberStore } from '../store/memberStore';
 
 export default class Member extends Component {
   constructor(props) {
@@ -19,5 +20,12 @@ export default class Member extends Component {
     <p class="name-title">${member.name}</p>
     <p class="email-title">${member.email}</p></div>
     `;
+
+    const checkBox = this.el.querySelector('.checkbox');
+    checkBox.addEventListener('change', (event) => {
+      if (event.currentTarget.checked) {
+        memberStore.state.deleteMembers.push(member.id);
+      }
+    });
   }
 }
