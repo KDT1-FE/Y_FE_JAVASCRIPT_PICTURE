@@ -143,6 +143,7 @@ body {
 .employees__table {
     width: 100%;
     border-collapse: collapse;
+    
 
 }
 
@@ -155,6 +156,12 @@ body {
     border-bottom: 1px solid var(--color--gray);
 }
 
-.employees__table__row > * {
+.employees__table__row > td {
     padding: 1rem;
+    
+}
+ 
+.table__row__img{ 
+    width: 5rem;
+    height: 5rem;
 }
