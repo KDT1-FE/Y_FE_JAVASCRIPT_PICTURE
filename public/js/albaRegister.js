@@ -12,7 +12,7 @@ function handleImageChange(event) {
     reader.readAsDataURL(selectedImage);
   } else {
     // 이미지 등록이 안된 상태는 기본 이미지 출력
-    imagePreview.setAttribute("src", "../asset/pictures/no-image.png");
+    imagePreview.setAttribute("src", "../assets/pictures/no-image.png");
   }
 }
 
