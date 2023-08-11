@@ -1,5 +1,5 @@
 // firebase 기본 설정
-import firebaseConfig from './config.js';
+import firebaseConfig from '../config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js';
 import { getDatabase,  ref as dbRef, set, push } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
 import { getStorage,  ref as storageRef, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-storage.js';
