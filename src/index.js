@@ -11,5 +11,6 @@ import "./menuEvents";
 import "./deleteUser";
 import "./editUser";
 import "./btnEvents";
+import "./formValidation";
 
 console.log("connected");

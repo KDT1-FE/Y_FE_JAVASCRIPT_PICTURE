@@ -79,6 +79,8 @@
             placeholder="name"
             autocomplete="off"
             required
+            minlength="5"
+            maxlength="15"
           />
         </div>
         <div class="form__input-email input input-text">
@@ -95,15 +97,21 @@
         <!-- 학교 정보 등 추가 -->
         <div class="form__input-position input input-text">
           <label for="position">등급</label>
-          <input
+          <!-- <input
             type="text"
             name="position"
-            id="position"
             placeholder="position"
             autocomplete="off"
             required
-          />
+          /> -->
+          <select name="position" id="position">
+            <option value="">select your position</option>
+            <option value="student">student</option>
+            <option value="manager">manager</option>
+            <option value="educator">educator</option>
+          </select>
         </div>
+
         <button type="submit" class="form__input-submit input input-submit">
           Create
         </button>

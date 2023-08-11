@@ -45,3 +45,10 @@ input {
   justify-content: center;
   align-items: center;
 }
+
+// TEXT DECORATION
+.warning {
+  font-weight: $font-semi;
+  font-size: 0.8rem;
+  color: rgb(247, 93, 93);
+}
