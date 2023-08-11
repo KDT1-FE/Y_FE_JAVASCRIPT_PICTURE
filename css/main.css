@@ -1,0 +1,121 @@
+body {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+.wall {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 1s;
+  z-index: 1;
+}
+.inner {
+  width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  border: 3px solid black;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.click-x {
+  pointer-events: none;
+}
+
+header {
+  height: 200px;
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+main {
+}
+main .inner {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.add-function-wrap {
+  position: relative;
+}
+.buttons {
+  display: flex;
+}
+.button {
+  width: 100px;
+  height: 50px;
+  background-color: purple;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:last-child {
+  margin-left: 20px;
+}
+
+.information {
+  position: absolute;
+  top: calc(50% - 350px);
+  left: calc(50% - 250px);
+  width: 500px;
+  height: 700px;
+  background-color: blueviolet;
+  transition: opacity 1s;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 50px;
+}
+.information form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-top: 80px;
+}
+.information #form-exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.information form input {
+  width: 300px;
+  height: 30px;
+}
+
+.list-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  height: 300px;
+  box-sizing: border-box;
+  background-color: blue;
+  border-bottom: 1px solid white;
+}
+
+footer {
+  height: 200px;
+  border: 3px solid black;
+  border-collapse: collapse;
+}
