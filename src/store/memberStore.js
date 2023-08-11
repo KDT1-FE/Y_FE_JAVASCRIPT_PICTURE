@@ -1,7 +1,7 @@
 import { Store } from '../core/store';
 import { collection, doc, getDoc, getDocs, addDoc } from 'firebase/firestore';
 import { db, storage } from '../api/firebase';
-import { ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
 export const memberStore = new Store({
@@ -35,10 +35,11 @@ export const getMemberDetail = async (id) => {
   };
 };
 
-export const uploadImage = async (fileData) => {
-  const storageRef = ref(storage, uuidv4());
+export const uploadImage = async (fileData, refName) => {
+  const storageRef = ref(storage, refName);
   await uploadBytes(storageRef, fileData);
-  return storageRef;
+  const photoUrl = await getDownloadURL(storageRef);
+  return photoUrl;
 };
 
 export const uploadData = async (data) => {

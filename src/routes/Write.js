@@ -2,6 +2,7 @@ import { getDownloadURL } from 'firebase/storage';
 import { Component } from '../core/component';
 import { routeRender } from '../core/router';
 import { uploadData, uploadImage } from '../store/memberStore';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Write extends Component {
   render() {
@@ -54,8 +55,7 @@ export default class Write extends Component {
       };
       const fileData = formData.get('file');
 
-      const storageRef = await uploadImage(fileData, data);
-      const photoUrl = await getDownloadURL(storageRef);
+      const photoUrl = await uploadImage(fileData, uuidv4());
       data.photoUrl = photoUrl;
       await uploadData(data);
 

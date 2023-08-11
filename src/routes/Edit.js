@@ -1,6 +1,10 @@
 import { Component } from '../core/component';
 import { getUrlParam } from '../core/router';
-import { getMemberDetail, memberStore } from '../store/memberStore';
+import {
+  getMemberDetail,
+  memberStore,
+  uploadImage,
+} from '../store/memberStore';
 import { storage } from '../api/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
@@ -9,7 +13,7 @@ export default class Edit extends Component {
     const id = getUrlParam('id');
     await getMemberDetail(id);
     const member = memberStore.state.member;
-    console.log(member);
+    const photoUrl = '';
     this.el.innerHTML = `
     <header class="header">
   <div class="title">직원 관리 시스템</div></header>
@@ -35,9 +39,7 @@ export default class Edit extends Component {
     `;
 
     const previewImage = async (e) => {
-      const storageRef = ref(storage, member.photoUrl);
-      await uploadBytes(storageRef, e.currentTarget.files[0]);
-      const photoUrl = await getDownloadURL(storageRef);
+      photoUrl = await uploadImage(e.currentTarget.files[0], member.photoUrl);
       const photoEdit = this.el.querySelector('.photo-edit');
       photoEdit.style.backgroundImage = `url(${photoUrl})`;
     };
