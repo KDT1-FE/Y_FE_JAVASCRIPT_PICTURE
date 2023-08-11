@@ -8,7 +8,7 @@ form {
   min-width: 300px;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  border: 1px solid $bg-gray-700;
+  border: 2px solid $bg-gray-700;
   border-radius: $card-border-radius;
   box-shadow: $card-shadow;
   z-index: 1000;
@@ -58,6 +58,10 @@ form {
         &:hover {
           background-color: $bg-gray-200;
         }
+
+        &:active {
+          scale: 0.95;
+        }
       }
       // 기존 인풋 박스 없애기
       .form__input-hidden {
@@ -92,6 +96,10 @@ form {
         outline: none;
         padding: 10px;
         margin-bottom: 1rem;
+
+        &:focus {
+          background-color: map-get($map: $theme-colors, $key: bg-second);
+        }
       }
 
       label {

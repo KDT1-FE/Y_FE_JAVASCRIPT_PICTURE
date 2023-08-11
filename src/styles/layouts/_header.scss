@@ -1,29 +1,19 @@
 header {
   .header__container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 50vh;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
     padding: 2rem;
     background-color: map-get($map: $theme-colors, $key: bg-primary);
-    z-index: -1;
 
     .header__nav {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       .header__btn-add-user {
-        border: none;
-        background-color: transparent;
-
         i {
-          width: 25px;
-          height: 25px;
-          padding: 5px;
-          border-radius: 5px;
-          background-color: #fff;
+          font-size: 1.2rem;
+          padding: 1rem;
           cursor: pointer;
         }
       }

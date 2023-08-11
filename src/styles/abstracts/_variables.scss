@@ -24,6 +24,7 @@ $bg-gray-900: rgb(17 24 39);
 
 $theme-colors: (
   bg-primary: rgb(239, 224, 127),
+  bg-second: rgb(255, 248, 206),
 );
 
 // ========== FONT STYLE ==========
@@ -37,3 +38,17 @@ $card-border-radius: 0.5rem;
 
 // ========== SHADOW ==========
 $card-shadow: 0px 3px 13px 2px rgba(0, 0, 0, 0.2);
+
+// ========== BREAK POINTS ==========
+$breakpoints: (
+  sm: 640px,
+  // Small devices
+  md: 768px,
+  // Medium devices | Tablets (≥48em)
+  lg: 1024px,
+  // Large devices | Desktops (≥62em)
+  xl: 1280px,
+  // Extra large devices | Desktops (≥75em)
+  xxl: 1536px,
+  // Mega large Desktops | Desktops (≥120em)
+);
