@@ -284,6 +284,8 @@ html {
 
   background-size: contain;
   background-repeat: no-repeat;
+
+  cursor: pointer;
 }
 .editButton {
   width: 136px;
