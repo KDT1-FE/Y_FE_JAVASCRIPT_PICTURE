@@ -12,7 +12,6 @@ villagerDocRef
   .then((doc) => {
     if (doc.exists) {
       const data = doc.data();
-      console.log(data);
 
       const name = data.name;
       const engName = data.engName;
@@ -41,22 +40,23 @@ villagerDocRef
       // div 추가
       profileInfoUl.appendChild(profileContainer);
 
-      // 사진 추가
-      const imageRef = storage.ref().child(`${villagerId}.webp`);
+      // img 가져오기
+      const imageFormats = ["webp", "png", "jpeg", "jpg"];
+      const imageElement = document.getElementById("villager-img");
+      let imageFound = false;
 
-      imageRef
-        .getDownloadURL()
-        .then((url) => {
-          const villagerImageElement = document.getElementById("villager-img");
-          villagerImageElement.src = url;
-        })
-        .catch((error) => {
-          console.error("Error getting image download URL:", error);
-        });
-    } else {
-      console.log("No such document!");
+      imageFormats.forEach((format) => {
+        if (!imageFound) {
+          const imageRef = storage.ref().child(`${engName}.${format}`);
+          imageRef
+            .getDownloadURL()
+            .then((url) => {
+              imageElement.src = url;
+              imageFound = true;
+            })
+            .catch(countinue);
+        }
+      });
     }
   })
-  .catch((error) => {
-    console.log("Error getting document:", error);
-  });
+  .catch((error) => {});
