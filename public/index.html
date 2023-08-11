@@ -45,13 +45,10 @@
     </main>
 
     <script defer src="main.js"></script>
-    <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
-    <script
-      defer
-      src="/__/firebase/10.1.0/firebase-firestore-compat.js"
-    ></script>
-    <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -68,7 +65,7 @@
         messagingSenderId: "135435281757",
         appId: "1:135435281757:web:d8387d2df877dc771fb4b4",
       };
-      const app = firebase.initializeApp(firebaseConfig);
+      firebase.initializeApp(firebaseConfig);
     </script>
   </body>
 </html>
