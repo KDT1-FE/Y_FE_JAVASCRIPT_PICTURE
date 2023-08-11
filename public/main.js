@@ -210,7 +210,7 @@ const handleDeleteModeOff = () => {
 
 const handleDeleteModeOn = () => {
   deleteMode = true;
-  deleteButton.innerText = "삭제";
+  deleteButton.innerHTML = "삭제";
   deleteButton.className = "delete-on";
   deleteButton.id = "delete-confirm";
   deleteModeButton.forEach((item) => {
@@ -232,7 +232,6 @@ const handleDeleteSoldiers = () => {
   selectedSoldiers.forEach((soldier) => {
     soldier.classList.remove("selected");
   });
-
   // 장병 목록 다시 그리기
   container.innerHTML = "";
   paintSoldierElement();

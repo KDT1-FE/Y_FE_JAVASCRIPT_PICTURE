@@ -35,15 +35,16 @@ ul {
   outline: 0;
 }
 :root {
-  --color-primary: #1f94ff;
-  --color-secondary: #ffcc49;
+  /* --color-primary: #1f94ff; */
+  --color-primary: #328c45;
+  --color-secondary: #000;
   --color-surface: #fafafa;
   --color-textActive: rgba(10, 10, 10, 1);
   --color-textDefault: rgba(10, 10, 10, 0.7);
-  --color-textMuted: rgba(10, 10, 10, 0.45);
+  --color-textMuted: rgba(10, 10, 10, 0.3);
   --color-textOnPrimary: #fcfcfc;
   --color-textOnSecondary: #fcfcfc;
-  --color-outline: #d9d9d9;
+  --color-outline: #efefef;
 }
 
 .hidden {

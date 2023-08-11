@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="./styles/font.css" />
     <link rel="stylesheet" href="./styles/general.css" />
     <link rel="stylesheet" href="./styles/main.css" />
@@ -17,6 +11,7 @@
   <body>
     <header class="main-header">
       <h1><b>석민 여단</b> 장병 관리 시스템</h1>
+      <img src="./assets/images/hoguk.jpg" alt="" />
     </header>
     <section class="main-control">
       <div class="main-control-btn">
@@ -43,6 +38,28 @@
         <button class="delete-cancel">취소</button>
       </div>
     </main>
+
+    <div class="modal-background"></div>
+    <div class="modal">
+      <h1 class="modal-title">장병 신규 등록</h1>
+      <div class="modal-input">
+        <div class="modal-input-photo"></div>
+        <div class="modal-input-text">
+          <div class="modal-input-label">이름</div>
+          <input type="text" placeholder="이름을 입력해주세요">
+          <div class="modal-input-label">부서</div>
+          <input type="text" placeholder="부서를 입력해주세요">
+          <div class="modal-input-label">직급</div>
+          <input type="text" placeholder="직급을 입력해주세요">
+          <div class="modal-input-label">생년월일</div>
+          <input type="text" placeholder="yyyy/MM/dd">
+        </div>
+      </div>
+      <div class="modal-button">
+        <button id="closeModalButton">취소</button>
+        <button id="confirmModalButton">등록</button>
+      </div>
+    </div>
 
     <script defer src="main.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>

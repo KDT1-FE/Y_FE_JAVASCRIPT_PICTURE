@@ -1,11 +1,16 @@
-body{
+body {
   padding: 50px 100px;
-  font-family: Pretendard;
+  font-family: Pretendard !important;
 }
 .main-header {
+  display: flex;
+  justify-content: space-between;
   font-size: 3rem;
   color: var(--color-textActive);
   margin-bottom: 5rem;
+}
+.main-header img {
+  width: 5rem;
 }
 
 .main-header b {
@@ -22,6 +27,8 @@ body{
   gap: 1rem;
 }
 .main-control-btn button {
+  font-family: Pretendard;
+  font-size: 1rem;
   width: 10rem;
   border: none;
   border-radius: 8px;
@@ -73,6 +80,8 @@ body{
   object-fit: cover;
 }
 .main-control-search input {
+  font-family: Pretendard;
+  font-size: 1rem;
   border: none;
   width: 100%;
 }
@@ -91,40 +100,47 @@ body{
   display: flex;
   width: calc(50% - 20px);
   align-items: center;
-  padding: 12px 20px;
+  padding: 20px 20px;
   border: 2px solid var(--color-outline);
   border-radius: 8px;
   box-sizing: border-box;
+  gap: 20px;
 }
 .selected {
   border: 2px solid var(--color-secondary);
 }
 
 .soldier-photo {
-  width: 120px;
-  height: 150px;
+  width: 140px;
+  aspect-ratio: 1/1.2;
   background-color: #f2f2f2;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 10px;
   margin-right: 20px;
+  flex-shrink: 0;
 }
-.soldier-photo img{
-  width: 120px;
-  height: 150px;
+.soldier-photo img {
+  width: 140px;
+  aspect-ratio: 1/1.2;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-sizing: border-box;
+  border: 1px solid #f5f5f5;
 }
 .soldier-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 .이름 {
+  font-size: 1.25rem;
   font-weight: 800;
+  margin-bottom: 10px;
 }
 
 #bottom-buttons {
@@ -145,8 +161,12 @@ body{
     background-color: var(--color-secondary);
   }
 }
+#delete-confirm{
+  font-family: Pretendard;
+}
 
 .delete-cancel {
+  font-family: Pretendard;
   color: var(--color-textDefault);
   background-color: #f5f5f5;
   &:hover {
@@ -154,5 +174,157 @@ body{
     background-color: #efefef;
   }
 }
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.modal {
+  position: fixed;
+  width: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  background-color: white;
+  z-index: 2;
+  border-radius: 8px;
+}
+.modal-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.modal-input {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.modal-input-photo {
+  width: 40%;
+  aspect-ratio: 1/1.2;
+  background-color: var(--color-outline);
+  background-image: url("/public/assets/icons/cameraIcon.svg");
+  background-repeat: no-repeat;
+  background-position: center; /* 배경 이미지를 요소의 중앙에 배치 */
+  background-size: 50px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.modal-input-photo img {
+  width: 167px;
+}
+.modal-input-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.modal-input-text input {
+  font-family: Pretendard;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  border: none;
+  border-bottom: 1px solid #BFBFBF;
+  padding: 4px 0;
+  &::placeholder{
+    color: var(--color-textMuted);
+  }
+  &:focus{
+    border-bottom-color: var(--color-primary);
+    border-bottom-width: 1.5px;
+  }
+}
+.modal-input-label {
+  color: var(--color-textDefault);
+}
+.modal-button {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.modal-button button {
+}
 
 /* @media 992px, 576px, */
+
+@media (max-width: 1140px) {
+  html {
+    font-size: 14px;
+  }
+  .main-control {
+    flex-wrap: wrap;
+    justify-content: unset;
+  }
+  .main-control-btn {
+    width: 100%;
+  }
+  .main-control-btn button {
+    width: 33%;
+  }
+  .main-control-search {
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  html {
+    font-size: 12px;
+  }
+  body {
+    padding: 30px 60px;
+  }
+  .main-header {
+    font-size: 2.5rem;
+  }
+  .main-header img {
+    width: 4rem;
+  }
+  .soldier {
+    width: 100%;
+  }
+  .soldier-photo {
+    width: 100px;
+  }
+  .soldier-photo img {
+    width: 100px;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 8px;
+  }
+  body {
+    padding: 20px 40px;
+  }
+  .main-header img {
+    width: 6rem;
+  }
+  .main-control-btn button {
+    padding: 10px 10px;
+    height: 30px;
+  }
+  .main-control-search {
+    padding: 5px 8px;
+  }
+  .soldier {
+    padding: 10px;
+    gap: 10px;
+  }
+  .soldier-photo {
+    width: 60px;
+  }
+  .soldier-photo img {
+    width: 60px;
+  }
+  .이름 {
+    margin-bottom: 3px;
+  }
+}
