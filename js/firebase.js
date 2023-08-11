@@ -53,7 +53,6 @@ function sortOption (optionEl){
     sortEl.textContent = optionEl.textContent;
 }
 
-const searchButton = document.querySelector('.search button')
 // 클릭 시 타겟 지정, 드랍다운 닫기
 sortArr.forEach(sortList => {
     sortList.addEventListener("click", (e)=>{
@@ -63,7 +62,6 @@ sortArr.forEach(sortList => {
         sort.classList.remove('dropdown--open');
         const searchValue = searchInput.value;
         getList(targetEl.value,searchValue)
-        searchButton.value = targetEl.value
         valueReturn(targetEl)
     })
 })
@@ -87,11 +85,11 @@ searchInput.onblur = () => {
 
 // 검색창 value 값 입력
 let searchValue = false;
-function searchFunc (e){
-    const value = e.target.closest('.search').lastElementChild.value
+function searchFunc (){
     searchValue = searchInput.value
-    console.log(value)
-    getList(value,searchValue)
+    let inputVal = document.querySelector('.dropdown--sort').firstElementChild.children[1].value
+    console.log(inputVal)
+    getList(inputVal,searchValue)
 }
 
 // 검색창 엔터 시 버튼 click
@@ -102,8 +100,9 @@ searchInput.addEventListener("keydown", (e)=>{
 })
 
 // 검색 버튼 click 이벤트
-searchButton.addEventListener("click", (e)=>{
-    searchFunc(e)
+const searchButton = document.querySelector('.search button')
+searchButton.addEventListener("click", ()=>{
+    searchFunc()
 })
 
 
