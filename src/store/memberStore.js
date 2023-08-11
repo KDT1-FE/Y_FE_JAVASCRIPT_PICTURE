@@ -1,5 +1,12 @@
 import { Store } from '../core/store';
-import { collection, doc, getDoc, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  setDoc,
+} from 'firebase/firestore';
 import { db, storage } from '../api/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
@@ -47,4 +54,8 @@ export const uploadData = async (data) => {
     email: data.email,
     photoUrl: data.photoUrl,
   });
+};
+
+export const setData = async (data, id) => {
+  await setDoc(doc(db, 'list', id), data);
 };
