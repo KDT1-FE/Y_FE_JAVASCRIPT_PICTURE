@@ -27,11 +27,8 @@ body {
 }
 
 .header-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 8rem;
   color: #3f5d4d;
+  margin-top: 3rem;
 }
 
 .profile-main {
@@ -39,17 +36,19 @@ body {
   display: flex;
   flex-direction: row;
   width: 80%;
-  align-items: center;
-  margin: 1rem 3rem 3rem 3rem;
 }
 
 .profile-left {
-  padding: 0 0 0 3rem;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 3rem 2rem 3rem;
+  text-align: center;
 }
 
 .villager-img {
   width: 18rem;
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .villager-img:hover {
@@ -57,13 +56,19 @@ body {
   transition: 0.4s;
 }
 
+.chooseImg {
+  display: none;
+}
+
 .profile-right {
-  padding: 2rem 5rem 0 6rem;
+  padding: 3rem;
+  width: 100%;
 }
 
 .profile-ul {
   display: flex;
-  gap: 5rem;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .villager-info,
@@ -74,14 +79,15 @@ body {
 }
 
 .villager-info-li {
-  margin: 0.9rem;
+  margin: 1rem;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 800;
+  margin-right: 2rem;
 }
 
 .villager-info-input-li {
-  margin: 0.5rem;
+  margin: 0.6rem;
 }
 
 .villager-info-name,
@@ -121,6 +127,9 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 2rem;
+  position: fixed; /* Set the position to fixed */
+  bottom: 2rem; /* Adjust the bottom spacing */
+  z-index: 999; /* Ensure it's above other content */
 }
 
 .add-btn:hover {

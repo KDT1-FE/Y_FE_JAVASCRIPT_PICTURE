@@ -18,12 +18,14 @@
         <h1 class="profile-top-text">주민을 등록해보세요!</h1>
       </header>
       <main class="profile-main">
-        <div class="profile-left">
-          <img
+        <div class="profile-left"> 
+          <label for="fileInput" class="custom-file-button"><img
             class="villager-img"
             id="villager-img"
             src="./assets/graphics/previewVillager.png"
-          />
+          /></label>
+          <input type="file" id="fileInput" class="chooseImg" accept="image/*">
+          <p>파일명과 영어 이름은 일치해야 합니다!</p>
         </div>
         <div class="profile-right">
           <ul class="profile-ul">
@@ -51,5 +53,22 @@
       </main>
       <button class="add-btn">등록하기</button>
     </div>
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBC6vTaKHAwv7yvmgbyzoBTzMX7HogZP6Q",
+        authDomain: "villagers-list.firebaseapp.com",
+        projectId: "villagers-list",
+        storageBucket: "villagers-list.appspot.com",
+        messagingSenderId: "801279538668",
+        appId: "1:801279538668:web:7c3b90b1610b9abf65bcc9",
+        measurementId: "G-8990L2805Z",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./src/uploadData.js"></script>
   </body>
 </html>
