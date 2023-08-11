@@ -6,8 +6,14 @@ const writePhone = document.getElementById('phone');
 const writeAddress = document.getElementById('address');
 const writeImageUrl = document.getElementById('image');
 const submitBtn = document.getElementById('submit-button');
+const errorName = document.querySelector('.error-name');
+const errorEmail = document.querySelector('.error-email');
+const errorPhone = document.querySelector('.error-phone');
+const errorAddress = document.querySelector('.error-address');
+const errorFile = document.querySelector('.error-file');
 let uploadFile;
 let infos = [];
+let isBoolean;
 
 // localStorage 안에 값이 있는지 확인하고 있다면 값 보존
 let getItem = localStorage.getItem('infos');
@@ -22,6 +28,37 @@ if (getItem) {
 
 writeImageUrl.addEventListener('change', uploadFileChange);
 submitBtn.addEventListener('click', createStaff);
+
+// input 입력 유효성 검사
+function isInputValid() {
+  isBoolean = false;
+  if (!writeName.value) {
+    errorName.classList.add('active');
+  } else {
+    errorName.classList.remove('active');
+  }
+  if (!writeEmail.value) {
+    errorEmail.classList.add('active');
+  } else {
+    errorEmail.classList.remove('active');
+  }
+  if (!writePhone.value) {
+    errorPhone.classList.add('active');
+  } else {
+    errorPhone.classList.remove('active');
+  }
+  if (!writeAddress.value) {
+    errorAddress.classList.add('active');
+  } else {
+    errorAddress.classList.remove('active');
+  }
+  if (!uploadFile) {
+    errorFile.classList.add('active');
+  } else {
+    errorFile.classList.remove('active');
+  }
+  if (writeName.value && writeEmail.value && writePhone.value && writeAddress.value && uploadFile) isBoolean = true;
+}
 
 // uploadFile 변경 함수
 function uploadFileChange(e) {
@@ -68,7 +105,10 @@ async function onFileUpload() {
 }
 
 //임직원 등록 함수
-function createStaff(e) {
+function createStaff() {
+  isInputValid();
+  if (!isBoolean) return;
+
   onFileUpload();
 
   // 새로운 아이템 생성

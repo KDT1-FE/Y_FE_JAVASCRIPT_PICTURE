@@ -47,6 +47,17 @@ body {
   background-color: #007bff;
   border: none;
   padding: 10px 20px;
-  cursor: pointer;
   color: white;
+  cursor: pointer;
+}
+
+.error-message {
+  margin: 5px;
+  color: red;
+  font-size: 0.75rem;
+  display: none;
+}
+
+.active {
+  display: block;
 }
