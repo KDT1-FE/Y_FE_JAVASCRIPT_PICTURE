@@ -1,0 +1,15 @@
+{
+  "name": "zero-car",
+  "version": "1.0.0",
+  "description": "zero-car with webpack, babel, firebase, github.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jit Hoon",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
