@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/font.css" />
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1><b>석민 여단</b> 장병 관리 시스템</h1>
+    </header>
+    <section class="main-control">
+      <div class="main-control-btn">
+        <button title="등록 페이지로 이동">장병 신규 등록</button>
+        <button class="delete-off" id="delete-soldier" title="선택 직원 삭제">
+          장병 삭제
+        </button>
+        <button class="delete-mode-buttons delete-cancel hidden">취소</button>
+      </div>
+      <div class="main-control-search">
+        <img src="assets/icons/searchIcon.svg" alt="검색" />
+        <input
+          type="search"
+          name=""
+          id="search-soldier"
+          placeholder="이름 또는 부서명으로 검색하기"
+        />
+      </div>
+    </section>
+    <main>
+      <div class="soldier-container"></div>
+      <div class="delete-mode-buttons hidden" id="bottom-buttons">
+        <button id="delete-confirm">삭제</button>
+        <button class="delete-cancel">취소</button>
+      </div>
+    </main>
+
+    <script defer src="main.js"></script>
+    <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.1.0/firebase-firestore-compat.js"
+    ></script>
+    <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCRjX9gtLM1e32YZxb2G9vNu9bCdZyaQbM",
+        authDomain: "employee-manager-28379.firebaseapp.com",
+        projectId: "employee-manager-28379",
+        storageBucket: "employee-manager-28379.appspot.com",
+        messagingSenderId: "135435281757",
+        appId: "1:135435281757:web:d8387d2df877dc771fb4b4",
+      };
+      const app = firebase.initializeApp(firebaseConfig);
+    </script>
+  </body>
+</html>
