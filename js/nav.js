@@ -7,6 +7,8 @@ const deletemodal = document.getElementById('modaldelete');
 const modal = document.querySelector('.modal-window');
 const imageInput = document.getElementById('imageInput');
 const uploadLabel = document.querySelector('.upload-button');
+
+
 imageInput.addEventListener('change', handleImageSelect);
 
 
@@ -17,13 +19,17 @@ function handleImageSelect(event) {
     }
 }
 
-function modalOn(){
-  modal.style.display="block";
+function modalOn() {
+  modal.style.display = "block";
+  document.body.classList.add('modal-open');
 }
 
-export function modalOff(){
-  modal.style.display="none";
+
+export function modalOff() {
+  modal.style.display = "none";
+  document.body.classList.remove('modal-open');
 }
+
 
 deletemodal.addEventListener('click',modalOff);
 

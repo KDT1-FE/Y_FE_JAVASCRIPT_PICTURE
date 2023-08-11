@@ -26,6 +26,11 @@ nav {
   color: #fff;
 }
 
+.modal-open {
+  pointer-events: none;
+}
+
+
 #insertmodal .modal-window {
   display: none;
   background: rgba(69, 139, 197, 0.70);
@@ -41,6 +46,8 @@ nav {
   transform: translate(-50%, -50%);
   padding: 2rem;
   z-index: 1;
+  filter: none;
+  pointer-events: auto;
 }
 
 #insertmodal .title {
