@@ -48,7 +48,7 @@ body {
 .villager-img {
   width: 18rem;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .villager-img:hover {
