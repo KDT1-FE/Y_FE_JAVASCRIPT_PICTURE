@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/write.css" />
+    <script type="module" src="../js/write.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="title">임직원 등록</h1>
+      <div class="write-wrap">
+        <div class="input-wrap">
+          <label for="name">이름:</label>
+          <input type="text" id="name" name="name" placeholder="이름을 작성해주세요." required />
+        </div>
+        <div class="input-wrap">
+          <label for="email">이메일:</label>
+          <input type="email" id="email" name="email" placeholder="이메일을 작성해주세요." required />
+        </div>
+        <div class="input-wrap">
+          <label for="phone">휴대폰 번호:</label>
+          <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 작성해주세요." required />
+        </div>
+        <div class="input-wrap">
+          <label for="address">주소:</label>
+          <input type="text" id="address" name="address" placeholder="주소를 작성해주세요." required />
+        </div>
+        <div class="input-wrap">
+          <label for="image">이미지:</label>
+          <input type="file" id="image" name="image" />
+        </div>
+        <div class="input-wrap">
+          <button id="submit-button" type="submit">등록하기</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

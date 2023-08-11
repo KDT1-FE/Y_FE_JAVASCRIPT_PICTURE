@@ -1,0 +1,24 @@
+{
+  "name": "y_fe_javascript_picture",
+  "version": "1.0.0",
+  "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
+  "scripts": {
+    "dev": "parcel ./src/html/profile.html",
+    "build": "parcel build ./src/html/profile.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1432.0",
+    "lodash": "^4.17.21",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "events": "^3.3.0",
+    "parcel": "^2.9.3",
+    "process": "^0.11.10",
+    "punycode": "^1.4.1",
+    "querystring-es3": "^0.2.1"
+  }
+}

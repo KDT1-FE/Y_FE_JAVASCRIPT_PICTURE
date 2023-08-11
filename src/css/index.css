@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1400px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 35px;
+  padding: 50px 100px 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 0 gray;
+}
+
+/********** main **********/
+main {
+  width: 100%;
+  height: 100%;
+}
+
+main .page-title .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.staff-control-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+.staff-control-wrap .staff-control-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 60px;
+}
+
+.staff-control-wrap .staff-control-buttons div {
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/********** 임직원 등록 버튼 **********/
+.staff-control-wrap .staff-control-buttons div.staff-enroll {
+  margin-right: 10px;
+  background-color: #7b9acc;
+  position: relative;
+}
+
+.staff-control-wrap .staff-control-buttons div.staff-enroll:hover {
+  background-image: none;
+  background-color: #fcf6f5;
+}
+
+.staff-control-wrap .staff-control-buttons div.staff-enroll a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fcf6f5;
+}
+
+.staff-control-wrap .staff-control-buttons div.staff-enroll:hover a {
+  color: #7b9acc;
+}
+
+.staff-enroll::before,
+.staff-enroll::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #7b9acc;
+  transition: all 0.3s ease;
+}
+
+.staff-enroll::before {
+  width: 0%;
+  height: 2px;
+}
+
+.staff-enroll:hover::before {
+  width: 100%;
+}
+
+.staff-enroll::after {
+  width: 2px;
+  height: 0%;
+}
+
+.staff-enroll:hover::after {
+  height: 100%;
+}
+
+.staff-enroll a::before,
+.staff-enroll a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #7b9acc;
+  transition: all 0.3s ease;
+}
+
+.staff-enroll a::before {
+  width: 0%;
+  height: 2px;
+}
+
+.staff-enroll a::after {
+  width: 2px;
+  height: 0%;
+}
+
+.staff-enroll:hover a::before {
+  width: 100%;
+}
+
+.staff-enroll:hover a::after {
+  height: 100%;
+}
+
+/********* 임직원 삭제 버튼 *********/
+
+.staff-control-wrap .staff-control-buttons div.staff-delete {
+  background-color: #9a161f;
+  color: #f4efea;
+  position: relative;
+}
+
+.staff-control-wrap .staff-control-buttons div.staff-delete:hover {
+  background-color: #f4efea;
+  color: #9a161f;
+}
+
+.staff-delete span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.staff-delete::before,
+.staff-delete::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #9a161f;
+  transition: all 0.3s ease;
+}
+
+.staff-delete::before {
+  width: 0%;
+  height: 2px;
+}
+
+.staff-delete:hover::before {
+  width: 100%;
+}
+
+.staff-delete::after {
+  width: 2px;
+  height: 0%;
+}
+
+.staff-delete:hover::after {
+  height: 100%;
+}
+
+.staff-delete span::before,
+.staff-delete span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #9a161f;
+  transition: all 0.3s ease;
+}
+
+.staff-delete span::before {
+  width: 0%;
+  height: 2px;
+}
+
+.staff-delete:hover span::before {
+  width: 100%;
+}
+
+.staff-delete span::after {
+  width: 2px;
+  height: 0%;
+}
+
+.staff-delete:hover span::after {
+  height: 100%;
+}
+
+.staff-list-wrap {
+  width: 100%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+/********** 스크롤 바 커스텀 **********/
+.staff-list-wrap::-webkit-scrollbar {
+  width: 8px;
+}
+
+.staff-list-wrap::-webkit-scrollbar-thumb {
+  height: 30%;
+  background: #6bb7f5;
+  border-radius: 10px;
+}
+
+.staff-list-wrap::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1);
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table thead tr th {
+  padding: 20px 0;
+}
+
+table tbody tr {
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+  border-top: 1px solid #ccc;
+}
+
+table tbody tr td {
+  padding: 20px;
+}
+
+table tbody tr td:nth-child(2) {
+  width: 30%;
+}
+
+table tbody tr td img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
