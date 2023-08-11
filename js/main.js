@@ -18,3 +18,23 @@ searchButton.addEventListener('click', () => {
     });
 });
 
+
+// modal 열기
+const registerButton = document.getElementById('register-button');
+const modalContainer = document.querySelector('.modal-container');
+const modalIframe = document.querySelector('.modal-iframe');
+
+registerButton.addEventListener('click', () => {
+    modalContainer.style.display = 'flex';
+    modalIframe.contentWindow.postMessage('openModal', '*');
+});
+
+
+// modal 닫기
+window.addEventListener('message', (event) => {
+    if (event.data === 'modalClosed') {
+        modalContainer.style.display = 'none';
+    }
+});
+
+

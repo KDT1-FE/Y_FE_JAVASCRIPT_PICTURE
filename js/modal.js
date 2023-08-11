@@ -90,4 +90,12 @@ const closeButton = document.querySelector('.close-button');
 
 closeButton.addEventListener('click', () => {
     modalWrap.style.display = 'none';
+    window.parent.postMessage('modalClosed', '*');
+});
+
+// 모달 열기
+window.addEventListener('message', (event) => {
+    if (event.data === 'openModal') {
+        modalWrap.style.display = 'flex';
+    }
 });
