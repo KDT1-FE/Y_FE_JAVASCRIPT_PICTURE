@@ -54,7 +54,7 @@ villagerDocRef
               imageElement.src = url;
               imageFound = true;
             })
-            .catch(countinue);
+            .catch((error) => {});
         }
       });
     }

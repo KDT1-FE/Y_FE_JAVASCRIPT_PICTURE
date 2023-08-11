@@ -27,7 +27,7 @@ collectionRef.get().then((querySnapshot) => {
           <img class="villager-img" src="" />
         </li>
         <li class="villager-info-li"><p>${name}</p></li>
-        <li class="villager-info-li"><p>${sex}</p></li>
+        <li class="villager-info-li"><p class="sex">${sex}</p></li>
         <li class="villager-info-li"><p>${birthday}</p></li>
         <li class="villager-info-li"><p>${personality}</p></li>
         <li class="villager-info-li"><p>${favoriteColor}</p></li>
@@ -37,27 +37,30 @@ collectionRef.get().then((querySnapshot) => {
     // div 추가
     villagerList.appendChild(villagerContainer);
 
+    //성별에 따라 글자 색 다르게
+    const sexElement = villagerContainer.querySelector(".sex");
+    if (sex === "여성") {
+      sexElement.style.color = "pink";
+    } else if (sex === "남성") {
+      sexElement.style.color = "skyblue";
+    }
+
     // img 가져오기
     const imageElement = villagerContainer.querySelector(".villager-img");
-    //여러 확장자를 사용할 수 있도록
-    const possibleExtensions = [".webp", ".png", ".jpeg", ".jpg"];
+    const imageFormats = [".webp", ".png", ".jpeg", ".jpg"];
+    let imageFound = false;
 
-    let foundImage = false;
-    for (const extension of possibleExtensions) {
-      const imageRef = storage.ref().child(engName + extension);
-      imageRef
-        .getDownloadURL()
-        .then((url) => {
-          if (!foundImage) {
+    imageFormats.forEach((format) => {
+      if (!imageFound) {
+        const imageRef = storage.ref().child(engName + format);
+        imageRef
+          .getDownloadURL()
+          .then((url) => {
             imageElement.src = url;
-            foundImage = true;
-          }
-        })
-        .catch((error) => {});
-
-      if (foundImage) {
-        break;
+            imageFound = true;
+          })
+          .catch((error) => {});
       }
-    }
+    });
   });
 });
