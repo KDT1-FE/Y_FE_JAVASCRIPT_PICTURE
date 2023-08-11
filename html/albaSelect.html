@@ -11,44 +11,155 @@
     <title>우리 알바 - 알바생 관리 페이지</title>
   </head>
   <body>
+    <header class="navbar">
+      <div class="wealba"><h2>우리 알바</h2></div>
+      <div class="navbarmenu"></div>
+    </header>
     <!-- 로딩 화면 추가 -->
     <div class="loading-screen">
       <div class="loading-bar"></div>
     </div>
     <!-- 알바생 관리 페이지 -->
     <section class="alba-manage">
-      <h2>알바생 관리하기</h2>
-      <table class="alba-list">
-        <thead>
-          <tr>
-            <th>선택</th>
-            <th>사진</th>
-            <th>이름</th>
-            <th>전화번호</th>
-            <th>직급</th>
-            <th>근무시간</th>
-            <th>수정</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- 알바생 리스트 아이템 -->
-          <tr>
-            <td class="select-checkbox"><input type="checkbox" /></td>
-            <td class="alba-photo">
-              <img src="../asset/pictures/no-image.png" alt="알바생 사진" /></td>
-            <td class="alba-info">알바생1</td>
-            <td class="alba-info">010-1234-5678</td>
-            <td class="alba-info">매니저</td>
-            <td class="alba-info">09:00 - 18:00</td>
-            <td><button class="edit-button">수정</button></td>
-          </tr>
-          <!-- 다른 알바생 리스트 아이템들... -->
-        </tbody>
-      </table>
-      <!-- 등록된 알바생이 없을 때 메시지 -->
-      <p class="no-alba-message">
-        등록된 알바생이 없습니다. 먼저 알바생을 추가해보세요!
-      </p>
+      <!-- <h2>알바생 관리하기</h2> -->
+      <div class="list-container">
+        <div class="button-container">
+          <button class="alba-register-button">알바생 등록하기</button>
+          <button class="back-button">이전 페이지로</button>
+        </div>
+        <table class="alba-list">
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th class="th-img">사진</th>
+              <th>이름</th>
+              <th>전화번호</th>
+              <th>직급</th>
+              <th>근무시간</th>
+              <th>수정</th>
+            </tr>
+          </thead>
+          <!-- 알바생 리스트 -->
+          <tbody>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+            <tr>
+              <td class="select-checkbox">
+                <label class="container">
+                  <input type="checkbox" />
+                  <div class="checkmark"></div>
+                </label>
+              </td>
+              <td class="alba-photo">
+                <img src="../asset/pictures/no-image.png" alt="알바생 사진" />
+              </td>
+              <td class="alba-name"><p>알바생1</p></td>
+              <td class="alba-phone"><p>010-1234-5678</p></td>
+              <td class="alba-class"><p>매니저</p></td>
+              <td class="alba-time"><p>09:00 - 18:00</p></td>
+              <td><button class="edit-button">수정</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- 등록된 알바생이 없을 때 메시지 -->
+        <p class="no-alba-message">
+          등록된 알바생이 없습니다. 먼저 알바생을 추가해보세요!
+        </p>
+      </div>
     </section>
 
     <script>
@@ -69,12 +180,29 @@
           }
         });
       });
-      // '이전으로' 버튼 기능
-      const backButton = document.querySelector(".back-button");
-      backButton.addEventListener("click", () => {
-        // window.history.back(); // 브라우저의 이전 페이지로 이동
-        window.location.href = "./myAlba.html"; //
-      });
+    </script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAIYJAtUSZokenUVt5iLF2KYS-BS0jxgdo",
+        authDomain: "we-alba-79af8.firebaseapp.com",
+        projectId: "we-alba-79af8",
+        storageBucket: "we-alba-79af8.appspot.com",
+        messagingSenderId: "912509162821",
+        appId: "1:912509162821:web:f9e1dbe1a28bfbfd3dda2c",
+        measurementId: "G-3E5YWPVG09"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
     </script>
   </body>
 </html>
