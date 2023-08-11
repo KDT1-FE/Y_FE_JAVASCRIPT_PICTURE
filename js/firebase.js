@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, addDoc, getDocs, collection, query, orderBy, limit, where } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"
+import { getFirestore, addDoc, getDocs, collection, query, orderBy, limit, where, or } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,18 +35,97 @@ let db = getFirestore(app);
 //     console.error("Error adding document: ", e);
 // }
 
-let inputVal = document.querySelector('.dropdown__container input');
 
-const getList = async () => {
+const sort = document.querySelector('.dropdown--sort')
+const sortWrap = sort.children[0].lastElementChild
+const sortArr = sortWrap.querySelectorAll('.dropdown__list')
+
+// drop list value 값 지정
+for(i=0; i<sortArr.length; i++){
+    const sortLi = sortWrap.children[0].children[i]
+    sortLi.value = i 
+}
+
+// 정렬창 select 된 값으로 span 값 바꾸기
+function sortOption (optionEl){
+    const sortBox = sort.querySelector(".dropdown__display")
+    const sortEl = sortBox.firstElementChild
+    sortEl.textContent = optionEl.textContent;
+}
+
+const searchButton = document.querySelector('.search button')
+// 클릭 시 타겟 지정, 드랍다운 닫기
+sortArr.forEach(sortList => {
+    sortList.addEventListener("click", (e)=>{
+        const targetEl = e.target.parentElement;
+        const isOptionEl = targetEl.classList.contains("dropdown__list")
+        if(isOptionEl) sortOption(targetEl)
+        sort.classList.remove('dropdown--open');
+        const searchValue = searchInput.value;
+        getList(targetEl.value,searchValue)
+        searchButton.value = targetEl.value
+    })
+})
+
+// value값 input으로 보내기
+function valueReturn(optionEl){
+    const value = optionEl.value
+    sort.children[0].children[1].value = value
+}
+
+// 검색창 포커스
+const search = document.querySelector('.search__container')
+const searchInput = search.firstElementChild
+searchInput.onfocus = () => {
+    search.classList.add('search__container--focus');
+}
+searchInput.onblur = () => {
+    search.classList.remove('search__container--focus');
+}
+
+
+// 검색창 value 값 입력
+let searchValue = false;
+function searchFunc (e){
+    const value = e.target.closest('.search').lastElementChild.value
+    searchValue = searchInput.value
+    console.log(value)
+    getList(value,searchValue)
+}
+
+// 검색창 엔터 시 버튼 click
+searchInput.addEventListener("keydown", (e)=>{
+    if(e.key === 'Enter') {
+        searchFunc()
+    }
+})
+
+// 검색 버튼 click 이벤트
+searchButton.addEventListener("click", (e)=>{
+    searchFunc(e)
+})
+
+
+// 임직원 관리 리스팅
+const getList = async (inputVal, value) => {
+    const table = document.querySelector('.table__list')
+    table.innerHTML = "";
     let q;
-    if (inputVal.value === 1) q = query(collection(db, "employee"), orderBy("name", "desc")); // 이름순 정렬
-    else if (inputVal.value === 2) q = query(collection(db, "employee"), orderBy("email", "desc")); // 이메일순 정렬
-    else q = query(collection(db, "employee"), orderBy("date", "desc")); // 최신순 정렬
+
+    if (inputVal === 1) {
+        q = query(collection(db, "employee"), orderBy("name")); // 이름순 정렬
+        if(value) {q = query(collection(db, "employee"), where("name", "==",value));}
+    } else if (inputVal === 2) {
+        q = query(collection(db, "employee"), orderBy("email")); // 이메일순 정렬
+        if(value) {q = query(collection(db, "employee"), where("name", "==",value));}
+    } else if (inputVal === 0) {
+        q = query(collection(db, "employee"), orderBy("date", "desc")); // 최신순 정렬
+        if(value) {q = query(collection(db, "employee"), or(where("name", "==",value), where("email", "==",value)));}
+    }
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         const employee = doc.data()
-        const table = document.querySelector('.table__list')
         const trEl = document.createElement("tr");
         // const date = employee.date.toDate();
         trEl.innerHTML = `
@@ -69,8 +148,7 @@ const getList = async () => {
         table.appendChild(trEl)
     });
 }
-getList();
-inputVal.addEventListener("change", getList);
+getList(0);
 
 // 체크박스 input 대체
 const table = document.querySelector(".table")
