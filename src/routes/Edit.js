@@ -1,5 +1,5 @@
 import { Component } from '../core/component';
-import { getUrlParam } from '../core/router';
+import { getUrlParam, routeRender } from '../core/router';
 import {
   getMemberDetail,
   memberStore,
@@ -45,7 +45,7 @@ export default class Edit extends Component {
         member.photoUrl
       );
       const photoEdit = this.el.querySelector('.photo-edit');
-      photoEdit.style.backgroundImage = `url(${photoUrl})`;
+      photoEdit.style.backgroundImage = `url(${photoUrl})`; // 미리보기
       imageLoading = false;
     };
     const handleSubmit = async (event) => {
@@ -53,7 +53,7 @@ export default class Edit extends Component {
       if (imageLoading) {
         alert('이미지 로딩 후 완료 버튼을 클릭해주세요');
         return;
-      }
+      } // 이미지 미리보기전에 submit 방지
       const formData = new FormData(event.currentTarget);
 
       const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -75,6 +75,9 @@ export default class Edit extends Component {
       };
 
       await setData(data, member.id);
+
+      window.history.pushState(null, null, '/');
+      routeRender(); // 메인 페이지로 이동
     };
     const imageFile = this.el.querySelector('.file-input');
     const form = this.el.querySelector('.detail');
