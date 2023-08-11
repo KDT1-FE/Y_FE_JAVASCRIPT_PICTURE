@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>회원 등록</title>
+  </head>
+  <body>
+    <h1>회원 등록</h1>
+
+    <form id="memberForm" enctype="multipart/form-data">
+      <label for="id">ID:</label>
+      <input type="text" id="id" name="id" required /><br /><br />
+
+      <label for="name">이름:</label>
+      <input type="text" id="name" name="name" /><br /><br />
+
+      <label for="email">메일:</label>
+      <input type="text" id="email" name="email" /><br /><br />
+
+      <label for="position">직위:</label>
+      <select id="position" name="position">
+        <option value="" disabled selected>Select Position</option>
+        <option value="1">CEO</option>
+        <option value="2">CFO</option>
+        <option value="3">Director</option>
+        <option value="3">Manager</option>
+        <option value="4">Assistant Manager</option>
+        <option value="5">Staff</option></select
+      ><br /><br />
+
+      <label for="profileImage">프로필 사진:</label>
+      <input type="file" id="profileImage" name="profileImage" accept="image/*" /><br /><br />
+
+      <input type="submit" value="등록" />
+    </form>
+
+    <img id="previewImage" alt="Profile Image" style="display: none" />
+
+    <div class="profile-list"></div>
+  </body>
+</html>
