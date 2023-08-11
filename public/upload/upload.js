@@ -38,6 +38,7 @@
                       이메일 : email,
                       기타 : memo,   
                       이미지: url
+       
                     }
 
                     console.log(name,phone,email,rank,memo)

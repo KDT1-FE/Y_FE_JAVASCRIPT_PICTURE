@@ -17,24 +17,31 @@
       onload="this.rel = 'stylesheet'"
       href="main.css"
     />
-    <!-- <link rel="preload" as="style" href="reset.css">
-      <link rel="stylesheet" href="main.css"> -->
-    <!-- <link rel="preload" as="style" href="reset.css">
-      <link rel="preload" as="style" href="main.css">    -->
+
   </head>
   <body>
     <header>
-      <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️ </h1>
+      <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️</h1>
+      <div class="login">
+        <ul class="user-welcome">
+          <li class=" txt-r"><span> </span> 로그인 후 이용 해 주세요😁</li>
+          <li><button type="button"><a href="/login/login.html">회원가입/로그인</a></button></li>
+        </ul>
+      </div>
+      <div class="logout">
+        <ul class="user-welcome none">
+          <li class="txt-r"><span id="user-name"></span> 오늘도 힘차게!😁</li>
+          <li><button type="submit" id="logout-btn">로그아웃</button></li>
+        </ul>
+      </div>
       <nav class="nav">
-        <ul>
+        <ul class="gnb">
           <li><a href="/index.html">직원목록</a></li>
-          <li><a href="/upload.html">업로드</a></li>
-          <li><a href="/login.html">로그인</a></li>
+          <li><a href="/upload/upload.html">업로드</a></li>
           <li><a href="/">검색</a></li>
         </ul>
-      </nav>
+      </nav>    
     </header>
-
     <main id="employee" class="container">
       <div class="profile_title">
           <h6>이미지</h6>

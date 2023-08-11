@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🙋‍♀️employee picture</title>
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="/reset.css"> 
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="/main.css">
+    
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🙋‍♀️직원 사진 관리 서비스🙋‍♂️</h1>
+    <div class="login">
+      <ul class="user-welcome">
+        <li class=" txt-r"><span> </span> 로그인 후 이용 해 주세요😁</li>
+        <li><button type="button"><a href="/login/login.html">회원가입/로그인</a></button></li>
+      </ul>
+    </div>
+    <div class="logout">
+      <ul class="user-welcome none">
+        <li class="txt-r"><span id="user-name"></span> 오늘도 힘차게!😁</li>
+        <li><button type="submit" id="logout-btn">로그아웃</button></li>
+      </ul>
+    </div>
+    <nav class="nav">
+      <ul class="gnb">
+        <li><a href="/index.html">직원목록</a></li>
+        <li><a href="/upload/upload.html">업로드</a></li>
+        <li><a href="/">검색</a></li>
+      </ul>
+    </nav>    
+  </header>
+
+  <!-- 가입 -->
+  <section id="join" class="input-col" >
+    <h2> 회원가입 </h2>
+      <input type="text" class="form-input" placeholder="name" id="join__name">
+      <input type="email" class="form-input" placeholder="email" id="join__email">
+      <input type="password" class="form-input" placeholder="pw" id="join__pw">
+      <div class="btn-area">
+          <button type="submit" class="btn btn-join" id="join-btn">가입</button>
+      </div>
+  </section>
+
+  <!-- 로그인 -->
+  <section id="login" class="input-col">
+  <h2> 로그인 </h2>
+    <input type="email" class="form-input" placeholder="email" id="login__email">
+    <input type="password" class="form-input" placeholder="pw" id="login__pw">
+      <div class="btn-area">
+          <button type="submit" class="btn btn-login" id="login-btn">로그인</button>
+      </div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="/common.js"></script>
+  <script src="/login/login.js"></script>
+
+</body>
+</html>

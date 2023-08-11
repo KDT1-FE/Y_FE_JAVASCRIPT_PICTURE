@@ -1,6 +1,5 @@
 const joinBtn=document.getElementById('join-btn')
 const loginBtn=document.getElementById('login-btn')
-const logoutBtn=document.getElementById('logout-btn')
 
 //가입하기 버튼 누르면
 joinBtn.addEventListener("click",function(){
@@ -23,14 +22,12 @@ loginBtn.addEventListener("click",function(){
     const loginPw = document.getElementById("login__pw").value;
 
     firebase.auth().signInWithEmailAndPassword(loginEmail,loginPw).then((result)=>{
-        console.log('로그인 완료!'+result.user)
-        alert('로그인 완료!')
-        
+        alert('로그인 완료!')        
+        window.location.href="/index.html"
+        document.querySelector('.user-welcome').classList.remove('none');
+        document.querySelector('.logout').classList.remove('none');
+        document.querySelector('.login').classList.add('none');
     })
 });
 
-//로그아웃 버튼 누르면
-logoutBtn.addEventListener("click",function(){
-    firebase.auth().signOut();
-    alert('로그아웃 완료!')
-});
+
