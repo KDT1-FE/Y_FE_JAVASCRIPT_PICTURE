@@ -57,7 +57,7 @@ else{
 function deleteBoard(seq){
   Swal.fire({
     title: '프로필 삭제',
-    text: "삭제하시면 다시 복구시킬 수 없습니다.",
+    text: "선택된 프로필들이 삭제됩니다.",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

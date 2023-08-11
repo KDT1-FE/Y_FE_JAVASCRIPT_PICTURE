@@ -1,0 +1,51 @@
+#list {
+  margin-top: 3rem;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  border-top: 3px solid black;
+}
+
+.itemhead {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 3px solid black;
+
+}
+
+.item {
+  padding-top: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+  border-bottom: .5px solid #E2E2E2;
+}
+
+.item .checkbox {
+  width: 20%;
+}
+
+.defaultcheckbox {
+  cursor: pointer;
+}
+
+.item .image {
+  width: 20%
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  cursor: default;
+}
+
+.item .name,
+.item .group {
+  width: 20%;
+  cursor: default;
+}
+
