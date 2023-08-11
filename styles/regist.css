@@ -12,27 +12,48 @@
 .regist-text-input {
   border: 1px solid #dedede;
   border-radius: 5px;
-  margin-bottom: 1.875rem;
 }
 
 #profile_pic {
   width: 21.875rem;
   height: 21.875rem;
+  z-index: 10;
+  position: absolute;
+  left: 0;
 }
 
 .input-box {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 1.875rem;
+}
+
+#avatarBox {
+  position: relative;
+  overflow: hidden;
+  width: 21.875rem;
+  height: 21.875rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.avatar {
+  width: auto;
+  height: 100%;
+  z-index: 0;
 }
 
 .regist-text-input {
   height: 2.5rem;
-  padding: 1.25rem 0.625rem;
+  padding: 0 0.625rem;
+  margin-bottom: 1.875rem;
 }
 
 .submit-btn {
   background: #000000;
+  border: none;
   border-radius: 5px;
   height: 2.8125rem;
   color: white;
@@ -48,8 +69,7 @@
     flex-direction: row;
   }
 
-  #profile_pic {
-    margin-right: 1.875rem;
+  .input-box {
     margin-bottom: 0;
   }
 }

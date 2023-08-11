@@ -22,12 +22,14 @@
       <form class="regist-form">
         <div class="input-box">
           <label class="regist-label">프로필 이미지</label>
-          <input
-            type="file"
-            id="profile_pic"
-            name="profile_pic"
-            accept=".jpg, .jpeg, .png"
-          />
+          <div id="avatarBox">
+            <input
+              type="file"
+              id="profile_pic"
+              name="profile_pic"
+              accept=".jpg, .jpeg, .png"
+            />
+          </div>
         </div>
         <div class="input-box">
           <label class="hidden">프로필 이미지 URL</label>
@@ -35,10 +37,16 @@
           <label class="regist-label">이름</label>
           <input class="regist-text-input" placeholder="이름" />
           <label class="regist-label">이메일</label>
-          <input class="regist-text-input" placeholder="이메일" />
+          <input type="email" class="regist-text-input" placeholder="이메일" />
+          <label class="regist-label">전화번호</label>
+          <input class="regist-text-input" placeholder="전화번호" />
           <label class="regist-label">구분</label>
-          <input class="regist-text-input" placeholder="구분" />
-          <button class="submit-btn">완료</button>
+          <select class="regist-text-input">
+            <option selected>일반</option>
+            <option>VIP</option>
+            <option>VVIP</option>
+          </select>
+          <button type="submit" class="submit-btn">완료</button>
         </div>
       </form>
     </main>
