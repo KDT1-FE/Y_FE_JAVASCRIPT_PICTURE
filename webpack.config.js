@@ -2,7 +2,8 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    index: "./src/js/index.js"
+    index: "./src/js/index.js",
+    fb: "./src/js/fb.js"
   },
   mode: "development",
   output: {
