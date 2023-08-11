@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
 import { getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, addDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -66,6 +66,62 @@ function showImage(){
   const file = URL.createObjectURL(selectedFile);
   document.querySelector(".preview").src = file;
 }
+
+//id통해서 문서 갖고오는 거 테스트
+const docId = "AE2lWWrwBypbn5TQyFDe"; // 가져올 문서의 ID
+const docRef = doc(db, "profiles", docId); // 'profiles' 컬렉션에서 해당 ID의 문서 참조 생성
+
+getDoc(docRef)
+  .then((doc) => {
+    if (doc.exists()) {
+      console.log("Document data:", doc.data());
+      console.log("date", doc.data().date.seconds)
+      const img = document.getElementById('myimg');
+      img.setAttribute('src', doc.data().image);
+    } else {
+      console.log("No such document!");
+    }
+  })
+  .catch((error) => {
+    console.log("Error getting document:", error);
+  });
+
+  //profile collection 내에서 문서들 id 가져오기
+  async function fetchProfileIds() {
+    const profilesCollectionRef = collection(db, 'profiles');
+    
+    try {
+      const querySnapshot = await getDocs(profilesCollectionRef);
+      const profileIds = [];
+      querySnapshot.forEach((doc) => {
+      profileIds.push(doc.id);
+      });
+      return profileIds;
+    } catch (error) {
+      console.error("Error fetching profile IDs:", error);
+      return [];
+    }
+  }
+  //불러온 id들 담은 배열 반환
+  fetchProfileIds()
+    .then((profileIds) => {
+      console.log("Profile IDs:", profileIds);
+    })
+    .catch((error)=>{
+      console.error("Error:",error);
+    });
+
+
+  //등록 모달 띄우기
+  const addProfileBtn = document.querySelector(".btn__add");
+  const addProfileModal = document.querySelector(".modal__add-profile");
+  const closeBtn = document.querySelector(".close");
+  addProfileBtn.addEventListener("click",()=>{
+    addProfileModal.showModal();
+  })
+  closeBtn.addEventListener("click",()=>{
+    addProfileModal.close();
+  })
 
 
 //사진 불러오기
