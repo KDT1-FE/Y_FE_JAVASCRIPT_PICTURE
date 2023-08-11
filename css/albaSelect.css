@@ -1,23 +1,177 @@
+/* navbar 스타일 */
+.navbar {
+  position: fixed;
+  top: 0;
+  background-color: #3da557;
+  width: 100%;
+  height: 3rem;
+  z-index: 1000;
+}
+
+.wealba h2 {
+  text-align: center;
+  font-size: 30px;
+  font-family: "KBO-Dia-Gothic_bold";
+  color: #ffffff;
+  width: 8rem;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.list-container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* 버튼 컨테이너 스타일 */
+.button-container {
+  margin-top: 10px; /* 위쪽 여백 추가 */
+  margin-bottom: 10px;
+  padding: 0 20px; /* 좌우 여백 추가 */
+}
+
+
+.alba-register-button, .back-button {
+  background-color: #3da557;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.back-button {
+  margin-left: auto;
+}
+
 /* 알바생 관리 페이지 스타일 */
 .alba-manage {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 150px;
+  width: 100%;
 }
 
 .alba-list {
   border-collapse: collapse;
-  width: 80%;
-  margin: 0 auto;
+  width: 70%;
+  margin: auto;
 }
 
-.alba-list th,
+/* thead 스타일 */
+.alba-list thead {
+  background-color: #3da557;
+  color: white;
+}
+
+.alba-list th {
+  padding: 10px;
+}
+
+/* tbody 스타일 */
+.alba-list tbody {
+  border-top: 2px solid #ccc;
+}
+
+.alba-list tbody tr{
+  border-bottom: 2px solid #317931;
+}
+
 .alba-list td {
   padding: 10px;
-  border: 1px solid #ccc;
+  text-align: center; /* 텍스트 가운데 정렬 */
+  vertical-align: middle; /* 수직 가운데 정렬 */
+  font-size: 14px;
 }
 
 .select-checkbox {
   text-align: center;
+}
+
+/* 기존 체크박스 숨김처리 */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+  width: 31.19px;
+  margin: auto;
+}
+
+/* 체크박스 커스터마이징 */
+.checkmark {
+  --clr: #0B6E4F;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: 300ms;
+}
+
+/* 체크박스 체크시 */
+.container input:checked ~ .checkmark {
+  background-color: var(--clr);
+  border-radius: .5rem;
+  animation: pulse 500ms ease-in-out;
+}
+
+/* 체크박스 체크해제시 */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* 체크 상태에서 체크아이콘 표시 */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* 체크 아이콘 스타일 */
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #E0E0E2;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+/* 체크시 pulse 애니메이션 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #0B6E4F90;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #0B6E4F60;
+  }
+
+  100% {
+    box-shadow: 0 0 0 13px #0B6E4F30;
+    rotate: 0;
+  }
+}
+
+.alba-photo img {
+  width: 150px;
+  height: 200px;
 }
 
 .alba-info {
@@ -43,12 +197,19 @@
 
 /* 모바일 화면에 대한 반응형 스타일 */
 @media (max-width: 768px) {
-  .alba-list {
-    width: 100%;
+
+  .alba-photo img {
+    width: 50px;
+    height: 80px;
   }
 
   .alba-list th,
   .alba-list td {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .alba-list .th-img .alba-photo{
+    display: none;
+
   }
 }

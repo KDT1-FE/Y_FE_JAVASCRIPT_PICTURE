@@ -24,11 +24,6 @@ body {
   line-height: 6rem;
 }
 
-/* .alba-register h2::before{
-  width: 30rem;
-  background-color: #3da557;
-} */
-
 .alba-form {
   position: absolute;
   bottom: 0;
@@ -49,7 +44,6 @@ body {
 
 .registerForm {
   display: flex;
-  /* flex-direction: column; */
 }
 .image-upload {
   width: 150px;
@@ -180,7 +174,6 @@ img#preview {
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  
 }
 
 /* 알바생 등록 버튼 스타일 */
@@ -195,6 +188,11 @@ img#preview {
   color: #ffffff;
   cursor: pointer;
   width: 19.35rem;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #27813e;
 }
 
 /* "이전으로" 버튼 스타일 */
@@ -209,6 +207,12 @@ img#preview {
   margin-top: 10px;
   cursor: pointer;
   width: 19.35rem;
+  transition: all 0.3s;
+}
+
+.back-button:hover {
+  background-color: #c1f3ce;
+  color: #3da557;
 }
 
 /* 모바일 반응형 스타일 */
@@ -224,9 +228,6 @@ img#preview {
     text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
-    /* transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
-    animation-delay: 1s; */
     line-height: 6rem;
   }
 
@@ -258,10 +259,9 @@ img#preview {
   }
 
   .button-group {
-    margin: 0 ;
+    margin: 0;
     margin-top: 10px;
     margin-bottom: 10px;
-    
   }
 
   .back-button,
@@ -280,5 +280,4 @@ img#preview {
   .inputForm {
     max-width: 500px;
   }
-
 }
