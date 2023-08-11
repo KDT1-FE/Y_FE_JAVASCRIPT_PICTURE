@@ -1,5 +1,8 @@
 :root {
   --color-black: #1a1a1a;
+  --color-black-30: rgba(26, 26, 26, 0.3);
+  --color-black-10: rgba(26, 26, 26, 0.1);
+
   --color-white: #fff;
   --color-white-50: rgba(255, 255, 255, 0.5);
   --color-white-30: rgba(255, 255, 255, 0.3);
@@ -10,6 +13,90 @@
 }
 
 body {
+  margin: 0;
   background-color: var(--color-background);
   color: var(--color-black);
+}
+
+/* HEADER */
+header {
+  box-sizing: border-box;
+  padding: 0 1.8em;
+}
+
+header .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .top .title {
+  color: var(--color-highlight);
+}
+
+header .top .btns {
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+header .top .btns .btn {
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+
+header .top .btns .btn:hover {
+  cursor: pointer;
+  background-color: var(--color-black-10);
+}
+
+header .top .btns .toggle,
+header .top .btns .search {
+  --width: 46px;
+  width: var(--width);
+  height: var(--width);
+  border-radius: 50%;
+}
+
+header .top .btns .create {
+  padding: 6px 14px;
+  border: var(--color-black) solid 2px;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: 700;
+  transition: background-color 0.5s;
+}
+
+header .top .btns .create:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+header .bottom {
+  margin: 3em 0;
+  height: 4em;
+  text-align: center;
+  transition: height 0.2s linear;
+}
+
+header .bottom.hide {
+  margin: 1em 0;
+  height: 0;
+  overflow: hidden;
+}
+
+header .bottom .input {
+  padding: 0 1.2em;
+  background-color: transparent;
+  border: var(--color-black-30) solid 2px;
+  border-radius: 4px;
+  width: 50%;
+  height: 90%;
+  font-size: 18px;
+}
+
+header .bottom .input:focus {
+  outline: none;
+  border: var(--color-black) solid 2px;
 }
