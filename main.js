@@ -1,5 +1,6 @@
 const list  = document.getElementById('list');
 const btn1 = document.getElementById('nav-btn1');
+const btn2 = document.getElementById('nav-btn2')
 const checkBoxInput = document.getElementById('inputCheckbox')
 const profileImageInput = document.getElementById('inputImg');
 const nameInput = document.getElementById('inputName');
