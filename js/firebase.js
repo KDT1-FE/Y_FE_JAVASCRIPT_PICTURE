@@ -64,6 +64,7 @@ sortArr.forEach(sortList => {
         const searchValue = searchInput.value;
         getList(targetEl.value,searchValue)
         searchButton.value = targetEl.value
+        valueReturn(targetEl)
     })
 })
 
