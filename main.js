@@ -41,6 +41,7 @@ btn1.addEventListener('click', () => {
         checkBox.innerHTML = `
             <input type="checkbox" class="p-checkbox">
         `;
+
         employeeDiv.appendChild(checkBox);
           
         employeeDiv.appendChild(profileImageElement);
@@ -58,4 +59,16 @@ btn1.addEventListener('click', () => {
         alert('모든 필드를 입력하세요.');
     }
 });
+
+btn2.addEventListener('click', () => {
+    const selectCheckbox = document.querySelectorAll('.p-checkbox:checked')
+
+    selectCheckbox.forEach(checkBox => {
+        const listItem = checkBox.closest('.employee');
+        if(listItem) {
+            list.removeChild(listItem)
+        }
+
+    })
+})
 
