@@ -51,8 +51,8 @@ export async function uploadInfo() {
       imageElement.alt = `${name} (${group})`;
 
       const imageContainer = document.getElementById('list');
-      imageContainer.innerHTML = '';
-      imageContainer.appendChild(imageElement);
+      // imageContainer.innerHTML = '';
+      // imageContainer.appendChild(imageElement);
 
     } catch (error) {
       console.error('Error uploading image and information:', error);
