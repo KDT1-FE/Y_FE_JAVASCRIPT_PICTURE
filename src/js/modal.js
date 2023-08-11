@@ -10,7 +10,14 @@ function Modal(clickedButton, modalName) {
   const closeBtn = modal.querySelector(".dialog-close");
   return {
     init() {
+      const deleteIds = [];
       callBtn.addEventListener("click", (e) => {
+        // input 요소 클릭시 모달이 안켜지게 합니다.
+        if (e.target.tagName === "INPUT") {
+          // 삭제가 필요한 요소들을 배열에 담아 줍니다.
+          deleteIds.push(e.target.closest(".grid")?.id);
+          return;
+        }
         modal.showModal();
         if (e.target.closest(".grid")?.id === undefined) return;
         modal.dispatchEvent(

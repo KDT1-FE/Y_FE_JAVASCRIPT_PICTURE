@@ -2,9 +2,11 @@
  * 직원 정보 배열이 전달되면 #memberList 요소에 DOM을 삽입해줍니다.
  * @param {*} memberArr Member[] 배열이 필요합니다.
  */
-export function memberListHTML(memberArr) {
+export function memberListHTML(memberArr, more = false) {
   const memberListContainer = document.getElementById("memberList");
-  // memberListContainer.innerHTML = "";
+  if (!more) {
+    memberListContainer.innerHTML = "";
+  }
   memberArr.forEach((member) => {
     const memberListItem = memberListColHTML(member);
     memberListContainer.appendChild(memberListItem);

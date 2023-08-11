@@ -9,7 +9,7 @@ import { loadersvg } from "./loadersvg";
  * @param {*} element form data를 추출하고 싶은 요소를 전달합니다.
  * @returns init() function, formData
  */
-function FormData(element) {
+function FormData(element, type = "create") {
   const form = element.querySelector("form");
   const fileUpload = element.querySelector("#fileUpload");
   const dropZone = form.querySelector("#drop_zone");
@@ -19,54 +19,55 @@ function FormData(element) {
 
   return {
     init() {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        clearTimeout(timer);
-        const submitBtn = form.querySelector("button[type=submit]");
+      if (type === "create") {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          clearTimeout(timer);
+          const submitBtn = form.querySelector("button[type=submit]");
 
-        if (file === null || form.file === undefined) return;
-        try {
-          (async () => {
-            member.fullName = form.fullName.value;
-            member.email = form.email.value;
-            member.phone = form.phone.value;
-            member.category = form.category.value;
-            // 파일 업로드 하기 전에 비어 있는 지 확인 합니다.
-            if (!member.isNotEmpty()) {
-              return;
-            }
-            // 로더 애니메이션 삽입!
-            submitBtn.disabled = true;
-            submitBtn.classList.add("cursor-not-allowed");
-            submitBtn.classList.add("disabled:opacity-75");
-            submitBtn.innerHTML = loadersvg + " 업로드중..";
+          if (file === null || form.file === undefined) return;
+          try {
+            (async () => {
+              member.fullName = form.fullName.value;
+              member.category = form.category.value;
+              member.gender = form.gender.value;
+              member.email = form.email.value;
+              member.phone = form.phone.value;
+              // 파일 업로드 하기 전에 비어 있는 지 확인 합니다.
+              if (!member.isNotEmpty()) {
+                return;
+              }
+              // 로더 애니메이션 삽입!
+              submitBtn.disabled = true;
+              submitBtn.classList.add("cursor-not-allowed");
+              submitBtn.classList.add("disabled:opacity-75");
+              submitBtn.innerHTML = loadersvg + " 업로드중..";
 
-            // 파일 업로드 시작
-            const [imgUrl, fullFileName] = await uploadImage(file);
-            member.fileUrl = imgUrl;
-            member.fileName = fullFileName;
+              // 파일 업로드 시작
+              const [imgUrl, fullFileName] = await uploadImage(file);
+              member.fileUrl = imgUrl;
+              member.fileName = fullFileName;
 
-            // 직원을 firestore에 저장합니다.
-            const mid = await addMember(member);
-            if (mid) {
-              submitBtn.disabled = false;
-              submitBtn.classList.remove("cursor-not-allowed");
-              submitBtn.classList.remove("disabled:opacity-75");
-              submitBtn.innerHTML = "추가 완료";
-              // 폼의 내용들을 리셋합니다.
+              // 직원을 firestore에 저장합니다.
+              const mid = await addMember(member);
+              if (mid) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove("cursor-not-allowed");
+                submitBtn.classList.remove("disabled:opacity-75");
+                submitBtn.innerHTML = "추가 완료";
+                // 폼의 내용들을 리셋합니다.
 
-              timer = setTimeout(() => {
-                form.reset();
-                // 모달창을 닫습니다.
-                element.close();
-              }, 1000);
-            }
-          })();
-        } catch (error) {
-          console.error(error.message);
-        }
-      });
-      if (dropZone) {
+                timer = setTimeout(() => {
+                  form.reset();
+                  // 모달창을 닫습니다.
+                  element.close();
+                }, 1000);
+              }
+            })();
+          } catch (error) {
+            console.error(error.message);
+          }
+        });
         fileUpload.addEventListener("change", (e) => {
           file = e.target.files[0];
           createThumb(file);
@@ -101,6 +102,12 @@ function FormData(element) {
             file = item.getAsFile();
             createThumb(file);
           }
+        });
+      }
+      // delete mode
+      if (type === "delete") {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
         });
       }
     },
