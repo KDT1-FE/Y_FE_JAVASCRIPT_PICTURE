@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
 import { getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,10 +30,12 @@ imgFileInput.addEventListener('change', showImage);
 document.querySelector('.btn__upload').addEventListener('click', async function(){
   let profileContent = {
     name: document.querySelector('.profile__name').value,
-    content: document.querySelector('.profile__introduce').value,
     position: document.querySelector('.profile__position').value,
+    github: document.querySelector('.profile__github').value,
+    email: document.querySelector('.profile__email').value,
+    date: new Date(),
   };
-  if(profileContent.name && profileContent.content && profileContent.position && imgFileInput && imgFileInput.files.length>0){
+  if(profileContent.name && profileContent.position && profileContent.github && profileContent.email && imgFileInput && imgFileInput.files.length>0){
     try {
       const imgFile = imgFileInput.files[0];
       const storageRef = ref(storage, 'image/'+imgFile.name);
@@ -41,7 +43,6 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
       const snapshot = await uploadTask;
       const url = await getDownloadURL(snapshot.ref);
       const toSave = {
-        date: new Date(),
         image: url
       };
       Object.assign(profileContent,toSave);
@@ -68,7 +69,7 @@ function showImage(){
 }
 
 //id통해서 문서 갖고오는 거 테스트
-const docId = "AE2lWWrwBypbn5TQyFDe"; // 가져올 문서의 ID
+/*const docId = "17Hpoi66Q58jJVHiPzRs"; // 가져올 문서의 ID
 const docRef = doc(db, "profiles", docId); // 'profiles' 컬렉션에서 해당 ID의 문서 참조 생성
 
 getDoc(docRef)
@@ -84,7 +85,7 @@ getDoc(docRef)
   })
   .catch((error) => {
     console.log("Error getting document:", error);
-  });
+  });*/
 
   //profile collection 내에서 문서들 id 가져오기
   async function fetchProfileIds() {
@@ -102,26 +103,55 @@ getDoc(docRef)
       return [];
     }
   }
-  //불러온 id들 담은 배열 반환
-  fetchProfileIds()
-    .then((profileIds) => {
-      console.log("Profile IDs:", profileIds);
-    })
-    .catch((error)=>{
-      console.error("Error:",error);
-    });
+
+//profile카드 추가하기 관련 선언
+const profileContainer = document.querySelector('.container');
+let template = `
+  <a href="/"  class="item">
+    <div>
+      <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
+      <div class="text-container">
+        <h1>{{__profile_name__}}</h1>
+        <span>{{__profile_position__}}</span>
+        <span>{{__profile_github__}}</span>
+        <span>{{__profile_email__}}</span>
+      </div>
+    </div>
+  </a>
+`;
+//profile카드 추가하기
+const q = query(collection(db,"profiles"))
+onSnapshot(q,(querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    console.log('시작:',doc.data())
+    const newProfile = document.createElement("a")
+    newProfile.classList.add('item');
+    template = template.replace('{{__profile_image__}}',doc.data().image)
+                        .replace('{{__profile_name__}}', doc.data().name)
+                        .replace('{{__profile_position__}}',doc.data().position)
+                        .replace('{{__profile_github__}}',doc.data().github)
+                        .replace('{{__profile_email__}}',doc.data().email);
+    newProfile.innerHTML=template;
+    profileContainer.append(newProfile);
+    template = template.replace(doc.data().image,'{{__profile_image__}}')
+                        .replace( doc.data().name, '{{__profile_name__}}')
+                        .replace(doc.data().position,'{{__profile_position__}}')
+                        .replace(doc.data().github,'{{__profile_github__}}')
+                        .replace(doc.data().email,'{{__profile_email__}}');
+  });
+})
 
 
-  //등록 모달 띄우기
-  const addProfileBtn = document.querySelector(".btn__add");
-  const addProfileModal = document.querySelector(".modal__add-profile");
-  const closeBtn = document.querySelector(".close");
-  addProfileBtn.addEventListener("click",()=>{
-    addProfileModal.showModal();
-  })
-  closeBtn.addEventListener("click",()=>{
-    addProfileModal.close();
-  })
+//등록 모달 띄우기
+const addProfileBtn = document.querySelector(".btn__add");
+const addProfileModal = document.querySelector(".modal__add-profile");
+const closeBtn = document.querySelector(".close");
+addProfileBtn.addEventListener("click",()=>{
+  addProfileModal.showModal();
+})
+closeBtn.addEventListener("click",()=>{
+  addProfileModal.close();
+})
 
 
 //사진 불러오기
