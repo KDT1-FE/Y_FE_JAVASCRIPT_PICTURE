@@ -34,19 +34,30 @@ collectionRef.get().then((querySnapshot) => {
       </ul>
     `;
 
-    //div 추가
+    // div 추가
     villagerList.appendChild(villagerContainer);
 
     // img 가져오기
     const imageElement = villagerContainer.querySelector(".villager-img");
-    const imageRef = storage.ref().child(engName + ".webp");
-    imageRef
-      .getDownloadURL()
-      .then((url) => {
-        imageElement.src = url;
-      })
-      .catch((error) => {
-        console.error("Error getting download URL:", error);
-      });
+    //여러 확장자를 사용할 수 있도록
+    const possibleExtensions = [".webp", ".png", ".jpeg", ".jpg"];
+
+    let foundImage = false;
+    for (const extension of possibleExtensions) {
+      const imageRef = storage.ref().child(engName + extension);
+      imageRef
+        .getDownloadURL()
+        .then((url) => {
+          if (!foundImage) {
+            imageElement.src = url;
+            foundImage = true;
+          }
+        })
+        .catch((error) => {});
+
+      if (foundImage) {
+        break;
+      }
+    }
   });
 });
