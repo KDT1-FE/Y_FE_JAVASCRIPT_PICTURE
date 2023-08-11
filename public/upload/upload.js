@@ -52,7 +52,7 @@ document.getElementById("send").addEventListener("click", function () {
             기타: memo,
             이미지: url,
             uid: JSON.parse(localStorage.getItem("user")).uid,
-            username: JSON.parse(localStorage.getItem("user")).displayName,
+            username: JSON.parse(localStorage.getItem("user")).displayName
           };
 
           console.log(name, phone, email, rank, memo);
