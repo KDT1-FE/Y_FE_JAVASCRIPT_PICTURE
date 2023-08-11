@@ -6,6 +6,7 @@ import {
   getDocs,
   addDoc,
   setDoc,
+  deleteDoc,
 } from 'firebase/firestore';
 import { db, storage } from '../api/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -60,3 +61,7 @@ export const uploadData = async (data) => {
 export const setData = async (data, id) => {
   await setDoc(doc(db, 'list', id), data);
 };
+
+export const deleteData = (id) => {
+  deleteDoc(doc(db, 'list', id));
+}; // deleteDoc은 promise를 반환 fulfilled 되기까지 Promise 기다림
