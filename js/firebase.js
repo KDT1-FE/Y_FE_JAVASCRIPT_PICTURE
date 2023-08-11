@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { uploadError, modalOff, firebaseError } from "./nav.js";
 
@@ -29,29 +29,40 @@ export async function uploadInfo() {
 
   if (image && name && group) {
     try {
-      // Firebase Storage에 이미지 업로드
       const storage = getStorage();
       const storageRef = ref(storage, 'images/' + image.name);
       const uploadTask = uploadBytes(storageRef, image);
       await uploadTask;
 
-      // 업로드된 이미지의 다운로드 URL 가져오기
       const downloadURL = await getDownloadURL(storageRef);
 
-      // Firestore에 데이터 추가
       const imagesCollection = collection(db, 'images');
       await addDoc(imagesCollection, {
         name: name,
         group: group,
-        imageUrl: downloadURL // 다운로드 URL도 함께 저장
+        imageUrl: downloadURL
       });
-      console.log('이미지 및 정보 업로드 완료');
+
+      console.log('Image and information upload completed');
       modalOff();
+
+      const imageElement = document.createElement('img');
+      imageElement.src = downloadURL;
+      imageElement.alt = `${name} (${group})`;
+
+      const imageContainer = document.getElementById('list');
+      imageContainer.innerHTML = '';
+      imageContainer.appendChild(imageElement);
+
     } catch (error) {
-      console.error('이미지 및 정보 업로드 오류:', error);
+      console.error('Error uploading image and information:', error);
       firebaseError();
     }
   } else {
     uploadError();
   }
 }
+
+
+
+

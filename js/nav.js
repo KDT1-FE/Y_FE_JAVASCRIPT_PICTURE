@@ -7,9 +7,6 @@ const deletemodal = document.getElementById('modaldelete');
 const modal = document.querySelector('.modal-window');
 const imageInput = document.getElementById('imageInput');
 const uploadLabel = document.querySelector('.upload-button');
-const nameInput = document.getElementById('nameInput');
-const groupInput = document.getElementById('groupInput');
-
 imageInput.addEventListener('change', handleImageSelect);
 
 
