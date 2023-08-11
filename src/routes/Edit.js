@@ -68,9 +68,7 @@ export default class Edit extends Component {
       const data = {
         name: formData.get('name') === '' ? member.name : formData.get('name'),
         email:
-          formData.get('email') === ''
-            ? member.email
-            : FormDataEvent.get('email'),
+          formData.get('email') === '' ? member.email : formData.get('email'),
         photoUrl: photoUrl,
       };
 
