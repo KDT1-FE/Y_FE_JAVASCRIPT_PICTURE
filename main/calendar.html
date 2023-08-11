@@ -1,9 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>야놀자 (Yanolja)</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="shortcut icon" href="../images/favicon/favicon.ico" />
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/yanolja.min.js"></script>
+    <script src="../js/calendar.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="wrap">
+      <header class="header cfixed">
+        <h1 class="logo"><a href="../index.html">야놀자 (Yanolja)</a></h1>
+        <nav>
+          <ul class="nav">
+            <li><a href="../index.html">홈으로</a></li>
+            <li><a href="https://yanolja.in/">회사정보</a></li>
+            <li><a href="../main/photo.html">직원관리</a></li>
+            <li><a href="../main/calendar.html">회사캘린더</a></li>
+            <li><a href="../main/location.html">회사위치</a></li>
+          </ul>
+        </nav>
+        <span class="menu-toggle-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </header>
+
+      <section class="Calendar_wrap">
+        <div class="back">
+          <table class="Calendar">
+            <thead>
+              <tr>
+                <td onClick="prevCalendar();" style="cursor: pointer">&#60;</td>
+                <td colspan="5">
+                  <span id="calYear"></span>년 <span id="calMonth"></span>월
+                </td>
+                <td onClick="nextCalendar();" style="cursor: pointer">&#62;</td>
+              </tr>
+              <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+              </tr>
+            </thead>
+
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="content_section">
+          <button class="accordion">야놀자 8월 계획표</button>
+          <div class="panel">
+            <p style="font-weight: bold">
+              야놀자 회원 쿠폰 업로드<br />
+              특가야놀자 업데이트<br />
+              바로 받는 혜택 모음 수정<br />
+              기획전 최신화<br />
+            </p>
+          </div>
+
+          <button class="accordion">야놀자 9월 계획표</button>
+          <div class="panel">
+            <p style="font-weight: bold">
+              야놀자 회원 쿠폰 업로드<br />
+              특가야놀자 업데이트<br />
+              바로 받는 혜택 모음 수정<br />
+              기획전 최신화<br />
+            </p>
+          </div>
+
+          <button class="accordion">야놀자 10월 계획표</button>
+          <div class="panel">
+            <p style="font-weight: bold">
+              야놀자 회원 쿠폰 업로드<br />
+              특가야놀자 업데이트<br />
+              바로 받는 혜택 모음 수정<br />
+              기획전 최신화<br />
+            </p>
+          </div>
+
+          <button class="accordion">야놀자 11월 계획표</button>
+          <div class="panel">
+            <p style="font-weight: bold">
+              야놀자 회원 쿠폰 업로드<br />
+              특가야놀자 업데이트<br />
+              바로 받는 혜택 모음 수정<br />
+              기획전 최신화<br />
+            </p>
+          </div>
+
+          <button class="accordion">야놀자 12월 계획표</button>
+          <div class="panel">
+            <p style="font-weight: bold">
+              야놀자 회원 쿠폰 업로드<br />
+              특가야놀자 업데이트<br />
+              바로 받는 혜택 모음 수정<br />
+              기획전 최신화<br />
+            </p>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="copyright">Yanolja</p>
+      </footer>
+    </div>
+    <script src="./js/slide.js"></script>
+    <script src="../js/accord.js"></script>
+  </body>
 </html>

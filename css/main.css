@@ -1,0 +1,350 @@
+/* 캘린더 CSS */
+.Calendar_wrap {
+  background-color: rgba(255, 55, 115, 0.8);
+  padding-top: 10px;
+}
+
+.back {
+  background-color: white;
+  height: auto;
+  width: 400px;
+  margin: 0px;
+  padding: 20px;
+  margin: 100px auto;
+  border-radius: 5px;
+  box-shadow: 0px 40px 30px -20px rgba(0, 0, 0, 0.3);
+}
+
+td {
+  width: 50px;
+  height: 50px;
+}
+
+.Calendar {
+  text-align: center;
+}
+
+.Calendar > thead > tr:first-child > td {
+  font-family: "Questrial", sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.Calendar > thead > tr:last-child > td {
+  font-family: "Questrial", sans-serif;
+  font-weight: 600;
+}
+
+.Calendar > tbody > tr > td > p {
+  font-family: "Montserrat", sans-serif;
+  height: 45px;
+  width: 45px;
+  border-radius: 45px;
+  transition-duration: 0.2s;
+  line-height: 45px;
+  margin: 2.5px;
+  display: block;
+  text-align: center;
+}
+
+.pastDay {
+  color: lightgray;
+}
+
+.today {
+  background-color: #f5d042;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.futureDay {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.futureDay:hover {
+  background: #eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+  background: #0a174e;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cp_list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 아코디언 CSS */
+.accordion {
+  background-color: rgb(255, 75, 115);
+  color: #fff;
+  cursor: pointer;
+  padding: 1.25em;
+  padding: 1.25rem;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgb(255, 15, 115);
+  outline: none;
+  transition: 0.4s;
+  font-weight: bold;
+  font-family: NanumGothic, 나눔고딕, "Nanum Gothic", "맑은 고딕", HelveticaNeue,
+    DroidSans, Sans-serif, Helvetica;
+}
+
+.active,
+.accordion:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: black;
+}
+
+.panel {
+  padding: 10px 18px;
+  padding: 0.625rem 1.125rem;
+  line-height: 2;
+  background-color: lightcyan;
+  display: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+.panel ul {
+  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
+}
+
+.panel ul li {
+  padding: 10px;
+  background-color: #50c2ff;
+  margin-bottom: 1px;
+}
+
+.panel ul li:last-child {
+  margin-bottom: 0;
+}
+
+.panel ul li a {
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  font-size: 1rem;
+}
+
+.panel ul li a:hover {
+  color: #fff;
+  font-weight: bold;
+}
+
+.panel h4 {
+  font-size: 1.375em;
+  font-size: 1.375rem;
+  margin-bottom: -24px;
+  margin-bottom: -1.5rem;
+}
+
+/* 로그인 CSS */
+.login_form {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 55, 115, 0.8);
+  padding: 10px 0;
+}
+
+.card {
+  width: 40%;
+  padding: 2rem 4rem;
+  text-align: center;
+  background: #2a2b38;
+}
+
+.field {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: #1f2029;
+  border-radius: 4px;
+  padding: 1em 1em;
+}
+
+.input-icon {
+  height: 1.2em;
+  width: 1.2em;
+  fill: #ffeba7;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.title {
+  margin-bottom: 1.2rem;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: #f5f5f5;
+}
+
+.btn {
+  margin: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  padding: 1em 4em;
+  background-color: #ffeba7;
+  color: #5e6681;
+  box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+  transition: all 0.3s ease-in-out;
+}
+
+.field input:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover {
+  background-color: #5e6681;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+  cursor: pointer;
+}
+
+/* 로그인한뒤 */
+.main_form {
+  background-color: rgba(255, 55, 115, 0.8);
+}
+
+.nav_btn {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.nav_btn button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background-color: #fff;
+  font-weight: 500;
+}
+
+.nav_btn button:nth-child(2) {
+  margin: 0 8px 0 8px;
+}
+
+.nav_btn button:hover {
+  background-color: lightskyblue;
+  color: #fff;
+}
+
+/* search input */
+
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #fff;
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+
+.input::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus,
+input:hover {
+  outline: none;
+  border-color: rgba(234, 76, 137, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+}
+
+.nav_menu {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.nav_menu h2 {
+  color: #fff;
+}
+
+.management {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+/* 태블릿용 CSS */
+@media all and (min-width: 768px) {
+  .title {
+    font-size: 1.4em;
+  }
+
+  .input-icon {
+    height: 1.6em;
+    width: 1.6em;
+  }
+
+  .btn {
+    padding: 1.6em 4em;
+  }
+
+  .field {
+    padding: 2em 1em;
+  }
+}
+
+/* PC용 CSS */
+@media all and (min-width: 1132px) {
+  .title {
+    font-size: 2.1em;
+  }
+
+  .card {
+    padding: 14rem 3rem;
+  }
+
+  .input-icon {
+    height: 2em;
+    width: 2em;
+  }
+
+  .btn {
+    padding: 2em 6em;
+  }
+}
