@@ -60,6 +60,11 @@ body {
   display: none;
 }
 
+.chooseImg-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .profile-right {
   padding: 3rem;
   width: 100%;
@@ -127,9 +132,9 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 2rem;
-  position: fixed; /* Set the position to fixed */
-  bottom: 2rem; /* Adjust the bottom spacing */
-  z-index: 999; /* Ensure it's above other content */
+  position: fixed;
+  bottom: 2rem;
+  z-index: 999;
 }
 
 .add-btn:hover {
