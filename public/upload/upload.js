@@ -34,23 +34,15 @@ document.getElementById("send").addEventListener("click", function () {
           //이미지 url 가져오기
           console.log("업로드된 경로는", url);
 
-          const name = document.getElementById("name").value;
-          const tel = document.getElementById("tel").value;
-          const phone = document.getElementById("phone").value;
-          const email = document.getElementById("email").value;
-          const team = document.getElementById("team").value;
-          const rank = document.getElementById("rank").value;
-          const memo = document.getElementById("memo").value;
-
-          const saveData = {
-            이름: name,
-            내선번호: tel,
-            소속팀: team,
-            직급: rank,
-            연락처: phone,
-            이메일: email,
-            기타: memo,
-            이미지: url,
+          let saveData = {
+            name : document.getElementById("name").value,
+            ext : document.getElementById("tel").value,
+            team :  document.getElementById("team").value,
+            rank : document.getElementById("rank").value,
+            phone: document.getElementById("phone").value,
+            email : document.getElementById("email").value,
+            memo: document.getElementById("memo").value,
+            img: url,
             uid: JSON.parse(localStorage.getItem("user")).uid,
             username: JSON.parse(localStorage.getItem("user")).displayName
           };

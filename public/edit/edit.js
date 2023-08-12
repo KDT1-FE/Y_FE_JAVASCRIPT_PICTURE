@@ -5,13 +5,13 @@ queryString.get('id')
 
 db.collection('member').doc(queryString.get('id')).get().then((result) => {
     console.log(result.data())
-    document.getElementById("name").value =` ${result.data().이름}`;
-    document.getElementById("tel").value=`${result.data().내선번호}`;
-    document.getElementById("phone").value=`${result.data().연락처}`;
-    document.getElementById("email").value=`${result.data().이메일}`;
-    document.getElementById("team").value=`${result.data().소속팀}`;
-    document.getElementById("rank").value=`${result.data().직급}`;
-    document.getElementById("memo").value=`${result.data().기타}`;
+    document.getElementById("name").value =` ${result.data().name}`;
+    document.getElementById("tel").value=`${result.data().ext}`;
+    document.getElementById("phone").value=`${result.data().phone}`;
+    document.getElementById("email").value=`${result.data().email}`;
+    document.getElementById("team").value=`${result.data().team}`;
+    document.getElementById("rank").value=`${result.data().rank}`;
+    document.getElementById("memo").value=`${result.data().memo}`;
 });
 
 
@@ -20,13 +20,13 @@ const editBtn= document.querySelector('.edit__edit-btn');
 editBtn.addEventListener('click',function(){
     
     let editDB = {
-        이름 : document.getElementById("name").value,
-        내선번호 : document.getElementById("tel").value,
-        연락처 : document.getElementById("phone").value,
-        이메일 : document.getElementById("email").value,
-        소속팀 : document.getElementById("team").value,
-        직급 : document.getElementById("rank").value,
-        기타 : document.getElementById("memo").value
+        name : document.getElementById("name").value,
+        ext : document.getElementById("tel").value,
+        phone : document.getElementById("phone").value,
+        email : document.getElementById("email").value,
+        team : document.getElementById("team").value,
+        rank : document.getElementById("rank").value,
+        memo : document.getElementById("memo").value
     }    
 
     console.log(editDB)
