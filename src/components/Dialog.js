@@ -95,9 +95,9 @@ export default class Dialog extends Component{
           localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
           console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
           modal.close() 
+          location.replace(`/#/champion?name=${obj.name}`)
         }
         )
- 
 
       function changeInformation(){
         return new Promise((resolve,reject)=>{
