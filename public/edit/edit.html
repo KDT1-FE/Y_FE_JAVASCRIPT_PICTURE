@@ -36,19 +36,37 @@
       </ul>
     </nav>    
   </header>
+          
+  <section id="edit" class="input-col">
+    <h2> 정보 수정</h2>
+    <div class="input-con">
+      <input type="text" class="form-input" id="name" placeholder=" 이름">
+      <input type="text" class="form-input" id="tel" placeholder=" 내선번호 000-0000">
+      <input type="text" class="form-input" id="phone" placeholder=" 휴대폰 번호 010-0000-0000">
+      <input type="text" class="form-input" id="email" placeholder=" id@email.com">
+      <input type="text" class="form-input" id="team" placeholder="소속팀">
+      <input type="text" class="form-input" id="rank" placeholder="직급">
+      <textarea class="form-text" id="memo" placeholder=" memo"></textarea>
+    </div>
+    <div class="upload-area pos-r">
+        <label for="image" class="custom-upload">사진 업로드</label>
+        <input class="form-file" type="file" id="image">
+    </div> 
+      <div class="btn-area">
+          <button class="btn edit__edit-btn">수정하기</button>
+      </div>
+   
+  </section>  
 
-  <!-- 상세정보 -->
-  <section id="detail" >
-    <h2>상세정보</h2>
-    <dd class="txt-r"><button class="detail__edit-btn" type="button">수정하기</button></dd>
-  </section>
-
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   <!-- 제이쿼리 -->
   <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
   <script defer src="/common.js"></script>
-  <script defer src="/detail/detail.js"></script>
+  <script defer src="/edit/edit.js"></script>
+
+</script>
+
+  
 </body>
 </html>
