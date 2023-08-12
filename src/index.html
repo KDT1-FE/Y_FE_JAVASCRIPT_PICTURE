@@ -104,12 +104,17 @@
             autocomplete="off"
             required
           /> -->
-          <select name="position" id="position">
-            <option value="">select your position</option>
-            <option value="student">student</option>
-            <option value="manager">manager</option>
-            <option value="educator">educator</option>
-          </select>
+          <div class="select">
+            <div class="arrow">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <select name="position" id="position">
+              <option selected>select your position</option>
+              <option value="student">student</option>
+              <option value="manager">manager</option>
+              <option value="educator">educator</option>
+            </select>
+          </div>
         </div>
 
         <button type="submit" class="form__input-submit input input-submit">
@@ -165,13 +170,24 @@
         <!-- 학교 정보 등 추가 -->
         <div class="form__input-position input input-text">
           <label for="edit-position">직책</label>
-          <input
+          <!-- <input
             type="text"
             name="position"
             id="edit-position"
             autocomplete="off"
             required
-          />
+          /> -->
+          <div class="select">
+            <div class="arrow">
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <select name="position" id="edit-position">
+              <option selected>select your position</option>
+              <option value="student">student</option>
+              <option value="manager">manager</option>
+              <option value="educator">educator</option>
+            </select>
+          </div>
         </div>
         <button type="submit" class="form__input-submit input input-submit">
           Update
