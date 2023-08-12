@@ -1,8 +1,6 @@
 import { innerHTML } from "./header.js";
-import { uploadInfo } from "./firebase.js";
 const insertbutton=document.getElementById('insert');
 const deletebutton=document.getElementById('delete');
-const insertmodal = document.getElementById('modalinsert');
 const deletemodal = document.getElementById('modaldelete');
 const modal = document.querySelector('.modal-window');
 const imageInput = document.getElementById('imageInput');
@@ -41,7 +39,6 @@ export function modalOff() {
 
 deletemodal.addEventListener('click',modalOff);
 
-insertmodal.addEventListener('click', uploadInfo);
 
 if(innerHTML==="로그아웃"){
   insertbutton.addEventListener('click',()=>{
