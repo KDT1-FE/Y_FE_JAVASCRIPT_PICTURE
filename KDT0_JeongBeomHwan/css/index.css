@@ -1,0 +1,50 @@
+@import url(./common.css);
+
+/* color */
+/* --color-sidebar: #2a2f4a;
+--color-blue700: #3a7bdf;
+--color-blue500: #9dbdef;
+--color-blue100: #fafcff;
+--color-black: #000;
+--color-white700: #fff;
+--color-gray100: #f9f9fa;
+--color-gray200: #e5e9ed;
+--color-gray300: #c7cdd1;
+*/
+
+body {
+  background-color: var(--color-sidebar);
+}
+
+#login-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 16px;
+  width: 448px;
+  height: 586px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white700);
+}
+
+#login-form img {
+  margin-top: 101px;
+  width: 314px;
+}
+
+#login-form button {
+  font-size: 16px;
+  width: 343px;
+  height: 56px;
+  color: var(--color-white700);
+  background-color: var(--color-blue700);
+  border-radius: 12px;
+  border: none;
+  margin-top: 40px;
+  font-family: pretendard;
+}

@@ -1,0 +1,229 @@
+/* 
+  --color-sidebar: #2a2f4a;
+  --color-sidebar-hover: #374b6a;
+  --color-sidebar-focus: #43618f;
+  --color-blue700: #3a7bdf;
+  --color-blue500: #9dbdef;
+  --color-blue100: #fafcff;
+  --color-black: #000;
+  --color-white700: #fff;
+  --color-gray100: #f9f9fa;
+  --color-gray200: #e5e9ed;
+  --color-gray300: #c7cdd1;
+  --color-gray400: #9fa5ac;
+*/
+
+/* 
+
+  메인 영역
+
+*/
+main.main-container {
+  width: calc(100% - var(--size-sidebar));
+}
+
+/* 메인 - 헤더 */
+.main-container_header {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-gray200);
+}
+
+h1.main-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: 80px;
+  margin-top: 32px;
+}
+
+.main-toolbar {
+  height: 50px;
+  margin: 24px 80px 12px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-toolbar_desc span:first-child {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.main-toolbar_desc span:last-child {
+  margin-left: 6px;
+}
+
+.main-toolbar_rightcontainer {
+  display: flex;
+  align-items: center;
+}
+
+.main-toolbar_rightcontainer input[type="search"] {
+  height: 32px;
+  width: 194px;
+  border: 1px solid var(--color-gray200);
+  border-radius: 4px;
+  padding: 8px;
+  place-content: var(--color-gray400);
+  box-sizing: border-box;
+}
+
+.main-toolbar_rightcontainer input[type="search"]:hover {
+  border: 1px solid var(--color-blue500);
+}
+
+.main-toolbar_rightcontainer input::placeholder {
+  color: var(--color-gray400);
+}
+
+.main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons {
+  margin-left: 32px;
+}
+
+.main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons button:last-child {
+  margin-left: 16px;
+}
+
+.main-toolbar_filter-container {
+  margin-left: 32px;
+}
+
+.main-toolbar_filter-container span {
+  font-size: 14px;
+}
+
+.main-toolbar_filter-container select {
+  margin-left: 8px;
+  width: 142px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-gray200);
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.main-toolbar_filter-container select:hover {
+  border: 1px solid var(--color-blue500);
+}
+
+/* 메인 - 리스트 테이블 */
+.listtable-container {
+  height: calc(100vh - var(--size-main-header) - var(--size-header));
+  padding-top: 22px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.listtable-tablehead {
+  background-color: var(--color-gray100);
+  height: 38px;
+  margin: 0 80px 0 80px;
+  display: flex;
+  align-items: center;
+}
+
+.listtable-column {
+  width: 210px;
+  font-size: 14px;
+}
+
+.listtable-column:first-child input {
+  margin: 0 38px 0 12px;
+}
+
+.listtable-column.e-mail {
+  width: 270px;
+}
+
+.listtable-tablerows-container {
+  height: calc(100% - 50px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 80px;
+  position: relative;
+}
+
+#no-profile {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-gray300);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* 직원카드(EMPLOYEE-CARD) */
+.employeecard-container {
+  height: 122px;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid var(--color-gray200);
+}
+
+.employeecard-column {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.employeecard-column input[type="checkbox"] {
+  margin: 0 38px 0 12px;
+}
+
+.employeecard-column .employeecard-column_profilecard {
+  width: 106px;
+  height: 106px;
+  background-color: var(--color-gray100);
+}
+
+.employeecard-column.e-mail {
+  width: 270px;
+}
+
+.employeecard-container:hover {
+  background-color: var(--color-blue100);
+}
+
+.employeecard-container:last-child {
+  border-bottom: none;
+}
+
+.employeecard-column.name {
+  display: flex;
+}
+
+.employeecard-column.name .ko-name {
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.employeecard-column.name .en-name {
+  color: var(--color-gray400);
+}
+
+.employeecard-container .employeecard-column.icon-area span {
+  margin-right: 32px;
+
+  display: none;
+}
+.employeecard-container:hover .employeecard-column.icon-area span {
+  display: flex;
+  color: var(--color-gray400);
+}
+
+.employeecard-container:hover .employeecard-column.icon-area span:hover {
+  color: var(--color-blue500);
+  cursor: pointer;
+}

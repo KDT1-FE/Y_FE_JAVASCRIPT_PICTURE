@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>직원 프로필 관리 | Profile Base</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- GOOGLE MATERIAL ICONS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <!-- GSAP & ITS SCROLLTO PLUGIN -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
+      integrity="sha512-v/m68W+vaGN/6igoyFpd4GlQzu0jx9/n5gr2PKq5vif+RObyGKHse384YHrOULaxZ810XhlHUrmB3U8UnPB19Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- JS -->
+    <script defer src="../javascripts/main.js"></script>
+  </head>
+  <body>
+    <!-- 
+
+      헤더 바
+
+     -->
+    <header class="header-container">
+      <img class="header-logo" src="../images/main_logo_width-long.png" alt="logo" />
+      <div class="header-userinfo">
+        <span class="header-userinfo_greeting">안녕하세요 님</span>
+        <a class="header-userinfo_logout" href="./index.html">로그아웃</a>
+      </div>
+    </header>
+    <!-- 
+      
+      dim & popups 
+    
+    -->
+    <section class="viewport-constraint">
+      <!-- 
+
+      사이드 메뉴
+
+     -->
+      <nav class="sidemenu-container">
+        <div class="sidemenu-smalltitle">관리</div>
+        <div class="sidemenu-container_buttons">
+          <a class="sidemenu-container_btn-sidebar focused" href="./main.html">
+            <span class="material-symbols-outlined"> groups </span>
+            <span>직원 프로필 관리</span>
+          </a>
+          <a class="sidemenu-container_btn-sidebar" href="#">
+            <span class="material-symbols-outlined"> apartment </span>
+            <span>회사・팀 정보 관리</span>
+          </a>
+        </div>
+      </nav>
+      <!-- 
+
+      메인 파트
+
+     -->
+      <main class="main-container">
+        <header class="main-container_header">
+          <h1 class="main-title">직원 프로필 관리</h1>
+          <section class="main-toolbar">
+            <div class="main-toolbar_desc">
+              <span>직원 수</span>
+              <span>명</span>
+            </div>
+            <div class="main-toolbar_rightcontainer">
+              <input type="search" placeholder="직원 이름 검색" />
+              <div class="main-toolbar_filter-container">
+                <span>정렬</span>
+                <select name="teams" id="filter-teams">
+                  <option value="all">전체</option>
+                  <option value="develop">개발</option>
+                  <option value="design">디자인</option>
+                  <option value="planning">기획</option>
+                  <option value="ai">AI</option>
+                  <option value="people">피플</option>
+                </select>
+                <select name="orders" id="filter-order">
+                  <option value="by-registered">등록순</option>
+                  <option value="by-alphabet">가나다순</option>
+                </select>
+              </div>
+              <div class="main-toolbar_rightcontainer_buttons">
+                <button class="btn-sm outlined">선택 삭제하기</button>
+                <button class="btn-sm filled">직원 추가하기</button>
+              </div>
+            </div>
+          </section>
+        </header>
+        <section class="listtable-container">
+          <div class="listtable-tablehead">
+            <div class="listtable-column">
+              <input type="checkbox" />
+              <span>프로필 사진</span>
+            </div>
+            <div class="listtable-column">이름</div>
+            <div class="listtable-column e-mail">이메일</div>
+            <div class="listtable-column">연락처</div>
+            <div class="listtable-column">팀 ・ 부서</div>
+            <div class="listtable-column">관리자 여부</div>
+          </div>
+          <!-- 리스트 부분 -->
+          <div class="listtable-tablerows-container">
+            <span id="no-profile">등록된 직원 프로필이 없습니다 :|</span>
+            <!-- 카드가 쌓일 부분 -->
+            <article class="employeecard-container">
+              <div class="employeecard-column profile-check">
+                <input type="checkbox" />
+                <div class="employeecard-column_profilecard"></div>
+              </div>
+              <div class="employeecard-column name">
+                <span class="ko-name">정범환</span>
+                <span class="en-name">James</span>
+              </div>
+              <div class="employeecard-column e-mail">
+                <span>jove0729@naver.com</span>
+              </div>
+              <div class="employeecard-column tel">
+                <span>010-4922-3563</span>
+              </div>
+              <div class="employeecard-column team">
+                <span>개발팀</span>
+              </div>
+              <div class="employeecard-column author">
+                <span>관리자</span>
+              </div>
+              <div class="employeecard-column icon-area">
+                <span class="material-symbols-outlined">edit_note</span>
+                <span class="material-symbols-outlined">delete</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </section>
+  </body>
+</html>
