@@ -5,7 +5,7 @@ export default class Search extends Component{
   render(){
     this.el.classList.add('search')
     this.el.innerHTML=/* html */`
-      <input placeholder="가렌"> 
+      <input placeholder="ex) 가렌"> 
       <span class="btn-wrap">
         <button class="btn btn-search"> 검색 </button>
         <button class="btn btn-reset"> 초기화 </button>
@@ -31,6 +31,7 @@ export default class Search extends Component{
     resetBtnEl.addEventListener('click',()=>{
       localStorage.clear()
       setLocalStorage()
+      location.reload()
     })
 
     const addBtnEl = this.el.querySelector('.btn-add')
@@ -39,7 +40,6 @@ export default class Search extends Component{
     })
     const deleteBtnEl = this.el.querySelector('.btn-delete')
     deleteBtnEl.addEventListener('click',()=>{
-      
     })
   }
 }

@@ -17,13 +17,9 @@ export default class Icon extends Component{
     this.el.append(iconImgEl)
 
 
-    const infoEl = document.createElement('div')
-    infoEl.classList.add("info-div")
-    infoEl.textContent = this.props
-    this.el.append(infoEl)
-
-    // iconImgEl.addEventListener("click",()=>{
-    //   infoEl.classList.toggle('hide')
-    // })
+    // const infoEl = document.createElement('div')
+    // infoEl.classList.add("info-div")
+    // infoEl.textContent = this.props
+    // this.el.append(infoEl)
   }
 }

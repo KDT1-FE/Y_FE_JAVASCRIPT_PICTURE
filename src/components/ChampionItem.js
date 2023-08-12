@@ -10,7 +10,7 @@ export default class ChampionItem extends Component{
   }
   render(){
     const champion = this.props
-
+    this.el.setAttribute("href",`#/champion?name=${champion.name}`)
     this.el.classList.add('champion')
     this.el.style.backgroundImage = `url(${champion.thumbnail})`
     this.el.innerHTML = /* html */`
