@@ -34,7 +34,7 @@ villagerDocRef
         <li class="villager-info-li"><p>${birthday}</p></li>
         <li class="villager-info-li"><p>${personality}</p></li>
         <li class="villager-info-li"><p>${favoriteColor}</p></li>
-        <li class="villager-info-li"><p>${speechHabit}</p></li>
+        <li class="villager-info-li"><p>"${speechHabit}"</p></li>
     `;
 
       // div 추가
