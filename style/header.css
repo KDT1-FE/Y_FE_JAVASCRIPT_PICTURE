@@ -1,0 +1,37 @@
+.main-header-top {
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.header-text1 {
+    padding-bottom: 50px;
+    font-size: 35px;
+}
+
+.main-header-middle {
+    display: flex;
+    justify-content: space-between; /* 요소들을 좌우로 공간을 가지고 정렬 */
+}
+
+.register-btn {
+    padding: 10px;
+    margin-right: 5px;
+    width: 100px;
+}
+
+.delete-btn {
+    padding: 10px;
+    width: 100px;
+}
+.main-header-middle-search {
+    margin-left: 10px; /* 필요한 여백을 설정하여 입력 상자와 다른 요소 사이의 간격 조절 */
+    padding-bottom: 20px;
+}
+
+.main-header-middle-search input[type="text"] {
+    width: 200px;
+    font-size: 14px; /* 텍스트 크기 조절 */
+    padding: 10px; /* 텍스트와 입력 상자의 경계 사이의 여백 조절 */
+}
