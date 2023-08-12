@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
@@ -63,9 +63,25 @@ onSnapshot(q,(querySnapshot) => {
                         .replace(doc.data().introduce,'{{__profile_introduce__}}');
     itemNumber++;
 
+    //삭제 버튼 생성
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.addEventListener("click", ()=>{
+      deleteDocument(doc.id);
+    });
+    newProfile.appendChild(deleteButton); //여기 CSS하면서 수정하기
+
+    //수정 버튼 생성
+    const modifyBtn = document.createElement("button");
+    modifyBtn.textContent = "✎";
+    modifyBtn.addEventListener("click",()=>{
+      console.log("수정!")
+    });
+    newProfile.appendChild(modifyBtn);
+
+
     // 해시값 변화 감지
     window.addEventListener("hashchange", handleHashChange);
-
     // 초기 로딩 시 해시값에 따른 초기 상태 설정
     handleHashChange();
   });
@@ -75,8 +91,21 @@ function handleHashChange() {
   const hash = location.hash;
   const itemId = hash.substring(1);
   const targetItem = document.getElementById(itemId);
-  console.log(targetItem)
   if (targetItem) {
     targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+}
+
+
+function deleteDocument(documentId) {
+  const documentRef = doc(db, "profiles", documentId);
+
+  deleteDoc(documentRef)
+    .then(() => {
+      console.log("삭제 완료!");
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("삭제 중 오류 발생", error);
+    });
 }
