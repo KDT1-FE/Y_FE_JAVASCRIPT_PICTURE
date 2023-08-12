@@ -26,6 +26,11 @@
 }
 
 .item .checkbox {
+  cursor: pointer;
+  width: 20%;
+}
+
+.item .noncheckbox {
   width: 20%;
 }
 

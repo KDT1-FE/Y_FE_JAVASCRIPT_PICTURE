@@ -6,11 +6,18 @@ const insertmodal = document.getElementById('modalinsert');
 const deletemodal = document.getElementById('modaldelete');
 const modal = document.querySelector('.modal-window');
 const imageInput = document.getElementById('imageInput');
+const nameInput = document.getElementById('nameInput');
+const groupInput = document.getElementById('groupInput');
 const uploadLabel = document.querySelector('.upload-button');
 
 
 imageInput.addEventListener('change', handleImageSelect);
 
+function clearInputValues() {
+  uploadLabel.textContent = '사진';
+  nameInput.value = '';
+  groupInput.value = '';
+}
 
 function handleImageSelect(event) {
   const selectedImage = event.target.files[0];
@@ -27,6 +34,7 @@ function modalOn() {
 
 export function modalOff() {
   modal.style.display = "none";
+  clearInputValues();
   document.body.classList.remove('modal-open');
 }
 
@@ -44,6 +52,7 @@ if(innerHTML==="로그아웃"){
   deletebutton.addEventListener('click',()=>{
     deleteBoard();
   })
+
 }
 else{
   insertbutton.addEventListener('click',()=>{
@@ -52,6 +61,7 @@ else{
   deletebutton.addEventListener('click',()=>{
     login();
   })
+
 }
 
 function deleteBoard(seq){

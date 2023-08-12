@@ -1,11 +1,12 @@
-function is_allchecked() {
-  
-  const allcheckbox = document.getElementById("allcheckbox");
-  const checkboxes = document.querySelectorAll('.checkbox');
+const allcheckbox = document.getElementById("allcheckbox");
+const checkboxes = document.querySelectorAll('.checkbox');
+const deletebutton = document.getElementById('delete');
+
+allcheckbox.addEventListener('click',()=>{
   checkboxes.forEach(checkbox => {
-    checkbox.checked = allcheckbox.checked;
-  });
-}
+  checkbox.checked = allcheckbox.checked;
+});
+})
 
 const defaultcheckbox = document.querySelectorAll('.defaultcheckbox');
 defaultcheckbox.forEach(element => {
