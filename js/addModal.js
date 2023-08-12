@@ -7,5 +7,10 @@ addProfileBtn.addEventListener("click",()=>{
 })
 closeBtn.addEventListener("click",()=>{
   document.querySelector(".preview").src = "./assets/images/human_icon.png";
+  document.querySelector('.profile__name').value="";
+  document.querySelector('.profile__position').value="";
+  document.querySelector('.profile__github').value="";
+  document.querySelector('.profile__email').value="";
+  document.querySelector('.profile__introduce').value="";
   addProfileModal.close();
 })

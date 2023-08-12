@@ -38,6 +38,7 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
     position: document.querySelector('.profile__position').value,
     github: document.querySelector('.profile__github').value,
     email: document.querySelector('.profile__email').value,
+    introduce: document.querySelector('.profile__introduce').value,
     date: new Date(),
   };
   if(profileContent.name && profileContent.position && profileContent.github && profileContent.email && imgFileInput && imgFileInput.files.length>0){
@@ -73,9 +74,12 @@ let template = `
       <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
       <div class="text-container">
         <h1>{{__profile_name__}}</h1>
-        <span>position : {{__profile_position__}}</span>
-        <span>github : {{__profile_github__}}</span>
-        <span>email : {{__profile_email__}}</span>
+        <span class="subtitle">🌞 POSITION</span>
+        <span>{{__profile_position__}}</span>
+        <span class="subtitle">🔥 GITHUB</span>
+        <span>{{__profile_github__}}</span>
+        <span class="subtitle">📧 EMAIL</span>
+        <span>{{__profile_email__}}</span>
       </div>
     </div>
 `;
