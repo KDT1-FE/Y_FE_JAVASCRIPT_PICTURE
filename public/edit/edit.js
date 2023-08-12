@@ -17,8 +17,7 @@ db.collection('member').doc(queryString.get('id')).get().then((result) => {
 
 // 수정버튼 클릭 시
 const editBtn= document.querySelector('.edit__edit-btn');
-editBtn.addEventListener('click',function(){
-    
+editBtn.addEventListener('click',function(){    
     let editDB = {
         name : document.getElementById("name").value,
         ext : document.getElementById("tel").value,
@@ -29,10 +28,16 @@ editBtn.addEventListener('click',function(){
         memo : document.getElementById("memo").value
     }    
 
-    console.log(editDB)
-
     db.collection('member').doc(queryString.get('id')).update(editDB)
-    // window.location.href='/detail/detail.html?id='+ queryString.get('id')
-    // console.log(queryString.get('id'))
+    window.location.href='/detail/detail.html?id='+ queryString.get('id')
+});
+
+
+const deleteBtn= document.querySelector('.edit__delete-btn');
+deleteBtn.addEventListener('click',function(){
+    db.collection('member').doc(queryString.get('id')).delete().then(()=>{
+        alert('삭제되었습니다.');
+        window.location.href='/'
+    })
 });
 

@@ -21,8 +21,7 @@ db.collection('member').doc(queryString.get('id')).get().then((result) => {
             </div>
         </dl>                
         `
-    const wrap = document.querySelector('#detail')
-    wrap.insertAdjacentHTML('beforeend',templateDetail)
+    document.querySelector('.detail-area').insertAdjacentHTML('beforeend',templateDetail)
 });
 
 
@@ -30,6 +29,18 @@ const detailEditBtn= document.querySelector('.detail__edit-btn');
 detailEditBtn.addEventListener('click',function(){
     window.location.href='/edit/edit.html?id='+ queryString.get('id')
 });
+
+const detailDeleteBtn= document.querySelector('.detail__delete-btn');
+detailDeleteBtn.addEventListener('click',function(){
+    db.collection('member').doc(queryString.get('id')).delete().then(()=>{
+        alert('삭제되었습니다.');
+        window.location.href='/'
+    })
+
+
+});
+
+
 
 
 
