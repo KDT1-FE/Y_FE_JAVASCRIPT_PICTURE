@@ -17,6 +17,11 @@ header {
         border: none;
         background-color: transparent;
         padding: 1rem;
+
+        i {
+          color: $bg-gray-900;
+          font-size: 1rem;
+        }
       }
 
       .header__btn-add-user {
