@@ -1,0 +1,25 @@
+.main-middle {
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.middle-menu {
+    display: flex;
+}
+
+.middle-checkbox {
+    width: 30px;
+    
+}
+.middle-text-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* 요소들 사이의 간격을 최대로 확보하여 정렬 */
+    align-items: center; /* 요소들을 수직으로 중앙 정렬 */
+}
+
+.middle-text {
+    flex-grow: 1; /* 요소들이 가능한 최대 공간을 차지하도록 설정 */
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    padding: 10px; /* 텍스트와 요소 경계 사이의 여백 조절 */
+}
