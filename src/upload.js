@@ -1,3 +1,4 @@
+import { onSnapshot } from "./displayUserList";
 import { uploadImageToStorage, uploadInfoToDatabase } from "./uploadImage";
 
 const addForm = document.querySelector(".form-add");

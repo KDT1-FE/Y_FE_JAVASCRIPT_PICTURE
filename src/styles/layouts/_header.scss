@@ -1,20 +1,58 @@
 header {
   .header__container {
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    padding: 2rem;
-    background-color: map-get($map: $theme-colors, $key: bg-primary);
+    padding: 10px;
+    z-index: 10000;
+    background-color: $bg-gray-50;
 
     .header__nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
 
+      .header__home-btn {
+        border: none;
+        background-color: transparent;
+        padding: 1rem;
+      }
+
       .header__btn-add-user {
         i {
           font-size: 1.2rem;
           padding: 1rem;
           cursor: pointer;
+        }
+      }
+
+      .header__search-user {
+        position: relative;
+        width: 200px;
+        cursor: pointer;
+
+        .header__btn-search-user {
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          position: absolute;
+          font-size: 1rem;
+        }
+
+        .header__input-search {
+          font-size: 1rem;
+          width: 100%;
+          padding: 8px;
+          padding-right: calc(1rem + 20px);
+          border: none;
+          outline: none;
+          border: 1px solid $bg-gray-900;
+          border-radius: 8px;
+
+          &:focus {
+            border: 2px solid;
+          }
         }
       }
     }

@@ -12,5 +12,6 @@ import "./deleteUser";
 import "./editUser";
 import "./btnEvents";
 import "./formValidation";
+import "./searchUser";
 
 console.log("connected");
