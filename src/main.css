@@ -159,8 +159,11 @@ body{
 
 .specific-img{
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: grey;
 }
 
 .btn-edit{

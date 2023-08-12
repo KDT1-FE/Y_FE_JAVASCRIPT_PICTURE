@@ -1,5 +1,4 @@
 import { Component } from "../core/core"
-import championStore, { setLocalStorage } from "../store/champion"
 import Icon from "../components/Icon"
 import Dialog from '../components/Dialog'
 
@@ -7,10 +6,6 @@ import Dialog from '../components/Dialog'
 export default class Champion extends Component{
   constructor(){
     super()
-    championStore.subscribe("storage",()=>{
-      console.log('champion.js rendering')
-      this.render()
-    })
   }
   render(){
     console.log('is it render?')
@@ -22,7 +17,8 @@ export default class Champion extends Component{
     this.el.style.backgroundColor = 'black' 
     this.el.innerHTML = /* html */`
       <div class="specific-inner-container">
-        <img class='specific-img'>
+        <div class="specific-img">
+        </div>
         <button class="btn btn-edit"> 수정 </button>
         <div class="specific-info">
           <div class="specific-info-name"> 
@@ -41,7 +37,7 @@ export default class Champion extends Component{
       </div>
     `
 
-    this.el.querySelector('.specific-img').setAttribute('src',champion.image)
+    this.el.querySelector('.specific-img').style.backgroundImage = `url(${champion.image})`
     const createDiv = text => {
       const divEl = document.createElement('div')
       divEl.innerHTML = text
