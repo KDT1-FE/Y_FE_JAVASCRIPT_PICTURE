@@ -8,19 +8,36 @@
   </head>
   <body>
     <div class="member-container">
-      <h2>⭐ 멤버 추가</h2>
+      <h2>⭐ 캐릭터 추가</h2>
       <br />
       <hr />
       <div class="member-create-list">
-        <input type="file" id="member-image" /><br />
-        <input type="text" id="member-name" placeholder="이름" /><br />
-        <input type="text" id="member-country" placeholder="국적" /><br />
-        <input type="text" id="member-birth" placeholder="생년월일" /><br />
-        <input type="text" id="member-creator" placeholder="제작" /><br />
-        <button class="member-create-button" type="button">
-          <!-- onclick="window.location.href='index.html'" -->
-          캐릭터 등록
-        </button>
+        <input type="file" id="member-image" class="member-image" /><br />
+        <input
+          type="text"
+          id="member-name"
+          class="member-name"
+          placeholder="이름"
+        /><br />
+        <input
+          type="text"
+          id="member-country"
+          class="member-country"
+          placeholder="국적"
+        /><br />
+        <input
+          type="text"
+          id="member-birth"
+          class="member-birth"
+          placeholder="생년월일"
+        /><br />
+        <input
+          type="text"
+          id="member-creator"
+          class="member-creator"
+          placeholder="제작"
+        /><br />
+        <button type="submit" class="create-button">캐릭터 등록</button>
       </div>
     </div>
 
@@ -28,6 +45,58 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDYAsOP-H0K5dsd9TPEs2yoCl93VLIjq7s",
+        authDomain: "member-65170.firebaseapp.com",
+        projectId: "member-65170",
+        storageBucket: "member-65170.appspot.com",
+        messagingSenderId: "395536268148",
+        appId: "1:395536268148:web:f7f0c315826abb00ed0a21",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="./member.js"></script>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      const name = document.querySelector(".member-name");
+      const country = document.querySelector(".member-country");
+      const birth = document.querySelector(".member-birth");
+      const creator = document.querySelector(".member-creator");
+      const createButton = document.querySelector(".create-button");
+
+      createButton.addEventListener("click", () => {
+        const file = document.querySelector(".member-image").files[0];
+        const storageRef = storage.ref();
+        const imgPath = storageRef.child("image/" + file.name);
+
+        imgPath
+          .put(file)
+          .then((snapshot) => {
+            return snapshot.ref.getDownloadURL();
+          })
+          .then((path) => {
+            const addChar = {
+              사진: path,
+              이름: name.value,
+              국적: country.value,
+              생년월일: birth.value,
+              제작: creator.value,
+            };
+
+            return db.collection("character").add(addChar);
+          })
+          .then(() => {
+            window.location.href = "./index.html";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    </script>
   </body>
 </html>

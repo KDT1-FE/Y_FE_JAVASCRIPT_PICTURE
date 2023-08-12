@@ -40,7 +40,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 .member-create:hover,
@@ -82,5 +82,28 @@ body {
 }
 
 .member-create-list {
-  margin: 100px;
+  margin: 10px;
+}
+
+.create-button {
+  padding: 10px 10px;
+  margin-top: 10px;
+  background-color: bisque;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: #ffd19a;
+}
+
+.member-name,
+.member-birth,
+.member-country,
+.member-creator {
+  padding: 10px 10px;
+  margin-top: 10px;
+  border: 1px solid;
+  border-radius: 4px;
 }
