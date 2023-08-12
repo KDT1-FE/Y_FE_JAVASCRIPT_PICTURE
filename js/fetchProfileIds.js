@@ -1,7 +1,7 @@
-//profile collection 내에서 문서들 id 가져오기
 import * as _ from "../index.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, collection, getDocs} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+//profile collection 내에서 문서들 id 가져오기
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

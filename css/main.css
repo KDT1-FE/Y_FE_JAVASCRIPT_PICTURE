@@ -1,23 +1,8 @@
-/* header */
-header{
-  font-weight: 900;
-  position:relative;
-  margin:10px 0px;
-  padding:2rem;
-  box-shadow: 5px 5px 5px lightgray;
-}
-.menu-container{
-  display: inline;
-  position:absolute;
-  right:2rem;
-}
-.menu-container a{
-  padding:0px 20px;
-}
-
 /* human resources section */
 section h1{
   font-size:2rem;
+  text-align: center;
+  margin:8rem 0px 3rem;
 }
 .btn__add{
   display: block;
