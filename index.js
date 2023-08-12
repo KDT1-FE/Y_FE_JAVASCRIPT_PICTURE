@@ -16,7 +16,7 @@ const firebaseConfig = {
   authDomain: "photo-management-service.firebaseapp.com",
   projectId: "photo-management-service",
   storageBucket: "photo-management-service.appspot.com",
-  messagingSenderId: "110781159358",
+  messagingSbuttonenderId: "110781159358",
   appId: "1:110781159358:web:e9b8fbdc3e60c979178bef",
   measurementId: "G-E657JQPN7T"
 };
@@ -69,7 +69,6 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
 //profile카드 추가하기 관련 선언
 const profileContainer = document.querySelector('.container');
 let template = `
-  <a href="/"  class="item">
     <div>
       <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
       <div class="text-container">
@@ -79,15 +78,16 @@ let template = `
         <span>email : {{__profile_email__}}</span>
       </div>
     </div>
-  </a>
 `;
 //profile카드 추가하기
 const q = query(collection(db,"profiles"))
+let itemNumber = 0;
 onSnapshot(q,(querySnapshot) => {
   querySnapshot.forEach((doc) => {
-    console.log('시작:',doc.data())
+    //console.log('시작:',doc.data())
     const newProfile = document.createElement("a")
     newProfile.classList.add('item');
+    //newProfile.setAttribute("href", `https://www.naver.com-${itemNumber}`); //
     template = template.replace('{{__profile_image__}}',doc.data().image)
                         .replace('{{__profile_name__}}', doc.data().name)
                         .replace('{{__profile_position__}}',doc.data().position)
@@ -100,5 +100,6 @@ onSnapshot(q,(querySnapshot) => {
                         .replace(doc.data().position,'{{__profile_position__}}')
                         .replace(doc.data().github,'{{__profile_github__}}')
                         .replace(doc.data().email,'{{__profile_email__}}');
+    itemNumber++;
   });
 })

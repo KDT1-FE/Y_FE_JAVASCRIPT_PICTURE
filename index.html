@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/modal.css">
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
   <header>
-    <span>SOLMI KOH</span>
+    <span class="header-name">SOLMI KOH</span>
     <div class="menu-container">
       <a href="/">
         <span>Human Resources</span>
@@ -22,28 +23,47 @@
       </a>
     </div>
   </header>
-  <h1>인재관리</h1>
-  <button class="btn__add">등록</button>
+  <section>
+    <h1>Human Resources</h1>
+    <button class="btn__add">ADD</button>
+    <div class="container"></div>
+  </section>
   <dialog class="modal__add-profile">
-    <span> 안녕하세요🖐 프로필을 등록해주세요</span>
-    <button class="close">X</button>
+    <div class="guide-text"> 안녕하세요!🖐 프로필을 등록해주세요</div>
+    <button class="btn__close">X</button>
     <form>
         <div class="image">
-          <img class="preview" src="./assets/images/human_icon.png" alt="">
+          <img class="preview" src="./assets/images/human_icon.png" alt="preview">
           <input type="file" id="avatar" name="avatar" accept="image/*" />
-          <label for="avatar">📷 이미지 선택 📷</label>
+          <label for="avatar">SELECT PROFILE IMAGE</label>
         </div>
-        <div class="profile">
-          <input type="text" class="profile__name">
-          <input type="text" class="profile__position">
-          <input type="text" class="profile__github">
-          <input type="text" class="profile__email">
-          <input type="button" class="btn__upload" value="저장">
+        <div class="input-profile">
+          <div class="input-profile-grid">
+            <div>
+              <span>NAME</span>
+              <input type="text" class="profile__name">
+            </div>
+            <div>
+              <span>POSITION</span>
+              <input type="text" class="profile__position">
+            </div>
+            <div>
+              <span>GITHUB</span>
+              <input type="text" class="profile__github">
+            </div>
+            <div>
+              <span>EMAIL</span>
+              <input type="text" class="profile__email">
+            </div>
+            <div>
+              <span>INTRODUCE</span>
+              <input type="text" class="profile__introduce">
+            </div>
+          </div>
+          <input type="button" class="btn__upload" value="OK">
         </div>
     </form>
   </dialog>
-  <div class="container"></div>
-
   <!-- <div>
     <img id="myimg" src="" alt="test">
   </div> -->

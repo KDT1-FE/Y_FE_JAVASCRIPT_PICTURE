@@ -1,3 +1,41 @@
+/* header */
+header{
+  font-weight: 900;
+  position:relative;
+  margin:10px 0px;
+  padding:2rem;
+  box-shadow: 5px 5px 5px lightgray;
+}
+.menu-container{
+  display: inline;
+  position:absolute;
+  right:2rem;
+}
+.menu-container a{
+  padding:0px 20px;
+}
+
+/* human resources section */
+section h1{
+  font-size:2rem;
+}
+.btn__add{
+  display: block;
+  justify-content: center;
+  margin:0px auto;
+  width: 5rem;
+  height: 2rem;
+  background-color: rgb(173, 255, 80);
+  border-radius: 10px;
+  border:none;
+  font-weight: 900;
+  cursor:pointer;
+  transition:background-color 0.5s, color 0.3s;
+}
+.btn__add:hover{
+  background-color: rgb(0, 0, 0);
+  color:rgb(173, 255, 80);
+}
 .container{
   display: grid;
   justify-content: center;
@@ -7,9 +45,16 @@
   margin:100px 30px;
 }
 .item {
-  background-color:rgba(255, 248, 210, 0.747);
+  background-color:rgb(240, 255, 224);
+  box-shadow: 7px 7px 7px lightgray;
   border-radius: 20px;
   justify-content: center;
+  transition:background-color 0.3s, color 0.2s;
+  cursor: pointer;
+}
+.item:hover{
+  background-color: rgb(0, 0, 0);
+  color:rgb(173, 255, 80);
 }
 .item:nth-child(1){
   grid-row:1/3;
@@ -43,22 +88,6 @@
 }
 .text-container h1{
   text-align: center;
+  margin:2rem 0px;
   padding-bottom: 20px;
-}
-
-.button{
-  width:10px;
-}
-.preview{
-  width:150px;
-  height:150px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-label {
-  cursor: pointer;
-}
-#avatar {
-  display: none;
 }
