@@ -24,20 +24,22 @@ body {
   padding: 4rem;
 }
 
+.main-top {
+  width: 17.2rem;
+}
+
 .main-top-text {
   margin-bottom: 2.5rem;
   color: #456252;
   font-size: 3rem;
 }
 
-.add-button,
-.delete-button {
-  width: 7rem;
-  height: 3rem;
+.add-button {
+  width: 100%;
+  height: 4rem;
   border-radius: 1rem;
   border-style: none;
-  font-size: 1rem;
-  margin-right: 1rem;
+  font-size: 1.3rem;
   background-color: #71b38f;
   color: #3f5d4d;
   font-weight: 600;
@@ -95,12 +97,18 @@ body {
   background-color: #fdf6e8;
   cursor: pointer;
   color: #71b38f;
-  margin-bottom: 3rem;
 }
 
 .villager:hover {
   transition: 0.4s;
   background-color: #ebedae;
+}
+
+.delete-villager {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: flex-end;
 }
 
 .villager .villager-img {
@@ -111,12 +119,26 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.5rem;
-  margin: 1rem 0;
+  margin: 3rem 0 0 0;
 }
 
 .villager-info-li {
   float: left;
   font-size: 1.4rem;
   font-weight: 600;
+  margin-top: 3rem;
+}
+
+.delete-button {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 1rem;
+  border-style: none;
+  font-size: 1rem;
+  background-color: #71b38f;
+  color: #3f5d4d;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 4.5rem;
+  margin-bottom: 2rem;
 }

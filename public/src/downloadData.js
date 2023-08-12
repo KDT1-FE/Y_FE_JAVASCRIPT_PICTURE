@@ -22,16 +22,19 @@ collectionRef.get().then((querySnapshot) => {
 
     // 어떤 구조로 들어갈지
     villagerContainer.innerHTML = `
-      <ul class="villager-info-ul">
-        <li class="villager-info-li">
-          <img class="villager-img" src="" />
-        </li>
-        <li class="villager-info-li"><p>${name}</p></li>
-        <li class="villager-info-li"><p class="sex">${sex}</p></li>
-        <li class="villager-info-li"><p>${birthday}</p></li>
-        <li class="villager-info-li"><p>${personality}</p></li>
-        <li class="villager-info-li"><p>${favoriteColor}</p></li>
-      </ul>
+    <ul class="villager-info-ul">
+      <li class="villager-info-li">
+        <img class="villager-img" src="" />
+      </li>
+      <li class="villager-info-li"><p>${name}</p></li>
+      <li class="villager-info-li"><p class="sex">${sex}</p></li>
+      <li class="villager-info-li"><p>${birthday}</p></li>
+      <li class="villager-info-li"><p>${personality}</p></li>
+      <li class="villager-info-li"><p>${favoriteColor}</p></li>
+    </ul>
+    <div class="delete-villager">
+      <button class="delete-button">주민 삭제</button>
+    </div>
     `;
 
     // div 추가
@@ -61,6 +64,43 @@ collectionRef.get().then((querySnapshot) => {
           })
           .catch((error) => {});
       }
+    });
+
+    // "주민 삭제" 버튼 기능
+    const deleteButton = villagerContainer.querySelector(".delete-button");
+    deleteButton.addEventListener("click", () => {
+      // 삭제할 주민의 ID 가져오기
+      const villagerId = doc.id;
+
+      // firestore에서 데이터 삭제
+      db.collection("villager")
+        .doc(villagerId)
+        .delete()
+        .then(() => {
+          // Storage에서 이미지 삭제
+          imageFormats.forEach((format) => {
+            const imageRef = storage.ref().child(engName + format);
+            imageRef
+              .delete()
+              .then()
+              .catch((error) => {
+                console.error("이미지 삭제 오류:", error);
+              });
+          });
+
+          // UI에서 해당 주민 컨테이너 제거
+          villagerList.removeChild(villagerContainer);
+          alert("주민이 성공적으로 삭제되었습니다.");
+        })
+        .catch((error) => {
+          console.error("주민 삭제 오류:", error);
+        });
+    });
+
+    const villagerInfoUl = villagerContainer.querySelector(".villager-info-ul");
+    villagerInfoUl.addEventListener("click", (event) => {
+      const villagerId = villagerContainer.getAttribute("data-id");
+      window.location.href = `profile.html?id=${villagerId}`;
     });
   });
 });
