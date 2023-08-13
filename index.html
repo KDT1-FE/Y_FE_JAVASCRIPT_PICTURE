@@ -1,26 +1,87 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azkaban</title>
+    <title>AZKABAN : Despair Of Prison</title>
+    <link rel="shortcut icon" href="icon/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" href="icon/favicon-32.png" sizes="32x32">
+    <link rel="shortcut icon" href="icon/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="icon/favicon-64.png" sizes="64x64">
+    <link rel="shortcut icon" href="icon/favicon-128.png" sizes="128x128">
     <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-    <link rel="stylesheet" href="./src/main.css">           
+    <link rel="stylesheet" href="./src/main.css">
 </head>
+
 <body>
     <nav>
         <div class="menubar">
             <div class="menubarTop">
-                <img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고">              
-                <input placeholder="Looking for Prisoner?"></input>
+                <img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고">
+                <input placeholder="Looking for Prisoner?" class="searchPrisoner"></input>
+                <div class="glowing"></div>
             </div>
             <div class="menubarMid">
-                <div class="HpText">History</div>
-                <div class="HpText">Roles</div>
+                <div class="HpText"><p> History </p></div>
+                <div class="HpText"><p> Roles </p></div>
             </div>
             <div class="menubarBot">
-                <button>IMPRISON</button>
-                <button>RELEASE</button>
+                <button class="imprisonBtn">IMPRISON</button>
+                <div class="modal imprison hidden">
+                    <div class="modalBg"></div>
+                    <div class="modalBox">
+                        <h1>IMPRISONMENT</h1>
+                        <p>Good job, wizard.
+                            <br>the sorcerer's society is a little bit closer to justice.
+                            <br>Please enter the information of the prisoner.
+                        </p>
+                        <form id="infoForm">
+                            <br>
+                            <div class="prisonerName">
+                                <label for="prisonerName">Prisoner Name:</label>
+                                <input type="text" id="prisonerName" name="name" placeholder="Name?" required>    
+                            </div>
+                                             
+                            <div class="prisonerLv">
+                                <label for="prisonerLv">Prisoner Lv:</label>
+                                <select id="prisonerLv" name="prisonerLv">
+                                    <option value="Never Release">Never Release</option>
+                                    <option value="Pure Evil">Pure Evil</option>
+                                    <option value="Eye Of Goat">Eye Of Goat</option>
+                                    <option value="Rotten Cucumber">Rotten Cucumber</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="prisonerPhoto">
+                                <label for="prisonerPhoto">Prisoner Mugshot</label><br>                                
+                                <input type="file" id="prisonerPhoto" name="photo" accept="image/*" required>
+                            </div>
+                                                     
+                        </form>
+                        
+                        <button class="approveBtn">Approve</button>
+                        <button class="dismissBtn">Dismiss</button>
+                    </div>
+                    <script>
+                        // Modal open
+                        const openModal = () => {
+                            document.querySelector(".modal").classList.remove("hidden");
+                        }
+
+                        const closeModal = () => {
+                            document.querySelector(".modal").classList.add("hidden");
+                        }
+
+                        document.querySelector(".imprisonBtn").addEventListener("click", openModal);
+                        document.querySelector(".dismissBtn").addEventListener("click", closeModal);
+                        document.querySelector(".modalBg").addEventListener("click", closeModal);
+
+                        // form submit
+
+                    </script>
+                </div>
+                <button class="releaseBtn">RELEASE</button>
             </div>
         </div>
     </nav>
@@ -30,23 +91,24 @@
             <!-- Insert PrisonCell -->
             <div class="prison">
                 <div class="prisonCell" style="background-image: url(image/벨라트릭스\ 머그샷.jpg);">
-                    <p class="PrisonerName">Bellatrix Lestrange</p>
+                    <p class="prisonerName">Bellatrix Lestrange</p>
                 </div>
                 <div class="prisonCell" style="background-image: url(image/그린델왈드\ 머그샷.jpg);">
-                    <p class="PrisonerName">Gellert Grindelwald</p>
+                    <p class="prisonerName">Gellert Grindelwald</p>
                 </div>
                 <div class="prisonCell" style="background-image: url(image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
-                    <p class="PrisonerName">Dolores Umbridge</p>
+                    <p class="prisonerName">Dolores Umbridge</p>
                 </div>
                 <div class="prisonCell" style="background-image: url(image/루시우스\ 말포이\ 머그샷.jpg);">
-                    <p class="PrisonerName">Lucius Malfoy</p>
+                    <p class="prisonerName">Lucius Malfoy</p>
                 </div>
                 <div class="prisonCell" style="background-image: url(image/시리우스\ 블랙\ 머그샷.jpg);">
-                    <p class="PrisonerName">Sirius Black</p>
+                    <p class="prisonerName">Sirius Black</p>
                 </div>
             </div>
         </div>
     </main>
-    
+
 </body>
+
 </html>
