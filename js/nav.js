@@ -1,4 +1,5 @@
 import { innerHTML } from "./header.js";
+import { deleteBoard } from "./firebase.js";
 const insertbutton=document.getElementById('insert');
 const deletebutton=document.getElementById('delete');
 const deletemodal = document.getElementById('modaldelete');
@@ -61,22 +62,6 @@ else{
 
 }
 
-function deleteBoard(seq){
-  Swal.fire({
-    title: '프로필 삭제',
-    text: "선택된 프로필들이 삭제됩니다.",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '삭제',
-    cancelButtonText: '취소'
-  }).then((result) => {
-    if (result.value) {
-      // 체크된 프로필만큼 삭제하는 로직
-    }
-  })
-}
 
 function login(){
   Swal.fire({

@@ -152,6 +152,7 @@ function createProfileElement(item) {
   itemEl.append(imageEl);
   itemEl.append(nameEl);
   itemEl.append(groupEl);
+
   return { itemEl, checkboxEl, innerimage, nameEl, groupEl };
 }
 
@@ -205,4 +206,39 @@ allcheckbox.addEventListener('click', () => {
     }
   });
 });
+
+export function deleteBoard(){
+  Swal.fire({
+    title: '프로필 삭제',
+    text: "선택된 프로필들이 삭제됩니다.",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '삭제',
+    cancelButtonText: '취소'
+  }).then((result) => {
+    if (result.value) {
+      // 체크된 프로필만큼 삭제하는 로직
+      // item.complete인 것들 localstorage 및 firebase storage, firebase db에서 지우기
+      
+      const itemcompleted = document.querySelectorAll('.item.complete');
+      itemcompleted.forEach(completeditems => {
+        const imageUrl = completeditems.querySelector('.image img').src;
+        const profileItem = profiles.find(profile => profile.image === imageUrl);
+        if(profileItem){
+          // console.log(profileItem.id);
+          profiles=profiles.filter(p => p.id !== profileItem.id)
+          completeditems.remove();
+        }
+        // localstorage의 id를 찾아서 화면에서 지우고
+        // localstroage 내부의 imageurl, name, age를 통해 firebase storage, firebase db에서 지우기
+        // 다 한 다음에 savelocalstorage
+        
+      });
+      saveToLocalStorage();
+
+    }
+  })
+}
 
