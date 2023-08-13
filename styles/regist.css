@@ -54,7 +54,7 @@
 
 .submit-btn,
 .modify-submit-btn {
-  background: #000000;
+  background-color: #000000;
   border: none;
   border-radius: 5px;
   height: 2.8125rem;
@@ -64,7 +64,7 @@
 
 .submit-btn:hover,
 .modify-submit-btn:hover {
-  background: #292929;
+  background-color: #292929;
 }
 
 @media only screen and (min-width: 769px) {

@@ -31,8 +31,12 @@
 }
 
 .regist {
-  background-color: #109010;
+  background-color: #000000;
   color: white;
+}
+
+.regist:hover {
+  background-color: #292929;
 }
 
 @media only screen and (min-width: 1025px) {
