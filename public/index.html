@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="./styles/index.css" type="text/css" />
+    <link rel="stylesheet" href="./styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="./styles/main.css" type="text/css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="./index.js" defer type="module"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCRGQbFr6N75QKYWEc87ize36EV0nZDkjk",
+        authDomain: "member-management-bc4f1.firebaseapp.com",
+        projectId: "member-management-bc4f1",
+        storageBucket: "member-management-bc4f1.appspot.com",
+        messagingSenderId: "6436543004",
+        appId: "1:6436543004:web:c47939788df0d5b8f99dd9",
+        measurementId: "G-L4Q3J34JT6",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      db.collection("userlist")
+        .get()
+        .then((res) => {
+          res.forEach((doc) => {
+            console.log(doc.data());
+          });
+        });
+    </script>
+  </head>
+  <body class="body">
+    <header class="header">
+      <div class="header__user-info-box">
+        <img src="./images/user/user.png" alt="userImg-icon" />
+        <p class="user_name">김춘삼</p>
+        <p class="user_division">관리자</p>
+      </div>
+      <nav class="header__sub-menu-box">
+        <button class="header__sub-menu-list-btn">
+          임직원 목록
+          <img src="./images/icons/list.png" alt="list-icon" />
+        </button>
+        <button class="header__sub-menu-add-btn">
+          임직원 등록
+          <img src="./images/icons/plus.png" alt="plus-icon" />
+        </button>
+      </nav>
+      <nav class="header__user-menu-box">
+        <button class="heaser__user-menu-userinfo-btn">
+          내 정보확인
+          <img src="./images/icons/user.png" alt="userInfo-icon" />
+        </button>
+        <button class="heaser__user-menu-logout-btn">
+          로그아웃
+          <img src="./images/icons/logout.png" alt="logout-icon" />
+        </button>
+      </nav>
+    </header>
+    <main class="main"></main>
+  </body>
+</html>
