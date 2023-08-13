@@ -81,6 +81,7 @@ registerButton.addEventListener('click', () => {
 
     // 등록 후 모달 닫기
     modalWrap.style.display = 'none';
+    window.parent.postMessage('modalClosed', '*');
 });
 
 
