@@ -7,6 +7,12 @@
 
   z-index: 100;
   background-color: white;
+
+  transition: 0.3s;
+}
+
+.shadow {
+  box-shadow: 0px 0px 15px -2px gray;
 }
 
 .header-nav {
