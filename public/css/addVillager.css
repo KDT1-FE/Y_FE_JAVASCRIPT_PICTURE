@@ -1,7 +1,7 @@
 @import "reset.css";
 
 body {
-  background-image: url("../assets/graphics/addVillager-backgroundImg.webp");
+  background-image: url("../assets/graphics/addVillager-backgroundImg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
