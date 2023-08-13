@@ -191,6 +191,38 @@ body {
 .outlined:hover {
   background-color: var(--color-blue100);
 }
+
+/* 
+
+  toast
+
+*/
+.toast-message {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  height: 50px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(100, 100, 100, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-white700);
+  z-index: 1000;
+  padding-right: 24px;
+}
+
+.toast-message .material-symbols-outlined {
+  margin: 0 16px;
+}
+
+.toast-message span:last-child {
+  font-weight: 500;
+}
+
 /* 
 
   state
