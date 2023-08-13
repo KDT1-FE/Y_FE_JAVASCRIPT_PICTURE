@@ -20,6 +20,7 @@
   z-index: 10;
   position: absolute;
   left: 0;
+  padding: 0.625rem;
 }
 
 .input-box {
@@ -51,7 +52,8 @@
   margin-bottom: 1.875rem;
 }
 
-.submit-btn {
+.submit-btn,
+.modify-submit-btn {
   background: #000000;
   border: none;
   border-radius: 5px;
@@ -60,7 +62,8 @@
   font-size: 1.125rem;
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+.modify-submit-btn:hover {
   background: #292929;
 }
 

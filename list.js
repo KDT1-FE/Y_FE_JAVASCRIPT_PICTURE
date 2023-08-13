@@ -6,7 +6,7 @@ window.onload = async () => {
   const querySnapshot = await getDocs(collection(db, "customers"));
   querySnapshot.forEach((doc) => {
     const BoxTag = document.createElement("a");
-    BoxTag.href = `detail.html?${doc.id}`;
+    BoxTag.href = `detail.html?id=${doc.id}`;
     BoxTag.className = `list-box`;
 
     const checkTag = document.createElement("input");

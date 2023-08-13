@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>개인 정보</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/regist.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">&lt; 홈으로</a>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">고객 개인 정보</h2>
+        <button class="modify btn">정보 수정</button>
+      </div>
+      <form class="regist-form">
+        <div class="input-box">
+          <label class="regist-label">프로필 이미지</label>
+          <div id="avatarBox">
+            <input
+              type="file"
+              id="profile_pic"
+              name="profile_pic"
+              accept=".jpg, .jpeg, .png"
+              disabled
+            />
+            <img id="avatarImg" class="avatar-img" />
+          </div>
+        </div>
+        <div class="input-box">
+          <label class="regist-label">이름</label>
+          <input
+            id="nameInput"
+            class="regist-text-input modify-input"
+            placeholder="이름"
+            disabled
+          />
+          <label class="regist-label">이메일</label>
+          <input
+            id="emailInput"
+            type="email"
+            class="regist-text-input modify-input"
+            placeholder="이메일"
+            disabled
+          />
+          <label class="regist-label">전화번호</label>
+          <input
+            id="phoneInput"
+            class="regist-text-input modify-input"
+            placeholder="전화번호"
+            disabled
+          />
+          <label class="regist-label">구분</label>
+          <select
+            id="gradeInput"
+            class="regist-text-input modify-input"
+            disabled
+          >
+            <option selected>일반</option>
+            <option>VIP</option>
+            <option>VVIP</option>
+          </select>
+          <button type="submit" class="modify-submit-btn hidden">
+            수정하기
+          </button>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="./detail.js"></script>
+  </body>
+</html>
