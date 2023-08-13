@@ -36,17 +36,20 @@ export default class ChampionList extends Component{
       }
     }
 
-      window.addEventListener('load',()=>{
-        if(endEl.getBoundingClientRect().top < window.innerHeight){
-          console.log('intersecting by window onload')
-          searchChampions(++championStore.state.page)
-        }
-      })
+    if(championStore.state.storage.length>10){
+      observer.observe(endEl)
+    }
 
-      if(championStore.state.storage.length>10){
-        observer.observe(endEl)
-      }
-      
-      }
+    // 이슈 발생! => 컴퓨터 화면에 옵저버 관측 요소가 나타나있음에도 스크롤 이벤트가 없으면
+    // 옵저버 콜백함수가 실행되지 않음
+    // 랜더링 될 때마다, endEl 요소가 화면에 나타났을 경우 Observer Intersection 강제 실행
+    // window.addEventListener('load',()=>{
+    //   if(endEl.getBoundingClientRect().top < window.innerHeight){
+    //     console.log('why 계속 실행될까?', 'page',championStore.state.page)
+    //     searchChampions(++championStore.state.page)
+    //   }
+    // })
 
+
+  }
 }

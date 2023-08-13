@@ -8,7 +8,9 @@ const store = new Store({
   page: 1,
   maxLength: 0,
   message:"",
-  storage : []
+  storage : [],
+  isDeleteState : false,
+  deleteObj : {}
 })
 
 export default store

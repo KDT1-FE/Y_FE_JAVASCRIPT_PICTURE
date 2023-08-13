@@ -1,5 +1,6 @@
 import { Component } from "../core/core";
 import Icon from "./Icon"
+import championStore from "../store/champion";
 
 export default class ChampionItem extends Component{
   constructor(props){
@@ -7,6 +8,8 @@ export default class ChampionItem extends Component{
       tagName:'a',
       props
     })
+    championStore.subscribe('isDeleteState', ()=>{
+      this.render()})
   }
   render(){
     const champion = this.props
@@ -21,14 +24,25 @@ export default class ChampionItem extends Component{
         <h1>${champion.name}</h1>
       </div>
 
+      <input type="checkbox" class="hide input-delete" value="delete">
+      <!-- <label for="delete" style="z-index: 101; position:absolute; top:0; left:0; bottom:0; right:0; backgroundColor:yellow "> </label> -->
     `
-    const iconwrap = this.el.querySelector('.iconwrap')
-    iconwrap.append(
+    const iconwrapEl = this.el.querySelector('.iconwrap')
+    const deleteInputEl = this.el.querySelector('.input-delete')
+
+    iconwrapEl.append(
       new Icon(champion.region).el,
       new Icon(champion.role).el,
       new Icon(champion.position).el
-
     )
-
+    
+    if(championStore.state.isDeleteState){
+      deleteInputEl.classList.remove('hide')
+    }
+    // championStore.state.deleteObj = {}
+    deleteInputEl.addEventListener('input',event=>{
+      console.log(event)
+      championStore.state.deleteObj[champion.name] = event.target.checked
+    })
   }
 }

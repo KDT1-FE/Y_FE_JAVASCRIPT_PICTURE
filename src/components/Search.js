@@ -1,5 +1,5 @@
 import { Component } from "../core/core";
-import store, {setLocalStorage , searchChampionsbyName } from "../store/champion"
+import championStore, {setLocalStorage , searchChampionsbyName } from "../store/champion"
 import DialogAdd from '../components/DialogAdd'
 
 export default class Search extends Component{
@@ -15,19 +15,20 @@ export default class Search extends Component{
       </span>
     `
     this.el.append(new DialogAdd().el)
+    let localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const modal = this.el.querySelector('dialog')
     const inputEl = this.el.querySelector('input')
     inputEl.addEventListener('input',()=>{
-      store.state.searchText = inputEl.value
+      championStore.state.searchText = inputEl.value
     })
     inputEl.addEventListener("keydown", event=>{
       if(event.key === "Enter"){
-        searchChampionsbyName(store.state.searchText)
+        searchChampionsbyName(championStore.state.searchText)
       }
     })
     const searchBtnEl = this.el.querySelector('.btn-search')
     searchBtnEl.addEventListener('click',()=>{
-      searchChampionsbyName(store.state.searchText)
+      searchChampionsbyName(championStore.state.searchText)
     })
 
     const resetBtnEl = this.el.querySelector('.btn-reset')
@@ -41,8 +42,24 @@ export default class Search extends Component{
     addBtnEl.addEventListener('click',()=>{
       modal.showModal()
     })
+
     const deleteBtnEl = this.el.querySelector('.btn-delete')
     deleteBtnEl.addEventListener('click',()=>{
+      if(!championStore.state.isDeleteState){
+        championStore.state.isDeleteState = true
+      }else{
+        championStore.state.isDeleteState = false
+        console.log('삭제 : ',championStore.state.deleteObj)
+        for(let name in championStore.state.deleteObj){
+          if(championStore.state.deleteObj[name]){
+            localStorageArray = localStorageArray.filter(obj=>obj.name !== name)
+          }
+        }
+        localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
+        championStore.state.deleteObj = {}
+        location.reload()
+      }
+
     })
   }
 }

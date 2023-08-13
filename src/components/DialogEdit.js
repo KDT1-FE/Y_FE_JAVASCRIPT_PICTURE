@@ -82,12 +82,10 @@ export default class Dialog extends Component{
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
 
-    console.log(this.el)
     this.el.querySelector('form').addEventListener('submit',event=>{
       event.preventDefault()
       const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
       const obj = localStorageArray[idx]
-      console.log(idx, obj)
 
       changeInformation()
         .then(()=>{
