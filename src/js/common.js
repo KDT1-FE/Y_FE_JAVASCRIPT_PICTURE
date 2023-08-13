@@ -1,3 +1,10 @@
+import "../css/reset.css"
+import "../css/basic.css"
+import "../scss/style.scss"
+import "../scss/variable.scss"
+import "../../assets/image/ic_top_gray.png"
+import "../../assets/image/logo.png"
+
 // 메뉴 열고 닫기
 const menuButton = document.querySelector('.nav__control a')
 const menuWrap = document.querySelector('.nav__wrap')
@@ -29,7 +36,7 @@ window.addEventListener("resize", ()=>{
 
 // 드롭다운 열고 닫기
 const dropDown = document.querySelectorAll('.dropdown')
-for (i = 0; i<dropDown.length; i++) {
+for (let i = 0; i<dropDown.length; i++) {
 
     const dropWrap = dropDown[i]
     const dropClick = dropWrap.lastElementChild.firstElementChild // dropdown__display

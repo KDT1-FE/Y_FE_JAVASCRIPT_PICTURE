@@ -200,12 +200,13 @@ $url-images: "/assets/image/";
     }
 
     &__subtitle {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
+      margin-bottom: 1.5rem;
     }
 
     &__head {
-      margin: 1.5rem 0 2rem;
+      margin: 0 0 2rem;
       display: flex;
       justify-content: space-between;
       gap: 0.8rem;

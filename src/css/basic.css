@@ -10,8 +10,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-100.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-100.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-100.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-100.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
   /* noto-sans-kr-300 - latin */
   @font-face {
@@ -23,8 +21,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-300.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-300.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-300.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
   /* noto-sans-kr-regular - latin */
   @font-face {
@@ -36,8 +32,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-regular.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
   /* noto-sans-kr-500 - latin */
   @font-face {
@@ -49,8 +43,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-500.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-500.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-500.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-500.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
   /* noto-sans-kr-700 - latin */
   @font-face {
@@ -62,8 +54,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-700.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
   /* noto-sans-kr-900 - latin */
   @font-face {
@@ -75,8 +65,6 @@
     src: url('/assets/fonts/noto-sans-kr-v27-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/assets/fonts/noto-sans-kr-v27-latin-900.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
          url('/assets/fonts/noto-sans-kr-v27-latin-900.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-900.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-         url('/assets/fonts/noto-sans-kr-v27-latin-900.svg#NotoSansKR') format('svg'); /* Legacy iOS */
   }
 
 html,body {

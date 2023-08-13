@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, addDoc, getDocs, collection, query, orderBy, limit, where, or } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"
+import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getStorage, uploadBytesResumable, getMetadata, ref, getDownloadURL } from "firebase/storage";
+import { getFirestore, doc, setDoc, addDoc, getDocs, collection, query, orderBy, limit, where, or, Timestamp } from "firebase/firestore/lite"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,6 +21,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 let storage = getStorage(app);
+let auth = getAuth();
 let db = getFirestore(app);
 
 // try {
@@ -41,7 +42,7 @@ const sortWrap = sort.children[0].lastElementChild
 const sortArr = sortWrap.querySelectorAll('.dropdown__list')
 
 // drop list value 값 지정
-for(i=0; i<sortArr.length; i++){
+for(let i=0; i<sortArr.length; i++){
     const sortLi = sortWrap.children[0].children[i]
     sortLi.value = i 
 }
@@ -88,8 +89,7 @@ let searchValue = false;
 function searchFunc (){
     searchValue = searchInput.value
     let inputVal = document.querySelector('.dropdown--sort').firstElementChild.children[1].value
-    console.log(inputVal)
-    getList(inputVal,searchValue)
+    getList(Number(inputVal),searchValue)
 }
 
 // 검색창 엔터 시 버튼 click
@@ -114,10 +114,10 @@ const getList = async (inputVal, value) => {
 
     if (inputVal === 1) {
         q = query(collection(db, "employee"), orderBy("name")); // 이름순 정렬
-        if(value) {q = query(collection(db, "employee"), where("name", "==",value));}
+        if(value) {q = query(collection(db, "employee"), or(where("name", "==",value), where("email", "==",value)));}
     } else if (inputVal === 2) {
         q = query(collection(db, "employee"), orderBy("email")); // 이메일순 정렬
-        if(value) {q = query(collection(db, "employee"), where("name", "==",value));}
+        if(value) {q = query(collection(db, "employee"), or(where("name", "==",value), where("email", "==",value)));}
     } else if (inputVal === 0) {
         q = query(collection(db, "employee"), orderBy("date", "desc")); // 최신순 정렬
         if(value) {q = query(collection(db, "employee"), or(where("name", "==",value), where("email", "==",value)));}
@@ -139,7 +139,7 @@ const getList = async (inputVal, value) => {
                 <div class="photo-wrap"><img src="${employee.imgUrl}" alt="${employee.name}"></div>
             </td>
             <td>
-                <a class="link">${employee.name}</a>
+                <a class="link" href="employee_write.html?uid=${employee.uid}">${employee.name}</a>
             </td>
             <td>${employee.email}</td>
             <td class="phone">${employee.phone}</td>
@@ -148,7 +148,8 @@ const getList = async (inputVal, value) => {
         table.appendChild(trEl)
     });
 }
-getList(0);
+getList(0,'');
+
 
 // 체크박스 input 대체
 const table = document.querySelector(".table")

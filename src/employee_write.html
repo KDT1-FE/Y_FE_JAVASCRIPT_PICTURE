@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS 솔루션</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/basic.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/variable.css" />
+    <!-- <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="basic.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="variable.css" /> -->
 </head>
 <body>
     <div class="wrap">
         <nav id="nav" class="nav">
             <div class="nav__wrap">
                 <div class="nav__head">
-                    <h1><a href="/"><img src="/assets/image/logo.png" alt="CMS 솔루션"></a></h1>
+                    <h1><a href="/"><img src="logo.png" alt="CMS 솔루션"></a></h1>
                     <p class="nav__control">
                         <a href="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--menu" viewBox="0 0 24 24"><g><path d="M20 11.35H5.569L9.116 7.8a.65.65 0 0 0-.916-.916L3.541 11.54a.652.652 0 0 0 0 .92L8.2 17.116a.65.65 0 0 0 .919-.919l-3.55-3.547H20a.65.65 0 0 0 0-1.3" style="fill: var(--color-gray500);"></path><path d="M13 5.65h7a.65.65 0 0 0 0-1.3h-7a.65.65 0 0 0 0 1.3" style="fill: var(--color-gray500);"></path><path d="M20 18.35h-7a.65.65 0 0 0 0 1.3h7a.65.65 0 0 0 0-1.3" style="fill: var(--color-gray500);"></path></g></svg>
@@ -85,12 +85,14 @@
 
                     <h3 class="container__subtitle">임직원 등록</h3>
 
-                    <div class="container__head">
-                
-                    </div>
-
                     <div class="container__inner">
-
+                        <input type="text" id="employee-name" name="name" placeholder="이름"/>
+                        <input type="text" id="employee-email" name="email" placeholder="이메일"/>
+                        <input type="password" id="employee-password" name="password" placeholder="비밀번호"/>
+                        <input type="text" id="employee-grade" name="grade" placeholder="등급"/>
+                        <input type="text" id="employee-phone" name="phone" placeholder="휴대폰번호"/>
+                        <input type="file" id="employee-img" name="img"/>
+                        <button type="button" id="employee-submit">전송</button>
                     </div>
 
                 </section>
@@ -111,19 +113,9 @@
 
     <div class="scrolltop">
         <button class="scrolltop__button">
-            <img src="/assets/image/ic_top_gray.png" alt="맨 위로 가기">
+            <img src="ic_top_gray.png" alt="맨 위로 가기">
         </button>
     </div>
 
-    <!-- firebase 설치 파일 -->
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
-    <!-- 필요한 서비스들 -->
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-storage-compat.js"></script>
-
-    <script src="/js/firebase.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="/js/sub.js"></script>
 </body>
 </html>
