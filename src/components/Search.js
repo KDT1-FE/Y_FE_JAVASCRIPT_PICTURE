@@ -49,17 +49,19 @@ export default class Search extends Component{
         championStore.state.isDeleteState = true
       }else{
         championStore.state.isDeleteState = false
-        console.log('삭제 : ',championStore.state.deleteObj)
-        for(let name in championStore.state.deleteObj){
-          if(championStore.state.deleteObj[name]){
-            localStorageArray = localStorageArray.filter(obj=>obj.name !== name)
-          }
-        }
-        localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
-        championStore.state.deleteObj = {}
-        location.reload()
-      }
 
+        if(Object.keys(championStore.state.deleteObj).length){
+          console.log('삭제 : ',championStore.state.deleteObj)
+          for(let name in championStore.state.deleteObj){
+            if(championStore.state.deleteObj[name]){
+              localStorageArray = localStorageArray.filter(obj=>obj.name !== name)
+            }
+          }
+          localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
+          championStore.state.deleteObj = {}
+          location.reload()
+        }
+      }
     })
   }
 }

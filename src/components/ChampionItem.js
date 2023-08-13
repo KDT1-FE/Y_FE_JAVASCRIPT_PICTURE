@@ -24,8 +24,8 @@ export default class ChampionItem extends Component{
         <h1>${champion.name}</h1>
       </div>
 
-      <input type="checkbox" class="hide input-delete" value="delete">
-      <!-- <label for="delete" style="z-index: 101; position:absolute; top:0; left:0; bottom:0; right:0; backgroundColor:yellow "> </label> -->
+      <div class="champion-item-delete"><input type="checkbox" class="hide input-delete" value="delete" id="delete${champion.name}"></div>
+      <label for="delete${champion.name}" style=" position:absolute; top:0; left:0; bottom:0; right:0; backgroundColor:yellow "></label>
     `
     const iconwrapEl = this.el.querySelector('.iconwrap')
     const deleteInputEl = this.el.querySelector('.input-delete')
@@ -38,6 +38,8 @@ export default class ChampionItem extends Component{
     
     if(championStore.state.isDeleteState){
       deleteInputEl.classList.remove('hide')
+    }else{
+      deleteInputEl.classList.add('hide')
     }
     // championStore.state.deleteObj = {}
     deleteInputEl.addEventListener('input',event=>{

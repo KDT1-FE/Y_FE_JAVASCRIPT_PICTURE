@@ -239,3 +239,16 @@ form input{
   height: 100%;
   width: 100%
 }
+
+
+.input-delete{
+  height: 100%;
+  width: 100%;
+}
+
+.champion-item-delete{
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
+  padding: 50px;
+}
