@@ -7,7 +7,7 @@ const popUpCloseBtnEl = document.querySelector(".popup-header span:last-child");
 
 const popupAddBtnEl = document.querySelector(".popup-buttons .btn-md:last-child");
 
-// 프로필 생성
+// 프로필 생성 요청하기
 popupAddBtnEl.addEventListener("click", (event) => {
   const popupInputEls = document.querySelectorAll(".popup-contents-container input");
   const [name, email, tel, file] = popupInputEls;
@@ -122,13 +122,17 @@ function paintProfileEl(koName, team, email, tel, author, file) {
   authorCol.innerText = author;
   authorEl.append(authorCol);
 
-  const icon1Col = document.createElement("span");
-  icon1Col.classList.add("material-symbols-outlined");
-  icon1Col.innerText = "edit_note";
-  const icon2Col = document.createElement("span");
-  icon2Col.classList.add("material-symbols-outlined");
-  icon2Col.innerText = "delete";
-  iconsEl.append(icon1Col, icon2Col);
+  const iconModifyCol = document.createElement("span");
+  iconModifyCol.classList.add("material-symbols-outlined");
+  iconModifyCol.innerText = "edit_note";
+  iconModifyCol.addEventListener("click", openPopup);
+
+  const iconDeleteCol = document.createElement("span");
+  iconDeleteCol.classList.add("material-symbols-outlined");
+  iconDeleteCol.innerText = "delete";
+  // iconDeleteCol.addEventListener("click", );
+
+  iconsEl.append(iconModifyCol, iconDeleteCol);
 
   console.log("PC", profileCardEl);
   console.log("CL", columnEls);
@@ -139,7 +143,13 @@ function paintProfileEl(koName, team, email, tel, author, file) {
 /* 
   팝업 켜기 함수 & 끄기 함수
 */
-function openPopup() {
+function openPopup(event) {
+  const popupHeaderEl = document.querySelector(".popup-header span:first-child");
+  if (event.target === mainAddBtnEl) {
+    popupHeaderEl.innerText = "직원 프로필 추가";
+  } else {
+    popupHeaderEl.innerText = "직원 프로필 변경";
+  }
   dimEl.classList.remove("none");
   popUpEl.classList.remove("none");
 }

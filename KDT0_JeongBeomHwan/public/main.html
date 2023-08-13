@@ -39,7 +39,7 @@
     <div id="DIM" class="none"></div>
     <section class="popup-container none">
       <header class="popup-header">
-        <span>직원 정보 추가</span>
+        <span>직원 프로필 추가</span>
         <span class="material-symbols-outlined">close</span>
       </header>
       <div class="popup-contents-container">
@@ -55,11 +55,11 @@
             <div class="row-title">팀・부서</div>
             <div class="row-content">
               <select name="teams" id="profile-team">
-                <option value="develop">개발</option>
-                <option value="design">디자인</option>
-                <option value="planning">기획</option>
-                <option value="ai">AI</option>
-                <option value="people">피플</option>
+                <option value="개발">개발</option>
+                <option value="디자인">디자인</option>
+                <option value="기획">기획</option>
+                <option value="AI">AI</option>
+                <option value="피플">피플</option>
               </select>
             </div>
           </div>
@@ -79,8 +79,8 @@
             <div class="row-title">관리자 여부</div>
             <div class="row-content">
               <select name="author" id="profile-author">
-                <option value="employee">직원</option>
-                <option value="author">관리자</option>
+                <option value="직원">직원</option>
+                <option value="관리자">관리자</option>
               </select>
             </div>
           </div>
@@ -161,16 +161,16 @@
               <div class="main-toolbar_filter-container">
                 <span>정렬</span>
                 <select name="teams" id="filter-teams">
-                  <option value="all">전체</option>
-                  <option value="develop">개발</option>
-                  <option value="design">디자인</option>
-                  <option value="planning">기획</option>
-                  <option value="ai">AI</option>
-                  <option value="people">피플</option>
+                  <option value="전체">전체</option>
+                  <option value="개발">개발</option>
+                  <option value="디자인">디자인</option>
+                  <option value="기획">기획</option>
+                  <option value="AI">AI</option>
+                  <option value="피플">피플</option>
                 </select>
                 <select name="orders" id="filter-order">
-                  <option value="by-registered">등록순</option>
-                  <option value="by-alphabet">가나다순</option>
+                  <option value="등록순">등록순</option>
+                  <option value="가나다순">가나다순</option>
                 </select>
               </div>
               <div class="main-toolbar_rightcontainer_buttons">
@@ -197,7 +197,7 @@
             <span id="no-profile">등록된 직원 프로필이 없습니다 :|</span>
             <!-- 카드가 쌓일 부분 -->
 
-            <article class="employeecard-container">
+            <!-- <article class="employeecard-container">
               <div class="employeecard-column profile-check">
                 <input type="checkbox" />
                 <div class="employeecard-column_profilecard"></div>
@@ -226,7 +226,7 @@
                   <span class="material-symbols-outlined">delete</span>
                 </div>
               </div>
-            </article>
+            </article> -->
           </div>
         </section>
       </main>
