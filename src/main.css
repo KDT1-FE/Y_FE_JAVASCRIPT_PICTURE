@@ -15,9 +15,9 @@ body {
 
 
 /****** Nav ******/
-nav {
+/* nav {
     
-}
+} */
 nav .menubar {
     display: flex;
     flex-direction: column;
@@ -200,9 +200,9 @@ input[type="file"]::file-selector-button {
 
 
 /******Main******/
-main {
+/* main {
     
-}
+} */
 main .container{
     width: 80vw;
     height: 100vh;
