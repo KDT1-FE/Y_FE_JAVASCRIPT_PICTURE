@@ -1,11 +1,18 @@
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  query,
+  where,
+  or,
+} from "firebase/firestore";
 import { db } from "./firebase";
 import { phoneType } from "./util";
 
-// 리스트 뿌려주기
-window.onload = async () => {
-  const querySnapshot = await getDocs(collection(db, "customers"));
-  querySnapshot.forEach((doc) => {
+// 고객 목록 DOM에 추가해주는 함수
+const inquireListFunc = (querySnapshotArray) => {
+  querySnapshotArray.forEach((doc) => {
     const BoxTag = document.createElement("a");
     BoxTag.href = `detail.html?id=${doc.id}`;
     BoxTag.className = `list-box`;
@@ -48,6 +55,12 @@ window.onload = async () => {
     const listContainer = document.querySelector(".list-container");
     listContainer.appendChild(BoxTag);
   });
+};
+
+window.onload = async () => {
+  // 페이지 로드시 전체 목록 뿌려주기
+  const allQuerySnapshot = await getDocs(collection(db, "customers"));
+  inquireListFunc(allQuerySnapshot);
 
   // 고객 삭제 기능
   let deleteList = [];
@@ -73,6 +86,34 @@ window.onload = async () => {
       });
     } else {
       alert("삭제할 고객을 선택하세요.");
+    }
+  });
+
+  // 고객 목록 검색 기능
+  const searchInput = document.querySelector(".search-input");
+
+  searchInput.addEventListener("input", async () => {
+    const searchQuerySnapshot = await getDocs(
+      query(
+        collection(db, "customers"),
+        or(
+          where("name", "==", searchInput.value),
+          where("email", "==", searchInput.value),
+          where("phone", "==", searchInput.value),
+          where("grade", "==", searchInput.value)
+        )
+      )
+    );
+    // 목록에서 이전 결과 삭제
+    document.querySelectorAll(".list-box").forEach((i) => {
+      i.remove();
+    });
+    // 검색 결과 표시
+    // 검색어가 없을 때는 전체 목록 표시
+    if (searchInput.value) {
+      inquireListFunc(searchQuerySnapshot);
+    } else {
+      inquireListFunc(querySnapshot);
     }
   });
 };
