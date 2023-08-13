@@ -28,7 +28,9 @@
 }
 
 .divText {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -40,3 +42,8 @@
     padding: 20px;
 }
 
+
+.divText > p {
+    width: 100%;
+    text-align: center;
+}

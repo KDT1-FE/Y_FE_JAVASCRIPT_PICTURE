@@ -8,6 +8,12 @@ const emailInput = document.getElementById('inputEmail');
 const phoneInput = document.getElementById('inputPhone');
 const categoryInput = document.getElementById('inputCategory');
 
+nameInput.value = "hello";
+emailInput.value = "email";
+phoneInput.value = "phone";
+categoryInput.value = "category";
+
+
 btn1.addEventListener('click', async () => {
     // const checkbox = checkBoxInput.checked;
     const profileImage = profileImageInput.files[0];
@@ -53,7 +59,7 @@ btn1.addEventListener('click', async () => {
             // 이미지를 AWS S3에 업로드하기 위해 putFile 함수 호출
             const result = await putFile(profileImage);
             console.log('Successfully uploaded photo:', result);
-
+            result.key
             //이미지 업로드 성공한 경우, 해당 이미지의 URL을 이용해 화면에 표시하거나 다른 작업 수행
             // const imageUrl = result.Location;
 
