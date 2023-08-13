@@ -1,3 +1,10 @@
 // import common
 @import "./common/_variables.scss";
 @import "./common/_common.scss";
+
+// import components
+@import "./components/_loadAuth.scss";
+
+// import animations
+@import "./animations/_fadeOut.scss";
+@import "./animations/_fadeIn.scss";

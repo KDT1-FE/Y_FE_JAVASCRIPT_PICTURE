@@ -1,0 +1,13 @@
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(-5rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10rem);
+    display: none;
+  }
+}
