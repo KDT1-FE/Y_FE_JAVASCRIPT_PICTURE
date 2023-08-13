@@ -1,6 +1,6 @@
 import { Component } from "../core/core"
 import Icon from "../components/Icon"
-import Dialog from '../components/Dialog'
+import DialogEdit from '../components/DialogEdit'
 
 
 export default class Champion extends Component{
@@ -62,7 +62,7 @@ export default class Champion extends Component{
       champion.position
     )
     
-    this.el.append(new Dialog(champion).el)
+    this.el.append(new DialogEdit(champion).el)
     
     const modal = this.el.querySelector('dialog')
     this.el.querySelector('.btn-edit').addEventListener('click',()=>{

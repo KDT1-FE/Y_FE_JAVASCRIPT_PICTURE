@@ -1,5 +1,6 @@
 import { Component } from "../core/core";
 import store, {setLocalStorage , searchChampionsbyName } from "../store/champion"
+import DialogAdd from '../components/DialogAdd'
 
 export default class Search extends Component{
   render(){
@@ -13,6 +14,8 @@ export default class Search extends Component{
         <button class="btn btn-delete"> 삭제 </button>
       </span>
     `
+    this.el.append(new DialogAdd().el)
+    const modal = this.el.querySelector('dialog')
     const inputEl = this.el.querySelector('input')
     inputEl.addEventListener('input',()=>{
       store.state.searchText = inputEl.value
@@ -36,7 +39,7 @@ export default class Search extends Component{
 
     const addBtnEl = this.el.querySelector('.btn-add')
     addBtnEl.addEventListener('click',()=>{
-      
+      modal.showModal()
     })
     const deleteBtnEl = this.el.querySelector('.btn-delete')
     deleteBtnEl.addEventListener('click',()=>{

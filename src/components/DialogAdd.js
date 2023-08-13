@@ -82,33 +82,36 @@ export default class Dialog extends Component{
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
 
+    const obj = this.props
+
     this.el.querySelector('form').addEventListener('submit',event=>{
       event.preventDefault()
-      const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
-      const obj = localStorageArray[idx]
-      console.log(idx, obj)
 
-      changeInformation()
+      addInformation()
         .then(()=>{
           console.log('localStorage에 저장')
-          localStorageArray[idx] = obj
+          localStorageArray.push(obj)
+          localStorageArray.sort(
+            (a,b)=>{
+              if(a.name > b.name){
+                return 1
+              }else if(a.name<b.name){
+                return -1
+              }else return 0
+            }
+            )
           localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
           console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
           modal.close() 
-          location.replace(`/#/champion?name=${obj.name}`)
+          location.replace(`/#/`)
         }
         )
 
-      function changeInformation(){
+      function addInformation(){
         return new Promise((resolve,reject)=>{
-          console.log('changeInformation 시작')
-          if(obj.name !== event.target.querySelector('.form-name').value){
-            obj.name = event.target.querySelector('.form-name').value
-            history.state.name = obj.name
-          }
-            
+          console.log('addInformation 시작')
+          obj.name = event.target.querySelector('.form-name').value
           obj.nickname = event.target.querySelector('.form-nickname').value
-
           if(regionFormEl.value !== "국가 / 지역"){
             obj.region = regionFormEl.value
           }
@@ -170,8 +173,7 @@ export default class Dialog extends Component{
             }else{
               resolve()
             }
-
-            console.log('changeInformation 종료')
+            console.log('addInformation 종료')
             })
         }
     })
@@ -199,9 +201,7 @@ export default class Dialog extends Component{
         });  
         console.log('URL 가져오기 종료')
       }
-
       )
-      
     }
   }
 }
