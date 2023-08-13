@@ -113,7 +113,7 @@ window.onload = async () => {
     if (searchInput.value) {
       inquireListFunc(searchQuerySnapshot);
     } else {
-      inquireListFunc(querySnapshot);
+      inquireListFunc(allQuerySnapshot);
     }
   });
 };
