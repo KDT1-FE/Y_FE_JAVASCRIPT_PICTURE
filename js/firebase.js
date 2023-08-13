@@ -7,6 +7,7 @@ const imageInput = document.getElementById('imageInput');
 const nameInput = document.getElementById('nameInput');
 const groupInput = document.getElementById('groupInput');
 const insertmodal = document.getElementById('modalinsert');
+const allcheckbox = document.getElementById('allcheckbox');
 
 let profiles=[];
 
@@ -71,6 +72,7 @@ async function uploadInfo() {
 }
 
 const list = document.getElementById('list');
+
 function newprofiles(downloadURL, name, group) {
   const item = {
     id: new Date().getTime(),
@@ -100,7 +102,7 @@ function createProfileElement(item) {
 
   const checkboxEl = document.createElement('input');
   checkboxEl.type = 'checkbox';
-  checkboxEl.classList.add('checkbox');
+  checkboxEl.classList.add('che');
   checkboxEl.checked = item.complete;
 
   outcheckboxEl.append(checkboxEl);
@@ -133,6 +135,8 @@ function createProfileElement(item) {
       }
       saveToLocalStorage();
   })
+
+
   
   innerimage.src = item.image;
   nameEl.innerHTML = item.name;
@@ -183,3 +187,22 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFromLocalStorage();
   displayprofile();
 });
+
+
+allcheckbox.addEventListener('click', () => {
+  const isChecked = allcheckbox.checked;
+
+  const checkboxes = document.querySelectorAll('.che');
+  checkboxes.forEach(checkbox => {
+    checkbox.checked = isChecked;
+
+    const itemElement = checkbox.closest('.item');
+    itemElement.classList.toggle('complete', isChecked);
+
+    const profileItem = profiles.find(item => item.image === itemElement.querySelector('.image img').src);
+    if (profileItem) {
+      profileItem.complete = isChecked;
+    }
+  });
+});
+

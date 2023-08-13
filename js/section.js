@@ -1,12 +1,6 @@
 const allcheckbox = document.getElementById("allcheckbox");
-const checkboxes = document.querySelectorAll('.checkbox');
+const checkboxes = document.querySelectorAll('.che');
 const deletebutton = document.getElementById('delete');
-
-allcheckbox.addEventListener('click',()=>{
-  checkboxes.forEach(checkbox => {
-  checkbox.checked = allcheckbox.checked;
-});
-})
 
 const defaultcheckbox = document.querySelectorAll('.defaultcheckbox');
 defaultcheckbox.forEach(element => {
