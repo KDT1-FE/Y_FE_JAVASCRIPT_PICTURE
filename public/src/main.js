@@ -43,9 +43,9 @@ collectionRef.get().then((querySnapshot) => {
     //성별에 따라 글자 색 다르게
     const sexElement = villagerContainer.querySelector(".sex");
     if (sex === "여성") {
-      sexElement.style.color = "pink";
+      sexElement.style.color = "#D5A8B8";
     } else if (sex === "남성") {
-      sexElement.style.color = "skyblue";
+      sexElement.style.color = "#A8CAD5";
     }
 
     // img 가져오기
