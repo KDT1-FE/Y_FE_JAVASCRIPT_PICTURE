@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, updatePassword, getAuth } from "firebase/auth";
-import { getStorage, uploadBytesResumable, getMetadata, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, uploadBytesResumable, getMetadata, ref, getDownloadURL, deleteObject } from "firebase/storage";
 import { getFirestore, doc, setDoc, addDoc, getDocs, collection, query, orderBy, limit, where, or, Timestamp } from "firebase/firestore/lite"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,10 +29,25 @@ let name = document.getElementById("employee-name")
 let email = document.getElementById("employee-email")
 let phone = document.getElementById("employee-phone")
 let grade = document.getElementById("employee-grade")
+let photo = document.getElementById("employee-img")
+const preview = document.getElementById("employee-preview")
+let uid;
 
 // 파라미터값 가져오기
 const urlParams = new URL(location.href).searchParams;
 const checkUid = urlParams.get('uid');
+
+// 파일 종류 이미지로 한정
+photo.accept = '.gif, .jpg, .jpeg, .png, .bmp, .ico, .apng, .svg'
+
+// 이미지 업로드 시 미리보기
+photo.addEventListener('change', (e)=>{
+  const reader = new FileReader();
+  reader.onload = ({ target }) => {
+    preview.src = target.result;
+  };
+  reader.readAsDataURL(photo.files[0]);
+})
 
 // uid값이 있다면 input value로 반환
 if (checkUid){
@@ -45,9 +60,11 @@ if (checkUid){
       email.value = employee.email
       phone.value = employee.phone
       grade.value = employee.grade
+      preview.src = employee.imgUrl
     })
     
   }
+  uid = checkUid
   employeeUpdate()
 }
 
@@ -58,16 +75,18 @@ saveButton.addEventListener("click",async ()=>{
   email = email.value
   phone = phone.value
   grade = grade.value
-  const password = document.getElementById("employee-password").value
+  photo = photo.files[0]
+  let storageURL, checkResult
   const date = Timestamp.fromDate(new Date());
-  let roll = "staff", storageURL, checkResult
-  const photo = document.getElementById("employee-img").files[0]
+  if(!checkUid) uid = self.crypto.randomUUID();
 
   // 정보 입력 됐는지 확인
   function inputCheck () {
     const fileExt = document.getElementById('employee-img').files[1]
     const imgExt = ['gif', 'jpg', 'jpeg', 'png', 'bmp' ,'ico', 'apng', 'svg']
-    const user = [name, email, phone, password, grade, photo]
+    let photoCheck;
+    if (photo || preview.src) photoCheck = true
+    const user = [name, email, phone, grade, photoCheck]
     for(let i = 0; i <user.length; i++) {
       if(!user[i]) {
         alert('입력되지 않은 정보가 있습니다');
@@ -76,27 +95,22 @@ saveButton.addEventListener("click",async ()=>{
       }
       checkResult = true
     };
-    console.log(user)
   }
   await inputCheck ()
   
 
   if (checkResult) {
     try {
-        if (grade === "관리자") roll = 'admin'
         
-        if (checkUid){
-          const userCredential = await admin.auth().updateUser(userId, {
-            email: s.email,
-            emailVerified: true
-          });
-        }else{
-          const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-          const uid = userCredential.user.uid;
-        }
-        
+//      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+//      const uid = userCredential.user.uid;
+
         const photoURL = ref(storage, 'images/' + uid)
-        await uploadBytesResumable(photoURL, photo)
+
+        if (checkUid && photo) { 
+          deleteObject(photoURL) 
+          await uploadBytesResumable(photoURL, photo)
+        } else if (!checkUid && photo) { await uploadBytesResumable(photoURL, photo) }
 
         await getDownloadURL(photoURL)
         .then((url) => {
@@ -106,21 +120,23 @@ saveButton.addEventListener("click",async ()=>{
           reportError(error);
         });
 
-
         const userRef = doc(getFirestore(), 'employee', uid);
-        await setDoc(userRef, {
-          email:email,
-          date:date,
-          name: name,
-          phone:phone,
-          grade:grade,
-          roll:roll,
-          imgUrl : storageURL,
-          uid : uid
-        });
+          await setDoc(userRef, {
+            email:email,
+            date:date,
+            name: name,
+            phone:phone,
+            grade:grade,
+            imgUrl : storageURL,
+            uid : uid
+          });
 
         // Uid 정보 파라미터로 전송
-        alert('임직원 등록이 완료되었습니다.')
+        if (checkUid){
+          alert('임직원 수정이 완료되었습니다.')
+        }else{
+          alert('임직원 등록이 완료되었습니다.')
+        }
         const form = document.createElement('form')
         form.method = 'get'
         form.action = 'employee_write.html'
