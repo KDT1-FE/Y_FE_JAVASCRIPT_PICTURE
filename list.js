@@ -1,5 +1,6 @@
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { phoneType } from "./util";
 
 // 리스트 뿌려주기
 window.onload = async () => {
@@ -35,7 +36,7 @@ window.onload = async () => {
 
     const customerPhone = document.createElement("span");
     customerPhone.className = "customer-phone";
-    customerPhone.innerText = doc.data().phone;
+    customerPhone.innerText = phoneType(doc.data().phone);
 
     BoxTag.appendChild(checkTag);
     BoxTag.appendChild(avatarBox);
