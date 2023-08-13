@@ -27,6 +27,7 @@
             <input
               type="file"
               id="profile_pic"
+              class="modify-input"
               name="profile_pic"
               accept=".jpg, .jpeg, .png"
               disabled
@@ -35,6 +36,12 @@
           </div>
         </div>
         <div class="input-box">
+          <label class="hidden">프로필 이미지 URL</label>
+          <input
+            id="imgTextInput"
+            class="regist-text-input modify-input hidden"
+            placeholder="이름"
+          />
           <label class="regist-label">이름</label>
           <input
             id="nameInput"
