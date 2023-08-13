@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { uploadError, modalOff, firebaseError } from "./nav.js";
 
 const imageInput = document.getElementById('imageInput');
@@ -56,7 +56,7 @@ async function uploadInfo() {
       newprofiles(downloadURL, name, group);
       location.reload();
 
-
+      
       // console.log(downloadURL, name, group);
       // const imageContainer = document.getElementById('list');
       // imageContainer.innerHTML = '';
@@ -207,7 +207,7 @@ allcheckbox.addEventListener('click', () => {
   });
 });
 
-export function deleteBoard(){
+export async function deleteBoard() {
   Swal.fire({
     title: '프로필 삭제',
     text: "선택된 프로필들이 삭제됩니다.",
@@ -217,28 +217,50 @@ export function deleteBoard(){
     cancelButtonColor: '#d33',
     confirmButtonText: '삭제',
     cancelButtonText: '취소'
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.value) {
-      // 체크된 프로필만큼 삭제하는 로직
-      // item.complete인 것들 localstorage 및 firebase storage, firebase db에서 지우기
-      
       const itemcompleted = document.querySelectorAll('.item.complete');
-      itemcompleted.forEach(completeditems => {
+      itemcompleted.forEach(async completeditems => {
         const imageUrl = completeditems.querySelector('.image img').src;
         const profileItem = profiles.find(profile => profile.image === imageUrl);
-        if(profileItem){
-          // console.log(profileItem.id);
-          profiles=profiles.filter(p => p.id !== profileItem.id)
+        if (profileItem) {
+          profiles = profiles.filter(p => p.id !== profileItem.id);
           completeditems.remove();
-        }
-        // localstorage의 id를 찾아서 화면에서 지우고
-        // localstroage 내부의 imageurl, name, age를 통해 firebase storage, firebase db에서 지우기
-        // 다 한 다음에 savelocalstorage
-        
-      });
-      saveToLocalStorage();
+          
+          const storage = getStorage();
+          const storageRef = ref(storage, 'images/' + getImageFilename(imageUrl));
+          
+          // Firebase 스토리지에서 객체 삭제 (getMetadata 사용하지 않음)
+          try {
+            await deleteObject(storageRef);
+          } catch (error) {
+            // 객체가 존재하지 않는 경우 에러 처리
+          }
 
+          await deleteFirestoreDocument(imageUrl);
+        }
+      });
+
+      saveToLocalStorage();
     }
-  })
+  });
 }
 
+async function deleteFirestoreDocument(imageUrl) {
+  const imagesCollection = collection(db, 'images');
+  const querySnapshot = await getDocs(imagesCollection);
+  querySnapshot.forEach(async (doc) => {
+    const docData = doc.data();
+    if (docData.imageUrl === imageUrl) {
+      await deleteDoc(doc.ref); // Firestore 문서 삭제에 해당하는 적절한 함수 사용
+    }
+  });
+}
+
+// ...
+
+
+function getImageFilename(url) {
+  const filename = url.substring(url.lastIndexOf('/') + 1);
+  return filename;
+}
