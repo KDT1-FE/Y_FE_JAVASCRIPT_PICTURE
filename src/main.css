@@ -1,0 +1,5 @@
+body {
+  background-color: var(--color-black);
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4;
+}
