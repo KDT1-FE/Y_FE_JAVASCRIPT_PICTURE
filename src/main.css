@@ -6,6 +6,10 @@ body{
   line-height: 1.5;
   word-break: keep-all;
   margin:0;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 }
 
 .btn{
@@ -90,6 +94,7 @@ body{
   border-radius: 10px;
   background-size: cover;
   background-position: center;
+  background-color: gray;
 }
 
 .iconwrap{

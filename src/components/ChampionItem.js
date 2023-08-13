@@ -38,8 +38,10 @@ export default class ChampionItem extends Component{
     
     if(championStore.state.isDeleteState){
       deleteInputEl.classList.remove('hide')
+      this.el.style.backgroundBlendMode = "darken"
     }else{
       deleteInputEl.classList.add('hide')
+      this.el.style.backgroundBlendMode = "normal"
     }
     // championStore.state.deleteObj = {}
     deleteInputEl.addEventListener('input',event=>{
