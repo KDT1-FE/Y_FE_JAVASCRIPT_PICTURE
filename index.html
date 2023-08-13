@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azkaban </title>
+    <title>Azkaban</title>
     <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">           
+    <link rel="stylesheet" href="./src/main.css">           
 </head>
 <body>
+    <nav>
+        <div class="menubar">
+            <div class="menubarTop">
+                <img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고">              
+                <input placeholder="Looking for Prisoner?"></input>
+            </div>
+            <div class="menubarMid">
+                <div class="HpText">History</div>
+                <div class="HpText">Roles</div>
+            </div>
+            <div class="menubarBot">
+                <button>IMPRISON</button>
+                <button>RELEASE</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <video src="/videos/Azkaban background.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
+            <!-- Insert PrisonCell -->
+            <div class="prison">
+                <div class="prisonCell" style="background-image: url(image/벨라트릭스\ 머그샷.jpg);">
+                    <p class="PrisonerName">Bellatrix Lestrange</p>
+                </div>
+                <div class="prisonCell" style="background-image: url(image/그린델왈드\ 머그샷.jpg);">
+                    <p class="PrisonerName">Gellert Grindelwald</p>
+                </div>
+                <div class="prisonCell" style="background-image: url(image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
+                    <p class="PrisonerName">Dolores Umbridge</p>
+                </div>
+                <div class="prisonCell" style="background-image: url(image/루시우스\ 말포이\ 머그샷.jpg);">
+                    <p class="PrisonerName">Lucius Malfoy</p>
+                </div>
+                <div class="prisonCell" style="background-image: url(image/시리우스\ 블랙\ 머그샷.jpg);">
+                    <p class="PrisonerName">Sirius Black</p>
+                </div>
+            </div>
+        </div>
+    </main>
     
 </body>
 </html>

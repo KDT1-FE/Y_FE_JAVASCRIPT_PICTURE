@@ -1,0 +1,13 @@
+{
+  "name": "n",
+  "version": "1.0.0",
+  "description": "아즈카반의 죄수들을 철저히 감시하세요.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
