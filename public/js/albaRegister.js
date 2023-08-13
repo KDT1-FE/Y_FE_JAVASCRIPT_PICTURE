@@ -1,4 +1,4 @@
-// 이미지 등록 시
+// 이미지 등록 시 미리보기 기능
 function handleImageChange(event) {
   const imagePreview = document.getElementById("imagePreview");
   const selectedImage = event.target.files[0];
@@ -15,10 +15,12 @@ function handleImageChange(event) {
     imagePreview.setAttribute("src", "../assets/pictures/no-image.png");
   }
 }
+// ------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------
 
 // '이전으로' 버튼 기능
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", () => {
-  // window.history.back(); // 브라우저의 이전 페이지로 이동
-  window.location.href = "myAlba.html";
+  window.location.href = "./myAlba.html";
 });
