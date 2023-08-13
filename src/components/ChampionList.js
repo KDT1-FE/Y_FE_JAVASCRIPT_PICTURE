@@ -23,16 +23,30 @@ export default class ChampionList extends Component{
     
     const endEl = this.el.querySelector('.champions-end')
     const observer = new IntersectionObserver(entries=>{
+      observerCb(entries)
+    },{threshold:0.5})
+
+    const observerCb = entries => {
       if(championStore.state.page*10 >= championStore.state.maxLength){
         observer.unobserve(endEl)
       }
       if(entries[0].isIntersecting){
+        console.log('intersecting now')
         searchChampions(++championStore.state.page)
       }
-      },{threshold:1})
+    }
+
+      window.addEventListener('load',()=>{
+        if(endEl.getBoundingClientRect().top < window.innerHeight){
+          console.log('intersecting by window onload')
+          searchChampions(++championStore.state.page)
+        }
+      })
 
       if(championStore.state.storage.length>10){
         observer.observe(endEl)
       }
-  }
+      
+      }
+
 }
