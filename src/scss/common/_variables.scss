@@ -1,0 +1,16 @@
+$brandColor: #001651;
+
+$breakpoint-tablet: 750px;
+$breakpoint-mobile: 450px;
+
+@mixin tablet {
+  @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
