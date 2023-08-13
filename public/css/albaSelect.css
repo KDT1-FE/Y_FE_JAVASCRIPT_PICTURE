@@ -52,8 +52,8 @@
 
 .alba-list {
   border-collapse: collapse;
-  width: 70%;
-  margin: auto;
+  width: 100%;
+  margin: 0;
 }
 
 /* thead 스타일 */
@@ -170,8 +170,8 @@
 }
 
 .alba-photo img {
-  width: 150px;
-  height: 200px;
+  width: 120px;
+  height: 160px;
 }
 
 .alba-info {
@@ -198,18 +198,25 @@
 /* 모바일 화면에 대한 반응형 스타일 */
 @media (max-width: 768px) {
 
+  .list-container{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .alba-phone-th .alba-phone{
+    display: block;
+  }
   .alba-photo img {
-    width: 50px;
+    width: 60px;
     height: 80px;
   }
 
   .alba-list th,
   .alba-list td {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
   .alba-list .th-img .alba-photo{
     display: none;
-
   }
 }
