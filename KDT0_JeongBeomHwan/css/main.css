@@ -20,6 +20,7 @@
 */
 main.main-container {
   width: calc(100% - var(--size-sidebar));
+  overflow: hidden;
 }
 
 /* 메인 - 헤더 */
@@ -32,30 +33,35 @@ main.main-container {
 h1.main-title {
   font-size: 24px;
   font-weight: 700;
-  margin-left: 80px;
+  margin-left: 40px;
   margin-top: 32px;
 }
 
 .main-toolbar {
   height: 50px;
-  margin: 24px 80px 12px 80px;
+  margin: 24px 40px 12px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+.main-toolbar_desc {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
 .main-toolbar_desc span:first-child {
   font-weight: 500;
   font-size: 17px;
 }
 
 .main-toolbar_desc span:last-child {
-  margin-left: 6px;
+  margin: 0 14px 0 6px;
 }
 
 .main-toolbar_rightcontainer {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .main-toolbar_rightcontainer input[type="search"] {
@@ -109,9 +115,10 @@ h1.main-title {
 
 /* 메인 - 리스트 테이블 */
 .listtable-container {
-  height: calc(100vh - var(--size-main-header) - var(--size-header));
+  height: calc(100vh - 143px - var(--size-header));
   padding-top: 22px;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: scroll;
   position: relative;
   box-sizing: border-box;
 }
@@ -119,7 +126,8 @@ h1.main-title {
 .listtable-tablehead {
   background-color: var(--color-gray100);
   height: 38px;
-  margin: 0 80px 0 80px;
+  width: 1566px;
+  margin: 0 40px 0 40px;
   display: flex;
   align-items: center;
 }
@@ -127,6 +135,7 @@ h1.main-title {
 .listtable-column {
   width: 210px;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .listtable-column:first-child input {
@@ -141,7 +150,8 @@ h1.main-title {
   height: calc(100% - 50px);
   overflow-x: hidden;
   overflow-y: auto;
-  margin: 0 80px;
+  width: 1566px;
+  margin-left: 40px;
   position: relative;
 }
 
@@ -168,6 +178,11 @@ h1.main-title {
   width: 100%;
   display: flex;
   border-bottom: 1px solid var(--color-gray200);
+}
+
+.employeecard-container > div:last-child {
+  width: 100%;
+  display: flex;
 }
 
 .employeecard-column {
@@ -226,4 +241,8 @@ h1.main-title {
 .employeecard-container:hover .employeecard-column.icon-area span:hover {
   color: var(--color-blue500);
   cursor: pointer;
+}
+
+.br-point {
+  display: flex;
 }

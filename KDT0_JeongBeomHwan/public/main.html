@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" maximum-scale="1," minimum-scale="1" />
     <title>직원 프로필 관리 | Profile Base</title>
 
     <!-- Favicon -->
@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/profile-card.css" />
+    <link rel="stylesheet" href="../css/media-query.css" />
 
     <!-- GOOGLE MATERIAL ICONS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -33,7 +35,69 @@
     <!-- JS -->
     <script defer src="../javascripts/main.js"></script>
   </head>
-  <body>
+  <body class="mo">
+    <div id="DIM" class="none"></div>
+    <section class="popup-container none">
+      <header class="popup-header">
+        <span>직원 정보 추가</span>
+        <span class="material-symbols-outlined">close</span>
+      </header>
+      <div class="popup-contents-container">
+        <div class="profile-image"></div>
+        <section class="profile-infomation-container">
+          <div class="profile-row name">
+            <div class="row-title">이름</div>
+            <div class="row-content">
+              <input type="text" placeholder="이름을 입력해주세요" />
+            </div>
+          </div>
+          <div class="profile-row team">
+            <div class="row-title">팀・부서</div>
+            <div class="row-content">
+              <select name="teams" id="profile-team">
+                <option value="develop">개발</option>
+                <option value="design">디자인</option>
+                <option value="planning">기획</option>
+                <option value="ai">AI</option>
+                <option value="people">피플</option>
+              </select>
+            </div>
+          </div>
+          <div class="profile-row e-mail">
+            <div class="row-title">이메일</div>
+            <div class="row-content">
+              <input type="text" placeholder="이메일을 입력하세요" />
+            </div>
+          </div>
+          <div class="profile-row tel">
+            <div class="row-title">연락처 <span>(- 없이 입력)</span></div>
+            <div class="row-content">
+              <input type="text" placeholder="연락처를 입력해주세요" />
+            </div>
+          </div>
+          <div class="profile-row author">
+            <div class="row-title">관리자 여부</div>
+            <div class="row-content">
+              <select name="author" id="profile-author">
+                <option value="employee">직원</option>
+                <option value="author">관리자</option>
+              </select>
+            </div>
+          </div>
+          <div class="profile-row image">
+            <div class="row-title">사진<span>(선택)</span></div>
+            <div class="row-content">
+              <input type="file" />
+              <span>삭제</span>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="popup-buttons">
+        <button class="btn-md outlined">취소</button>
+        <button class="btn-md">저장</button>
+      </div>
+    </section>
     <!-- 
 
       헤더 바
@@ -101,8 +165,8 @@
                 </select>
               </div>
               <div class="main-toolbar_rightcontainer_buttons">
-                <button class="btn-sm outlined">선택 삭제하기</button>
-                <button class="btn-sm filled">직원 추가하기</button>
+                <button class="btn-sm outlined">선택 삭제</button>
+                <button class="btn-sm filled">직원 추가</button>
               </div>
             </div>
           </section>
@@ -123,30 +187,35 @@
           <div class="listtable-tablerows-container">
             <span id="no-profile">등록된 직원 프로필이 없습니다 :|</span>
             <!-- 카드가 쌓일 부분 -->
+
             <article class="employeecard-container">
               <div class="employeecard-column profile-check">
                 <input type="checkbox" />
                 <div class="employeecard-column_profilecard"></div>
               </div>
-              <div class="employeecard-column name">
-                <span class="ko-name">정범환</span>
-                <span class="en-name">James</span>
-              </div>
-              <div class="employeecard-column e-mail">
-                <span>jove0729@naver.com</span>
-              </div>
-              <div class="employeecard-column tel">
-                <span>010-4922-3563</span>
-              </div>
-              <div class="employeecard-column team">
-                <span>개발팀</span>
-              </div>
-              <div class="employeecard-column author">
-                <span>관리자</span>
-              </div>
-              <div class="employeecard-column icon-area">
-                <span class="material-symbols-outlined">edit_note</span>
-                <span class="material-symbols-outlined">delete</span>
+              <div>
+                <div class="employeecard-column name">
+                  <span class="ko-name">정범환</span>
+                  <span class="en-name">James</span>
+                </div>
+                <div class="employeecard-column e-mail">
+                  <span>jove0729@naver.com</span>
+                </div>
+                <div class="employeecard-column tel">
+                  <span>010-4922-3563</span>
+                </div>
+                <div class="br-point">
+                  <div class="employeecard-column team">
+                    <span>개발팀</span>
+                  </div>
+                  <div class="employeecard-column author">
+                    <span>관리자</span>
+                  </div>
+                </div>
+                <div class="employeecard-column icon-area">
+                  <span class="material-symbols-outlined">edit_note</span>
+                  <span class="material-symbols-outlined">delete</span>
+                </div>
               </div>
             </article>
           </div>

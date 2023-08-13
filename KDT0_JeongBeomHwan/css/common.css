@@ -6,6 +6,8 @@
   --color-blue800: #1965db;
   --color-blue700: #3a7bdf;
   --color-blue500: #9dbdef;
+  --color-blue300: #c8deff;
+  --color-blue200: #e5f0ff;
   --color-blue100: #fafcff;
   --color-black: #000;
   --color-white700: #fff;
@@ -24,8 +26,9 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
 
 body {
-  /* overflow: hidden; */
+  overflow: hidden;
   font-family: pretendard;
+  position: relative;
 }
 
 .viewport-constraint {
@@ -45,6 +48,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(100, 100, 100, 0.05);
 }
 
 .header-logo {
@@ -163,6 +167,21 @@ body {
   background-color: var(--color-blue800);
 }
 
+.btn-md {
+  width: 126px;
+  height: 40px;
+  color: var(--color-white700);
+  font-weight: 500;
+  background-color: var(--color-blue700);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-md:hover {
+  background-color: var(--color-blue800);
+}
+
 .outlined {
   border: 1px solid var(--color-blue500);
   background-color: var(--color-white700);
@@ -172,7 +191,6 @@ body {
 .outlined:hover {
   background-color: var(--color-blue100);
 }
-
 /* 
 
   state
@@ -181,4 +199,8 @@ body {
 
 .hidden {
   display: hidden;
+}
+
+.none {
+  display: none;
 }
