@@ -92,3 +92,13 @@ export function firebaseError(){
     confirmButtonText: '확인',
   })
 }
+
+export function storageError(){
+  Swal.fire({
+    title: '삭제 오류',
+    text: "삭제하는 과정에서 오류가 발생했습니다.",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+  })
+}

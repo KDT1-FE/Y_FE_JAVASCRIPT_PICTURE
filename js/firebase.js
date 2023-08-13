@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { uploadError, modalOff, firebaseError } from "./nav.js";
+import { storageError } from "./nav.js";
 
 const imageInput = document.getElementById('imageInput');
 const nameInput = document.getElementById('nameInput');
@@ -189,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
   displayprofile();
 });
 
-
 allcheckbox.addEventListener('click', () => {
   const isChecked = allcheckbox.checked;
 
@@ -223,18 +223,19 @@ export async function deleteBoard() {
       itemcompleted.forEach(async completeditems => {
         const imageUrl = completeditems.querySelector('.image img').src;
         const profileItem = profiles.find(profile => profile.image === imageUrl);
+        const decodedImageUrl = decodeURIComponent(imageUrl);
         if (profileItem) {
           profiles = profiles.filter(p => p.id !== profileItem.id);
           completeditems.remove();
           
+
           const storage = getStorage();
-          const storageRef = ref(storage, 'images/' + getImageFilename(imageUrl));
+          const storageRef = ref(storage, decodedImageUrl);
           
-          // Firebase 스토리지에서 객체 삭제 (getMetadata 사용하지 않음)
           try {
             await deleteObject(storageRef);
           } catch (error) {
-            // 객체가 존재하지 않는 경우 에러 처리
+            storageError();
           }
 
           await deleteFirestoreDocument(imageUrl);
@@ -252,15 +253,12 @@ async function deleteFirestoreDocument(imageUrl) {
   querySnapshot.forEach(async (doc) => {
     const docData = doc.data();
     if (docData.imageUrl === imageUrl) {
-      await deleteDoc(doc.ref); // Firestore 문서 삭제에 해당하는 적절한 함수 사용
+      await deleteDoc(doc.ref);
     }
   });
 }
 
-// ...
-
-
-function getImageFilename(url) {
-  const filename = url.substring(url.lastIndexOf('/') + 1);
-  return filename;
+function getFilenameFromUrl(url) {
+  const parts = url.split('/');
+  return parts[parts.length - 1];
 }
