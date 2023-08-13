@@ -107,3 +107,16 @@ body {
   border: 1px solid;
   border-radius: 4px;
 }
+
+.edit-button {
+  padding: 10px 20px;
+  background-color: bisque;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-button :hover {
+  background-color: #ffd19a;
+}

@@ -3,41 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>캐릭터 생성</title>
+    <title>캐릭터 상세</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="member-container">
-      <h2>⭐ 캐릭터 추가</h2>
+      <h2>⭐ 캐릭터 정보</h2>
+      <button type="submit" class="edit-button">정보 변경</button>
       <br />
       <hr />
-      <div class="member-create-list">
-        <input type="file" id="member-image" class="member-image" /><br />
-        <input
-          type="text"
-          id="member-name"
-          class="member-name"
-          placeholder="이름"
-        /><br />
-        <input
-          type="text"
-          id="member-country"
-          class="member-country"
-          placeholder="국적"
-        /><br />
-        <input
-          type="text"
-          id="member-birth"
-          class="member-birth"
-          placeholder="생년월일(ex.2023.01.01)"
-        /><br />
-        <input
-          type="text"
-          id="member-creator"
-          class="member-creator"
-          placeholder="제작"
-        /><br />
-        <button type="submit" class="create-button">캐릭터 등록</button>
+      <div class="character-info">
+        <img src="" id="charImage" />
+        <h2 id="charName"></h2>
+        <p id="charBirthdate"></p>
+        <p id="charNation"></p>
+        <p id="charProducer"></p>
       </div>
     </div>
 
@@ -57,6 +37,6 @@
 
       firebase.initializeApp(firebaseConfig);
     </script>
-    <script src="./create.js"></script>
+    <script src="./about.js"></script>
   </body>
 </html>

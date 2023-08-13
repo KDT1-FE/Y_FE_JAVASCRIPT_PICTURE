@@ -33,77 +33,16 @@
       <div class="member-list-box">
         <ul class="member-list" id="list">
           <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">사진</li>
-          <li class="member-list-inner">이름</li>
-          <li class="member-list-inner">국적</li>
-          <li class="member-list-inner">생년월일</li>
-          <li class="member-list-inner">제작</li>
+          <li class="member-list-inner"><strong>사진</strong></li>
+          <li class="member-list-inner"><strong>이름</strong></li>
+          <li class="member-list-inner"><strong>국적</strong></li>
+          <li class="member-list-inner"><strong>생년월일</strong></li>
+          <li class="member-list-inner"><strong>제작</strong></li>
         </ul>
         <br />
-
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/mickey.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">미키 마우스</li>
-          <li class="member-list-inner">미국</li>
-          <li class="member-list-inner">1928년 11월 18일</li>
-          <li class="member-list-inner">월트 디즈니, 어브 아이웍스</li>
-        </ul>
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/minnie.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">미니 마우스</li>
-          <li class="member-list-inner">미국</li>
-          <li class="member-list-inner">1928년 11월 18일</li>
-          <li class="member-list-inner">월트 디즈니, 어브 아이웍스</li>
-        </ul>
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/donald.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">도날드 덕</li>
-          <li class="member-list-inner">미국</li>
-          <li class="member-list-inner">1934년 6월 9일</li>
-          <li class="member-list-inner">월트 디즈니, 어브 아이웍스</li>
-        </ul>
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/elsa.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">엘사</li>
-          <li class="member-list-inner">아렌델</li>
-          <li class="member-list-inner">1817년 12월 22일</li>
-          <li class="member-list-inner">디즈니</li>
-        </ul>
-
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/anna.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">안나</li>
-          <li class="member-list-inner">아렌델</li>
-          <li class="member-list-inner">1820년 6월 21일</li>
-          <li class="member-list-inner">디즈니</li>
-        </ul>
-
-        <ul class="member-list" id="list">
-          <li class="member-list-innercheck"><input type="checkbox" /></li>
-          <li class="member-list-inner">
-            <img src="./assets/olaf.png" class="image-size" />
-          </li>
-          <li class="member-list-inner">올라프</li>
-          <li class="member-list-inner">아렌델</li>
-          <li class="member-list-inner">1839년</li>
-          <li class="member-list-inner">디즈니</li>
-        </ul>
       </div>
+      <br />
+      <hr />
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -120,33 +59,8 @@
         appId: "1:395536268148:web:f7f0c315826abb00ed0a21",
       };
 
-      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
-
-    <script>
-      const db = firebase.firestore();
-      db.collection("character")
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((char) => {
-            console.log(char.data());
-
-            // html을 동적으로 생성해주기
-            //       var tem = ` <ul class="member-list" id="list">
-            //   <li class="member-list-innercheck"><input type="checkbox" /></li>
-            //   <li class="member-list-inner">
-            //     <img src="./assets/donald.png" class="image-size" />
-            //   </li>
-            //   <li class="member-list-inner">도날드 덕</li>
-            //   <li class="member-list-inner">미국</li>
-            //   <li class="member-list-inner">1934년 6월 9일</li>
-            //   <li class="member-list-inner">월트 디즈니, 어브 아이웍스</li>
-            // </ul>`;
-            // $(".member-list-box").append(tem); -> jquery
-          });
-        });
-    </script>
-    <script src="./member.js"></script>
+    <script src="./list.js"></script>
   </body>
 </html>
