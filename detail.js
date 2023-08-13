@@ -44,6 +44,9 @@ imageInputEl.addEventListener("change", () => {
 
       // 프로필 이미지 변경
       avatarImg.src = url;
+
+      // 프로필 이미지 삭제 버튼 표시
+      document.querySelector(".img-remove-btn").classList.remove("hidden");
     });
   });
 });
@@ -55,7 +58,20 @@ modifyBtn.addEventListener("click", () => {
   modifyInput.forEach((i) => {
     i.disabled = false;
   });
+  if (imgTextInput.value) {
+    document.querySelector(".img-remove-btn").classList.remove("hidden");
+  }
   document.querySelector(".modify-submit-btn").classList.remove("hidden");
+});
+
+// 프로필 이미지 삭제 기능
+const imgRemoveBtn = document.querySelector(".img-remove-btn");
+imgRemoveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (imgTextInput.value) {
+    imgTextInput.value = "";
+    avatarImg.src = "";
+  }
 });
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
