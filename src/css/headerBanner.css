@@ -1,0 +1,29 @@
+/*<div class="modal__banner">
+<h1 class="modal__banner--title">나만의 팀을 찾아보세요</h1>
+<p class="modal__banner--description">*/
+
+.header__banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+
+    position: relative;
+    text-align: center;
+}
+
+.header__banner--title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.header__banner--description {
+    margin-top: 0.5rem;
+
+    font-size: 0.8rem;
+}

@@ -1,0 +1,166 @@
+.modal__container {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal__container.modal__active {
+    display: block;
+}
+
+.modal__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    width: 65%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    padding: 3rem;
+
+    overflow: hidden;
+    border-radius: 0.9rem;
+    background: var(--color-secondary);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+
+    transform: translate(-50%, -50%);
+    animation: modal__wrapper--open 0.3s ease-in-out;
+}
+
+.modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin: 1rem auto;
+    position: relative;
+
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.modal__close {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2rem;
+
+    cursor: pointer;
+}
+
+.modal__banner--form {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0 auto;
+    position: relative;
+
+    gap: 1.5rem;
+}
+
+.modal__banner--top {
+    display: flex;
+    width: 90%;
+
+    margin: 0 auto;
+}
+
+.modal__banner--left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 30%;
+}
+
+.modal__banner--image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.modal__banner--image-wrapper {
+    display: block;
+
+    width: 75%;
+
+    margin-top: 1rem;
+
+    overflow: hidden;
+    position: relative;
+
+    border-radius: 50%;
+    border: 0.1rem solid var(--color-primary);
+}
+
+.input-file-button {
+    width: 40%;
+
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+
+    color: white;
+    border-radius: 0.4rem;
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.input-file-button:hover {
+    color: var(--color-primary);
+
+    background-color: var(--color-secondary);
+}
+
+.modal__banner--image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.modal__banner--right {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.modal__banner--bottom {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    width: 90%;
+}
+
+.modal__banner--form-submit {
+    width: 90%;
+
+    margin: 0 auto;
+}
+
+@keyframes modal__wrapper--open {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

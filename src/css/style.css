@@ -1,0 +1,122 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+        format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 1vw;
+
+    overflow-x: hidden;
+
+    box-sizing: border-box;
+
+    --color-main: #ffffff;
+    --color-primary: #486284;
+    --color-secondary: #dee5ed;
+    --color-space: #ced7e4;
+
+    font-family: 'Pretendard-Regular', sans-serif;
+}
+
+/*
+font-family: 'Black Han Sans', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
+*/
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+}
+
+.root-div {
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+input {
+    padding: 0.5rem;
+
+    border: 0;
+    border-radius: 0.5rem;
+    outline: none;
+
+    background-color: var(--color-space);
+}
+
+input:focus {
+    background-color: white;
+    box-shadow: 0 0 0 0.25rem var(--color-primary);
+}
+
+label {
+    text-align: start;
+
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+
+    font-size: 1.4rem;
+}
+
+.btn.btn-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem 1.8rem;
+    gap: 0.7rem;
+
+    font-size: 0.8rem;
+
+    border-radius: 5rem;
+    border: none;
+    color: var(--color-main);
+    background-color: var(--color-primary);
+
+    cursor: pointer;
+}
+
+.btn.btn-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem 1.8rem;
+    gap: 0.7rem;
+
+    font-size: 0.8rem;
+
+    border-radius: 5rem;
+    border: none;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    width: 85%;
+    height: 100%;
+
+    margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+node_modules
+
+# Install dependencies
+
+dist
+
+# Build files
+
+.parcel-cache
