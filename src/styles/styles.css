@@ -35,6 +35,7 @@ html {
 
   cursor: pointer;
 }
+
 .container {
   display: flex;
   justify-content: end;
@@ -97,8 +98,7 @@ html {
 }
 
 .row-member {
-  height: 150px;
-  border-radius: 15px;
+  height: 9.375rem;
   cursor: pointer;
 }
 .row-member:hover {
@@ -158,7 +158,6 @@ html {
   justify-content: space-between;
 
   font-size: 2.25rem;
-  font-style: normal;
   font-weight: 700;
   color: var(--color-primary);
 
@@ -306,10 +305,12 @@ html {
 .the-loader {
   width: 30px;
   height: 30px;
+
   margin: 30px auto;
   border: 4px solid var(--color-primary);
   border-top-color: transparent;
   border-radius: 50%;
+
   animation: loader 1s infinite linear;
 }
 .the-loader.hide {
@@ -323,3 +324,226 @@ html {
     transform: rotate(360deg);
   }
 }
+
+/* 반응형 */
+@media (max-width: 1280px) {
+  .title {
+    font-size: 2.3rem;
+  }
+  .header {
+    max-width: 55rem;
+  }
+  .table {
+    max-width: 55rem;
+  }
+  .row,
+  .row-member {
+    max-width: 55rem;
+    gap: 1.6rem;
+  }
+  .name-title,
+  .email-title,
+  .photo-title {
+    width: 15rem;
+
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .photo {
+    width: 15rem;
+    height: 5rem;
+  }
+}
+@media (max-width: 450px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  .header {
+    max-width: 18.75rem;
+    height: 5rem;
+  }
+  .search {
+    height: 1.25rem;
+
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
+  .search::placeholder {
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
+  .button-home {
+    width: 3rem;
+    height: 1.5rem;
+
+    background-color: var(--color-primary);
+
+    color: var(--color-white);
+    font-size: 0.4em;
+    font-weight: 400;
+  }
+  .table {
+    max-width: 18.75rem;
+  }
+  .row,
+  .row-member {
+    max-width: 18.75rem;
+    height: 3rem;
+
+    gap: 1rem;
+  }
+  .checkbox-container {
+    width: 3rem;
+  }
+  .checkbox {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+  .name-title,
+  .email-title {
+    width: 5rem;
+
+    font-size: 0.5rem;
+    font-weight: 500;
+  }
+  .photo-title {
+    display: none;
+  }
+  .photo {
+    display: none;
+  }
+} /* 메인 페이지 반응형 */
+
+@media (max-width: 1280px) {
+  .detail {
+    max-width: 55rem;
+  }
+  .photo-detail {
+    width: 21rem;
+    height: 25rem;
+  }
+  .information-container {
+    margin-left: 2rem;
+  }
+}
+@media (max-width: 450px) {
+  .detail {
+    max-width: 18.75rem;
+    margin: 1rem auto 0 auto;
+
+    flex-direction: column;
+  }
+  .photo-detail {
+    width: 12rem;
+    height: 12rem;
+  }
+  .information-container {
+    width: 18rem;
+    margin-left: 0;
+  }
+  .information-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    padding-top: 1rem;
+  }
+  .navigate-edit {
+    width: 4rem;
+    height: 1.5rem;
+
+    font-size: 0.8rem;
+  }
+  .detail-category {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .detail-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+} /* 상세 페이지 반응형 */
+
+@media (max-width: 1280px) {
+  .write-title,
+  .write-container {
+    max-width: 55rem;
+  }
+}
+@media (max-width: 450px) {
+  .write-title,
+  .write-container {
+    max-width: 18.75rem;
+  }
+
+  .write-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .write-name,
+  .write-email,
+  .write-image {
+    height: 2.6rem;
+
+    font-size: 1rem;
+  }
+  .file-label {
+    flex-grow: 1;
+    height: 2.6rem;
+  }
+  .write-image {
+    flex-grow: 1;
+    width: 5.4rem;
+  }
+  .add-member {
+    width: 6rem;
+    height: 2.6rem;
+    font-size: 1rem;
+  }
+} /* 등록 페이지 반응형 */
+@media (max-width: 1440px) {
+  .photo-edit {
+    width: 20rem;
+    height: 24rem;
+  }
+}
+@media (max-width: 1280px) {
+  .photo-edit {
+    width: 21rem;
+    height: 25rem;
+  }
+}
+@media (max-width: 450px) {
+  .photo-edit {
+    width: 12rem;
+    height: 12rem;
+  }
+  .information {
+    padding-left: 0;
+  }
+  .detail-category {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .detail-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    width: 10rem;
+  }
+  .information-container {
+    width: 18rem;
+    padding-bottom: 0;
+  }
+  .edit-container {
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .editButton {
+    margin: 0 0 0 12rem;
+    width: 5rem;
+    height: 1.8rem;
+
+    font-size: 1rem;
+  }
+} /* 수정 페이지 반응형 */

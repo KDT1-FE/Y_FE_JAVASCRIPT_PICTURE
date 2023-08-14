@@ -20,7 +20,7 @@ export default class Edit extends Component {
   <form class="detail">
     <label for="file" class="photo-edit" style="background-image: url(https://api.iconify.design/mdi-light/image.svg?color=%23a0aec0)"></label> 
     <input type="file" name="file" id="file" accept=".jpg, .png" class="file-input"/>
-    <section class='information-container'>
+    <section class='information-container edit-container'>
       <section class='information-title'>
       정보를 수정해주세요
       </section>
@@ -34,7 +34,6 @@ export default class Edit extends Component {
       </p>
       <button class="editButton" type="submit">완료</button>
     </section>
-
   </form> 
     `;
 
