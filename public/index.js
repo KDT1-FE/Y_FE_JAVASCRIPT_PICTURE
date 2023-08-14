@@ -4,6 +4,9 @@ const addBtnEl = document.querySelector(".section__user_add_btn");
 
 const imgEl = document.querySelector(".img_section");
 const img_inputEl = document.querySelector(".user_imgInput");
+const user_checkboxsEl = document.querySelectorAll(
+  ".section__user_checkbox_division[type='checkbox']"
+);
 
 userAddBtnsEl.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -37,4 +40,17 @@ img_inputEl.addEventListener("change", (e) => {
 });
 imgEl.addEventListener("click", () => {
   img_inputEl.click();
+});
+
+user_checkboxsEl.forEach((checkbox) => {
+  console.log(checkbox);
+  checkbox.onchange = (e) => {
+    if (e.target.checked) {
+      user_checkboxsEl.forEach((outherCheckbox) => {
+        if (outherCheckbox !== e.target) {
+          outherCheckbox.checked = false;
+        }
+      });
+    }
+  };
 });
