@@ -67,8 +67,7 @@
           <button class="remove-btn">임직원 삭제</button>
         </div>
         <div class="search-container">
-          
-          <input type="text" class="search-input" id="search-input" />
+          <input type="text" class="search-input" placeholder="이름으로 검색"/>
         </div>
       </div>
       <table class="employee-table">
@@ -90,10 +89,6 @@
     <script type="module" src="asset/js/modal.js"></script>
     <script type="module" src="asset/js/employee.js"></script>
     <script type="module" src="asset/js/employeeData.js"></script>
-    <script>
-      $(window).on("load", function () {
-        $('.loader-container').css('display', 'none')
-      });
-    </script>
+    <script src="asset/js/loadAnimation.js"></script>
   </body>
 </html>

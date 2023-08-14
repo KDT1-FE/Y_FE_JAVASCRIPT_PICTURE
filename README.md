@@ -25,13 +25,14 @@ Firebase
 * 로딩 애니메이션
 * 무한스크롤 기능 
 * 로컬스토리지 사용
+* 이름 검색 기능
 
 ### 기능 구현 못한 부분
-* 검색 기능
 * 사진 편집 기능
 
 ## User Flow
-![userflow](https://github.com/YongYong21/javascript/assets/90038848/83e8691e-1d24-4fe3-98aa-4b649f635e9b)
+![유저플로우](https://github.com/YongYong21/javascript/assets/90038848/bcb05e69-37d2-4c35-a238-560b807c4ff9)
+
 
 
 ## 유의사항
@@ -39,6 +40,5 @@ Firebase
 
 
 ## 어려웠던 점
-
 * js파일, function 정리
 

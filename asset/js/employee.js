@@ -30,7 +30,40 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// 유저 로드
+function loadUser(data) {
+  const userList = `
+        <tr data-name="${data.name}">
+        <td class='check'><input type="checkbox" ></td>
+        <td><img src="" id="${data.key}"></td>
+        <td><span>${data.name}</span></td>
+        <td><span>${data.email}</span></td>
+        <td><span>${data.phone}</span></td>
+        <td><span>${data.classification}</span></td>
+        <td><button class='profile-btn'>프로필 보기</button></td>
+        </tr>`;
+        $("tbody").append(userList);
+        if (data.hasImage) {
+          getDownloadURL(ref(storage, `image/${data.key}`))
+            .then((url) => {
+              const img = $(`#${data.key}`);
 
+              img.attr("src", url);
+            })
+            .catch((error) => {
+              console.log("실패");
+            });
+        } else {
+          getDownloadURL(ref(storage, `image/default.png`))
+            .then((url) => {
+              const img = $(`#${data.key}`);
+              img.attr("src", url);
+            })
+            .catch((error) => {
+              console.log("실패");
+            });
+        }
+}
 
 // 초기 직원 목록 리스팅 함수
 function listEmployees(startIndex, endIndex) {
@@ -44,40 +77,7 @@ function listEmployees(startIndex, endIndex) {
 
     if (storedUserInfo !== null) {
       const userInfo = JSON.parse(storedUserInfo);
-
-      const userList = `
-    <tr data-name="${userInfo.name}">
-    <td class='check'><input type="checkbox" ></td>
-    <td><img src="" id="${userInfo.key}"></td>
-    <td><span>${userInfo.name}</span></td>
-    <td><span>${userInfo.email}</span></td>
-    <td><span>${userInfo.phone}</span></td>
-    <td><span>${userInfo.classification}</span></td>
-    <td><button class='profile-btn'>프로필 보기</button></td>
-    </tr>`;
-      $("tbody").append(userList);
-
-      // hasImage는 이미지 여부를 조사하는 boolean 데이터 타입 
-      if (userInfo.hasImage) {
-        getDownloadURL(ref(storage, `image/${userInfo.key}`))
-          .then((url) => {
-            const img = $(`#${userInfo.key}`);
-
-            img.attr("src", url);
-          })
-          .catch((error) => {
-            console.log("실패");
-          });
-      } else {
-        getDownloadURL(ref(storage, `image/default.png`))
-          .then((url) => {
-            const img = $(`#${userInfo.key}`);
-            img.attr("src", url);
-          })
-          .catch((error) => {
-            console.log("실패");
-          });
-      }
+      loadUser(userInfo)
     }
   }
 
@@ -150,5 +150,25 @@ $(".remove-btn").on("click", () => {
     .catch((error) => {
       console.log("삭제 실패", error);
     });
+});
+
+
+// 검색기능
+let input = $(".search-input");
+const tbody = $("tbody");
+
+input.on("input", (e) => {
+  $("tbody").html(""); 
+  for (let i = 0; i < allKeys.length; i++) { // 모든 키 조회
+    const key = allKeys[i];
+    const storedUserInfo = localStorage.getItem(key);
+    const userInfo = JSON.parse(storedUserInfo);
+    if (userInfo !== true) { // hasExcuted로 인해 에러방지
+      let hasName = userInfo.name.includes($(e.target).val());
+      if (hasName) {
+        loadUser(userInfo)
+      }
+    }
+  }
 });
 
