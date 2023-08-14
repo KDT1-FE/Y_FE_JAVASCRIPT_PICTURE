@@ -14,17 +14,9 @@ imageInputEl.addEventListener("change", (event) => {
     getDownloadURL(storageRef).then((url) => {
       // 프로필 이미지 url input에 저장
       registForm.elements[1].value = url;
-      // 프로필 이미지가 있으면 <img> 삭제
-      const avatarImg = document.querySelector(".avatar");
-      if (avatarImg) {
-        avatarImg.remove();
-      }
-      // 프로필 이미지 추가
-      const avatarBox = document.getElementById("avatarBox");
-      const imgTag = document.createElement("img");
-      imgTag.src = url;
-      imgTag.className = "avatar";
-      avatarBox.appendChild(imgTag);
+
+      // 프로필 이미지 변경
+      document.getElementById("avatarImg").src = url;
     });
   });
 });
