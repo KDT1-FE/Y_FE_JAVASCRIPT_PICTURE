@@ -34,45 +34,24 @@
         </span>
       </header>
 
-      <section class="main_form">
-        <div class="nav_btn">
-          <button onclick="location.href='./person_add.html'">직원 등록</button>
-          <button onclick="location.href='./person_fix.html'">직원 수정</button>
-          <button>직원 삭제</button>
-          <div class="group">
-            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-              <g>
-                <path
-                  d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
-                ></path>
-              </g>
-            </svg>
-            <input placeholder="이름으로 검색" type="search" class="input" />
+      <section class="add_form">
+        <div class="add_menu">
+          <label
+            ><input type="file" />
+            <div class="image_container">
+              <img src="../images/div-img/noimg.png" alt="사진추가" /></div
+          ></label>
+          <div class="add_bottom">
+            <label><span>이름</span><input type="text" /></label>
+            <label><span>이메일</span><input type="text" /></label>
+            <label><span>휴대폰 번호</span><input type="text" /></label>
+            <label><span>직급</span><input type="text" /></label>
+            <button type="submit">직원수정하기</button>
           </div>
         </div>
-
-        <div class="top_section">
-          <p>프로필사진</p>
-          <p>이름</p>
-          <p>이메일</p>
-          <p>휴대폰번호</p>
-          <p>직급</p>
-        </div>
       </section>
 
-      <section class="content">
-        <div>
-          <img
-            src="../images/div-img/sawon1.jpeg"
-            style="width: 200px; height: 200px"
-          />
-        </div>
-        <div><p>김나라</p></div>
-        <div><p>nara@gmail.com</p></div>
-        <div><p>010-0000-1111</p></div>
-        <div><p>사원</p></div>
-      </section>
-
+      <section class="content"></section>
       <footer class="footer">
         <p class="copyright">Yanolja</p>
       </footer>
@@ -98,8 +77,5 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
     </script>
-    <script src="../js/personAdd.js"></script>
-    <script src="../js/personFix.js"></script>
-    <script src="../js/personDel.js"></script>
   </body>
 </html>
