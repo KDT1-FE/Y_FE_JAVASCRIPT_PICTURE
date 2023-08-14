@@ -18,7 +18,7 @@ categoryInput.value = "category";
 
 
 btn1.addEventListener('click', async () => {
-    // const checkbox = checkBoxInput.checked;
+    //const checkbox = checkBoxInput.checked;
     const profileImage = profileImageInput.files[0];
     const name = nameInput.value;
     const email = emailInput.value;
@@ -86,7 +86,6 @@ btn2.addEventListener('click', () => {
 
     selectCheckbox.forEach(checkBox => {
         const listItem = checkBox.closest('.employee');
-        alert(listItem);
         if(listItem) {
             list.removeChild(listItem)
         }
