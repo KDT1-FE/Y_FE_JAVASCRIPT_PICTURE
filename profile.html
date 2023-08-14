@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로필</title>
+    <link rel="stylesheet" href="asset/css/main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="asset/css/profile.css">
+  </head>
+  <body>
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+    <div class="black-bg">
+        <div class="modal-container">
+          <h3>임직원 편집</h3>
+          <form class="edit-form">
+            <div class="input-container">
+              <div class="form-text-container">이름:</div>
+              <input type="text" name="" id="name" />
+            </div>
+  
+            <div class="input-container">
+              <div class="form-text-container">이메일:</div>
+              <input
+                type="email"
+                name=""
+                id="email"
+                placeholder="abc@google.com"
+              />
+            </div>
+  
+            <div class="input-container">
+              <div class="form-text-container">핸드폰번호:</div>
+              <input type="text" name="" id="phone" placeholder="01012345678" />
+            </div>
+  
+            <div class="input-container">
+              <div class="form-text-container">구분:</div>
+              <input type="text" name="" id="classification" placeholder="vip" />
+            </div>
+
+            <div class="input-container">
+              <div class="form-text-container">이미지:</div>
+              <input type="checkbox" class="changeImage">이미지 바꾸기
+              <input type="file" name="" id="img" class="none"/>
+            </div>
+
+            <div class="flex-wrap">
+              <button type="submit" class="submit-edit">수정하기</button>
+              <button type="button" class="close">닫기</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    <div class="employee-container">
+      <div class="title-container">
+        <div class="title">
+          <h1>임직원상세</h1>
+        </div>
+        <!-- <div class="login">로그인</div> -->
+      </div>
+      <div class="userInfo-container">
+        <div class="profile-left-container">
+          <div class="profile-title-container flex-wrap">
+            <h3>임직원 정보</h3>
+            <button class="add-btn edit-btn">임직원 편집</button>
+          </div>
+          <div class="userInfo-container-detail">
+            <div class="userInfo-wrap">
+              <div class="userInfo-text">이름</div>
+              <div id="user-name"></div>
+            </div>
+          </div>
+          <div class="userInfo-container-detail">
+            <div class="userInfo-wrap">
+              <div class="userInfo-text">이메일</div>
+              <div id="user-email"></div>
+            </div>
+          </div>
+          <div class="userInfo-container-detail">
+            <div class="userInfo-wrap">
+              <div class="userInfo-text">핸드폰번호</div>
+              <div id="user-phone"></div>
+            </div>
+          </div>
+          <div class="userInfo-container-detail">
+            <div class="userInfo-wrap">
+              <div class="userInfo-text">구분</div>
+              <div id="user-classification"></div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-right-container">
+            <img src="" id="userimg">
+        </div>
+      </div>
+    </div>
+    <script type="module" src="asset/js/modal.js"></script>
+    <script type="module" src="asset/js/profile.js"></script>
+    <script>
+      $(window).on("load", function () {
+        $('.loader-container').css('display', 'none')
+      });
+    </script>
+  </body>
+</html>

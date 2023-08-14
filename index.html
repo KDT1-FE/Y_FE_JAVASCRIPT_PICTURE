@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>임직원 관리</title>
+    <link rel="stylesheet" href="asset/css/main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+    <div class="black-bg">
+      <div class="modal-container">
+        <h3>임직원 등록</h3>
+        <form>
+          <div class="input-container">
+            <div class="form-text-container">이름:</div>
+            <input type="text" name="" id="name" placeholder="홍길동" />
+          </div>
+
+          <div class="input-container">
+            <div class="form-text-container">이메일:</div>
+            <input
+              type="email"
+              name=""
+              id="email"
+              placeholder="abc@google.com"
+            />
+          </div>
+
+          <div class="input-container">
+            <div class="form-text-container">핸드폰번호:</div>
+            <input type="text" name="" id="phone" placeholder="01012345678" />
+          </div>
+
+          <div class="input-container">
+            <div class="form-text-container">구분:</div>
+            <input type="text" name="" id="classification" placeholder="vip" />
+          </div>
+
+          <div class="input-container">
+            <div class="form-text-container">이미지:</div>
+            <input type="file" name="" id="img" />
+          </div>
+          <div class="flex-wrap">
+            <button type="submit">등록</button>
+            <button type="button" class="close">닫기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="employee-container">
+      <div class="title-container">
+        <div class="title">
+          <h1>임직원관리</h1>
+        </div>
+      </div>
+      <div class="edit-container">
+        <div class="button-container">
+          <button class="add-btn">임직원 등록</button>
+          <button class="remove-btn">임직원 삭제</button>
+        </div>
+        <div class="search-container">
+          
+          <input type="text" class="search-input" id="search-input" />
+        </div>
+      </div>
+      <table class="employee-table">
+        <thead>
+          <tr>
+            <th>선택</th>
+            <th>프로필 사진</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>휴대폰 번호</th>
+            <th>구분</th>
+            <th>프로필</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script type="module" src="asset/js/modal.js"></script>
+    <script type="module" src="asset/js/employee.js"></script>
+    <script type="module" src="asset/js/employeeData.js"></script>
+    <script>
+      $(window).on("load", function () {
+        $('.loader-container').css('display', 'none')
+      });
+    </script>
+  </body>
+</html>
