@@ -13,13 +13,7 @@ export default class CardItem {
     this.render();
   }
   render() {
-    const {
-      photo = 'https://firebasestorage.googleapis.com/v0/b/wanna-go-home-9ebdc.appspot.com/o/empty_user.png?alt=media&token=507c8fc6-6407-4c4f-8627-fe33ed36539f',
-      name,
-      email,
-      phone,
-      department,
-    } = this.info;
+    const { photo, name, email, phone, department } = this.info;
 
     this.el.classList.add('card');
     this.el.innerHTML = `

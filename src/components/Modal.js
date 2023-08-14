@@ -21,7 +21,13 @@ export default class Modal {
       e.stopPropagation();
     });
 
-    const { name, photo, email, phone, department } = this.info;
+    const {
+      name = '',
+      photo,
+      email = '',
+      phone = '',
+      department = '',
+    } = this.info;
 
     // info
     const infoEl = document.createElement('div');
