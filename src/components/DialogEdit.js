@@ -82,6 +82,10 @@ export default class Dialog extends Component{
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
     let isSubmit = false
+    
+    const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
+    const obj = localStorageArray[idx]
+
     const formEl = this.el.querySelector('form')
     this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
       formEl.dispatchEvent(new Event('submit'))
@@ -91,8 +95,6 @@ export default class Dialog extends Component{
       event.preventDefault()
       if(!isSubmit){
         isSubmit = true
-        const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
-        const obj = localStorageArray[idx]
 
         changeInformation()
           .then(()=>{

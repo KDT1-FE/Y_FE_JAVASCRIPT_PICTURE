@@ -4,6 +4,7 @@ html{
   --color-white: #FBFBFB; 
   --color-yellow: #D0A85C;
   --color-sora: #0BC6E3;
+
 }
 
 body{
@@ -58,6 +59,10 @@ body{
   transition: all .5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn:nth-child(even)::after{
+  background: var(--color-sora);
 }
 
 .btn:hover:after {
@@ -209,7 +214,21 @@ body{
   display: block;
 }
 
-.specific-background-image{
+.specific-container{
+  background-color: var(--color-black); 
+}
+
+.specific-wallpaper{
+  width: 100%;
+  height: 120%;
+  position: absolute;
+  background-repeat: no-repeat;
+  top:0;
+  left: 0;
+  background-size: cover;
+  filter: blur(6px);
+}
+/* .specific-background-image{
   position:absolute;
   background-size: cover;
   background-repeat: no-repeat;
@@ -217,11 +236,11 @@ body{
   height: 100%;
   display: block;
   filter: blur(8px);
-}
+} */
 
 .specific-inner-container{
   position: relative;
-  margin:0 auto;
+  margin:50px auto;
   max-width: 1200px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -244,6 +263,9 @@ body{
   top:15px;
 }
 
+.btn-home:after{
+  background-color: var(--color-yellow) !important ;
+}
 
 .btn-edit{
   position: absolute;
@@ -262,7 +284,7 @@ body{
   text-align: center;
   padding:25px;
   box-sizing: border-box;
-  background-image: linear-gradient(to bottom, rgba(5,28,36,0.2 ), rgba(5,28,36,1));
+  background-image: linear-gradient(to bottom, rgba(29,29,29,0.2 ), rgba(29,29,29,1));
 }
 
 

@@ -11,10 +11,11 @@ export default class Champion extends Component{
     // 쿼리스트링으로 전달 시 한글은 URL인코딩 방식을 사용한다. 그래서 history.state에서 한글을 넘겨 받을 때, decodeURI 메소드를 사용
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const champion = localStorageArray.find(obj=>obj.name === decodeURI(history.state.name))
-    console.log(champion)
 
-    this.el.style.backgroundColor = 'black' 
+    this.el.classList.add('specific-container')
+    
     this.el.innerHTML = /* html */`
+      <div class="specific-wallpaper"></div>
       <div class="specific-inner-container">
         <div class="specific-img">
         </div>
@@ -38,6 +39,7 @@ export default class Champion extends Component{
     `
 
     this.el.querySelector('.specific-img').style.backgroundImage = `url(${champion.image})`
+    this.el.querySelector('.specific-wallpaper').style.backgroundImage = `url(${champion.image})`
     const createDiv = text => {
       const divEl = document.createElement('div')
       divEl.innerHTML = text
