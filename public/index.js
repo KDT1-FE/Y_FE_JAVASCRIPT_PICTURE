@@ -83,8 +83,6 @@ addBtnEl.addEventListener("click", async (e) => {
         for (let [key, value] of formdata) {
           dataObj[key] = value;
         }
-        console.log(formdata);
-        console.log(dataObj);
         dataObj.image = url;
         if (!dataObj.name || dataObj.name.length < 1) {
           alert("이름을 입력해주세요");
@@ -123,9 +121,11 @@ addBtnEl.addEventListener("click", async (e) => {
           alert("분류를 선택해주세요");
           return;
         } else {
-          console.log(dataObj);
           db.collection("userlist")
-            .add(dataObj)
+            .add({
+              ...dataObj,
+              date: firebase.firestore.FieldValue.serverTimestamp(),
+            })
             .then((result) => {
               user_info_data.reset();
               window.location.href = "/index.html";
