@@ -6,7 +6,6 @@ import {
   deleteObject,
 } from "./firebase.js";
 
-
 const visibleEmployees = 10; // 처음에 보이는 직원 수
 const additionalEmployees = 3; // 스크롤링할 때 추가로 보여지는 직원 수
 let lastVisibleEmployeeIndex = visibleEmployees - 1; // 마지막으로 보이는 직원 인덱스
@@ -42,27 +41,27 @@ function loadUser(data) {
         <td><span>${data.classification}</span></td>
         <td><button class='profile-btn'>프로필 보기</button></td>
         </tr>`;
-        $("tbody").append(userList);
-        if (data.hasImage) {
-          getDownloadURL(ref(storage, `image/${data.key}`))
-            .then((url) => {
-              const img = $(`#${data.key}`);
+  $("tbody").append(userList);
+  if (data.hasImage) {
+    getDownloadURL(ref(storage, `image/${data.key}`))
+      .then((url) => {
+        const img = $(`#${data.key}`);
 
-              img.attr("src", url);
-            })
-            .catch((error) => {
-              console.log("실패");
-            });
-        } else {
-          getDownloadURL(ref(storage, `image/default.png`))
-            .then((url) => {
-              const img = $(`#${data.key}`);
-              img.attr("src", url);
-            })
-            .catch((error) => {
-              console.log("실패");
-            });
-        }
+        img.attr("src", url);
+      })
+      .catch((error) => {
+        console.log("실패");
+      });
+  } else {
+    getDownloadURL(ref(storage, `image/default.png`))
+      .then((url) => {
+        const img = $(`#${data.key}`);
+        img.attr("src", url);
+      })
+      .catch((error) => {
+        console.log("실패");
+      });
+  }
 }
 
 // 초기 직원 목록 리스팅 함수
@@ -77,11 +76,11 @@ function listEmployees(startIndex, endIndex) {
 
     if (storedUserInfo !== null) {
       const userInfo = JSON.parse(storedUserInfo);
-      loadUser(userInfo)
+      loadUser(userInfo);
     }
   }
 
-  // 프로필 보기 버튼 클릭이벤트 리스너 
+  // 프로필 보기 버튼 클릭이벤트 리스너
   $(".profile-btn").on("click", function (event) {
     const row = $(this).closest("tr");
 
@@ -90,7 +89,7 @@ function listEmployees(startIndex, endIndex) {
     const userPhone = row.find("td:nth-child(5) span").text();
     const userClassification = row.find("td:nth-child(6) span").text();
 
-    // url 넘겨주기 
+    // url 넘겨주기
     const profileUrl = `profile.html?name=${encodeURIComponent(
       userName
     )}&email=${encodeURIComponent(userEmail)}&phone=${encodeURIComponent(
@@ -124,7 +123,7 @@ $(".remove-btn").on("click", () => {
     let storedUserInfo = localStorage.getItem(key);
     let userInfo = JSON.parse(storedUserInfo);
 
-    // 체크박스에 체크가 되었다면 
+    // 체크박스에 체크가 되었다면
     if ($(`tr[data-name="${userInfo.name}"] input`).prop("checked")) {
       const storage = getStorage();
       const desertRef = ref(storage, `image/${userInfo.key}`);
@@ -152,23 +151,23 @@ $(".remove-btn").on("click", () => {
     });
 });
 
-
 // 검색기능
 let input = $(".search-input");
 const tbody = $("tbody");
 
 input.on("input", (e) => {
-  $("tbody").html(""); 
-  for (let i = 0; i < allKeys.length; i++) { // 모든 키 조회
+  tbody.html("");
+  for (let i = 0; i < allKeys.length; i++) {
+    // 모든 키 조회
     const key = allKeys[i];
     const storedUserInfo = localStorage.getItem(key);
     const userInfo = JSON.parse(storedUserInfo);
-    if (userInfo !== true) { // hasExcuted로 인해 에러방지
+    if (userInfo !== true) {
+      // hasExcuted로 인해 에러방지
       let hasName = userInfo.name.includes($(e.target).val());
       if (hasName) {
-        loadUser(userInfo)
+        loadUser(userInfo);
       }
     }
   }
 });
-

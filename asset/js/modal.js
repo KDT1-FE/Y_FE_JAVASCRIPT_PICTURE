@@ -33,16 +33,22 @@ $("form").on("submit", async (event) => {
         value.phone = $("#phone").val();
         value.classification = $("#classification").val();
         // 공란 여부 체크
-        if(value.name==='' || value.email==='' || value.phone==='' || value.classification===''){
-          alert('공란이 있습니다.')
-          return ;
+        if (
+          value.name === "" ||
+          value.email === "" ||
+          value.phone === "" ||
+          value.classification === ""
+        ) {
+          alert("공란이 있습니다.");
+          return;
         }
 
         // 파일창이 안보일경우(이미지 바꾸기 희망 X)
         if ($('input[type="file"].none').length > 0) {
           localStorage.setItem(key, JSON.stringify(value));
           window.location.href = "index.html";
-        } else { // 이미지 바꾸기 체크가 되었다면
+        } else {
+          // 이미지 바꾸기 체크가 되었다면
           let userImage = $("#img")[0].files[0] ? true : false; // 이미지 파일의 유무
           value.hasImage = userImage;
           const desertRef = ref(storage, `image/${value.key}`);
@@ -73,9 +79,14 @@ $("form").on("submit", async (event) => {
     let uniqueKey = Date.now().toString();
     let userImage = $("#img")[0].files[0] ? true : false;
 
-    if(userName==='' || userEmail==='' || userPhone==='' || userClassification===''){
-      alert('공란이 있습니다.')
-      return ;
+    if (
+      userName === "" ||
+      userEmail === "" ||
+      userPhone === "" ||
+      userClassification === ""
+    ) {
+      alert("공란이 있습니다.");
+      return;
     }
     const storageRef = ref(storage, "image/" + uniqueKey);
 
@@ -96,7 +107,7 @@ $("form").on("submit", async (event) => {
   }
 });
 
-// 편집창 이미지 바꾸기 체크박스 
+// 편집창 이미지 바꾸기 체크박스
 $(".changeImage").on("click", (e) => {
   $("#img").toggleClass("none");
 });
