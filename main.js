@@ -89,7 +89,10 @@ btn1.addEventListener("click", async () => {
       modifybtn.style.display = "none";
       savebtn.style.display = "inline-block";
 
-      employeeDiv.insertBefore(inputImage, profileImageElement.nextSibling);
+      employeeDiv.insertBefore(
+        inputImage,
+        profileImageElement.nextElementSibling
+      );
       inputImage.style.display = "block";
 
       inputName.focus();
@@ -126,7 +129,6 @@ btn1.addEventListener("click", async () => {
     });
 
     employeeDiv.appendChild(checkBox);
-
     employeeDiv.appendChild(profileImageElement);
     employeeDiv.appendChild(inputName);
     employeeDiv.appendChild(inputEmail);
