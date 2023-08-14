@@ -11,7 +11,11 @@ import {
   where,
   or,
   and,
+  getDoc,
+  doc,
 } from "firebase/firestore";
+import Member from "../js/member";
+import store from "../store/memberlist";
 
 export async function addMember(member) {
   // Add a new document with a generated id.
@@ -50,36 +54,56 @@ export async function getMemberList(key) {
       });
       lastKey = doc.data().createdAt;
     });
-    return { memberArr, lastKey };
+    store.state.members = [...store.state.members, ...memberArr];
+    store.state.lastScrollKey = lastKey;
+    // return { memberArr, lastKey };
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
-    return {
-      memberArr: [
-        {
-          id: "",
-          fullName: "",
-          gender: "",
-          email: "",
-          phone: "",
-          category: "",
-          fileUrl: "",
-          fileName: "",
-        },
-      ],
-      lastKey: "",
-    };
+    store.state.members = [
+      {
+        id: "",
+        fullName: "",
+        gender: "",
+        email: "",
+        phone: "",
+        category: "",
+        fileUrl: "",
+        fileName: "",
+      },
+    ];
+    store.state.lastScrollKey = "";
+    // return {
+    //   memberArr: [
+    //     {
+    //       id: "",
+    //       fullName: "",
+    //       gender: "",
+    //       email: "",
+    //       phone: "",
+    //       category: "",
+    //       fileUrl: "",
+    //       fileName: "",
+    //     },
+    //   ],
+    //   lastKey: "",
+    // };
   }
 }
 
-export async function getSearchedMember(options, key) {
+export async function getSearchedMember(options, key, init = false) {
   let lastKey = "";
   const limits = 4;
+
+  if (init) {
+    store.state.members = [];
+    store.state.lastScrollKey = null;
+  }
 
   const q =
     key === undefined
       ? query(
           collection(db, "Members"),
-          and(
+          or(
             where(options.field, "==", options.keywords),
             and(
               where("category", "in", options.category),
@@ -91,7 +115,7 @@ export async function getSearchedMember(options, key) {
         )
       : query(
           collection(db, "Members"),
-          and(
+          or(
             where(options.field, "==", options.keywords),
             and(
               where("category", "in", options.category),
@@ -119,23 +143,57 @@ export async function getSearchedMember(options, key) {
       });
       lastKey = doc.data().createdAt;
     });
-    return { memberArr, lastKey };
+    store.state.members = [...store.state.members, ...memberArr];
+    store.state.lastScrollKey = lastKey;
+    // return { memberArr, lastKey };
+  } catch (error) {
+    if (error instanceof Error) console.error(error.message);
+
+    store.state.members = [
+      {
+        id: "",
+        fullName: "",
+        gender: "",
+        email: "",
+        phone: "",
+        category: "",
+        fileUrl: "",
+        fileName: "",
+      },
+    ];
+    store.state.lastScrollKey = "";
+  }
+}
+
+export async function getMember(id) {
+  let data = {};
+  try {
+    const docSn = await getDoc(doc(db, "Members", id));
+    if (docSn.exists()) {
+      let newData = docSn.data();
+      data = new Member(
+        newData.fullName,
+        newData.gender,
+        newData.email,
+        newData.phone,
+        newData.category,
+        newData.fileUrl,
+        newData.fileName,
+      );
+      data.id = docSn.id;
+    }
+    return data;
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
     return {
-      memberArr: [
-        {
-          id: "",
-          fullName: "",
-          gender: "",
-          email: "",
-          phone: "",
-          category: "",
-          fileUrl: "",
-          fileName: "",
-        },
-      ],
-      lastKey: "",
+      id: "",
+      fullName: "",
+      gender: "",
+      email: "",
+      phone: "",
+      category: "",
+      fileUrl: "",
+      fileName: "",
     };
   }
 }

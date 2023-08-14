@@ -1,22 +1,17 @@
-<dialog
-  class="container mx-auto h-screen max-w-3xl md:h-[96vh] md:rounded-xl"
-  id="newUserModal"
->
-  <div class="h-full w-full overflow-auto px-4 pb-4">
-    <div class="flex items-center justify-between">
-      <h3 class="py-4 text-xl font-bold">직원 추가</h3>
-      <div
-        class="dialog-close flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-gray-200"
-      >
-        <span class="material-icons"> close </span>
-      </div>
-    </div>
+import { Component } from "../../core";
+import createUser from "../../js/createUser";
+
+export default class CreateContents extends Component {
+  render() {
+    this.el.className = "inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl";
+    this.el.id = "create-contents";
+    this.el.innerHTML = /* html */ `
     <form method="dialog" class="md:grid md:grid-cols-2 md:gap-3">
       <div class="mb-4">
         <h4 class="mb-2">프로필 사진</h4>
         <div
           id="drop_zone"
-          class="flex h-[200px] items-center rounded-md border-2 border-dashed border-blue-500 text-center"
+          class="flex h-[200px] items-center rounded-md border-2 border-dashed border-gray-200 text-center"
         >
           <div class="w-full">
             <span class="material-icons"> cloud_upload </span><br />
@@ -95,5 +90,8 @@
         추가 완료
       </button>
     </form>
-  </div>
-</dialog>
+    `;
+
+    createUser(this.el)();
+  }
+}

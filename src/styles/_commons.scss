@@ -29,3 +29,9 @@
 .material-icons.md-light.md-inactive {
   color: rgba(255, 255, 255, 0.3);
 }
+#drop_zone {
+  transition: background-color 0.3s;
+}
+.drop-zone--enter {
+  background-color: #f3f3f3;
+}

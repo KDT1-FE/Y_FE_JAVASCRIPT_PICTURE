@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>직원관리 앱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header 영역 -->
+    <include src="./src/commons/header.html"></include>
+    <!-- Main Contents 영역 -->
+    <main class="main-contents min-h-screen bg-[#f2f2f2] py-4" id="contents">
+      <div class="container mx-auto px-4">
+        <div class="inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl">
+          <!-- 상단 제목 영역 시작 -->
+          <div class="justify-between md:flex">
+            <div class="flex items-center">
+              <div
+                class="mr-3 flex h-16 w-16 items-center justify-center rounded-md bg-gray-100"
+              >
+                <span class="material-icons md-36">group</span>
+              </div>
+              <div>
+                <h2 class="mb-2 text-2xl font-bold">직원 관리 페이지</h2>
+                <p>직원의 정보 및 사진을 관리하는 페이지 입니다.</p>
+              </div>
+            </div>
+            <a
+              href="./create.html"
+              class="mt-4 inline-block rounded-md bg-blue-600 p-3 text-white md:mt-0"
+              id="newUserBtn"
+            >
+              <span class="material-icons align-top"> person_add </span> 직원
+              추가
+            </a>
+          </div>
+        </div>
+        <!-- 검색 영역 -->
+        <div class="inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl">
+          <form action="" id="searchForm">
+            <h3 class="mb-3 text-xl font-bold">
+              <span class="material-icons align-middle"> search </span> 검색
+            </h3>
+            <div>
+              <h3 class="text-md mb-2 text-gray-500">직책</h3>
+              <div class="mb-4 flex flex-wrap">
+                <div>
+                  <input
+                    type="checkbox"
+                    name="category"
+                    value="CEO"
+                    id="category1"
+                  />
+                  <label for="category1" class="mr-3">CEO</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="category"
+                    value="Manager"
+                    id="category2"
+                  />
+                  <label for="category2" class="mr-3">Manager</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="category"
+                    value="Senior"
+                    id="category3"
+                  />
+                  <label for="category3" class="mr-3">Senior</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="category"
+                    value="Junior"
+                    id="category4"
+                  />
+                  <label for="category4" class="mr-3">Junior</label>
+                </div>
+              </div>
+              <h3 class="text-md mb-2 text-gray-500">성별</h3>
+              <div class="mb-4 flex flex-wrap">
+                <div>
+                  <input
+                    type="checkbox"
+                    name="gender"
+                    value="none"
+                    id="gender1"
+                  />
+                  <label for="gender1" class="mr-3">선택안함</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="gender"
+                    value="male"
+                    id="gender2"
+                  />
+                  <label for="gender2" class="mr-3">남성</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="gender"
+                    value="female"
+                    id="gender3"
+                  />
+                  <label for="gender3" class="mr-3">여성</label>
+                </div>
+              </div>
+              <h3 class="text-md mb-2 text-gray-500">검색어</h3>
+              <div class="mb-4">
+                <input
+                  type="text"
+                  name="keywords"
+                  placeholder="이름 또는 이메일로 검색"
+                  class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <button type="reset" class="rounded-md bg-gray-200 p-3">
+                <span class="material-icons align-top"> refresh </span>초기화
+              </button>
+              <button
+                type="submit"
+                class="col-span-2 rounded-md bg-blue-600 p-3 text-white"
+              >
+                <span class="material-icons align-top"> person_search </span>
+                검색하기
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- 직원 목록 영역 -->
+        <div class="inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl">
+          <div class="mb-3 flex items-center justify-between">
+            <h3 class="mb-3 text-xl font-bold">
+              <span class="material-icons align-middle"> list </span> 직원 목록
+            </h3>
+            <button
+              id="delUserBtn"
+              class="rounded-md bg-red-500 p-3 text-white"
+            >
+              <span class="material-icons align-top"> person_remove </span>
+              선택 직원 삭제
+            </button>
+          </div>
+          <div
+            class="grid grid-cols-7 gap-2 bg-stone-100 py-2 text-center md:grid-cols-12"
+          >
+            <p class="col-span-1">
+              <input type="checkbox" id="chkAllMember" />
+            </p>
+            <p class="col-span-2 md:col-span-3">프로필 사진</p>
+            <p class="col-span-2">성명</p>
+            <p class="hidden md:col-span-2 md:block">이메일</p>
+            <p class="hidden md:col-span-2 md:block">연락처</p>
+            <p class="col-span-2">직책</p>
+          </div>
+          <div id="memberList"></div>
+        </div>
+      </div>
+    </main>
+    <!-- 직원 추가 모달창 영역 -->
+    <!-- <include src="./src/commons/newUserModal.html"></include> -->
+    <!-- 직원 상세보기 모달창 영역 -->
+    <include src="./src/commons/detailModal.html"></include>
+    <!-- 직원 삭제 모달창 영역 -->
+    <include src="./src/commons/deleteModal.html"></include>
+    <!-- Footer 영역 -->
+    <include src="./src/commons/footer.html"></include>
+    <!-- 스크립트 로드 -->
+    <script type="module" src="../js/index.js"></script>
+  </body>
+</html>
