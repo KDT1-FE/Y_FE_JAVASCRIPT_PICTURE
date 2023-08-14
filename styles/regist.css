@@ -46,10 +46,31 @@
   z-index: 0;
 }
 
+.img-remove-btn {
+  position: absolute;
+  top: 0.9375rem;
+  right: 0.9375rem;
+  padding: 4px 6px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background-color: #e61919;
+  color: white;
+
+  cursor: pointer;
+  z-index: 15;
+}
+
 .regist-text-input {
   height: 2.5rem;
   padding: 0 0.625rem;
   margin-bottom: 1.875rem;
+}
+
+.modify-btn-container {
+  display: flex;
+  gap: 10px;
 }
 
 .submit-btn,
