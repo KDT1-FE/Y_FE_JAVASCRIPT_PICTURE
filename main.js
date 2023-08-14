@@ -37,24 +37,73 @@ btn1.addEventListener('click', async () => {
         profileImageElement.height = 100;
 
 
-        const infoDiv = document.createElement('div');
-        infoDiv.className = 'divText';
-        infoDiv.innerHTML = `
-            <p class = "p-name">${name_}</p>
-            <p class = "p-email">${email}</p> 
-            <p class = "p-phone">${phone}</p>
-            <p class = "p-category">${category}<p>
-        `;
+        const inputName = document.createElement('input');
+        inputName.type = 'text';
+        inputName.value = name_;
+        inputName.disabled = true;
+    
+        const inputEmail = document.createElement('input');
+        inputEmail.type = 'text';
+        inputEmail.value = email;
+        inputEmail.disabled = true;
+    
+        const inputPhone = document.createElement('input');
+        inputPhone.type = 'text';
+        inputPhone.value = phone;
+        inputPhone.disabled = true;
+    
+        const inputCategory = document.createElement('input');
+        inputCategory.type = 'text';
+        inputCategory.value = category;
+        inputCategory.disabled = true;
        
         const checkBox = document.createElement('label');
         checkBox.innerHTML = `
             <input type="checkbox" class="p-checkbox">
         `;
 
+        const modifybtn = document.createElement('img');
+        modifybtn.src = 'p_img/modify.png';
+        modifybtn.className= 'p-modifybtn';
+        modifybtn.width=30;
+        modifybtn.height=30;
+
+        modifybtn.addEventListener('click', () => {
+            inputName.disabled = false;
+            inputEmail.disabled = false;
+            inputPhone.disabled = false;
+            inputCategory.disabled = false;
+    
+            modifybtn.style.display='none';
+            savebtn.style.display = 'inline-block';
+        });
+    
+        const savebtn = document.createElement('img');
+        savebtn.src = 'p_img/save.png';
+        savebtn.className= 'p-savebtn';
+        savebtn.width=20;
+        savebtn.height=20;
+        savebtn.style.display = 'none';
+        savebtn.addEventListener('click', () => {
+            inputName.disabled = true;
+            inputEmail.disabled = true;
+            inputPhone.disabled = true;
+            inputCategory.disabled = true;
+    
+            modifybtn.style.display = 'inline-block';
+            savebtn.style.display = 'none';
+        });
+
+
         employeeDiv.appendChild(checkBox);
           
         employeeDiv.appendChild(profileImageElement);
-        employeeDiv.appendChild(infoDiv);
+        employeeDiv.appendChild(inputName);
+        employeeDiv.appendChild(inputEmail);
+        employeeDiv.appendChild(inputPhone);
+        employeeDiv.appendChild(inputCategory);
+        employeeDiv.appendChild(modifybtn)
+        employeeDiv.appendChild(savebtn);
 
         list.appendChild(employeeDiv);
 
@@ -79,6 +128,7 @@ btn1.addEventListener('click', async () => {
     } else {
         alert('모든 필드를 입력하세요.');
     }
+
 });
 
 btn2.addEventListener('click', () => {

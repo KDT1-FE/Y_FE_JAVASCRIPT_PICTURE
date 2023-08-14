@@ -10,9 +10,10 @@
 .profile-container {
     display: flex;
     flex-direction: column; /* 직원 정보를 세로로 나열 */
-    width: 1000px;
+    width: 100;
 }
 .profile-info {
+    display: flex;
     border-top: 1px solid gainsboro;
     border-bottom: 1px solid gainsboro;
 
@@ -27,23 +28,3 @@
     margin: 20px;
 }
 
-.divText {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.p-img,
-.p-name,
-.p-email,
-.p-phone,
-.p-category{
-    padding: 20px;
-}
-
-
-.divText > p {
-    width: 100%;
-    text-align: center;
-}
