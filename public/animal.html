@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동물의 숲</title>
+
+    <link rel="icon" href="./favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/animal.css" />
+
+    <!-- gsap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"
+      integrity="sha512-v/m68W+vaGN/6igoyFpd4GlQzu0jx9/n5gr2PKq5vif+RObyGKHse384YHrOULaxZ810XhlHUrmB3U8UnPB19Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!--firebase 연결 -->
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- nav 바 -->
+    <nav>
+      <div class="navbar">
+        <a href="index.html" class="navbar__logo">
+          <img src="./img/동물의 숲.png" alt="동물의 숲" />
+        </a>
+        <ul class="navbar__menu">
+          <li>
+            <a href="#">
+              <img src="./img/여울이_흰색.png" alt="주민 관리" />
+              주민 관리</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/달력_흰색.png" alt="달력" />
+              일정</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/섬관리_흰색.png" alt="섬 관리" />
+              섬 관리</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/미니게임_흰색.png" alt="미니게임" />
+              미니 게임</a
+            >
+          </li>
+        </ul>
+        <div class="navbar__icons">
+          <a href="#">
+            <i class="fa-solid fa-gamepad"></i>
+          </a>
+        </div>
+
+        <a href="#" class="navbar__toggle-btn">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+
+    <!-- 주민 등록 -->
+    <div class="animal-title">
+      <div class="leaf">
+        <img src="./img/동숲나뭇잎.png" alt="나뭇잎" />
+        <div class="text">nintendo</div>
+      </div>
+      <div class="title__content">
+        <img src="./img/여울이_노란색.png" alt="여울이" />
+        <div class="text">주민 목록</div>
+        <img src="./img/여울이_노란색.png" alt="여울이" />
+      </div>
+      <a href="./upload.html">
+        <button>주민 등록하기</button>
+      </a>
+    </div>
+
+    <!-- 상단으로 -->
+    <div id="to-top">
+      <img src="./img/토용스크롤.png" alt="토용" />
+    </div>
+
+    <!-- 주민 상세 페이지 -->
+    <!-- <div class="detailed-page">
+      <div class="profile">
+        <div class="text">Profile</div>
+        <div class="edit-container">
+          <div class="edit">edit</div>
+          <div id="delete">delete</div>
+        </div>
+      </div>
+      <div class="profile-content">
+        <div class="detailed-page__photo">
+          <img src="./img/너굴이.png" alt="" />
+        </div>
+        <div class="detailed-page__content">
+          <div class="content-title">
+            <img src="./img/동숲나뭇잎.png" alt="나뭇잎" />
+            <div class="name">여울이</div>
+          </div>
+          <div class="content-info">
+            <div class="birthday">12월 20일</div>
+            <div class="kind">개(시츄)</div>
+            <div class="personality">귀여움</div>
+            <div class="debut">튀어나와요 동물의 숲</div>
+            <div class="job">비서, 건축/설비</div>
+            <div class="information">귀여운 댕댕스</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="container"></div>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBR1m3u3HD0SUquyD5uvNFNzyWEwczphDo",
+        authDomain: "animal-crossing-project.firebaseapp.com",
+        projectId: "animal-crossing-project",
+        storageBucket: "animal-crossing-project.appspot.com",
+        messagingSenderId: "242406919285",
+        appId: "1:242406919285:web:ac497cd3bdee770eecfc3c",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      const db = firebase.firestore();
+
+      // 삭제 함수 정의
+      function deleteProduct(docId) {
+        db.collection("product")
+          .doc(docId)
+          .delete()
+          .then(() => {
+            function button_event() {
+              if (confirm("정말 삭제하시겠습니까??") == true) {
+                //확인
+                document.form.submit();
+              } else {
+                //취소
+                return;
+              }
+            }
+            window.location.href = "/animal.html";
+          })
+          .catch((error) => {
+            console.error("Error deleting document: ", error);
+          });
+      }
+
+      db.collection("product")
+        .get()
+        .then((결과) => {
+          결과.forEach((doc) => {
+            console.log(doc);
+            const 템플릿 = `
+            <div class="product">
+              <div class="product__image">
+                <div class="img" style="background-image: url(${
+                  doc.data().이미지
+                })"></div>
+              </div>
+              <div class="product__info">
+                <div class="title">
+                  <div class="name">${doc.data().이름}</div>
+                  <div class="birthday">${doc.data().생일}</div>
+                </div>
+                <div class="kind">종족 |  ${doc.data().종족}</div>
+                <div class="personality">성격 |  ${doc.data().성격}</div>
+                <div class="description">정보 |  ${doc.data().정보}</div>
+              </div>
+              <div class="animal-crud">
+                <div class="animal-edit">edit</div>
+                <div id="delete" class="animal-delete" data-doc-id="${
+                  doc.id
+                }" onclick="button_event();">delete</div>
+              </div>
+            </div>
+            `;
+            $(".container").append(템플릿);
+
+            //       템플릿.addEventListener("click", () => {});
+            //     });
+            //   });
+          });
+
+          // 삭제 버튼에 이벤트 리스너 설정
+          $(".animal-delete").on("click", function () {
+            const docId = $(this).data("doc-id");
+            deleteProduct(docId);
+          });
+        });
+
+      //클릭시 상단으로 이동
+      const toTopEl = document.querySelector("#to-top");
+
+      toTopEl.addEventListener("click", function () {
+        gsap.to(window, 0.7, {
+          scrollTo: 0,
+        });
+      });
+    </script>
+    <script defer src="./js/main.js"></script>
+  </body>
+</html>

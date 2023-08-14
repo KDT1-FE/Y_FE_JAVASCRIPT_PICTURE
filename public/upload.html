@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동물의 숲</title>
+
+    <link rel="icon" href="./favicon.ico" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/upload.css" />
+
+    <!--firebase 연결 -->
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- nav 바 -->
+    <nav>
+      <div class="navbar">
+        <a href="index.html" class="navbar__logo">
+          <img src="./img/동물의 숲.png" alt="동물의 숲" />
+        </a>
+        <ul class="navbar__menu">
+          <li>
+            <a href="./animal.html">
+              <img src="./img/여울이_흰색.png" alt="주민 관리" />
+              주민 관리</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/달력_흰색.png" alt="달력" />
+              일정</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/섬관리_흰색.png" alt="섬 관리" />
+              섬 관리</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/미니게임_흰색.png" alt="미니게임" />
+              미니 게임</a
+            >
+          </li>
+        </ul>
+        <div class="navbar__icons">
+          <a href="#">
+            <i class="fa-solid fa-gamepad"></i>
+          </a>
+        </div>
+
+        <a href="#" class="navbar__toggle-btn">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+
+    <section class="upload-form">
+      <div class="upload-form__title">주민 관리</div>
+      <div class="container">
+        <input id="name" type="text" placeholder="이름" required />
+        <input id="birthday" type="text" placeholder="생일" required />
+        <input id="kind" type="text" placeholder="종족" required />
+        <input id="personality" type="text" placeholder="성격" required />
+        <input id="description" type="text" placeholder="정보" required />
+        <img id="preview" />
+        <input id="image" type="file" onchange="readURL(this);" />
+        <button id="send">업로드</button>
+      </div>
+    </section>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBR1m3u3HD0SUquyD5uvNFNzyWEwczphDo",
+        authDomain: "animal-crossing-project.firebaseapp.com",
+        projectId: "animal-crossing-project",
+        storageBucket: "animal-crossing-project.appspot.com",
+        messagingSenderId: "242406919285",
+        appId: "1:242406919285:web:ac497cd3bdee770eecfc3c",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      $("#send").click(function () {
+        // 이미지 저장
+        const file = document.querySelector("#image").files[0];
+        const storageRef = storage.ref();
+        const 저장할경로 = storageRef.child("image/" + file.name);
+        const 업로드작업 = 저장할경로.put(file);
+
+        업로드작업.on(
+          "state_changed",
+          // 변화시 동작하는 함수
+          null,
+          //에러시 동작하는 함수
+          (error) => {
+            console.error("실패사유는", error);
+          },
+          // 성공시 동작하는 함수
+          () => {
+            업로드작업.snapshot.ref.getDownloadURL().then((url) => {
+              console.log("업로드된 경로는", url);
+              const 저장할거 = {
+                이름: $("#name").val(),
+                생일: $("#birthday").val(),
+                종족: $("#kind").val(),
+                성격: $("#personality").val(),
+                정보: $("#description").val(),
+                이미지: url,
+              };
+              db.collection("product")
+                .add(저장할거)
+                .then((result) => {
+                  console.log(result);
+                  window.location.href = "/animal.html";
+                })
+                .catch(() => {
+                  console.log(err);
+                });
+            });
+          }
+        );
+      });
+
+      // 이미지 미리보기
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("preview").src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+        } else {
+          document.getElementById("preview").src = "";
+        }
+      }
+    </script>
+    <script defer src="./js/main.js"></script>
+  </body>
+</html>

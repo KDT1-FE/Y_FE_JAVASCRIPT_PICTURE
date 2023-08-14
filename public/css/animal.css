@@ -1,0 +1,260 @@
+/* 주민 등록 title */
+.animal-title {
+  margin: 50px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.animal-title .leaf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animal-title .leaf img {
+  width: 40px;
+}
+
+.animal-title .leaf .text {
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #f9f6e5;
+}
+
+.animal-title .title__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #57bca9;
+  padding: 20px 40px;
+  border-radius: 30px;
+  box-shadow: 0 5px 0 #4ba192;
+}
+
+.animal-title .title__content img {
+  width: 25px;
+}
+
+.animal-title .title__content .text {
+  font-size: 40px;
+  font-weight: 900;
+  color: #f9f6e5;
+  margin: 0 20px;
+}
+
+.animal-title a button {
+  cursor: pointer;
+  color: #f9f6e5;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 20px;
+  background-color: #167485;
+  box-shadow: 0 5px 0 #4ba192;
+  transition: 0.1s;
+}
+
+.animal-title a button:hover {
+  transform: translate(0, 5px);
+  box-shadow: 0 0 0 #4ba192;
+}
+
+/* 주민 list */
+
+.container .product {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #f9f6e5;
+  width: 85%;
+  margin: 30px auto;
+  border-radius: 40px;
+  box-shadow: 0 10px 0 #57bca9;
+  transition: 0.1s;
+  position: relative;
+  margin-bottom: 50px;
+  border: 4px solid #ffca45;
+}
+
+.container .product:hover {
+  transform: translate(0, 10px);
+  box-shadow: 0 0 0 #57bca9;
+}
+
+.container .product__image {
+  display: block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  padding: 20px;
+}
+.container .product__image .img {
+  width: 200px;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container .product__info {
+  display: flex;
+  flex-direction: column;
+  color: #10997f;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 0 20px;
+}
+
+.container .product__info .title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+  color: #095663;
+}
+
+.container .product__info .name {
+  font-size: 35px;
+}
+
+.container .product__info .birthday {
+  margin-left: 30px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container .product__info .kind {
+  margin-bottom: 10px;
+}
+
+.container .product__info .personality {
+  margin-bottom: 10px;
+}
+
+.container .product__info .description {
+  line-height: 1.4;
+}
+
+.container .animal-crud {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.container .animal-edit,
+.container .animal-delete {
+  background-color: #167485;
+  color: #f9f6e5;
+  padding: 10px;
+  border-radius: 15px;
+  margin-right: 10px;
+  font-weight: 700;
+  box-shadow: 0 3px 0 #4ba192;
+  transition: 0.1s;
+}
+
+.container .animal-edit:hover,
+.container .animal-delete:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 #4ba192;
+  transform: translate(0, 3px);
+}
+
+#to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 9;
+}
+
+/* 주민 상세 페이지
+.detailed-page {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #f9f6e5;
+  width: 80%;
+  border-radius: 40px;
+  padding: 50px;
+  z-index: 3;
+}
+
+.detailed-page .profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailed-page .profile .text {
+  font-size: 30px;
+  font-weight: 900;
+  color: #167485;
+}
+
+.detailed-page .profile .edit-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailed-page .profile .edit-container .edit,
+.detailed-page .profile .edit-container #delete {
+  background-color: #167485;
+  color: #f9f6e5;
+  padding: 10px;
+  border-radius: 15px;
+  margin-right: 20px;
+  font-weight: 700;
+  box-shadow: 0 3px 0 #4ba192;
+  transition: 0.1s;
+}
+
+.detailed-page .profile .edit-container .edit:hover,
+.detailed-page .profile .edit-container #delete:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 #4ba192;
+  transform: translate(0, 3px);
+}
+
+.detailed-page .profile-content {
+  display: flex;
+  align-items: center;
+  padding: 30px 50px;
+}
+
+.detailed-page .detailed-page__photo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.detailed-page .detailed-page__photo img {
+  width: 200px;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.detailed-page .detailed-page__content {
+}
+
+.detailed-page .detailed-page__content .content-title {
+}
+
+.detailed-page .detailed-page__content .content-title img {
+  width: 50px;
+}
+
+.detailed-page .detailed-page__content .content-title .name {
+}
+
+.detailed-page .detailed-page__content .content-info {
+} */

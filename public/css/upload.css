@@ -1,0 +1,93 @@
+/* upload section */
+.upload-form {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.upload-form .upload-form__title {
+  font-size: 35px;
+  font-weight: 900;
+  color: #3d3a2d;
+  padding: 15px;
+  background-color: #ffca45;
+  width: 280px;
+  margin: 70px auto 0;
+  border-radius: 20px;
+}
+
+.upload-form .container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 70px 200px;
+}
+
+.upload-form .container input {
+  display: block;
+  color: #5a5642;
+  background-color: #f9f6e5;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 30px;
+}
+
+.upload-form .container input:focus {
+  outline: 2px solid #ffca45;
+  border: none;
+}
+
+.upload-form #image {
+  height: 300px;
+}
+
+.upload-form #preview {
+  margin-top: 30px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  overflow: hidden;
+  padding: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.upload-form button {
+  background-color: #ffca45;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 13px 30px;
+  color: #3d3a2d;
+  box-shadow: 0 5px 0 #cc9815;
+  transition: 0.1s;
+}
+
+.upload-form button:hover,
+.upload-form button:active {
+  transform: translate(0, 5px);
+  box-shadow: 0 0 0 #cc9815;
+}
+
+@media screen and (min-width: 1000px) {
+  .upload-form .container {
+    padding: 70px;
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .upload-form .container {
+    padding: 70px;
+    width: 60%;
+  }
+}

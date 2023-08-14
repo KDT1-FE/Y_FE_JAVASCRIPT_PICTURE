@@ -1,0 +1,157 @@
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  word-break: keep-all;
+  font-size: 16px;
+  line-height: 1;
+  background-image: url("../img/동숲배경기본.png");
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: #f9f6e5;
+}
+/* nav bar */
+nav .navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #57bca9;
+  padding: 15px 30px;
+}
+
+nav .navbar__logo img {
+  width: 200px;
+}
+
+nav .navbar__menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+nav .navbar__menu li {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 40px;
+}
+
+nav .navbar__menu li:hover {
+  background-color: #10997f;
+}
+
+nav .navbar__menu li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav .navbar__menu li img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+nav .navbar__menu li a {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+nav .navbar__icons {
+  color: #f9f6e5;
+  font-size: 30px;
+  margin-right: 40px;
+}
+
+nav .navbar__toggle-btn {
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-size: 25px;
+}
+
+/* nav바 반응형 */
+@media screen and (max-width: 1030px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  nav .navbar__menu {
+    display: none;
+  }
+
+  nav .navbar__icons {
+    display: none;
+  }
+
+  nav .navbar__logo img {
+    width: 100px;
+  }
+
+  nav .navbar__toggle-btn {
+    display: block;
+  }
+
+  nav .navbar__menu.active,
+  nav .navbar__icons.active {
+    display: flex;
+  }
+}
+
+/* 메인 페이지 */
+
+/* section .main-page .inner {
+  width: 300px;
+} */
+.main-page img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main-page .big-photo {
+  display: block;
+}
+
+.main-page .small-photo {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .main-page .big-photo {
+    display: none;
+  }
+
+  .main-page .small-photo {
+    display: block;
+  }
+}
+
+/* info 섹션 */
+.info {
+  height: 300px;
+  background-image: url("../img/배경기본이미지.png");
+  position: relative;
+  top: -10px;
+}
+.info .advertise {
+  position: relative;
+}
+.info .advertise img {
+  position: absolute;
+  top: -100px;
+  left: 60px;
+  width: 800px;
+}
+
+@media screen and (max-width: 1200px) {
+  .info .advertise img {
+    position: absolute;
+    top: -100px;
+    left: 60px;
+    width: 600px;
+  }
+}
