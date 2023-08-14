@@ -78,8 +78,8 @@
       </section>
     </main>
     <section class="section__user-add-box">
-      <form action="" class="dialog__user_form" id="dialog__user_form">
-        <div class="dialog__user_img_container">
+      <form action="" class="section__user_form" id="dialog__user_form">
+        <div class="section__user_img_container">
           <input
             style="display: none"
             name="image"
@@ -101,7 +101,7 @@
           maxlength="14"
           placeholder="전화번호를 입력해주세요."
         />
-        <div class="main__user_email_container">
+        <div class="section__user_email_container">
           <input
             type="text"
             class="user_email"
@@ -116,13 +116,13 @@
           class="user_password"
           placeholder="비밀번호를 입력해주세요."
         />
-        <div class="main__user_division_checkbox">
+        <div class="section__user_division_checkbox">
           <label>
             <input
               type="checkbox"
               name="division"
               value="vip"
-              class="main__user_checkbox_division"
+              class="section__user_checkbox_division"
             />vip
           </label>
           <label>
@@ -130,13 +130,15 @@
               type="checkbox"
               name="division"
               value="manager"
-              class="main__user_checkbox_division"
+              class="section__user_checkbox_division"
             />관리자
           </label>
         </div>
-        <div class="main__user_button_container">
-          <button class="main__user_add_btn">임직원 등록</button>
-          <button class="main__user_cancel_btn">취소</button>
+        <div class="section__user_button_container">
+          <button class="section__user_add_btn" type="submit">
+            임직원 등록
+          </button>
+          <button class="section__user_cancel_btn">취소</button>
         </div>
       </form>
     </section>

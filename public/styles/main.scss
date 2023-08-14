@@ -121,17 +121,18 @@ hr {
 }
 
 .section__user-add-box {
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.dialog__user_img_container {
+.section__user_img_container {
   img {
     width: 10rem;
   }
 }
-.dialog__user_form {
+.section__user_form {
   width: 30%;
   height: 60%;
   margin: 100px auto;
@@ -143,7 +144,7 @@ hr {
   row-gap: 15px;
   border-radius: 10px;
   input,
-  .main__user_email_container {
+  .section__user_email_container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -158,7 +159,7 @@ hr {
   width: 70%;
   height: 2rem;
 }
-.main__user_email_container {
+.section__user_email_container {
   width: 72%;
 }
 .user_email {
@@ -178,7 +179,7 @@ hr {
   background-color: $pink;
   box-sizing: border-box;
 }
-.main__user_division_checkbox {
+.section__user_division_checkbox {
   width: 70%;
   display: flex;
   margin: 0 auto;
@@ -190,7 +191,7 @@ hr {
     font-size: 1.1rem;
   }
 }
-.main__user_button_container {
+.section__user_button_container {
   display: flex;
   justify-content: space-evenly;
   height: 2rem;
@@ -201,22 +202,22 @@ hr {
     border-radius: 5px;
   }
 }
-.main__user_add_btn {
+.section__user_add_btn {
   color: $pink;
   background-color: transparent;
   border: 1px solid $pink;
 }
-.main__user_add_btn:hover {
+.section__user_add_btn:hover {
   color: $white;
   background-color: $pink;
   border: none;
 }
-.main__user_cancel_btn {
+.section__user_cancel_btn {
   color: $black;
   background-color: transparent;
   border: 1px solid $black;
 }
-.main__user_cancel_btn:hover {
+.section__user_cancel_btn:hover {
   color: $white;
   background-color: $black;
   border: none;
