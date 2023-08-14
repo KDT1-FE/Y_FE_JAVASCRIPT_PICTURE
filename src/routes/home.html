@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZKABAN : Despair Of Prison</title>
-    <link rel="shortcut icon" href="icon/favicon-16.png" sizes="16x16">
-    <link rel="shortcut icon" href="icon/favicon-32.png" sizes="32x32">
-    <link rel="shortcut icon" href="icon/favicon-48.png" sizes="48x48">
-    <link rel="shortcut icon" href="icon/favicon-64.png" sizes="64x64">
-    <link rel="shortcut icon" href="icon/favicon-128.png" sizes="128x128">
+    <link rel="shortcut icon" href="/icon/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" href="/icon/favicon-32.png" sizes="32x32">
+    <link rel="shortcut icon" href="/icon/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/icon/favicon-64.png" sizes="64x64">
+    <link rel="shortcut icon" href="/icon/favicon-128.png" sizes="128x128">
     <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-    <link rel="stylesheet" href="./src/main.css">
+    <link rel="stylesheet" href="../main.css">
 </head>
 
 <body>
     <nav>
         <div class="menubar">
             <div class="menubarTop">
-                <img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고">
+                <a href="home.html"><img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고"></a>
                 <input placeholder="Looking for Prisoner?" class="searchPrisoner"></input>
                 <div class="glowing"></div>
             </div>
             <div class="menubarMid">
-                <div class="HpText"><p> History </p></div>
-                <div class="HpText"><p> Roles </p></div>
+                <div class="HpText">
+                    <a href="history.html"> History </a>
+                </div>
+                <div class="HpText">
+                    <a href="roles.html"> Roles </a>
+                </div>
             </div>
             <div class="menubarBot">
                 <button class="imprisonBtn">IMPRISON</button>
@@ -40,9 +44,9 @@
                             <br>
                             <div class="prisonerName">
                                 <label for="prisonerName">Prisoner Name:</label>
-                                <input type="text" id="prisonerName" name="name" placeholder="Name?" required>    
+                                <input type="text" id="prisonerName" name="name" placeholder="Name?" required>
                             </div>
-                                             
+
                             <div class="prisonerLv">
                                 <label for="prisonerLv">Prisoner Lv:</label>
                                 <select id="prisonerLv" name="prisonerLv">
@@ -54,32 +58,14 @@
                             </div>
                             <br>
                             <div class="prisonerPhoto">
-                                <label for="prisonerPhoto">Prisoner Mugshot</label><br>                                
+                                <label for="prisonerPhoto">Prisoner Mugshot</label><br>
                                 <input type="file" id="prisonerPhoto" name="photo" accept="image/*" required>
                             </div>
-                                                     
-                        </form>
-                        
-                        <button class="approveBtn">Approve</button>
-                        <button class="dismissBtn">Dismiss</button>
+                            <button type="submit" class="approveBtn">Approve</button>
+                            <button class="dismissBtn">Dismiss</button>
+                        </form>                        
                     </div>
-                    <script>
-                        // Modal open
-                        const openModal = () => {
-                            document.querySelector(".modal").classList.remove("hidden");
-                        }
-
-                        const closeModal = () => {
-                            document.querySelector(".modal").classList.add("hidden");
-                        }
-
-                        document.querySelector(".imprisonBtn").addEventListener("click", openModal);
-                        document.querySelector(".dismissBtn").addEventListener("click", closeModal);
-                        document.querySelector(".modalBg").addEventListener("click", closeModal);
-
-                        // form submit
-
-                    </script>
+                    <script src="../components/modal.js"></script>                                    
                 </div>
                 <button class="releaseBtn">RELEASE</button>
             </div>
@@ -89,20 +75,20 @@
         <div class="container">
             <video src="/videos/Azkaban background.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
             <!-- Insert PrisonCell -->
-            <div class="prison">
-                <div class="prisonCell" style="background-image: url(image/벨라트릭스\ 머그샷.jpg);">
+            <div class="prison" id="responseBox">
+                <div class="prisonCell" style="background-image: url(/image/벨라트릭스\ 머그샷.jpg);">
                     <p class="prisonerName">Bellatrix Lestrange</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(image/그린델왈드\ 머그샷.jpg);">
+                <div class="prisonCell" style="background-image: url(/image/그린델왈드\ 머그샷.jpg);">
                     <p class="prisonerName">Gellert Grindelwald</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
+                <div class="prisonCell" style="background-image: url(/image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
                     <p class="prisonerName">Dolores Umbridge</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(image/루시우스\ 말포이\ 머그샷.jpg);">
+                <div class="prisonCell" style="background-image: url(/image/루시우스\ 말포이\ 머그샷.jpg);">
                     <p class="prisonerName">Lucius Malfoy</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(image/시리우스\ 블랙\ 머그샷.jpg);">
+                <div class="prisonCell" style="background-image: url(/image/시리우스\ 블랙\ 머그샷.jpg);">
                     <p class="prisonerName">Sirius Black</p>
                 </div>
             </div>

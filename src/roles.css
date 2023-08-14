@@ -1,0 +1,133 @@
+* {
+    letter-spacing: 1px;
+}
+a {
+    text-decoration: none;
+}
+html {
+    font-family: 'Harry Potter', sans-serif;
+    cursor: url(/icon/cursor50-brown.png), auto;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+
+/****** Nav ******/
+/* nav {
+    
+} */
+nav .menubar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    min-width: 180px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000000, #001F3F);
+}
+nav .menubarTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+nav .menubarTop .logo {
+    width: 80%;
+    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+}
+nav .menubarTop input {
+    width: 80%;
+    height: 25px;
+    margin: auto;
+    border: none;
+    border-bottom: 1px solid #e2e2e2;
+    background: transparent;
+    color: #e2e2e2;
+    animation: glow 2s infinite linear ;
+}
+@keyframes glow {
+    0% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    20% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    40% {background: linear-gradient(210deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    60% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    80% {background: linear-gradient(190deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    100% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+  }
+nav .menubarTop input::placeholder{
+    font-size: 16px;
+    font-family: 'Harry Potter', sans-serif;
+}
+nav .menubarTop input:focus{
+    outline: none;
+    animation-play-state: paused;
+}
+nav .menubarTop input:focus::placeholder{
+    color: transparent;
+}
+nav .menubarMid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+nav .menubarMid .HpText > a {
+    display: block;
+    width: 100%;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    letter-spacing: 10px;
+    text-align: center;
+}
+.HpText a:hover {
+    background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+}
+nav .menubarBot {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+/******Main******/
+main .container{
+    width: 80vw;
+    height: 100vh;
+}
+main .container video{
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+main .rolesBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10px;
+    background-image: url(/image/historyBg.png);
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+main .rolesBox ul {
+    list-style: none;
+    padding: 66px;
+    text-align: center; 
+    width: 30em;
+    min-width: 300px;
+}

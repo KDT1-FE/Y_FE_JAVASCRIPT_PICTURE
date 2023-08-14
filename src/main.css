@@ -1,9 +1,12 @@
 * {
-    cursor: url(/icon/cursor50-brown.png), auto;
     letter-spacing: 1px;
+}
+a {
+    text-decoration: none;
 }
 html {
     font-family: 'Harry Potter', sans-serif;
+    cursor: url(/icon/cursor50-brown.png), auto;
 }
 body {
     margin: 0;
@@ -24,7 +27,7 @@ nav .menubar {
     justify-content: space-between;
     align-items: center;
     width: 20vw;
-    min-width: 250px;
+    min-width: 180px;
     height: 100vh;
     background: linear-gradient(to bottom, #000000, #001F3F);
 }
@@ -33,10 +36,10 @@ nav .menubarTop {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
 nav .menubarTop .logo {
-    width: 70%;
-    margin: 2rem;
+    width: 80%;
     cursor: url(/icon/cursor50-brown-pointer.png),pointer;
 }
 nav .menubarTop input {
@@ -77,7 +80,8 @@ nav .menubarMid {
     justify-content: space-evenly;
     align-items: stretch;
 }
-nav .menubarMid .HpText > p {
+nav .menubarMid .HpText > a {
+    display: block;
     width: 100%;
     color: white;
     font-size: 1.5rem;
@@ -86,7 +90,7 @@ nav .menubarMid .HpText > p {
     letter-spacing: 10px;
     text-align: center;
 }
-.HpText p:hover {
+.HpText a:hover {
     background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
     cursor: url(/icon/cursor50-brown-pointer.png),pointer;
 }
@@ -98,7 +102,7 @@ nav .menubarBot {
 }
 .imprisonBtn,
 .releaseBtn {
-    display: block;
+    /* display: block; */
     width: 100%;
     height: 100%;
     background: transparent;
@@ -113,7 +117,6 @@ nav .menubarBot {
     color: #007bff;
 }
 .releaseBtn:hover {
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
     color: #dc3545;
 }
@@ -137,7 +140,8 @@ nav .menubarBot {
 .modalBox {
     position: absolute;
     background-image: url(/image/modalBox.png);
-    background-size:cover;
+    background-size:contain;
+    background-repeat: no-repeat;
     padding: 90px 50px 100px 50px;
 }
 .modalBox p {
