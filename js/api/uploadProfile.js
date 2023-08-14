@@ -7,10 +7,6 @@ import {
 } from "/js/config/aws.js";
 
 import {
-  btn_openEnrollForm,
-  enrollForm,
-  btn_addProfile,
-  btn_closeEnrollForm,
   enroll_photo,
   enroll_name,
   enroll_email,
@@ -28,29 +24,10 @@ const s3 = new AWS.S3({
   params: { Bucket: bucketName },
 });
 
-btn_openEnrollForm.addEventListener("click", openForm); // 프로필 등록 폼 열기
-btn_closeEnrollForm.addEventListener("click", closeForm); // 프로필 등록 폼 닫기
-enroll_photo.addEventListener("change", previewImg); // 이미지 프리뷰
-btn_addProfile.addEventListener("click", uploadProfileToS3); // s3로 프로필업로드
-
-function previewImg() {
-  const imageSrc = URL.createObjectURL(enroll_photo.files[0]);
-  document.getElementById("preview").src = imageSrc;
-}
-
-function openForm(e) {
+export const uploadProfileToS3 = function (e) {
   e.preventDefault();
-  enrollForm.style.display = "flex";
-}
-
-function closeForm(e) {
-  e.preventDefault();
-  enrollForm.style.display = "none";
-}
-
-function uploadProfileToS3(event) {
-  event.preventDefault();
   const photo = enroll_photo.files[0]; // 업로드할 프로필 사진
+
   const profileInfo = {
     name: enroll_name.value,
     email: enroll_email.value,
@@ -85,4 +62,4 @@ function uploadProfileToS3(event) {
   };
 
   upload();
-}
+};
