@@ -77,6 +77,10 @@ hr {
 }
 .users-list-box {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 20px 0px;
   img {
     width: 5rem;
     height: 5rem;
@@ -88,7 +92,6 @@ hr {
     grid-column-gap: 20px;
     grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
     align-items: center;
-    margin-top: 20px;
   }
 }
 .user-list-btn-box {
