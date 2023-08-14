@@ -15,7 +15,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script src="./index.js" defer type="module"></script>
+    <script src="./index.js" type="module" defer></script>
     <script src="./firebase.js"></script>
   </head>
   <body class="body">
@@ -26,7 +26,7 @@
         <h4 class="user_division">관리자111111111</h4>
       </div>
       <a class="header__sub-menu-list"> 임직원 목록 </a>
-      <a class="header__sub-menu-add"> 임직원 등록 </a>
+      <a class="header__sub-menu-add" id="user-add-btn"> 임직원 등록 </a>
       <div class="header__user-menu-box">
         <a class="header__user-menu-userinfo">
           내 정보확인
@@ -41,7 +41,7 @@
     <main class="main">
       <h1>임직원 목록</h1>
       <section class="main__btn-box">
-        <button class="main__add-btn">임직원 등록</button>
+        <button class="main__add-btn" id="user-add-btn">임직원 등록</button>
         <form class="main__search-form">
           <input
             type="text"
@@ -77,5 +77,68 @@
         </div>
       </section>
     </main>
+    <section class="section__user-add-box">
+      <form action="" class="dialog__user_form" id="dialog__user_form">
+        <div class="dialog__user_img_container">
+          <input
+            style="display: none"
+            name="image"
+            type="file"
+            class="user_imgInput"
+          />
+          <img class="img_section" src="./images/user/user.png" />
+        </div>
+        <input
+          type="text"
+          name="name"
+          class="user_name"
+          placeholder="이름을 입력해주세요."
+        />
+        <input
+          type="text"
+          name="phone"
+          class="user_phone"
+          maxlength="14"
+          placeholder="전화번호를 입력해주세요."
+        />
+        <div class="main__user_email_container">
+          <input
+            type="text"
+            class="user_email"
+            name="email"
+            placeholder="이메일을 입력해주세요."
+          />
+          <button class="user_email_check_btn">중복확인</button>
+        </div>
+        <input
+          type="password"
+          name="password"
+          class="user_password"
+          placeholder="비밀번호를 입력해주세요."
+        />
+        <div class="main__user_division_checkbox">
+          <label>
+            <input
+              type="checkbox"
+              name="division"
+              value="vip"
+              class="main__user_checkbox_division"
+            />vip
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="division"
+              value="manager"
+              class="main__user_checkbox_division"
+            />관리자
+          </label>
+        </div>
+        <div class="main__user_button_container">
+          <button class="main__user_add_btn">임직원 등록</button>
+          <button class="main__user_cancel_btn">취소</button>
+        </div>
+      </form>
+    </section>
   </body>
 </html>
