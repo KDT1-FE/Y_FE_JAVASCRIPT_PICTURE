@@ -242,6 +242,7 @@ export async function deleteBoard() {
           }
 
           await deleteFirestoreDocument(imageUrl);
+          allcheckbox.checked = false;
         }
       });
 
@@ -276,7 +277,7 @@ function getClickedImageInfo(clickedImage) {
 
 list.addEventListener('click', event => {
   if (innerHTML === "로그아웃") {
-    const clickedItem = event.target.closest('.item');
+    const clickedItem = event.target.closest('.image');
 
     if (clickedItem) {
       const clickedImage = clickedItem.querySelector('.image img');
@@ -315,3 +316,13 @@ list.addEventListener('click', event => {
     cantprofile();
   }
 });
+
+function cantprofile(){
+  Swal.fire({
+    title: '접근 제한',
+    text: "로그인 후 이용 가능합니다.",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+  })
+}

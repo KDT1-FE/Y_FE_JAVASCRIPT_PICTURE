@@ -75,6 +75,39 @@ const image = getQueryParam('image');
 const name = getQueryParam('name');
 const group = getQueryParam('group');
 
+async function changeInfo() {
+  // firestorage
+  const newimage = imageInput.files[0];
+  const newimagesrc = imageInput.files[0].name;
+  const newname = nameInput.value;
+  const newgroup = groupInput.value;
+
+  // localstorage
+  const storedProfiles = localStorage.getItem('profile');
+  if (storedProfiles) {
+    let profiles = JSON.parse(storedProfiles);
+
+    profiles.forEach(profile => {
+      if (profile.id === id) {
+        profile.name = newname;
+        profile.group = newgroup;
+        profile.image = newimage;
+      }
+    });
+        
+    imagecontainer.src = newimagesrc;
+    namecontainer.innerHTML = newname;
+    groupcontainer.innerHTML = newgroup;
+
+    localStorage.setItem('profile', JSON.stringify(profiles));
+  } else {
+    console.log('저장된 프로필이 없습니다.');
+  }
+
+  modalOff(); 
+}
+
+
 imagecontainer.src = image;
 namecontainer.innerHTML = name;
 groupcontainer.innerHTML = group;
@@ -83,9 +116,7 @@ deletemodal.addEventListener('click',modalOff);
 
 infochange.addEventListener('click',modalOn);
 
-insertmodal.addEventListener('click', ()=>{
-  
-})
+insertmodal.addEventListener('click', changeInfo);
 
 function uploadError(){
   Swal.fire({
