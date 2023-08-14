@@ -33,7 +33,122 @@ db.collection("userlist")
             <button class="user-list-btn-delete">삭제</button>
         </div>`;
       usersListBox.append(userData);
-
+      userData
+        .querySelector(".user-list-btn-edit")
+        .addEventListener("click", () => {
+          const userEditFormEl = document.querySelector(
+            ".section__user-add-box"
+          );
+          const docId = userData.getAttribute("data-doc-id");
+          db.collection("userlist")
+            .doc(docId)
+            .get()
+            .then((doc) => {
+              if (doc.exists) {
+                const { image, name, email, phone, password, division } =
+                  doc.data();
+                const userEditBox = document.querySelector(
+                  ".section__user-add-box"
+                );
+                userEditBox.innerHTML = `
+                <form action="" class="section__user_form" id="section__user_form">
+                <div class="section__user_img_container">
+                  <input
+                    style="display: none"
+                    name="image"
+                    type="file"
+                    class="user_imgInput"
+                  />
+                  <img class="img_section" src="${image}" />
+                </div>
+                <input
+                  type="text"
+                  name="name"
+                  class="user_name"
+                  value="${name}"
+                  placeholder="이름을 입력해주세요."
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  class="user_phone"
+                  maxlength="14"
+                  value="${phone}"
+                  placeholder="전화번호를 입력해주세요."
+                />
+                <div class="section__user_email_container">
+                  <input
+                    type="text"
+                    class="user_email"
+                    name="email"
+                    value="${email}"
+                    placeholder="이메일을 입력해주세요."
+                  />
+                </div>
+                <input
+                  type="password"
+                  name="password"
+                  class="user_password"
+                  value="${password}"
+                  placeholder="비밀번호를 입력해주세요."
+                />
+                <div class="section__user_division_checkbox">
+                ${
+                  division === "vip"
+                    ? `<label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="vip"
+                  class="section__user_checkbox_division"
+                  checked
+                />vip
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="manager"
+                  class="section__user_checkbox_division"
+                />관리자
+              </label>`
+                    : `<label>
+              <input
+                type="checkbox"
+                name="division"
+                value="vip"
+                class="section__user_checkbox_division"
+              />vip
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="division"
+                value="manager"
+                class="section__user_checkbox_division"
+                checked
+              />관리자
+            </label>`
+                }
+                </div>
+                <div class="section__user_button_container">
+                  <button class="section__user_edit_btn" type="submit">
+                    수정
+                  </button>
+                  <button class="section__user_cancel_btn">취소</button>
+                </div>
+              </form>
+                `;
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+            })
+            .catch((error) => {
+              console.log("Error getting document:", error);
+            });
+          userEditFormEl.style.display = "block";
+        });
       userData
         .querySelector(".user-list-btn-delete")
         .addEventListener("click", () => {
