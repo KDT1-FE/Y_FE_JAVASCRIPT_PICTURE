@@ -42,31 +42,67 @@
   <body class="body">
     <header class="header">
       <div class="header__user-info-box">
-        <img src="./images/user/user.png" alt="userImg-icon" />
+        <img class="userImg" src="./images/user/user.png" alt="userImg-icon" />
         <p class="user_name">김춘삼</p>
-        <p class="user_division">관리자</p>
+        <h4 class="user_division">관리자111111111</h4>
       </div>
-      <nav class="header__sub-menu-box">
-        <button class="header__sub-menu-list-btn">
-          임직원 목록
-          <img src="./images/icons/list.png" alt="list-icon" />
-        </button>
-        <button class="header__sub-menu-add-btn">
-          임직원 등록
-          <img src="./images/icons/plus.png" alt="plus-icon" />
-        </button>
-      </nav>
-      <nav class="header__user-menu-box">
-        <button class="heaser__user-menu-userinfo-btn">
+      <a class="header__sub-menu-list">
+        임직원 목록
+        <img src="./images/icons/list.png" alt="list-icon" />
+      </a>
+      <a class="header__sub-menu-add">
+        임직원 등록
+        <img src="./images/icons/plus.png" alt="plus-icon" />
+      </a>
+      <div class="header__user-menu-box">
+        <a class="header__user-menu-userinfo">
           내 정보확인
           <img src="./images/icons/user.png" alt="userInfo-icon" />
-        </button>
-        <button class="heaser__user-menu-logout-btn">
+        </a>
+        <a class="header__user-menu-logout">
           로그아웃
           <img src="./images/icons/logout.png" alt="logout-icon" />
-        </button>
-      </nav>
+        </a>
+      </div>
     </header>
-    <main class="main"></main>
+    <main class="main">
+      <h1>임직원 목록</h1>
+      <section class="main__btn-box">
+        <button class="main__add-btn">임직원 등록</button>
+        <form class="main__search-form">
+          <input
+            type="text"
+            class="main__search"
+            placeholder="이메일을 입력해주세요."
+          />
+          <button class="main__search-btn" type="submit">검색</button>
+        </form>
+      </section>
+      <hr />
+      <section class="main__users-list-box">
+        <div class="users-list-kategorie">
+          <input type="checkbox" name="" id="" />
+          <span class="users-list-img">프로필 사진</span>
+          <span class="users-list-name">이름</span>
+          <span class="users-list-email">이메일</span>
+          <span class="users-list-phone">전화번호</span>
+          <span class="users-list-division">분류</span>
+        </div>
+        <div class="users-list-box">
+          <div class="user-list-box data-01">
+            <input type="checkbox" name="" id="" />
+            <img src="./images/user/user.png" alt="" />
+            <span>김춘삼</span>
+            <span>1@naver.com</span>
+            <span>010-0000-0000</span>
+            <span>vip</span>
+            <div class="user-list-btn-box data-01">
+              <button class="user-list-btn-edit">수정</button>
+              <button class="user-list-btn-delete">삭제</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
