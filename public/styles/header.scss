@@ -2,7 +2,7 @@ $backgroud: #efece8;
 $black: black;
 $pink: #e64980;
 $pink-background: #ffe4e4;
-$green: #5cb36c;
+$green: #2f9e44;
 $green-background: #d8f8dd;
 $darkgray: #414141;
 $gray: #c6c3bd;
@@ -44,9 +44,6 @@ $white: #fff;
   .header__sub-menu-list,
   .header__sub-menu-add {
     font-size: 1.3rem;
-    img {
-      width: 1.5rem;
-    }
   }
 }
 .header__user-info-box {
@@ -66,15 +63,25 @@ $white: #fff;
 }
 .header__sub-menu-list {
   color: $green;
+  outline: none;
+  border: none;
 }
 .header__sub-menu-list:hover {
-  background-color: $green-background;
+  background-color: $green;
+  color: $white;
+  border: none;
+  outline: none;
 }
 .header__sub-menu-add {
   color: $pink;
+  outline: none;
+  border: none;
 }
 .header__sub-menu-add:hover {
-  background-color: $pink-background;
+  background-color: $pink;
+  color: $white;
+  border: none;
+  outline: none;
 }
 .header__sub-menu-box {
   margin-top: 10px;

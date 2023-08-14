@@ -36,10 +36,6 @@
 .header .header__sub-menu-add {
   font-size: 1.3rem;
 }
-.header .header__sub-menu-list img,
-.header .header__sub-menu-add img {
-  width: 1.5rem;
-}
 
 .header__user-info-box {
   row-gap: 15px;
@@ -58,19 +54,29 @@
 }
 
 .header__sub-menu-list {
-  color: #5cb36c;
+  color: #2f9e44;
+  outline: none;
+  border: none;
 }
 
 .header__sub-menu-list:hover {
-  background-color: #d8f8dd;
+  background-color: #2f9e44;
+  color: #fff;
+  border: none;
+  outline: none;
 }
 
 .header__sub-menu-add {
   color: #e64980;
+  outline: none;
+  border: none;
 }
 
 .header__sub-menu-add:hover {
-  background-color: #ffe4e4;
+  background-color: #e64980;
+  color: #fff;
+  border: none;
+  outline: none;
 }
 
 .header__sub-menu-box {
