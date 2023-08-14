@@ -1,0 +1,71 @@
+<!-- 이미지 업로드 칸 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MATERIAL SYMBOLS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/upload.css">
+  <link rel="stylesheet" href="./css/general.css">
+
+
+
+  <title>SKY Admin</title>
+</head>
+<body>
+<div class="wrap">
+  <div class="container"> 
+    <!-- 헤더 -->
+  <header class="header--upload">
+    <h2>STAFF UPLOAD PAGE</h2>
+    <a href="/"><span class="material-icons home_icon">
+      home
+      </span></a>
+
+  </header>
+  <main class="main--upload">
+    <section class="inner inner--input">
+      <div class="input_area">
+        <div class="filebox">
+          <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+          <label for="file">파일 찾기</label> 
+          <input type="file" id="file">
+      </div>
+        <div class="input_area--txt">
+          <input type="text" class="input-msg" id="name" placeholder="Name">
+          <input type="text" class="input-msg" id="email" placeholder="E-mail">
+          <input type="text" class="input-msg" id="phone_number" placeholder="Phone number">
+          <input type="text" class="input-msg" id="rank" placeholder="Rank">
+        </div>
+      </div>
+      <div class="save_btn_area">
+      <button class="btn save_btn">SAVE</button>
+    </div>
+    </section>
+
+
+
+  </main>
+
+  </div>
+</div>
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+
+  <!-- JS -->
+  <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+  <script type="module" defer src="./main.js"></script>
+</body>
+</html>

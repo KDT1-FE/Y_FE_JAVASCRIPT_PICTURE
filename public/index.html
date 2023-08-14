@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- MATERIAL SYMBOLS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/upload.css">
+  <link rel="stylesheet" href="./css/general.css">
+
+  <title>SKY Admin</title>
+</head>
+<body>
+<div class="wrap">
+  <div class="container"> 
+    <!-- 헤더 -->
+  <header> <h2>STAFF LIST</h2> </header>
+  <main class="main--index">
+    <!-- 버튼 바 -->
+    <section class="button-bar">
+      <a href="./upload.html">
+        <button class="btn" id="add-btn">REGISTER</button>
+      </a>
+      <button class="btn" id="del-btn">DELETE</button>
+    </section>
+    <!-- 리스트 큰 박스 -->
+    <section class="staff_list_container">
+      <div class="staff_list">
+        <!-- 헤더 -->
+        <div class="row row-header">
+          <div class="cell"><input type="checkbox" class="check-cell"></div>
+          <div class="cell">ID picture</div>
+          <div class="cell">Name</div>
+          <div class="cell">E-mail</div>
+          <div class="cell">Phone number</div>
+          <div class="cell">Rank</div>
+        </div>
+
+
+
+
+      </div>
+  </section>
+
+  </main>
+
+  </div>
+</div>
+
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+
+  <!-- JS -->
+  <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+  <script type="module" defer src="./main.js"></script>
+</body>
+</html>  

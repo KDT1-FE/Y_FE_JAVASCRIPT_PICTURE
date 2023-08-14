@@ -1,0 +1,105 @@
+/* UPLOAD PAGE */
+
+.main--upload {
+  justify-content: center;
+}
+
+.header--upload {
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+  .header--upload {
+  height:100px;
+  }}
+  @media screen and (max-width: 450px) {
+    .header--upload > h2 {
+    font-size: 35px;
+    }}
+
+.home_icon {
+  color: steelblue;
+  font-size: 40px;
+  display: flex;
+  
+}
+
+.inner--input {
+  width: 80%;
+  margin: 40px;
+  margin-top: 80px;
+  height: inherit;
+  background-color: aqua;
+}
+
+.input_area {
+  justify-content: space-evenly;
+  display: flex;
+  margin: 0 20px;
+}
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.filebox {
+  display: flex;
+}
+.filebox .upload-name {
+  height: 30px;
+  width: 150px;
+  padding: 10px;
+  border: 1px solid steelblue;
+  color: steelblue;
+  box-sizing: border-box;
+}
+.filebox label {
+  display: flex;
+  padding: 2px 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: steelblue;
+  cursor: pointer;
+  height: 30px;
+  width: 90px;
+  margin-left: 10px;
+  box-sizing: border-box;
+}
+
+.input_area--txt {
+  gap : 10px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.input_area--txt > input {
+  width: 150px;
+  height: 30px;
+  outline: none;
+  border: none;
+}
+
+@media screen and (max-width: 720px) {
+  .input_area {
+  gap: 20px;
+  flex-direction: column;
+  overflow:unset;
+  transition: .5s ease-in-out;
+  }
+  }
+
+.save_btn_area {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  /* position: absolute;
+  right: 80px; */
+}

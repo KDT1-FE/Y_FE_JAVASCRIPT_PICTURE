@@ -1,0 +1,100 @@
+* {
+  font-family: "NotoSans", sans-serif;
+  font-size: 16px;
+}
+
+
+body {
+  font-family: "NotoSans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #434343;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-size : cover;
+  background-attachment: fixed;
+  background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
+  url('../assets/images/lushblue.jpg') no-repeat center fixed;
+}
+
+
+.container {
+  width: auto;
+  height: 85vh;
+  /* flex-direction: column;
+  justify-content: center; */
+  margin: 45px;
+  box-shadow: 5px 5px 2px 8px rgba(0,0,0,0.2);
+  position: relative;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+main {
+  display: flex;
+}
+header {
+
+  border-top-left-radius : inherit;
+  border-top-right-radius : inherit; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 20px;
+  font-weight: 700;
+  font-size: 2rem;
+  /* background-color: aqua; */
+  height: 50px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  transition: 2s ease-in-out;
+}
+a {
+  text-decoration: none;
+}
+h2 {
+  font-weight: bolder;
+  color: steelblue;
+  font-size: 45px;
+  letter-spacing : -2px;
+  text-shadow:2px 2px 2px rgba(0,0,0,.2);
+  /* -webkit-text-stroke: 3px lightskyblue; */
+}
+img {
+  display: block;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+.btn {
+  font-size: 15px;
+  font-weight: 700;
+  color: steelblue;
+  outline: none;
+  border: 3px solid steelblue;
+  border-radius: 10px;
+  padding: 3px;
+  width: 110px;
+  height: 30px;
+  letter-spacing : 1px;
+  text-shadow:1px 1px 1px #c8c8c8;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+  transition: all .2s ease-in-out;
+}
+.btn:hover {
+  scale: .95;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .btn {
+  transition: .7s ease-in-out;
+  scale: .9;
+  width: 90px;
+  letter-spacing : 1px;
+  }}
+  

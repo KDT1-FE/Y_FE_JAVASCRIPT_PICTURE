@@ -1,0 +1,56 @@
+.main--index {
+  margin: 20px 40px;
+  height: 70%;
+  /* !!! INFINITIE SCROLL 넣기 !!!! */
+  overflow:hidden;
+  flex-direction: column;
+}
+.button-bar {
+  margin-top :20px;
+}
+.staff_list {
+
+  margin-top: 20px;
+  display: table;
+  width: 100%;
+  height: 80%;
+  background-color: rgb(189, 204, 224);
+}
+
+@media screen  and (max-width: 700px) {
+  .staff_list, .row {
+    overflow: auto;
+}}
+.row {
+
+  display: table-row;
+}
+.row-header {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  height: 2rem;
+  text-align: center;
+  vertical-align:middle;
+  background-color: rgb(135, 216, 212);
+}
+.cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align:middle;
+}
+
+.check-cell {
+  width: fit-content;
+  height: fit-content;
+}
+
+.id_picture {
+  width: 100px;
+  height: 100px;
+}
+
+.cell_input_image {
+  width: 100%;
+  height: 100%;
+}
