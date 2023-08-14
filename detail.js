@@ -4,30 +4,27 @@ import { db, storage } from "./firebase";
 
 const url = new URL(window.location);
 const urlParams = url.searchParams;
-
 const coustomerId = urlParams.get("id");
 
+const avatarImg = document.getElementById("avatarImg");
+const imgTextInput = document.getElementById("imgTextInput");
+const nameInput = document.getElementById("nameInput");
+const emailInput = document.getElementById("emailInput");
+const phoneInput = document.getElementById("phoneInput");
+const gradeInput = document.getElementById("gradeInput");
+
+// 페이지 로드 시 고객 정보 표시
 window.onload = async () => {
-  // 고객 정보 조회 후 input 태그에 값 넣어주기
+  // 고객 정보 조회
   const docRef = doc(db, "customers", coustomerId);
   const docSnap = await getDoc(docRef);
+  // 값이 존재하면 고객 정보 표시
   if (docSnap.exists()) {
-    const avatarImg = document.getElementById("avatarImg");
     avatarImg.src = docSnap.data().avatar;
-
-    const imgTextInput = document.getElementById("imgTextInput");
     imgTextInput.value = docSnap.data().avatar;
-
-    const nameInput = document.getElementById("nameInput");
     nameInput.value = docSnap.data().name;
-
-    const emailInput = document.getElementById("emailInput");
     emailInput.value = docSnap.data().email;
-
-    const phoneInput = document.getElementById("phoneInput");
     phoneInput.value = docSnap.data().phone;
-
-    const gradeInput = document.getElementById("gradeInput");
     gradeInput.value = docSnap.data().grade;
   } else {
     alert("존재하지 않는 사용자입니다.");
@@ -35,13 +32,16 @@ window.onload = async () => {
   }
 };
 
-const imageInputEl = document.getElementById("profilePic");
+const imgRemoveBtn = document.querySelector(".img-remove-btn");
 
 // 프로필 이미지가 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
+const imageInputEl = document.getElementById("profilePic");
 imageInputEl.addEventListener("change", () => {
-  const file = document.getElementById("profilePic").files[0];
+  const file = imageInputEl.files[0];
   const storageRef = ref(storage, "avatar/" + file.name);
+  // storage에 사진 저장
   uploadBytes(storageRef, file).then(() => {
+    // storage에 저장된 사진 url 가져오기
     getDownloadURL(storageRef).then((url) => {
       // 프로필 이미지 url input에 저장
       imgTextInput.value = url;
@@ -50,7 +50,7 @@ imageInputEl.addEventListener("change", () => {
       avatarImg.src = url;
 
       // 프로필 이미지 삭제 버튼 표시
-      document.querySelector(".img-remove-btn").classList.remove("hidden");
+      imgRemoveBtn.classList.remove("hidden");
     });
   });
 });
@@ -59,36 +59,38 @@ const modifyBtn = document.querySelector(".modify");
 
 // 수정관련 버튼 토글 함수
 const toggleModifyBtn = () => {
-  const modifyInput = document.querySelectorAll(".modify-input");
-  modifyInput.forEach((i) => {
+  // input 태그 입력 가능/불가능
+  document.querySelectorAll(".modify-input").forEach((i) => {
     if (i.disabled) {
       i.disabled = false;
     } else {
       i.disabled = true;
     }
   });
+  // '정보 수정' 버튼 숨기기/보여주기 토글
   modifyBtn.classList.toggle("hidden");
+  // 만약 사진 url 값이 있다면 이미지 '삭제하기' 버튼 숨기기/보여주기 토글
   if (imgTextInput.value) {
-    document.querySelector(".img-remove-btn").classList.toggle("hidden");
+    imgRemoveBtn.classList.toggle("hidden");
   }
+  // '취소하기','수정하기' 버튼 숨기기/보여주기 토글
   document.querySelectorAll(".modifying").forEach((i) => {
     i.classList.toggle("hidden");
   });
 };
 
-// 수정 취소 버튼
+// '수정하기' 버튼 클릭 시 정보 수정할 수 있도록 변경
+modifyBtn.addEventListener("click", () => {
+  toggleModifyBtn();
+});
+
+// 수정 '취소하기' 버튼 클릭 시 정보 수정할 수 없도록 변경
 document.querySelector(".cancel-btn").addEventListener("click", (e) => {
   e.preventDefault();
   toggleModifyBtn();
 });
 
-// 수정 버튼 클릭 시 정보 수정할 수 있도록 변경
-modifyBtn.addEventListener("click", () => {
-  toggleModifyBtn();
-});
-
-// 프로필 이미지 삭제 기능
-const imgRemoveBtn = document.querySelector(".img-remove-btn");
+// 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
 imgRemoveBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (imgTextInput.value) {
@@ -98,8 +100,7 @@ imgRemoveBtn.addEventListener("click", (e) => {
 });
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
-const modifySubmitBtn = document.querySelector(".submit-btn");
-modifySubmitBtn.addEventListener("click", async (e) => {
+document.querySelector(".submit-btn").addEventListener("click", async (e) => {
   e.preventDefault();
   await setDoc(doc(db, "customers", coustomerId), {
     avatar: imgTextInput.value,
