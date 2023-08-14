@@ -20,19 +20,19 @@ categoryInput.value = "category";
 btn1.addEventListener('click', async () => {
     //const checkbox = checkBoxInput.checked;
     const profileImage = profileImageInput.files[0];
-    const name = nameInput.value;
+    const name_ = nameInput.value;
     const email = emailInput.value;
     const phone = phoneInput.value;
     const category = categoryInput.value;
 
-    if (profileImage && name && email && category && phone) {
+    if (profileImage && name_ && email && category && phone) {
         const employeeDiv = document.createElement('div');
         employeeDiv.classList.add('employee');
 
         const profileImageElement = document.createElement('img');
-        profileImageElement.src = URL.createObjectURL(profileImage);
         profileImageElement.className="p-img";
-        profileImageElement.alt = name;
+        profileImageElement.src = URL.createObjectURL(profileImage);
+        profileImageElement.alt = profileImage.name;
         profileImageElement.width = 100;
         profileImageElement.height = 100;
 
@@ -40,7 +40,7 @@ btn1.addEventListener('click', async () => {
         const infoDiv = document.createElement('div');
         infoDiv.className = 'divText';
         infoDiv.innerHTML = `
-            <p class = "p-name">${name}</p>
+            <p class = "p-name">${name_}</p>
             <p class = "p-email">${email}</p> 
             <p class = "p-phone">${phone}</p>
             <p class = "p-category">${category}<p>
@@ -84,15 +84,25 @@ btn1.addEventListener('click', async () => {
 btn2.addEventListener('click', () => {
     const selectCheckbox = document.querySelectorAll('.p-checkbox:checked')
 
-    selectCheckbox.forEach(checkBox => {
+    selectCheckbox.forEach(async checkBox => {
         const listItem = checkBox.closest('.employee');
         if(listItem) {
-            list.removeChild(listItem)
+            const profileImage = listItem.querySelector('.p-img');
+            const imageName = profileImage.alt;
+            alert(imageName);
+
+            try {
+                // 직원 이미지 삭제를 위한 함수 호출
+                await deleteImageFromS3(imageName);
+
+                // 직원 리스트에서 삭제
+                list.removeChild(listItem);
+            } catch (error) {
+                console.error('Error deleting employee image:', error);
+            }
         }
-
-    })
-})
-
+    });
+});
 
 // putFile 함수를 정의하고 업로드할 이미지 파일을 매개변수 file로 받는다.
 const putFile = file => {
@@ -119,6 +129,7 @@ const putFile = file => {
       }
     });
 
+
     
     // 'upload' 객체의 업로드 작업을 수행하는 프로미스 생성
     const promise = upload.promise();
@@ -135,4 +146,34 @@ const putFile = file => {
       }
     );
   };
+
+// AWS S3에서 이미지 삭제를 위한 함수 정의
+const deleteImageFromS3 = async imageName => {
+    try {
+        const albumBucketName = 'js-employee-bucket'; // S3의 버킷 이름
+        const region = 'ap-northeast-2'; // 서울
+        const accessKeyId = AccessKeyId;
+        const secretAccessKey = SecretAccessKey;
+
+        AWS.config.update({
+            region,
+            accessKeyId,
+            secretAccessKey
+        });
+
+        const s3 = new AWS.S3();
+
+        const params = {
+            Bucket: albumBucketName,
+            Key: imageName
+        
+        };
+
+        // 이미지 삭제 요청
+        await s3.deleteObject(params).promise();
+        console.log('Image deleted successfully');
+    } catch (error) {
+        console.error('Error deleting image:', error);
+    }
+};
 
