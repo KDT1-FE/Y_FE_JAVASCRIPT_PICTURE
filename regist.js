@@ -3,12 +3,12 @@ import { db } from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "./firebase";
 
-const imageInputEl = document.getElementById("profile_pic");
+const imageInputEl = document.getElementById("profilePic");
 const registForm = document.querySelector(".regist-form");
 
 // 프로필 이미지가 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 imageInputEl.addEventListener("change", (event) => {
-  const file = document.getElementById("profile_pic").files[0];
+  const file = document.getElementById("profilePic").files[0];
   const storageRef = ref(storage, "avatar/" + file.name);
   uploadBytes(storageRef, file).then((snapshot) => {
     getDownloadURL(storageRef).then((url) => {
