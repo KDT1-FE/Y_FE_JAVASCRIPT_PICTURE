@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   // 번들링 위치, scss의 경우 index.js 파일에 import
@@ -19,7 +20,8 @@ module.exports = {
   watch: true,
   plugins: [
     // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-    new MiniCssExtractPlugin({ filename: "../css/style.css" })
+    new MiniCssExtractPlugin({ filename: "../css/style.css" }),
+    new Dotenv()
   ],
   module: {
     rules: [
