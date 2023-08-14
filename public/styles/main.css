@@ -1,0 +1,111 @@
+.main {
+  width: 100%;
+  margin: 100px 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.main h1 {
+  font-size: 1.5rem;
+}
+
+.main__btn-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.main__btn-box .main__add-btn {
+  width: 6rem;
+  height: 2.3rem;
+  border: 1px solid #e64980;
+  outline: none;
+  border-radius: 5px;
+  color: #e64980;
+  background-color: #fff;
+}
+.main__btn-box .main__add-btn:hover {
+  background-color: #e64980;
+  color: #fff;
+  border: none;
+}
+
+.main__search-form {
+  width: 30%;
+}
+.main__search-form .main__search {
+  width: 80%;
+  height: 2rem;
+  font-size: 16px;
+}
+.main__search-form button {
+  width: 15%;
+  height: 2.4rem;
+  background-color: transparent;
+  border: 1px solid #414141;
+  border-radius: 5px;
+  outline: none;
+}
+.main__search-form button:hover {
+  height: 2.4rem;
+  background-color: #414141;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+hr {
+  background: #c6c3bd;
+  height: 1px;
+  border: 0;
+}
+
+.users-list-kategorie {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
+  align-items: center;
+}
+
+.users-list-box img {
+  width: 5rem;
+}
+.users-list-box .user-list-box {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.user-list-btn-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.user-list-btn-box button {
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: transparent;
+}
+.user-list-btn-box .user-list-btn-edit {
+  border: 1px solid #1a71c2;
+  color: #1a71c2;
+}
+.user-list-btn-box .user-list-btn-delete {
+  border: 1px solid black;
+  color: black;
+}
+.user-list-btn-box .user-list-btn-edit:hover {
+  border: none;
+  background-color: #1a71c2;
+  color: #fff;
+}
+.user-list-btn-box .user-list-btn-delete:hover {
+  border: none;
+  background-color: black;
+  color: #fff;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,118 @@
+$backgroud: #efece8;
+$black: black;
+$pink: #e64980;
+$pink-background: #ffe4e4;
+$green: #5cb36c;
+$green-background: #d8f8dd;
+$blue: #1a71c2;
+$darkgray: #414141;
+$gray: #c6c3bd;
+$white: #fff;
+
+.main {
+  width: 100%;
+  margin: 100px 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+.main__btn-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  .main__add-btn {
+    width: 6rem;
+    height: 2.3rem;
+    border: 1px solid $pink;
+    outline: none;
+    border-radius: 5px;
+    color: $pink;
+    background-color: $white;
+  }
+  .main__add-btn:hover {
+    background-color: $pink;
+    color: $white;
+    border: none;
+  }
+}
+.main__search-form {
+  width: 30%;
+  .main__search {
+    width: 80%;
+    height: 2rem;
+    font-size: 16px;
+  }
+  button {
+    width: 15%;
+    height: 2.4rem;
+    background-color: transparent;
+    border: 1px solid $darkgray;
+    border-radius: 5px;
+    outline: none;
+  }
+  button:hover {
+    height: 2.4rem;
+    background-color: $darkgray;
+    color: $white;
+    border: none;
+    outline: none;
+  }
+}
+hr {
+  background: $gray;
+  height: 1px;
+  border: 0;
+}
+.users-list-kategorie {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
+  align-items: center;
+}
+.users-list-box {
+  img {
+    width: 5rem;
+  }
+  .user-list-box {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+.user-list-btn-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  button {
+    height: 2rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+  }
+  .user-list-btn-edit {
+    border: 1px solid $blue;
+    color: $blue;
+  }
+  .user-list-btn-delete {
+    border: 1px solid $black;
+    color: $black;
+  }
+  .user-list-btn-edit:hover {
+    border: none;
+    background-color: $blue;
+    color: $white;
+  }
+  .user-list-btn-delete:hover {
+    border: none;
+    background-color: $black;
+    color: $white;
+  }
+}
