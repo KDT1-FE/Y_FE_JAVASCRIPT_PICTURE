@@ -3,6 +3,7 @@ import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://ww
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { uploadError, modalOff, firebaseError } from "./nav.js";
 import { storageError } from "./nav.js";
+import { innerHTML } from "./header.js";
 
 const imageInput = document.getElementById('imageInput');
 const nameInput = document.getElementById('nameInput');
@@ -11,7 +12,6 @@ const insertmodal = document.getElementById('modalinsert');
 const allcheckbox = document.getElementById('allcheckbox');
 
 let profiles=[];
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -34,6 +34,7 @@ async function uploadInfo() {
   const image = imageInput.files[0];
   const name = nameInput.value;
   const group = groupInput.value;
+  const id = new Date().getTime();
 
   if (image && name && group) {
     try {
@@ -46,6 +47,7 @@ async function uploadInfo() {
 
       const imagesCollection = collection(db, 'images');
       await addDoc(imagesCollection, {
+        id: id,
         name: name,
         group: group,
         imageUrl: downloadURL
@@ -54,7 +56,7 @@ async function uploadInfo() {
       console.log('Image and information upload completed');
       modalOff();
       //
-      newprofiles(downloadURL, name, group);
+      newprofiles(id, downloadURL, name, group);
       location.reload();
 
       
@@ -75,9 +77,9 @@ async function uploadInfo() {
 
 const list = document.getElementById('list');
 
-function newprofiles(downloadURL, name, group) {
+function newprofiles(id, downloadURL, name, group) {
   const item = {
-    id: new Date().getTime(),
+    id: id,
     image: downloadURL,
     name: name,
     group: group,
@@ -258,3 +260,58 @@ async function deleteFirestoreDocument(imageUrl) {
     }
   });
 }
+
+function getClickedImageInfo(clickedImage) {
+  const imageSrc = clickedImage.src;
+  const item = profiles.find(profile => profile.image === imageSrc);
+  
+  if (item) {
+    const { id, image, name, group } = item;
+    return { id, image, name, group };
+  } else {
+    return null;
+  }
+}
+
+
+list.addEventListener('click', event => {
+  if (innerHTML === "로그아웃") {
+    const clickedItem = event.target.closest('.item');
+
+    if (clickedItem) {
+      const clickedImage = clickedItem.querySelector('.image img');
+      const clickedName = clickedItem.querySelector('.name');
+      const clickedGroup = clickedItem.querySelector('.group');
+
+      const clickedImageInfo = getClickedImageInfo(clickedImage);
+      if (clickedImageInfo) {
+        const { id, image, name, group } = clickedImageInfo;
+
+        // 정보를 포함한 쿼리 문자열 생성
+        const queryParams = new URLSearchParams({
+          id: id,
+          image: image,
+          name: name,
+          group: group
+        });
+
+        // 쿼리 매개변수를 다음 페이지 URL에 추가
+        const nextPageUrl = `profile.html?${queryParams}`;
+        window.location.href = nextPageUrl;
+      } 
+      else {
+        const queryParams = new URLSearchParams({
+          id: 'example',
+          image: clickedImage.src,
+          name: clickedName.textContent,
+          group: clickedGroup.textContent,
+        });
+
+        const nextPageUrl = `profile.html?${queryParams}`;
+        window.location.href = nextPageUrl;
+      }
+    }
+  } else {
+    cantprofile();
+  }
+});

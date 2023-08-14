@@ -1,3 +1,6 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 const headertitle = document.querySelector('.headertitle');
 const infochange = document.querySelector('.infochange');
 const deletemodal = document.getElementById('modaldelete');
@@ -7,7 +10,24 @@ const nameInput = document.getElementById('nameInput');
 const groupInput = document.getElementById('groupInput');
 const uploadLabel = document.querySelector('.upload-button');
 const insertmodal = document.getElementById('modalinsert');
+
+const namecontainer = document.querySelector('.name');
+const groupcontainer = document.querySelector('.group');
+const imagecontainer = document.querySelector('img');
 var link = 'index.html';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBvKQZE-17ZEDy3yVmi3ZKWtzjYBFLTHJY",
+  authDomain: "fastcampusxyanolja-assginment.firebaseapp.com",
+  databaseURL: "https://fastcampusxyanolja-assginment-default-rtdb.firebaseio.com",
+  projectId: "fastcampusxyanolja-assginment",
+  storageBucket: "fastcampusxyanolja-assginment.appspot.com",
+  messagingSenderId: "946409350884",
+  appId: "1:946409350884:web:050748a6262fce560faef1",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 function hreflink(){
   location.href=link;
@@ -45,12 +65,27 @@ function modalOff() {
   document.body.classList.remove('modal-open');
 }
 
+function getQueryParam(name) {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  return urlSearchParams.get(name);
+}
+
+const id = getQueryParam('id');
+const image = getQueryParam('image');
+const name = getQueryParam('name');
+const group = getQueryParam('group');
+
+imagecontainer.src = image;
+namecontainer.innerHTML = name;
+groupcontainer.innerHTML = group;
 
 deletemodal.addEventListener('click',modalOff);
 
 infochange.addEventListener('click',modalOn);
 
-insertmodal.addEventListener('click',uploadInfo);
+insertmodal.addEventListener('click', ()=>{
+  
+})
 
 function uploadError(){
   Swal.fire({
