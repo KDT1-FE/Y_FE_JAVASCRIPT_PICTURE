@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/profile-card.css" />
     <link rel="stylesheet" href="../css/media-query.css" />
+    <link rel="stylesheet" href="../css/states.css" />
 
     <!-- GOOGLE MATERIAL ICONS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -46,9 +47,10 @@
         <div class="profile-image"></div>
         <section class="profile-infomation-container">
           <div class="profile-row name">
-            <div class="row-title">이름</div>
+            <div class="row-title">이름 <span>(한/영)</span></div>
             <div class="row-content">
-              <input type="text" placeholder="이름을 입력해주세요" />
+              <input type="text" placeholder="한글 이름" />
+              <input type="text" placeholder="영어 이름(선택)" />
             </div>
           </div>
           <div class="profile-row team">
@@ -130,7 +132,7 @@
       사이드 메뉴
 
      -->
-      <nav class="sidemenu-container">
+      <nav class="sidemenu-container drag-prevent">
         <div class="sidemenu-smalltitle">관리</div>
         <div class="sidemenu-container_buttons">
           <a class="sidemenu-container_btn-sidebar focused" href="./main.html">
@@ -194,7 +196,7 @@
           </div>
           <!-- 리스트 부분 -->
           <div class="listtable-tablerows-container">
-            <span id="no-profile">등록된 직원 프로필이 없습니다 :|</span>
+            <span class="no-profile">등록된 직원 프로필이 없습니다 :|</span>
             <!-- 카드가 쌓일 부분 -->
 
             <!-- <article class="employeecard-container">

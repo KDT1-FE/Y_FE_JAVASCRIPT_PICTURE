@@ -155,7 +155,7 @@ h1.main-title {
   position: relative;
 }
 
-#no-profile {
+.no-profile {
   display: flex;
   width: 500px;
   height: 100px;

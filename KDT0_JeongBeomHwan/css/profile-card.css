@@ -99,6 +99,10 @@
   border: 1px solid var(--color-gray200);
   border-radius: 4px;
 }
+.name .row-content input[type="text"] {
+  width: 168px;
+  margin-right: 8px;
+}
 
 .row-content input[type="text"]:hover {
   border: 1px solid var(--color-blue500);

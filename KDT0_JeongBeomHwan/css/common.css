@@ -222,17 +222,3 @@ body {
 .toast-message span:last-child {
   font-weight: 500;
 }
-
-/* 
-
-  state
-
-*/
-
-.hidden {
-  display: hidden;
-}
-
-.none {
-  display: none;
-}

@@ -170,6 +170,10 @@
     right: 20px;
   }
 
+  .name .row-content input[type="text"] {
+    width: 96px;
+  }
+
   .main-toolbar_filter-container span {
     display: none;
   }
