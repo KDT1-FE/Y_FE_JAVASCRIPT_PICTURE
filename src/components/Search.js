@@ -6,12 +6,12 @@ export default class Search extends Component{
   render(){
     this.el.classList.add('search')
     this.el.innerHTML=/* html */`
-      <input placeholder="ex) 가렌"> 
+      <input placeholder="ex) 가렌, 가, (공백)"> 
       <span class="btn-wrap">
-        <button class="btn btn-search"> 검색 </button>
-        <button class="btn btn-reset"> 초기화 </button>
-        <button class="btn btn-add"> 등록 </button>
-        <button class="btn btn-delete"> 삭제 </button>
+        <button class="btn btn-search"><span> 검색 </span></button>
+        <button class="btn btn-reset"><span> 초기화 </span></button>
+        <button class="btn btn-add"><span> 등록 </span></button>
+        <button class="btn btn-delete"><span> 삭제 </span></button>
       </span>
     `
     this.el.append(new DialogAdd().el)

@@ -1,5 +1,6 @@
 html{
   --color-black:#051C24;
+  --color-gray:#292929;
   --color-white: #FBFBFB; 
   --color-yellow: #D0A85C;
   --color-sora: #0BC6E3;
@@ -19,16 +20,53 @@ body{
   font-family: 'Orbit', sans-serif;
 }
 
-.btn{
+
+.btn {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-size: 1em;
+  font-family: 'Orbit', sans-serif;
+  background-color: var(--color-gray);
+  padding: 0 15px;
+  box-sizing:content-box;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
   height: 50px;
-  width: 60px;
-  border-radius: 5px;
-  background-color: var(--color-yellow);
-  color: var(--color-white);
+  width: 75px;
 }
 
-.btn:hover{
-  opacity:0.7
+.btn span {
+  position: relative; 
+  z-index: 1;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 460%;
+  width: 240%; 
+  background: var(--color-yellow);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.btn:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.btn-edit:after{
+  background: var(--color-sora);
 }
 
 .hide{
@@ -63,6 +101,9 @@ body{
 .headline span{
   color: var(--color-sora);
   font-family: 'Noto sans', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 5px;
 }
 
 .search{
@@ -82,7 +123,7 @@ body{
 }
 
 .search input::placeholder{
-  color:grey
+  color:var(--color-gray)
 }
 
 .search .btn-wrap{
@@ -117,7 +158,7 @@ body{
   border-radius: 10px;
   background-size: cover;
   background-position: center;
-  background-color: gray;
+  background-color: var(--color-gray);
   transition: transform 300ms ease 0s;
 }
 
@@ -140,7 +181,7 @@ body{
   background-color: rgba(14,17,27,.3);
   backdrop-filter: blur(10px);
   text-align: center;
-  color: white;
+  color: var(--color-white);
 }
 
 .info h1{
@@ -161,7 +202,7 @@ body{
   position:absolute;
   top: -40px;
   background-color: rgba(0,0,0,0.5);
-  color: white;
+  color: var(--color-white);
 }
 
 .icon:hover + .info-div{
@@ -182,12 +223,10 @@ body{
   position: relative;
   margin:0 auto;
   max-width: 1200px;
-  border: 4px solid black;
   border-radius: 5px;
   box-sizing: border-box;
   font-size:16px;
-  color:white;
-  background-color: black;
+  color:var(--color-white)
 }
 
 .specific-img{
@@ -196,8 +235,15 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: grey;
+  background-color: var(--color-gray)
 }
+
+.btn-home{
+  position: absolute;
+  left:15px;
+  top:15px;
+}
+
 
 .btn-edit{
   position: absolute;
@@ -207,7 +253,7 @@ body{
 
 .specific-info{
   position:relative;
-  bottom:30px;
+  bottom:70px;
   display: flex;
   width:100%;
   flex-direction: column;
@@ -216,7 +262,12 @@ body{
   text-align: center;
   padding:25px;
   box-sizing: border-box;
-  background-color: black;
+  background-image: linear-gradient(to bottom, rgba(5,28,36,0.2 ), rgba(5,28,36,1));
+}
+
+
+.specific-info-name{
+  margin-bottom: 30px;
 }
 
 .specific-info h1{
@@ -231,7 +282,10 @@ body{
   width:100%;
   display: flex;
   justify-content: space-between;
-  
+}
+.specific-info-iconwrap > div{
+  width: 100px;
+
 }
 
 .btn-close{
@@ -246,8 +300,23 @@ body{
   height: 500px;
   font-size:16px;
   padding: 40px;
+  outline:none;
+  border: none;
   box-sizing: border-box;
   padding-top: 80px;
+  font-family: 'Noto sans', sans-serif;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+  background-color: rgba(41,41,41,0.9);
+  color:var(--color-white)
+}
+.modal::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+
+.modal form{
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 form > div{
@@ -255,10 +324,10 @@ form > div{
   height: 50px;
   padding: 2px;
   box-sizing: border-box;
+  margin:8px 0;
 }
 form input{
-  height: 30px;
-  margin:2px;
+  height: 40px;
 }
 
 .select_field{
@@ -273,6 +342,25 @@ form input{
   width: 100%
 }
 
+.form-basic{
+  display: flex;
+  align-items: center;
+}
+
+.form-basic > div{
+  width:100px;
+  max-width: 200px;
+  flex-grow: 1;
+}
+
+.form-basic input{
+  width: 200px;
+  flex-grow:2;
+}
+
+.btn-edit-confirm::after{
+  background-color: var(--color-sora);
+}
 
 .input-delete{
   height: 100%;

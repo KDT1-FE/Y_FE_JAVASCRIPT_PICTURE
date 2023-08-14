@@ -19,10 +19,10 @@ export default class Dialog extends Component{
     const champion = this.props
     this.el.classList.add('modal', 'modal-edit')
     this.el.innerHTML = /*html */`
-      <button class="btn btn-close">X</button>
+      <button class="btn btn-close"><span>X</span></button>
       <form> 
-        <div><span>이름 : </span><input class="form-name" placeholder="이름" value="${champion.name}"/></div>
-        <div><span>별명 : </span><input class="form-nickname" placeholder="별명" value="${champion.nickname}"/> </div>
+        <div class="form-basic"><div>이름 </div><input class="form-name" placeholder="이름" value="${champion.name}"/></div>
+        <div class="form-basic"><div>별명 </div><input class="form-nickname" placeholder="별명" value="${champion.nickname}"/> </div>
         <div class="select-field">
           <select class="form-region">
             <option>국가 / 지역</option>
@@ -65,9 +65,9 @@ export default class Dialog extends Component{
           </select>
           <div class="select_arrow"></div>
         </div>
-        <div><span>썸네일이미지 : </span><input class="form-thumbnail" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
-        <div><span> 배경이미지 : </span><input class="form-image" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
-        <input type="submit">
+        <div class="form-basic"><div>썸네일이미지 </div><input class="form-thumbnail" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
+        <div class="form-basic"><div> 배경이미지 </div><input class="form-image" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
+        <button class="btn btn-edit-confirm"><span>등록</span></button>
       </form>
     `
 
@@ -81,13 +81,19 @@ export default class Dialog extends Component{
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
-
     const obj = this.props
+    let isSubmit = false
 
-    this.el.querySelector('form').addEventListener('submit',event=>{
+    const formEl = this.el.querySelector('form')
+    this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
+      formEl.dispatchEvent(new Event('submit'))
+    })
+
+    formEl.addEventListener('submit',event=>{
       event.preventDefault()
-
-      addInformation()
+      if(!isSubmit){
+        isSubmit = true
+        addInformation()
         .then(()=>{
           console.log('localStorage에 저장')
           localStorageArray.push(obj)
@@ -106,6 +112,8 @@ export default class Dialog extends Component{
           location.replace(`/#/`)
         }
         )
+      }
+      
 
       function addInformation(){
         return new Promise((resolve,reject)=>{

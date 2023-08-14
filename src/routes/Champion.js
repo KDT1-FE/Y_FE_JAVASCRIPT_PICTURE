@@ -8,7 +8,6 @@ export default class Champion extends Component{
     super()
   }
   render(){
-    console.log('is it render?')
     // 쿼리스트링으로 전달 시 한글은 URL인코딩 방식을 사용한다. 그래서 history.state에서 한글을 넘겨 받을 때, decodeURI 메소드를 사용
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const champion = localStorageArray.find(obj=>obj.name === decodeURI(history.state.name))
@@ -19,7 +18,8 @@ export default class Champion extends Component{
       <div class="specific-inner-container">
         <div class="specific-img">
         </div>
-        <button class="btn btn-edit"> 수정 </button>
+        <button class="btn btn-home"><span>메인</span></button>
+        <button class="btn btn-edit"><span> 수정 </span></button>
         <div class="specific-info">
           <div class="specific-info-name"> 
               <h2>${champion.nickname}</h2>
@@ -67,6 +67,9 @@ export default class Champion extends Component{
     const modal = this.el.querySelector('dialog')
     this.el.querySelector('.btn-edit').addEventListener('click',()=>{
       modal.showModal()
+    })
+    this.el.querySelector('.btn-home').addEventListener('click',()=>{
+      location.assign('/#/')
     })
     
   }
