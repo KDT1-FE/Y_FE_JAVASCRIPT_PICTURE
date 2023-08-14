@@ -18,56 +18,49 @@
           <button class="bg-blue text-m" id="open-enroll-form">등록</button>
         </div>
       </div>
-  
-        <form class="enroll-form bg-main100">
-          <div class="enroll-form__container">
-            <div class="enroll-form__photoBox bg-gray">
-              <img id="preview" />
-              <label
-                class="photo-input__label bg-main150 text-s"
-                for="photo-input"
-                >Upload Image</label
-              >
-              <input id="photo-input" type="file" accept=".jpg, .png, .jpeg" />
-            </div>
-            <div class="enroll-form__inputBox">
-              <label for="name-input">이름</label>
-              <input id="name-input" />
-              <label for="email-input">이메일</label>
-              <input id="email-input" />
-              <label for="phoneNum-input">전화번호</label>
-              <input id="phoneNum-input" />
-              <label for="position-input">포지션</label>
-              <input id="position-input" />
-              <button class="enroll-form__submit bg-blue text-s" type="submit">
-                submit
-              </button>
-              <button class="enroll-form__cancel bg-pink text-s">cancel</button>
-            </div>
+
+      <form class="enroll-form bg-main100">
+        <div class="enroll-form__container">
+          <div class="enroll-form__photoBox bg-gray">
+            <img id="preview" />
+            <label
+              class="photo-input__label bg-main150 text-s"
+              for="photo-input"
+              >Upload Image</label
+            >
+            <input id="photo-input" type="file" />
           </div>
-        </form>
-   
+          <div class="enroll-form__inputBox">
+            <label for="name-input">이름</label>
+            <input id="name-input" />
+            <label for="email-input">이메일</label>
+            <input id="email-input" />
+            <label for="phoneNum-input">전화번호</label>
+            <input id="phoneNum-input" />
+            <label for="position-input">포지션</label>
+            <input id="position-input" />
+            <button class="enroll-form__submit bg-blue text-s" type="submit">
+              submit
+            </button>
+            <button class="enroll-form__cancel bg-pink text-s">cancel</button>
+          </div>
+        </div>
+      </form>
 
       <div class="member-info">
         <div class="member-info__header bg-main100">
           <div class="member-info__img">사진</div>
           <div class="member-info__name">이름</div>
-          <div class="member-info__phone">전화번호</div>
+          <div class="member-info__phoneNum">전화번호</div>
           <div class="member-info__email">이메일</div>
           <div class="member-info__position">포지션</div>
         </div>
-        <div class="member-info__main">
-          <div class="member-info__img">사진</div>
-          <div class="member-info__name">이름</div>
-          <div class="member-info__phone">전화번호</div>
-          <div class="member-info__email">이메일</div>
-          <div class="member-info__position">포지션</div>
-        </div>
-
+      </div>
     </main>
   </body>
   <script type="module" src="js/config/aws.js"></script>
   <script type="module" src="/js/constant.js"></script>
   <script type="module" src="/js/main.js"></script>
   <script type="module" src="/js/api/uploadProfile.js"></script>
+  <script type="module" src="/js/api/listProfile.js"></script>
 </html>

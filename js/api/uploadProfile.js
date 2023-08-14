@@ -3,7 +3,6 @@ import {
   region,
   accessKeyId,
   secretAccessKey,
-  S3endpoint,
 } from "/js/config/aws.js";
 
 import {
