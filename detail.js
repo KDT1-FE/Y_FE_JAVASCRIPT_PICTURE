@@ -51,17 +51,36 @@ imageInputEl.addEventListener("change", () => {
   });
 });
 
-// 수정 버튼 클릭 시 정보 수정할 수 있도록 변경
 const modifyBtn = document.querySelector(".modify");
-modifyBtn.addEventListener("click", () => {
+
+// 수정관련 버튼 토글 함수
+const toggleModifyBtn = () => {
   const modifyInput = document.querySelectorAll(".modify-input");
   modifyInput.forEach((i) => {
-    i.disabled = false;
+    if (i.disabled) {
+      i.disabled = false;
+    } else {
+      i.disabled = true;
+    }
   });
+  modifyBtn.classList.toggle("hidden");
   if (imgTextInput.value) {
-    document.querySelector(".img-remove-btn").classList.remove("hidden");
+    document.querySelector(".img-remove-btn").classList.toggle("hidden");
   }
-  document.querySelector(".modify-submit-btn").classList.remove("hidden");
+  document.querySelectorAll(".modifying").forEach((i) => {
+    i.classList.toggle("hidden");
+  });
+};
+
+// 수정 취소 버튼
+document.querySelector(".cancel-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  toggleModifyBtn();
+});
+
+// 수정 버튼 클릭 시 정보 수정할 수 있도록 변경
+modifyBtn.addEventListener("click", () => {
+  toggleModifyBtn();
 });
 
 // 프로필 이미지 삭제 기능
@@ -75,7 +94,7 @@ imgRemoveBtn.addEventListener("click", (e) => {
 });
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
-const modifySubmitBtn = document.querySelector(".modify-submit-btn");
+const modifySubmitBtn = document.querySelector(".submit-btn");
 modifySubmitBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   await setDoc(doc(db, "customers", coustomerId), {
