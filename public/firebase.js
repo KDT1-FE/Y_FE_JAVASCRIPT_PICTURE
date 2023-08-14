@@ -13,6 +13,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storage = firebase.storage();
 db.collection("userlist")
+  .orderBy("date", "desc")
   .get()
   .then((res) => {
     res.forEach((doc) => {
