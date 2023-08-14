@@ -53,7 +53,8 @@ document.querySelector('#myForm').addEventListener("submit",async (e)=>{
     e.preventDefault();
     const {file,name,email,position,phoneNum} = getFormData(e);
     const newEmployeeId = await addEmployeeId();
-    addFirestore('profile',name,{employeeId:newEmployeeId,name,email,phonenum:phoneNum,position})
+    console.log(typeof(newEmployeeId))
+    addFirestore('profile',newEmployeeId.toString(),{employeeId:newEmployeeId,name,email,phonenum:phoneNum,position})
     addFirestorage(file,newEmployeeId);
     setTimeout(()=>window.location.href = "/index.html",500)
 });
