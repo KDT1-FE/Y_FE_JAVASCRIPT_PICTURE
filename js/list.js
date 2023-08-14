@@ -1,6 +1,7 @@
 const list = document.querySelector(".list");
 const deleteBtn = document.querySelector(".ex_delete_btn");
 
+
 let infos = [];
 
 
@@ -24,7 +25,7 @@ function displayUsers() {
     for(let i=0; i<infos.length; i++) {
         const itemEL = createInfoElement(infos[i]);
 
-        console.log(infos[i]);
+        //console.log(infos[i]);
         list.append(itemEL);
     }
 }
@@ -34,7 +35,7 @@ function getLocalStorage() {
 
     if(data) {
         infos = JSON.parse(data);
-        console.log(infos);
+        //console.log(infos);
     }
 }
 
@@ -49,17 +50,24 @@ function createInfoElement(info) {
     checkboxEl.checked = info.isChecked;
 
     if(info.isChecked) {
-        itemEl.classList.addd("checked");
+        itemEl.classList.add("checked");
     }
 
     const profileEl = document.createElement("img");
     profileEl.className="profile";
-    profileEl.src = info.profileImgUrl;
+
+    if(info.profileImgUrl !== " ") {
+        profileEl.src = info.profileImgUrl;
+    }
+    else {
+        profileEl.src = "assets/user.png";
+    }
+    
 
     const nameEl = document.createElement("div");
     nameEl.className="name";
     nameEl.innerHTML =  info.name;
-    console.log(nameEl);
+    //console.log(nameEl);
 
     const emailEl = document.createElement("div");
     emailEl.className="email";
@@ -85,7 +93,7 @@ function createInfoElement(info) {
 
     }
     const moreEl = document.createElement("div");
-    moreEl.className="action";
+    moreEl.className="more_btn";
     const iconEl = document.createElement("div");
     iconEl.className="icon";
     const span1 = document.createElement("span");
@@ -113,3 +121,48 @@ function createInfoElement(info) {
     return itemEl;
 
 }
+const totalcheckBox = document.querySelector(".checkbox input");
+totalcheckBox.addEventListener("change", () => {
+    const checkBoxes = document.querySelectorAll("#check_btn");
+    
+    checkBoxes.forEach(checkbox => {
+        checkbox.checked = totalcheckBox.checked;
+    });
+});
+
+
+list.addEventListener("click", (event) => {
+    const itemEl = event.target.closest(".list_item");
+    if (itemEl) {
+        // 체크박스가 클릭되었을 때는 event.target이 checkbox이므로 클릭 이벤트를 무시
+        if (event.target.tagName === "INPUT" && event.target.type === "checkbox") {
+            return;
+        }
+
+        const itemIndex = Array.from(list.children).indexOf(itemEl);
+        if (itemIndex !== -1) {
+            showDetail(itemIndex);
+            console.log("clicked!");
+        }
+    }
+});
+
+
+
+function getIndexFromEvent(event) {
+    const itemEl = event.target.closest(".list_item");
+    if (itemEl) {
+        const index = Array.from(list.children).indexOf(itemEl);
+        return index >= 0 ? index : null;
+    }
+    return null;
+}
+
+
+
+
+
+function showDetail(index) {
+    window.location.href = `detail.html?index=${index}`;
+}
+

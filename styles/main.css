@@ -117,13 +117,15 @@ main {
     font-family: 'Lato', sans-serif;
 }
 .list_container {
-    border: 1px solid wheat;
+    background-color: #c4c1c188;
     background-clip: content-box;
     max-width: 1280px;
     overflow: hidden;
     padding: 0 20px;
     margin: 40px auto;
     height: 500px;
+    overflow-y: auto; /* 내용이 넘칠 때 수직 스크롤 생성 */
+    overflow-x : auto;
 }
 .material-symbols-outlined{
     cursor: pointer;
@@ -139,15 +141,43 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding: 0 20px;
+}
+.list_header > * {
+    flex: 1;
+    margin: 0.25rem;
+    text-align: center;
+    margin: 0;
 }
 .list {
     display : flex;
-    flex-direction: row;
+    position: relative;
+    flex-direction: column;
     padding: 0.5rem 1rem;
 }
 
 .list_item {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 5px 0;
+    box-shadow: 5px 5px 5px rgb(77, 118, 193, 0.2);
+}
+
+.list_item > * {
+    flex: 1;
+    margin: 0.25rem;
+    text-align: center;
+}
+
+
+/*.list_item {
     display : flex;
     justify-content: space-between;
     align-items: center;
@@ -158,18 +188,42 @@ main {
     cursor: pointer;
     transition: all 0.3s;
     border: 1px solid #6495ed;
-}
+    margin: 5px 0;
+}*/
 
 p {
     font-size: 0.9rem;
     color: #111;;
     font-weight: 500;
 }
+#check_btn {
+    max-width: 50px;
+}
+
+.checkbox {
+    max-width: 50px;
+    padding-left: 16px;
+
+}
+.list_profile {
+    max-width: 86px;
+}
+.list_name{
+    max-width: 200px;
+
+}
+.list_email {
+    max-width: 200px;
+}
+
 .profile {
-    width: 2.5rem;
-    height: 2.5rem;
+    max-width: 3rem;
+    max-height: 3rem;
+    width: 100%; /* 추가 */
+    height: auto; /* 추가 */
     border-radius: 50%;
     object-fit: cover;
+    padding: 0 15px;
 }
 .name {
     font-size: 0.9rem;
@@ -205,6 +259,9 @@ p {
 }
 .status .inactive {
     background-color: red ;
+}
+.more_btn {
+    max-width: 30px; 
 }
 
 .icon span {

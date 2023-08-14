@@ -17,10 +17,11 @@ const storage = getStorage(app); // storage 객체 가져오기
 const nameInput = document.querySelector(".name_input");
 const emailInput = document.querySelector(".email_input");
 const phoneNumberInput = document.querySelector(".phoneNum_input");
-const submitBtn = document.querySelector(".submit_btn");
+const submitBtn = document.querySelector(".form_btn");
 const label = document.querySelector('label[for="fileInput"]');
 const input = document.querySelector('#fileInput');
 const profileImg = document.querySelector('#profile_img');
+const backBtn = document.querySelector(".back_container");
 
 let infoList = JSON.parse(localStorage.getItem('infoList')) || [];
 
@@ -105,7 +106,9 @@ function submitBtnClick() {
     }
 }
 
-// ... (나머지 스크립트 내용 유지)
-
-
 submitBtn.addEventListener("click", submitBtnClick);
+
+backBtn.addEventListener("click",() =>{
+    history.back();
+
+})

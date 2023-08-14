@@ -5,43 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create</title>
     <link rel="stylesheet" href="styles/create.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Montserrat:wght@600&family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
     <div class="create_container">
-        <div class="title"><p>ENROLL</p></div>
-        <br>
+        <div class="header">
+            <span class="title">ENROLL</span>
+            <div class="back_container">
+                <img id="back_btn" src="assets/left-arrow.png">
+                <span id="back_label">HOME</span>
+
+            </div>
+        </div>
+        
         <div class="info_container">
             <div class="info_profile">
                 <label for="fileInput">Select Image</label>
                 <input type="file" id="fileInput">
                 <img id="profile_img" style="display: none;"  alt="profile">
             </div>
-            <div class="info_contents">
-                <div class="info name">
-                    <input class="name_input" type="text" required>
-                    <label>Name</label>
-                    <span></span>
-                </div>
-                <div class="info email">
-                    <input class="email_input" type="text" required>
-                    <label>E-mail</label>
-                    <span></span>
-                </div>
-                <div class="info name">
-                    <input class="phoneNum_input" type="text" required>
-                    <label>Phone Number</label>
-                    <span></span>
-                </div>
+            <form info_contents>
+                <input class="name_input" type="text" placeholder="Name">
+                <input class="email_input" type="email" placeholder="E-mail">
+                <input class="phoneNum_input" type="tel" placeholder="Phone Number">
 
-            </div>
-            
-            
+            </form>
 
         </div>
-        <div class="btn_container">
-            <button class="submit_btn" type="submit">Submit</button>
-        </div>
+        <button class="form_btn" type="submit">Submit</button>
 
     </div>
     <!-- Firebase 스크립트 로드 -->
