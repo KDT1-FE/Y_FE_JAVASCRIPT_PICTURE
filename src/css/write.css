@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #f0f0f0;
   display: flex;
@@ -22,7 +27,12 @@ body {
   margin-bottom: 50px;
 }
 
+.write-wrap {
+  width: 100%;
+}
+
 .input-wrap {
+  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -39,21 +49,75 @@ body {
   border-radius: 4px;
 }
 
+.input-wrap .get-address-btn {
+  margin: 3px 0 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 0 #0050cc;
+  transition: all 0.2s ease;
+}
+
+.get-address-btn:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.get-address-btn:active {
+  transform: scale(0.98);
+}
+
 .input-wrap input[type='file'] {
   padding: 5px;
 }
 
 .input-wrap button[type='submit'] {
-  background-color: #007bff;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+  color: white;
   border: none;
   padding: 10px 20px;
-  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1;
+  position: relative;
 }
 
-.error-message {
-  margin: 5px;
+.input-wrap button[type='submit']::after {
+  content: '';
+  width: 100%;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(10, 40, 80, 1) 100%);
+  transition: all 0.2s ease;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.input-wrap button[type='submit']:hover::after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+
+.error {
   color: red;
+  margin: 5px;
+  font-size: 0.75rem;
+  display: none;
+}
+
+.success {
+  color: green;
+  margin: 5px;
   font-size: 0.75rem;
   display: none;
 }

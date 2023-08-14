@@ -7,35 +7,43 @@
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/write.css" />
     <script type="module" src="../js/write.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <h1 class="title">임직원 등록</h1>
-      <div class="write-wrap">
+      <form class="write-wrap">
         <div class="input-wrap">
           <label for="name">이름:</label>
-          <input type="text" id="name" name="name" placeholder="이름을 작성해주세요." required />
-          <div class="error-message error-name">이름을 입력해주세요.</div>
+          <input type="text" id="name" name="이름" placeholder="이름을 작성해주세요." required />
+          <div id="name-error-message" class="error"></div>
+          <div id="name-success-message" class="success"></div>
         </div>
         <div class="input-wrap">
           <label for="email">이메일:</label>
-          <input type="email" id="email" name="email" placeholder="이메일을 작성해주세요." required />
-          <div class="error-message error-email">이메일을 입력해주세요.</div>
+          <input type="email" id="email" name="이메일" placeholder="이메일을 작성해주세요." required />
+          <div id="email-error-message" class="error"></div>
+          <div id="email-success-message" class="success"></div>
         </div>
         <div class="input-wrap">
           <label for="phone">휴대폰 번호:</label>
-          <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 작성해주세요." required />
-          <div class="error-message error-phone">휴대폰 번호를 입력해주세요.</div>
+          <input type="tel" id="phone" name="휴대폰 번호" placeholder="'-'없이 휴대폰 11자리를 입력해주세요" required />
+          <div id="phone-error-message" class="error"></div>
+          <div id="phone-success-message" class="success"></div>
         </div>
-        <div class="input-wrap">
-          <label for="address">주소:</label>
-          <input type="text" id="address" name="address" placeholder="주소를 작성해주세요." required />
-          <div class="error-message error-address">주소를 입력해주세요.</div>
-        </div>
+      </form>
+      <div class="input-wrap">
+        <label for="address">주소:</label>
+        <button id="get-address-btn" class="get-address-btn">주소 찾기</button>
+        <input type="text" id="address" name="주소" placeholder="주소를 작성해주세요." required />
+        <div id="address-error-message" class="error"></div>
+        <div id="address-success-message" class="success"></div>
+      </div>
         <div class="input-wrap">
           <label for="image">이미지:</label>
-          <input type="file" id="image" name="image" />
-          <div class="error-message error-file">이미지를 올려주세요.</div>
+          <input type="file" id="image" name="이미지" />
+          <div id="image-error-message" class="error"></div>
+          <div id="image-success-message" class="success"></div>
         </div>
         <div class="input-wrap">
           <button id="submit-button" type="submit">등록하기</button>

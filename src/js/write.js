@@ -1,63 +1,128 @@
 import AWS from 'aws-sdk';
 
-const writeName = document.getElementById('name');
-const writeEmail = document.getElementById('email');
-const writePhone = document.getElementById('phone');
-const writeAddress = document.getElementById('address');
-const writeImageUrl = document.getElementById('image');
+const element = ['name', 'email', 'phone', 'address', 'image'];
+const write = {};
+const errorMessage = {};
+const successMessage = {};
+const getAddressBtn = document.getElementById('get-address-btn');
 const submitBtn = document.getElementById('submit-button');
-const errorName = document.querySelector('.error-name');
-const errorEmail = document.querySelector('.error-email');
-const errorPhone = document.querySelector('.error-phone');
-const errorAddress = document.querySelector('.error-address');
-const errorFile = document.querySelector('.error-file');
+let getItem = localStorage.getItem('infos');
 let uploadFile;
 let infos = [];
-let isBoolean;
+let isValid;
+element.forEach((el) => {
+  errorMessage[el] = document.getElementById(`${el}-error-message`);
+  successMessage[el] = document.getElementById(`${el}-success-message`);
+  write[el] = document.getElementById(el);
+});
+
+write['address'].disabled = true;
 
 // localStorage 안에 값이 있는지 확인하고 있다면 값 보존
-let getItem = localStorage.getItem('infos');
-
 if (getItem) {
   getItem = JSON.parse(getItem);
-
   getItem.forEach((item) => {
     infos.push(item);
   });
 }
 
-writeImageUrl.addEventListener('change', uploadFileChange);
+write['image'].addEventListener('change', uploadFileChange);
+getAddressBtn.addEventListener('click', getAddress);
 submitBtn.addEventListener('click', createStaff);
+write['name'].addEventListener('blur', getNameMessage);
+write['email'].addEventListener('blur', getEmailMessage);
+write['phone'].addEventListener('blur', getPhoneMessage);
+
+function getNameMessage() {
+  if (!write['name'].value) {
+    errorMessage['name'].classList.add('active');
+    successMessage['name'].classList.remove('active');
+    errorMessage['name'].innerText = '이름을 작성해주세요.';
+    isValid = false;
+  } else {
+    errorMessage['name'].classList.remove('active');
+    successMessage['name'].classList.add('active');
+    successMessage['name'].innerText = 'Success!';
+  }
+}
+
+function getEmailMessage() {
+  if (!write['email'].value) {
+    errorMessage['email'].classList.add('active');
+    successMessage['email'].classList.remove('active');
+    errorMessage['email'].innerText = '이메일을 작성해주세요.';
+    isValid = false;
+  } else if (!write['email'].value.includes('@')) {
+    errorMessage['email'].classList.add('active');
+    successMessage['email'].classList.remove('active');
+    errorMessage['email'].innerText = '이메일을 형식에 맞춰 작성해주세요.';
+    isValid = false;
+  } else {
+    errorMessage['email'].classList.remove('active');
+    successMessage['email'].classList.add('active');
+    successMessage['email'].innerText = 'Success';
+  }
+}
+
+function getPhoneMessage() {
+  if (!write['phone'].value) {
+    errorMessage['phone'].classList.add('active');
+    successMessage['phone'].classList.remove('active');
+    errorMessage['phone'].innerText = '휴대폰 번호를 입력해주세요.';
+    isValid = false;
+  } else if (write['phone'].value.length !== 11) {
+    errorMessage['phone'].classList.add('active');
+    successMessage['phone'].classList.remove('active');
+    errorMessage['phone'].innerText = '휴대폰 번호 11자리를 입력해주세요.';
+    isValid = false;
+  } else {
+    errorMessage['phone'].classList.remove('active');
+    successMessage['phone'].classList.add('active');
+    successMessage['phone'].innerText = 'Success';
+  }
+}
 
 // input 입력 유효성 검사
 function isInputValid() {
-  isBoolean = false;
-  if (!writeName.value) {
-    errorName.classList.add('active');
+  isValid = true;
+  // 이름 검사
+  getNameMessage();
+  // 이메일 검사
+  getEmailMessage();
+  // 휴대폰 번호 검사
+  getPhoneMessage();
+
+  // 주소 검사
+  if (!write['address'].value) {
+    errorMessage['address'].classList.add('active');
+    successMessage['address'].classList.remove('active');
+    errorMessage['address'].innerText = '주소를 입력해주세요.';
+    isValid = false;
   } else {
-    errorName.classList.remove('active');
+    errorMessage['address'].classList.remove('active');
+    successMessage['address'].classList.add('active');
+    successMessage['address'].innerText = 'Success';
   }
-  if (!writeEmail.value) {
-    errorEmail.classList.add('active');
-  } else {
-    errorEmail.classList.remove('active');
-  }
-  if (!writePhone.value) {
-    errorPhone.classList.add('active');
-  } else {
-    errorPhone.classList.remove('active');
-  }
-  if (!writeAddress.value) {
-    errorAddress.classList.add('active');
-  } else {
-    errorAddress.classList.remove('active');
-  }
+  // 이미지 업로드 검사
   if (!uploadFile) {
-    errorFile.classList.add('active');
+    errorMessage['image'].classList.add('active');
+    successMessage['image'].classList.remove('active');
+    errorMessage['image'].innerText = '이미지를 업로드해주세요.';
+    isValid = false;
   } else {
-    errorFile.classList.remove('active');
+    errorMessage['image'].classList.remove('active');
+    successMessage['image'].classList.add('active');
+    successMessage['image'].innerText = 'Success';
   }
-  if (writeName.value && writeEmail.value && writePhone.value && writeAddress.value && uploadFile) isBoolean = true;
+}
+
+// 주소 찾기 API
+function getAddress() {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      write['address'].value = data.address;
+    }
+  }).open();
 }
 
 // uploadFile 변경 함수
@@ -107,25 +172,19 @@ async function onFileUpload() {
 //임직원 등록 함수
 function createStaff() {
   isInputValid();
-  if (!isBoolean) return;
+  if (!isValid) return;
 
   onFileUpload();
 
   // 새로운 아이템 생성
   const item = {
     id: new Date().getTime(),
-    name: writeName.value,
-    email: writeEmail.value,
-    phone: writePhone.value,
-    address: writeAddress.value,
+    name: write['name'].value,
+    email: write['email'].value,
+    phone: write['phone'].value,
+    address: write['address'].value,
     imageUrl: `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
   };
-
-  writeName.value = '';
-  writeEmail.value = '';
-  writePhone.value = '';
-  writeAddress.value = '';
-  writeImageUrl.value = '';
 
   infos.push(item);
   saveToLocalStorage();

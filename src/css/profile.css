@@ -1,36 +1,47 @@
 body {
+  font-family: 'Arial', sans-serif;
   background-color: #f0f0f0;
 }
 
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  margin-top: 100px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.page-title-wrap {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .page-title {
-  font-size: 24px;
-  margin: 0;
-  padding: 10px 0;
+  font-size: 36px;
+  color: #333;
+  padding: 20px 0;
+  border-bottom: 2px solid #ccc;
+  display: inline-block;
 }
 
 .staff-info-wrap {
   display: flex;
-  margin-top: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
 }
 
 .left-wrap {
-  width: 60%;
-  padding: 20px;
+  flex: 1;
+  padding: 40px;
   border-right: 1px solid #ccc;
 }
 
 .right-wrap {
-  width: 40%;
-  padding: 20px;
+  flex: 1;
+  padding: 40px;
+  background-color: #f7f7f7;
+  border-radius: 0 20px 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,26 +51,33 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .staff-info-title {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: bold;
+  color: #555;
 }
 
 .staff-info-edit {
-  color: #007bff;
+  color: #ff6600;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.staff-info-edit:hover {
+  color: #e65c00;
 }
 
 .staff-info-detail {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .staff-info-detail div {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  color: #666;
 }
 
 .name,
@@ -68,29 +86,27 @@ body {
 .address {
   display: inline-block;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 3px;
+  padding-bottom: 8px;
+  color: #444;
 }
 
-img {
+.image {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* 반응형 스타일링 */
-@media (max-width: 768px) {
-  .staff-info-wrap {
-    flex-direction: column;
-  }
+a {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-  .left-wrap {
-    width: 100%;
-    border-right: none;
-    padding: 20px 0;
-  }
-
-  .right-wrap {
-    width: 100%;
-  }
+a:hover {
+  color: #0056b3;
 }
