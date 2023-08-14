@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="employee_add.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
@@ -31,34 +32,31 @@
         </div>
         <section class="employees__content">
             <div class="employees__add">
-                <h2>직원 추가하기</h2>
+                <h2 class="employees__add__title">직원 추가하기</h2>
                 <form id="myForm">
-                    <div>
-                        <label for="name">이름 : </label>
-                        <input id="name" name="name" type="text" required>
+                    <div class="myForm__content">
+                        <div class="content__label">
+                            <label for="name">이름 </label>
+                            <label for="phoneNum">전화번호  </label>
+                            <label for="position">직급 </label>
+                            <label for="email">이메일  </label>
+                            <label for="img"> 사진  </label>
+                            
+                        </div>
+                        <div calss="content__input">
+                            <input id="name" name="name" type="text" required>
+                            <input id="phoneNum" name="phoneNum" type="text" placeholder="010-****-****" required>
+                            <input id="email" name="email" type="email" required>
+                            <input id="position" name = "position" type="text" required>
+                            <input type="file" id="img" name="img" required>
+                        </div>
                     </div>
-                    <div>
-                        <label for="phoneNum">전화번호 : </label>
-                        <input id="phoneNum" name="phoneNum" type="text" placeholder="010-****-****" required>
+                    <div class="btn__box">
+                        <button class="btn__addi" type="submit">추가</button>
+                        <button class="btn__cancel">취소</button>
                     </div>
-                </div>
-                <div>
-                    <label for="email">이메일 : </label>
-                    <input id="email" name="email" type="email" required>
-                </div>
-                <div>
-                    <label for="position">직급 : </label>
-                    <input id="position" name = "position" type="text" required>
-                </div>
-                <div>
-                    <label for="img">사진 : </label>
-                    <input type="file" id="img" name="img" required>
-                </div>
-                <div>
-                    <button type="submit">추가</button>
-                    <button class="btn__cancel">취소</button>
-                </div>
                 </form>
+                
         </section>
       </div>
     </main>

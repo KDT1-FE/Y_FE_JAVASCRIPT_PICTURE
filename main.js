@@ -36,6 +36,16 @@ db.collection('profile')
 document.querySelector('.btn__add').addEventListener('click',()=>{window.location.href = '/employee_add.html'})
 
 // 직원 삭제
+function getCheckEmployeeId (){
+    const rows = document.querySelectorAll('.checkbox:checked');
+    const employeeIds = [];
+    
+    rows.forEach(row=>{
+        let employeeId = row.closest('.employees__table__row').querySelector('.employeeId');
+        employeeIds.push(employeeId.textContent)
+    })
+    return employeeIds;
+}
 document.querySelector('.btn__del').addEventListener('click',()=>{
     const userConfirmed = confirm(`직원 0명을 삭제하시겠습니까?`)
     if (userConfirmed) {
@@ -44,12 +54,13 @@ document.querySelector('.btn__del').addEventListener('click',()=>{
         console.log(checkIds);
         checkIds.forEach(checkId=>{
             deleteFirestore('profile',checkId)
+            setTimeout(()=>window.location.href = "/index.html",500)
+            
         })
     } else {
-        console.log("사용자가 취소를 선택했습니다.");
+        
     }
 })
-
 
 async function renderTotalEmployees () {
     let totalEmployees = 0;
@@ -61,3 +72,4 @@ async function renderTotalEmployees () {
 }
 
 renderTotalEmployees()
+

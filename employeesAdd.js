@@ -63,3 +63,14 @@ document.querySelector('.btn__cancel').addEventListener('click',()=>{
     window.location.href = '/index.html'
 })
 
+
+async function renderTotalEmployees () {
+    let totalEmployees = 0;
+    const test = await db.collection('profile').get();
+    test.forEach(()=>{
+        totalEmployees++;
+    })
+    document.querySelector('.search__total').innerHTML += totalEmployees    
+}
+
+renderTotalEmployees()
