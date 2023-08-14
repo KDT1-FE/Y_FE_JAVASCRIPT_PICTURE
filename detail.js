@@ -8,6 +8,7 @@ const urlParams = url.searchParams;
 const coustomerId = urlParams.get("id");
 
 window.onload = async () => {
+  // 고객 정보 조회 후 input 태그에 값 넣어주기
   const docRef = doc(db, "customers", coustomerId);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -28,6 +29,9 @@ window.onload = async () => {
 
     const gradeInput = document.getElementById("gradeInput");
     gradeInput.value = docSnap.data().grade;
+  } else {
+    alert("존재하지 않는 사용자입니다.");
+    location.href = "/";
   }
 };
 
