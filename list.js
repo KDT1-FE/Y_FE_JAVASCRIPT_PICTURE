@@ -79,11 +79,16 @@ window.onload = async () => {
   const deleteBtn = document.getElementById("deleteBtn");
   deleteBtn.addEventListener("click", async (e) => {
     if (deleteList.length > 0) {
-      deleteList.forEach(async (id) => {
-        await deleteDoc(doc(db, "customers", id)).then(() => {
-          location.reload();
+      if (window.confirm("삭제하시겠습니까?")) {
+        deleteList.forEach(async (id) => {
+          await deleteDoc(doc(db, "customers", id)).then(() => {
+            location.reload();
+          });
         });
-      });
+        alert("삭제되었습니다.");
+      } else {
+        alert("취소되었습니다.");
+      }
     } else {
       alert("삭제할 고객을 선택하세요.");
     }
