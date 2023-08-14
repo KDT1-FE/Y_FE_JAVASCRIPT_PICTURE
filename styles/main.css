@@ -108,11 +108,13 @@
 .member-info__main {
   display: table-row;
   width: 100%;
+  position: relative;
 }
 
 .member-info__main > div {
   display: table-cell;
   padding: 0.5rem;
+  vertical-align: middle;
 }
 
 .member-info__img {

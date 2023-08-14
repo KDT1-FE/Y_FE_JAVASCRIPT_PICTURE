@@ -1,4 +1,5 @@
 export const btn_openEnrollForm = document.getElementById("open-enroll-form");
+export const profileTable = document.getElementsByClassName("member-info")[0];
 
 // 직원등록폼 DOM객체
 export const enrollForm = document.getElementsByClassName("enroll-form")[0];
