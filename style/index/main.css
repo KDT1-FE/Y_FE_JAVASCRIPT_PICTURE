@@ -23,3 +23,99 @@
     text-align: center; /* 텍스트를 중앙 정렬 */
     padding: 10px; /* 텍스트와 요소 경계 사이의 여백 조절 */
 }
+
+/* 다이얼로그를 숨기는 스타일 추가 */
+.dialog {
+    display: none; /* 초기에는 모달 숨김 */
+    position: fixed;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 요소를 수평으로 가운데 정렬 */
+}
+
+.image-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.image-preview-circle {
+    width: 120px;
+    height: 120px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.image-preview-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: none;
+}
+
+#dogImageInput {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#dogNameInput {
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+#dogBreedInput {
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+#dogBirthdayInput {
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+#dogGenderInput {
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+.dialog-button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#dialogRegisterDogButton {
+    width: 60px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+#closeModalButton {
+    width: 60px;
+    height: 35px;
+}
+

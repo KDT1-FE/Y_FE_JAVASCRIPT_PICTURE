@@ -17,7 +17,7 @@
         </h1>
         <div class="main-header-middle">
             <div class="main-header-middle-btn">
-                <button class="register-btn" type="button">강아지 등록</button>
+                <button class="register-btn" id="registerDogButton" type="button">강아지 등록</button>
                 <button class="delete-btn" type="button">강아지 삭제</button>
             </div>
             <div class="main-header-middle-search">
@@ -68,5 +68,31 @@
     </section>
     <hr class="header-breakline">
     </div>
+    <div id="dogInfoContainer">
+    <div id="addDogDialog" class="dialog">
+        <div class="dialog-content">
+            <h2>강아지 정보 등록</h2>
+            <div class="image-preview-container">
+                <label for="dogImageInput" class="image-preview-circle">
+                    <img id="imagePreview" src="#">
+                    <span id="imagePreviewText">이미지 선택</span>
+                </label>
+                <input type="file" id="dogImageInput" accept="image/*">
+            </div>
+            <input type="text" id="dogNameInput" placeholder="이름">
+            <input type="text" id="dogBreedInput" placeholder="견종">
+            <input type="date" id="dogBirthdayInput">
+            <select id="dogGenderInput">
+                <option value="male">수컷</option>
+                <option value="female">암컷</option>
+            </select>
+            <div class="dialog-button-container">
+            <button id="dialogRegisterDogButton">등록</button>
+            <button id="closeModalButton">닫기</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
 </body>
 </html>
