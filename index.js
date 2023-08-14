@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
 import { getStorage, ref, uploadBytes, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot, updateDoc, serverTimestamp, Timestamp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 import {showPreview} from "./js/showPreview.js"
 import * as addModal from "./js/addModal.js";
@@ -40,7 +40,7 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
     github: document.querySelector('.profile__github').value,
     email: document.querySelector('.profile__email').value,
     introduce: document.querySelector('.profile__introduce').value,
-    date: new Date(),
+    date: Timestamp.fromDate(new Date()),
   };
   if(profileContent.name && profileContent.position && profileContent.github && profileContent.email && imgFileInput && imgFileInput.files.length>0){
     try {
@@ -67,3 +67,9 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
     }
   }
 })
+
+// const docRef = doc(db, 'profiles','0OGW2haRrX3bHY7SWgkD');
+// const updateTimestamp = await updateDoc(docRef, {
+//   timestamp: serverTimestamp()
+// });
+// console.log(updateTimestamp)

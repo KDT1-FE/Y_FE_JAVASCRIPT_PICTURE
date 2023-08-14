@@ -31,7 +31,7 @@ let template = `
     </div>
 `;
 //profile카드 추가하기
-const q = query(collection(db,"profiles"))
+const q = query(collection(db,"profiles"),orderBy("date"))
 let itemNumber = 0;
 onSnapshot(q,(querySnapshot) => {
   querySnapshot.forEach((doc) => {
