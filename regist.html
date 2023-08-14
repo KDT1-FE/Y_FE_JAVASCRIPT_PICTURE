@@ -28,6 +28,7 @@
               id="profile_pic"
               name="profile_pic"
               accept=".jpg, .jpeg, .png"
+              required
             />
             <img id="avatarImg" class="avatar-img" />
           </div>
@@ -36,13 +37,23 @@
           <label class="hidden">프로필 이미지 URL</label>
           <input class="regist-text-input hidden" placeholder="이름" />
           <label class="regist-label">이름</label>
-          <input class="regist-text-input" placeholder="이름" />
+          <input class="regist-text-input" placeholder="이름" required />
           <label class="regist-label">이메일</label>
-          <input type="email" class="regist-text-input" placeholder="이메일" />
+          <input
+            type="email"
+            class="regist-text-input"
+            placeholder="이메일"
+            required
+          />
           <label class="regist-label">전화번호</label>
-          <input class="regist-text-input" placeholder="전화번호" />
+          <input
+            type="tel"
+            class="regist-text-input"
+            placeholder="전화번호"
+            required
+          />
           <label class="regist-label">구분</label>
-          <select class="regist-text-input">
+          <select class="regist-text-input" required>
             <option selected>일반</option>
             <option>VIP</option>
             <option>VVIP</option>
