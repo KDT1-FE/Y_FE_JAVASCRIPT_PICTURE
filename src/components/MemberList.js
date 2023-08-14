@@ -1,5 +1,5 @@
 import { Component } from '../core/component';
-import { memberStore } from '../store/memberStore';
+import { memberStore, nextMemberList } from '../store/memberStore';
 import Member from './Member';
 
 export default class MemberList extends Component {
@@ -24,5 +24,15 @@ export default class MemberList extends Component {
     this.el.append(
       ...memberStore.state.members.map((member) => new Member({ member }).el)
     );
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 다음 요소 또 가져오기
+          // 요소의 마지막 요소가 뷰포트로 들어오면~
+          nextMemberList();
+        } // entry is 'IntersectionObserverEntry'
+      });
+    });
+    observer.observe(this.el.lastChild);
   }
 }
