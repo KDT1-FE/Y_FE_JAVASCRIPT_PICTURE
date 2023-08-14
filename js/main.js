@@ -8,6 +8,14 @@ window.addEventListener('load', function () {
 });
 
 // <!-- CHECKBOX CONTROL -->
+// 체크박스 클릭 시, 이벤트 버블링을 중단
+// -> 체크박스 클릭 시 모달과 오버레이가 나타나지 않게 할 수 있음
+document.querySelectorAll('.staff-list__item .item-checkbox').forEach((checkbox) => {
+  checkbox.addEventListener('click', function (event) {
+    event.stopPropagation(); // 이벤트 버블링 중지
+  });
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   // 삭제 버튼과 체크 박스를 선택
   const deleteButton = document.querySelector('.toolbar__btn .btn.disabled');
