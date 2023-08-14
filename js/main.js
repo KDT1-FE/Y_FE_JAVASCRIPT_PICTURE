@@ -1,3 +1,4 @@
+// <!-- LODING ANIMATION -->
 // 로딩 애니메이션이 페이지 로드 후에는 사라지게 함
 window.addEventListener('load', function () {
   // 실제로는 로딩이 더 빠르지만, 아예 로딩이 안되는 것 처럼 보일 수 있기에 시각적 표현을 위해 0.25초간 딜레이 추가
@@ -6,7 +7,7 @@ window.addEventListener('load', function () {
   }, 250);
 });
 
-// 체크박스 컨트롤
+// <!-- CHECKBOX CONTROL -->
 document.addEventListener('DOMContentLoaded', function () {
   // 삭제 버튼과 체크 박스를 선택
   const deleteButton = document.querySelector('.toolbar__btn .btn.disabled');
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   selectAllCheckbox.addEventListener('change', toggleSelectAll);
 });
 
+// <!-- SEARCH CONTROL -->
 // 더미데이터 검색 뼈대
 // // HTML에 있는 검색 입력란을 참조
 // const searchInput = document.querySelector('.search');
@@ -123,3 +125,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // // 처음 페이지가 로딩될 때 전체 직원 목록을 화면에 표시
 // displayStaffList(staffList);
+
+// <!-- MODAL CONTROL -->
+// 모달 열기 및 데이터 매핑
+const staffItems = document.querySelectorAll('.staff-list__item ul li');
+const modal = document.querySelector('.staff-modal');
+staffItems.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    const name = event.target.querySelector('.item-name').textContent;
+    const email = event.target.querySelector('.item-email').textContent;
+    const phone = event.target.querySelector('.item-phone').textContent;
+    const category = event.target.querySelector('.item-category').textContent;
+
+    modal.querySelector('.info-name').textContent = name;
+    modal.querySelector('.info-email').textContent = email;
+    modal.querySelector('.info-phone').textContent = phone;
+    modal.querySelector('.info-category').textContent = category;
+
+    modal.classList.add('show');
+  });
+});
+
+// TODO: 정보 수정 버튼
+
+// <!-- OVERLAY CONTROL -->
+// 오버레이 엘리먼트 참조
+const overlay = document.querySelector('.overlay');
+
+let selectedItem = null; // 선택된 아이템을 저장할 변수
+
+// 모달 열기 이벤트에 오버레이 표시 로직 추가
+staffItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    // 이전에 선택된 아이템이 있다면 강조 제거
+    if (selectedItem) {
+      selectedItem.classList.remove('selected-item');
+    }
+
+    // 현재 선택된 아이템 강조
+    item.classList.add('selected-item');
+    selectedItem = item; // 선택된 아이템 저장
+
+    document.body.style.overflow = 'hidden'; // 원래 페이지의 스크롤 막기
+    overlay.classList.add('show'); // 오버레이 보이기
+    modal.classList.add('show'); // 모달 보이기
+  });
+});
+
+// 오버레이 클릭 이벤트 (모달 및 오버레이 닫기)
+overlay.addEventListener('click', () => {
+  document.body.style.overflow = ''; // 원래 페이지의 스크롤 복구
+  overlay.classList.remove('show'); // 오버레이 숨기기
+  modal.classList.remove('show'); // 모달 숨기기
+
+  // 선택된 아이템 강조 제거
+  if (selectedItem) {
+    selectedItem.classList.remove('selected-item');
+    selectedItem = null; // 선택된 아이템 초기화
+  }
+});
