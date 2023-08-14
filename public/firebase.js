@@ -1,4 +1,3 @@
-const usersList = [];
 const firebaseConfig = {
   apiKey: "AIzaSyCRGQbFr6N75QKYWEc87ize36EV0nZDkjk",
   authDomain: "member-management-bc4f1.firebaseapp.com",
@@ -21,8 +20,9 @@ db.collection("userlist")
       const { image, name, email, phone, division } = doc.data();
       let userData = document.createElement("div");
       userData.classList.add("user-list-box");
+      userData.setAttribute("data-doc-id", doc.id);
       userData.innerHTML = `
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" name="docId" value="${doc.id}" />
         <img src=${image} alt="" />
         <span>${name}</span>
         <span>${email}</span>
@@ -33,5 +33,20 @@ db.collection("userlist")
             <button class="user-list-btn-delete">삭제</button>
         </div>`;
       usersListBox.append(userData);
+
+      userData
+        .querySelector(".user-list-btn-delete")
+        .addEventListener("click", () => {
+          const docId = userData.getAttribute("data-doc-id");
+          db.collection("userlist")
+            .doc(docId)
+            .delete()
+            .then(() => {
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.error("Error removing document: ", error);
+            });
+        });
     });
   });
