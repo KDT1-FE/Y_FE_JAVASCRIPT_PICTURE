@@ -1,10 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script type="module" src="./main.js"></script>
+    <title>임직원 관리</title>
+
+    <!-- TODO: favicon 설정 -->
+    <!-- web icon ico 파일의 화질 저하 및 캐싱에 의존하지 않기 위해 png 따로 지정 -->
+    <!-- <link rel="icon" href="./favicon.png" /> -->
+
+    <!-- rest.css cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <!-- Nanum Gothic font 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- google material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" src="./js/main.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- LOADING ANIMATION -->
+    <div id="loader" id="loader"></div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="inner">
+        <h1>임직원 관리</h1>
+      </div>
+    </header>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="inner">
+        <div class="toolbar__btn">
+          <button class="btn">임직원 등록</button>
+          <button class="btn disabled" disabled>임직원 삭제</button>
+        </div>
+        <div class="toolbar__search">
+          <input type="text" class="search" placeholder="이름 또는 이메일로 검색하기" />
+        </div>
+      </div>
+    </div>
+
+    <!-- STAFF LIST -->
+    <div class="staff-list">
+      <div class="inner">
+        <!-- STAFF LIST TITLE -->
+        <div class="staff-list__title">
+          <input type="checkbox" id="selectAll" />
+          <span>사진</span>
+          <span>이름</span>
+          <span>이메일</span>
+          <span>휴대폰 번호</span>
+          <span>구분</span>
+        </div>
+        <!-- STAFF LIST ITEM -->
+        <div class="staff-list__item">
+          <ul>
+            <li>
+              <input type="checkbox" class="item-checkbox" />
+              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
+              <span class="item-name">박지성</span>
+              <span class="item-email">example1@example.com</span>
+              <span class="item-phone">010-1234-5678</span>
+              <span class="item-category">사원</span>
+            </li>
+            <li>
+              <input type="checkbox" class="item-checkbox" />
+              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
+              <span class="item-name">김주력</span>
+              <span class="item-email">example2@example.com</span>
+              <span class="item-phone">010-1234-5678</span>
+              <span class="item-category">사원</span>
+            </li>
+            <li>
+              <input type="checkbox" class="item-checkbox" />
+              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
+              <span class="item-name">이재희</span>
+              <span class="item-email">example3@example.com</span>
+              <span class="item-phone">010-1234-5678</span>
+              <span class="item-category">사원</span>
+            </li>
+            <li>
+              <input type="checkbox" class="item-checkbox" />
+              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
+              <span class="item-name">박지현</span>
+              <span class="item-email">example4@example.com</span>
+              <span class="item-phone">010-1234-5678</span>
+              <span class="item-category">사원</span>
+            </li>
+            <li>
+              <input type="checkbox" class="item-checkbox" />
+              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
+              <span class="item-name">홍길동</span>
+              <span class="item-email">example5@example.com</span>
+              <span class="item-phone">010-1234-5678</span>
+              <span class="item-category">사원</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

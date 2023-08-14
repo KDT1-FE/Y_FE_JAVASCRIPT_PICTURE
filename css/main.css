@@ -1,0 +1,143 @@
+/* LOADING ANIMATION STYLE */
+#loader {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #d2a362;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  display: block; /* 처음 새로고침 때는 보이게 설정, 이후 js 로직에 의해 사라짐 */
+}
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* COMMON */
+body {
+  color: #333;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+img {
+  /* img를 block으로 처리하여 기존 inline의 baseline으로 인한 불필요한 margin 제거 */
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+.inner {
+  /* common 으로 inner를 정의함으로써 하위 inner들은 height만을 지정하여 편리하게 사용할 수 있도록 함 */
+  width: 1200px;
+  margin: 0 auto;
+  /* 하위 구조에서 position 사용중이기 때문에 부모인 .inner에서 position relative로 지정하여 기준을 명시해줌 */
+  position: relative;
+}
+.btn {
+  background-color: #d2a362;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.btn.disabled {
+  background-color: #ccc; /* 회색 배경으로 설정 */
+  cursor: not-allowed; /* 마우스 커서를 not-allowed로 표시 */
+}
+
+.search {
+  width: 200px;
+  padding: 10px;
+}
+
+/* HEADER */
+header {
+}
+header .inner {
+}
+header .inner h1 {
+  /* body의 font-size가 10px로 설정되어 있으므로, body 이하의 font-size는 상대 사이즈 사용 */
+  font-size: 3.6em; /* 타이틀 크기 설정 */
+  font-weight: bold;
+  padding: 20px 0; /* 패딩 추가 */
+}
+
+/* TOOLBAR */
+.toolbar {
+}
+.toolbar .inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.toolbar .inner .toolbar__btn {
+}
+.toolbar .inner .toolbar__btn .btn {
+  border-radius: 0.4em;
+}
+.toolbar .inner .toolbar__btn .btn:first-child {
+  margin-right: 0.4em;
+}
+.toolbar .inner .toolbar__search {
+}
+.toolbar .inner .toolbar__search .search {
+  /* TODO: 아이콘 추가 및 스타일 변경, 기능 부여 */
+  border-radius: 1em;
+}
+
+/* STAFF LIST */
+.staff-list {
+}
+.staff-list .inner {
+}
+.staff-list .inner .staff-list__title {
+  display: grid;
+  grid-template-columns: 0.5fr 0.8fr 1fr 1fr 1fr 1fr; /* 선택한 가로 너비 비율로 정렬 */
+  font-size: 1.6em;
+  font-weight: bold;
+  align-items: center;
+  border-top: 1px solid #ddd; /* 위쪽 구분선 */
+  border-bottom: 1px solid #ddd; /* 아래쪽 구분선 */
+  padding: 10px 0; /* 패딩 추가 */
+}
+.staff-list .inner .staff-list__title #selectAll {
+}
+.staff-list .inner .staff-list__title span {
+  text-align: center;
+}
+.staff-list .inner .staff-list__item {
+  margin-bottom: 8em;
+}
+.staff-list .inner .staff-list__item ul {
+}
+.staff-list .inner .staff-list__item ul li {
+  display: grid;
+  grid-template-columns: 0.5fr 0.8fr 1fr 1fr 1fr 1fr; /* .staff-list__title과 동일한 비율로 정렬 */
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0; /* 패딩 추가 */
+}
+.staff-list .inner .staff-list__item ul li .item-image {
+  width: 100%; /* 이미지가 너비를 꽉 채우도록 설정 */
+  height: auto; /* 이미지가 원본 비율을 유지하도록 설정 */
+  border-radius: 1.6em;
+}
+.staff-list .inner .staff-list__item ul li .item-checkbox {
+}
+.staff-list .inner .staff-list__item ul li .item-name,
+.staff-list .inner .staff-list__item ul li .item-email,
+.staff-list .inner .staff-list__item ul li .item-phone,
+.staff-list .inner .staff-list__item ul li .item-category {
+  font-size: 1.6em;
+}
