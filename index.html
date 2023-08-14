@@ -17,7 +17,24 @@
       <img id="loadAdminLogin-logo" src="./src/imgs/zero-car-white.png" />
       <h1 id="loadAdminLogin-title">보험금 기다림 제로, 영차!</h1>
     </div>
-    <div id="adminLogin"></div>
+    <form id="adminLoginForm">
+      <input
+        id="adminIDInput"
+        type="text"
+        placeholder="관리자 아이디"
+        autocomplete="off"
+        required
+      />
+      <input
+        id="adminPWInput"
+        type="password"
+        placeholder="관리자 비밀번호"
+        autocomplete="off"
+        required
+      />
+      <input type="submit" value="로그인" />
+      <p id="adminLoginCheck"></p>
+    </form>
   </body>
   <script src="./assets/js/index.js"></script>
 </html>
