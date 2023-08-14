@@ -1,13 +1,15 @@
 {
   "name": "n",
   "version": "1.0.0",
-  "description": "아즈카반의 죄수들을 철저히 감시하세요.",
+  "description": "Keep watching them prisoner.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "firebase": "^10.1.0"
   }
 }

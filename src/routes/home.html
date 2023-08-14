@@ -46,7 +46,6 @@
                                 <label for="prisonerName">Prisoner Name:</label>
                                 <input type="text" id="prisonerName" name="name" placeholder="Name?" required>
                             </div>
-
                             <div class="prisonerLv">
                                 <label for="prisonerLv">Prisoner Lv:</label>
                                 <select id="prisonerLv" name="prisonerLv">
@@ -63,38 +62,79 @@
                             </div>
                             <button type="submit" class="approveBtn">Approve</button>
                             <button class="dismissBtn">Dismiss</button>
-                        </form>                        
+                        </form>
                     </div>
-                    <script src="../components/modal.js"></script>                                    
+                    <script src="../components/modal.js"></script>
                 </div>
                 <button class="releaseBtn">RELEASE</button>
+                <script></script>
             </div>
         </div>
     </nav>
     <main>
         <div class="container">
             <video src="/videos/Azkaban background.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
+            <!-- prisoner info modal -->
+            <div class=" detailModal hidden">
+                <div class=" detailModalBg"></div>
+                <div class=" detailModalBox">
+                    <img src="" alt="Prisoner Mugshot" class="detailMugshot">
+                    <button class="editMugshotBtn">Edit Mugshot</button>
+                    <p class="detailName">Prisoner Name:
+                        <span></span>
+                        <button class="editNameBtn">Edit</button>
+                    </p>
+                    <p class="detailLv">Prisoner Level:
+                        <span></span>
+                        <button class="editLvBtn">Edit</button>
+                    </p>
+                </div>
+            </div>
             <!-- Insert PrisonCell -->
             <div class="prison" id="responseBox">
-                <div class="prisonCell" style="background-image: url(/image/벨라트릭스\ 머그샷.jpg);">
+                <div id="Bellatrix Lestrange" class="prisonCell" prisonerLv="Never Release"
+                    style="background-image: url(/image/벨라트릭스\ 머그샷.jpg);">
                     <p class="prisonerName">Bellatrix Lestrange</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(/image/그린델왈드\ 머그샷.jpg);">
+                <div id="Gellert Grindelwald" class="prisonCell" prisonerLv="Never Release"
+                    style="background-image: url(/image/그린델왈드\ 머그샷.jpg);">
                     <p class="prisonerName">Gellert Grindelwald</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(/image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
+                <div id="Dolores Umbridge" class="prisonCell" prisonerLv="Never Release"
+                    style="background-image: url(/image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
                     <p class="prisonerName">Dolores Umbridge</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(/image/루시우스\ 말포이\ 머그샷.jpg);">
+                <div id="Lucius Malfoy" class="prisonCell" prisonerLv="Never Release"
+                    style="background-image: url(/image/루시우스\ 말포이\ 머그샷.jpg);">
                     <p class="prisonerName">Lucius Malfoy</p>
                 </div>
-                <div class="prisonCell" style="background-image: url(/image/시리우스\ 블랙\ 머그샷.jpg);">
+                <div id="Sirius Black" class="prisonCell" style="background-image: url(/image/시리우스\ 블랙\ 머그샷.jpg);">
                     <p class="prisonerName">Sirius Black</p>
                 </div>
             </div>
+
         </div>
     </main>
-
+    <script src="/src/components/detailModal.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBHuWFqQHNgqat_fgH0Te-PPYAmbULsZkM",
+          authDomain: "practice-azkaban.firebaseapp.com",
+          projectId: "practice-azkaban",
+          storageBucket: "practice-azkaban.appspot.com",
+          messagingSenderId: "881123401609",
+          appId: "1:881123401609:web:4210ccb4121b6fa0b90b58"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
 </body>
 
 </html>

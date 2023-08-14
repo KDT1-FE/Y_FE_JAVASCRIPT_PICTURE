@@ -19,7 +19,7 @@ infoForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const prisonerName = document.getElementById('prisonerName').value;
     const prisonerPhoto = document.getElementById('prisonerPhoto').files[0];
-    // const prisonerLv = document.getElementById('prisonerLv').value;
+    const prisonerLv = document.getElementById('prisonerLv').value;
 
     const reader = new FileReader();
     reader.onload = function (e) {
@@ -28,6 +28,8 @@ infoForm.addEventListener('submit', (event) => {
     newPrisonerCell.classList.add('prisonCell');
     newPrisonerCell.style.backgroundImage = `url(${e.target.result})`;
     newPrisonerCell.alt = `${prisonerName} Mugshot`;
+    newPrisonerCell.id = `${prisonerName}`;
+    newPrisonerCell.prisonerLv =`${prisonerLv}`;
     newPrisonerCell.innerHTML = /*html*/`
         <p class="prisonerName">${prisonerName}</p>
     `;                            

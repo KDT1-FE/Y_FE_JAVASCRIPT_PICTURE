@@ -42,35 +42,6 @@ nav .menubarTop .logo {
     width: 80%;
     cursor: url(/icon/cursor50-brown-pointer.png),pointer;
 }
-nav .menubarTop input {
-    width: 80%;
-    height: 25px;
-    margin: auto;
-    border: none;
-    border-bottom: 1px solid #e2e2e2;
-    background: transparent;
-    color: #e2e2e2;
-    animation: glow 2s infinite linear ;
-}
-@keyframes glow {
-    0% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-    20% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-    40% {background: linear-gradient(210deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-    60% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-    80% {background: linear-gradient(190deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-    100% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
-  }
-nav .menubarTop input::placeholder{
-    font-size: 16px;
-    font-family: 'Harry Potter', sans-serif;
-}
-nav .menubarTop input:focus{
-    outline: none;
-    animation-play-state: paused;
-}
-nav .menubarTop input:focus::placeholder{
-    color: transparent;
-}
 nav .menubarMid {
     width: 100%;
     height: 100%;
