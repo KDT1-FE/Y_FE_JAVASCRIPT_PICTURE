@@ -4,7 +4,7 @@
   animation: fadeIn 1.2s ease-in-out forwards;
 }
 
-#loadAdminLogin {
+#load {
   height: 100vh;
   width: 100vw;
 
@@ -18,7 +18,7 @@
   background-color: $brandColor;
 }
 
-#loadAdminLogin-title {
+#load-title {
   font-size: 1.5rem;
 
   @include tablet {
@@ -27,26 +27,6 @@
 
   @include mobile {
     font-size: 2.8rem;
-  }
-
-  @include fadeInAni();
-}
-
-#loadAdminLogin-logo {
-  margin-right: 10px;
-  margin-bottom: 15px;
-
-  width: 4rem;
-  height: 4rem;
-
-  @include tablet {
-    width: 9rem;
-    height: 9rem;
-  }
-
-  @include mobile {
-    width: 12rem;
-    height: 12rem;
   }
 
   @include fadeInAni();
