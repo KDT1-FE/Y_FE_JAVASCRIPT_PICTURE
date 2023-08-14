@@ -7,12 +7,12 @@ export default class Search extends Component{
     this.el.classList.add('search')
     this.el.innerHTML=/* html */`
       <input placeholder="ex) 가렌, 가, (공백)"> 
-      <span class="btn-wrap">
+      <div class="btn-wrap">
         <button class="btn btn-search"><span> 검색 </span></button>
         <button class="btn btn-reset"><span> 초기화 </span></button>
         <button class="btn btn-add"><span> 등록 </span></button>
         <button class="btn btn-delete"><span> 삭제 </span></button>
-      </span>
+      </div>
     `
     this.el.append(new DialogAdd().el)
     let localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']

@@ -16,10 +16,5 @@ export default class Icon extends Component{
     iconImgEl.setAttribute("src", iconInfo[this.props])
     this.el.append(iconImgEl)
 
-
-    // const infoEl = document.createElement('div')
-    // infoEl.classList.add("info-div")
-    // infoEl.textContent = this.props
-    // this.el.append(infoEl)
   }
 }

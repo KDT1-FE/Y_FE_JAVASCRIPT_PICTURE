@@ -42,7 +42,7 @@ export default class ChampionItem extends Component{
     if(championStore.state.isDeleteState){
       labelEl.classList.remove('hide')
       deleteInputEl.classList.remove('hide')
-      championEl.style.backgroundBlendMode = "darken"
+      championEl.style.backgroundBlendMode = "difference"
     }else{
       deleteInputEl.classList.add('hide')
       labelEl.classList.add('hide')

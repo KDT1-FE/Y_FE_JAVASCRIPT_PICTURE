@@ -49,6 +49,8 @@ export default class ChampionList extends Component{
     //     searchChampions(++championStore.state.page)
     //   }
     // })
+   
+    // 이슈2 뒤로가기 후 옵저버 인터섹션 발생 X
 
 
   }

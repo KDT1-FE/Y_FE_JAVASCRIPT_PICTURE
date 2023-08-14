@@ -111,12 +111,28 @@ body{
   letter-spacing: 5px;
 }
 
+@media screen and (max-width:767px) {
+  .headline{
+    padding-top: 40px;
+  }
+  .headline img{
+    width: 85%;
+  } 
+}
+
+@media screen and (max-width:450px) {
+  .headline{
+    padding-top: 20px;
+  }
+}
+
 .search{
   display: flex;
   gap: 40px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
+  padding: 20px;
 }
 
 .search input{
@@ -137,6 +153,19 @@ body{
   gap: 10px;
 }
 
+@media screen and (max-width:767px) {
+  .search{
+    flex-direction: column;
+  }
+  .search input{
+    width: 80%;
+  }
+
+  .search .btn-wrap{
+    width: 80%;
+  }
+  
+}
 
 .champions{
   display:flex;
@@ -199,19 +228,14 @@ body{
 
 .icon{
   height: 40px;
-  cursor:pointer;
 }
 
-.info-div{
-  display: none;
-  position:absolute;
-  top: -40px;
-  background-color: rgba(0,0,0,0.5);
-  color: var(--color-white);
-}
 
-.icon:hover + .info-div{
-  display: block;
+@media screen and (max-width:767px){
+  .champion-wrap{
+    width: 140px;
+    height: 210px;
+  }
 }
 
 .specific-container{
@@ -228,15 +252,6 @@ body{
   background-size: cover;
   filter: blur(6px);
 }
-/* .specific-background-image{
-  position:absolute;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  display: block;
-  filter: blur(8px);
-} */
 
 .specific-inner-container{
   position: relative;
@@ -257,6 +272,12 @@ body{
   background-color: var(--color-gray)
 }
 
+@media screen and (max-width:767px) {
+  .specific-img{
+    height:350px;
+  }
+  
+}
 .btn-home{
   position: absolute;
   left:15px;
