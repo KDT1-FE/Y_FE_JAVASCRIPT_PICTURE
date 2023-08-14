@@ -1,3 +1,5 @@
+import Modal from './Modal.js';
+
 export default class CardItem {
   constructor(info = {}) {
     this.el = document.createElement('li');
@@ -12,7 +14,7 @@ export default class CardItem {
   }
   render() {
     const {
-      photo = 'https://firebasestorage.googleapis.com/v0/b/wanna-go-home-9ebdc.appspot.com/o/empty_user.png?alt=media&token=269a1197-1c01-48cc-a732-0758e6677c6a',
+      photo = 'https://firebasestorage.googleapis.com/v0/b/wanna-go-home-9ebdc.appspot.com/o/empty_user.png?alt=media&token=507c8fc6-6407-4c4f-8627-fe33ed36539f',
       name,
       email,
       phone,
@@ -21,7 +23,11 @@ export default class CardItem {
 
     this.el.classList.add('card');
     this.el.innerHTML = `
-        <p class="card_photo"><img src=${photo} /></p>
+        <p class="card_photo"><img src=${
+          photo
+            ? photo
+            : 'https://firebasestorage.googleapis.com/v0/b/wanna-go-home-9ebdc.appspot.com/o/empty_user.png?alt=media&token=507c8fc6-6407-4c4f-8627-fe33ed36539f'
+        } /></p>
         <div class="card_info">
             <p class="info_name">${name}</p>
             <p class="info_phone">${phone}</p>
@@ -29,5 +35,11 @@ export default class CardItem {
             <p class="info_department">${department}</p>
         </div>
     `;
+
+    this.el.addEventListener('click', () => {
+      const body = document.querySelector('body');
+      const modal = new Modal(this.info);
+      body.append(modal.el);
+    });
   }
 }
