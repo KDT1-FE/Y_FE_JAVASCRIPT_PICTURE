@@ -39,6 +39,7 @@ const checkUid = urlParams.get('uid');
 
 // 파일 종류 이미지로 한정
 photo.accept = '.gif, .jpg, .jpeg, .png, .bmp, .ico, .apng, .svg'
+const imgExt = ['gif', 'jpg', 'jpeg', 'png', 'bmp' ,'ico', 'apng', 'svg']
 
 // 이미지 업로드 시 미리보기
 photo.addEventListener('change', (e)=>{

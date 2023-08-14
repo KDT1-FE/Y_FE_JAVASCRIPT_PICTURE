@@ -148,43 +148,37 @@ const getList = async (inputVal, value) => {
         table.appendChild(trEl)
     });
 }
-getList(0,'');
+await getList(0,'');
 
 
 // 체크박스 input 대체
 const table = document.querySelector(".table")
-const checkbox = table.querySelectorAll(".checkbox")
+const checkboxes = table.querySelectorAll(".checkbox") // 모든 체크박스
+let checkAll = document.getElementById("checkAll") // 전체선택 체크박스
 
-checkbox.forEach(selectCheck => {
-    selectCheck.addEventListener("click",(e)=>{
-        const target = e.target
-        const inputCheck = target.parentElement.parentElement.firstElementChild
-            target.classList.toggle("true")
-            console.log(inputCheck.checked)
-            inputCheck.checked = target.classList;
-            selectAll(inputCheck)    
+// span check시 input checked 설정
+checkboxes.forEach(selectCheck => {
+    selectCheck.addEventListener("click",(e)=>{ // span 클릭 시
+        const target = e.target // 클릭된 span
+        const inputCheck = target.parentElement.parentElement.firstElementChild // 클릭된 span의 체크박스
+        target.classList.toggle("select")
+        inputCheck.toggleAttribute("checked")
     })
 })
 
-function selectAll(selectAll)  {
-    if (selectAll.value === "all") {
-        checkbox.forEach(check => {
-            const inputCheck = check.firstElementChild
-            
-            const checkAll = selectAll.checked
-            inputCheck.checked = checkAll;
-        })
-    }
-}
+checkAll.addEventListener("input", (e) => { // 전체선택 체크박스가 input될 시
+    console.log('hi')
+    const isSelect = e.target.parentElement.lastElementChild.firstElementChild // 전체선택 span
+    const isChecked = e.target.checked; // 전체선택 체크박스의 checked 값
+    checkboxes.forEach(selectCheck => { // 모든 체크박스 반복구문
+        const span = selectCheck.lastElementChild.firstElementChild  // span
+        const inputCheck = selectCheck.firstElementChild; // 체크박스
+        inputCheck.checked = isChecked;
+        span.classList = isSelect.classList
+    });
+});
 
 
 
-//function userAuth (){
-//    try{
-//        const auth = getAuth();
-//        const { user } = await signInWithEmailAndPassword(auth, email, password);
-//        const { stsTokenManager, uid } = user;
-//    }
-//}
 
 

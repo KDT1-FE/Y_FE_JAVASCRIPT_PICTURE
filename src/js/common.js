@@ -1,7 +1,3 @@
-import "../css/reset.css"
-import "../css/basic.css"
-import "../scss/style.scss"
-import "../scss/variable.scss"
 import "../../assets/image/ic_top_gray.png"
 import "../../assets/image/logo.png"
 
