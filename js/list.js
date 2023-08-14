@@ -1,10 +1,10 @@
 const list = document.querySelector(".list");
 const deleteBtn = document.querySelector(".ex_delete_btn");
-
+const dialog = document.querySelector("#dialog");
+const yesBtn = document.querySelector("#yesBtn");
+const noBtn = document.querySelector("#noBtn");
 
 let infos = [];
-
-
 
 class Info {
     constructor(isChecked, profileImgUrl, name, email, phoneNumber, isActive) {
@@ -131,6 +131,7 @@ totalcheckBox.addEventListener("change", () => {
 });
 
 
+
 list.addEventListener("click", (event) => {
     const itemEl = event.target.closest(".list_item");
     if (itemEl) {
@@ -159,10 +160,55 @@ function getIndexFromEvent(event) {
 }
 
 
-
-
-
 function showDetail(index) {
     window.location.href = `detail.html?index=${index}`;
 }
 
+deleteBtn.addEventListener("click", () => {
+    dialog.showModal();
+ 
+});
+yesBtn.addEventListener("click",(e)=> {
+    dialog.close();
+    checkboxItemdelete();
+})
+noBtn.addEventListener("click",(e)=> {
+    dialog.close();
+})
+
+
+function checkboxItemdelete() {
+    const checkBoxes = document.querySelectorAll("#check_btn");
+    const itemsToDelete = [];
+
+    checkBoxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            itemsToDelete.push(index);
+        }
+    });
+
+    itemsToDelete.reverse(); // 뒤에서부터 삭제하도록 순서 뒤집기
+
+    itemsToDelete.forEach(index => {
+        deleteItem(index);
+    });
+
+    // 체크박스 초기화
+    totalcheckBox.checked = false;
+}
+
+function deleteItem(index) {
+    if (index >= 0 && index < infos.length) {
+        infos.splice(index, 1);
+        updateLocalStorage();
+        updateList();
+    }
+}
+function updateLocalStorage() {
+    localStorage.setItem("infoList", JSON.stringify(infos));
+}
+
+function updateList() {
+    list.innerHTML = ""; // 리스트 비우기
+    displayUsers(); // 변경된 정보로 리스트 업데이트
+}

@@ -2,6 +2,9 @@ body {
     margin: 0;
     display: flex;
     justify-content: space-between;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    
     
 }
 .nav_container {
@@ -270,4 +273,39 @@ p {
     height: 0.35rem;
     border-radius: 50%;
     background-color: rgba(14, 131, 214) ;
+}
+#dialog {
+    text-align: center;
+    width : 300px;
+    height : 100px;
+    border: 0;
+    background: #ebecf0;
+    justify-content: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+#dialog span {
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    color: black;
+    font-size: 0.9em;
+
+}
+#dialog div {
+    margin-top: 20px;
+}
+
+#dialog div button {
+    box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+    padding: .5rem 2.5rem;
+    border: 0;
+    color: #3a3939;
+    font-size: 11px;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+#dialog div button:active {
+    box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
 }

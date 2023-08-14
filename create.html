@@ -10,6 +10,20 @@
 
 </head>
 <body>
+    <div class="background">
+        <div class="loading">
+            <span>S</span>
+            <span>a</span>
+            <span>v</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+
+    </div>
+    
     <div class="create_container">
         <div class="header">
             <span class="title">ENROLL</span>
@@ -27,16 +41,28 @@
                 <img id="profile_img" style="display: none;"  alt="profile">
             </div>
             <form info_contents>
-                <input class="name_input" type="text" placeholder="Name">
-                <input class="email_input" type="email" placeholder="E-mail">
-                <input class="phoneNum_input" type="tel" placeholder="Phone Number">
+                <div class="form">
+                    <label>Name</label>
+                    <input class="name_input" type="text" placeholder="ex) Hong Gildong">
+
+                </div>
+                <div class="form">
+                    <label>E-mail</label>
+                    <input class="email_input" type="email" placeholder="ex) gildong@naver.com">
+
+                </div>
+                <div class="form"><label>Phone Number</label>
+                    <input class="phoneNum_input" type="tel" placeholder="ex) 010-0000-0000">
+                </div>
+                
+                
 
             </form>
 
         </div>
         <button class="form_btn" type="submit">Submit</button>
-
-    </div>
+        
+        
     <!-- Firebase 스크립트 로드 -->
 <script src="js/create.js" type="module">
     

@@ -4,13 +4,15 @@ const email_container = document.querySelector(".email");
 const phoneNum_container = document.querySelector(".phoneNum");
 const profile_container = document.querySelector(".profile_container");
 const queryParams = new URLSearchParams(window.location.search);  // URL 쿼리 파라미터 읽기
+const editBtn = document.querySelector(".edit_btn");
+const logoBtn = document.querySelector(".logo");
 
 const infos = JSON.parse(localStorage.getItem("infoList"));
 
 const itemIndex = queryParams.get("index");  // URL에서 전달된 인덱스 값 읽기
 const selectedItem = infos[itemIndex];  // 선택된 아이템 정보
 
-console.log(name_container);
+
 function createInfoElement(info) {
 
     console.log(info);
@@ -53,5 +55,13 @@ if (selectedItem) {
     createInfoElement(selectedItem);
 }
 
+editBtn.addEventListener("click",()=> {
+    window.location.href = `create.html?index=${itemIndex}`;
+})
+
+logoBtn.addEventListener("click",()=> {
+    window.location.href = "main.html";
+
+})
 
 

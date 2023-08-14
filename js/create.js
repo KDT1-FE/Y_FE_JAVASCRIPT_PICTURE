@@ -12,20 +12,38 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app); // storage 객체 가져오기
+const storage = getStorage(app);
 
 const nameInput = document.querySelector(".name_input");
 const emailInput = document.querySelector(".email_input");
 const phoneNumberInput = document.querySelector(".phoneNum_input");
 const submitBtn = document.querySelector(".form_btn");
-const label = document.querySelector('label[for="fileInput"]');
 const input = document.querySelector('#fileInput');
 const profileImg = document.querySelector('#profile_img');
 const backBtn = document.querySelector(".back_container");
+const background = document.querySelector(".background");
+const loadingBar = document.querySelector(".loading");
 
+
+const queryParams = new URLSearchParams(window.location.search);
 let infoList = JSON.parse(localStorage.getItem('infoList')) || [];
+const itemIndex = queryParams.get("index");
+const selectedItem = infoList[itemIndex];
 
 input.addEventListener("change", uploadImg);
+
+if (selectedItem) {
+    if (selectedItem.profileImgUrl !== " ") {
+        profileImg.style.display = 'block';
+        profileImg.style.width = "200px";
+        profileImg.style.height = "220px";
+        profileImg.src = selectedItem.profileImgUrl;
+    }
+    
+    nameInput.value = selectedItem.name;
+    emailInput.value = selectedItem.email;
+    phoneNumberInput.value = selectedItem.phoneNumber;
+}
 
 function uploadImg() {
     const file = input.files[0];
@@ -35,7 +53,7 @@ function uploadImg() {
             profileImg.src = e.target.result;
             profileImg.style.display = 'block';
             profileImg.style.width = "200px";
-            profileImg.style.height = "210px";
+            profileImg.style.height = "220px";
         };
         reader.readAsDataURL(file);
     }
@@ -52,7 +70,6 @@ class Info {
     }
 }
 
-
 function submitBtnClick() {
     let profile = profileImg.src;
     let name = nameInput.value;
@@ -60,55 +77,101 @@ function submitBtnClick() {
     let phoneNumber = phoneNumberInput.value;
 
     if (name && email && phoneNumber) {
-        // Create an instance of Info class
-        if (!profile) {
-            const infoInstance = new Info(false, " ", name, email, phoneNumber, true);
-            console.log(infoInstance);
-            infoList.push(infoInstance);
-            localStorage.setItem('infoList', JSON.stringify(infoList));
-            history.back();
-        } else {
-            const file = input.files[0]; // 업로드할 파일
+        if (selectedItem) {
+            // Case 1: selectedItem가 있고 사진도 변경되지 않은 경우
+            if (!input.files[0]) {
+                // 기존 사진 URL 유지
+                profile = selectedItem.profileImgUrl;
+            } else {
+                // 기존 사진 대신 새로운 사진 업로드
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageBase64 = e.target.result;
+                    const storageRef = ref(storage, 'profile_images');
+                    const fileExtension = file.type.split('/').pop();
+                    const filename = Date.now().toString() + '.' + fileExtension;
+                    const imageRef = ref(storageRef, 'profile_images/' + filename);
 
-            // Create a new FileReader
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                const imageBase64 = e.target.result; // 이미지 데이터를 base64로 저장
-
-                const storageRef = ref(storage, 'profile_images'); // Firebase Storage 참조 생성
-
-                const fileExtension = file.type.split('/').pop(); // 파일 확장자 추출
-                const filename = Date.now().toString() + '.' + fileExtension;
-                const imageRef = ref(storageRef, 'profile_images/' + filename);
-
-                uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
-                    console.log('Image uploaded successfully');
-
-                    getDownloadURL(imageRef).then(url => {
-                        const infoInstance = new Info(false, url, name, email, phoneNumber, true);
-                        infoList.push(infoInstance);
-                        localStorage.setItem('infoList', JSON.stringify(infoList));
-                        history.back();
+                    uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
+                        getDownloadURL(imageRef).then(url => {
+                            profile = url;
+                            updateInfo(profile, name, email, phoneNumber);
+                        }).catch(error => {
+                            console.error('Error getting download URL: ', error);
+                        });
                     }).catch(error => {
-                        console.error('Error getting download URL: ', error);
+                        console.error('Error uploading image: ', error);
                     });
-                }).catch(error => {
-                    console.error('Error uploading image: ', error);
-                });
-            };
+                };
+                reader.readAsDataURL(file);
+            }
 
-            // Read the file as a data URL
-            reader.readAsDataURL(file);
+            // 기존 항목 삭제 및 업데이트된 항목 추가
+            infoList.splice(itemIndex, 1);
+            const updatedInfo = new Info(false, profile, name, email, phoneNumber, true);
+            infoList.splice(itemIndex, 0, updatedInfo);
+        } else {
+            // Case 3: selectedItem이 없고 사진이 선택된 경우
+            if (input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageBase64 = e.target.result;
+                    const storageRef = ref(storage, 'profile_images');
+                    const fileExtension = file.type.split('/').pop();
+                    const filename = Date.now().toString() + '.' + fileExtension;
+                    const imageRef = ref(storageRef, 'profile_images/' + filename);
+
+                    uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
+                        getDownloadURL(imageRef).then(url => {
+                            profile = url;
+                            addNewInfo(profile, name, email, phoneNumber);
+                        }).catch(error => {
+                            console.error('Error getting download URL: ', error);
+                        });
+                    }).catch(error => {
+                        console.error('Error uploading image: ', error);
+                    });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Case 4: selectedItem이 없고 사진도 선택되지 않은 경우
+                profile = " "; // " " 값 대체
+                addNewInfo(profile, name, email, phoneNumber);
+            }
         }
+
+        localStorage.setItem('infoList', JSON.stringify(infoList));
+        history.back();
     } else {
         alert("값을 입력해주세요");
     }
 }
 
-submitBtn.addEventListener("click", submitBtnClick);
+function addNewInfo(profile, name, email, phoneNumber) {
+    const newInfo = new Info(false, profile, name, email, phoneNumber, true);
+    infoList.push(newInfo);
+}
 
-backBtn.addEventListener("click",() =>{
-    history.back();
+function updateInfo(profile, name, email, phoneNumber) {
+    const updatedInfo = new Info(false, profile, name, email, phoneNumber, true);
+    infoList.splice(itemIndex, 1, updatedInfo);
+}
 
-})
+submitBtn.addEventListener("click", () => {
+    showLoadingBar();
+    setTimeout(() => {
+        submitBtnClick();
+    }, 3000);
+});
+
+backBtn.addEventListener("click", () => {
+    window.location.href = "main.html";
+});
+
+function showLoadingBar() {
+    background.style.display = "block";
+    loadingBar.style.display = "block";
+}
+
