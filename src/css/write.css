@@ -55,7 +55,7 @@ body {
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 5px 0 0 #0050cc;
@@ -68,7 +68,7 @@ body {
 }
 
 .get-address-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
 }
 
 .input-wrap input[type='file'] {
@@ -124,4 +124,22 @@ body {
 
 .active {
   display: block;
+}
+
+/* 768px 이하 화면 크기에 대한 스타일 */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 20px;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .input-wrap label {
+    font-size: 0.9rem;
+  }
+  .input-wrap input,
+  .input-wrap .get-address-btn,
+  .input-wrap button[type='submit'] {
+    font-size: 0.9rem;
+  }
 }

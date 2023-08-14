@@ -8,9 +8,9 @@ body {
   margin: 0 auto;
   margin-top: 35px;
   padding: 50px 100px 10px;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /********** Header **********/
@@ -215,6 +215,7 @@ main {
 .staff-list-wrap {
   width: 100%;
   height: 600px;
+  font-size: 0.875rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -241,12 +242,9 @@ table {
   border-collapse: collapse;
 }
 
-table thead tr th {
-  padding: 20px 0;
-}
-
 table tbody tr {
   width: 100%;
+  height: 200px;
   cursor: pointer;
   border-top: 1px solid #ccc;
   position: relative;
@@ -262,13 +260,16 @@ table tbody tr:hover::after {
   background-color: rgba(204, 204, 204, 0.15);
 }
 
+table thead tr th {
+  padding: 20px 0;
+}
+
 table tbody tr td {
-  font-size: 0.875rem;
   padding: 10px;
 }
 
 table tbody tr td:nth-child(2) {
-  width: 12%;
+  width: 15%;
 }
 
 table tbody tr td img {
@@ -280,6 +281,7 @@ table tbody tr td img {
 
 @media (max-width: 1024px) {
   .wrapper {
+    max-width: 90%;
     padding: 30px;
   }
 
@@ -298,13 +300,8 @@ table tbody tr td img {
     margin-bottom: 20px;
   }
 
-  .staff-control-wrap .staff-control-buttons div {
-    font-size: 0.9rem;
-  }
-
   .staff-list-wrap {
-    height: auto;
-    max-height: 400px;
+    font-size: 0.69rem;
   }
 
   table thead tr th {
@@ -313,71 +310,65 @@ table tbody tr td img {
 
   table tbody tr {
     padding: 10px;
-    height: 50px;
-  }
-
-  table tbody tr td {
-    padding: 10px;
-  }
-
-  table tbody tr td:nth-child(2) {
-    width: 15%;
-  }
-
-  table tbody tr td img {
-    border-radius: 6px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    height: 120px;
   }
 }
 
-/* 모바일 사이즈에 대한 반응형 스타일 */
+/* 768px 이하 화면 크기에 대한 스타일 */
 @media (max-width: 768px) {
-  .wrapper {
-    padding: 20px;
-  }
-
-  main .page-title .title {
-    font-size: 1.5rem;
-  }
-
-  .staff-control-wrap {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .staff-control-wrap .staff-control-buttons {
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .staff-control-wrap .staff-control-buttons div {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-  }
-
-  .staff-list-wrap {
-    max-height: 300px;
-  }
-
-  table thead tr th {
-    padding: 10px 0;
+  table thead {
+    display: none;
   }
 
   table tbody tr {
-    padding: 5px;
-  }
-
-  table tbody tr td {
-    padding: 5px;
+    width: 100%;
+    padding: 0;
+    height: auto;
   }
 
   table tbody tr td:nth-child(2) {
-    width: 100%;
+    width: 30%;
   }
 
-  table tbody tr td img {
-    border-radius: 4px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  table tbody tr td:nth-child(3),
+  table tbody tr td:nth-child(4),
+  table tbody tr td:nth-child(5),
+  table tbody tr td:nth-child(6) {
+    display: block;
+    text-align: left;
+    height: 100%;
+    margin: 10px;
+    border-bottom: 1px dotted #ccc;
+  }
+}
+
+@media (max-width: 550px) {
+  table tbody tr td:nth-child(2) {
+    width: 40%;
+  }
+
+  table tbody tr td:nth-child(3),
+  table tbody tr td:nth-child(4),
+  table tbody tr td:nth-child(5),
+  table tbody tr td:nth-child(6) {
+    margin: 5px;
+  }
+}
+
+@media (max-width: 440px) {
+  .staff-list-wrap {
+    font-size: 0.5rem;
+  }
+  table tbody tr td {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 350px) {
+  .staff-list-wrap {
+    font-size: 0.3rem;
+  }
+  table tbody tr td {
+    padding: 3px;
   }
 }

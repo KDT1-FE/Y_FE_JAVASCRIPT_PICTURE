@@ -7,8 +7,6 @@ const profileImage = document.querySelector('.image');
 // 방금 생성한 것이거나 마지막으로 클릭한 임직원 정보
 const data = JSON.parse(localStorage.getItem('lately-info'));
 
-console.log(data);
-
 profileName.innerText = data.name;
 profileEmail.innerText = data.email;
 profilePhone.innerText = data.phone;

@@ -33,6 +33,7 @@ write['name'].addEventListener('blur', getNameMessage);
 write['email'].addEventListener('blur', getEmailMessage);
 write['phone'].addEventListener('blur', getPhoneMessage);
 
+// 이름 유효성 검사
 function getNameMessage() {
   if (!write['name'].value) {
     errorMessage['name'].classList.add('active');
@@ -176,12 +177,16 @@ function createStaff() {
 
   onFileUpload();
 
+  const phone1 = write['phone'].value.slice(0, 3);
+  const phone2 = write['phone'].value.slice(3, 7);
+  const phone3 = write['phone'].value.slice(7);
+
   // 새로운 아이템 생성
   const item = {
     id: new Date().getTime(),
     name: write['name'].value,
     email: write['email'].value,
-    phone: write['phone'].value,
+    phone: `${phone1}-${phone2}-${phone3}`,
     address: write['address'].value,
     imageUrl: `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
   };

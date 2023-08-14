@@ -4,69 +4,64 @@ body {
 }
 
 .wrapper {
-  max-width: 1200px;
+  max-width: 1400px;
+  height: auto;
   margin: 0 auto;
-  margin-top: 100px;
-  padding: 30px;
+  margin-top: 35px;
+  padding: 50px 100px;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/********** Header **********/
 .page-title-wrap {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.page-title {
-  font-size: 36px;
+.page-title-wrap .page-title {
+  font-size: 2.25rem;
   color: #333;
   padding: 20px 0;
   border-bottom: 2px solid #ccc;
   display: inline-block;
 }
 
+/********** Main **********/
 .staff-info-wrap {
   display: flex;
   margin-top: 40px;
+  width: 100%;
+  height: 600px;
 }
 
-.left-wrap {
-  flex: 1;
+.staff-info-wrap .left-wrap {
+  width: 100%;
   padding: 40px;
   border-right: 1px solid #ccc;
 }
 
-.right-wrap {
-  flex: 1;
-  padding: 40px;
-  background-color: #f7f7f7;
-  border-radius: 0 20px 20px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.staff-info-title-wrap {
+.left-wrap .staff-info-title-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
 }
 
-.staff-info-title {
-  font-size: 28px;
+.left-wrap .staff-info-title-wrap .staff-info-title {
+  font-size: 2rem;
   font-weight: bold;
   color: #555;
 }
 
-.staff-info-edit {
+.left-wrap .staff-info-title-wrap .staff-info-edit {
   color: #ff6600;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.staff-info-edit:hover {
+.left-wrap .staff-info-title-wrap .staff-info-edit:hover {
   color: #e65c00;
 }
 
@@ -90,23 +85,100 @@ body {
   color: #444;
 }
 
-.image {
-  max-width: 100%;
+.staff-info-wrap .right-wrap {
+  width: 100%;
+  padding: 50px;
+  background-color: #f7f7f7;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-wrap .image {
+  max-width: 80%;
   height: auto;
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 a {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-  font-size: 18px;
-  color: #007bff;
+  width: 20%;
   text-decoration: none;
-  transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 0 #0050cc;
+  transition: all 0.2s ease;
 }
 
 a:hover {
-  color: #0056b3;
+  box-shadow: none;
+  transform: translateY(5px);
+  color: white;
+}
+
+a:active {
+  transform: scale(0.95);
+}
+
+/* 1024px 이하 화면 크기에 대한 스타일 */
+@media (max-width: 1024px) {
+  .wrapper {
+    max-width: 90%;
+    padding: 40px 30px;
+  }
+
+  .staff-info-wrap {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .staff-info-wrap .left-wrap {
+    width: 100%;
+    border-right: none;
+    padding: 0;
+  }
+
+  .staff-info-wrap .right-wrap {
+    width: 100%;
+    padding: 30px;
+    border-radius: 0;
+  }
+
+  a {
+    width: 40%;
+  }
+}
+
+/* 768px 이하 화면 크기에 대한 스타일 */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 30px;
+  }
+
+  .page-title-wrap .page-title {
+    font-size: 1.75rem;
+  }
+
+  .left-wrap .staff-info-title-wrap .staff-info-title {
+    font-size: 1.5rem;
+  }
+
+  .staff-info-wrap .right-wrap {
+    padding: 20px;
+  }
+
+  a {
+    font-size: 0.825rem;
+    width: 100%;
+  }
 }
