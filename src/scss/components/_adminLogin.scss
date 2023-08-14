@@ -1,0 +1,55 @@
+#adminLoginForm {
+  width: 50rem;
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  input {
+    border: none;
+
+    padding: 15px;
+    margin-bottom: 25px;
+
+    font-size: 18px;
+    color: $white;
+    background: transparent;
+
+    transition: border-color 0.3s ease-in-out;
+
+    &[placeholder="관리자 아이디"] {
+      margin-top: 300px;
+    }
+
+    &:not([type="submit"]) {
+      border-bottom: 2px solid $white;
+
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &[type="submit"] {
+      border-radius: 5px;
+      padding: 20px 0px;
+
+      cursor: pointer;
+
+      color: $black;
+      background-color: $white;
+    }
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  p {
+    text-align: center;
+    color: $alert;
+  }
+}
