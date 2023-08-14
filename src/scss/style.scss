@@ -317,12 +317,6 @@ $url-images: "/assets/image/";
     cursor: pointer;
     background-color: var(--color-white);
 
-    &.select {
-      background-color: var(--color-blue400);
-      border: 0;
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m11.06 15.46 5.4-5.4a.65.65 0 1 0-.919-.919l-4.941 4.94-2.818-2.818a.65.65 0 1 0-.919.919l3.278 3.278a.651.651 0 0 0 .919 0" style="fill:%23ffffff"/></svg>');
-      background-position: 50% 50%;
-    }
   }
 
   &:hover {
@@ -330,7 +324,15 @@ $url-images: "/assets/image/";
       border-color: var(--color-blue100);
     }
   }
-  
+
+  &--checked {
+    span {
+      background-color: var(--color-blue400);
+      border: 0;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m11.06 15.46 5.4-5.4a.65.65 0 1 0-.919-.919l-4.941 4.94-2.818-2.818a.65.65 0 1 0-.919.919l3.278 3.278a.651.651 0 0 0 .919 0" style="fill:%23ffffff"/></svg>');
+      background-position: 50% 50%;
+    }
+  }
 }
 
 .scrolltop {

@@ -131,8 +131,8 @@ const getList = async (inputVal, value) => {
         trEl.innerHTML = `
             <td>
                 <div id="checkbox" class="checkbox">
-                    <input type="checkbox">
-                    <label for=""><span></span>${employee.name} 선택</label>
+                    <input type="checkbox" id="${employee.uid}">
+                    <label for="${employee.uid}"><span></span>${employee.name} 선택</label>
                 </div>
             </td>
             <td>
@@ -153,28 +153,31 @@ await getList(0,'');
 
 // 체크박스 input 대체
 const table = document.querySelector(".table")
-const checkboxes = table.querySelectorAll(".checkbox") // 모든 체크박스
-let checkAll = document.getElementById("checkAll") // 전체선택 체크박스
+const checkboxes = table.querySelectorAll(".checkbox label") 
+let checkAll = document.getElementById("checkAll") 
 
 // span check시 input checked 설정
 checkboxes.forEach(selectCheck => {
-    selectCheck.addEventListener("click",(e)=>{ // span 클릭 시
-        const target = e.target // 클릭된 span
-        const inputCheck = target.parentElement.parentElement.firstElementChild // 클릭된 span의 체크박스
-        target.classList.toggle("select")
+    selectCheck.addEventListener("click",(e)=>{ 
+        const target = e.target 
+        const checkbox = target.closest(".checkbox")
+        const inputCheck = checkbox.firstElementChild
+        checkbox.classList.toggle("checkbox--checked")
         inputCheck.toggleAttribute("checked")
+        console.log(inputCheck.checked)
     })
 })
 
-checkAll.addEventListener("input", (e) => { // 전체선택 체크박스가 input될 시
-    console.log('hi')
-    const isSelect = e.target.parentElement.lastElementChild.firstElementChild // 전체선택 span
-    const isChecked = e.target.checked; // 전체선택 체크박스의 checked 값
-    checkboxes.forEach(selectCheck => { // 모든 체크박스 반복구문
-        const span = selectCheck.lastElementChild.firstElementChild  // span
-        const inputCheck = selectCheck.firstElementChild; // 체크박스
+// 전체 선택 체크박스가 check되면 모든 체크박스 check
+checkAll.addEventListener("input", (e) => {
+    const isSelect = e.target.parentElement
+    const isChecked = e.target.checked; 
+    console.log(isChecked)
+    checkboxes.forEach(selectCheck => {
+        const checkbox = selectCheck.parentElement
+        const inputCheck = checkbox.firstElementChild;
         inputCheck.checked = isChecked;
-        span.classList = isSelect.classList
+        checkbox.classList = isSelect.classList
     });
 });
 
