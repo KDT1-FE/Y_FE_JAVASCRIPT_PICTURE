@@ -3,9 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>프로필</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/ae/Ive_logo_%28Black%29.svg">
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <script defer type="module" src="./js/profile.js"></script>
 </head>
 <body>
-  
+  <header>
+    <div class="headertitle">아이돌 멤버 관리 서비스</div>
+  </header>
+  <main>
+      <div class="info">
+        <div class="infomaintitle">멤버 상세
+          <div class="infocontainer">
+            <div class="infosubtitle">멤버 정보</div>
+            <button class="infochange">정보 변경</button>
+          </div>
+          
+          <div class="infolist">
+            <div class="infoname">
+              <span class="listtitle">이름</span>
+              <span class="name"></span>
+            </div>
+            <div class="infogroup">
+              <span class="listtitle">그룹</span>
+              <span class="group"></span>
+            </div>
+          </div>
+        </div>
+        <div class="infoimage">
+        </div>
+      </div>
+  </main>
+  <div class="modal" id="insertmodal">
+    <div class="modal-window">
+      <div class="title">
+          <h2>정보 등록</h2>
+      </div>
+      <div class="content">
+        <label for="imageInput" class="upload-button">사진</label>
+        <input type="file" id="imageInput" style="display: none;" accept="image/*">
+      </div>
+      <input type="text" class="content" id="nameInput" placeholder="이름"></input>
+      <input type="text" class="content" id="groupInput" placeholder="그룹"></input>
+      <div class="buttons">
+        <button id="modalinsert">등록</button>
+        <button id="modaldelete">취소</button>
+      </div>
+  </div>
+  </div>
 </body>
 </html>

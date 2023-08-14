@@ -69,6 +69,7 @@ async function uploadInfo() {
     }
   } else {
     uploadError();
+    modalOff();
   }
 }
 
@@ -256,9 +257,4 @@ async function deleteFirestoreDocument(imageUrl) {
       await deleteDoc(doc.ref);
     }
   });
-}
-
-function getFilenameFromUrl(url) {
-  const parts = url.split('/');
-  return parts[parts.length - 1];
 }

@@ -3,10 +3,10 @@ const checkuser=document.querySelector('.checkuser');
 let nums=sessionStorage.getItem("nums");
 var link='login.html';
 const loading = document.querySelector('.spin-container');
-var nonvisible = getComputedStyle(loading).display;
+var nonvisible = getComputedStyle(document.querySelector('.spin-container')).display;
+var down = getComputedStyle(document.querySelector('.spin-container')).zIndex;
 var visible = "flex";
 loading.style.display=nonvisible;
-var down = getComputedStyle(loading).zIndex;
 var up = 2;
 loading.style.zIndex=down;
 
