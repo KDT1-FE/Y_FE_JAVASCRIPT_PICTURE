@@ -73,10 +73,13 @@ hr {
   grid-column-gap: 20px;
   grid-template-columns: 20px 200px 120px 200px 200px 100px 100px;
   align-items: center;
+  text-align: center;
 }
 .users-list-box {
+  text-align: center;
   img {
     width: 5rem;
+    margin: 0 auto;
   }
   .user-list-box {
     display: grid;
