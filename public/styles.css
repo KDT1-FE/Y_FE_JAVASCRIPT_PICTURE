@@ -1,3 +1,4 @@
+/* all */
 * {
   background-color: #fff9f2;
   box-sizing: border-box;
@@ -9,12 +10,75 @@ body {
   font-family: "Arial", sans-serif;
 }
 
-.member-container {
-  margin: 200px;
-  max-width: 1200px;
-  padding: 0 20px;
+/* index.html */
+/* .main-container {
+  margin: 10% 15%;
+  padding: 0 30% 0 0;
   width: 100%;
+  overflow: auto;
+  text-align: center;
+} */
+
+.main-image {
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 10px 0 10px 0;
 }
+
+.main-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 100%;
+  margin: 10% 0%;
+  transform: translate(-50%, -50%);
+  animation: slide 2s ease-out;
+  text-align: center;
+  align-items: center;
+}
+
+@keyframes slide {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+  to {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* list.html */
+.member-list-container {
+  padding: 10% 10% 0 10%;
+  width: 100%;
+  overflow: auto;
+}
+
+.member-create-container {
+  margin: 10% 15%;
+  padding: 0 30% 0 0;
+  width: 100%;
+  overflow: auto;
+  /* text-align: center; */
+}
+
+/* @media (max-width: 1000px) {
+  .member-container {
+    max-width: 800px;
+    max-height: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .member-container {
+    max-width: 400px;
+    max-height: 500px;
+    margin: 10%;
+    padding: 0 15% 0 0;
+  }
+} */
 
 .member-header {
   align-items: center;
@@ -79,11 +143,15 @@ body {
 .image-size {
   width: 100px;
   height: 100px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .member-create-list {
   margin: 10px;
 }
+
+/* create.html */
 
 .create-button {
   padding: 10px 10px;
@@ -107,6 +175,8 @@ body {
   border: 1px solid;
   border-radius: 4px;
 }
+
+/* update.html */
 
 .edit-button {
   padding: 10px 20px;

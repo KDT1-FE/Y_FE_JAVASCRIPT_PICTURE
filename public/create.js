@@ -40,7 +40,8 @@ createButton.addEventListener("click", () => {
       return db.collection("character").add(addChar);
     })
     .then(() => {
-      window.location.href = "./index.html";
+      alert("캐릭터 추가가 완료 되었습니다.");
+      window.location.href = "./list.html";
     })
     .catch((err) => {
       console.log(err);

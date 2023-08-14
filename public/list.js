@@ -61,7 +61,7 @@ function deleteCharacters() {
           displayCharacters();
         })
         .catch((error) => {
-          console.error("Error deleting character: ", error);
+          console.error(error);
         });
     });
   }
