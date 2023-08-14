@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script defer src="./js/playerList.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="playerlist__header">
+        <Nav class="nav">
+            <div class="nav__item">
+               <div class="logo-tab__menu">
+                <img class="logo__icon" src="./assets/icon/team_logo1.png" alt="team-logo">
+                <ul class="logo-tab__button">
+                    <li><a href="playerList.html">선수단 관리 페이지</a></li>
+                    <li><a href="playerInfo.html">프로필 정보</a></li>
+                    <li><a href="playerUpload.html">선수 업로드 페이지</a></li>
+                </ul>
+               </div>
+               <div class="logo-search__search">
+                <!-- 검색 아이콘 추가 예정 -->
+                 <input type="text" placeholder="Search">
+               </div>
+            </div>
+        </Nav>
+    </header>
+    <section class="select__container">
+        <div class="select__tab">
+            <button class="add__btn">선수 추가</button>
+            <button class="delete__btn">선수 제거</button>
+            <button class="all__btn">전체 선택</button>
+        </div>
+
+    </section>
+    <section class="add__player">
+        <table class="add__player__list">
+            <tr>
+                <th>선수명</th>
+                <th>국적</th>
+                <th>나이</th>
+                <th>포지션</th>
+            </tr>
+            <!-- <tr>
+                <td>
+                <div class="player__info">
+                    <div class="checkbox__container">
+                        <input type="checkbox">
+                    </div>
+                    <img src="./assets/picture/player_list2.jpg" alt="rashford">
+                    <span>래시포드</span>
+                </div>
+                </td>
+                <td>England</td>
+                <td>25</td>
+                <td>LW</td>
+            </tr> -->
+        </table>
+    </section>
+   <script src="/__/firebase/8.6.5/firebase-app.js"></script>
+   <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
+   <script src="/__/firebase/8.6.5/firebase-database.js"></script>
+   <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+   <script>
+       const firebaseConfig = {
+        apiKey: "AIzaSyDipwtbjWArJusT32_Ck3PJ7eoAQv4qWic",
+        authDomain: "jinjongsufastcampus.firebaseapp.com",
+        projectId: "jinjongsufastcampus",
+        storageBucket: "jinjongsufastcampus.appspot.com",
+        messagingSenderId: "587031732579",
+        appId: "1:587031732579:web:32fa950f6ab345b5543356"
+  };
+  firebase.initializeApp(firebaseConfig); 
+ </script> 
+</body>
+</html>

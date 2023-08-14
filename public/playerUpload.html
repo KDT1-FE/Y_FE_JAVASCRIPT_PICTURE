@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    
+    <title>선수단 업로드 페이지</title>
+</head>
+<body>
+    <header class="playerUpload__header">
+        <Nav class="nav">
+            <div class="nav__item">
+               <div class="logo-tab__menu">
+                <img class="logo__icon" src="./assets/icon/team_logo1.png" alt="team-logo">
+                <ul class="logo-tab__button">
+                    <li><a href="playerList.html">선수단 관리 페이지</a></li>
+                    <li><a href="playerInfo.html">프로필 정보</a></li>
+                    <li><a href="playerUpload.html">선수 업로드 페이지</a></li>
+                </ul>
+               </div>
+               <div class="logo-search__search">
+                <!-- 검색 아이콘 추가 예정 -->
+                 <input type="text" placeholder="Search">
+               </div>
+            </div>
+        </Nav>
+    </header>
+    <section class="player__upload">
+        <div class="transfer__container">
+            <h2>선수 정보를 모르겠으면 버튼 눌러주세요!</h2>
+            <button class="transfer__btn">선수 검색하기</button>
+        </div>
+       <div class="upload__container">
+         <input class="name__btn" type="text" placeholder="선수 이름을 입력해주세요">
+         <input class="nation__btn" type="text" placeholder="국적을 입력해주세요">
+         <input class="age__btn" type="text" placeholder="나이를 입력해주세요">
+         <input class="position__btn" type="text" placeholder="포지션 입력해주세요">
+         <input class="img__btn" type="file" placeholder="원하시는 이미지 주세요">
+         <button class="upload__btn">올리기</button>
+       </div>
+      
+    </section>
+    <script src="/__/firebase/8.6.5/firebase-app.js"></script>
+    <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
+    <script src="/__/firebase/8.6.5/firebase-database.js"></script>
+    <script src="/__/firebase/8.6.5/firebase-storage.js"></script>
+    <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+         apiKey: "AIzaSyDipwtbjWArJusT32_Ck3PJ7eoAQv4qWic",
+         authDomain: "jinjongsufastcampus.firebaseapp.com",
+         projectId: "jinjongsufastcampus",
+         storageBucket: "jinjongsufastcampus.appspot.com",
+         messagingSenderId: "587031732579",
+         appId: "1:587031732579:web:32fa950f6ab345b5543356"
+   };
+   firebase.initializeApp(firebaseConfig); 
+  </script> 
+  <script src="./js/playerUpload.js"></script>
+</body>
+</html>

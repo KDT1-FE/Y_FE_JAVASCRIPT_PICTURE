@@ -1,0 +1,220 @@
+:root{
+    font-size:10px;
+}
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+    margin-top:2rem;
+}
+.header{
+    margin-top:10rem;
+}
+.header__maintitle{
+    font-size:1.2rem;
+}
+.header__subtitle{
+    color: #484a559d;
+    font-weight:bold;
+}
+.start__tab{
+    margin-top:2rem;
+}
+.start__button{
+    width:52rem;
+    height:4.2rem;
+}
+
+.nav {
+    border : 1px solid #ffffff;
+    background-color: #c70102;
+}
+.nav__item {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-tab__menu{
+    display:flex;
+}
+.logo-tab__menu img{
+    width:5rem;
+    height:5rem;
+    padding: 2rem;
+}
+.logo-tab__button{
+    display:flex;
+    list-style-type: none;
+    gap:2rem;
+    font-size:1.4rem;
+    font-weight:bold;
+    align-items: center;
+}
+
+.logo-tab__button a{
+    text-decoration: none;
+    color:#fff;
+}
+.logo-tab__button li:hover{
+    color:#d9d9d9;
+    transform: scale(1.1);
+}
+.logo-search__search{
+    margin-right:2rem;
+} 
+.logo-search__search input{
+    height:3rem;
+    background-color: transparent;
+    border:1px solid #fff;
+    border-radius:2rem;
+}
+.logo-search__search input::placeholder{
+    padding:1rem;
+    color:#fff;
+}
+.select__container{
+    display:flex;
+    width:70%;
+    margin: 5rem auto;
+}
+.select__container .select__tab button{
+    border:1px solid #c70102;
+    border-radius:1rem;
+    background-color: #c70102;
+    width:8rem;
+    height:4rem;
+    color:#fff;
+    margin-right:1rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+.select__container .select__tab button:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .6s;
+   
+}
+.select__tab button a{
+    text-decoration: none;
+    color:#fff;
+}
+.add__player table {
+    border-collapse: collapse;
+    width:70%;
+    margin:5rem auto;
+    border: 1px solid black; 
+    border-left:none;
+    border-right:none;
+    align-items: center;
+    font-size:1.5rem;
+}
+
+.add__player th, td {
+    border: 1px solid black;
+    border-left:none;
+    border-right:none; 
+   padding: 8px;
+   text-align: center; 
+}
+.add__player img{
+    width:10rem;
+    height:10rem;
+}
+.player__info{
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:3%;
+    position:relative;
+}
+.checkbox__container{
+    position:absolute;
+    left:5rem;
+}
+.player__info span{
+    font-weight:bold;
+}
+.player__upload{
+    margin-top:4rem;
+    display:flex;
+    flex-direction: column; 
+    justify-content: center;
+}
+.transfer__container{
+    text-align: center;
+}
+.transfer__container h2{
+    font-size:2rem;
+}
+.transfer__btn{
+    border-radius:1rem;
+    height:5rem;
+    font-weight:bold;
+    color:#fff;
+    background-color: #c70102;
+    cursor:pointer;
+}
+.transfer__btn:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .6s;
+}
+.upload__container{
+    border:none;
+    width:70%;
+    margin: 5rem auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.upload__container input{
+    margin-top:2rem;
+    border:2px solid #000000;
+    border-radius:1rem;
+    height:5rem;
+    background-color: #c70102;
+}
+.upload__container input::placeholder{
+    color:#fff;
+    font-size:1.8rem;
+    font-weight:bold;
+    text-align: center;
+}
+.upload__container input[type="text"]{
+    font-size:1.8rem;
+    font-weight:bold;
+    text-align:center;
+    color:#fff;
+}
+.upload__container input[type="file"]{
+    font-size:1.8rem;
+    font-weight:bold;
+    text-align:center;
+    color:#fff;
+   
+}
+.upload__btn {
+    width:10rem;
+    height:4rem;
+    margin:5rem auto;
+    border-radius:1rem;
+    background-color:#c70102;
+    color:#fff;
+}
+.upload__btn:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .6s;
+
+}
