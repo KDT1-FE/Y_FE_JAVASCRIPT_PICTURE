@@ -9,7 +9,6 @@
 }
 .profile-container {
     display: flex;
-    flex-direction: column; /* 직원 정보를 세로로 나열 */
     width: 100;
 }
 .profile-info {
@@ -28,3 +27,10 @@
     margin: 20px;
 }
 
+.p-img,
+.p-name,
+.p-email,
+.p-phone,
+.p-category {
+    margin: 20px;
+}

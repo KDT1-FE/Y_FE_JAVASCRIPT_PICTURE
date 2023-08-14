@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css" />
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.809.0.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header">
-        <h1 class="title">임직원관리</h1>
-        <p class="right-tab">관리자님</p>
+      <h1 class="title">임직원관리</h1>
+      <p class="right-tab">관리자님</p>
     </header>
     <nav class="nav">
-        <button class="nav-btn1" id = "nav-btn1">임직원 등록</button>
-        <button class="nav-btn2" id = "nav-btn2">임직원 삭제</button>
-        <input type="text" id="searchInput" placeholder="이름 또는 이메일로 검색하기     ">
-        <!-- <button onclick="performSearch()">Search</button> -->
+      <button class="nav-btn1" id="nav-btn1">임직원 등록</button>
+      <button class="nav-btn2" id="nav-btn2">임직원 삭제</button>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="이름 또는 이메일로 검색하기     "
+      />
+      <!-- <button onclick="performSearch()">Search</button> -->
     </nav>
     <main>
-        <div class="profile-container">
+      <div class="profile-container">
         <div class="profile-info">
-            <!-- <input type="checkbox" id="inputCheckbox"> -->
-            <input type="file" id="inputImg" accept="image/*">
-            <input type="text" id="inputName" placeholder="이름">
-            <input type="email" id="inputEmail" placeholder="이메일">
-            <input type="text" id="inputPhone" placeholder="휴대번호">
-            <input type="text" id="inputCategory" placeholder="직위">
+          <!-- <input type="checkbox" id="inputCheckbox"> -->
+          <input type="file" id="inputImg" accept="image/*" />
+          <input type="text" id="inputName" placeholder="이름" />
+          <input type="email" id="inputEmail" placeholder="이메일" />
+          <input type="text" id="inputPhone" placeholder="휴대번호" />
+          <input type="text" id="inputCategory" placeholder="직위" />
         </div>
-        </div>
-        <div class ="staff-list" id = "list"></div>
-    
+      </div>
+      <div class="staff-list" id="list"></div>
     </main>
-    <script type="module"  src="./aws_functions.js"></script>
-    <script type="module"  src="./main.js"></script>
-</body>
+    <script type="module" src="./aws_functions.js"></script>
+    <script type="module" src="./main.js"></script>
+  </body>
 </html>
