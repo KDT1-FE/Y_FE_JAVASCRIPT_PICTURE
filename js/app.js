@@ -1,8 +1,7 @@
 import data from "./data.js";
-import { getStorage, ref } from "firebase/storage";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { addDoc, collection, getFirestore, getDocs, updateDoc, doc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
@@ -16,97 +15,112 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const storage = getStorage(app);
 const db = getFirestore(app);
 
-const wrap = async () => {
+// 이미지 다운로드 URL 가져와서 Firestore 업데이트하는 함수
+async function updateImgInFirestore(docId, imagePath) {
   try {
-    const docRef = await addDoc(collection(db, "database"), {
-      /* users라는 객체에 아래 데이터가 담기게 된다 */
-      date: "Ada",
-      last: "Lovelace",
-      born: 1815,
+    const imageRef = ref(storage, imagePath);
+    const downloadURL = await getDownloadURL(imageRef);
+
+    const userDocRef = doc(db, "database", docId);
+    await updateDoc(userDocRef, {
+      profileImg: downloadURL,
     });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
+
+    console.log("프로필 이미지 업데이트 완료");
+  } catch (error) {
+    console.error("프로필 이미지 업데이트 에러:", error);
   }
-};
-wrap();
-// const infos = ["pictureImg", "name", "email", "phoneNumber"];
-const ROWS = 5;
-const COLS = data.length;
-
-// class TableData {}
-
-// initTable();
-
-// function initTable() {
-//   for (let i = 0; i < ROWS; i++) {
-//     let tableRow = [];
-
-//     for (let j = 0; j < COLS; j++) {
-//       let td = "";
-//       let isHeader = false;
-
-//       if (i === 0) {
-//         td = infos[j];
-//         isHeader = true;
-//       }
-
-//       if (!td) {
-//         td = "";
-//       }
-//       const cell = new TableData();
-//       tableRow.push(cell);
-//     }
-//     tableRow.push(tableRow);
-//   }
-//   drawTable();
-// }
-
-// function createTableData() {
-//   const tdEl = document.createElement("td");
-// }
-
-//Random User Generator API
-
-function makeRowDom(data) {
-  let tr = "";
-  tr += "<tr>";
-  tr += "<td>" + data.index + "</td>";
-  tr += "<td>" + data.pictureImg + "</td>";
-  tr += "<td>" + data.name + "</td>";
-  tr += "<td>" + data.email + "</td>";
-  tr += "<td>" + data.phoneNumber + "</td>";
-  tr += "</tr>";
-  return tr;
 }
 
-function renderTable(data) {
-  const dataLength = data.length;
-  let rowList = "";
-  for (let i = 0; i < dataLength; i++) {
-    // if (i == 0) {}
-    rowList += makeRowDom(data[i]);
+const documentId = "FdC1MIb4wT2K3pBpiaIl";
+const imagePath = "images/profile-1.jpg";
+// updateImgInFirestore(documentId, imagePath);
+
+async function renderTable() {
+  const tableBody = document.getElementById("table");
+  let index = 1;
+
+  try {
+    // Firestore에서 데이터 가져오기
+    const querySnapshot = await getDocs(collection(db, "database"));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const row = createTableRow(index++, data);
+      tableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error("데이터를 가져오는 중 에러:", error);
   }
-  document.querySelector("#table tbody").innerHTML = rowList;
 }
 
-window.onload = function () {
-  renderTable(data);
-};
+// 셀을 생성하는 함수
+function createTableCell(content) {
+  const cell = document.createElement("td");
+  cell.innerHTML = content;
+  return cell;
+}
 
-// getUsers().then(showDatas);
+function createTableRow(index, data) {
+  const row = document.createElement("tr");
 
-// Initialize Cloud Storage and get a reference to the service
-const storage = getStorage();
+  const cellContents = [
+    index,
+    `<img src="${data.profileImg}" width="150" alt="${data.name} Profile Image">`,
+    data.name,
+    data.email,
+    data.phone,
+    `<button class="btn btn-primary" id="btn-edit">수정</button><button class="btn" id="btn-delete">삭제</button>`,
+  ];
 
-// Create a child reference
-const imagesRef = ref(storage, "images");
-// imagesRef now points to 'images'
+  cellContents.forEach((content, columnIndex) => {
+    const cell = createTableCell(content);
 
-// Child references can also take paths delimited by '/'
-const profileRef = ref(storage, "images/space.jpg");
-// spaceRef now points to "images/space.jpg"
-// imagesRef still points to "images"
+    //수정버튼
+    if (columnIndex === cellContents.length - 1) {
+      const editButton = cell.querySelector("#btn-edit");
+      editButton.addEventListener("click", () => {
+        const profileData = {
+          profileImg: data.profileImg,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+        };
+        // 데이터를 localStorage에 저장
+        localStorage.setItem("profileData", JSON.stringify(profileData));
+
+        // 수정 페이지로 이동
+        window.location.href = "profile.html";
+      });
+    }
+
+    row.appendChild(cell);
+  });
+
+  return row;
+}
+
+// 테이블 렌더링 함수 호출
+renderTable();
+
+// 수정버튼
+// window.onload = function () {
+//   const editButtons = document.querySelectorAll("#btn-edit");
+//   console.log(editButtons);
+//   editButtons.forEach((button, index) => {
+//     button.addEventListener("click", () => {
+//       console.log("clicked!");
+//       const row = button.parentElement.parentElement;
+//       const cells = row.querySelectorAll("td");
+//       const profileImg = cells[1].querySelector("img").getAttribute("src");
+//       const name = cells[2].textContent;
+//       const email = cells[3].textContent;
+//       const phone = cells[4].textContent;
+
+//       // 데이터를 수정 페이지로 넘기기
+//       window.location.href = `profile.html?profileImg=${profileImg}&name=${name}&email=${email}&phone=${phone}`;
+//     });
+//   });
+// };
