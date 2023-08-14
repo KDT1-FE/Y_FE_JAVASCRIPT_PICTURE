@@ -1,30 +1,29 @@
 .header {
-    display: flex;
-    font-family: 'Noto Light', sans-serif;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  font-family: "Noto Light", sans-serif;
+  align-items: center;
+  padding: 10px;
 }
 .nav {
-    padding: 10px;
+  padding: 10px;
 }
 .profile-container {
-    display: flex;
-    width: 100;
+  display: flex;
+  width: 100;
 }
 .profile-info {
-    display: flex;
-    border-top: 1px solid gainsboro;
-    border-bottom: 1px solid gainsboro;
-
+  display: flex;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
 }
 .profile-container input {
-    margin: 10px;
+  margin: 10px;
 }
 
 .employee {
-    display: flex;
-    align-items: center;
-    margin: 20px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
 }
 
 .p-img,
@@ -32,5 +31,5 @@
 .p-email,
 .p-phone,
 .p-category {
-    margin: 20px;
+  margin: 20px;
 }
