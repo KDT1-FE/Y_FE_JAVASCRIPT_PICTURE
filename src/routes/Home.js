@@ -8,6 +8,9 @@ import {
 } from '../store/memberStore';
 
 export default class Home extends Component {
+  constructor() {
+    super();
+  }
   async render() {
     this.el.innerHTML = `<header class="header">
     <div class="title">직원 관리 시스템</div>
@@ -17,10 +20,12 @@ export default class Home extends Component {
       <button class="button-home" id ="delete-members">삭제</button>
     </div>
     </header>
+    <div class="the-loader"></div>
     `;
     await renderMemberList(); // renderMemberList 함수를 통해 store 업데이트 (store에 memberList를 담음)
     const memberList = new MemberList().el;
-    this.el.append(memberList);
+    const header = this.el.querySelector('.header');
+    header.after(memberList);
     //memberList 컴포넌트 등록
 
     const title = this.el.querySelector('.title');

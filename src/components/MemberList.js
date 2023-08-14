@@ -8,9 +8,6 @@ export default class MemberList extends Component {
     memberStore.subscribe('members', () => {
       this.render();
     });
-    memberStore.subscribe('loading', () => {
-      this.render();
-    });
   }
   render() {
     this.el.classList.add('table');
@@ -24,7 +21,7 @@ export default class MemberList extends Component {
     this.el.append(
       ...memberStore.state.members.map((member) => new Member({ member }).el)
     );
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           // 다음 요소 또 가져오기

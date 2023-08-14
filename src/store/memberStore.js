@@ -16,14 +16,12 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 export const memberStore = new Store({
   members: [],
-  loading: false,
   member: {},
   deleteMembers: [],
 });
 
 let response = '';
 export const renderMemberList = async () => {
-  // memberStore.state.loading = true;
   const first = query(collection(db, 'list'), limit(7));
   response = await getDocs(first);
   let array = [];
@@ -37,10 +35,10 @@ export const renderMemberList = async () => {
     });
   });
   memberStore.state.members = [...array];
-  // memberStore.state.loading = false;
 };
 
 export const nextMemberList = async () => {
+  memberStore.state.loading = true; //lading
   const lastVisible = response.docs[response.docs.length - 1];
   // 앞서 기억해둔 문서값으로 새로운 쿼리 요청
   if (response.docs.length !== 0) {
@@ -61,8 +59,12 @@ export const nextMemberList = async () => {
         id: doc.id,
       });
     });
+    memberStore.state.loading = false;
     memberStore.state.members = [...memberStore.state.members, ...array];
-  }
+  } else {
+    const loading = document.querySelector('.the-loader');
+    loading.classList.add('hide');
+  } // 더 이상 가져올 데이터가 없을 때 , 마지막 데이터일 때 loading 애니메이션을 삭제
 };
 
 export const getMemberDetail = async (id) => {
