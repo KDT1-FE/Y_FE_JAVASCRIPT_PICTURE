@@ -11,7 +11,7 @@ export class TheFooter extends Component {
     this.el.id = "ems-footer";
     this.el.innerHTML = /* html */ `
       <div class="container mx-auto px-4">
-        <h1 class="text-md">&copy; EMS JS. 2023. all rights reserved.</h1>
+        <h1 class="text-md text-center">${new Date().getFullYear()} &copy; EMS JS all rights reserved.</h1>
       </div>
     `;
   }

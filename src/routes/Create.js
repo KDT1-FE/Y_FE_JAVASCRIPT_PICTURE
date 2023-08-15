@@ -1,6 +1,7 @@
 import { Component } from "../core";
 import { TheTitle } from "../components/commons/TheTitle";
 import CreateContents from "../components/create/CreateContents";
+import ImageEditorModal from "../components/create/ImageEditorModal";
 export default class CreateContent extends Component {
   constructor() {
     super({
@@ -20,6 +21,7 @@ export default class CreateContent extends Component {
         },
       }).el,
       new CreateContents().el,
+      new ImageEditorModal().el,
     );
   }
 }

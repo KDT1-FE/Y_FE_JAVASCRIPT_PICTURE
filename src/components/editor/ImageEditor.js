@@ -1,9 +1,7 @@
 import { Component } from "../../core";
 import TuiImageEditor from "tui-image-editor";
-import FileSaver from "file-saver";
 
 import "tui-image-editor/dist/tui-image-editor.css";
-// import "tui-color-picker/dist/tui-color-picker.css";
 
 export class ImageEditor extends Component {
   render() {
@@ -15,10 +13,6 @@ export class ImageEditor extends Component {
       this.el.querySelector("#tui-image-editor"),
       {
         includeUI: {
-          // loadImage: {
-          //   path: "img/sampleImage.jpg",
-          //   name: "SampleImage",
-          // },
           initMenu: "crop",
           menuBarPosition: "bottom",
         },

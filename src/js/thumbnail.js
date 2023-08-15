@@ -3,9 +3,9 @@ export function createThumb(file) {
   fileReader.readAsDataURL(file);
   fileReader.onload = (event) => {
     const thumbContainer = document.getElementById("img-thumb");
+    const layer = thumbContainer.querySelector(".layer");
     const img = new Image();
     img.src = event.target.result;
-    thumbContainer.innerHTML = "";
-    thumbContainer.append(img);
+    thumbContainer.insertBefore(img, layer);
   };
 }

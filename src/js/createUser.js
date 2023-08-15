@@ -38,8 +38,6 @@ function createUser(element) {
           }
           // 로더 애니메이션 삽입!
           submitBtn.disabled = true;
-          submitBtn.classList.add("cursor-not-allowed");
-          submitBtn.classList.add("disabled:opacity-75");
           submitBtn.innerHTML = loadersvg + " 업로드중..";
 
           // 파일 업로드 시작
@@ -51,8 +49,6 @@ function createUser(element) {
           const mid = await addMember(member);
           if (mid) {
             submitBtn.disabled = false;
-            submitBtn.classList.remove("cursor-not-allowed");
-            submitBtn.classList.remove("disabled:opacity-75");
             submitBtn.innerHTML = "추가 완료";
             // 폼의 내용들을 리셋합니다.
 

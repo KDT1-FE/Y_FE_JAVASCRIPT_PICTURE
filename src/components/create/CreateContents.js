@@ -1,5 +1,6 @@
 import { Component } from "../../core";
 import createUser from "../../js/createUser";
+import inputValidate from "../../js/inputValidate";
 
 export default class CreateContents extends Component {
   render() {
@@ -34,19 +35,26 @@ export default class CreateContents extends Component {
       <div class="mb-4">
         <h4 class="mb-2">업로드 미리보기</h4>
         <div class="flex justify-center">
-          <div class="h-[200px] w-[200px]" id="img-thumb"></div>
+          <div class="h-[200px] aspect-square relative" id="img-thumb">
+            <div class="layer absolute top-0 left-0 p-2 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-end items-start">
+              <div id="modifyBtn" class="w-[64px] py-1.5 mr-2 text-center rounded-md cursor-pointer text-gray-800 bg-gray-200"><span class="material-icons md-18 align-middle">edit</span> 수정</div>
+              <div id="deleteBtn" class="w-[64px] py-1.5 text-center rounded-md cursor-pointer text-white bg-red-600"><span class="material-icons md-18 align-middle">delete</span> 삭제</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="mb-4">
+      <div class="">
         <h4 class="mb-2">성명</h4>
         <input
           type="text"
           placeholder="이름을 입력해주세요"
           name="fullName"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+          autocomplete="off"
         />
+        <p id="fullNameMessage" class="py-2 h-8 text-red-500"></p>
       </div>
-      <div class="mb-4 flex gap-2">
+      <div class="flex gap-2">
         <div class="w-full">
           <h4 class="mb-2">성별</h4>
           <select name="gender" id="" class="w-full py-2">
@@ -65,27 +73,31 @@ export default class CreateContents extends Component {
           </select>
         </div>
       </div>
-      <div class="mb-4">
+      <div class="">
         <h4 class="mb-2">이메일</h4>
         <input
           type="email"
           placeholder="이메일 주소를 입력해주세요"
           name="email"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+          autocomplete="off"
         />
+        <p id="emailMessage" class="py-2 h-8 text-red-500"></p>
       </div>
-      <div class="mb-4">
+      <div class="">
         <h4 class="mb-2">연락처</h4>
         <input
           type="text"
           placeholder="연락처를 입력해주세요"
           name="phone"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
+          autocomplete="off"
         />
+        <p id="phoneMessage" class="py-2 h-8 text-red-500"></p>
       </div>
       <button
         type="submit"
-        class="col-span-2 w-full rounded-md bg-blue-600 p-3 text-white"
+        class="col-span-2 w-full rounded-md bg-blue-600 p-3 text-white disabled:opacity-75 disabled:cursor-not-allowed"
       >
         추가 완료
       </button>
@@ -93,5 +105,15 @@ export default class CreateContents extends Component {
     `;
 
     createUser(this.el)();
+    inputValidate(this.el)();
+
+    const modifyBtn = this.el.querySelector("#modifyBtn");
+    const deleteBtn = this.el.querySelector("#deleteBtn");
+
+    modifyBtn.addEventListener("click", () => {
+      const imageEditorModal = document.getElementById("ImageEditorModal");
+      imageEditorModal.showModal();
+    });
+    deleteBtn.addEventListener("click", () => {});
   }
 }
