@@ -8,7 +8,7 @@ export default class Member extends Component {
   render() {
     const { member } = this.props;
 
-    this.el.setAttribute('href', `/member?id=${member.id}`);
+    this.el.setAttribute('href', `/detail?id=${member.id}`);
     this.el.classList.add('member');
     this.el.innerHTML =
       /* html */

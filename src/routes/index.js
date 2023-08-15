@@ -1,6 +1,6 @@
 import Edit from './Edit';
 import Home from './Home';
-import Member from './Member';
+import Detail from './Detail';
 import Write from './Write';
 export const routes = [
   {
@@ -8,8 +8,8 @@ export const routes = [
     component: Home,
   },
   {
-    path: '/member',
-    component: Member,
+    path: '/detail',
+    component: Detail,
   },
   {
     path: '/write',

@@ -3,7 +3,7 @@ import { Component } from '../core/component';
 import { getUrlParam, routeRender } from '../core/router';
 import { getMemberDetail, memberStore } from '../store/memberStore';
 
-export default class Member extends Component {
+export default class Detail extends Component {
   async render() {
     const id = getUrlParam('id');
     await getMemberDetail(id);
