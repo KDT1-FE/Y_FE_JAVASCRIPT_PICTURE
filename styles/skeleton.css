@@ -1,5 +1,4 @@
 .skeleton {
-  z-index: 10000;
   border: 0;
   color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(
@@ -25,4 +24,24 @@
 
 label {
   width: 30%;
+}
+
+.skeleton-img {
+  margin: 0 auto;
+  width: 8.125rem;
+  height: 8.125rem;
+  border-radius: 100%;
+}
+
+.skeleton-grade {
+  width: 3.125rem;
+  height: 1.6875rem;
+  border-radius: 5px;
+}
+
+.skeleton-name,
+.skeleton-email,
+.skeleton-phone {
+  width: 9.375rem;
+  height: 1.125rem;
 }

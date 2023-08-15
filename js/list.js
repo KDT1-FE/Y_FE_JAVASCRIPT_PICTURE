@@ -10,6 +10,25 @@ import {
 import { db } from "./firebase";
 import { phoneType } from "./util";
 
+// 스켈레톤 삽입
+new Array(8).fill(1).map(() => {
+  const skeletonBox = document.createElement("div");
+  skeletonBox.className = "list-box";
+
+  const skeletonInput = document.createElement("input");
+  skeletonInput.type = "checkbox";
+  skeletonBox.appendChild(skeletonInput);
+
+  const skeletonArr = ["img", "grade", "name", "email", "phone"];
+  skeletonArr.map((i) => {
+    const skeletonDiv = document.createElement("div");
+    skeletonDiv.className = `skeleton-${i} skeleton`;
+    skeletonBox.appendChild(skeletonDiv);
+  });
+
+  document.querySelector(".list-container").appendChild(skeletonBox);
+});
+
 // 고객 목록 DOM에 추가해주는 함수
 const inquireListFunc = (querySnapshotArray) => {
   // 목록에서 이전 결과(고객 목록) 삭제
