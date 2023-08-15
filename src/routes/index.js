@@ -2,6 +2,7 @@ import Edit from './Edit';
 import Home from './Home';
 import Detail from './Detail';
 import Write from './Write';
+import NotFound from './NotFound';
 export const routes = [
   {
     path: '/',
@@ -19,4 +20,8 @@ export const routes = [
     path: '/edit',
     component: Edit,
   },
+  {
+    path: '.*',
+    component: NotFound,
+  }, // 404 페이지
 ];
