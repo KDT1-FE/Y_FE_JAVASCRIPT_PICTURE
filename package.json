@@ -176,7 +176,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
-    "build": "webpack build --mode production",
+    "build": "webpack build --output-path ./public",
     "dev": "webpack serve --open"
   },
   "keywords": [],
