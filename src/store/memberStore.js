@@ -83,8 +83,8 @@ export const uploadImage = async (fileData, refName) => {
   return photoUrl;
 };
 
-export const uploadData = async (data) => {
-  await addDoc(collection(db, 'list'), {
+export const uploadData = (data) => {
+  addDoc(collection(db, 'list'), {
     name: data.name,
     email: data.email,
     photoUrl: data.photoUrl,

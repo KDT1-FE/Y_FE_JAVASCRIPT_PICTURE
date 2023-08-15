@@ -48,7 +48,7 @@ export default class Write extends Component {
         photoUrl: photoUrl,
       };
 
-      await uploadData(data); // firebase data에 upload
+      uploadData(data); // firebase data에 upload
 
       navigate('/'); // 메인 페이지로 이동
     }; // submit을 누르면  모두 입력이 되었는 지 확인
