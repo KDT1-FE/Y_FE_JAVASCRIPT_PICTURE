@@ -274,16 +274,14 @@ function getClickedImageInfo(clickedImage) {
   }
 }
 
-
 list.addEventListener('click', event => {
   if (innerHTML === "로그아웃") {
-    const clickedItem = event.target.closest('.image');
+    const clickedItem = event.target.closest('.item');
 
-    if (clickedItem) {
+    if ((clickedItem && !event.target.classList.contains('defaultcheckbox')) && (clickedItem && !event.target.classList.contains('che'))) {
       const clickedImage = clickedItem.querySelector('.image img');
       const clickedName = clickedItem.querySelector('.name');
       const clickedGroup = clickedItem.querySelector('.group');
-
       const clickedImageInfo = getClickedImageInfo(clickedImage);
       if (clickedImageInfo) {
         const { id, image, name, group } = clickedImageInfo;
