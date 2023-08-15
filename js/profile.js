@@ -1,4 +1,4 @@
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { addDoc, collection, getFirestore, getDoc, updateDoc, doc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
@@ -41,6 +41,37 @@ document.addEventListener("DOMContentLoaded", async () => {
       const phoneInput = document.getElementById("phone");
       phoneInput.value = data.phone;
 
+      // 이미지 업로드 부분
+      const imageUpload = document.getElementById("image-upload");
+
+      imageUpload.addEventListener("change", async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const storageRef = ref(storage, `images/${file.name}`);
+          const uploadTask = uploadBytes(storageRef, file);
+
+          try {
+            const snapshot = await uploadTask;
+            const imageRef = ref(storage, `images/${snapshot.metadata.name}`);
+            const downloadURL = await getDownloadURL(imageRef);
+
+            // Firestore에 업데이트된 데이터 저장
+            const updatedProfileData = {
+              profileImg: downloadURL,
+              name: nameInput.value,
+              email: emailInput.value,
+              phone: phoneInput.value,
+            };
+
+            await updateDoc(docRef, updatedProfileData);
+            console.log("프로필 이미지 업로드 및 데이터 업데이트 완료");
+            profileImgElement.src = downloadURL; // 화면에도 이미지 업데이트
+          } catch (error) {
+            console.error("이미지 업로드 및 데이터 업데이트 에러:", error);
+          }
+        }
+      });
+
       // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
       const saveButton = document.getElementById("save-btn");
       saveButton.addEventListener("click", async (event) => {
@@ -57,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
           await updateDoc(docRef, updatedProfileData);
           console.log("데이터 업데이트 완료");
-          window.location.href = "index.html";
+          // window.location.href = "index.html";
         } catch (error) {
           console.error("데이터 업데이트 에러:", error);
         }
