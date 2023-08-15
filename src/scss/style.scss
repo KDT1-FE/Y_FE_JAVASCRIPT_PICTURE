@@ -335,6 +335,14 @@ $url-images: "/assets/image/";
   }
 }
 
+.link {
+  color:var(--color-gray900);
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
 .scrolltop {
   position: absolute;
   top: 0;
@@ -611,7 +619,7 @@ $url-images: "/assets/image/";
   }
 }
 
-.search {
+.default-input {
   display: flex;
   gap: 0.8rem;
 
@@ -742,6 +750,90 @@ $url-images: "/assets/image/";
       border: 0;
       background-color: var(--color-blue400) !important;
       color: var(--color-white);
+    }
+  }
+}
+
+
+
+
+
+// 서브페이지
+.add-box {
+  display: flex;
+  width: 50%;
+  padding:0.7rem 1rem;
+
+  &:last-child {
+    width: 100%;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    color: var(--color-gray600);
+    font-weight: 600;
+    line-height: 2rem;
+    flex:0 1 10rem;
+  }
+
+  &__input {
+    width:calc(100% - 10rem);
+
+    p {
+      color: var(--color-gray500);
+      font-size: 0.9rem;
+      margin-top:0.4rem;
+      line-height:1.5rem;
+      word-break: keep-all;
+    }
+
+    .img-label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:25rem;
+      height: 25rem;
+      background-color: #f8fafb;
+      border: 1px solid var(--color-border-color);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      cursor: pointer;
+
+      #employee-img {
+        display: none;
+      }
+
+    }
+
+    #employee-preview {
+      width:25rem;
+      height: 25rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      background-color: #f8fafb;
+
+      .upload-clear {
+        display: none;
+        background-color: rgba(0,0,0,0.8);
+        border: none;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      &:hover{
+        .upload-clear {
+          display: block;
+        }
+      }
     }
   }
 }
