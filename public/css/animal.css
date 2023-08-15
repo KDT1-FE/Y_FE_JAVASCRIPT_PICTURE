@@ -92,6 +92,7 @@
   padding: 20px;
 }
 .container .product__image .img {
+  display: block;
   width: 200px;
   height: 100%;
   background-size: contain;
@@ -170,4 +171,148 @@
   right: 30px;
   bottom: 30px;
   z-index: 9;
+}
+
+/* 주민 수정 폼 */
+.edit-form {
+  width: 60%;
+  padding: 50px;
+  position: fixed;
+  z-index: 9;
+  left: 50%;
+  transform: translate(-50%, -30px);
+  border-radius: 20px;
+  border: 4px solid #57bca9;
+  background-image: url("../img/상세화면배경.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.edit-form .edit-form__top {
+  padding: 0 50px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: #095663;
+}
+
+.edit-form .edit-form__top .edit-form__top-title {
+  padding: 10px 15px;
+  color: #f9f6e5;
+  background-color: #10997f;
+  border: 2px solid #f9f6e5;
+  border-radius: 20px;
+}
+
+.edit-form .edit-form__top .edit-form__top-exit {
+  font-weight: 700;
+  padding: 10px 15px;
+  color: #f9f6e5;
+  background-color: #095663;
+  border-radius: 50%;
+  box-shadow: 0 3px 0 #10997f;
+  transition: 0.1s;
+}
+
+.edit-form .edit-form__top .edit-form__top-exit:hover {
+  box-shadow: 0 0 0 #10997f;
+  transform: translate(0, 3px);
+}
+
+.edit-form__box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.edit-form .edit-form__img {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200px;
+}
+
+.edit-form .edit-form__img .img__text {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e2c39a;
+  border-radius: 8px;
+  font-weight: 900;
+  color: #5a5642;
+  border: 3px solid #f9f6e5;
+}
+
+.edit-form .edit-form__img #preview,
+.edit-form .edit-form__img .img__rather {
+  margin-top: 30px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 65px;
+  top: 180px;
+  overflow: hidden;
+  padding: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.edit-form .edit-form__img .img__rather {
+  background-image: url("../img/사진배경이미지.jpg");
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.edit-form .edit-form__content {
+  display: block;
+  color: #5a5642;
+  background-color: #e2c39a;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  margin-left: 50px;
+  border: 3px solid #f9f6e5;
+}
+
+.edit-form .edit-form__content .content__text {
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.edit-form .edit-form__content input {
+  display: block;
+  background-color: #f9f6e5;
+  border: none;
+  color: #5a5642;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.edit-form button {
+  padding: 8px 20px;
+  position: relative;
+  left: 45%;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 900;
+  border-radius: 20px;
+  border: none;
+  background-color: #095663;
+  color: #f9f6e5;
+  box-shadow: 0 3px 0 #10997f;
+  transition: 0.1s;
+}
+
+.edit-form button:hover {
+  box-shadow: 0 0 0 #10997f;
+  transform: translate(0, 3px);
 }
