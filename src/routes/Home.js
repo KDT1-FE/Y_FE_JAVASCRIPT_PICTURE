@@ -9,16 +9,6 @@ import {
 
 export default class Home extends Component {
   async render() {
-    const deleteMembers = async () => {
-      await Promise.all(
-        memberStore.state.deleteMembers.map((id) => {
-          deleteData(id);
-        })
-      ); // 멤버를 삭제하는 순서는 순차적으로 X
-      // 하지만 Promise.all로 병렬처리 , 모두 끝난 후 routeRender 함수 실행
-      routeRender();
-    };
-
     this.el.innerHTML = `<header class="header">
     <div class="title">직원 관리 시스템</div>
     <div class="container">
@@ -45,6 +35,16 @@ export default class Home extends Component {
      */
     const addButton = this.el.querySelector('#navigate-write');
     addButton.addEventListener('click', () => navigate('/write'));
+
+    const deleteMembers = async () => {
+      await Promise.all(
+        memberStore.state.deleteMembers.map((id) => {
+          deleteData(id);
+        })
+      ); // 멤버를 삭제하는 순서는 순차적으로 X
+      // 하지만 Promise.all로 병렬처리 , 모두 끝난 후 routeRender 함수 실행
+      routeRender();
+    };
 
     const deleteButton = this.el.querySelector('#delete-members');
     deleteButton.addEventListener('click', deleteMembers);
