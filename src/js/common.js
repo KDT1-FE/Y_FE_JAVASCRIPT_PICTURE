@@ -109,6 +109,7 @@ window.addEventListener('load', () => {
         console.log('User is not authenticated or token expired.');
         // 로컬 스토리지의 유저 정보 삭제
         localStorage.removeItem('user');
+        window.location.href = '/login.html';
       }
     });
   } else {

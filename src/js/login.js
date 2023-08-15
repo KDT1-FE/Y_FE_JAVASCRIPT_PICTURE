@@ -37,10 +37,19 @@ const authState =
   (auth,
   (user) => {
     if (user) {
+      const token = user
+        .getIdToken()
+        .then((tokenObject) => {
+          const token = tokenObject.accessToken;
+          return token;
+        })
+        .catch((error) => {
+          console.log('토큰 가져오기 오류:', error);
+        });
       const userJSON = JSON.stringify({
         uid: user.uid,
         email: user.email,
-        token: user.getIdToken(),
+        token: token,
       });
       localStorage.setItem('user', userJSON);
     }
