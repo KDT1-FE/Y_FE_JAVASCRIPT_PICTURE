@@ -194,6 +194,26 @@ label {
   border-color: #e65252;
 }
 
+.filebox input[type="file"] {
+  border: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.file-box #file-upload-button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #171818;
+  border: 2px solid #0000;
+  border-radius: 4px;
+  margin-right: .5rem;
+  padding: .375rem .75rem;
+  font-size: .9rem;
+}
+
 
 
 /*# sourceMappingURL=index.748ad148.css.map */

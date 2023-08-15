@@ -1,30 +1,71 @@
-function getStoredData(updates) {
-  for (const elementId in updates) {
-    const value = updates[elementId];
-    const element = document.getElementById(elementId);
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { addDoc, collection, getFirestore, getDoc, updateDoc, doc } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
 
-    if (element) {
-      if (element.tagName === "IMG") {
-        element.src = value;
-      } else {
-        element.value = value;
-      }
+const firebaseConfig = {
+  apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
+  authDomain: "project-js-160bd.firebaseapp.com",
+  projectId: "project-js-160bd",
+  storageBucket: "project-js-160bd.appspot.com",
+  messagingSenderId: "134984714331",
+  appId: "1:134984714331:web:12311afda7f0913b5f577e",
+  measurementId: "G-7T5FSMF8Y8",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const db = getFirestore(app);
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const documentId = urlParams.get("documentId");
+
+  try {
+    const docRef = doc(db, "database", documentId);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      const data = docSnapshot.data();
+
+      // 페이지 내 요소에 데이터 적용
+      const profileImgElement = document.getElementById("profile-img");
+      profileImgElement.src = data.profileImg;
+
+      const nameInput = document.getElementById("name");
+      nameInput.value = data.name;
+
+      const emailInput = document.getElementById("email");
+      emailInput.value = data.email;
+
+      const phoneInput = document.getElementById("phone");
+      phoneInput.value = data.phone;
+
+      // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
+      const saveButton = document.getElementById("save-btn");
+      saveButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const updatedProfileData = {
+          profileImg: profileImgElement.src,
+          name: nameInput.value,
+          email: emailInput.value,
+          phone: phoneInput.value,
+        };
+
+        // Firestore에 업데이트된 데이터 저장
+        try {
+          await updateDoc(docRef, updatedProfileData);
+          console.log("데이터 업데이트 완료");
+          window.location.href = "index.html";
+        } catch (error) {
+          console.error("데이터 업데이트 에러:", error);
+        }
+      });
+    } else {
+      console.log("문서가 존재하지 않습니다.");
     }
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const profileDataString = localStorage.getItem("profileData");
-  if (profileDataString) {
-    const profileData = JSON.parse(profileDataString);
-
-    const updates = {
-      "profile-img": profileData.profileImg,
-      name: profileData.name,
-      email: profileData.email,
-      phone: profileData.phone,
-    };
-
-    getStoredData(updates);
+  } catch (error) {
+    console.error("데이터를 가져오는 중 에러:", error);
   }
 });

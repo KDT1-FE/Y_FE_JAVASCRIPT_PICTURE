@@ -1,6 +1,6 @@
 import data from "./data.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { addDoc, collection, getFirestore, getDocs, updateDoc, doc } from "firebase/firestore";
+import { addDoc, collection, getFirestore, getDocs, updateDoc, doc, query, where } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -35,9 +35,59 @@ async function updateImgInFirestore(docId, imagePath) {
   }
 }
 
-const documentId = "FdC1MIb4wT2K3pBpiaIl";
-const imagePath = "images/profile-1.jpg";
+// const documentId = "FdC1MIb4wT2K3pBpiaIl";
+// const imagePath = "images/profile-1.jpg";
 // updateImgInFirestore(documentId, imagePath);
+
+// async function addIdsToDocuments() {
+//   const collectionRef = collection(db, "database");
+
+//   try {
+//     const querySnapshot = await getDocs(collectionRef);
+//     querySnapshot.forEach(async (docSnapshot) => {
+//       const docData = docSnapshot.data();
+//       const docId = docSnapshot.id;
+
+//       // 기존 데이터에 ID 추가
+//       const updatedData = { ...docData, id: docId };
+
+//       // 해당 문서 업데이트
+//       const userDocRef = doc(db, "database", docId);
+//       await updateDoc(userDocRef, updatedData);
+//     });
+
+//     console.log("IDs added to all documents.");
+//   } catch (error) {
+//     console.error("Error adding IDs to documents:", error);
+//   }
+// }
+
+// // 함수 호출하여 기존 문서에 ID 추가
+// addIdsToDocuments();
+
+// 클릭한 데이터의 id를 기반으로 Firestore에서 문서 ID를 얻는 함수
+async function getDocumentIdById(id) {
+  const querySnapshot = await getDocs(query(collection(db, "database"), where("id", "==", id)));
+  if (!querySnapshot.empty) {
+    return querySnapshot.docs[0].id; // 첫 번째 문서의 ID를 반환합니다.
+  }
+  return null; // 해당 id와 일치하는 문서가 없을 경우 null을 반환합니다.
+}
+
+// 상세 버튼 클릭 시 상세 페이지로 이동하는 함수
+function redirectToProfilePage(id) {
+  getDocumentIdById(id)
+    .then((documentId) => {
+      if (documentId) {
+        window.location.href = `profile.html?documentId=${documentId}`;
+      } else {
+        console.log("해당 id와 일치하는 문서가 없습니다.");
+      }
+    })
+    .catch((error) => {
+      console.error("문서 ID 얻기 에러:", error);
+    });
+}
 
 async function renderTable() {
   const tableBody = document.getElementById("table");
@@ -50,6 +100,7 @@ async function renderTable() {
       const data = doc.data();
       const row = createTableRow(index++, data);
       tableBody.appendChild(row);
+      // console.log(data);
     });
   } catch (error) {
     console.error("데이터를 가져오는 중 에러:", error);
@@ -72,27 +123,18 @@ function createTableRow(index, data) {
     data.name,
     data.email,
     data.phone,
-    `<button class="btn btn-primary" id="btn-edit">수정</button><button class="btn" id="btn-delete">삭제</button>`,
+    `<button class="btn btn-primary btn-profile" data-id="${data.id}">상세</button><button class="btn" id="btn-delete">삭제</button>`,
   ];
 
   cellContents.forEach((content, columnIndex) => {
     const cell = createTableCell(content);
 
-    //수정버튼
     if (columnIndex === cellContents.length - 1) {
-      const editButton = cell.querySelector("#btn-edit");
-      editButton.addEventListener("click", () => {
-        const profileData = {
-          profileImg: data.profileImg,
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-        };
-        // 데이터를 localStorage에 저장
-        localStorage.setItem("profileData", JSON.stringify(profileData));
-
-        // 수정 페이지로 이동
-        window.location.href = "profile.html";
+      const profileButton = cell.querySelector(".btn-profile");
+      profileButton.addEventListener("click", () => {
+        const documentId = profileButton.getAttribute("data-id");
+        // 해당 데이터의 ID를 쿼리 파라미터로 전달하여 profile.html 페이지로 이동
+        // window.location.href = `profile.html?documentId=${documentId}`;
       });
     }
 
@@ -105,22 +147,10 @@ function createTableRow(index, data) {
 // 테이블 렌더링 함수 호출
 renderTable();
 
-// 수정버튼
-// window.onload = function () {
-//   const editButtons = document.querySelectorAll("#btn-edit");
-//   console.log(editButtons);
-//   editButtons.forEach((button, index) => {
-//     button.addEventListener("click", () => {
-//       console.log("clicked!");
-//       const row = button.parentElement.parentElement;
-//       const cells = row.querySelectorAll("td");
-//       const profileImg = cells[1].querySelector("img").getAttribute("src");
-//       const name = cells[2].textContent;
-//       const email = cells[3].textContent;
-//       const phone = cells[4].textContent;
-
-//       // 데이터를 수정 페이지로 넘기기
-//       window.location.href = `profile.html?profileImg=${profileImg}&name=${name}&email=${email}&phone=${phone}`;
-//     });
-//   });
-// };
+// 상세 버튼 클릭 시 프로필 페이지로 이동
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("btn-profile")) {
+    const id = event.target.getAttribute("data-id");
+    redirectToProfilePage(id);
+  }
+});
