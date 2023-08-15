@@ -102,7 +102,7 @@ $(document).ready(function () {
               .update(updatedData)
               .then(() => {
                 console.log('문서 업데이트 완료');
-                // 수정 후 필요한 작업 수행
+                window.location.href = '/albaSelect.html';
               })
               .catch((error) => {
                 console.error('오류 발생:', error);
@@ -118,8 +118,6 @@ $(document).ready(function () {
           .then(() => {
             window.location.href = '/albaSelect.html';
             console.log('문서 업데이트 완료');
-
-            // 수정 후 필요한 작업 수행
           })
           .catch((error) => {
             alert('등록실패!');
