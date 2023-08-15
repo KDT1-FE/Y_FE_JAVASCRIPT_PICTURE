@@ -1,6 +1,7 @@
 import { Component } from '../core/index.js';
 import Store from '../store/userState.js';
 import AddMember from '../components/AddMember.js';
+import AddTeam from '../components/AddTeam.js';
 import FindTeam from '../components/FindTeam.js';
 import FindMember from '../components/FindMember.js';
 import Identity from '../components/Identity.js';
@@ -14,6 +15,7 @@ export default class Home extends Component {
     }
     render() {
         const AddMemberEl = new AddMember().el;
+        const AddTeamEl = new AddTeam().el;
         const FindTeamEl = new FindTeam().el;
         const FindMemberEl = new FindMember().el;
         const IdentityEl = new Identity().el;
@@ -26,7 +28,7 @@ export default class Home extends Component {
                     1분만에 당신에게 맞는 최적의 조건을 가진 팀을 검색해서 팀을
                     구성해보세요!!
                 </p>
-                <button class="header__modal--button btn btn-primary">정보 등록하기</button>
+                <button class="header__modal--button btn"></button>
                 <div class="modal__container">
                     <div class="modal__wrapper">
                         <div class="modal__header">
@@ -41,14 +43,30 @@ export default class Home extends Component {
 
         this.el.classList.add('home__container');
 
+        const buttonEl = this.el.querySelector('.header__modal--button');
+
         const modal = this.el.querySelector('.header__modal--button');
         const modalClose = this.el.querySelector('.modal__close');
         const modalContainer = this.el.querySelector('.modal__container');
         const modalContent = this.el.querySelector('.modal__content');
+        const modalWrapper = this.el.querySelector('.modal__wrapper');
+
+        if (Store.state.member) {
+            buttonEl.classList.add('btn-secondary');
+            buttonEl.textContent = 'FIND TEAM';
+        } else {
+            buttonEl.classList.add('btn-primary');
+            buttonEl.textContent = 'FIND MEMBER';
+            modalWrapper.classList.add('team');
+        }
 
         modal.addEventListener('click', () => {
             modalContainer.classList.add('modal__active');
-            modalContent.append(AddMemberEl);
+            if (Store.state.member) {
+                modalContent.append(AddMemberEl);
+            } else {
+                modalContent.append(AddTeamEl);
+            }
         });
 
         modalClose.addEventListener('click', () => {

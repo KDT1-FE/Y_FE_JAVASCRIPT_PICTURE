@@ -8,15 +8,22 @@ export default class FindTeam extends Component {
             this.render();
         });
     }
+
     render() {
         if (Store.state.member) {
             this.el.innerHTML = /*html*/ `
             <div>
                 <h1>팀원찾기</h1>
+                <button id="getDocRef">getDocRef</button>
             </div>
             `;
         } else {
             this.el.innerHTML = /*html*/ ``;
         }
+
+        const getDocRefButton = this.el.querySelector('#getDocRef');
+        getDocRefButton.addEventListener('click', () => {
+            getDocRef();
+        });
     }
 }

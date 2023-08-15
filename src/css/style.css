@@ -83,7 +83,8 @@ label {
     padding: 1rem 1.8rem;
     gap: 0.7rem;
 
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-family: 'Black Han Sans', sans-serif;
 
     border-radius: 5rem;
     border: none;
@@ -101,7 +102,8 @@ label {
     padding: 1rem 1.8rem;
     gap: 0.7rem;
 
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-family: 'Black Han Sans', sans-serif;
 
     border-radius: 5rem;
     border: none;

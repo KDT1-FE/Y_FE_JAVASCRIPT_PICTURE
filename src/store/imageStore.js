@@ -1,4 +1,6 @@
 import { Store } from '../core/index.js';
+import db from '../core/Firebase';
+import { doc, getDoc, getDocs, collection } from 'firebase/firestore';
 
 //image store
 const store = new Store({
@@ -13,3 +15,8 @@ const store = new Store({
 });
 
 export default store;
+
+export const getMembersAll = async () => {
+    const querySnapshot = await getDocs(collection(db, 'member'));
+    querySnapshot.forEach((doc) => {});
+};
