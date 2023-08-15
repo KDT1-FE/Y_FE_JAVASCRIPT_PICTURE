@@ -1,8 +1,8 @@
 import { Component } from "../core";
 import { TheTitle } from "../components/commons/TheTitle";
-import { DetailContents } from "../components/detail/DetailContents";
+import { ImageEditor } from "../components/editor/ImageEditor";
 
-export default class DetailContent extends Component {
+export default class TUIEditor extends Component {
   constructor() {
     super({
       tagName: "main",
@@ -16,12 +16,11 @@ export default class DetailContent extends Component {
     container.append(
       new TheTitle({
         props: {
-          titleTxt: "직원 상세 정보 페이지",
+          titleTxt: "직원 관리 페이지",
           descTxt: "직원의 정보 및 사진을 관리하는 페이지 입니다.",
         },
       }).el,
     );
-
-    container.append(new DetailContents().el);
+    container.append(new ImageEditor().el);
   }
 }

@@ -7,8 +7,8 @@ export class TheHeader extends Component {
     });
   }
   render() {
-    this.el.className = "header py-4";
-    this.el.id = "header";
+    this.el.className = "ems-header py-4";
+    this.el.id = "ems-header";
     this.el.innerHTML = /* html */ `
       <div class="container mx-auto px-4">
         <h1 class="text-md">EMS(Employees Management System) JS</h1>

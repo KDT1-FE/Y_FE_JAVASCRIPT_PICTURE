@@ -18,7 +18,11 @@ export class HomeMemberItem extends Component {
       </div>
       <div class="col-span-2 md:col-span-3 aspect-square">
         <a href=/#/detail?id=${member.id}>
-          <img src=${member.fileUrl} alt=${member.fileName} />
+          <img src=${
+            member.fileUrl !== ""
+              ? member.fileUrl
+              : "./public/blank-profile.png"
+          } alt=${member.fileName} />
         </a>
       </div>
       <div class="col-span-2 md:col-span-2">

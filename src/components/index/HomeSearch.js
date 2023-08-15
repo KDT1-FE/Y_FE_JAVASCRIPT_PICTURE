@@ -116,12 +116,11 @@ export class HomeSearch extends Component {
       // lastKey 가 없으면 로드할것이 없다는 뜻이므로 더이상 로드 하지 않는다.
       if (memberStore.state.lastScrollKey === "") return;
       await getSearchedMember(searchOptions, memberStore.state.lastScrollKey);
-      console.log("observe!");
     });
 
     // 다른 페이지로 이동하면 observe를 중지합니다.
     window.addEventListener("popstate", () => {
-      io.unobserve(document.querySelector(".footer"));
+      io.unobserve(document.querySelector(".ems-footer"));
     });
 
     searchForm.addEventListener("submit", async (e) => {
@@ -153,6 +152,6 @@ export class HomeSearch extends Component {
     });
     searchForm.dispatchEvent(new Event("submit"));
     // 맨 마지막 요소를 주시하고 있는다.
-    io.observe(document.querySelector(".footer"));
+    io.observe(document.querySelector(".ems-footer"));
   }
 }

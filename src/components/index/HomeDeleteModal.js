@@ -9,7 +9,7 @@ export class HomeDeleteModal extends Component {
   }
   render() {
     this.el.className =
-      "container mx-auto h-screen max-w-3xl md:h-[96vh] md:rounded-xl";
+      "container mx-auto h-screen max-w-3xl md:h-[230px] md:rounded-xl";
     this.el.id = "delUserModal";
     this.el.innerHTML = /* html */ `
       <div class="h-full w-full px-4">
@@ -42,6 +42,7 @@ export class HomeDeleteModal extends Component {
     const modal = this.el;
     const closeBtn = modal.querySelector(".dialog-close");
     const form = modal.querySelector("form");
+    form.method = "dialog";
 
     modal.addEventListener("click", (e) => {
       if (e.target === e.currentTarget) modal.close();
@@ -49,14 +50,18 @@ export class HomeDeleteModal extends Component {
     closeBtn.addEventListener("click", () => {
       modal.close();
     });
+    form.addEventListener("reset", () => {
+      modal.close();
+    });
     form.addEventListener("submit", async () => {
       const deleteIds = Array.from(memberStore.state.deleteIds);
-      console.log(deleteIds);
       const deletePromise = deleteIds.map((deleteId) =>
         deleteDoc(doc(db, "Members", deleteId)),
       );
-      Promise.all(deletePromise).then((values) => {
-        // console.log(values);
+      // 모든 삭제가 완료되면 다시 목록을 불러옵니다.
+      Promise.all(deletePromise).then(() => {
+        const searchForm = document.getElementById("searchForm");
+        searchForm.dispatchEvent(new Event("submit"));
       });
     });
   }

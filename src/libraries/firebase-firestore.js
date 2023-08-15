@@ -25,75 +25,10 @@ export async function addMember(member) {
   });
   return docRef.id;
 }
-export async function getMemberList(key) {
-  let lastKey = "";
-  const limits = 4;
-  const q =
-    key === undefined
-      ? query(collection(db, "Members"), orderBy("createdAt"), limit(limits))
-      : query(
-          collection(db, "Members"),
-          orderBy("createdAt"),
-          startAfter(key),
-          limit(limits),
-        );
-  try {
-    const querySn = await getDocs(q);
-    const data = querySn.docs;
-    const memberArr = [];
-    data.forEach((doc) => {
-      memberArr.push({
-        id: doc.id,
-        fullName: doc.data().fullName,
-        gender: doc.data().gender,
-        email: doc.data().email,
-        phone: doc.data().phone,
-        category: doc.data().category,
-        fileUrl: doc.data().fileUrl,
-        fileName: doc.data().fileName,
-      });
-      lastKey = doc.data().createdAt;
-    });
-    store.state.members = [...store.state.members, ...memberArr];
-    store.state.lastScrollKey = lastKey;
-    // return { memberArr, lastKey };
-  } catch (error) {
-    if (error instanceof Error) console.error(error.message);
-    store.state.members = [
-      {
-        id: "",
-        fullName: "",
-        gender: "",
-        email: "",
-        phone: "",
-        category: "",
-        fileUrl: "",
-        fileName: "",
-      },
-    ];
-    store.state.lastScrollKey = "";
-    // return {
-    //   memberArr: [
-    //     {
-    //       id: "",
-    //       fullName: "",
-    //       gender: "",
-    //       email: "",
-    //       phone: "",
-    //       category: "",
-    //       fileUrl: "",
-    //       fileName: "",
-    //     },
-    //   ],
-    //   lastKey: "",
-    // };
-  }
-}
-
 export async function getSearchedMember(options, key, init = false) {
   let lastKey = "";
   const limits = 4;
-
+  store.state.loading = true;
   if (init) {
     store.state.members = [];
     store.state.lastScrollKey = null;
@@ -145,7 +80,6 @@ export async function getSearchedMember(options, key, init = false) {
     });
     store.state.members = [...store.state.members, ...memberArr];
     store.state.lastScrollKey = lastKey;
-    // return { memberArr, lastKey };
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
 
@@ -162,11 +96,14 @@ export async function getSearchedMember(options, key, init = false) {
       },
     ];
     store.state.lastScrollKey = "";
+  } finally {
+    store.state.loading = false;
   }
 }
 
 export async function getMember(id) {
   let data = {};
+  store.state.loading = true;
   try {
     const docSn = await getDoc(doc(db, "Members", id));
     if (docSn.exists()) {
@@ -182,10 +119,10 @@ export async function getMember(id) {
       );
       data.id = docSn.id;
     }
-    return data;
+    store.state.memberDetail = data;
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
-    return {
+    store.state.memberDetail = {
       id: "",
       fullName: "",
       gender: "",
@@ -195,5 +132,7 @@ export async function getMember(id) {
       fileUrl: "",
       fileName: "",
     };
+  } finally {
+    store.state.loading = false;
   }
 }

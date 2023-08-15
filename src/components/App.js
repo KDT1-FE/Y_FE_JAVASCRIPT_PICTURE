@@ -4,8 +4,8 @@ import { TheFooter } from "../components/commons/TheFooter";
 
 export default class App extends Component {
   render() {
+    this.el.className = "App";
     const routerView = document.createElement("router-view");
-    this.el.append(new TheHeader().el, routerView);
-    this.el.append(new TheFooter().el);
+    this.el.append(new TheHeader().el, routerView, new TheFooter().el);
   }
 }

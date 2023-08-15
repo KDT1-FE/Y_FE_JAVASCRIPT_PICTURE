@@ -35,3 +35,31 @@
 .drop-zone--enter {
   background-color: #f3f3f3;
 }
+#img-thumb {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.the-loader {
+  --width: 30px;
+  width: var(--width);
+  height: var(--width);
+  margin: var(--width) auto;
+  border: 4px solid #2563eb;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: loaderAni 1s infinite ease-in-out;
+}
+.the-loader.hide {
+  display: none;
+}
+@keyframes loaderAni {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
