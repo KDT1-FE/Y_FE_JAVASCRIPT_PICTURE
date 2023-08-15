@@ -56,7 +56,7 @@ let email = document.getElementById('employee-email');
 let phone = document.getElementById('employee-phone');
 let grade = document.getElementById('employee-grade');
 let photo = document.getElementById('employee-img');
-let uid, urlCheck, storageURL, previewCheck;
+let uid, urlCheck, storageURL;
 
 // 파라미터값 가져오기
 const urlParams = new URL(location.href).searchParams;
@@ -87,19 +87,22 @@ function addPreview(target) {
     preview.style.backgroundImage = `url(${target}`;
     imgCont.removeChild(label);
     imgCont.prepend(preview);
-    previewCheck = true;
   }
   //clearEvent 함수 실행 (이벤트 핸들러 장착)
   clearEvent();
 }
 
 // 이미지 업로드 시 미리보기
-photo.addEventListener('change', (e) => {
+function photoChange(e) {
   const reader = new FileReader();
   reader.onload = ({ target }) => {
     addPreview(target.result);
   };
-  reader.readAsDataURL(photo.files[0]);
+  reader.readAsDataURL(e.target.files[0]);
+}
+
+photo.addEventListener('change', (e) => {
+  photoChange(e);
 });
 
 // 저장된 데이터 input value로 반환 함수
@@ -149,7 +152,7 @@ async function addEmployeePhoto(photoURL, photoVal) {
         return (storageURL = url);
       })
       .catch((error) => {
-        reportError(error);
+        console.log(error.message);
       });
   }
 }
@@ -187,7 +190,14 @@ async function addEmployeePhotoUrl(userRef, photoVal, storageURL, photoURL) {
     if (!storageURL) await setDoc(userRef, { imgUrl: storageURL });
     else await updateDoc(userRef, { imgUrl: storageURL });
   } else {
-    if (!storageURL && !previewCheck) {
+    const q = query(collection(db, 'employee'), where('uid', '==', checkUid));
+    const imgDoc = await getDocs(q);
+    let img;
+    imgDoc.forEach((doc) => {
+      const employee = doc.data();
+      return (img = employee.imgUrl);
+    });
+    if (img && !storageURL) {
       await updateDoc(userRef, { imgUrl: deleteField() });
       await deleteObject(photoURL);
     }
@@ -221,17 +231,13 @@ saveButton.addEventListener('click', async () => {
 
   inputCheck(name, email, phone, grade)
     .then(async (checkResult) => {
-      try {
-        await addEmployeePhoto(photoURL, photoVal);
-        await addEmployeeInfo(userRef, uid);
-        await addEmployeePhotoUrl(userRef, photoVal, storageURL, photoURL);
-        urlParameter(uid);
-      } catch (error) {
-        reportError(error);
-      }
+      await addEmployeePhoto(photoURL, photoVal);
+      await addEmployeeInfo(userRef, uid);
+      await addEmployeePhotoUrl(userRef, photoVal, storageURL, photoURL);
+      urlParameter(uid);
     })
     .catch((error) => {
-      alert(error);
+      console.log(error.message);
     });
 
   //      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -249,11 +255,18 @@ function clearEvent() {
     const label = document.createElement('label');
     label.setAttribute('for', 'employee-img');
     label.classList.add('img-label');
-    label.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon" viewBox="0 0 24 24"><path d="M12.65 11.35V4.929a.65.65 0 1 0-1.3 0v6.421H4.929a.65.65 0 1 0 0 1.3h6.421v6.421a.65.65 0 0 0 1.3 0V12.65h6.421a.65.65 0 1 0 0-1.3z" style="fill: var(--color-gray900);"></path></svg>
-      <input type="file" id="employee-img" name="img"/>
-    `;
+    label.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon" viewBox="0 0 24 24"><path d="M12.65 11.35V4.929a.65.65 0 1 0-1.3 0v6.421H4.929a.65.65 0 1 0 0 1.3h6.421v6.421a.65.65 0 0 0 1.3 0V12.65h6.421a.65.65 0 1 0 0-1.3z" style="fill: var(--color-gray900);"></path></svg>`;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.id = 'employee-img';
+    input.name = 'img';
+    input.accept = '.gif, .jpg, .jpeg, .png, .bmp, .ico, .apng, .svg';
+    input.addEventListener('change', (e) => {
+      photoChange(e);
+      photo = e.target;
+    });
+    label.appendChild(input);
+
     imgCont.prepend(label);
-    previewCheck = false;
   });
 }
