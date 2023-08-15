@@ -10,6 +10,7 @@ searchBtn.addEventListener("click", () => {
   const name = inputUser.value;
   console.log(name);
   findUser(name);
+  inputUser.value = "";
 });
 
 async function findUser(name) {

@@ -4,35 +4,80 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 10px;
     z-index: 10000;
     background-color: $bg-gray-50;
+
+    @include respond-to(md) {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
 
     .header__nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 1rem;
+      width: 100%;
 
-      .header__home-btn {
-        border: none;
-        background-color: transparent;
-        padding: 1rem;
+      .header__btn-container {
+        display: flex;
 
-        i {
-          color: $bg-gray-900;
-          font-size: 1rem;
-        }
-      }
-
-      .header__btn-add-user {
-        i {
-          font-size: 1.2rem;
-          padding: 1rem;
+        .header__home-btn {
+          border: none;
+          background-color: transparent;
+          width: 50px;
+          height: 50px;
+          padding: 10px;
+          border-radius: 10px;
+          margin-right: 1rem;
           cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            width: 160px;
+            background-color: map-get($map: $theme-colors, $key: bg-primary);
+          }
+
+          &:hover::after {
+            content: "Go Home";
+            white-space: nowrap;
+            margin-left: 1rem;
+            font-size: 1rem;
+          }
+
+          i {
+            font-size: 1rem;
+          }
+        }
+
+        .header__btn-add-user {
+          width: 50px;
+          height: 50px;
+          padding: 10px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            width: 160px;
+            background-color: map-get($map: $theme-colors, $key: bg-primary);
+          }
+
+          &:hover::after {
+            content: "Create User";
+            white-space: nowrap;
+            margin-left: 1rem;
+          }
+
+          i {
+            font-size: 1.2rem;
+          }
         }
       }
 
       .header__search-user {
+        margin: 1rem;
         position: relative;
         width: 200px;
         cursor: pointer;
