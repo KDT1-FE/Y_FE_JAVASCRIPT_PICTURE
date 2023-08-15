@@ -1,6 +1,7 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { uploadImageToStorage } from "./uploadImage";
+import { handleChangeData } from "./displayUserList";
 
 const userListContainer = document.querySelector(".user__list");
 let userId;
@@ -53,6 +54,7 @@ async function handleEditSubmit(e) {
   const userRef = doc(db, "users", userId);
   try {
     updateDoc(userRef, updatedData);
+    handleChangeData();
     editForm.classList.add("hidden");
     console.log("success");
   } catch (err) {

@@ -9,11 +9,10 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
-const USER_FETCH_SIZE = 8;
+let userLength = 8;
 let lastVisible;
-let allUsers = [];
 const userRef = collection(db, "users");
-const userQuery = query(userRef, orderBy("name"), limit(USER_FETCH_SIZE));
+const userQuery = query(userRef, orderBy("name"), limit(userLength));
 
 const userListContainer = document.querySelector(".user__list");
 const homeBtn = document.querySelector(".header__home-btn");
@@ -49,6 +48,7 @@ export function appendUsers(docs) {
   });
 }
 
+// 옵저버 생성
 const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -57,6 +57,7 @@ const observer = new IntersectionObserver((entries, obs) => {
   });
 });
 
+// 첫 8개 리스트 받아오기 및 변경 시 실행
 export async function initialFetch() {
   const first = await getDocs(userQuery);
   appendUsers(first);
@@ -65,33 +66,49 @@ export async function initialFetch() {
   observer.observe(scrollEnd);
 }
 
+// 다음 8개 리스트 받아오기
 async function nextFetch() {
+  // console.log("lastVisible", lastVisible);
   const nextQuery = query(
     userRef,
     orderBy("name"),
     startAfter(lastVisible),
-    limit(USER_FETCH_SIZE)
+    limit(userLength)
   );
 
   const next = await getDocs(nextQuery);
   lastVisible = next.docs[next.docs.length - 1];
 
   if (!lastVisible) {
+    console.log("No more users");
     observer.unobserve(scrollEnd);
+    return;
   } else {
+    // console.log("lastVisible2", lastVisible);
     appendUsers(next);
+    userLength += next.docs.length;
   }
 }
 
-const unsub = onSnapshot(userRef, (snapshot) => {
-  snapshot.forEach((doc) => {
-    console.log(doc.data());
-  });
-});
+// 데이터 바뀔 때마다 실행
+export function handleChangeData() {
+  const revisedQuery = query(userRef, orderBy("name"), limit(userLength));
+  console.log(userLength);
 
+  const unsub = onSnapshot(revisedQuery, (snapshot) => {
+    snapshot.forEach((doc) => console.log(doc.data()));
+    console.log("onSnapshot");
+    userListContainer.innerHTML = "";
+    appendUsers(snapshot);
+  });
+}
+
+// 홈 버튼 눌렀을 때 첫 화면으로
 homeBtn.addEventListener("click", () => {
   userListContainer.innerHTML = "";
   initialFetch();
 });
 
+// 시작
 initialFetch();
+handleChangeData();

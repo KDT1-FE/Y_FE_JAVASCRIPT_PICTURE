@@ -13,7 +13,7 @@ userListContainer.addEventListener("click", (e) => {
     deleteBtn.addEventListener("click", () => deleteUser(userId));
   }
 });
-
+// 왜 이건 onSnapshot이 바로 실행되지?
 async function deleteUser(userId) {
   await deleteDoc(doc(db, "users", userId));
 }
