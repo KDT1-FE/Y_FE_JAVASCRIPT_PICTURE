@@ -75,6 +75,7 @@ const image = getQueryParam('image');
 const name = getQueryParam('name');
 const group = getQueryParam('group');
 
+
 async function changeInfo() {
   // firestorage
   const newimage = imageInput.files[0];
@@ -114,7 +115,14 @@ groupcontainer.innerHTML = group;
 
 deletemodal.addEventListener('click',modalOff);
 
-infochange.addEventListener('click',modalOn);
+infochange.addEventListener('click',()=>{
+  if(id==="example"){
+    cantchange();
+  }
+  else{
+    modalOn();
+  }
+})
 
 insertmodal.addEventListener('click', changeInfo);
 
@@ -142,6 +150,16 @@ function storageError(){
   Swal.fire({
     title: '삭제 오류',
     text: "삭제하는 과정에서 오류가 발생했습니다.",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+  })
+}
+
+function cantchange(){
+  Swal.fire({
+    title: '수정 불가',
+    text: "기본 프로필은 수정 불가합니다.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',
