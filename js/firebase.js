@@ -312,6 +312,11 @@ list.addEventListener('click', event => {
     }
   } else {
     cantprofile();
+    allcheckbox.checked=false;
+    const checkboxes = document.querySelectorAll('.che');
+    checkboxes.forEach(cheElement => {
+      cheElement.checked = false;
+  });
   }
 });
 

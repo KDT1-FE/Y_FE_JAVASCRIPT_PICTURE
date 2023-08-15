@@ -4,6 +4,7 @@
   width: 100%;
   height: auto;
   border-top: 3px solid black;
+  cursor: pointer;
 }
 
 .itemhead {
@@ -22,6 +23,7 @@
   justify-content: space-around;
   align-items: center;
   font-size: 1.2rem;
+  cursor: pointer;
   border-bottom: .5px solid #E2E2E2;
 }
 
@@ -29,16 +31,16 @@
   width: 20%;
 }
 
-.item .checkbox .che {
+.defaultcheckbox {
+  cursor: pointer;
+}
+
+.che {
   cursor: pointer;
 }
 
 .item .noncheckbox {
   width: 20%;
-}
-
-.defaultcheckbox {
-  cursor: pointer;
 }
 
 .item .image {
@@ -48,12 +50,10 @@
 img {
   width: 150px;
   height: 150px;
-  cursor: pointer;
 }
 
 .item .name,
 .item .group {
   width: 20%;
-  cursor: default;
 }
 
