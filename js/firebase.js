@@ -42,9 +42,7 @@ async function uploadInfo() {
       const storageRef = ref(storage, 'images/' + image.name);
       const uploadTask = uploadBytes(storageRef, image);
       await uploadTask;
-
       const downloadURL = await getDownloadURL(storageRef);
-
       const imagesCollection = collection(db, 'images');
       await addDoc(imagesCollection, {
         id: id,
@@ -59,7 +57,6 @@ async function uploadInfo() {
       newprofiles(id, downloadURL, name, group);
       location.reload();
 
-      
       // console.log(downloadURL, name, group);
       // const imageContainer = document.getElementById('list');
       // imageContainer.innerHTML = '';

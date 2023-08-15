@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getFirestore, getDocs, updateDoc, collection, doc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 const headertitle = document.querySelector('.headertitle');
 const infochange = document.querySelector('.infochange');
 const deletemodal = document.getElementById('modaldelete');
@@ -70,53 +70,118 @@ function getQueryParam(name) {
   return urlSearchParams.get(name);
 }
 
-const id = getQueryParam('id');
-const image = getQueryParam('image');
-const name = getQueryParam('name');
-const group = getQueryParam('group');
+const queryid = getQueryParam('id');
+const queryimage = getQueryParam('image');
+const queryname = getQueryParam('name');
+const querygroup = getQueryParam('group');
 
+async function updateItemFields(matchingid, newGroup, newName, newImageUrl) {
+  const localstorageData = localStorage.getItem('profile');
+  const profiledata = JSON.parse(localstorageData);
+  const localstorageid = profiledata.map(profile => profile.id);
 
-async function changeInfo() {
-  // firestorage
-  const newimage = imageInput.files[0];
-  const newimagesrc = imageInput.files[0].name;
-  const newname = nameInput.value;
-  const newgroup = groupInput.value;
+  if (localstorageid.includes(matchingid)) {
+    const querySnapshot = await getDocs(collection(db, 'images'));
+    querySnapshot.forEach(async (docs) => {
+      const docData = docs.data();
+      if (docData.id === matchingid) {
+        const docRef = doc(db, 'images', docs.id);
+        const updatedData = {
+        id: matchingid,
+        group: newGroup,
+        name: newName,
+        imageUrl: newImageUrl
+      };
 
-  // localstorage
-  const storedProfiles = localStorage.getItem('profile');
-  if (storedProfiles) {
-    let profiles = JSON.parse(storedProfiles);
-
-    profiles.forEach(profile => {
-      if (profile.id === id) {
-        profile.name = newname;
-        profile.group = newgroup;
-        profile.image = newimage;
-      }
-    });
-        
-    imagecontainer.src = newimagesrc;
-    namecontainer.innerHTML = newname;
-    groupcontainer.innerHTML = newgroup;
-
-    localStorage.setItem('profile', JSON.stringify(profiles));
-  } else {
-    console.log('저장된 프로필이 없습니다.');
+    await updateDoc(docRef, updatedData);
+    console.log('Document successfully updated in Firestore:');
   }
+});
 
-  modalOff(); 
+  }
+}
+async function deleteMatchingImageFromFirestorage(matchingImage) {
+  const storage = getStorage();
+  const storageRef = ref(storage, 'images');
+  const listResult = await listAll(storageRef);
+
+  for (const item of listResult.items) {
+    const downloadURL = await getDownloadURL(item);
+
+    if (downloadURL === matchingImage) {
+      const existingFileRef = ref(storage, 'images/' + item.name);
+      await deleteObject(existingFileRef);
+      console.log('Image successfully deleted from Firestorage:', downloadURL);
+      break;
+    }
+  }
 }
 
 
-imagecontainer.src = image;
-namecontainer.innerHTML = name;
-groupcontainer.innerHTML = group;
+async function changeInfo() {
+  const image = imageInput.files[0];
+
+  // Firestorage
+  const localstorageData = localStorage.getItem('profile');
+  const profiledata = JSON.parse(localstorageData);
+
+  const localstorageid = profiledata.map(profile => profile.id);
+  const numericId = parseInt(queryid, 10);
+
+  if (localstorageid.includes(numericId)) {
+    const matchingProfile = profiledata.find(profile => profile.id === numericId);
+
+    if (matchingProfile) {
+      const storage = getStorage();
+
+      // Firestorage 내의 기존 이미지 삭제
+      const matchingImage = matchingProfile.image;
+      const matchingId = matchingProfile.id;
+      await deleteMatchingImageFromFirestorage(matchingImage);
+
+      // 새로운 이미지 Firestorage에 업로드
+      const newStorageRef = ref(storage, 'images/' + image.name);
+      const uploadTask = uploadBytes(newStorageRef, image);
+      await uploadTask;
+      const newDownloadURL = await getDownloadURL(newStorageRef);
+
+      // 로컬 스토리지 데이터 업데이트
+      matchingProfile.image = newDownloadURL;
+      matchingProfile.name = nameInput.value;
+      matchingProfile.group = groupInput.value;
+      localStorage.setItem('profile', JSON.stringify(profiledata));
+
+      // Firestore 데이터 업데이트
+      await updateItemFields(matchingId, groupInput.value, nameInput.value, newDownloadURL);
+
+      // URL 파라미터 업데이트
+      const queryParams = new URLSearchParams({
+        id: queryid,
+        image: newDownloadURL,
+        name: nameInput.value,
+        group: groupInput.value
+      });
+      setTimeout(() => {
+        const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+        window.history.pushState(null, '', newUrl);
+        location.reload();
+      }, 1500);
+    }
+  }
+
+  modalOff();
+}
+
+
+
+imagecontainer.src = queryimage;
+namecontainer.innerHTML = queryname;
+groupcontainer.innerHTML = querygroup;
 
 deletemodal.addEventListener('click',modalOff);
 
 infochange.addEventListener('click',()=>{
-  if(id==="example"){
+  if(queryid==="example"){
     cantchange();
   }
   else{
