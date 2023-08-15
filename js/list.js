@@ -13,9 +13,9 @@ import { phoneType } from "./util";
 // 고객 목록 DOM에 추가해주는 함수
 const inquireListFunc = (querySnapshotArray) => {
   querySnapshotArray.forEach((doc) => {
-    const BoxTag = document.createElement("a");
-    BoxTag.href = `detail.html?id=${doc.id}`;
-    BoxTag.className = `list-box`;
+    const boxTag = document.createElement("a");
+    boxTag.href = `detail.html?id=${doc.id}`;
+    boxTag.className = `list-box`;
 
     const checkTag = document.createElement("input");
     checkTag.type = "checkbox";
@@ -45,15 +45,15 @@ const inquireListFunc = (querySnapshotArray) => {
     customerPhone.className = "customer-phone";
     customerPhone.innerText = phoneType(doc.data().phone);
 
-    BoxTag.appendChild(checkTag);
-    BoxTag.appendChild(avatarBox);
-    BoxTag.appendChild(customerGrade);
-    BoxTag.appendChild(customerName);
-    BoxTag.appendChild(customerEmail);
-    BoxTag.appendChild(customerPhone);
+    boxTag.appendChild(checkTag);
+    boxTag.appendChild(avatarBox);
+    boxTag.appendChild(customerGrade);
+    boxTag.appendChild(customerName);
+    boxTag.appendChild(customerEmail);
+    boxTag.appendChild(customerPhone);
 
     const listContainer = document.querySelector(".list-container");
-    listContainer.appendChild(BoxTag);
+    listContainer.appendChild(boxTag);
   });
 };
 
