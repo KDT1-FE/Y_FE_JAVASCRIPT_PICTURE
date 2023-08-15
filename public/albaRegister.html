@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="./css/loading.css" />
     <link rel="stylesheet" href="./css/albaRegister.css" />
     <title>우리 알바 - 알바생 등록 페이지</title>
-    <!--  버전 호환 문제로 해당 스크립트는 사용하지 않을 예정!
+    <!--  버전 호환 문제로 해당 스크립트는 일단 사용하지 않을 예정!
     <script  src="/__/firebase/10.1.0/firebase-app.js"></script>
     <script  src="/__/firebase/10.1.0/firebase-database.js"></script>
     <script  src="/__/firebase/10.1.0/firebase-storage.js"></script>
-    <script  src="/__/firebase/10.1.0/firebase-firestore.js"></script> 
-          버전 호환 문제로 해당 스크립트는 사용하지 않을 예정!-->
+    <script  src="/__/firebase/10.1.0/firebase-firestore.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
@@ -79,7 +78,6 @@
         </form>
       </div>
     </section>
-    <script src="./js/albaRegister.js"></script>
     <!-- jQuery CDN 추가 -->
     <script
       src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -87,74 +85,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Firebase SDK  -->
-    <script>
-      // Firebase SDK
-      const firebaseConfig = {
-        apiKey: 'AIzaSyCUfBccVzvG5Eh25qNxqpuerxn2NXotpxo',
-        authDomain: 'we-alba-b3313.firebaseapp.com',
-        projectId: 'we-alba-b3313',
-        storageBucket: 'we-alba-b3313.appspot.com',
-        messagingSenderId: '495601569025',
-        appId: '1:495601569025:web:a2ad855c6c90f52eed9f00',
-      };
-
-      // Firebase 초기화
-      firebase.initializeApp(firebaseConfig);
-
-      const db = firebase.firestore();
-      const storage = firebase.storage();
-
-      $('#sendButton').click(function () {
-        // 이미지 업로드 기능
-        var file = document.querySelector('#photoInput').files[0];
-        var storageRef = storage.ref();
-        var 저장할경로 = storageRef.child('image/' + file.name);
-        var 업로드작업 = 저장할경로.put(file);
-
-        업로드작업.on(
-          'state_changed',
-          // 변화시 동작하는 함수
-          null,
-          //에러시 동작하는 함수
-          (error) => {
-            console.error('실패사유: ', error);
-          },
-          // 성공시 동작하는 함수
-          () => {
-            업로드작업.snapshot.ref.getDownloadURL().then((url) => {
-              console.log('업로드된 경로는', url);
-
-              // 인적사항 업로드 기능
-              var albaInfo = {
-                이름: $('#name').val(),
-                연락처: $('#phone').val(),
-                직급: $('#position').val(),
-                근무시간: $('#workingHours').val(),
-                등록날짜: new Date(),
-                이미지: url,
-              };
-
-              // 유효성 검사 코드
-              if (albaInfo.이름 === '' || albaInfo.연락처 === '' || albaInfo.직급 === '' || albaInfo.근무시간 === '') {
-                alert('빈 값이 있습니다.');
-                return;
-              }
-
-              db.collection('albainfo')
-                .add(albaInfo)
-                .then((result) => {
-                  alert('등록성공!');
-                  // window.location.href = '/albaSelect.html';
-                  console.log(result);
-                })
-                .catch((err) => {
-                  alert('등록실패!');
-                  console.log(err);
-                });
-            });
-          }
-        );
-      });
-    </script>
+    <script src="./js/albaRegister.js"></script>
   </body>
 </html>
