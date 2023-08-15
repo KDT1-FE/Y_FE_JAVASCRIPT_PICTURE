@@ -5,8 +5,7 @@ import { getMemberDetail, memberStore } from '../store/memberStore';
 
 export default class Detail extends Component {
   async render() {
-    const id = getUrlParam('id');
-    await getMemberDetail(id);
+    await getMemberDetail(getUrlParam('id')); // 현재 url의 아이디를 가지고 member의 상세 데이터를 받아옴
     const member = memberStore.state.member;
     this.el.innerHTML = `
   <main class="detail">
