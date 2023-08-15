@@ -17,19 +17,22 @@ const gradeInput = document.getElementById("gradeInput");
 window.onload = async () => {
   // 고객 정보 조회
   const docRef = doc(db, "customers", coustomerId);
-  const docSnap = await getDoc(docRef);
-  // 값이 존재하면 고객 정보 표시
-  if (docSnap.exists()) {
-    avatarImg.src = docSnap.data().avatar;
-    imgTextInput.value = docSnap.data().avatar;
-    nameInput.value = docSnap.data().name;
-    emailInput.value = docSnap.data().email;
-    phoneInput.value = docSnap.data().phone;
-    gradeInput.value = docSnap.data().grade;
-  } else {
-    alert("존재하지 않는 사용자입니다.");
-    location.href = "/";
-  }
+  await getDoc(docRef).then((docSnap) => {
+    document.querySelectorAll(".skeleton").forEach((skeleton) => {
+      skeleton.classList.remove("skeleton");
+    }); // 값이 존재하면 고객 정보 표시
+    if (docSnap.exists()) {
+      avatarImg.src = docSnap.data().avatar;
+      imgTextInput.value = docSnap.data().avatar;
+      nameInput.value = docSnap.data().name;
+      emailInput.value = docSnap.data().email;
+      phoneInput.value = docSnap.data().phone;
+      gradeInput.value = docSnap.data().grade;
+    } else {
+      alert("존재하지 않는 사용자입니다.");
+      location.href = "/";
+    }
+  });
 };
 
 const imgRemoveBtn = document.querySelector(".img-remove-btn");

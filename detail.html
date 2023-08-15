@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/regist.css" />
+    <link rel="stylesheet" href="./styles/skeleton.css" />
   </head>
   <body>
     <header class="header-container">
@@ -22,8 +23,8 @@
       </div>
       <form class="regist-form">
         <div class="input-box">
-          <label class="regist-label">프로필 이미지</label>
-          <div id="avatarBox">
+          <label class="regist-label skeleton">프로필 이미지</label>
+          <div id="avatarBox" class="skeleton">
             <input
               type="file"
               id="profilePic"
@@ -41,35 +42,32 @@
           <input
             id="imgTextInput"
             class="regist-text-input modify-input hidden"
-            placeholder="이름"
           />
-          <label class="regist-label">이름</label>
+          <label class="regist-label skeleton">이름</label>
           <input
             id="nameInput"
-            class="regist-text-input modify-input"
-            placeholder="이름"
+            class="regist-text-input modify-input skeleton"
             disabled
           />
-          <label class="regist-label">이메일</label>
+          <label class="regist-label skeleton">이메일</label>
           <input
             id="emailInput"
             type="email"
-            class="regist-text-input modify-input"
-            placeholder="이메일"
+            class="regist-text-input modify-input skeleton"
             disabled
           />
-          <label class="regist-label">전화번호</label>
+          <label class="regist-label skeleton">전화번호</label>
           <input
             id="phoneInput"
-            class="regist-text-input modify-input"
-            placeholder="전화번호"
+            class="regist-text-input modify-input skeleton"
             disabled
           />
-          <label class="regist-label">구분</label>
+          <label class="regist-label skeleton">구분</label>
           <select
             id="gradeInput"
-            class="regist-text-input modify-input"
+            class="regist-text-input modify-input skeleton"
             disabled
+            skeleton
           >
             <option selected>일반</option>
             <option>VIP</option>
