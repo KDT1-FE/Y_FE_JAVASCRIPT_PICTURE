@@ -1,8 +1,10 @@
 .user {
-  margin-top: 2rem;
   margin-bottom: 4rem;
 
   .user__container {
+    display: flex;
+    flex-direction: column;
+
     .user__list {
       display: grid;
       grid-template-columns: 1fr;

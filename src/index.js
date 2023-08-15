@@ -14,4 +14,6 @@ import "./btnEvents";
 import "./formValidation";
 import "./searchUser";
 
+import "./categories";
+
 console.log("connected");

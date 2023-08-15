@@ -57,7 +57,7 @@ const observer = new IntersectionObserver((entries, obs) => {
   });
 });
 
-async function initialFetch() {
+export async function initialFetch() {
   const first = await getDocs(userQuery);
   appendUsers(first);
   lastVisible = first.docs[first.docs.length - 1];
