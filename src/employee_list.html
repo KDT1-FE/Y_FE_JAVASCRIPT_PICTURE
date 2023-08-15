@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS 솔루션</title>
+    <link rel="stylesheet" href="/css/basic.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+    <div class="wrap">
+        <nav id="nav" class="nav">
+            <div class="nav__wrap">
+                <div class="nav__head">
+                    <h1><a href="/"><img src="asset/logo.png" alt="CMS 솔루션"></a></h1>
+                    <p class="nav__control">
+                        <a href="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--menu" viewBox="0 0 24 24"><g><path d="M20 11.35H5.569L9.116 7.8a.65.65 0 0 0-.916-.916L3.541 11.54a.652.652 0 0 0 0 .92L8.2 17.116a.65.65 0 0 0 .919-.919l-3.55-3.547H20a.65.65 0 0 0 0-1.3" style="fill: var(--color-gray500);"></path><path d="M13 5.65h7a.65.65 0 0 0 0-1.3h-7a.65.65 0 0 0 0 1.3" style="fill: var(--color-gray500);"></path><path d="M20 18.35h-7a.65.65 0 0 0 0 1.3h7a.65.65 0 0 0 0-1.3" style="fill: var(--color-gray500);"></path></g></svg>
+                        </a>
+                    </p>
+                </div>
+                <ul class="nav__inner">
+                    <li class="nav__list">
+                        <a href="" class="nav__dashboard">
+                            <span>대시보드</span>
+                        </a>
+                    </li>
+                    <li class="nav__list nav__list--active">
+                        <a href="" class="nav__employee">
+                            <span>임직원관리</span>
+                        </a>
+                    </li>
+                    <li class="nav__list">
+                        <a href="" class="nav__grade">
+                            <span>등급관리</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="container" class="container">
+            <header id="header" class="header">
+                <ul class="header__wrap">
+                    <li class="header__list">
+                        <div class="header__notice">
+                            <p class="header__alert">17</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--notice" viewBox="0 0 24 24"><g><path d="M19.822 19.106H4.287a1.007 1.007 0 0 1-.977-1.251L4 15.081V10.05a8.05 8.05 0 1 1 16.1 0v5.031l.693 2.774a1.006 1.006 0 0 1-.976 1.251" transform="translate(.02 .012)" style="fill: var(--color-gray400);"></path><path d="M12.019 22.011a3.506 3.506 0 0 0 3.005-1.711H9.013a3.506 3.506 0 0 0 3.006 1.711" transform="translate(.056 .127)" style="fill: var(--color-gray400);"></path></g></svg>
+                        </div>
+                    </li>
+                    <li class="header__list">
+                        <div class="dropdown dropdown--account">
+                            <div class="dropdown__container">
+                                <div class="dropdown__display">
+                                    <span>관리자</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--arrow" viewBox="0 0 24 24"><path d="m12 15 5-6H7z" style="fill: var(--color-gray900);"></path></svg>
+                                </div>
+                                <div class="dropdown__wrap">
+                                    <ul class="dropdown__inner">
+                                        <li class="dropdown__list">
+                                            <a>로그아웃</a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="icon icon--logout" viewBox="0 0 24 24" fill="none">
+                                                <g>
+                                                    <path d="M9.00195 7C9.01406 4.82497 9.11051 3.64706 9.87889 2.87868C10.7576 2 12.1718 2 15.0002 2L16.0002 2C18.8286 2 20.2429 2 21.1215 2.87868C22.0002 3.75736 22.0002 5.17157 22.0002 8L22.0002 16C22.0002 18.8284 22.0002 20.2426 21.1215 21.1213C20.2429 22 18.8286 22 16.0002 22H15.0002C12.1718 22 10.7576 22 9.87889 21.1213C9.11051 20.3529 9.01406 19.175 9.00195 17" stroke="var(--color-gray500)" stroke-width="1.5" stroke-linecap="round"/>
+                                                    <path d="M15 12L2 12M2 12L5.5 9M2 12L5.5 15" stroke="var(--color-gray500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                            </svg>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+            <div class="container__wrap">
+
+                <section class="container__title">
+                    <h2>임직원관리</h2>
+                </section>
+
+                <section class="container__content">
+
+                    <h3 class="container__subtitle">임직원 리스트</h3>
+
+                    <div class="container__head">
+                        <div class="head-inner head-inner--left">
+                            <div class="dropdown dropdown--sort">
+                                <div class="dropdown__container">
+                                    <div class="dropdown__display">
+                                        <span>최신순 정렬</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--arrow" viewBox="0 0 24 24"><path d="m12 15 5-6H7z" style="fill: var(--color-gray900);"></path></svg>
+                                    </div>
+                                    <input type="hidden" value="0">
+                                    <div class="dropdown__wrap">
+                                        <ul class="dropdown__inner">
+                                            <li class="dropdown__list"><a>최신순 정렬</a></li>
+                                            <li class="dropdown__list"><a>이름순 정렬</a></li>
+                                            <li class="dropdown__list"><a>이메일순 정렬</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="search default-input">
+                                <div class="search__container default-input__container">
+                                    <input type="search" placeholder="임직원 이름 or 이메일">
+                                </div>
+                                <button class="button button--lg button--gray800">조회</button>
+                            </div>
+
+                        </div>
+
+                        <div class="head-inner head-inner--right">
+                            <a href="./employee_write.html" class="button button--lg button--blue400">임직원 등록</a>
+                            <a class="button button--lg button--gray200" id="delButton">임직원 삭제</a>
+                        </div>
+                
+                    </div>
+
+                    <div class="container__inner">
+                        <table class="table table--row">
+                            <colgroup>
+                                <col width="3%">
+                                <col width="20%">
+                                <col>
+                                <col>
+                                <col class="phone">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="center">
+                                        <div id="checkbox" class="checkbox">
+                                            <input type="checkbox" id="checkAll">
+                                            <label for="checkAll"><span></span>전체선택</label>
+                                        </div>
+                                    </th>
+                                    <th>프로필 사진</th>
+                                    <th>이름</th>
+                                    <th>이메일</th>
+                                    <th class="phone">휴대폰 번호</th>
+                                    <th>등급</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table__list">
+                                <!-- <tr>
+                                    <td>
+                                        <div id="checkbox" class="checkbox">
+                                            <input type="checkbox" id="" name="">
+                                            <label for=""><span></span>Taron Egerton 선택</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="photo-wrap"><img src="/assets/image/employee_photo.png" alt="Taron Egerton"></div>
+                                    </td>
+                                    <td>
+                                        <a class="link">Taron Egerton</a>
+                                    </td>
+                                    <td>test@test.com</td>
+                                    <td class="phone">010-1234-5678</td>
+                                    <td>VIP</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <button name="start" class="pagination__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--start" viewBox="0 0 24 24"><path d="M12.527 16.71a.649.649 0 0 1-.459-1.109l4.2-4.2-4.2-4.2a.649.649 0 0 1 .918-.919l4.657 4.657a.649.649 0 0 1 0 .919l-4.657 4.662a.643.643 0 0 1-.459.19" transform="rotate(180 12 11.701)" style="fill: var(--color-gray900);"></path><path d="M8.855 16.9a.641.641 0 0 1-.65-.633V6.536a.65.65 0 0 1 1.3 0v9.734a.641.641 0 0 1-.65.633" transform="rotate(180 12 11.701)" style="fill: var(--color-gray900);"></path></svg>
+                            </button>
+                            <button name="previous" class="pagination__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--previous" viewBox="0 0 24 24"><path d="M9.672 17.307a.649.649 0 0 1-.459-1.107l4.2-4.2-4.2-4.2a.649.649 0 0 1 .918-.919l4.657 4.657a.649.649 0 0 1 0 .919l-4.657 4.657a.643.643 0 0 1-.459.19" transform="rotate(180 12 12)" style="fill: var(--color-gray800);"></path></svg>
+                            </button>
+                            <ul class="pagination__inner">
+                                <li class="pagination__list">
+                                    <button class="pagination__item pagination__item--selected" value="1">1</button>
+                                    <button class="pagination__item" value="2">2</button>
+                                </li>
+                            </ul>
+                            <button name="next" class="pagination__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--next" viewBox="0 0 24 24"><path d="M9.672 17.307a.649.649 0 0 1-.459-1.107l4.2-4.2-4.2-4.2a.649.649 0 0 1 .918-.919l4.657 4.657a.649.649 0 0 1 0 .919l-4.657 4.657a.643.643 0 0 1-.459.19" style="fill: var(--color-gray800);"></path></svg>
+                            </button>
+                            <button name="end" class="pagination__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="icon icon--end" viewBox="0 0 24 24"><path d="M12.527 16.71a.649.649 0 0 1-.459-1.109l4.2-4.2-4.2-4.2a.649.649 0 0 1 .918-.919l4.657 4.657a.649.649 0 0 1 0 .919l-4.657 4.662a.643.643 0 0 1-.459.19" transform="translate(0 .598)" style="fill: var(--color-gray900);"></path><path d="M8.855 16.9a.641.641 0 0 1-.65-.633V6.536a.65.65 0 0 1 1.3 0v9.734a.641.641 0 0 1-.65.633" transform="translate(0 .598)" style="fill: var(--color-gray900);"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+
+        <footer id="footer" class="footer">
+            <p class="footer__description">
+                본 CMS 솔루션은 패스트캠퍼스 X 야놀자 프론트엔드 부트캠프 과정 중 비영리 목적의 과제로 제작되었습니다. <br />
+                솔루션의 무단 복제 및 영리 목적의 모든 행위를 금합니다.
+            </p>
+            <p class="footer__copyright">© Copyright <strong>Sina</strong>, 2023~ All Rights Reserved.</p>
+
+        </footer>
+
+    </div>
+
+    <div class="scrolltop">
+        <button class="scrolltop__button">
+            <img src="asset/ic_top_gray.png" alt="맨 위로 가기">
+        </button>
+    </div>
+
+</body>
+</html>
