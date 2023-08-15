@@ -17,6 +17,23 @@
   border-radius: 15px;
   align-items:center;
 }
+.detail-button{
+  background-color: rgb(30,30,30);
+  color:rgb(173, 255, 80);
+  width:3rem;
+  height:1.5rem;
+  border:none;
+  border-radius: 10px;
+  margin:10px;
+  font-size: 12px;
+  transition: background-color 0.35s;
+}
+.detail-button:first-child{
+  margin-left:30px;
+}
+.detail-button:hover{
+  background-color: rgb(173, 255, 80);
+}
 .detail-profile-image{
   width:15rem;
   height:15rem;

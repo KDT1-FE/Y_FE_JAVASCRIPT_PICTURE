@@ -23,5 +23,17 @@
     </div>
   </header>
   <h1>안녕 여긴 플레이그라운드</h1>
+  <button id="btn-favorites" type="button">Add to favorites</button>
+
+  <script>
+    var el = document.getElementById("btn-favorites");
+
+    const onClickBtn = () => {
+      console.log("onClickBtn");
+    };
+    for (let i = 0; i < 5; i++) {
+      el.addEventListener("click", onClickBtn);
+    }
+  </script>
 </body>
 </html>

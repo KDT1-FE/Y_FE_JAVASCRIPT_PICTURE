@@ -45,10 +45,9 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
   if(profileContent.name && profileContent.position && profileContent.github && profileContent.email && imgFileInput && imgFileInput.files.length>0){
     try {
       const imgFile = imgFileInput.files[0];
-      const storageRef = ref(storage, 'image/'+imgFile.name);
-      const uploadTask = uploadBytes(storageRef, imgFile);
-      const snapshot = await uploadTask;
-      const url = await getDownloadURL(snapshot.ref);
+      const storageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date()).seconds+imgFile.name);
+      await uploadBytes(storageRef, imgFile);
+      const url = await getDownloadURL(storageRef);
       const toSave = {
         image: url
       };
@@ -61,15 +60,9 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
     }};
   }else{
     if(imgFileInput.files.length<=0){
-      console.log("이미지를 선택해주세요!");
+      alert("이미지를 선택해주세요!");
     }else{
-      console.log('텍스트를 입력해주세요!');
+      alert('텍스트를 입력해주세요!');
     }
   }
 })
-
-// const docRef = doc(db, 'profiles','0OGW2haRrX3bHY7SWgkD');
-// const updateTimestamp = await updateDoc(docRef, {
-//   timestamp: serverTimestamp()
-// });
-// console.log(updateTimestamp)

@@ -108,8 +108,10 @@ section h1{
 }
 .profile-image{
   max-width: 70%;
+  max-height: 70%;
   margin:50px auto 30px;
   display: block;
+  object-fit: cover;
 }
 
 .text-container{
