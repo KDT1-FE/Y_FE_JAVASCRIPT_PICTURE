@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     entry: './src/main.js',
     output: {
-        path: path.resolve('./dist'),
+        path: path.resolve('./public'),
         filename: '[name].js',
     },
     devServer: {
@@ -15,7 +15,7 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
         static: {
-            directory: path.resolve('./dist'),
+            directory: path.resolve('./public'),
         },
     },
     module: {
