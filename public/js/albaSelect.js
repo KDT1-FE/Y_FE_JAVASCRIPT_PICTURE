@@ -116,29 +116,33 @@ $(document).ready(function () {
         const id = doc.id;
         selectedIds.push(id);
       }
-      // 모달창 띄우기 조건
+
       if (selectedIds.length > 0) {
-        $('.alba-delete-button').prop('disabled', false); // 활성화
+        console.log(123);
         $('.confirm-modal-container').fadeIn();
-      } else {
-        $('.alba-delete-button').prop('disabled', true); // 비활성화
-      }
+        // 삭제하기 버튼 클릭 이벤트 리스너 등록
+        $('.confirm-button').on('click', async function () {
+          // 선택한 알바생 데이터 삭제 처리
+          const deletePromises = selectedIds.map((id) => {
+            return db.collection('albainfo').doc(id).delete();
+          });
 
-      // 삭제하기 버튼 클릭 이벤트 리스너 등록
-      $('.confirm-button').on('click', async function () {
-        // 선택한 알바생 데이터 삭제 처리
-        const deletePromises = selectedIds.map((id) => {
-          return db.collection('albainfo').doc(id).delete();
+          // 삭제 Promise 모두 완료될 때까지 기다림
+          await Promise.all(deletePromises);
+          window.location.href = 'albaSelect.html'; // 새로고침 기능
         });
-
-        // 삭제 Promise 모두 완료될 때까지 기다림
-        await Promise.all(deletePromises);
-        window.location.href = 'albaSelect.html';
-      });
+      } else if (selectedIds === undefined) {
+        console.log(123);
+        $('.no-selection-modal-container').fadeIn();
+        return;
+      }
     });
   });
 });
 // 모달창 닫기
 $('.cancel-button').on('click', async function () {
   $('.confirm-modal-container').fadeOut();
+});
+$('.close-button').on('click', async function () {
+  $('.no-selection-modal-container').fadeOut();
 });
