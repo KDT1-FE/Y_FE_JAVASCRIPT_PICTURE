@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import MemberList from '../components/MemberList';
 import { Component } from '../core/component';
 import { routeRender } from '../core/router';
@@ -34,6 +35,10 @@ export default class Home extends Component {
       routeRender();
     });
     //title 클릭 시 Home 페이지로 이동
+    /*Home 페이지는 따로 header 분리 X,  
+    why? -> header을 prepend로 삽입했을 때 container는 따로 요소를 생성하고 header의 자식으로 할당하는 과정이 필요
+    이 과정이 더 불필요하다고 생각하기에  
+     */
 
     const addButton = this.el.querySelector('#navigate-write');
     addButton.addEventListener('click', () => {

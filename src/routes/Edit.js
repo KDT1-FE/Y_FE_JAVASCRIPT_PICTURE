@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, routeRender } from '../core/router';
 import {
@@ -15,8 +16,6 @@ export default class Edit extends Component {
     let photoUrl = member.photoUrl;
     let imageLoading = false;
     this.el.innerHTML = `
-    <header class="header">
-  <div class="title">직원 관리 시스템</div></header>
   <form class="detail">
     <label for="file" class="photo-edit" style="background-image: url(https://api.iconify.design/mdi-light/image.svg?color=%23a0aec0)"></label> 
     <input type="file" name="file" id="file" accept=".jpg, .png" class="file-input"/>
@@ -36,7 +35,7 @@ export default class Edit extends Component {
     </section>
   </form> 
     `;
-
+    this.el.prepend(new Header().el);
     const previewImage = async (event) => {
       imageLoading = true; // 이미지 미리보기전에 submit 방지
       photoUrl = await uploadImage(

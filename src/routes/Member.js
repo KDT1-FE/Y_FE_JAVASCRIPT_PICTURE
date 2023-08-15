@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, routeRender } from '../core/router';
 import { getMemberDetail, memberStore } from '../store/memberStore';
@@ -8,8 +9,6 @@ export default class Member extends Component {
     await getMemberDetail(id);
     const member = memberStore.state.member;
     this.el.innerHTML = `
-    <header class="header">
-  <div class="title">직원 관리 시스템</div></header>
   <main class="detail">
     <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
     <section class='information-container'>
@@ -28,13 +27,7 @@ export default class Member extends Component {
     </section>
   </main> 
     `;
-
-    const title = this.el.querySelector('.title');
-    title.addEventListener('click', () => {
-      window.history.pushState(null, null, '/');
-      routeRender();
-    });
-
+    this.el.prepend(new Header().el);
     const navigateEditButton = this.el.querySelector('button');
     navigateEditButton.addEventListener('click', () => {
       window.history.pushState(null, null, `/edit?id=${member.id}`);

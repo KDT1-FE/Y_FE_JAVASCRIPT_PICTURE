@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import { Component } from '../core/component';
 import { routeRender } from '../core/router';
 import { uploadData, uploadImage } from '../store/memberStore';
@@ -6,8 +7,6 @@ import { v4 as uuidv4 } from 'uuid';
 export default class Write extends Component {
   render() {
     this.el.innerHTML = `
-    <header class="header">
-    <div class="title">직원 관리 시스템</div></header>
     <section class="write-title">
     직원을 등록해주세요
     </section>
@@ -22,7 +21,7 @@ export default class Write extends Component {
     <button class="add-member" type="submit">등록</button>
     </form>
         `;
-
+    this.el.prepend(new Header().el);
     const imageFile = this.el.querySelector('.file-input');
     const writeImage = this.el.querySelector('.write-image');
     imageFile.addEventListener('change', () => {
