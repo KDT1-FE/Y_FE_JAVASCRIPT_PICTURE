@@ -4,9 +4,12 @@ const element = ['name', 'email', 'phone', 'address', 'image'];
 const write = {};
 const errorMessage = {};
 const successMessage = {};
+const title = document.querySelector('.title');
 const getAddressBtn = document.getElementById('get-address-btn');
 const submitBtn = document.getElementById('submit-button');
-let getItem = localStorage.getItem('infos');
+let getItem = JSON.parse(localStorage.getItem('infos'));
+let latelyInfo = JSON.parse(localStorage.getItem('lately-info'));
+let referrer = document.referrer.split('/')[3].replace('.html', ''); // 전에 어떤 페이지에서 왔는지 확인
 let uploadFile;
 let infos = [];
 let isValid;
@@ -20,15 +23,31 @@ write['address'].disabled = true;
 
 // localStorage 안에 값이 있는지 확인하고 있다면 값 보존
 if (getItem) {
-  getItem = JSON.parse(getItem);
   getItem.forEach((item) => {
     infos.push(item);
   });
 }
 
+// 등록하기인지 수정하기인지 판별
+if (referrer === 'profile') {
+  // 수정하기
+  write['name'].value = latelyInfo['name'];
+  write['email'].value = latelyInfo['email'];
+  write['phone'].value = latelyInfo['phone'];
+  write['address'].value = latelyInfo['address'];
+
+  title.innerText = '임직원 수정';
+  submitBtn.innerText = '수정하기';
+  submitBtn.addEventListener('click', editStaff);
+} else {
+  // 등록하기
+  title.innerText = '임직원 등록';
+  submitBtn.innerText = '등록하기';
+  submitBtn.addEventListener('click', createStaff);
+}
+
 write['image'].addEventListener('change', uploadFileChange);
 getAddressBtn.addEventListener('click', getAddress);
-submitBtn.addEventListener('click', createStaff);
 write['name'].addEventListener('blur', getNameMessage);
 write['email'].addEventListener('blur', getEmailMessage);
 write['phone'].addEventListener('blur', getPhoneMessage);
@@ -47,6 +66,7 @@ function getNameMessage() {
   }
 }
 
+// 이메일 유효성 검사
 function getEmailMessage() {
   if (!write['email'].value) {
     errorMessage['email'].classList.add('active');
@@ -65,6 +85,7 @@ function getEmailMessage() {
   }
 }
 
+// 휴대폰 번호 유효성 검사
 function getPhoneMessage() {
   if (!write['phone'].value) {
     errorMessage['phone'].classList.add('active');
@@ -170,23 +191,30 @@ async function onFileUpload() {
     });
 }
 
-//임직원 등록 함수
+// 가장 마지막에 만든 임직원 저장 함수
+function saveToLatelyLocalStorage(item) {
+  const data = JSON.stringify(item);
+  localStorage.setItem('lately-info', data);
+}
+
+// 임직원 리스트 생성 함수
+function saveToLocalStorage() {
+  const data = JSON.stringify(infos);
+  localStorage.setItem('infos', data);
+}
+
+// 임직원 등록 함수
 function createStaff() {
   isInputValid();
   if (!isValid) return;
-
   onFileUpload();
-
-  const phone1 = write['phone'].value.slice(0, 3);
-  const phone2 = write['phone'].value.slice(3, 7);
-  const phone3 = write['phone'].value.slice(7);
 
   // 새로운 아이템 생성
   const item = {
     id: new Date().getTime(),
     name: write['name'].value,
     email: write['email'].value,
-    phone: `${phone1}-${phone2}-${phone3}`,
+    phone: write['phone'].value,
     address: write['address'].value,
     imageUrl: `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
   };
@@ -199,14 +227,27 @@ function createStaff() {
   location.href = '/profile.html';
 }
 
-function saveToLatelyLocalStorage(item) {
-  const data = JSON.stringify(item);
+// 임직원 수정 함수
+function editStaff() {
+  isInputValid();
+  if (!isValid) return;
+  onFileUpload();
+  // 수정하려는 정보의 id값과 모든 정보의 id값과 비교 후 찾아내서 안에 정보 바꾸기
+  infos.forEach((el) => {
+    if (el.id === latelyInfo['id']) {
+      el['name'] = write['name'].value;
+      el['email'] = write['email'].value;
+      el['phone'] = write['phone'].value;
+      el['address'] = write['address'].value;
+      el['imageUrl'] = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`;
 
-  localStorage.setItem('lately-info', data);
-}
+      // lately-info를 수정한 정보로 변경
+      saveToLatelyLocalStorage(el);
+    }
+  });
 
-function saveToLocalStorage() {
-  const data = JSON.stringify(infos);
+  saveToLocalStorage();
 
-  localStorage.setItem('infos', data);
+  alert('정보변경이 완료되었습니다.');
+  location.href = '/profile.html';
 }
