@@ -104,7 +104,7 @@
 ```bash
 ├── README.md
 ├── public
-├── src :
+├── src
     └── components
           └── Common : 헤더와 같은 공통적으로 App에 들어가는 컴포넌트입니다.
           └── Detail : 상세 페이지에 들어가는 컴포넌트입니다.
@@ -119,6 +119,8 @@
     └── modules.js : Class형 컴포넌트, 라우터(해시 등), Store등 공통적으로 쓰이는 유틸입니다.
 
 ```
+
+<br />
 
 ## 흐름
 
