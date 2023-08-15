@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import { Component } from '../core/component';
-import { getUrlParam, routeRender } from '../core/router';
+import { getUrlParam, navigate } from '../core/router';
 import { getMemberDetail, memberStore } from '../store/memberStore';
 
 export default class Detail extends Component {
@@ -29,9 +29,8 @@ export default class Detail extends Component {
     `;
     this.el.prepend(new Header().el);
     const navigateEditButton = this.el.querySelector('button');
-    navigateEditButton.addEventListener('click', () => {
-      window.history.pushState(null, null, `/edit?id=${member.id}`);
-      routeRender();
-    });
+    navigateEditButton.addEventListener('click', () =>
+      navigate(`/edit?id=${member.id}`)
+    );
   }
 }

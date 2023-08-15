@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import { Component } from '../core/component';
-import { routeRender } from '../core/router';
+import { navigate } from '../core/router';
 import { uploadData, uploadImage } from '../store/memberStore';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -53,8 +53,7 @@ export default class Write extends Component {
       data.photoUrl = photoUrl;
       await uploadData(data);
 
-      window.history.pushState(null, null, '/');
-      routeRender(); // 메인 페이지로 이동
+      navigate('/'); // 메인 페이지로 이동
     }; // submit을 누르면  모두 입력이 되었는 지 확인
 
     form.addEventListener('submit', handleSubmit);

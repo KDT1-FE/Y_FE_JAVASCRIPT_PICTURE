@@ -14,3 +14,8 @@ export function routeRender() {
 export const getUrlParam = (params) => {
   return new URL(location.href).searchParams.get(params);
 };
+
+export const navigate = (url = '/') => {
+  window.history.pushState(null, null, url);
+  routeRender();
+};

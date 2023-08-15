@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import { Component } from '../core/component';
-import { getUrlParam, routeRender } from '../core/router';
+import { getUrlParam, navigate } from '../core/router';
 import {
   getMemberDetail,
   memberStore,
@@ -72,8 +72,7 @@ export default class Edit extends Component {
 
       await setData(data, member.id);
 
-      window.history.pushState(null, null, '/');
-      routeRender(); // 메인 페이지로 이동
+      navigate('/');
     };
     const imageFile = this.el.querySelector('.file-input');
     const form = this.el.querySelector('.detail');
