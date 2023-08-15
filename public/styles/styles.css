@@ -1,3 +1,8 @@
+*{
+    
+    margin:0;
+    padding:0;
+}
 :root{
     font-size:10px;
 }
@@ -6,6 +11,7 @@ body{
     padding:0;
     width:100%;
 }
+/* index.html */
 .container{
     display:flex;
     flex-direction: column;
@@ -30,7 +36,7 @@ body{
     width:52rem;
     height:4.2rem;
 }
-
+/* playerList.html */ 
 .nav {
     border : 1px solid #ffffff;
     background-color: #c70102;
@@ -46,7 +52,7 @@ body{
 .logo-tab__menu img{
     width:5rem;
     height:5rem;
-    padding: 2rem;
+    padding:2rem;
 }
 .logo-tab__button{
     display:flex;
@@ -140,9 +146,12 @@ body{
     position:absolute;
     left:5rem;
 }
-.player__info span{
+.player__name{
     font-weight:bold;
+    display:block;
+    width:10rem;
 }
+
 .player__upload{
     margin-top:4rem;
     display:flex;
@@ -153,7 +162,9 @@ body{
     text-align: center;
 }
 .transfer__container h2{
+    margin-bottom:2rem;
     font-size:2rem;
+   
 }
 .transfer__btn{
     border-radius:1rem;
@@ -216,5 +227,68 @@ body{
     border:1px solid #000000;
     transform: scale(1.1);
     transition:background-color .6s;
+}
 
+/* playerInfo.html */ 
+.profile__container{
+    width:120rem;
+    margin: 5rem auto;
+    display:flex;
+    justify-content: space-between;
+    border: 1px solid #000;
+}
+.player__image img{
+    width:50rem;
+}
+.player__desc {
+    margin-top:2rem;
+    width:70rem;
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+.main__desc{
+    display:flex;
+    justify-content: space-around;
+    
+}
+.main__title h2{
+    line-height:4rem;
+   font-size:2rem;
+}
+.update__btn{
+    margin-right:2rem;
+    width:12rem;
+    height:4.2rem;
+    border:none;
+    border-radius: 1rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+hr{
+    margin:2rem auto;
+    width:80%;
+}
+.sub__desc{
+    font-size:1.2rem;
+    display:flex;
+    justify-content: space-around;
+    margin-top:2rem;
+}
+.sub__desc h2{
+    padding-top:5rem;
+    text-align: center;
+}
+.save__profile{
+    text-align: end;
+    margin-top:5rem;
+    margin-right:12rem;
+}
+.save__btn{
+    width:12rem;
+    height:4.2rem;
+    border:none;
+    border-radius: 1rem;
+    font-weight:bold;
+    cursor:pointer;
 }
