@@ -75,6 +75,25 @@ body {
   padding: 5px;
 }
 
+.preview-wrap {
+  margin: 10px auto;
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-image {
+  max-width: 80%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .input-wrap button[type='submit'] {
   width: 100%;
   background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);

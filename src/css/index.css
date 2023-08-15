@@ -36,34 +36,24 @@ main {
   margin-bottom: 50px;
 }
 
-.staff-control-wrap .staff-control-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
+/********** 임직원 등록 버튼 **********/
+.staff-control-wrap div.staff-enroll {
+  width: 200px;
   height: 60px;
-}
 
-.staff-control-wrap .staff-control-buttons div {
-  width: 100%;
-  height: 100%;
+  margin-right: 10px;
   font-weight: bold;
   cursor: pointer;
-}
-
-/********** 임직원 등록 버튼 **********/
-.staff-control-wrap .staff-control-buttons div.staff-enroll {
-  margin-right: 10px;
   background-color: #7b9acc;
   position: relative;
 }
 
-.staff-control-wrap .staff-control-buttons div.staff-enroll:hover {
+.staff-control-wrap div.staff-enroll:hover {
   background-image: none;
   background-color: #fcf6f5;
 }
 
-.staff-control-wrap .staff-control-buttons div.staff-enroll a {
+.staff-control-wrap div.staff-enroll a {
   display: block;
   width: 100%;
   height: 100%;
@@ -74,7 +64,7 @@ main {
   color: #fcf6f5;
 }
 
-.staff-control-wrap .staff-control-buttons div.staff-enroll:hover a {
+.staff-control-wrap div.staff-enroll:hover a {
   color: #7b9acc;
 }
 
@@ -131,84 +121,6 @@ main {
 }
 
 .staff-enroll:hover a::after {
-  height: 100%;
-}
-
-/********* 임직원 삭제 버튼 *********/
-
-.staff-control-wrap .staff-control-buttons div.staff-delete {
-  background-color: #9a161f;
-  color: #f4efea;
-  position: relative;
-}
-
-.staff-control-wrap .staff-control-buttons div.staff-delete:hover {
-  background-color: #f4efea;
-  color: #9a161f;
-}
-
-.staff-delete span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.staff-delete::before,
-.staff-delete::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #9a161f;
-  transition: all 0.3s ease;
-}
-
-.staff-delete::before {
-  width: 0%;
-  height: 2px;
-}
-
-.staff-delete:hover::before {
-  width: 100%;
-}
-
-.staff-delete::after {
-  width: 2px;
-  height: 0%;
-}
-
-.staff-delete:hover::after {
-  height: 100%;
-}
-
-.staff-delete span::before,
-.staff-delete span::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: #9a161f;
-  transition: all 0.3s ease;
-}
-
-.staff-delete span::before {
-  width: 0%;
-  height: 2px;
-}
-
-.staff-delete:hover span::before {
-  width: 100%;
-}
-
-.staff-delete span::after {
-  width: 2px;
-  height: 0%;
-}
-
-.staff-delete:hover span::after {
   height: 100%;
 }
 
@@ -383,14 +295,12 @@ table tbody tr td img {
   }
 
   .staff-control-wrap {
-    flex-direction: column;
     margin-top: 40px;
     margin-bottom: 30px;
   }
 
-  .staff-control-wrap .staff-control-buttons {
-    width: 100%;
-    margin-bottom: 20px;
+  .staff-control-wrap div.staff-enroll {
+    width: 180px;
   }
 
   .staff-list-wrap {
@@ -409,6 +319,10 @@ table tbody tr td img {
 
 /* 768px 이하 화면 크기에 대한 스타일 */
 @media (max-width: 768px) {
+  .staff-control-wrap div.staff-enroll {
+    width: 120px;
+  }
+
   table thead {
     display: none;
   }

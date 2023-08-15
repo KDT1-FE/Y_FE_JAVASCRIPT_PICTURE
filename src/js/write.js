@@ -6,11 +6,12 @@ const errorMessage = {};
 const successMessage = {};
 const title = document.querySelector('.title');
 const getAddressBtn = document.getElementById('get-address-btn');
+const previewImage = document.querySelector('.preview-image');
 const submitBtn = document.getElementById('submit-button');
 let getItem = JSON.parse(localStorage.getItem('infos'));
 let latelyInfo = JSON.parse(localStorage.getItem('lately-info'));
 let referrer = document.referrer.split('/')[3].replace('.html', ''); // 전에 어떤 페이지에서 왔는지 확인
-let uploadFile;
+let uploadFile = 'undefined.png';
 let infos = [];
 let isValid;
 element.forEach((el) => {
@@ -27,7 +28,6 @@ if (getItem) {
     infos.push(item);
   });
 }
-
 // 등록하기인지 수정하기인지 판별
 if (referrer === 'profile') {
   // 수정하기
@@ -35,6 +35,7 @@ if (referrer === 'profile') {
   write['email'].value = latelyInfo['email'];
   write['phone'].value = latelyInfo['phone'];
   write['address'].value = latelyInfo['address'];
+  previewImage.src = latelyInfo['imageUrl'];
 
   title.innerText = '임직원 수정';
   submitBtn.innerText = '수정하기';
@@ -125,17 +126,6 @@ function isInputValid() {
     successMessage['address'].classList.add('active');
     successMessage['address'].innerText = 'Success';
   }
-  // 이미지 업로드 검사
-  if (!uploadFile) {
-    errorMessage['image'].classList.add('active');
-    successMessage['image'].classList.remove('active');
-    errorMessage['image'].innerText = '이미지를 업로드해주세요.';
-    isValid = false;
-  } else {
-    errorMessage['image'].classList.remove('active');
-    successMessage['image'].classList.add('active');
-    successMessage['image'].innerText = 'Success';
-  }
 }
 
 // 주소 찾기 API
@@ -150,6 +140,14 @@ function getAddress() {
 // uploadFile 변경 함수
 function uploadFileChange(e) {
   uploadFile = e.target.files[0];
+  const reader = new FileReader();
+  console.log(reader);
+
+  reader.onload = (data) => {
+    previewImage.src = data.target.result;
+  };
+
+  reader.readAsDataURL(uploadFile);
 }
 
 // 이미지 버킷에 업로드하는 함수
@@ -207,7 +205,7 @@ function saveToLocalStorage() {
 function createStaff() {
   isInputValid();
   if (!isValid) return;
-  onFileUpload();
+  if (uploadFile !== 'undefined.png') onFileUpload();
 
   // 새로운 아이템 생성
   const item = {
@@ -216,7 +214,7 @@ function createStaff() {
     email: write['email'].value,
     phone: write['phone'].value,
     address: write['address'].value,
-    imageUrl: `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
+    imageUrl: `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name ?? uploadFile}`
   };
 
   infos.push(item);
@@ -231,7 +229,7 @@ function createStaff() {
 function editStaff() {
   isInputValid();
   if (!isValid) return;
-  onFileUpload();
+  if (uploadFile !== 'undefined.png') onFileUpload();
   // 수정하려는 정보의 id값과 모든 정보의 id값과 비교 후 찾아내서 안에 정보 바꾸기
   infos.forEach((el) => {
     if (el.id === latelyInfo['id']) {
@@ -239,7 +237,10 @@ function editStaff() {
       el['email'] = write['email'].value;
       el['phone'] = write['phone'].value;
       el['address'] = write['address'].value;
-      el['imageUrl'] = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`;
+      el['imageUrl'] =
+        uploadFile !== 'undefined.png'
+          ? `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
+          : latelyInfo['imageUrl'];
 
       // lately-info를 수정한 정보로 변경
       saveToLatelyLocalStorage(el);
