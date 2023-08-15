@@ -22,8 +22,8 @@ export const memberStore = new Store({
 
 let response = '';
 export const renderMemberList = async () => {
-  const first = query(collection(db, 'list'), limit(7));
-  response = await getDocs(first);
+  const firstQuery = query(collection(db, 'list'), limit(7));
+  response = await getDocs(firstQuery);
   let array = [];
   response.forEach((doc) => {
     let memberData = doc.data();
