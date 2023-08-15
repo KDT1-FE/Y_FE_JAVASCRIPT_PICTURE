@@ -16,7 +16,6 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 export const memberStore = new Store({
   members: [],
-  member: {},
   deleteMembers: [],
 });
 
@@ -70,14 +69,14 @@ export const nextMemberList = async () => {
 export const getMemberDetail = async (id) => {
   const docRef = doc(db, 'list', `${id}`);
   const res = await getDoc(docRef);
-  memberStore.state.member = {
+  return {
     ...res.data(),
     id: res.id,
   };
 };
 
-export const uploadImage = async (fileData, refName) => {
-  const storageRef = ref(storage, refName);
+export const uploadImage = async (fileData, refId) => {
+  const storageRef = ref(storage, refId);
   await uploadBytes(storageRef, fileData);
   const photoUrl = await getDownloadURL(storageRef);
   return photoUrl;

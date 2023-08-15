@@ -1,17 +1,11 @@
 import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, navigate } from '../core/router';
-import {
-  getMemberDetail,
-  memberStore,
-  setData,
-  uploadImage,
-} from '../store/memberStore';
+import { getMemberDetail, setData, uploadImage } from '../store/memberStore';
 
 export default class Edit extends Component {
   async render() {
-    await getMemberDetail(getUrlParam('id')); //id를 가지고 수정할 member의 상세 데이터를 가져옴
-    const member = memberStore.state.member; // 상세 데이터를 member 변수에 할당
+    const member = await getMemberDetail(getUrlParam('id')); //id를 가지고 수정할 member의 상세 데이터를 가져옴
     this.el.innerHTML = `
   <form class="detail">
     <label for="file" class="photo-edit" style="background-image: url(https://api.iconify.design/mdi-light/image.svg?color=%23a0aec0)"></label> 
