@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="./css/main.css" />
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
   </head>
   <body>
     <!-- LOADING ANIMATION -->
@@ -110,22 +111,41 @@
 
     <!-- STAFF MODAL -->
     <div class="staff-modal">
-      <div class="staff-modal__title">
-        <h2>임직원 상세 조회</h2>
-      </div>
-      <div class="staff-modal__sub-title">
-        <h3>임직원 정보</h3>
-        <button class="edit-btn">정보 수정</button>
-      </div>
-      <div class="divider"></div>
-      <div class="staff-modal__content">
-        <div class="staff-modal__info">
-          <span class="info-name"></span>
-          <span class="info-email"></span>
-          <span class="info-phone"></span>
-          <span class="info-category"></span>
+      <div class="container">
+        <div class="staff-modal__title">
+          <h2>임직원 상세 조회</h2>
         </div>
-        <img src="./images/profile.jpeg" alt="스태프 프로필 사진" class="info-image" />
+        <div class="staff-modal__sub-title">
+          <h3>임직원 정보</h3>
+          <button class="btn edit-btn">정보 수정</button>
+          <div class="edit-enable-btn-group" style="display: none">
+            <button class="btn cancel-btn">취소</button>
+            <button class="btn save-btn">저장</button>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="staff-modal__content">
+          <img src="./images/profile.jpeg" alt="스태프 프로필 사진" class="info-image" />
+          <div class="staff-modal__info">
+            <div class="info-name">
+              <span class="info-name__label">이름</span>
+              <span class="info-name__content"></span>
+            </div>
+            <div class="info-email">
+              <span class="info-email__label">이메일</span>
+              <span class="info-email__content"></span>
+            </div>
+            <div class="info-phone">
+              <span class="info-phone__label">연락처</span>
+              <span class="info-phone__content"></span>
+            </div>
+            <div class="info-category">
+              <span class="info-category__label">구분</span>
+              <span class="info-category__content"></span>
+            </div>
+          </div>
+        </div>
+        <button class="change-image-btn" style="display: none">사진 변경</button>
       </div>
     </div>
   </body>

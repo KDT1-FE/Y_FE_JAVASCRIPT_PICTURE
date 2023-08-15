@@ -92,7 +92,6 @@ header .inner h1 {
 }
 .toolbar .inner .toolbar__search .search {
   /* TODO: 아이콘 추가 및 스타일 변경, 기능 부여 */
-  border-radius: 1em;
 }
 
 /* STAFF LIST */
@@ -176,24 +175,99 @@ header .inner h1 {
 .staff-modal.show {
   right: 0;
 }
-.staff-modal__header {
+.staff-modal .container {
+  padding: 2em;
+}
+.staff-modal .staff-modal__title {
+  justify-content: center;
+  align-items: center;
+}
+.staff-modal .staff-modal__title h2 {
+  font-size: 3.2em;
+  font-weight: bold;
+}
+.staff-modal .staff-modal__sub-title {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   align-items: center;
+  padding: 2em 0.4em;
+}
+.staff-modal .staff-modal__sub-title h3 {
+  font-size: 2.4em;
+  font-weight: bold;
+}
+/* staff-modal 버튼 공통 스타일 */
+.staff-modal__sub-title .btn,
+.change-image-btn {
+  border-radius: 0.4em;
+  margin: 0 0.5em;
+}
+.staff-modal__sub-title .btn.cancel-btn {
+  background-color: #ccc;
+}
+/* 사진 변경 버튼 스타일 */
+.change-image-btn {
+  display: none; /* 초기 상태에서는 숨김 */
+  border: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  font-size: 1.8em;
+  width: 40%;
+  margin-left: -0px;
+  cursor: pointer;
+}
+.change-image-btn.show {
+  display: block;
 }
 .divider {
   border-bottom: 1px solid #e0e0e0;
 }
-.staff-modal__content {
+.staff-modal .staff-modal__content {
+  padding: 2em 0;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
 }
-.info-image {
-  width: 100px;
-  height: 100px;
+.staff-modal .staff-modal__content .info-image {
+  width: 40%; /* 이미지가 너비를 꽉 채우도록 설정 */
+  height: auto; /* 이미지가 원본 비율을 유지하도록 설정 */
+  border-radius: 1.6em;
 }
-.edit-btn {
-  cursor: pointer;
+.staff-modal .staff-modal__content .staff-modal__info {
+  font-size: 1.8em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.staff-modal .staff-modal__content .staff-modal__info input[type='text'] {
+  width: 100%; /* 입력 필드의 높이를 해당 셀의 높이와 동일하게 설정 */
+  font-size: 1em;
+  padding: 0.5em;
+}
+.staff-modal .staff-modal__content .staff-modal__info .info-name,
+.staff-modal .staff-modal__content .staff-modal__info .info-email,
+.staff-modal .staff-modal__content .staff-modal__info .info-phone,
+.staff-modal .staff-modal__content .staff-modal__info .info-category {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 첫 번째 열은 레이블, 두 번째 열은 정보 */
+  border: 1px solid #e0e0e0; /* grid 보더 적용 */
+  margin: 0 2em;
+}
+.staff-modal .staff-modal__content .staff-modal__info .info-name__label,
+.staff-modal .staff-modal__content .staff-modal__info .info-email__label,
+.staff-modal .staff-modal__content .staff-modal__info .info-phone__label,
+.staff-modal .staff-modal__content .staff-modal__info .info-category__label {
+  font-weight: bold;
+  background-color: #f5f5f5; /* 연한 회색의 백그라운드 색 적용 */
+  padding: 1em; /* 레이블에 패딩 추가 */
+  display: flex;
+  align-items: center; /* 레이블을 수직으로 중앙 정렬 */
+  justify-content: center;
+  border-right: 1px solid #e0e0e0; /* 열을 구분하는 보더 적용 */
+}
+.staff-modal .staff-modal__content .staff-modal__info .info-name__content,
+.staff-modal .staff-modal__content .staff-modal__info .info-email__content,
+.staff-modal .staff-modal__content .staff-modal__info .info-phone__content,
+.staff-modal .staff-modal__content .staff-modal__info .info-category__content {
+  padding: 1em; /* 값에 패딩 추가 */
+  display: flex;
+  align-items: center; /* 값 수직으로 중앙 정렬 */
+  justify-content: start;
 }

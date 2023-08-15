@@ -138,17 +138,18 @@ document.addEventListener('DOMContentLoaded', function () {
 // 모달 열기 및 데이터 매핑
 const staffItems = document.querySelectorAll('.staff-list__item ul li');
 const modal = document.querySelector('.staff-modal');
-staffItems.forEach((item) => {
-  item.addEventListener('click', (event) => {
-    const name = event.target.querySelector('.item-name').textContent;
-    const email = event.target.querySelector('.item-email').textContent;
-    const phone = event.target.querySelector('.item-phone').textContent;
-    const category = event.target.querySelector('.item-category').textContent;
 
-    modal.querySelector('.info-name').textContent = name;
-    modal.querySelector('.info-email').textContent = email;
-    modal.querySelector('.info-phone').textContent = phone;
-    modal.querySelector('.info-category').textContent = category;
+staffItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const name = item.querySelector('.item-name').textContent;
+    const email = item.querySelector('.item-email').textContent;
+    const phone = item.querySelector('.item-phone').textContent;
+    const category = item.querySelector('.item-category').textContent;
+
+    modal.querySelector('.info-name__content').textContent = name;
+    modal.querySelector('.info-email__content').textContent = email;
+    modal.querySelector('.info-phone__content').textContent = phone;
+    modal.querySelector('.info-category__content').textContent = category;
 
     modal.classList.add('show');
   });
@@ -191,4 +192,63 @@ overlay.addEventListener('click', () => {
     selectedItem.classList.remove('selected-item');
     selectedItem = null; // 선택된 아이템 초기화
   }
+
+  // 모달 페이지 닫으면 모달 페이지 내부의 정보 수정 취소
+  revertModalToDefaultState();
 });
+
+// 정보 수정 버튼을 클릭하면 수정 모드로 변경하고,
+// '취소' 버튼과 '저장' 버튼을 클릭하면 원래 상태로 되돌리는 로직을 구현
+const editBtn = document.querySelector('.staff-modal .edit-btn');
+const editEnableBtnGroup = document.querySelector('.staff-modal .edit-enable-btn-group');
+const cancelBtn = document.querySelector('.staff-modal .cancel-btn');
+const saveBtn = document.querySelector('.staff-modal .save-btn');
+const changeImageBtn = document.querySelector('.staff-modal .change-image-btn');
+const modalContent = document.querySelector('.staff-modal__content');
+
+// 정보 수정 버튼 클릭 이벤트
+editBtn.addEventListener('click', () => {
+  editBtn.style.display = 'none'; // 정보 수정 버튼 숨기기
+  editEnableBtnGroup.style.display = 'flex'; // 취소, 저장 버튼 보이기
+  changeImageBtn.style.display = 'block'; // 사진 변경 버튼 보이기
+
+  // 각 __content 요소를 텍스트 입력 필드로 변경
+  ['name', 'email', 'phone', 'category'].forEach((key) => {
+    const contentElement = modalContent.querySelector(`.info-${key}__content`);
+    const inputValue = contentElement.textContent;
+    contentElement.innerHTML = `<input type="text" value="${inputValue}" class="info-${key}-input" />`;
+  });
+});
+
+// 취소 버튼 클릭 이벤트
+cancelBtn.addEventListener('click', revertModalToDefaultState);
+
+// 저장 버튼 클릭 이벤트
+saveBtn.addEventListener('click', () => {
+  // 정보 저장 로직
+  // 파이어베이스 연동
+  revertModalToDefaultState(); // 저장 후 원래 상태로 되돌리기
+});
+
+// 사진 변경 클릭 이벤트
+changeImageBtn.addEventListener('click', () => {
+  // 사진 변경 로직
+  // 사진 변경 UI(아마 파일 선택창)를 보여주고, 사용자가 사진을 선택하면 업데이트
+});
+
+// 모달 상태 원래대로 되돌리는 함수
+function revertModalToDefaultState() {
+  // 버튼 상태 되돌리기
+  editBtn.style.display = 'block';
+  editEnableBtnGroup.style.display = 'none';
+  changeImageBtn.style.display = 'none'; // 사진 변경 버튼 숨기기
+
+  // 각 입력 필드의 값을 다시 텍스트로 변경
+  ['name', 'email', 'phone', 'category'].forEach((key) => {
+    const inputElement = modalContent.querySelector(`.info-${key}-input`);
+    if (inputElement) {
+      const contentElement = modalContent.querySelector(`.info-${key}__content`);
+      contentElement.textContent = inputElement.value;
+    }
+  });
+}
