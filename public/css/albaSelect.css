@@ -11,14 +11,14 @@
 .wealba h2 {
   text-align: center;
   font-size: 30px;
-  font-family: "KBO-Dia-Gothic_bold";
+  font-family: 'KBO-Dia-Gothic_bold';
   color: #ffffff;
   width: 8rem;
   margin: 0 auto;
   margin-top: 5px;
 }
 
-.list-container{
+.list-container {
   width: 70%;
   margin: 0 auto;
 }
@@ -27,20 +27,60 @@
 .button-container {
   margin-top: 10px; /* 위쪽 여백 추가 */
   margin-bottom: 10px;
-  padding: 0 20px; /* 좌우 여백 추가 */
+  display: flex;
+  justify-content: flex-start;
 }
 
-
-.alba-register-button, .back-button {
-  background-color: #3da557;
-  color: white;
+/* 상단버튼 */
+.alba-register-button,
+.back-button,
+.alba-delete-button {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-family: 'KBO-Dia-Gothic_bold';
+  font-size: 17px;
+  transition: 0.3s border ease;
+}
+
+.alba-register-button {
+  background-color: #3da557;
+  color: #ffffff;
+  margin-left: 0px;
+  border: 1px solid #ffffff;
+}
+
+.alba-register-button:hover {
+  background-color: #ffffff;
+  color: #3da557;
+  border: 1px solid #3da557;
+}
+
+.alba-delete-button {
+  background-color: #fc4a4a;
+  color: #ffffff;
+
+  border: 1px solid #ffffff;
+}
+
+.alba-delete-button:hover {
+  background-color: #ffffff;
+  color: #fc4a4a;
+  border: 1px solid #fc4a4a;
 }
 
 .back-button {
-  margin-left: auto;
+  background-color: #ffffff;
+  color: #3da557;
+  border: 1px solid #3da557;
+}
+
+.back-button:hover {
+  background-color: #3da557;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 /* 알바생 관리 페이지 스타일 */
@@ -60,6 +100,8 @@
 .alba-list thead {
   background-color: #3da557;
   color: white;
+  font-family: 'KBO-Dia-Gothic_bold';
+  font-size: 20px;
 }
 
 .alba-list th {
@@ -71,7 +113,7 @@
   border-top: 2px solid #ccc;
 }
 
-.alba-list tbody tr{
+.alba-list tbody tr {
   border-bottom: 2px solid #317931;
 }
 
@@ -107,7 +149,7 @@
 
 /* 체크박스 커스터마이징 */
 .checkmark {
-  --clr: #0B6E4F;
+  --clr: #0b6e4f;
   position: relative;
   top: 0;
   left: 0;
@@ -121,13 +163,13 @@
 /* 체크박스 체크시 */
 .container input:checked ~ .checkmark {
   background-color: var(--clr);
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   animation: pulse 500ms ease-in-out;
 }
 
 /* 체크박스 체크해제시 */
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }
@@ -143,7 +185,7 @@
   top: 0.25em;
   width: 0.25em;
   height: 0.5em;
-  border: solid #E0E0E2;
+  border: solid #e0e0e2;
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);
 }
@@ -151,7 +193,7 @@
 /* 체크시 pulse 애니메이션 */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 #0B6E4F90;
+    box-shadow: 0 0 0 #0b6e4f90;
     rotate: 20deg;
   }
 
@@ -160,11 +202,11 @@
   }
 
   75% {
-    box-shadow: 0 0 0 10px #0B6E4F60;
+    box-shadow: 0 0 0 10px #0b6e4f60;
   }
 
   100% {
-    box-shadow: 0 0 0 13px #0B6E4F30;
+    box-shadow: 0 0 0 13px #0b6e4f30;
     rotate: 0;
   }
 }
@@ -180,10 +222,22 @@
 
 .edit-button {
   background-color: #3da557;
+  height: 35px;
   color: white;
-  border: none;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
   padding: 5px 10px;
   cursor: pointer;
+  transition: 0.3s border ease;
+  font-family: 'KBO-Dia-Gothic_bold';
+  font-size: 15px;
+}
+
+.edit-button:hover {
+  background-color: #ffffff;
+  color: #3da557;
+  font-weight: 700;
+  border: 1px solid #3da557;
 }
 
 .no-alba-message {
@@ -195,16 +249,253 @@
   background-color: #f0f0f0;
 }
 
+/* 프로필 모달창 스타일 */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #3da557;
+  color: white;
+  font-size: 25px;
+  font-family: 'KBO-Dia-Gothic_bold';
+  padding: 10px;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-left-container {
+  flex: 1;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.modal-left-container img {
+  max-width: 100%;
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+.modal-right-container {
+  flex: 2;
+  float: right;
+  width: 50%;
+  text-align: center;
+  font-family: 'GangwonState';
+}
+
+.modal-info {
+  margin-bottom: 10px;
+}
+
+.modal-info p {
+  font-size: 22px;
+  margin: 5px 0;
+}
+
+.modal-footer {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.close-button,
+.update-button {
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  transition: border 0.3s ease;
+  font-family: 'KBO-Dia-Gothic_bold';
+  font-size: 15px;
+  height: 40px;
+  width: 80px;
+  border-radius: 5px;
+}
+
+.update-button {
+  background-color: #3da557;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+.update-button:hover {
+  background-color: #ffffff;
+  color: #3da557;
+  border: 1px solid #3da557;
+}
+
+.close-button {
+  background-color: #ffffff;
+  color: #fc4a4a;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #fc4a4a;
+
+}
+
+.close-button:hover {
+  background-color: #fc4a4a;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+/* 삭제확인 모달창 스타일 */
+.confirm-modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.confirm-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.confirm-modal-header {
+  text-align: center;
+}
+
+.confirm-modal-header h2 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-family: 'KBO-Dia-Gothic_bold';
+  color: #333;
+}
+
+.confirm-modal-body p {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+.confirm-modal-footer {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  font-family: 'KBO-Dia-Gothic_bold';
+}
+
+.confirm-button,
+.cancel-button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ffffff;
+  font-family: 'KBO-Dia-Gothic_bold';
+  transition: 0.3s ease border;
+}
+
+.confirm-button {
+  background-color: #e74c3c;
+  border: 1px solid #ffffff;
+}
+
+.confirm-button:hover {
+  border: 1px solid #e74c3c;
+  background-color: #ffffff;
+  color: #e74c3c;
+}
+
+.cancel-button {
+  margin-left: 5px;
+  color: #3da557;
+  background-color: #ffffff;
+  border: 1px solid #3da557;
+}
+
+.cancel-button:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: #3da557;
+}
+
 /* 모바일 화면에 대한 반응형 스타일 */
 @media (max-width: 768px) {
-
-  .list-container{
-    margin-left: 10px;
-    margin-right: 10px;
+  .navbar {
+    position: fixed;
+    height: 6rem;
+    z-index: 1000;
   }
 
-  .alba-phone-th .alba-phone{
-    display: block;
+  .wealba h2 {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'KBO-Dia-Gothic_bold';
+    color: #ffffff;
+    width: 8rem;
+    margin: 0 auto;
+    margin-top: 5px;
+  }
+
+  .list-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: 500;
+  }
+
+  .button-container {
+    justify-content: center;
+  }
+
+  .alba-register-button {
+    margin-left: 0;
+  }
+
+  .alba-register-button,
+  .back-button,
+  .alba-delete-button {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .alba-phone-th,
+  .alba-time-th {
+    display: none;
+  }
+  .alba-phone,
+  .alba-time {
+    display: none;
   }
   .alba-photo img {
     width: 60px;
@@ -216,7 +507,41 @@
     font-size: 0.9rem;
   }
 
-  .alba-list .th-img .alba-photo{
+  .alba-list .th-img .alba-photo {
     display: none;
+  }
+
+  .modal-content {
+    max-width: 300px;
+  }
+
+  .modal-left-container {
+    padding: 0;
+  }
+
+  .modal-right-container {
+    width: 100%;
+  }
+
+  .modal-info p {
+    font-size: 19px;
+    margin: 5px 0;
+  }
+
+  .modal-body {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal-left-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .update-button,
+  .close-button {
+    font-family: 'KBO-Dia-Gothic_bold';
+    height: 40px;
+    width: 80px;
   }
 }
