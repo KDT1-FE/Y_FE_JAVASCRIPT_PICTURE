@@ -32,6 +32,7 @@
               name="profilePic"
               accept=".jpg, .jpeg, .png"
               disabled
+              required
             />
             <button class="img-remove-btn hidden">삭제하기</button>
             <img id="avatarImg" class="avatar-img" />
@@ -48,6 +49,7 @@
             id="nameInput"
             class="regist-text-input modify-input skeleton"
             disabled
+            required
           />
           <label class="regist-label skeleton">이메일</label>
           <input
@@ -61,15 +63,16 @@
             id="phoneInput"
             class="regist-text-input modify-input skeleton"
             disabled
+            required
           />
           <label class="regist-label skeleton">구분</label>
           <select
             id="gradeInput"
             class="regist-text-input modify-input skeleton"
             disabled
-            skeleton
+            required
           >
-            <option selected>일반</option>
+            <option selected required>일반</option>
             <option>VIP</option>
             <option>VVIP</option>
           </select>
