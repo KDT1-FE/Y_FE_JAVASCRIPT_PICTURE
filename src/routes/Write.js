@@ -22,15 +22,10 @@ export default class Write extends Component {
     </form>
         `;
     this.el.prepend(new Header().el);
-    const imageFile = this.el.querySelector('.file-input');
-    const writeImage = this.el.querySelector('.write-image');
-    imageFile.addEventListener('change', () => {
-      writeImage.value = imageFile.value;
-    });
-    const form = this.el.querySelector('.write-container');
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+
       const formData = new FormData(event.currentTarget);
       if (formData.get('file').name === '') {
         alert('이미지를 첨부해주세요');
@@ -43,19 +38,29 @@ export default class Write extends Component {
         return;
       } // 이메일 형식을 확인
 
+      const fileData = formData.get('file');
+      const photoUrl = await uploadImage(fileData, uuidv4());
+      //fileData storage에 저장
+
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
+        photoUrl: photoUrl,
       };
-      const fileData = formData.get('file');
 
-      const photoUrl = await uploadImage(fileData, uuidv4());
-      data.photoUrl = photoUrl;
-      await uploadData(data);
+      await uploadData(data); // firebase data에 upload
 
       navigate('/'); // 메인 페이지로 이동
     }; // submit을 누르면  모두 입력이 되었는 지 확인
 
+    const imageFile = this.el.querySelector('.file-input');
+    const writeImage = this.el.querySelector('.write-image');
+
+    imageFile.addEventListener('change', () => {
+      writeImage.value = imageFile.value;
+    }); // 이미지 input에 이미지 파일 경로 작성
+
+    const form = this.el.querySelector('.write-container');
     form.addEventListener('submit', handleSubmit);
   }
 }
