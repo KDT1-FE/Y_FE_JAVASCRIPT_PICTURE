@@ -1,46 +1,94 @@
+const prison = document.querySelector('.prison');
 const detailModal = document.querySelector('.detailModal');
-        const detailModalBg = document.querySelector('.detailModalBg');
-        const detailMugshot = document.querySelector('.detailMugshot');
-        const detailName = document.querySelector('.detailName span');
-        const detailLv = document.querySelector('.detailLv span');
-        const editMugshotBtn = document.querySelector('.editMugshotBtn');
-        const editNameBtn = document.querySelector('.editNameBtn');
-        const editLvBtn = document.querySelector('.editLvBtn');
+const detailModalBg = document.getElementById('detailModalBg');
+const detailForm = document.getElementById('detailForm');
+const detailMugshot = document.querySelector('.detailMugshot');
+const saveMugshotBtn = document.getElementById('saveMugshotBtn');
+const detailName = document.getElementById('detailName');
+const saveNameBtn = document.getElementById('saveNameBtn');
+const saveLvBtn = document.getElementById('saveLvBtn');
 
-        const prisonCells = document.querySelectorAll('.prisonCell');
-        prisonCells.forEach((prisonCell) => {
-            prisonCell.addEventListener('click', () => {
-                detailMugshot.src = prisonCell.style.backgroundImage.slice(5, -2);
-                detailName.textContent = prisonCell.querySelector('.prisonerName').textContent;
-                detailLv.textContent = prisonCell.getAttribute('prisonerLv');
-                detailModal.classList.remove('hidden');
-            });
-        });
-        detailModalBg.addEventListener('click', () => {
-            detailModal.classList.add('hidden');
-        });
-        editMugshotBtn.addEventListener('click', () => {
-            const newMugshot = prompt('Enter the new mugshot URL:');
-            if (newMugshot) {
-                const mugshotImage = detailModal.querySelector('.mugshotImage');
-                mugshotImage.style.backgroundImage = `url(${newMugshot})`;
+
+//Open Prisoner Detail Modal
+prison.addEventListener('click', (event) => {
+    const prisonCell = event.target;
+    const prisonerName = prisonCell.querySelector('.prisonerName');
+    if (prisonCell.classList.contains('prisonCell')) {
+        const prisonerLv = prisonCell.getAttribute('prisonerLv');
+        const lvOptions = document.querySelectorAll('.lvOption');
+        detailModal.classList.remove('hidden');
+        detailMugshot.alt = prisonCell.id;
+        detailMugshot.src = prisonCell.style.backgroundImage.slice(5, -2);
+        detailName.placeholder = prisonCell.id;
+        lvOptions.forEach(option => {
+            if (option.value === prisonerLv) {
+                option.setAttribute('selected', 'selected');
             }
         });
-
-
-        editNameBtn.addEventListener('click', () => {
-            const newName = prompt('Enter the new name:');
-            if (newName) {
-                const prisonerName = detailModal.querySelector('.prisonerName');
-                prisonerName.textContent = newName;
-            }
+    }
+    // Save Detail Name    
+    saveNameBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const name = detailName.value;
+        prisonCell.id = name;
+        prisonerName.textContent = name;
+        detailMugshot.alt = name;
+        detailForm.reset();
+        detailName.placeholder = name;
+        const lvOptions = document.querySelectorAll('.lvOption');
+        detailMugshot.alt = '';
+        detailMugshot.src = '';
+        detailName.placeholder = '';
+        lvOptions.forEach(option => {
+            option.removeAttribute('selected');
         });
-
-
-        editLvBtn.addEventListener('click', () => {
-            const newLv = prompt('Enter the new level:');
-            if (newLv) {
-                const prisonerLv = detailModal.querySelector('.prisonerLv');
-                prisonerLv.textContent = newLv;
-            }
+        detailModal.classList.add('hidden');
+        detailModal.classList.add('hidden');
+    });
+    // Save Detail Lv
+    saveLvBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const detailLv = document.getElementById('detailLv');
+        console.log(detailLv.value);
+        prisonCell.setAttribute('prisonerLv', detailLv.value);
+        console.log(prisonCell);
+        const lvOptions = document.querySelectorAll('.lvOption');
+        detailMugshot.alt = '';
+        detailMugshot.src = '';
+        detailName.placeholder = '';
+        lvOptions.forEach(option => {
+            option.removeAttribute('selected');
         });
+        detailModal.classList.add('hidden');
+        detailModal.classList.add('hidden');
+    })
+    // Save Detail Mugshot
+    saveMugshotBtn.addEventListener('change', () => {
+        const newDetailMugshot = saveMugshotBtn.files[0];
+        const imageUrl = URL.createObjectURL(newDetailMugshot);
+        prisonCell.style.backgroundImage = `url(${imageUrl})`;
+        const lvOptions = document.querySelectorAll('.lvOption');
+        detailMugshot.alt = '';
+        detailMugshot.src = '';
+        detailName.placeholder = '';
+        lvOptions.forEach(option => {
+            option.removeAttribute('selected');
+        });
+        detailModal.classList.add('hidden');
+        detailModal.classList.add('hidden');
+    });
+
+})
+
+
+// Close Prisoner Detail Modal
+detailModalBg.addEventListener('click', () => {
+    const lvOptions = document.querySelectorAll('.lvOption');
+    detailMugshot.alt = '';
+    detailMugshot.src = '';
+    detailName.placeholder = '';
+    lvOptions.forEach(option => {
+        option.removeAttribute('selected');
+    });
+    detailModal.classList.add('hidden');
+});

@@ -4,7 +4,10 @@ const openModal = () => {
 }
 
 const closeModal = () => {
-    document.querySelector(".modal").classList.add("hidden");
+    const modal = document.querySelector(".modal");
+    modal.classList.add("hidden");
+    const infoForm = document.getElementById('infoForm');
+    infoForm.reset();
 }
 
 document.querySelector(".imprisonBtn").addEventListener("click", openModal);
@@ -23,18 +26,23 @@ infoForm.addEventListener('submit', (event) => {
 
     const reader = new FileReader();
     reader.onload = function (e) {
-    const responseBox = document.querySelector('.prison');
-    const newPrisonerCell = document.createElement('div');
-    newPrisonerCell.classList.add('prisonCell');
-    newPrisonerCell.style.backgroundImage = `url(${e.target.result})`;
-    newPrisonerCell.alt = `${prisonerName} Mugshot`;
-    newPrisonerCell.id = `${prisonerName}`;
-    newPrisonerCell.prisonerLv =`${prisonerLv}`;
-    newPrisonerCell.innerHTML = /*html*/`
-        <p class="prisonerName">${prisonerName}</p>
-    `;                            
-    responseBox.appendChild(newPrisonerCell);
-};
+        const responseBox = document.querySelector('.prison');
+        const newPrisonerCell = document.createElement('div');
+        newPrisonerCell.classList.add('prisonCell');
+        newPrisonerCell.style.backgroundImage = `url(${e.target.result})`;
+        newPrisonerCell.alt = `${prisonerName} Mugshot`;
+        newPrisonerCell.id = `${prisonerName}`;
+        newPrisonerCell.setAttribute('prisonerLv', prisonerLv);
+        newPrisonerCell.innerHTML = /*html*/`
+            <p class="prisonerName">${prisonerName}</p>
+        `;
+
+        responseBox.appendChild(newPrisonerCell);
+        
+        // Save prisoner name to local storage
+        localStorage.setItem('prisonerName', prisonerName);
+    };
+
     reader.readAsDataURL(prisonerPhoto);
     closeModal();
 });

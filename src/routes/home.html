@@ -75,66 +75,61 @@
         <div class="container">
             <video src="/videos/Azkaban background.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
             <!-- prisoner info modal -->
-            <div class=" detailModal hidden">
-                <div class=" detailModalBg"></div>
-                <div class=" detailModalBox">
-                    <img src="" alt="Prisoner Mugshot" class="detailMugshot">
-                    <button class="editMugshotBtn">Edit Mugshot</button>
-                    <p class="detailName">Prisoner Name:
-                        <span></span>
-                        <button class="editNameBtn">Edit</button>
-                    </p>
-                    <p class="detailLv">Prisoner Level:
-                        <span></span>
-                        <button class="editLvBtn">Edit</button>
-                    </p>
+            <div class=" detailModal hidden" id="detailModal">
+                <div class=" detailModalBg" id="detailModalBg"></div>
+                <div class=" detailModalBox" id="detailModalBox">
+                    <form class="detailForm" id="detailForm">
+                        <div class="mugshotArea" >
+                            <img src="" alt="" class="detailMugshot">
+                            <label for="saveMugshotBtn">
+                                <div class="suedoSaveMugshotBtn">Upload</div>
+                                <input class="saveMugshotBtn" type="file" id="saveMugshotBtn" name="photo" accept="image/*" required>
+                            </label>
+                        </div>
+                        <div>
+                            <p class="detailName">
+                                <input type="text" id="detailName" name="name" placeholder="">
+                                <button class="saveNameBtn" id="saveNameBtn">Save</button>
+                            </p>
+                            <p class="detailLv">
+                                <select id="detailLv" name="detailLv">
+                                    <option class="lvOption" value="Never Release">Never Release</option>
+                                    <option class="lvOption" value="Pure Evil">Pure Evil</option>
+                                    <option class="lvOption" value="Eye Of Goat">Eye Of Goat</option>
+                                    <option class="lvOption" value="Rotten Cucumber">Rotten Cucumber</option>
+                                </select>
+                                <button class="saveLvBtn" id="saveLvBtn">Save</button>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- Insert PrisonCell -->
             <div class="prison" id="responseBox">
                 <div id="Bellatrix Lestrange" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/벨라트릭스\ 머그샷.jpg);">
+                    style="background-image: url(/image/BellatrixLestrange.jpg);">
                     <p class="prisonerName">Bellatrix Lestrange</p>
                 </div>
                 <div id="Gellert Grindelwald" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/그린델왈드\ 머그샷.jpg);">
+                    style="background-image: url(/image/GellertGrindelwald.jpg);">
                     <p class="prisonerName">Gellert Grindelwald</p>
                 </div>
                 <div id="Dolores Umbridge" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/돌로레스\ 엄브릿지\ 머그샷.jpg);">
+                    style="background-image: url(/image/DoloresUmbridge.jpg);">
                     <p class="prisonerName">Dolores Umbridge</p>
                 </div>
                 <div id="Lucius Malfoy" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/루시우스\ 말포이\ 머그샷.jpg);">
+                    style="background-image: url(/image/LuciusMalfoy.jpg);">
                     <p class="prisonerName">Lucius Malfoy</p>
                 </div>
-                <div id="Sirius Black" class="prisonCell" style="background-image: url(/image/시리우스\ 블랙\ 머그샷.jpg);">
+                <div id="Sirius Black" class="prisonCell" prisonerLv="Eye Of Goat" 
+                    style="background-image: url(/image/SiriusBlack.jpg);">
                     <p class="prisonerName">Sirius Black</p>
-                </div>
+                </div>                
             </div>
-
         </div>
     </main>
     <script src="/src/components/detailModal.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyBHuWFqQHNgqat_fgH0Te-PPYAmbULsZkM",
-          authDomain: "practice-azkaban.firebaseapp.com",
-          projectId: "practice-azkaban",
-          storageBucket: "practice-azkaban.appspot.com",
-          messagingSenderId: "881123401609",
-          appId: "1:881123401609:web:4210ccb4121b6fa0b90b58"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-      </script>
 </body>
 
 </html>

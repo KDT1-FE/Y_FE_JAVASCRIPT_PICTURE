@@ -150,19 +150,19 @@ nav .menubarBot {
 .modalBox label {
     margin-bottom: 17px;
 }
-.modalBox input[type="text"] {
+input[type="text"] {
     border: none;
     border-bottom: 1px solid black;
     background: transparent;
     padding: 10px;
 }
-.modalBox input[type="text"]:focus {
+input[type="text"]:focus {
     outline: none;
 }
-.modalBox input:focus::placeholder {
+input:focus::placeholder {
     color: transparent;
 }
-.modalBox select {
+select {
     background: none;
     border: none;
     outline: none;
@@ -204,9 +204,6 @@ input[type="file"]::file-selector-button {
 
 
 /******Main******/
-/* main {
-    
-} */
 main .container{
     width: 80vw;
     height: 100vh;
@@ -279,7 +276,6 @@ main .prison .prisonCell .prisonerName {
 .hidden {
     display: none;
 }
-
 .detailModalBg {
     position: absolute;
     top: 0;
@@ -288,19 +284,24 @@ main .prison .prisonCell .prisonerName {
     height: 100%;
     z-index: -1;
 }
-
 .detailModalBox {
-    background-color: rgb(230, 193, 139);
+    background-color: rgb(133, 121, 103);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    display: grid;
-    grid-template-rows: auto auto auto;
     gap: 10px;
     text-align: center;
     max-width: 400px;
 }
-
+.detailForm {
+    display: flex;
+    flex-direction: row;
+}
+.mugshotArea {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
 .detailMugshot {
     width: 100px;
     height: 150px;
@@ -308,33 +309,36 @@ main .prison .prisonCell .prisonerName {
     border-radius: 10px;
     margin: auto;
 }
-
 .detailName,
 .detailLv {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-weight: bold;
-    font-size: 18px;
 }
-
-.editMugshotBtn,
-.editNameBtn,
-.editLvBtn {
-    background-color: #0074d9;
-    color: white;
-    border: none;
+#detailName::placeholder {
+    color: #000000 ;
+    font-family: 'Harry Potter', sans-serif;
+}
+#detailName:focus::placeholder {
+    color: transparent ;
+}
+.saveMugshotBtn {
+    display: none;
+}
+.suedoSaveMugshotBtn,
+.saveNameBtn,
+.saveLvBtn {
+    background-color: darkred;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 5px 10px;
-    cursor: pointer;
+    margin: 5px;
     font-size: 14px;
     transition: background-color 0.3s ease;
+    font-family: 'Harry Potter', sans-serif;
 }
-
-.editMugshotBtn:hover,
-.editNameBtn:hover,
-.editLvBtn:hover {
-    background-color: #0056b3;
+.suedoSaveMugshotBtn:hover,
+.saveNameBtn:hover,
+.saveLvBtn:hover {
+    box-shadow: 2px 2px 2px 2px #424141;
+    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
 }
-
-
