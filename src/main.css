@@ -257,6 +257,15 @@ main .prison .prisonCell .prisonerName {
     color: rgb( 200,200,200);
     text-align: center;
 }
+.releaseWord {
+    background-color: rgba(215,0,0,.6);
+    color: white;
+    border-radius: 20%;
+    padding: 3px 3px 0px 3px;
+}
+.releaseWord .hidden {
+    display: none;
+}
 
 
 /******Main / DetailModal ******/

@@ -35,12 +35,10 @@ infoForm.addEventListener('submit', (event) => {
         newPrisonerCell.setAttribute('prisonerLv', prisonerLv);
         newPrisonerCell.innerHTML = /*html*/`
             <p class="prisonerName">${prisonerName}</p>
+            <span class="releaseWord hidden" id="releaseWord">Release</span>
         `;
 
         responseBox.appendChild(newPrisonerCell);
-        
-        // Save prisoner name to local storage
-        localStorage.setItem('prisonerName', prisonerName);
     };
 
     reader.readAsDataURL(prisonerPhoto);
