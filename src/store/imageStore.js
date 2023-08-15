@@ -15,8 +15,3 @@ const store = new Store({
 });
 
 export default store;
-
-export const getMembersAll = async () => {
-    const querySnapshot = await getDocs(collection(db, 'member'));
-    querySnapshot.forEach((doc) => {});
-};

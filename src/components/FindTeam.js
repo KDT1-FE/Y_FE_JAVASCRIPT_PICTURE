@@ -20,10 +20,5 @@ export default class FindTeam extends Component {
         } else {
             this.el.innerHTML = /*html*/ ``;
         }
-
-        const getDocRefButton = this.el.querySelector('#getDocRef');
-        getDocRefButton.addEventListener('click', () => {
-            getDocRef();
-        });
     }
 }
