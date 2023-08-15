@@ -176,9 +176,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve --open",
-    "vercel" : "vercel dev"
+    "build": "webpack build --output-path ./dist",
+    "dev": "webpack serve --open"
   },
   "keywords": [],
   "author": "",
