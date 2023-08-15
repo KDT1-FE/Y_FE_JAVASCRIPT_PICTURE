@@ -20,5 +20,24 @@ export default class FindTeam extends Component {
         } else {
             this.el.innerHTML = /*html*/ ``;
         }
+
+        const printHello = async () => {
+            alert('hello');
+            const res = await fetch('/api/getMembersAll', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await res.json();
+            if (data) {
+                console.log(data);
+            }
+        };
+
+        const buttonEl = this.el.querySelector('#getDocRef');
+        buttonEl.addEventListener('click', () => {
+            printHello();
+        });
     }
 }

@@ -177,7 +177,8 @@
   },
   "scripts": {
     "build": "webpack build --output-path ./public",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve --open",
+    "vercel" : "vercel dev"
   },
   "keywords": [],
   "author": "",

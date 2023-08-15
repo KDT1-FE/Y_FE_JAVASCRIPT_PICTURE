@@ -7,3 +7,4 @@ dist
 # Build files
 
 .parcel-cache
+.vercel
