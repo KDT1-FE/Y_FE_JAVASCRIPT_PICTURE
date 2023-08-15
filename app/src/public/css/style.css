@@ -1,0 +1,51 @@
+/* Add your custom styles here */
+h1 {
+  text-align: center;
+}
+
+#memberForm {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+#memberForm label,
+#memberForm input,
+#memberForm select {
+  margin-bottom: 10px;
+}
+
+#previewImage {
+  display: block;
+  max-width: 20%;
+  height: auto;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.profile-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.profile {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.profile img {
+  max-width: 100px;
+  height: auto;
+  margin: 10px auto;
+}
+
+.profile button {
+  margin-top: 10px;
+}
