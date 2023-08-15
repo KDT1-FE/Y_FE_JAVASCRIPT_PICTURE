@@ -1,0 +1,35 @@
+.section__enroll--nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.section__enroll--article {
+  display: grid;
+  width: 100%;  
+  padding: 0 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.section__enroll--template > ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section__enroll--image_upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__enroll--image_button {
+  display: flex;
+}
+
+.section__enroll--pt_check {
+  /* display: none; */
+}

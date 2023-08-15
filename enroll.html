@@ -5,8 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="enroll.css" />
   </head>
   <body>
-    hi
+    <main>
+      <section class="section__enroll">
+        <nav class="section__enroll--nav">
+          <p>회원 등록</p>
+          <a href="index.html"><button>등록</button></a>
+        </nav>
+        <article class="section__enroll--article">
+          <div class="section__enroll--template">
+            <ul>
+              <li>
+                <span>이름</span>
+                <input type="text" placeholder="성함을 입력해주세요." />
+              </li>
+              <li>
+                <span>연락처</span>
+                <input type="text" placeholder="- 없이 입력해주세요." />
+              </li>
+              <li>
+                <span>등록 기간</span>
+                <input type="date" name="start_of_days" id="start_of_days" />
+                <input type="date" name="end_of_days" id="end_of_days" />
+              </li>
+              <li>
+                <span>PT 등록 여부</span>
+                <input type="checkbox" name="pt_check" id="pt_check" />
+              </li>
+              <li class="section__enroll--pt_check">
+                <span>PT 잔여 세션</span>
+                <form action="#">
+                  <select name="" id="">
+                    <option value="1">1</option>
+                  </select>
+                </form>
+              </li>
+              <li class="section__enroll--pt_check">
+                <span>담당 트레이너</span>
+                <form action="#">
+                  <select name="" id="">
+                    <option value="홍길동">홍길동</option>
+                  </select>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <div class="section__enroll--image">
+            <span>사진</span>
+            <div class="section__enroll--image_upload">
+              <input type="file" accept="image/*" />
+              <div class="section__enroll--image_button">
+                <button>등록</button>
+                <button>삭제</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
