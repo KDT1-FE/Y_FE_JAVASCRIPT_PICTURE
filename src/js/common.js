@@ -1,5 +1,10 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, currentUser, onAuthStateChanged } from 'firebase/auth';
+import {
+  getAuth,
+  currentUser,
+  onAuthStateChanged,
+  signOut,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXjktja_jwgeu_cQ9ajtG-vtP5nGHZzjo',
@@ -77,6 +82,16 @@ scrollTop.firstElementChild.addEventListener('click', () => {
   }
 });
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+
 // 페이지 이동 시 로컬 스토리지에서 유저 정보 및 토큰 가져와 비교
 window.addEventListener('load', () => {
   const userDataJSON = localStorage.getItem('user');
@@ -84,20 +99,41 @@ window.addEventListener('load', () => {
     const userData = JSON.parse(userDataJSON);
     console.log(userData);
 
-    // 유저 정보 및 토큰이 유효한지 확인
-    const user = auth.currentUser;
-    console.log(user);
-    if (user && userData.uid === user.uid) {
-      // 인증 상태 유지
-      console.log('User is authenticated:', user.email);
-    } else {
-      // 인증 상태가 유효하지 않음
-      console.log('User is not authenticated or token expired.');
-      // 로컬 스토리지의 유저 정보 삭제
-      localStorage.removeItem('userData');
-    }
+    onAuthStateChanged(auth, (user) => {
+      // 유저 정보 및 토큰이 유효한지 확인
+      if (user && userData.uid === user.uid) {
+        // 인증 상태 유지
+        console.log('User is authenticated:', user.email);
+      } else {
+        // 인증 상태가 유효하지 않음
+        console.log('User is not authenticated or token expired.');
+        // 로컬 스토리지의 유저 정보 삭제
+        localStorage.removeItem('user');
+      }
+    });
   } else {
     // 로컬 스토리지에 유저 정보가 없음
     console.log('No user data in local storage.');
+    window.location.href = '/login.html';
   }
 });
+
+const logout = async () => {
+  try {
+    const auth = getAuth();
+    await signOut(auth);
+    localStorage.removeItem('user');
+    window.location.href = '/';
+  } catch (error) {
+    console.log(error.message[error.code]);
+  }
+};
+
+function logoutConfirm() {
+  const logoutButton = document.getElementById('logout-confirm');
+  logoutButton.addEventListener('click', async () => {
+    console.log('click');
+    logout();
+  });
+}
+logoutConfirm();

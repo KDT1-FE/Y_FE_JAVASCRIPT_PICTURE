@@ -56,18 +56,10 @@ function loginConfirm() {
       .then(() => {
         return login(email, password);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.message[error.code]);
+      });
   });
 }
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
 
 loginConfirm();
