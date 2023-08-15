@@ -23,7 +23,7 @@ db.collection('employee').get().then((snapshot) => {
                     <label for="checkbox${doc.id}"></label>
                 </span>
             </td>
-            <td><img class="img" src="${doc.data().photoURL}" alt="Employee Photo"></td>
+            <td><img class="img" src="${doc.data().image}" alt="Employee Photo"></td>
             <td>${doc.data().name}</td>
             <td>${doc.data().email}</td>
             <td>${doc.data().phone}</td>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let sendButton = document.getElementById('send');
     if(sendButton) { // sendButton이 존재하면 이벤트 리스너를 추가
         sendButton.addEventListener('click', function() {
-            // 'image' 엘리먼트를 찾고 파일을 가져옵니다.
+            // 'image' 엘리먼트를 찾고 파일을 가져옴
             let imageInput = document.getElementById('input-file');
             if (imageInput && imageInput.files.length > 0) { // imageInput이 존재하고, 선택된 파일이 있으면 다음을 실행
                 let file = imageInput.files[0];
