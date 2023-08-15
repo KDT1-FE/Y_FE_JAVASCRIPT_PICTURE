@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="./css/loading.css" />
     <link rel="stylesheet" href="./css/albaSelect.css" />
     <title>우리 알바 - 알바생 관리 페이지</title>
-    <!--  버전 호환 문제로 해당 스크립트는 사용하지 않을 예정!
+    <!--  버전 호환 문제로 해당 스크립트는 일단 사용하지 않을 예정!
     <script  src="/__/firebase/10.1.0/firebase-app.js"></script>
     <script  src="/__/firebase/10.1.0/firebase-database.js"></script>
     <script  src="/__/firebase/10.1.0/firebase-storage.js"></script>
-    <script  src="/__/firebase/10.1.0/firebase-firestore.js"></script> 
-          버전 호환 문제로 해당 스크립트는 사용하지 않을 예정!-->
+    <script  src="/__/firebase/10.1.0/firebase-firestore.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
@@ -34,7 +33,8 @@
       <!-- <h2>알바생 관리하기</h2> -->
       <div class="list-container">
         <div class="button-container">
-          <button class="alba-register-button">알바생 등록하기</button>
+          <button class="alba-register-button">등록하기</button>
+          <button class="alba-delete-button">삭제하기</button>
           <button class="back-button">이전 페이지로</button>
         </div>
         <table class="alba-list">
@@ -46,88 +46,71 @@
               <th class="alba-phone-th">전화번호</th>
               <th class="alba-class-th">직급</th>
               <th class="alba-worktime-th">근무시간</th>
-              <th class="alba-updateBtn-th">수정</th>
+              <th class="alba-updateBtn-th">프로필</th>
             </tr>
           </thead>
           <!-- 알바생 리스트 -->
           <tbody class="alba-list-body">
-            <!-- 반복구간 -->
-            <!-- 
-              <tr>
-              <td class="select-checkbox">
-                <label class="container">
-                  <input type="checkbox" />
-                  <div class="checkmark"></div>
-                </label>
-              </td>
-              <td class="alba-photo">
-                <img src="${doc.data().이미지}" alt="알바생 사진" />
-              </td>
-              <td class="alba-name"><p>${doc.data().이름}</p></td>
-              <td class="alba-phone"><p>${doc.data().연락처}</p></td>
-              <td class="alba-class"><p>${doc.data().직급}</p></td>
-              <td class="alba-worktime"><p>${doc.data().근무시간}</p></td>
-              <td><button class="edit-button">수정</button></td>
-            </tr> -->
-            <!-- 반복구간 -->
+            <!-- 알바생 데이터 
+              반복구간 -->
           </tbody>
         </table>
+        <!-- 프로필 모달창 -->
+        <div class="modal-container" style="display: none">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>프로필</h2>
+            </div>
+            <div class="modal-body">
+              <div class="modal-left-container">
+                <img src="" alt="알바생 사진" id="profileImage" />
+              </div>
+              <div class="modal-right-container">
+                <div class="modal-info">
+                  <p><span id="profileName"></span></p>
+                </div>
+                <div class="modal-info">
+                  <p><span id="profilePhone"></span></p>
+                </div>
+                <div class="modal-info">
+                  <p><span id="profileClass"></span></p>
+                </div>
+                <div class="modal-info">
+                  <p><span id="profileWorktime"></span></p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="update-button">수정하기</button>
+              <button class="close-button">닫기</button>
+            </div>
+          </div>
+        </div>
+        <!-- 삭제 확인 모달창 -->
+        <div class="confirm-modal-container" style="display: none">
+          <div class="confirm-modal-content">
+            <div class="confirm-modal-header">
+              <h2>데이터 삭제</h2>
+            </div>
+            <div class="confirm-modal-body">
+              <p>선택한 알바생 데이터를 정말로 삭제하실건가요?</p>
+            </div>
+            <div class="confirm-modal-footer">
+              <button class="confirm-button" >네. 지울래요!</button>
+              <button class="cancel-button">잠시만요..</button>
+            </div>
+          </div>
+        </div>
         <!-- 등록된 알바생이 없을 때 메시지 -->
         <p class="no-alba-message">등록된 알바생이 없습니다. 먼저 알바생을 추가해보세요!</p>
       </div>
     </section>
-    <footer></footer>
-    <script src="./js/albaSelect.js"></script>
     <!-- jQuery CDN 추가 -->
     <script
       src="https://code.jquery.com/jquery-3.7.0.min.js"
       integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
       crossorigin="anonymous"
     ></script>
-    <!-- Firebase SDK  -->
-    <script>
-      // Firebase SDK
-      const firebaseConfig = {
-        apiKey: 'AIzaSyCUfBccVzvG5Eh25qNxqpuerxn2NXotpxo',
-        authDomain: 'we-alba-b3313.firebaseapp.com',
-        projectId: 'we-alba-b3313',
-        storageBucket: 'we-alba-b3313.appspot.com',
-        messagingSenderId: '495601569025',
-        appId: '1:495601569025:web:a2ad855c6c90f52eed9f00',
-      };
-
-      // Firebase 초기화
-      firebase.initializeApp(firebaseConfig);
-
-      const db = firebase.firestore();
-      const storage = firebase.storage();
-
-      db.collection('albainfo')
-        .get()
-        .then((result) => {
-          result.forEach((doc) => {
-            console.log(doc.data());
-            var tr = /* html */ `
-            <tr>
-              <td class="select-checkbox">
-                <label class="container">
-                  <input type="checkbox" />
-                  <div class="checkmark"></div>
-                </label>
-              </td>
-              <td class="alba-photo">
-                <img src="${doc.data().이미지}" alt="알바생 사진" />
-              </td>
-              <td class="alba-name"><p>${doc.data().이름}</p></td>
-              <td class="alba-phone"><p>${doc.data().연락처}</p></td>
-              <td class="alba-class"><p>${doc.data().직급}</p></td>
-              <td class="alba-worktime"><p>${doc.data().근무시간}</p></td>
-              <td><button class="edit-button">수정</button></td>
-            </tr>
-            `;
-            $('.alba-list-body').append(tr);
-          });
-        });
-    </script>
+    <script src="./js/albaSelect.js"></script>
   </body>
 </html>
