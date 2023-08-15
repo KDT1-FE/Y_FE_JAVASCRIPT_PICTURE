@@ -1,0 +1,203 @@
+/* Modal styles */
+
+button {
+    all: unset;
+    background-color: mediumslateblue;
+    color: white;
+    padding: 5px 25px; 
+    /* border-radius: 10px;  */
+    cursor: pointer;
+  }
+  .button--state-edit {
+    /* margin-top: 60px;  */
+    /* background-color: 	#288C28; */
+    text-align: center;
+    border-style: solid;
+    border-color: #288C28;
+    background-color: white;
+    color: #288C28;
+    border-radius: 10%;
+    border-width: 2px;
+
+  }
+  .button--state-delete {
+    /* margin-top: 60px; */
+    background-color: #B90000;
+    /* margin-bottom: 60px; */
+    /* margin-left: 10px; */
+    text-align: center;
+  }
+
+  .button--state-delete2 {
+    border-style: solid;
+    border-color: red;
+    background-color: white;
+    color: red;
+    border-radius: 10%;
+    border-width: 2px;
+  }
+
+  .button--state-add {
+	/* background-color: #03A9F4; */
+    background-color: #1E3269;
+    /* margin-bottom: 60px; */
+    margin-left: auto;
+    margin-right:10px;
+   
+  }
+  .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+
+
+
+
+  .modal__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 어두운 반투명 배경 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+/* 모달이 활성화될 때의 배경 스타일 */
+.modal:not(.hidden) .modal__background {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+  .modal__content {
+    text-align: center;
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    top: 0;
+    padding: 10px 25px;
+    width: 20%;
+  }
+
+  
+  h1 {
+    margin: 0;
+    margin-bottom: 13px;
+  }
+
+/* 삭제하시겠습니까 문구 */
+  h2 {
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .modal-head {
+    padding: 10px 25px;
+    border-bottom: 1px solid black;
+  }
+  
+  .modal-body {
+    font-size: 1.1em;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .modal-footer {
+    margin:auto;
+  }
+
+  .form-group {
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    margin-top: 20px;
+    height: 40px;
+    /* border-color: #d2d2d2; */
+    width: 100%;
+    font-size: 1.1em;
+  }
+
+  .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+
+.button--state-cancel {
+    background-color: #c8c8c8;
+
+}
+
+/* 파일 업로드 */
+/* imaged preview */
+.filebox .upload-display {  /* 이미지가 표시될 지역 */
+    margin-bottom: 5px;
+  }
+  
+  /* @media(min-width: 768px) { 
+    .filebox .upload-display {
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 0;
+    }
+  } */
+  
+  .filebox .upload-thumb-wrap {  /* 추가될 이미지를 감싸는 요소 */
+    display: inline-block;
+    width: 54px;
+    padding: 2px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .filebox .upload-display img {  /* 추가될 이미지 */
+    display: block;
+    max-width: 100%;
+    width: 100% 9;
+    height: auto;
+  }
+  /* .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}	 */

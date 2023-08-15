@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/modal.css"/>
+</head>
+<body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+  <script>
+
+//   const firebaseConfig = {
+//     apiKey: "AIzaSyCIwWG1nwrROZ-ZmSq47DEQ9UMJNIZQPys",
+//     authDomain: "employee-management-d1bad.firebaseapp.com",
+//     projectId: "employee-management-d1bad",
+//     storageBucket: "employee-management-d1bad.appspot.com",
+//     messagingSenderId: "386195527226",
+//     appId: "1:386195527226:web:948bf0058e117d7d418703"
+// };
+// Initialize Cloud Firestore and get a reference to the service
+//const db = getFirestore(app);
+
+// Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+  </script>
+   
+  <!-- <script>
+    const db = firebase.firestore();
+    db.collection('employee').get().then((결과)=>{
+      결과.forEach((doc)=>{
+        console.log(doc)
+        var 템플릿 = `<div class="product">
+        <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
+        <div class="flex-grow-1 p-4">
+          <h5 class="name">${doc.data().name}</h5>
+          <p class="phone">${doc.data().phone}</p>
+          <p class="email">${doc.data().email}</p>
+          <p class="position">${doc.data().position}</p>
+        </div>
+        </div>`;
+        $('.container').append(템플릿)
+      })
+    })
+  </script> -->
+    <header class = "header">
+      <h1>임직원 관리</h1>
+
+      <!-- 임직원 등록 모달 -->
+      <button class="button--state-add">임직원 등록</button>
+          <!-- <button class="modify__btn">수정</button> -->
+          <div class="modal hidden">
+              <div class="modal__background"></div>
+              <div class="modal__content">
+                  <div class="modal-head">
+                      <h1 class = "modal-title">임직원 등록</h1>
+                  </div>
+                  <div class="modal-body">					
+                      <div class="form-group">
+                          <label>이름</label>
+                          <input type="text" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>이메일</label>
+                          <input type="email" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>전화번호</label>
+                          <input type="text" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>직책</label>
+                          <input type="text" class="form-control" required>
+                      </div>	
+                      <div class="form-group">
+                          <label>사진</label>
+                          <div class="filebox preview-image">
+                              <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
+                          
+                              <!-- <label for="input-file">업로드</label>  -->
+                              <input type="file" id="input-file" class="upload-hidden"> 
+                          </div>
+                          
+                          <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
+                      </div>				
+                  </div>
+                  <div class="modal-footer">
+                      <button class="button--state-cancel">취소</button>
+                      <button class="button--state-add">등록</button>
+                  </div>
+              </div>
+          </div>
+
+      <!-- 임직원 삭제 모달 -->
+      <button class="button--state-delete">임직원 삭제</button>
+          <!-- <button class="delete__btn">삭제</button> -->
+          <div class="modal hidden modal--delete">
+              <div class="modal__background"></div>
+              <div class="modal__content">
+                  <div class="modal-head">
+                      <h1 class="modal-title">임직원 삭제</h1>
+                  </div>
+                  <div class="modal-body">					
+                      <h2>삭제하시겠습니까?</h1>
+                  </div>
+                  <div class="modal-footer">
+                      <button class="button--state-cancel">취소</button>
+                      <button class="button--state-delete">삭제</button>
+                  </div>
+          </div> 
+      
+  </header> 
+
+<table>
+  <!-- <caption>Statement Summary</caption> -->
+  <thead>
+    <tr>
+          <th>
+              <span class="custom-checkbox">
+                  <input type="checkbox" id="selectAll">
+                  <label for="selectAll"></label>
+              </span>
+          </th>
+    <th scope="col">사진</th>
+    <th scope="col">이름</th>
+    <th scope="col">이메일</th>
+    <th scope="col">전화번호</th>
+    <th scope="col">직책</th>
+    <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+          <td>
+              <span class="custom-checkbox">
+                  <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                  <label for="checkbox1"></label>
+              </span>
+          </td>
+    <td data-label="photo"> <img class="img" src="image/maru.jpg"></td>
+    <td data-label="name">박수연</td>
+    <td data-label="email">suyeon9923@naver.com</td>
+    <td data-label="phone">010-1234-5678</td>
+    <td data-label="position">사원</td>
+    <td>
+      <button class="button--state-edit">수정</button>
+      <!-- <button class="modify__btn">수정</button> -->
+      <!-- <div class="modal hidden">
+        <div class="modal__background"></div>
+        <div class="modal__content">
+        <h1>Modal</h1>
+        <button>Close</button>
+        </div>
+      </div> -->
+              <!-- <div class="modal hidden"> -->
+                  <div class="modal hidden modal--edit">
+                  <div class="modal__background"></div>
+                  <div class="modal__content">
+                      <div class="modal-head">
+                          <h1 class = "modal-title">임직원 수정</h1>
+                      </div>
+                      <div class="modal-body">					
+                          <div class="form-group">
+                              <label>이름</label>
+                              <input type="text" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                              <label>이메일</label>
+                              <input type="email" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                              <label>전화번호</label>
+                              <input type="text" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                              <label>직책</label>
+                              <input type="text" class="form-control" required>
+                          </div>	
+                          <div class="form-group">
+                              <label>사진</label>
+                              <div class="filebox preview-image">
+                                  <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
+                              
+                                  <!-- <label for="input-file">업로드</label>  -->
+                                  <input type="file" id="input-file" class="upload-hidden"> 
+                              </div>
+                              
+                              <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
+                          </div>				
+                      </div>
+                      <div class="modal-footer">
+                          <button class="button--state-cancel">취소</button>
+                          <button class="button--state-add">등록</button>
+                      </div>
+                  </div>
+              </div>
+
+
+      <button class="button button--state-delete2">삭제</button>
+      <!-- <button class="delete__btn">삭제</button> -->
+      <!-- <div class="modal hidden">
+          <div class="modal__background"></div>
+          <div class="modal__content">
+          <h1>Modal</h1>
+          <button>Close</button>
+          </div>
+      </div> -->
+              <div class="modal hidden modal--delete2">
+                  <div class="modal__background"></div>
+                  <div class="modal__content">
+                      <div class="modal-head">
+                          <h1 class="modal-title">임직원 삭제</h1>
+                      </div>
+                      <div class="modal-body">					
+                          <h2>삭제하시겠습니까?</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="button--state-cancel">취소</button>
+                          <button class="button--state-delete">삭제</button>
+                      </div>
+                   </div> 
+              </div>
+              
+    </td>
+  </tr>
+    </tr>
+  </tbody>
+  </table>
+
+    <script src="main.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html> 
