@@ -11,10 +11,10 @@ export default class Write extends Component {
     직원을 등록해주세요
     </section>
     <form class="write-container" id='form'>
-    <input class="write-name" placeholder="이름을 입력해주세요" name="name"/>
-    <input class="write-email" placeholder="이메일을 입력해주세요" name="email"/>
+    <input class="write-name" placeholder="이름을 입력해주세요" name="name" required/>
+    <input class="write-email" placeholder="이메일을 입력해주세요" name="email" required/>
     <div class="image-container">
-    <input class="write-image" value='' placeholder="이미지를 첨부해주세요" disabled>
+    <input class="write-image" value='' placeholder="이미지를 첨부해주세요 ( 권장 사이즈 400*480 )" disabled>
     <label for="file" class="file-label">파일 선택</label> 
     <input type="file" name="file" id="file" accept=".jpg, .png" class="file-input">
     </div>
@@ -32,12 +32,8 @@ export default class Write extends Component {
     const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
-      if (
-        formData.get('file').name === '' ||
-        formData.get('name') === '' ||
-        formData.get('email') === ''
-      ) {
-        alert('모든 값을 입력해주세요');
+      if (formData.get('file').name === '') {
+        alert('이미지를 첨부해주세요');
         return;
       } //submit을 누르면  모두 입력이 되었는 지 확인
 
