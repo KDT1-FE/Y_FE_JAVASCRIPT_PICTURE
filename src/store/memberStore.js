@@ -91,8 +91,8 @@ export const uploadData = async (data) => {
   });
 };
 
-export const setData = async (data, id) => {
-  await setDoc(doc(db, 'list', id), data);
+export const setData = (data, id) => {
+  setDoc(doc(db, 'list', id), data);
 };
 
 export const deleteData = (id) => {

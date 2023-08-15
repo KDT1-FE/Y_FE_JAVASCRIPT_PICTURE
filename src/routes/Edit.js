@@ -10,11 +10,8 @@ import {
 
 export default class Edit extends Component {
   async render() {
-    const id = getUrlParam('id');
-    await getMemberDetail(id);
-    const member = memberStore.state.member;
-    let photoUrl = member.photoUrl;
-    let imageLoading = false;
+    await getMemberDetail(getUrlParam('id')); //id를 가지고 수정할 member의 상세 데이터를 가져옴
+    const member = memberStore.state.member; // 상세 데이터를 member 변수에 할당
     this.el.innerHTML = `
   <form class="detail">
     <label for="file" class="photo-edit" style="background-image: url(https://api.iconify.design/mdi-light/image.svg?color=%23a0aec0)"></label> 
@@ -35,7 +32,11 @@ export default class Edit extends Component {
     </section>
   </form> 
     `;
-    this.el.prepend(new Header().el);
+    this.el.prepend(new Header().el); // 공통 헤더 추가
+
+    let photoUrl = member.photoUrl; // 현재 member의 photo url
+    let imageLoading = false;
+
     const previewImage = async (event) => {
       imageLoading = true; // 이미지 미리보기전에 submit 방지
       photoUrl = await uploadImage(
@@ -46,7 +47,9 @@ export default class Edit extends Component {
       photoEdit.style.backgroundImage = `url(${photoUrl})`; // 미리보기
       imageLoading = false;
     };
-    const handleSubmit = async (event) => {
+    // 미리보기 함수
+
+    const handleSubmit = (event) => {
       event.preventDefault();
       if (imageLoading) {
         alert('이미지 로딩 후 완료 버튼을 클릭해주세요');
@@ -70,10 +73,12 @@ export default class Edit extends Component {
         photoUrl: photoUrl,
       };
 
-      await setData(data, member.id);
+      setData(data, member.id);
 
       navigate('/');
     };
+    // 제출 함수
+
     const imageFile = this.el.querySelector('.file-input');
     const form = this.el.querySelector('.detail');
     imageFile.addEventListener('change', previewImage);
