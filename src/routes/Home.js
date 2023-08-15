@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import MemberList from '../components/MemberList';
 import { Component } from '../core/component';
 import { navigate, routeRender } from '../core/router';

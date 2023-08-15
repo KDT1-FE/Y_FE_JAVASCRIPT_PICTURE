@@ -1,5 +1,5 @@
 import { Component } from '../core/component';
-import { navigate, routeRender } from '../core/router';
+import { navigate } from '../core/router';
 
 export default class Header extends Component {
   constructor() {
