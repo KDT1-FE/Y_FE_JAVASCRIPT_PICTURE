@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/loading.css" />
+    <link rel="stylesheet" href="./css/albaRegister.css" />
+    <title>우리 알바 - 알바생 수정 페이지</title>
+    <!--  버전 호환 문제로 해당 스크립트는 일단 사용하지 않을 예정!
+    <script  src="/__/firebase/10.1.0/firebase-app.js"></script>
+    <script  src="/__/firebase/10.1.0/firebase-database.js"></script>
+    <script  src="/__/firebase/10.1.0/firebase-storage.js"></script>
+    <script  src="/__/firebase/10.1.0/firebase-firestore.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="./js/loading.js"></script>
+  </head>
+  <body>
+    <!-- 로딩 화면 추가 -->
+    <div class="loading-screen">
+      <div class="loading-bar"></div>
+    </div>
+
+    <!-- 알바생 수정 폼 -->
+    <section class="alba-register">
+      <div class="registerForm">
+        <h2>알바생 수정</h2>
+        <form id="albaForm" class="albaForm">
+          <div class="inputForm">
+            <div class="image-upload">
+              <img id="imagePreview" src="../assets/pictures/no-image.png" alt="아르바이트생 사진" />
+              <input type="file" name="image" id="photoInput" accept="image/*" onchange="handleImageChange(event)" />
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" id="name" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">이</span>
+                <span class="label-char" style="--index: 1">름</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" id="phone" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">연</span>
+                <span class="label-char" style="--index: 1">락</span>
+                <span class="label-char" style="--index: 2">처</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" id="position" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">직</span>
+                <span class="label-char" style="--index: 1">급</span>
+              </label>
+            </div>
+            <div class="wave-group">
+              <input required="" type="text" class="input" id="workingHours" />
+              <span class="bar"></span>
+              <label class="label">
+                <span class="label-char" style="--index: 0">근</span>
+                <span class="label-char" style="--index: 1">무</span>
+                <span class="label-char" style="--index: 2">시</span>
+                <span class="label-char" style="--index: 3">간</span>
+              </label>
+            </div>
+            <div class="button-group">
+              <button type="button" class="submit-button" id="sendButton">수정</button>
+              <button type="button" class="back-button">이전으로</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- jQuery CDN 추가 -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Firebase SDK  -->
+    <script src="./js/albaUpdate.js"></script>
+  </body>
+</html>
