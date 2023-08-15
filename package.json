@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "parcel ./index.html",
-    "build": "parcel build ./index.html"
+    "dev": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,16 @@
   },
   "homepage": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE#readme",
   "devDependencies": {
-    "parcel": "^2.9.3"
+    "crypto-browserify": "^3.12.0",
+    "dotenv": "^16.3.1",
+    "events": "^3.3.0",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.9.3",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "dependencies": {
+    "firebase": "^10.1.0"
   }
 }

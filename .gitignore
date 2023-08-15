@@ -28,3 +28,10 @@ dist-ssr
 *.sw?
 .vercel
 .netlify
+
+# firebase
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
