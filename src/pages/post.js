@@ -15,10 +15,11 @@ async function Post() {
   const divApp = document.getElementById("app");
   const db = getFirestore(app);
   const storage = getStorage(app);
+  let imageURL = "";
 
   document.querySelector("#app").innerHTML = `
   <div>
-    <input type="file" id="image"/>
+    <input type="file" id="image" />
     <img id="myimg" src=""/>
     <input type="text" name="name" id="name"/>
     <input type="text" name="position" id="position"/>
@@ -27,7 +28,7 @@ async function Post() {
   </div>
           `;
 
-  document.querySelector("#post").addEventListener("click", async e => {
+  document.querySelector("#image").addEventListener("change", async () => {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
@@ -35,23 +36,28 @@ async function Post() {
 
     await getDownloadURL(storageRef)
       .then(url => {
-        const inputValue = {
-          image: url,
-          name: document.querySelector("#name").value.toUpperCase(),
-          position: document.querySelector("#position").value.toUpperCase(),
-          team: document.querySelector("#team").value.toUpperCase()
-        };
-
-        const add = addDoc(collection(db, "employee"), inputValue)
-          .then(() => {
-            window.location.href = "/";
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        document.querySelector("#myimg").src = url;
+        imageURL = url;
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  document.querySelector("#post").addEventListener("click", async () => {
+    const inputValue = {
+      image: imageURL,
+      name: document.querySelector("#name").value.toUpperCase(),
+      position: document.querySelector("#position").value.toUpperCase(),
+      team: document.querySelector("#team").value.toUpperCase()
+    };
+
+    const add = addDoc(collection(db, "employee"), inputValue)
+      .then(() => {
+        window.location.href = "/";
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 }
