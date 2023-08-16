@@ -1,0 +1,74 @@
+#addDriver {
+  width: 50rem;
+  max-width: 500px;
+
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  font-size: 15px;
+  color: $white;
+
+  label {
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      margin-top: 200px;
+    }
+  }
+
+  input {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+
+    transition: border-color 0.3s ease-in-out;
+
+    &[type="file"] {
+      border: none;
+
+      padding-bottom: 0;
+
+      &::file-selector-button {
+        width: 150px;
+        height: 30px;
+
+        margin-top: 10px;
+        margin-right: 20px;
+
+        border: none;
+        border-radius: 10px;
+
+        cursor: pointer;
+        background-color: $white;
+
+        &:hover {
+          border: none;
+
+          background-color: $gray;
+          color: $white;
+        }
+      }
+    }
+
+    &:not([type="submit"]) {
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    &[type="submit"] {
+      padding: 20px 0px;
+    }
+  }
+
+  #insuranceProduct {
+    width: 150px;
+    height: 30px;
+
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+  }
+}
