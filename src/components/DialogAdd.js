@@ -1,5 +1,7 @@
 import { Component } from "../core/core";
 import { storage, getDownloadURL, uploadBytes , ref } from "../../firebase"
+import store from '../store/champion'
+import Loader from './Loader'
 
 export default class Dialog extends Component{
   constructor(props = {
@@ -11,14 +13,13 @@ export default class Dialog extends Component{
     role:'',
     position:''}){
     super({
-      tagName: 'dialog',
       props
     })
   }
   render(){
     const champion = this.props
-    this.el.classList.add('modal', 'modal-edit')
     this.el.innerHTML = /*html */`
+    <dialog class="modal modal-add">
       <button class="btn btn-close"><span>X</span></button>
       <form> 
         <div class="form-basic"><div>이름 </div><input class="form-name" placeholder="이름" value="${champion.name}"/></div>
@@ -67,25 +68,28 @@ export default class Dialog extends Component{
         </div>
         <div class="form-basic"><div>썸네일이미지 </div><input class="form-thumbnail" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
         <div class="form-basic"><div> 배경이미지 </div><input class="form-image" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
-        <button class="btn btn-edit-confirm"><span>등록</span></button>
+        <button class="btn btn-add-confirm"><span>등록</span></button>
       </form>
+  </dialog>
     `
 
-    const modal = this.el
-    
-    this.el.querySelector('.btn-close').addEventListener('click',()=>{
-      modal.close()
-    })
-
+    const modal = this.el.querySelector('.modal-add')
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
     const obj = this.props
     let isSubmit = false
-
     const formEl = this.el.querySelector('form')
-    this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
+
+    modal.append(new Loader().el)
+
+    this.el.querySelector('.btn-close').addEventListener('click',()=>{
+      modal.close()
+      store.state.loading = false
+    })
+
+    this.el.querySelector('.btn-add-confirm').addEventListener('click',()=>{
       formEl.dispatchEvent(new Event('submit'))
     })
 
@@ -93,6 +97,7 @@ export default class Dialog extends Component{
       event.preventDefault()
       if(!isSubmit){
         isSubmit = true
+        store.state.loading = true
         addInformation()
         .then(()=>{
           console.log('localStorage에 저장')
@@ -108,6 +113,7 @@ export default class Dialog extends Component{
             )
           localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
           console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
+          store.state.loading = false
           modal.close() 
           location.replace(`/#/`)
         }

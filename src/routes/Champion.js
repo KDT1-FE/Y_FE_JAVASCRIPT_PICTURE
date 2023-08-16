@@ -2,7 +2,6 @@ import { Component } from "../core/core"
 import Icon from "../components/Icon"
 import DialogEdit from '../components/DialogEdit'
 
-
 export default class Champion extends Component{
   constructor(){
     super()

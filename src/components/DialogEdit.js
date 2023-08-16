@@ -1,5 +1,7 @@
 import { Component } from "../core/core";
 import { storage, getDownloadURL, uploadBytes , ref } from "../../firebase"
+import store from '../store/champion'
+import Loader from './Loader'
 
 export default class Dialog extends Component{
   constructor(props = {
@@ -11,14 +13,13 @@ export default class Dialog extends Component{
     role:'',
     position:''}){
     super({
-      tagName: 'dialog',
       props
     })
   }
   render(){
     const champion = this.props
-    this.el.classList.add('modal', 'modal-edit')
     this.el.innerHTML = /*html */`
+    <dialog class="modal modal-edit">
       <button class="btn btn-close"><span>X</span></button>
       <form> 
         <div class="form-basic"><div>이름 </div><input class="form-name" placeholder="이름" value="${champion.name}"/></div>
@@ -69,30 +70,36 @@ export default class Dialog extends Component{
         <div class="form-basic"><div> 배경이미지 </div><input class="form-image" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
         <button class="btn btn-edit-confirm"><span>수정</span></button>
       </form>
+    </dialog>
     `
 
-    const modal = this.el
-    
-    this.el.querySelector('.btn-close').addEventListener('click',()=>{
-      modal.close()
-    })
 
+    
+
+    const modal = this.el.querySelector('dialog')
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
     let isSubmit = false
-    
     const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
     const obj = localStorageArray[idx]
-
     const formEl = this.el.querySelector('form')
+  
+    modal.append(new Loader().el)
+
+    this.el.querySelector('.btn-close').addEventListener('click',()=>{
+      modal.close()
+      store.state.loading = false
+    })
+
     this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
       formEl.dispatchEvent(new Event('submit'))
     })
 
     formEl.addEventListener('submit',event=>{
       event.preventDefault()
+      store.state.loading = true
       if(!isSubmit){
         isSubmit = true
 
@@ -103,6 +110,7 @@ export default class Dialog extends Component{
             localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
             console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
             modal.close() 
+            //store.state.loading = false
             location.replace(`/#/champion?name=${obj.name}`)
           }
           )

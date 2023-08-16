@@ -18,7 +18,6 @@ export default store
 // state.storage에서 page 받을 수 만큼 slicing에서 state.champion 을 변경해줌
 export const searchChampions = (page = 1) =>{
   setLocalStorage()
-  store.state.loading = true
   store.state.page = page
   try{
     store.state.maxLength = store.state.storage.length
@@ -28,8 +27,6 @@ export const searchChampions = (page = 1) =>{
         : store.state.maxLength)
   }catch(err){
     console.error(err)
-  }finally{
-    store.state.loading = false
   }
 }
 
