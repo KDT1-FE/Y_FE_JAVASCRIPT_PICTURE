@@ -85,7 +85,7 @@ function createEmployee() {
   });
 }
 
-// 배열 중복 제거
+// checkedArr 배열 중복 제거
 function delDupArr() {
   let uniqueArr = [];
   checkedArr.forEach((element) => {
@@ -105,22 +105,30 @@ function checkedAll() {
     if (isChecked) {
       checkedArr = [];
       for (const checkbox of checkboxes) {
+        let td = checkbox.parentNode;
+        let tr = td.parentNode;
         checkbox.checked = true;
-        checkedArr.push(checkbox.parentNode.parentNode.children[3].innerHTML);
+        checkedArr.push(tr.children[3].innerHTML);
         delDupArr();
+        tr.style.backgroundColor = "#aaa";
+        tr.style.color = "white";
       }
       checkedArr.shift();
     } else {
       for (const checkbox of checkboxes) {
+        let td = checkbox.parentNode;
+        let tr = td.parentNode;
         checkbox.checked = false;
         checkedArr = [];
+        tr.style.backgroundColor = "#fff";
+        tr.style.color = "black";
       }
     }
     console.log(checkedArr);
   });
 }
 
-// checked에 따라 배경색 변화, 삭제 위한 직원 이메일 저장
+// checked에 따라 배경색 변화 / 삭제 위한 직원 이메일 저장
 function checked(checkbox) {
   checkbox.addEventListener("change", () => {
     let td = checkbox.parentNode;
