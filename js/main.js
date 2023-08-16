@@ -163,21 +163,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 클릭한 유저 상세 페이지로
-        const tableRow = document.querySelector('.body-tr');
-        const inputCheckbox = tableRow.querySelector('.input-checkbox');
+        const tableRows = document.querySelectorAll('.body-tr');
+        const inputCheckbox = document.querySelector('.input-checkbox');
 
-        tableRow.addEventListener('click', (event) => {
-            if (event.target === inputCheckbox) {
-                return; 
-            }
+        tableRows.forEach(row => {
+            row.addEventListener('click', (event) => {
+                if (event.target === inputCheckbox) {
+                    return; 
+                }
 
-            const userId = tableRow.id;
-            const user = data[userId];
+                const userId = row.id;
+                const user = data[userId];
 
-            if (user) {
-                const queryString = new URLSearchParams({ userId: user.key }).toString();
-                window.location.href = `detail.html?${queryString}`;
-            }
+                if (user) {
+                    const queryString = new URLSearchParams({ userId: user.key }).toString();
+                    window.location.href = `detail.html?${queryString}`;
+                }
+            });
         });
     });
 });
