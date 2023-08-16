@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_R-euRNqGE2pQb_-lfUbNN6dfHILDE1s",
@@ -15,10 +15,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
+const usersCollectionRef = collection(db, "profiles");
 
-const delBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.outlined"); // 선택 삭제 버튼
+const mainDelBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.outlined"); // 선택 삭제 버튼
 const mainAddBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.filled"); //팝업 켜기 버튼
 const logoutBtnEl = document.querySelector(".header-userinfo_logout");
 
@@ -61,7 +61,6 @@ popupAddBtnEl.addEventListener("click", (event) => {
   const popupSelectEls = document.querySelectorAll(".popup-contents-container select");
   const [team, author] = popupSelectEls;
 
-  let flag = true;
   let employeeProfileCard = {
     employeeKoName: koName.value,
     employeeEnName: enName.value,
@@ -73,20 +72,13 @@ popupAddBtnEl.addEventListener("click", (event) => {
     employeeID: new Date().getTime(),
   };
 
-  for (let i = 0; i < 4; i++) {
-    if (i === 1) continue;
-    if (!popupInputEls[i].value) {
-      flag = false;
-      sendToast("입력하지 않은 항목이 있습니다.", "error");
-      break;
-    }
-  }
+  let inputAll = checkInputAll(popupInputEls); //모든 입력값을 다 체크했는지 확인하는 함수
+  if (inputAll === false) return;
+
   if (popupHeaderEl.innerText === "직원 프로필 추가" && !checkValid(employeeProfileCard)) {
     sendToast("동일한 연락처 혹은 이메일을 사용하는 사용자가 있습니다.", "error");
-    flag = false;
+    return;
   }
-
-  if (flag === false) return;
 
   //새로 만드는 녀석인지 변경하는 녀석인지 알아내기
   if (popupHeaderEl.innerText === "직원 프로필 추가") {
@@ -94,8 +86,12 @@ popupAddBtnEl.addEventListener("click", (event) => {
     employeeArr.push(employeeProfileCard);
     checkEmpTotalNum();
     saveLocalStorage();
-    paintProfileEl(employeeProfileCard);
 
+    console.log(`${employeeProfileCard.employeeID}`, "ID");
+    const docRef = doc(db, "profiles", `${employeeProfileCard.employeeID}`);
+    setDoc(docRef, employeeProfileCard);
+
+    paintProfileEl(employeeProfileCard);
     sendToast("직원 프로필을 생성하였습니다.", "success"); // 토스트 생성
   } else {
     let temp = JSON.parse(popupAddBtnEl.dataset.obj);
@@ -117,14 +113,12 @@ popupAddBtnEl.addEventListener("click", (event) => {
     }
 
     saveLocalStorage();
+    console.log(`${temp.employeeID}`, "ID");
+    const docRef = doc(db, "profiles", `${temp.employeeID}`);
+    setDoc(docRef, employeeProfileCard);
+
     ProfileListContainerEl.replaceChildren();
     loadLocalStorage();
-    //변경하는 녀석 플로우
-    // 1. 배열에서 해당 목록 정보 수정하기 v
-    // 2. localStorage에 해당 목록 정보 업데이트하기
-    // 3. 실제 화면에서 그리기
-
-    employeeArr.filter;
 
     sendToast("해당 직원 프로필을 변경하였습니다.", "success"); // 토스트 생성
   }
@@ -133,6 +127,22 @@ popupAddBtnEl.addEventListener("click", (event) => {
   closePopup();
   console.log("전송 완료!");
 });
+
+/*
+  모든 필수 입력값을 다 기입했는지 체크하는 함수
+*/
+function checkInputAll(popupInputEls) {
+  let flag;
+  for (let i = 0; i < 4; i++) {
+    if (i === 1) continue;
+    if (!popupInputEls[i].value) {
+      flag = false;
+      sendToast("입력하지 않은 항목이 있습니다.", "error");
+      break;
+    }
+  }
+  return flag;
+}
 
 /* 
   토스트 메세지 보내기 함수
@@ -164,9 +174,26 @@ function saveLocalStorage() {
 loadLocalStorage();
 function loadLocalStorage() {
   employeeArr = JSON.parse(localStorage.getItem("employeeCard")) || [];
-  if (!employeeArr.length) return;
-  employeeArr.forEach((item) => paintProfileEl(item));
-  checkEmpTotalNum();
+  if (employeeArr.length) {
+    employeeArr.forEach((item) => paintProfileEl(item));
+    checkEmpTotalNum();
+  } else {
+    getDocs(usersCollectionRef)
+      .then((querySnapshot) => {
+        sendToast("서버에서 데이터를 불러왔습니다.", "success");
+        querySnapshot.forEach((doc) => {
+          // console.log("Document ID:", doc.id); // 문서 이름 출력
+          // console.log("Document data:", doc.data());
+          employeeArr.push(doc.data());
+          paintProfileEl(doc.data());
+        });
+      })
+      .then(() => {
+        saveLocalStorage();
+        checkEmpTotalNum();
+      })
+      .catch(() => console.log("nothing in the both Local and Firestore"));
+  }
 }
 
 /*
@@ -324,10 +351,22 @@ function deleteList(event) {
   const target = event.target.closest("article");
   target.remove();
   const temp = JSON.parse(event.target.dataset.obj);
-  console.log(temp);
 
   employeeArr = employeeArr.filter((item) => item.employeeID !== temp.employeeID);
   saveLocalStorage();
+
+  // 삭제할 문서의 참조 생성
+  const docRef = doc(db, "profiles", `${temp.employeeID}`);
+
+  // 문서 삭제
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Document successfully deleted!");
+    })
+    .catch((error) => {
+      console.error("Error deleting document:", error);
+    });
+
   checkEmpTotalNum();
 }
 
@@ -340,10 +379,12 @@ function checkEmpTotalNum() {
   checkEmptyList();
 }
 
+/*
+  비었나 안 비었나 체크 함수
+*/
 function checkEmptyList() {
   const EmptyListEl = document.querySelector(".no-profile");
   if (employeeArr.length) {
-    console.log(checkEmptyList, "!");
     EmptyListEl.classList.add("none");
   } else {
     EmptyListEl.classList.remove("none");
@@ -364,7 +405,7 @@ function configCheckbox() {
 }
 
 /*
-  모든 리스트 삭제 함수
+  여러 개의(혹은 모든) 리스트 삭제 함수
 */
 function deleteEveryCheckedList() {
   if (!employeeArr.length) {
@@ -374,10 +415,25 @@ function deleteEveryCheckedList() {
   const decision = confirm("정말 선택한 프로필들을 삭제하시겠습니까?");
   if (!decision) return;
   const checkboxEls = document.querySelectorAll("input[type='checkbox']");
-
-  for (let i = 1; i < checkboxEls.length; i++) {
+  console.log("선택 삭제 중");
+  for (let i = 0; i < checkboxEls.length; i++) {
+    if (!checkboxEls[i].checked) continue;
     const temp = JSON.parse(checkboxEls[i].dataset.obj);
+    console.log(temp.employeeID);
+
     employeeArr = employeeArr.filter((el) => el.employeeID !== temp.employeeID);
+
+    // 삭제할 문서의 참조 생성
+    const docRef = doc(db, "profiles", `${temp.employeeID}`);
+
+    // 문서 삭제
+    deleteDoc(docRef)
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error deleting document:", error);
+      });
 
     const painted = checkboxEls[i].closest("article");
     painted.remove();
@@ -388,6 +444,9 @@ function deleteEveryCheckedList() {
   sendToast("선택한 프로필들을 삭제하였습니다.", "success");
 }
 
+/*
+  유저 이름 가져오기 함수
+*/
 getUserName();
 function getUserName() {
   const userName = localStorage.getItem("UserDisplayName");
@@ -403,20 +462,4 @@ popUpCloseBtnEl.addEventListener("click", closePopup); //팝업 닫기
 dimEl.addEventListener("click", closePopup); //딤 클릭으로 팝업 닫기
 popupCancelBtnEl.addEventListener("click", closePopup); //취소버튼으로 팝업 닫기
 primeCheckbox.addEventListener("click", configCheckbox);
-delBtnEl.addEventListener("click", deleteEveryCheckedList);
-
-const docRef = doc(db, "profiles", "employeeProfileCard");
-const data = {
-  name: "John Doe",
-  email: "johndoe@example.com",
-};
-
-setDoc(docRef, data);
-
-getDoc(docRef).then((doc) => {
-  if (doc.exists()) {
-    console.log("Document data:", doc.data());
-  } else {
-    console.log("No such document!");
-  }
-});
+mainDelBtnEl.addEventListener("click", deleteEveryCheckedList);
