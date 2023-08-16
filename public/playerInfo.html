@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
-    <script defer src="./js/playerInfo.js"></script>
     <title>선수 프로필 정보 페이지</title>
 </head>
 <body>
@@ -27,43 +26,24 @@
             </div>
         </Nav>
     </header>
-    <section class="player__profile">
-        <div class="profile__container">
-            <div class="player__image">
-               <img src="./assets/picture/player_list02.jpg" alt="동적 생성 예정 이미지">
-            </div>
-            <div class="player__desc">
-                <div class="main__desc">
-                    <div class="main__title">
-                        <h2>빅토르 린델로프</h2>
-                    </div>
-                    <div class="update__info">
-                        <button class="update__btn">프로필 변경</button>
-                    </div>
-                </div>
-                <hr>
-                <div class="sub__desc">
-                    <div class="sub__key">
-                        <h2>국적</h2>
-                        <h2>나이</h2>
-                        <h2>포지션</h2>
-                        
-                    </div>
-                    <div class="sub__value">
-                        <h2>스웨덴</h2>
-                        <h2>29</h2>
-                        <h2>DF</h2>
-                    </div>
-                </div>
-                <div class="save__profile">
-                    <button class="save__btn">저장</button>
-                </div>
-            </div>
+    <div class="update__modal">
+        <div class="modal__content">
+            <form id="update-player">
+                <input type="text" id="new-Name" placeholder="새로운 이름">
+                <input type="text" id="new-Nation" placeholder="새로운 국적">
+                <input type="text" id="new-Age" placeholder="새로운 나이">
+                <input type="text" id="new-Position" placeholder="새로운 포지션">
+                <input type="file" id="new-Image" placeholder="새로운 사진"> 
+             </form>
+             <div class="save__info">
+                <button class="save__btn-modal">저장</button>
+             </div>
         </div>
-    </section>
+    </div>
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
    <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
    <script src="/__/firebase/8.6.5/firebase-database.js"></script>
+   <script src="/__/firebase/8.6.5/firebase-storage.js"></script>
    <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
    <script>
        const firebaseConfig = {
@@ -76,5 +56,6 @@
   };
   firebase.initializeApp(firebaseConfig); 
  </script> 
+  <script src="./js/playerInfo.js"></script>
 </body>
 </html>

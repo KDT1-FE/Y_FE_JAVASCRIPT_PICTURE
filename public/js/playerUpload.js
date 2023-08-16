@@ -32,7 +32,7 @@ const Upload = () =>{
         uploadWork.on('state_changed',
           null,
           (error)=>{
-            console.error('error :', error);
+            console.error('Error :', error);
 
           },
           ()=>{

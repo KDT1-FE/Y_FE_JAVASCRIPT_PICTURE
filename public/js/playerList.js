@@ -11,6 +11,7 @@ moveToPlayerUpload();
 
 const createPlayer = (player)=>{
     const row = document.createElement("tr");
+    row.classList.add("player_cell");
     row.setAttribute('data-id', player.id);
     row.innerHTML = `
              <td>
@@ -26,7 +27,13 @@ const createPlayer = (player)=>{
              <td>${player.Age}</td>
              <td>${player.position}</td>
     `;
+    row.addEventListener('click',()=>{
+      localStorage.setItem('selectedPlayer', JSON.stringify(player));
+      window.location.href= "playerInfo.html";
+    })
     addPlayer.appendChild(row);
+   
+  
 };
 
 const removePlayer = () =>{
@@ -64,6 +71,8 @@ db.collection("Player")
         const playerData = doc.data();
         playerData.id = playerId;
         createPlayer(playerData);
+        console.log(playerData);
+
     });
   })
   .catch((error)=>{

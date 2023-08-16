@@ -6,3 +6,4 @@ const Start = () =>{
     })
 }
 Start();
+console.log("hi");

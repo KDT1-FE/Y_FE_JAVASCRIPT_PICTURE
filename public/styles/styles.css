@@ -133,6 +133,9 @@ body{
     width:10rem;
     height:10rem;
 }
+.player_cell{
+    cursor:pointer;
+}
 .player__info{
     margin:0;
     padding:0;
@@ -142,6 +145,9 @@ body{
     gap:3%;
     position:relative;
 }
+.player__info img{
+    cursor:pointer;
+}
 .checkbox__container{
     position:absolute;
     left:5rem;
@@ -150,6 +156,7 @@ body{
     font-weight:bold;
     display:block;
     width:10rem;
+   
 }
 
 .player__upload{
@@ -291,4 +298,35 @@ hr{
     border-radius: 1rem;
     font-weight:bold;
     cursor:pointer;
+}
+/*Modal 부분 cSS */
+.update__modal {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    position:fixed;
+    z-index:1;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color:rgba(0,0,0,0.4);
+    display:none;
+}
+.modal__content{
+    border:1px solid #fff;
+    background-color: #fefefe;
+    margin:15% auto;
+    padding:2rem;
+    width:80%;
+}
+#update-player{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#update-player input{
+  
+
 }
