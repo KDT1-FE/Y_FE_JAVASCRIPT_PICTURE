@@ -5,15 +5,16 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
+import dotenv from 'dotenv';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAXjktja_jwgeu_cQ9ajtG-vtP5nGHZzjo',
-  authDomain: 'cms-solution-86408.firebaseapp.com',
-  projectId: 'cms-solution-86408',
-  storageBucket: 'cms-solution-86408.appspot.com',
-  messagingSenderId: '714447279928',
-  appId: '1:714447279928:web:219c3429fc0f4c5ed213cd',
-  measurementId: 'G-E4Q9HYTK7N',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

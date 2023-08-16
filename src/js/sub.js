@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -29,19 +28,16 @@ import {
   deleteDoc,
   deleteField,
 } from 'firebase/firestore/lite';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import dotenv from 'dotenv';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyAXjktja_jwgeu_cQ9ajtG-vtP5nGHZzjo',
-  authDomain: 'cms-solution-86408.firebaseapp.com',
-  projectId: 'cms-solution-86408',
-  storageBucket: 'cms-solution-86408.appspot.com',
-  messagingSenderId: '714447279928',
-  appId: '1:714447279928:web:219c3429fc0f4c5ed213cd',
-  measurementId: 'G-E4Q9HYTK7N',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -127,7 +123,7 @@ function inputCheck(name, email, phone, grade) {
   const user = [name, email, phone, grade];
   let checkResult;
   for (let i = 0; i < user.length; i++) {
-    if (!user[i]) {
+    if (!user[i].value) {
       checkResult = false;
       break;
     }
@@ -152,7 +148,7 @@ async function addEmployeePhoto(photoURL, photoVal) {
         return (storageURL = url);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error);
       });
   }
 }
@@ -237,7 +233,7 @@ saveButton.addEventListener('click', async () => {
       urlParameter(uid);
     })
     .catch((error) => {
-      console.log(error.message);
+      alert(error);
     });
 
   //      const userCredential = await createUserWithEmailAndPassword(auth, email, password);

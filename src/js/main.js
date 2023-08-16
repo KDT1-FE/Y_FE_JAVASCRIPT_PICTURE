@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import {
@@ -24,19 +23,16 @@ import {
   Timestamp,
   deleteDoc,
 } from 'firebase/firestore/lite';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import dotenv from 'dotenv';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyAXjktja_jwgeu_cQ9ajtG-vtP5nGHZzjo',
-  authDomain: 'cms-solution-86408.firebaseapp.com',
-  projectId: 'cms-solution-86408',
-  storageBucket: 'cms-solution-86408.appspot.com',
-  messagingSenderId: '714447279928',
-  appId: '1:714447279928:web:219c3429fc0f4c5ed213cd',
-  measurementId: 'G-E4Q9HYTK7N',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
 // Initialize Firebase
