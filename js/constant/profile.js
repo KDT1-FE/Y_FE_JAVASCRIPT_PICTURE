@@ -5,7 +5,7 @@ export const main = document.getElementById("profile-main");
 export const profile = document.getElementsByClassName("profile")[0];
 export const manageBar = document.getElementsByClassName("manage-bar")[0]; // 수정 및 삭제 버튼 컨테이너
 export const openEditorBtn = document.getElementById("manage-bar__edit-btn");
-export const removeBtn = document.getElementById("manage-bar__remove-btn");
+export const deleteBtn = document.getElementById("manage-bar__remove-btn");
 
 // 프로필 수정 폼
 export const editForm = document.getElementsByClassName("edit-form")[0];
