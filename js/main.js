@@ -1,4 +1,5 @@
 const db = firebase.firestore();
+const storage = firebase.storage();
 const employeeTable = document.querySelector(".employee-table");
 const employeeAddBtn = document.querySelector(".employee-add__button");
 const employeeDeleteBtn = document.querySelector(".employee-delete__button");
@@ -35,9 +36,14 @@ function readEmployee() {
         checkbox.className = "checkbox";
         checkbox.onclick = checked(checkbox);
         inputTd.append(checkbox);
+
         const imgTd = document.createElement("td");
         const img = document.createElement("img");
+        img.src = doc.data().이미지;
+        img.style.width = "100px";
+        img.style.height = "100px";
         imgTd.append(img);
+
         const name = document.createElement("td");
         name.innerHTML = doc.data().이름;
         const tel = document.createElement("td");
@@ -46,7 +52,8 @@ function readEmployee() {
         email.innerHTML = doc.data().이메일;
         const dateTime = document.createElement("td");
         dateTime.innerHTML = doc.data().입사날짜;
-        // 테이블에 추가
+
+        // 테이블에 엘리먼트 추가
         employeeTable.append(tr);
         tr.append(inputTd, imgTd, name, email, tel, dateTime);
       });
@@ -59,29 +66,51 @@ function readEmployee() {
 // employee data create
 function createEmployee() {
   employeeForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.querySelector(".add-data__name");
-    const email = document.querySelector(".add-data__email");
-    const tel = document.querySelector(".add-data__tel");
-    const date = document.querySelector(".add-data__date");
+    e.preventDefault(); // 새로고침 방지
 
-    let employee = {
-      이름: name.value,
-      이메일: email.value,
-      전화번호: tel.value,
-      입사날짜: date.value,
-    };
+    const file = document.querySelector(`input[type="file"]`).files[0];
 
-    db.collection("직원")
-      .add(employee)
-      .then((result) => {
-        console.log(result);
-        alert("직원 등록이 완료되었습니다.");
-        window.location.href = "./index.html";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let storageRef = storage.ref();
+    let imgUrl = storageRef.child("image/" + file.name);
+    let upload = imgUrl.put(file);
+
+    upload.on(
+      "state_changed",
+      // 변화시 동작하는 함수
+      null,
+      //에러시 동작하는 함수
+      (error) => {
+        console.error(error);
+      },
+      // 성공시 동작하는 함수
+      () => {
+        upload.snapshot.ref.getDownloadURL().then((url) => {
+          const name = document.querySelector(".add-data__name");
+          const email = document.querySelector(".add-data__email");
+          const tel = document.querySelector(".add-data__tel");
+          const date = document.querySelector(".add-data__date");
+
+          let employee = {
+            이미지: url,
+            이름: name.value,
+            이메일: email.value,
+            전화번호: tel.value,
+            입사날짜: date.value,
+          };
+
+          // 직원 등록
+          db.collection("직원")
+            .add(employee)
+            .then((result) => {
+              alert("직원 등록이 완료되었습니다.");
+              window.location.href = "./index.html";
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      }
+    );
   });
 }
 
