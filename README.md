@@ -29,7 +29,7 @@
 - CSS
 
   - [x] 애니메이션 구현
-  - [ ] 상대수치 사용(rem, em)
+  - [x] 상대수치 사용(rem, em)
 
 - JavaScript
 - [x] DOM event 조작

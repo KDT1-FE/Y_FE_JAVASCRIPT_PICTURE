@@ -1,3 +1,14 @@
+html {
+  font-size: 14px;
+}
+div {
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
 body {
   width: 500px;
 }
