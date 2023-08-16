@@ -49,12 +49,14 @@ villagerDocRef.get().then((doc) => {
 
 //수정 기능
 const editBtn = document.querySelector(".edit-btn");
+let file;
 
-editBtn.addEventListener("click", () => {
+editBtn.addEventListener("click", async () => {
   //이미지 관련 요소
   const imageUploadInput = document.querySelector(".image-upload");
 
   if (editBtn.textContent === "정보 수정") {
+    //button text content가 수정완료일 때 => 수정모드
     editBtn.textContent = "수정 완료";
     imageUploadInput.style.display = "block";
 
@@ -96,47 +98,40 @@ editBtn.addEventListener("click", () => {
     });
 
     //image 수정
-    imageUploadInput.addEventListener("change", (event) => {
-      const file = event.target.files[0];
+    imageUploadInput.addEventListener("change", async (event) => {
+      file = event.target.files[0];
 
       if (file) {
-        try {
-          // Storage에 이미지 업로드
-          const storageRef = storage.ref(`${villagerId}`);
-          storageRef.put(file);
-
-          // Storage의 업로드된 이미지 URL을 가져와서 표시
-          const imageUrl = storageRef.getDownloadURL();
-          const imageElement = document.getElementById("villager-img");
-          imageElement.src = imageUrl;
-
-          // Firestore에서 이미지 URL 업데이트
-          villagerDocRef.update({ imageUrl });
-        } catch (error) {
-          console.error("이미지 업로드 오류: ", error);
-        }
+        //사진 선택만 하고 저장은 하지 않았을 때를 대비해 e에서 파일 가져옴
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const imageElement = document.querySelector(".villager-img");
+          imageElement.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
       }
     });
   } else if (editBtn.textContent === "수정 완료") {
     editBtn.textContent = "정보 수정";
     imageUploadInput.style.display = "none";
+    alert("정보가 수정되었습니다!");
 
     const profileContainer = document.querySelector(".villager-info");
 
-    // profileContainer 내부의 모든 input 엘리먼트 선택
+    //profileContainer 내부의 모든 input 엘리먼트 선택
     const inputElements = profileContainer.querySelectorAll("input");
 
-    // 업데이트된 정보를 저장할 객체 생성
+    //업데이트된 정보를 저장할 객체 생성
     const updatedData = {};
 
-    // input 엘리먼트를 반복하며 객체 업데이트
+    //input을 반복하며 객체 업데이트
     inputElements.forEach((input) => {
       const field = input.id;
       updatedData[field] = input.value;
     });
 
     try {
-      // Firestore 문서를 새 데이터로 업데이트
+      //firestore 업데이트
       villagerDocRef.update(updatedData);
 
       //새 정보로 업데이트
@@ -148,8 +143,29 @@ editBtn.addEventListener("click", () => {
           pTag.textContent = updatedData[field];
         }
       });
+
+      try {
+        // Storage에 이미지 업로드
+        const storageRef = storage.ref(`${villagerId}`);
+        const imageRef = await storageRef.put(file);
+        const imageUrl = await imageRef.ref.getDownloadURL();
+
+        // Firestore에서 이미지 URL 업데이트
+        await villagerDocRef.update({ imageUrl });
+      } catch (error) {
+        console.error("이미지 업로드 오류: ", error);
+      }
     } catch (error) {
-      console.error("문서 업데이트 오류: ", error);
+      console.error("오류: ", error);
     }
+  }
+});
+
+window.addEventListener("beforeunload", (event) => {
+  if (editBtn.textContent === "수정 완료") {
+    //수정 모드일 때 페이지 이동을 막음
+    event.preventDefault();
+    // alert 표시
+    event.returnValue = "정보 수정 중입니다. 페이지를 나가시겠습니까?";
   }
 });
