@@ -1,0 +1,35 @@
+{
+  "name": "y_fe_javascript_picture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "parcel": "parcel src/*.html",
+    "dev": "npx tailwindcss -i ./src/tailwind/input.css -o ./src/tailwind/output.css --watch --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/issues"
+  },
+  "homepage": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE#readme",
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.28.0",
+    "prettier": "^3.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.3",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "firebase": "^10.1.0",
+    "parcel-bundler": "^1.12.5"
+  }
+}
