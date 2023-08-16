@@ -1,21 +1,21 @@
 /*detail 페이지*/
 .detail {
-  max-width: 1060px;
-  margin: 60px auto 0 auto;
+  max-width: 66.25rem;
+  margin: 3.75rem auto 0 auto;
 
   display: flex;
   justify-content: space-between;
 }
 .photo-detail {
-  width: 400px;
-  height: 480px;
+  width: 25rem;
+  height: 30rem;
 
   background-size: contain;
   background-repeat: no-repeat;
 }
 .information-container {
-  width: 630px;
-  padding-bottom: 2px;
+  width: 39.375rem;
+  padding-bottom: 0.125rem;
 }
 .information-title {
   display: flex;
@@ -26,29 +26,29 @@
   color: var(--color-primary);
 
   border-bottom: 2px solid var(--color-gray);
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
 }
 .navigate-edit {
   background-color: var(--color-primary);
   color: var(--color-white);
 
-  width: 100px;
-  height: 37px;
-  padding: 0px 8px;
+  width: 6.25rem;
+  height: 2.3125rem;
+  padding: 0 0.5rem;
 
-  border-radius: 6px;
+  border-radius: 0.375rem;
 
   font-size: 0.9rem;
   font-weight: 500;
 }
 .information {
-  margin-top: 20px;
-  height: 100px;
-  padding-left: 20px;
+  margin-top: 1.25rem;
+  height: 6.25rem;
+  padding-left: 1.25rem;
 
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 1.875rem;
 }
 .detail-category {
   font-size: 1.5rem;
