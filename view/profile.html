@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1433.0.min.js"></script>
+    <link rel="stylesheet" href="/styles/general.css" />
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <link rel="stylesheet" href="/styles/profile.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="">프로필페이지 입니다!</h1>
+      <div class="profile bg-main100">
+        <div class="profile__photo-box">
+          <img id="profile-photo" />
+        </div>
+        <div class="profile__detail">
+          <ul>
+            <li class="profile__name"><span>이름 :</span></li>
+            <li class="profile__email"><span>이메일 :</span></li>
+            <li class="profile__phoneNum"><span>전화번호 :</span></li>
+            <li class="profile__position"><span>포지션 :</span></li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <script></script>
+  </body>
+  <script type="module" src="/js/config/aws.js"></script>
+  <script type="module" src="/js/api/getProfile.js"></script>
+</html>

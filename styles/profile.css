@@ -1,0 +1,40 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile__photo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+#profile-photo {
+  width: 90%;
+}
+
+.profile__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.profile__detail > ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  width: 95%;
+}
+
+.profile__detail > ul > li {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.profile__detail > ul > li > span {
+  width: 50%;
+}
