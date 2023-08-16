@@ -1,5 +1,5 @@
 import { Component } from "../../core";
-import { ImageEditor } from "../editor/ImageEditor";
+import ImageEditor from "../editor/ImageEditor";
 
 export default class ImageEditorModal extends Component {
   constructor() {
@@ -8,7 +8,7 @@ export default class ImageEditorModal extends Component {
     });
   }
   render() {
-    this.el.className = "container mx-auto h-screen md:h-[800px] md:rounded-xl";
+    this.el.className = "container m-auto h-screen md:h-[800px] md:rounded-xl";
     this.el.id = "ImageEditorModal";
     this.el.append(new ImageEditor().el);
 

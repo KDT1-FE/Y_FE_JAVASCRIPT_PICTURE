@@ -46,6 +46,10 @@ export class HomeMember extends Component {
     const delUserBtn = this.el.querySelector("#delUserBtn");
     const chkAllMember = this.el.querySelector("#chkAllMember");
     delUserBtn.addEventListener("click", () => {
+      if (memberStore.state.deleteIds.length === 0) {
+        alert("선택된 직원이 없습니다.");
+        return;
+      }
       const delModal = document.getElementById("delUserModal");
       delModal.showModal();
     });
@@ -65,7 +69,6 @@ export class HomeMember extends Component {
         else deleteIds.clear();
       });
       memberStore.state.deleteIds = Array.from(deleteIds);
-      // console.log(memberStore.state.deleteIds);
     });
   }
 }

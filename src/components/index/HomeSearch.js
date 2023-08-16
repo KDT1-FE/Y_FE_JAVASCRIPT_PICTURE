@@ -1,5 +1,4 @@
 import { Component } from "../../core";
-import { searchFormIsEmpty } from "../../js/validate";
 import { getSearchedMember } from "../../libraries/firebase-firestore";
 import memberStore from "../../store/memberlist";
 

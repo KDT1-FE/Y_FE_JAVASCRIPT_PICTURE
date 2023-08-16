@@ -1,6 +1,7 @@
 import { Component } from "../core";
 import { TheTitle } from "../components/commons/TheTitle";
 import { DetailContents } from "../components/detail/DetailContents";
+import { DetailDeleteModal } from "../components/detail/DetailDeleteModal";
 
 export default class DetailContent extends Component {
   constructor() {
@@ -22,6 +23,6 @@ export default class DetailContent extends Component {
       }).el,
     );
 
-    container.append(new DetailContents().el);
+    container.append(new DetailContents().el, new DetailDeleteModal().el);
   }
 }

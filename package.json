@@ -4,8 +4,8 @@
   "description": "[참고 내용]",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/pages/index.html --no-cache",
-    "build": "rm -rf dist && parcel build src/pages/index.html --no-cache"
+    "start": "parcel ./index.html --no-cache",
+    "build": "rm -rf dist && parcel build ./index.html --no-cache"
   },
   "keywords": [],
   "author": "",

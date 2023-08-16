@@ -2,7 +2,7 @@ import { Component } from "../../core";
 import memberStore from "../../store/memberlist";
 import { deleteMember } from "../../libraries/firebase-firestore";
 
-export class HomeDeleteModal extends Component {
+export class DetailDeleteModal extends Component {
   constructor() {
     super({ tagName: "dialog" });
   }
@@ -55,14 +55,10 @@ export class HomeDeleteModal extends Component {
     });
     form.addEventListener("submit", async () => {
       const deleteIds = Array.from(memberStore.state.deleteIds);
-      const deletePromise = deleteIds.map((deleteId) =>
-        // deleteDoc(doc(db, "Members", deleteId)),
-        deleteMember(deleteId),
-      );
-      // 모든 삭제가 완료되면 다시 목록을 불러옵니다.
+      const deletePromise = deleteIds.map((deleteId) => deleteMember(deleteId));
+      // 모든 삭제가 완료되면 첫 페이지로 돌아갑니다.
       Promise.all(deletePromise).then(() => {
-        const searchForm = document.getElementById("searchForm");
-        searchForm.dispatchEvent(new Event("submit"));
+        location.href = "#/";
       });
     });
   }

@@ -1,9 +1,19 @@
 import { Component } from "../../core";
 import createUser from "../../js/createUser";
+import { url2File } from "../../js/dataUrlConverter";
 import inputValidate from "../../js/inputValidate";
+import memberStore from "../../store/memberlist";
 
 export default class CreateContents extends Component {
-  render() {
+  constructor({ props }) {
+    super({
+      props: {
+        mode: props.mode,
+        memberDetail: props.memberDetail ?? {},
+      },
+    });
+  }
+  async render() {
     this.el.className = "inner mb-3 rounded-xl bg-white p-3 drop-shadow-xl";
     this.el.id = "create-contents";
     this.el.innerHTML = /* html */ `
@@ -35,9 +45,20 @@ export default class CreateContents extends Component {
       <div class="mb-4">
         <h4 class="mb-2">업로드 미리보기</h4>
         <div class="flex justify-center">
-          <div class="h-[200px] aspect-square relative" id="img-thumb">
-            <div class="layer absolute top-0 left-0 p-2 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-end items-start">
-              <div id="modifyBtn" class="w-[64px] py-1.5 mr-2 text-center rounded-md cursor-pointer text-gray-800 bg-gray-200"><span class="material-icons md-18 align-middle">edit</span> 수정</div>
+          <div class="w-[200px] relative ${
+            this.props?.memberDetail.fileUrl ? "aspect-square" : ""
+          }" id="img-thumb">
+            ${
+              this.props?.memberDetail.fileUrl
+                ? `<img src="${this.props?.memberDetail.fileUrl}" />`
+                : ""
+            }
+            <div class="layer absolute top-0 left-0 p-2 w-full h-full ${
+              this.props?.memberDetail.fileUrl ? "flex" : "hidden"
+            } transition-opacity duration-300 justify-end items-start">
+              <div id="modifyBtn" class="w-[64px] py-1.5 mr-2 text-center rounded-md cursor-pointer text-gray-800 bg-gray-200 ${
+                this.props.mode === "update" && "hidden"
+              }"><span class="material-icons md-18 align-middle">edit</span> 수정</div>
               <div id="deleteBtn" class="w-[64px] py-1.5 text-center rounded-md cursor-pointer text-white bg-red-600"><span class="material-icons md-18 align-middle">delete</span> 삭제</div>
             </div>
           </div>
@@ -51,6 +72,7 @@ export default class CreateContents extends Component {
           name="fullName"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
           autocomplete="off"
+          value="${this.props?.memberDetail.fullName ?? ""}"
         />
         <p id="fullNameMessage" class="py-2 h-8 text-red-500"></p>
       </div>
@@ -81,6 +103,7 @@ export default class CreateContents extends Component {
           name="email"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
           autocomplete="off"
+          value="${this.props?.memberDetail.email ?? ""}"
         />
         <p id="emailMessage" class="py-2 h-8 text-red-500"></p>
       </div>
@@ -92,6 +115,7 @@ export default class CreateContents extends Component {
           name="phone"
           class="w-full rounded-md border-[1px] border-gray-200 px-4 py-2"
           autocomplete="off"
+          value="${this.props?.memberDetail.phone ?? ""}"
         />
         <p id="phoneMessage" class="py-2 h-8 text-red-500"></p>
       </div>
@@ -104,8 +128,28 @@ export default class CreateContents extends Component {
     </form>
     `;
 
-    createUser(this.el)();
+    createUser(this.el)(this.props.mode);
     inputValidate(this.el)();
+
+    if (
+      this.props?.memberDetail.gender !== undefined ||
+      this.props?.memberDetail.category !== undefined
+    ) {
+      const genderOpt = Array.from(
+        this.el.querySelectorAll("select[name=gender] option"),
+      );
+      const categoryOpt = Array.from(
+        this.el.querySelectorAll("select[name=category] option"),
+      );
+      const genderSelected = genderOpt.findIndex(
+        (el) => el.value === this.props?.memberDetail.gender,
+      );
+      const categorySelected = categoryOpt.findIndex(
+        (el) => el.value === this.props?.memberDetail.category,
+      );
+      genderOpt[genderSelected].selected = true;
+      categoryOpt[categorySelected].selected = true;
+    }
 
     const modifyBtn = this.el.querySelector("#modifyBtn");
     const deleteBtn = this.el.querySelector("#deleteBtn");
@@ -114,6 +158,12 @@ export default class CreateContents extends Component {
       const imageEditorModal = document.getElementById("ImageEditorModal");
       imageEditorModal.showModal();
     });
-    deleteBtn.addEventListener("click", () => {});
+    deleteBtn.addEventListener("click", () => {
+      const thumb = document.getElementById("img-thumb");
+      thumb.querySelector("img").remove();
+      thumb.querySelector(".layer").classList.add("hidden");
+      thumb.classList.remove("aspect-square");
+      memberStore.state.file = undefined;
+    });
   }
 }

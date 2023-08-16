@@ -20,7 +20,7 @@ export default class CreateContent extends Component {
           descTxt: "직원 사진을 추가하는 페이지 입니다.",
         },
       }).el,
-      new CreateContents().el,
+      new CreateContents({ props: { mode: "create" } }).el,
       new ImageEditorModal().el,
     );
   }

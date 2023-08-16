@@ -69,8 +69,24 @@ export class DetailContents extends Component {
           <h4 class="text-md mb-2 text-gray-600">연락처</h4>
           <p class="text-xl">${memberDetail.phone}</p>
         </div>
+        <div>
+          <a href="#/update?id=${history.state.id}" id="updateUserBtn" class="inline-block rounded-md bg-blue-600 p-3 text-white">
+            <span class="material-icons align-top"> manage_accounts </span>
+            직원 수정
+          </a>
+          <button id="delOneUserBtn" class="rounded-md bg-red-500 p-3 text-white">
+            <span class="material-icons align-top"> person_remove </span>
+            직원 삭제
+          </button>
+        </div>
       </div>
     </div>
     `;
+    const delOneUserBtn = this.el.querySelector("#delOneUserBtn");
+    delOneUserBtn.addEventListener("click", () => {
+      memberStore.state.deleteIds = [history.state.id];
+      const delModal = document.getElementById("delUserModal");
+      delModal.showModal();
+    });
   }
 }

@@ -2,8 +2,9 @@ import { uploadImage } from "../libraries/firebase-storage";
 import { fileValidation } from "./validate";
 import Member from "./member";
 import { createThumb } from "./thumbnail";
-import { addMember } from "../libraries/firebase-firestore";
+import { addMember, updateMember } from "../libraries/firebase-firestore";
 import { loadersvg } from "./loadersvg";
+import memberStore from "../store/memberlist";
 /**
  * 모달 창안에 폼 데이터를 추출하는 함수 입니다.
  * @param {*} element form data를 추출하고 싶은 요소를 전달합니다.
@@ -14,62 +15,83 @@ function createUser(element) {
   const fileUpload = element.querySelector("#fileUpload");
   const dropZone = element.querySelector("#drop_zone");
   const member = new Member();
-  let file = null;
   let timer = null;
 
-  return () => {
-    form.addEventListener("submit", (e) => {
+  return (mode) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       clearTimeout(timer);
       const submitBtn = form.querySelector("button[type=submit]");
 
-      if (file === null || form.file === undefined) return;
+      // 로더 애니메이션 삽입!
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = loadersvg + " 업로드중..";
 
       try {
-        (async () => {
+        if (mode === "create") {
+          // 멤버 추가 모드
+          if (memberStore.state.file === undefined) return;
           member.fullName = form.fullName.value;
           member.category = form.category.value;
           member.gender = form.gender.value;
           member.email = form.email.value;
           member.phone = form.phone.value;
           // 파일 업로드 하기 전에 비어 있는 지 확인 합니다.
-          if (!member.isNotEmpty()) {
-            return;
-          }
-          // 로더 애니메이션 삽입!
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = loadersvg + " 업로드중..";
-
+          if (!member.isNotEmpty()) return;
           // 파일 업로드 시작
-          const [imgUrl, fullFileName] = await uploadImage(file);
+          const [imgUrl, fullFileName] = await uploadImage(
+            memberStore.state.file,
+          );
           member.fileUrl = imgUrl;
           member.fileName = fullFileName;
 
           // 직원을 firestore에 저장합니다.
-          const mid = await addMember(member);
-          if (mid) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "추가 완료";
-            // 폼의 내용들을 리셋합니다.
+          await addMember(member);
 
-            const thumbContainer = element.querySelector("#img-thumb");
-            thumbContainer.innerHTML = "";
-            fileUpload.value = "";
-            dropZone.dataTransfer = null;
-
-            timer = setTimeout(() => {
-              form.reset();
-              // 모달창을 닫습니다.
-            }, 200);
+          // 폼의 내용들을 리셋합니다.
+          const thumbContainer = element.querySelector("#img-thumb");
+          thumbContainer.querySelector("img").remove();
+          thumbContainer.querySelector(".layer").classList.add("hidden");
+          thumbContainer.classList.remove("aspect-square");
+          memberStore.state.file = undefined;
+          timer = setTimeout(() => {
+            form.reset();
+          }, 200);
+        } else {
+          // 멤버 수정 모드
+          const updateData = {};
+          if (form.fullName.value) updateData.fullName = form.fullName.value;
+          if (form.category.value) updateData.category = form.category.value;
+          if (form.gender.value) updateData.gender = form.gender.value;
+          if (form.email.value) updateData.email = form.email.value;
+          if (form.phone.value) updateData.phone = form.phone.value;
+          // 파일이 변경되었으면 업로드
+          if (memberStore.state.file !== undefined) {
+            const [imgUrl, fullFileName] = await uploadImage(
+              memberStore.state.file,
+            );
+            updateData.fileUrl = imgUrl;
+            updateData.fileName = fullFileName;
           }
-        })();
+          // 직원을 firestore에 업데이트 합니다.
+          await updateMember(history.state.id, updateData);
+          timer = setTimeout(() => {
+            location.href = "#/";
+          }, 200);
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "추가 완료";
       } catch (error) {
         console.error(error.message);
+        submitBtn.innerHTML = "에러 발생";
+      } finally {
+        memberStore.state.file = undefined;
       }
     });
     fileUpload.addEventListener("change", (e) => {
-      file = e.target.files[0];
-      createThumb(file);
+      memberStore.state.file = e.target.files[0];
+      createThumb(memberStore.state.file, mode);
     });
     dropZone.addEventListener("dragenter", function (e) {
       // console.log("dragenter");
@@ -104,8 +126,8 @@ function createUser(element) {
       if (item.kind !== "file") return;
       // file 이 유효한 파일인 경우에만 file 변수에 할당합니다.
       if (fileValidation(item.getAsFile())) {
-        file = item.getAsFile();
-        createThumb(file);
+        memberStore.state.file = item.getAsFile();
+        createThumb(memberStore.state.file, mode);
       }
     });
   };

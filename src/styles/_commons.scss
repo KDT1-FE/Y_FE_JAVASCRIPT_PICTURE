@@ -63,3 +63,10 @@
     transform: rotate(360deg);
   }
 }
+
+#ImageEditorModal .tui-image-editor-container {
+  .tui-image-editor-header-logo,
+  .tui-image-editor-header-buttons {
+    display: none;
+  }
+}

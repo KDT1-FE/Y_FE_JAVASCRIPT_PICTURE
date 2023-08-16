@@ -17,4 +17,5 @@ export default new Store({
   memberDetail: emptyMember,
   lastScrollKey: null,
   deleteIds: [],
+  file: undefined,
 });
