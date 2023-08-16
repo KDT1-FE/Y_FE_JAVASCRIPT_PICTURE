@@ -18,8 +18,8 @@
     <nav>
         <div class="menubar">
             <div class="menubarTop">
-                <a href="home.html"><img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고"></a>
-                <input placeholder="Looking for Prisoner?" class="searchPrisoner"></input>
+                <a href="index.html"><img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고"></a>
+                <input oninput="handleInputChange()" placeholder="Looking for Prisoner?" class="searchPrisoner">
                 <div class="glowing"></div>
             </div>
             <div class="menubarMid">
@@ -64,9 +64,9 @@
                             <button class="dismissBtn">Dismiss</button>
                         </form>
                     </div>
-                    
+
                 </div>
-                <button class="releaseBtn">RELEASE</button>                
+                <button class="releaseBtn">RELEASE</button>
             </div>
         </div>
     </nav>
@@ -78,11 +78,12 @@
                 <div class=" detailModalBg" id="detailModalBg"></div>
                 <div class=" detailModalBox" id="detailModalBox">
                     <form class="detailForm" id="detailForm">
-                        <div class="mugshotArea" >
+                        <div class="mugshotArea">
                             <img src="" alt="" class="detailMugshot">
                             <label for="saveMugshotBtn">
                                 <div class="suedoSaveMugshotBtn">Upload</div>
-                                <input class="saveMugshotBtn" type="file" id="saveMugshotBtn" name="photo" accept="image/*" required>
+                                <input class="saveMugshotBtn" type="file" id="saveMugshotBtn" name="photo"
+                                    accept="image/*" required>
                             </label>
                         </div>
                         <div>
@@ -125,17 +126,18 @@
                     <p class="prisonerName">Lucius Malfoy</p>
                     <span class="releaseWord hidden" id="releaseWord">Release</span>
                 </div>
-                <div id="Sirius Black" class="prisonCell" prisonerLv="Eye Of Goat" 
+                <div id="Sirius Black" class="prisonCell" prisonerLv="Eye Of Goat"
                     style="background-image: url(/image/SiriusBlack.jpg);">
                     <p class="prisonerName">Sirius Black</p>
                     <span class="releaseWord hidden" id="releaseWord">Release</span>
-                </div>                
+                </div>
             </div>
         </div>
     </main>
     <script src="../components/imprison.js"></script>
     <script src="/src/components/detailModal.js"></script>
     <script src="/src/components/release.js"></script>
+    <script src="/src/components/search.js"></script>
 </body>
 
 </html>
