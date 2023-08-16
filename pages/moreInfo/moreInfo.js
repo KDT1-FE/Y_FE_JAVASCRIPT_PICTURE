@@ -70,59 +70,99 @@ onSnapshot(q,(querySnapshot) => {
     //삭제 버튼 생성
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("detail-button")
-    deleteBtn.textContent = "❌";
+    deleteBtn.textContent = "❌ 삭제";
     deleteEvent(deleteBtn, doc);
     newProfile.prepend(deleteBtn);
 
     //수정 버튼 생성
     const modifyBtn = document.createElement("button");
     modifyBtn.classList.add("detail-button")
-    modifyBtn.textContent = "✏️";
+    modifyBtn.textContent = "✏️ 편집";
     modifyBtn.addEventListener("click",async()=>{
       const textContainer = newProfile.querySelector(".detail-text-container");
       const subtitleSpans = textContainer.querySelectorAll(".subtitle");
-
-    //이미지 수정 버튼 생성
-    const imgModifyBtn = document.createElement("input");
-    imgModifyBtn.type = "file";
-    imgModifyBtn.accept="image/*";
-    imgModifyBtn.setAttribute("id","btn__img-modify")
-    const imgModifyBtnLabel = document.createElement("label");
-    imgModifyBtnLabel.setAttribute("for","btn__img-modify");
-    imgModifyBtnLabel.innerText="이미지 수정";
-    imgModifyBtn.style.display="none";
-    newProfile.insertAdjacentElement("afterend", imgModifyBtnLabel);
-    newProfile.insertAdjacentElement("afterend", imgModifyBtn);
-
-    imgModifyBtn.addEventListener("change", async() => {
-      const selectedFile = imgModifyBtn.files[0];
-      if (selectedFile) {
-        const newImagestorageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date())+selectedFile.name);
-        await uploadBytes(newImagestorageRef, selectedFile);
-        let url = await getDownloadURL(newImagestorageRef);
-        let newToSave = {image: url};
-        const profileId = newProfile.getAttribute("id");
-        imageUpdate(profileId, newToSave);
-      } else {
-        console.log("No file selected.");
-      }
-    });
     
+      //이미지 수정 버튼 생성
+      const imgModifyBtn = document.createElement("input");
+      imgModifyBtn.type = "file";
+      imgModifyBtn.accept="image/*";
+      imgModifyBtn.setAttribute("id","btn__img-modify")
+      const imgModifyBtnLabel = document.createElement("label");
+      imgModifyBtnLabel.setAttribute("for","btn__img-modify");
+      imgModifyBtnLabel.innerText="Change Image";
+      imgModifyBtn.style.display="none";
+      imgModifyBtnLabel.style.display="none";
+      newProfile.insertAdjacentElement("afterend", imgModifyBtnLabel);
+      newProfile.insertAdjacentElement("afterend", imgModifyBtn);
+
+      const profileId = newProfile.getAttribute("id");
+      const detailProfileImg = newProfile.querySelector('.detail-profile-image')
+
+      imgModifyBtn.addEventListener("change", async() => {
+        const selectedFile = imgModifyBtn.files[0];
+        if (selectedFile) {
+          const newImagestorageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date())+selectedFile.name);
+          await uploadBytes(newImagestorageRef, selectedFile);
+          let url = await getDownloadURL(newImagestorageRef);
+          let newToSave = {image: url};
+          
+          //기존 이미지 삭제
+          let imageRef = ref(storage, ref(doc.data().image))
+          deleteObject(imageRef);
+          //preview 띄워주기 및 업로드
+          detailProfileImg.src = url;
+          imageUpdate(profileId, newToSave);
+        }
+      });
+
+      //이미지 삭제 버튼 생성 및 동작
+      const imgDeleteBtn = document.createElement("button");
+      imgDeleteBtn.innerText = "Delete Image";
+      imgDeleteBtn.setAttribute("id","btn__img-delete");
+      imgDeleteBtn.style.display="none";
+      newProfile.insertAdjacentElement("afterend", imgDeleteBtn);
+      imgDeleteBtn.addEventListener("click", ()=>{
+        detailProfileImg.src = "../../assets/images/human_icon.png";
+        //기존 이미지 삭제
+        let imageRef = ref(storage, ref(doc.data().image))
+        deleteObject(imageRef);
+        //db업데이트
+        const noImage = {image: "../../assets/images/human_icon.png"};
+        imageUpdate(profileId, noImage);
+      })
+
+      //상단 수정 버튼 동작 내용
       clickCount++;
-      switch(clickCount%2){
+      switch(clickCount%3){
+        //이미지 수정 및 삭제 관련
         case 1:
-          //수정할 수 있는 input 만들기
-          subtitleSpans.forEach((subtitle,index) => {
-          const input = document.createElement("input");
-          const innerTextSpan = subtitle.nextElementSibling;
-          input.value = innerTextSpan.textContent;
-          subtitle.insertAdjacentElement("afterend", input);
-          innerTextSpan.style.display = "none";
-          });
-
+          imgModifyBtnLabel.style.display="inline";
+          imgDeleteBtn.style.display="inline";
+          modifyBtn.textContent = "✏️ 편집중 : 사진";
           break;
+        //텍스트 수정 관련
+        case 2:
+          modifyBtn.textContent = "✏️ 편집중 : 텍스트";
+          const imgModifyBtnLabels = document.querySelectorAll('label')
+          imgModifyBtnLabels.forEach(item=>{
+            item.style.display="none";
+          })
+          const imgDeleteBtns = document.querySelectorAll('#btn__img-delete')
+          imgDeleteBtns.forEach(item=>{
+            item.style.display="none";
+          })
+           //수정할 수 있는 input 만들기
+           subtitleSpans.forEach((subtitle,index) => {
+            const input = document.createElement("input");
+            const innerTextSpan = subtitle.nextElementSibling;
+            input.value = innerTextSpan.textContent;
+            subtitle.insertAdjacentElement("afterend", input);
+            innerTextSpan.style.display = "none";
+            });
+          break;
+        //업로드 관련
         case 0:
-
+          modifyBtn.textContent = "✏️ 편집";
           // 수정한 데이터를 저장하기 위한 객체
           const updatedData = {};
 
@@ -138,9 +178,7 @@ onSnapshot(q,(querySnapshot) => {
           const fieldName = subtitle.textContent.slice(3).toLowerCase();
           updatedData[fieldName] = input.value;
           });
-          const profileId = newProfile.getAttribute("id");
           dbUpdate(profileId, updatedData);
-          // window.location.reload();
           break;
       }
     });
@@ -197,10 +235,8 @@ async function dbUpdate (profileId, updatedData){
 
 async function imageUpdate(profileId, newToSave){
   try{
-    console.log("함수내부")
     const docRef = doc(db,"profiles",profileId)
     await updateDoc(docRef,newToSave);
-    window.location.reload();
   }catch(error){
     console.log('이미지수정 오류발생',error)
   }

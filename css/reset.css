@@ -10,3 +10,7 @@ a {
 img{
   border-radius: 10px;
 }
+button {
+  all: initial;
+  text-align: center;
+}

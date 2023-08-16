@@ -20,12 +20,13 @@
 .detail-button{
   background-color: rgb(30,30,30);
   color:rgb(173, 255, 80);
-  width:3rem;
   height:1.5rem;
   border:none;
   border-radius: 10px;
   margin:10px;
+  padding: 2px 5px;
   font-size: 12px;
+  font-weight: 900;
   transition: background-color 0.35s;
 }
 .detail-button:first-child{
@@ -33,6 +34,7 @@
 }
 .detail-button:hover{
   background-color: rgb(173, 255, 80);
+  color:black;
 }
 .detail-profile-image{
   width:15rem;
@@ -55,4 +57,21 @@
   margin-top:1rem;
   font-weight: 900;
   color:rgb(173, 255, 80);
+}
+label, #btn__img-delete {
+  background-color: rgb(30,30,30);
+  border: 1px solid rgb(173, 255, 80);
+  color: rgb(173, 255, 80);
+  padding: 3px 20px;
+  margin: 0px 5px;
+  border-radius: 20px;
+  font-weight: 900;
+  transition: background-color 0.3s, color 0.2s;
+}
+#btn__img-delete {
+  margin-left:30px;
+}
+label:hover, #btn__img-delete:hover {
+  background-color: rgb(173, 255, 80);
+  color:rgb(30,30,30);
 }
