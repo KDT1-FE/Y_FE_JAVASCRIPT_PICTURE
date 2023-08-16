@@ -6,7 +6,7 @@ import {
   S3endpoint,
 } from "/js/config/aws.js";
 
-import { profileTable } from "../constant.js";
+import { profileTable } from "/js/constant/home.js";
 
 AWS.config.update({
   region,
@@ -62,8 +62,7 @@ export const listProfileFromS3 = function () {
 
           tableRow.addEventListener("click", (e) => {
             localStorage.setItem("profile", folderName);
-            window.location.href =
-              window.location.origin + "/view/profile.html"; // 페이지 이동
+            window.location.href = window.location.origin + "/profile.html"; // 페이지 이동
           });
         }
       });

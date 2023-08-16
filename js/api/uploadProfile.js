@@ -11,7 +11,7 @@ import {
   enroll_email,
   enroll_phoneNum,
   enroll_position,
-} from "/js/constant.js";
+} from "../constant/home.js";
 
 AWS.config.update({
   region,
