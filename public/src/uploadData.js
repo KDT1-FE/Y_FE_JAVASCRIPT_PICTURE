@@ -41,6 +41,9 @@ addButton.addEventListener("click", async () => {
   const imageRef = storageRef.child(`${selectedFile.name}`);
   await imageRef.put(selectedFile);
 
+  //이미지 url가져오기
+  const imageUrl = await imageRef.getDownloadURL();
+
   const db = firebase.firestore();
   //데이터 id를 engName으로 설정
   await db.collection("villager").doc(engName).set({
@@ -51,6 +54,7 @@ addButton.addEventListener("click", async () => {
     personality,
     favoriteColor,
     speechHabit,
+    imageUrl,
   });
 
   alert("주민이 등록되었습니다! 메인 화면으로 이동합니다");

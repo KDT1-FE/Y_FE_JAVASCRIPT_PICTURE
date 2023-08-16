@@ -14,6 +14,7 @@ collectionRef.get().then((querySnapshot) => {
     const birthday = data.birthday;
     const personality = data.personality;
     const favoriteColor = data.favoriteColor;
+    const imageUrl = data.imageUrl;
 
     // div 새로 만들기
     const villagerContainer = document.createElement("div");
@@ -24,7 +25,7 @@ collectionRef.get().then((querySnapshot) => {
     villagerContainer.innerHTML = `
     <ul class="villager-info-ul">
       <li class="villager-info-li">
-        <img class="villager-img" src="" />
+      <img class="villager-img" src="${imageUrl}" />
       </li>
       <li class="villager-info-li"><p>${name}</p></li>
       <li class="villager-info-li"><p class="sex">${sex}</p></li>
@@ -48,57 +49,30 @@ collectionRef.get().then((querySnapshot) => {
       sexElement.style.color = "#A8CAD5";
     }
 
-    // img 가져오기
-    const imageElement = villagerContainer.querySelector(".villager-img");
-    const imageFormats = [".webp", ".png", ".jpeg", ".jpg"];
-    let imageFound = false;
-
-    imageFormats.forEach((format) => {
-      if (!imageFound) {
-        const imageRef = storage.ref().child(engName + format);
-        imageRef
-          .getDownloadURL()
-          .then((url) => {
-            imageElement.src = url;
-            imageFound = true;
-          })
-          .catch((error) => {});
-      }
-    });
-
     // "주민 삭제" 버튼 기능
     const deleteButton = villagerContainer.querySelector(".delete-button");
-    deleteButton.addEventListener("click", () => {
+    deleteButton.addEventListener("click", async () => {
       // 삭제할 주민의 ID 가져오기
       const villagerId = doc.id;
 
-      // firestore에서 데이터 삭제
-      db.collection("villager")
-        .doc(villagerId)
-        .delete()
-        .then(() => {
-          // Storage에서 이미지 삭제
-          imageFormats.forEach((format) => {
-            const imageRef = storage.ref().child(engName + format);
-            imageRef
-              .delete()
-              .then()
-              .catch((error) => {
-                console.error("이미지 삭제 오류:", error);
-              });
-          });
+      try {
+        //firestore에서 데이터 삭제
+        await db.collection("villager").doc(villagerId).delete();
 
-          // UI에서 해당 주민 컨테이너 제거
-          villagerList.removeChild(villagerContainer);
-          alert("주민이 성공적으로 삭제되었습니다.");
-        })
-        .catch((error) => {
-          console.error("주민 삭제 오류:", error);
-        });
+        //storage에서 이미지 삭제
+        const imageRef = storage.refFromURL(imageUrl);
+        await imageRef.delete();
+
+        //해당 주민 컨테이너 제거
+        villagerList.removeChild(villagerContainer);
+        alert(`주민이 성공적으로 삭제되었습니다!`);
+      } catch (error) {
+        console.error("주민 삭제 오류:", error);
+      }
     });
 
     const villagerInfoUl = villagerContainer.querySelector(".villager-info-ul");
-    villagerInfoUl.addEventListener("click", (event) => {
+    villagerInfoUl.addEventListener("click", () => {
       const villagerId = villagerContainer.getAttribute("data-id");
       window.location.href = `profile.html?id=${villagerId}`;
     });
