@@ -13,7 +13,7 @@
 
 ## 배포 주소
 
-배포 주소 :
+배포 주소 : https://effortless-elf-053f59.netlify.app/#/
 
 <br />
 
