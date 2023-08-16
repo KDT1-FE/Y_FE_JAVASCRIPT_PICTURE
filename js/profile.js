@@ -1,5 +1,5 @@
 import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { addDoc, collection, getFirestore, getDoc, updateDoc, doc } from "firebase/firestore";
+import { addDoc, collection, getFirestore, getDoc, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -71,7 +71,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         }
       });
+      // 삭제 버튼 클릭 시 데이터 삭제
+      const deleteButton = document.getElementById("delete-btn");
+      deleteButton.addEventListener("click", async (event) => {
+        const confirmDelete = confirm("정말로 이 데이터를 삭제하시겠습니까?");
+        event.preventDefault();
+        if (confirmDelete) {
+          try {
+            await deleteDoc(docRef);
+            console.log("데이터 삭제 완료");
 
+            window.location.href = "index.html";
+          } catch (error) {
+            console.error("데이터 삭제 에러:", error);
+          }
+        }
+      });
       // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
       const saveButton = document.getElementById("save-btn");
       saveButton.addEventListener("click", async (event) => {
