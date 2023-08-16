@@ -132,7 +132,7 @@ nav .navbar__toggle-btn {
 
 /* info 섹션 */
 .info {
-  height: 300px;
+  height: 200px;
   background-image: url("../img/배경기본이미지.png");
   position: relative;
   top: -10px;
@@ -154,4 +154,28 @@ nav .navbar__toggle-btn {
     left: 60px;
     width: 600px;
   }
+}
+
+/* 하단 디자인 */
+.bottom-pattern {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bottom-pattern img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* 준비 페이지 */
+.ready {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: #f9f6e5;
+  font-size: 30px;
+  font-weight: 900;
 }

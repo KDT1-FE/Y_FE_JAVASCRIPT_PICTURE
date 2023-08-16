@@ -19,7 +19,7 @@
     <!-- css -->
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/animal.css" />
+    <link rel="stylesheet" href="./css/game.css" />
 
     <!-- gsap -->
     <script
@@ -97,70 +97,9 @@
     </nav>
 
     <!-- 주민 등록 -->
-    <div class="animal-title">
-      <div class="leaf">
-        <img src="./img/동숲나뭇잎.png" alt="나뭇잎" />
-        <div class="text">nintendo</div>
-      </div>
-      <div class="title__content">
-        <img src="./img/여울이_노란색.png" alt="여울이" />
-        <div class="text">주민 목록</div>
-        <img src="./img/여울이_노란색.png" alt="여울이" />
-      </div>
-      <a href="./upload.html">
-        <button>주민 등록하기</button>
-      </a>
-    </div>
-
-    <!-- 주민 수정 폼 -->
-    <div class="edit-form" style="display: none">
-      <div class="edit-form__top">
-        <div class="edit-form__top-title">수정</div>
-        <div class="edit-form__top-exit">X</div>
-      </div>
-      <div class="edit-form__box">
-        <div class="edit-form__img">
-          <div class="img__text">사진 변경</div>
-          <div class="img__rather"></div>
-          <img id="preview" />
-          <input id="edit-image" type="file" onchange="readURL(this);" />
-        </div>
-        <div class="edit-form__content">
-          <div class="content__text">내용 변경</div>
-          <input id="edit-name" type="text" placeholder="이름" required />
-          <input id="edit-birthday" type="text" placeholder="생일" required />
-          <input id="edit-kind" type="text" placeholder="종족" required />
-          <input
-            id="edit-personality"
-            type="text"
-            placeholder="성격"
-            required
-          />
-          <input
-            id="edit-description"
-            type="text"
-            placeholder="정보"
-            required
-          />
-        </div>
-      </div>
-      <button id="save-edit" data-doc-id="">저장</button>
-    </div>
-
-    <!-- 주민 list 출력되는 곳 -->
-    <div class="container"></div>
-
-    <!-- 상단으로 -->
-    <div id="to-top">
-      <img src="./img/토용스크롤.png" alt="토용" />
-    </div>
-
-    <!-- 하단 디자인 -->
-    <div class="bottom-pattern">
-      <img src="./img/하단디자인.png" alt="하단 디자인" />
-    </div>
+    <div class="ready">준비중입니다...</div>
 
     <script defer src="./js/main.js"></script>
-    <script defer src="./js/animal.js"></script>
+    <script defer src="./js/game.js"></script>
   </body>
 </html>
