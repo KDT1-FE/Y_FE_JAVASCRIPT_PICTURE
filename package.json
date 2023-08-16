@@ -16,9 +16,6 @@
     "url": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/issues"
   },
   "homepage": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE#readme",
-  "dependencies": {
-    "firebase": "^10.1.0"
-  },
   "type": "module",
   "script": {
     "start": "node ./js/firebase.js"

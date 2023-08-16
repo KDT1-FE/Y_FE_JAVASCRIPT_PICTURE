@@ -1,7 +1,38 @@
+html,
 body {
   width: 100%;
   height: 100%;
   border-collapse: collapse;
+  font-size: 20px;
+}
+
+@media (max-width: 1439px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+  .inner {
+    width: 72rem;
+  }
+}
+@media (max-width: 1079px) {
+  html,
+  body {
+    font-size: 10.7px;
+  }
+}
+@media (max-width: 700px) {
+  html,
+  body {
+    font-size: 5.4px;
+  }
+  .inner {
+    width: 100%;
+  }
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 .wall {
   position: fixed;
@@ -14,10 +45,8 @@ body {
   z-index: 1;
 }
 .inner {
-  width: 1440px;
   height: 100%;
   margin: 0 auto;
-  border: 3px solid black;
   box-sizing: border-box;
   border-collapse: collapse;
 }
@@ -34,32 +63,81 @@ body {
 }
 
 header {
-  height: 200px;
-  border: 3px solid black;
+  height: 10rem;
   border-collapse: collapse;
+  background-color: gray;
 }
 
-main {
-}
 main .inner {
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  gap: 30px;
+}
+
+.profile {
+  position: relative;
+  height: 10rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
+}
+.owner {
+  width: 3rem;
+  height: 1.5rem;
+  position: absolute;
+  text-align: center;
+  line-height: 1.5rem;
+  top: 0;
+  left: 6.2rem;
+  background-color: yellow;
+}
+.blink {
+  animation: blinking 0.2s infinite;
+}
+@keyframes blinking {
+  0%,
+  100% {
+    background-color: rgba(255, 255, 0, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 0);
+  }
+}
+
+.to-profile {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background-color: rgb(1, 1, 160);
+  color: white;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
 .add-function-wrap {
   position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 .buttons {
   display: flex;
 }
 .button {
-  width: 100px;
-  height: 50px;
-  background-color: purple;
+  width: 5rem;
+  height: 2.5rem;
+  background-color: rgb(1, 1, 160);
+  color: white;
   text-align: center;
-  line-height: 50px;
-  border-radius: 5px;
+  line-height: 2.5rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 .button:last-child {
@@ -68,11 +146,12 @@ main .inner {
 
 .information {
   position: absolute;
-  top: calc(50% - 350px);
-  left: calc(50% - 250px);
-  width: 500px;
-  height: 700px;
-  background-color: blueviolet;
+  top: calc(50% - 17.5rem);
+  left: calc(50% - 12.5rem);
+  width: 25rem;
+  height: 35rem;
+  background-color: rgb(1, 1, 160);
+  color: white;
   transition: opacity 1s;
   z-index: 10;
   display: flex;
@@ -80,14 +159,14 @@ main .inner {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 2.5rem;
 }
 .information form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
-  margin-top: 80px;
+  gap: 4rem;
+  margin-top: 4rem;
 }
 .information #form-exit {
   position: absolute;
@@ -96,8 +175,29 @@ main .inner {
   cursor: pointer;
 }
 .information form input {
-  width: 300px;
-  height: 30px;
+  width: 15rem;
+  height: 1.5rem;
+}
+
+.list-head {
+  width: 70rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.list-head .first {
+  width: 16rem;
+  display: flex;
+  gap: 6.5rem;
+}
+
+.list-head .second {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .list-main {
@@ -108,14 +208,40 @@ main .inner {
 
 .item {
   display: flex;
-  height: 300px;
+  justify-content: space-between;
+  text-align: center;
+  height: 15rem;
   box-sizing: border-box;
-  background-color: blue;
-  border-bottom: 1px solid white;
+  border: 3px solid black;
+  margin: 0.5rem 0;
+}
+
+.item .checkbox-img-wrap {
+  display: flex;
+  gap: 5rem;
+}
+
+.item .people-img {
+  width: 10rem;
+  height: 10rem;
+  background-color: white;
+  margin-top: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.people-text {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.text {
+  width: 7.5rem;
+  text-align: center;
 }
 
 footer {
-  height: 200px;
-  border: 3px solid black;
+  height: 10rem;
   border-collapse: collapse;
+  background-color: gray;
 }

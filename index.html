@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
@@ -14,15 +13,17 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-
     <link rel="stylesheet" href="./css/main.css" />
-    <script defer type="module" src="./js/main.js"></script>
+    <script defer src="./js/login.js"></script>
   </head>
   <body>
-    <div class="wall hidden">
-      <div class="information hidden">
+    <div class="wall">
+      <div class="information">
         <div id="form-exit" class="material-symbols-outlined">close</div>
         <form>
+          <div>
+            <h1>회원 등록</h1>
+          </div>
           <div>
             <h2>이름</h2>
             <input type="text" id="name" />
@@ -35,37 +36,9 @@
             <h2>전화번호</h2>
             <input type="number" id="phone" />
           </div>
-          <div id="submit" class="button">직원 등록</div>
+          <div id="submit" class="button">등록</div>
         </form>
       </div>
-    </div>
-    <div class="screen-wrap">
-      <header>
-        <div class="inner"></div>
-      </header>
-      <main>
-        <div class="inner">
-          <section>
-            <h1>직원 목록</h1>
-            <div class="search"></div>
-          </section>
-          <section>
-            <div class="add-function-wrap">
-              <div class="buttons">
-                <div class="button" id="form-btn">직원 등록</div>
-                <div class="button" id="delete-btn">직원 삭제</div>
-              </div>
-            </div>
-          </section>
-          <section class="list">
-            <div class="list-head"></div>
-            <div class="list-main"></div>
-          </section>
-        </div>
-      </main>
-      <footer>
-        <div class="inner"></div>
-      </footer>
     </div>
   </body>
 </html>

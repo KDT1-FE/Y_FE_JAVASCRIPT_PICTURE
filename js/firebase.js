@@ -1,7 +1,3 @@
-import { initializeApp } from 'firebase/app';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCUTznoBN5hZJ1Pf1xWlKveKdLZiRhSeNA',
   authDomain: 'fastcampus01-20d03.firebaseapp.com',
@@ -12,7 +8,4 @@ const firebaseConfig = {
   measurementId: 'G-J8G8NMVC2K',
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const storage = getStorage();
+firebase.initializeApp(firebaseConfig);
