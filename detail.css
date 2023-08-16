@@ -7,7 +7,7 @@ body {
 }
 .information {
   margin: 20px;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid lightseagreen;
 }
 
 .p-img {
@@ -23,7 +23,6 @@ body {
 .div5 {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid whitesmoke;
 }
 
 .h4-name,
@@ -31,5 +30,16 @@ body {
 .h4-phone,
 .h4-category {
   width: 100px;
-  margin: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.p-name,
+.p-email,
+.p-phone,
+.p-category {
+  margin: 10px;
+  width: 300px;
+  padding: 5px;
+  border-bottom: 1px solid lightgrey;
 }
