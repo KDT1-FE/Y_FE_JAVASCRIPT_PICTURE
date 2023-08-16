@@ -845,11 +845,11 @@ $url-images: '/assets/image/';
     }
   }
   &__login {
-    width: 30rem;
+    width: 25rem;
     background-color: var(--color-white);
     box-shadow: 0.25rem 0.8rem 2.6rem rgba(0, 0, 0, 0.1019607843);
     border-radius: 1rem;
-    padding: 2rem 1.6rem;
+    padding: 2rem;
     position: relative;
     height: auto;
     display: flex;
@@ -859,9 +859,45 @@ $url-images: '/assets/image/';
 
     .login__header {
       text-align: center;
+      strong {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: block;
+        margin-top: 2vh;
+      }
+      p {
+        font-size: 1rem;
+        color: var(--color-gray700);
+        margin-top: 0.5rem;
+      }
     }
     .login__content {
-      input {
+      width: 100%;
+      margin-top: 3vh;
+
+      .default-input__container {
+        margin-top: 0.3rem;
+      }
+
+      .button {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-top: 0.3rem;
+      }
+
+      .join-box {
+        margin-top: 3vh;
+        padding-top: 2.5vh;
+        border-top: 1px solid var(--color-border-color);
+
+        strong {
+          display: block;
+          color: var(--color-gray700);
+          font-size: 1rem;
+          text-align: center;
+          margin-bottom: 1rem;
+        }
       }
     }
   }

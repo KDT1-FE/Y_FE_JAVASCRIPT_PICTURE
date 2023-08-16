@@ -23,6 +23,7 @@ import {
   Timestamp,
   deleteDoc,
 } from 'firebase/firestore/lite';
+import inputFocusEvent from './basic.js';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -76,15 +77,7 @@ function valueReturn(optionEl) {
   sort.children[0].children[1].value = value;
 }
 
-// 검색창 포커스
-const search = document.querySelector('.search__container');
-const searchInput = search.firstElementChild;
-searchInput.onfocus = () => {
-  search.classList.add('default-input__container--focus');
-};
-searchInput.onblur = () => {
-  search.classList.remove('default-input__container--focus');
-};
+inputFocusEvent();
 
 // 검색창 value 값 입력
 let searchValue = false;
@@ -97,6 +90,8 @@ function searchFunc() {
 }
 
 // 검색창 엔터 시 버튼 click
+const search = document.querySelector('.search__container');
+const searchInput = search.firstElementChild;
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     searchFunc();

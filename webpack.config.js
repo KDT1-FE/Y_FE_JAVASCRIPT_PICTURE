@@ -15,6 +15,7 @@ module.exports = {
     sub: path.resolve(__dirname, 'src/js/sub.js'),
     login: path.resolve(__dirname, 'src/js/login.js'),
     dashboard: path.resolve(__dirname, 'src/js/dashboard.js'),
+    join: path.resolve(__dirname, 'src/js/join.js'),
     basic: ['./src/css/reset.css', './src/css/basic.css'],
     styles: ['./src/scss/style.scss', './src/scss/variable.scss'],
   },
@@ -52,6 +53,12 @@ module.exports = {
       filename: 'login.html',
       template: 'src/login.html',
       chunks: ['login'],
+      scriptLoading: 'blocking',
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'join.html',
+      template: 'src/join.html',
+      chunks: ['join'],
       scriptLoading: 'blocking',
     }),
     new MiniCssExtractPlugin({

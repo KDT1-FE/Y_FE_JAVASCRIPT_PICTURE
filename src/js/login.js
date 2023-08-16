@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   browserSessionPersistence,
 } from 'firebase/auth';
+import inputFocusEvent from './basic.js';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -61,3 +62,5 @@ function loginConfirm() {
 }
 
 loginConfirm();
+
+inputFocusEvent();

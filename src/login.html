@@ -22,16 +22,30 @@
               <p>로그인 할 아이디와 비밀번호를 입력해 주세요.</p>
             </div>
             <div class="login__content">
-              <input type="text" placeholder="아이디" id="login-email" />
-              <input
-                type="password"
-                placeholder="비밀번호"
-                id="login-password"
-              />
-              <button type="button" class="button" id="login-confirm">
+              <div class="default-input__container">
+                <input type="text" placeholder="아이디" id="login-email" />
+              </div>
+              <div class="default-input__container">
+                <input
+                  type="password"
+                  placeholder="비밀번호"
+                  id="login-password"
+                />
+              </div>
+
+              <button
+                type="button"
+                id="login-confirm"
+                class="button button--lg button--blue400"
+              >
                 로그인
               </button>
-              <button type="button" class="button">회원가입</button>
+              <div class="join-box">
+                <strong>관리자 계정이 없다면 가입해 주세요.</strong>
+                <a href="/join.html" class="button button--lg button--gray800"
+                  >회원가입</a
+                >
+              </div>
             </div>
           </section>
         </div>
