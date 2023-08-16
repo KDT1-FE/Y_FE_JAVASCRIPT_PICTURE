@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="font-size: 1.5vw" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>운전자 보험금 관리, 영차!</title>
+    <title>운전자 보험금 기다림 제로, zero car!</title>
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
@@ -13,8 +13,26 @@
   </head>
   <body>
     <div id="load">
-      <h1 id="load-title">보험금 빠르게 진행 시켜, 0차!</h1>
+      <h1 id="load-title">보험금 지급, 빠르게 진행 시켜! 0차!</h1>
     </div>
+    <div id="moreFunc">
+      <a id="searchDriver" class="func">보험자 검색</a>
+      <a id="addDriverAnc" class="func">보험자 추가</a>
+    </div>
+    <table id="sortList">
+      <thead id="driversListHeaders">
+        <tr>
+          <th class="driversListHeader"></th>
+          <th class="driversListHeader">이름</th>
+          <th class="driversListHeader">생년 월일</th>
+          <th class="driversListHeader">보험 상품</th>
+          <th class="driversListHeader">가입 기간</th>
+          <th class="driversListHeader">보험금 지급</th>
+          <th class="driversListHeader"></th>
+        </tr>
+      </thead>
+      <tbody id="drivers"></tbody>
+    </table>
   </body>
-  <script defer src="../../assets/js/index.js"></script>
+  <script defer src="../../assets/js/driverList.js"></script>
 </html>
