@@ -57,6 +57,10 @@ img {
   width: 20%;
 }
 
+.item:hover img{
+  transform: scale(1.3);
+}
+
 @media ( max-width: 1023px ) {
   #list {
     margin-top: 3rem;
@@ -116,6 +120,11 @@ img {
   .item .group {
     width: 20%;
   }
+
+  .item:hover img{
+    transform: scale(1.3);
+  }
+  
 }
 
 @media ( max-width: 767px ) {
@@ -177,4 +186,8 @@ img {
   .item .group {
     width: 20%;
   }
+  .item:hover img{
+    transform: scale(1.3);
+  }
+  
 }
