@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll  } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import { uploadError, modalOff, firebaseError } from "./nav.js";
-import { storageError } from "./nav.js";
+import { storageError, clearInputValues } from "./nav.js";
 import { innerHTML } from "./header.js";
 
 const imageInput = document.getElementById('imageInput');
@@ -37,35 +37,52 @@ async function uploadInfo() {
   const id = new Date().getTime();
 
   if (image && name && group) {
-    try {
-      const storage = getStorage();
-      const storageRef = ref(storage, 'images/' + image.name);
-      const uploadTask = uploadBytes(storageRef, image);
-      await uploadTask;
-      const downloadURL = await getDownloadURL(storageRef);
-      const imagesCollection = collection(db, 'images');
-      await addDoc(imagesCollection, {
-        id: id,
-        name: name,
-        group: group,
-        imageUrl: downloadURL
-      });
+    const storage = getStorage();
+    const storageRef = ref(storage, 'images');
 
-      console.log('Image and information upload completed');
-      modalOff();
-      //
-      newprofiles(id, downloadURL, name, group);
-      location.reload();
-
-      // console.log(downloadURL, name, group);
-      // const imageContainer = document.getElementById('list');
-      // imageContainer.innerHTML = '';
-      // imageContainer.appendChild(imageElement);
-
-    } catch (error) {
-      console.error('Error uploading image and information:', error);
-      firebaseError();
+    const listResult = await listAll(storageRef);
+    for (const item of listResult.items) {
+      const fileName = item.name;
+      if (fileName === image.name) {
+        cantupload();
+        clearInputValues();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+        return;
+      }
     }
+
+    
+      try {
+        const storage = getStorage();
+        const storageRef = ref(storage, 'images/' + image.name);
+        const uploadTask = uploadBytes(storageRef, image);
+        await uploadTask;
+        const downloadURL = await getDownloadURL(storageRef);
+        const imagesCollection = collection(db, 'images');
+        await addDoc(imagesCollection, {
+          id: id,
+          name: name,
+          group: group,
+          imageUrl: downloadURL
+        });
+  
+        console.log('Image and information upload completed');
+        modalOff();
+        //
+        newprofiles(id, downloadURL, name, group);
+        location.reload();
+  
+        // console.log(downloadURL, name, group);
+        // const imageContainer = document.getElementById('list');
+        // imageContainer.innerHTML = '';
+        // imageContainer.appendChild(imageElement);
+  
+      } catch (error) {
+        console.error('Error uploading image and information:', error);
+        firebaseError();
+      }
   } else {
     uploadError();
     modalOff();
@@ -321,6 +338,16 @@ function cantprofile(){
   Swal.fire({
     title: '접근 제한',
     text: "로그인 후 이용 가능합니다.",
+    icon: 'warning',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: '확인',
+  })
+}
+
+function cantupload(){
+  Swal.fire({
+    title: '업로드 제한',
+    text: "동일한 사진은 업로드 불가합니다.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',

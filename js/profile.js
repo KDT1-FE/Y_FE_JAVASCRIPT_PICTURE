@@ -123,53 +123,65 @@ async function changeInfo() {
   const name = nameInput.value;
   const group = groupInput.value;
   if(image && name && group){
-    // Firestorage
-  const localstorageData = localStorage.getItem('profile');
-  const profiledata = JSON.parse(localstorageData);
-
-  const localstorageid = profiledata.map(profile => profile.id);
-  const numericId = parseInt(queryid, 10);
-
-  if (localstorageid.includes(numericId)) {
-    const matchingProfile = profiledata.find(profile => profile.id === numericId);
-
-    if (matchingProfile) {
-      const storage = getStorage();
-
-      // Firestorage 내의 기존 이미지 삭제
-      const matchingImage = matchingProfile.image;
-      const matchingId = matchingProfile.id;
-      await deleteMatchingImageFromFirestorage(matchingImage);
-
-      // 새로운 이미지 Firestorage에 업로드
-      const newStorageRef = ref(storage, 'images/' + image.name);
-      const uploadTask = uploadBytes(newStorageRef, image);
-      await uploadTask;
-      const newDownloadURL = await getDownloadURL(newStorageRef);
-
-      // 로컬 스토리지 데이터 업데이트
-      matchingProfile.image = newDownloadURL;
-      matchingProfile.name = nameInput.value;
-      matchingProfile.group = groupInput.value;
-      localStorage.setItem('profile', JSON.stringify(profiledata));
-
-      // Firestore 데이터 업데이트
-      await updateItemFields(matchingId, groupInput.value, nameInput.value, newDownloadURL);
-
-      // URL 파라미터 업데이트
-      const queryParams = new URLSearchParams({
-        id: queryid,
-        image: newDownloadURL,
-        name: nameInput.value,
-        group: groupInput.value
-      });
-      setTimeout(() => {
-        const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
-        window.history.pushState(null, '', newUrl);
-        location.reload();
-      }, 1500);
+    const storage = getStorage();
+    const storageRef = ref(storage, 'images');
+    const listitems = await listAll(storageRef);
+    const localstorageData = localStorage.getItem('profile');
+    const profiledata = JSON.parse(localstorageData);
+    const localstorageid = profiledata.map(profile => profile.id);
+    const numericId = parseInt(queryid, 10);
+    for(const item of listitems.items){
+      const fileName = item.name;
+      if(fileName == image.name){
+        cantupload();
+        clearInputValues();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+        return;
+      }
     }
-  }
+    // Firestorage
+      if (localstorageid.includes(numericId)) {
+        const matchingProfile = profiledata.find(profile => profile.id === numericId);
+    
+        if (matchingProfile) {
+          const storage = getStorage();
+    
+          // Firestorage 내의 기존 이미지 삭제
+          const matchingImage = matchingProfile.image;
+          const matchingId = matchingProfile.id;
+          await deleteMatchingImageFromFirestorage(matchingImage);
+    
+          // 새로운 이미지 Firestorage에 업로드
+          const newStorageRef = ref(storage, 'images/' + image.name);
+          const uploadTask = uploadBytes(newStorageRef, image);
+          await uploadTask;
+          const newDownloadURL = await getDownloadURL(newStorageRef);
+    
+          // 로컬 스토리지 데이터 업데이트
+          matchingProfile.image = newDownloadURL;
+          matchingProfile.name = nameInput.value;
+          matchingProfile.group = groupInput.value;
+          localStorage.setItem('profile', JSON.stringify(profiledata));
+    
+          // Firestore 데이터 업데이트
+          await updateItemFields(matchingId, groupInput.value, nameInput.value, newDownloadURL);
+    
+          // URL 파라미터 업데이트
+          const queryParams = new URLSearchParams({
+            id: queryid,
+            image: newDownloadURL,
+            name: nameInput.value,
+            group: groupInput.value
+          });
+          setTimeout(() => {
+            const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
+            window.history.pushState(null, '', newUrl);
+            location.reload();
+          }, 1500);
+        }
+      }
   }
   else{
     uploadError();
@@ -206,21 +218,19 @@ function uploadError(){
   })
 }
 
-function firebaseError(){
-  // 사진 중복 시
+function cantchange(){
   Swal.fire({
-    title: '업로드 오류',
-    text: "다시 작성해주세요.",
+    title: '수정 불가',
+    text: "기본 프로필은 수정 불가합니다.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',
   })
 }
-
-function cantchange(){
+function cantupload(){
   Swal.fire({
-    title: '수정 불가',
-    text: "기본 프로필은 수정 불가합니다.",
+    title: '업로드 제한',
+    text: "동일한 사진은 업로드 불가합니다.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',

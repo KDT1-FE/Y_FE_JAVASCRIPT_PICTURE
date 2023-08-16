@@ -12,7 +12,7 @@ const uploadLabel = document.querySelector('.upload-button');
 
 imageInput.addEventListener('change', handleImageSelect);
 
-function clearInputValues() {
+export function clearInputValues() {
   uploadLabel.textContent = '사진';
   nameInput.value = '';
   groupInput.value = '';
