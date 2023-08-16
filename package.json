@@ -20,6 +20,7 @@
     "dotenv": "^16.3.1",
     "dotenv-webpack": "^8.0.1",
     "firebase": "^10.1.0",
+    "handlebars-loader": "^1.7.3",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "node-polyfill-webpack-plugin": "^2.0.1",

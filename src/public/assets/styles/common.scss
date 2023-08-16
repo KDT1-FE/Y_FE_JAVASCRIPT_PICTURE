@@ -1,0 +1,19 @@
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+$custom-body-color: rgb(241, 242, 243);
+$primary-color: #fc4892;
+$secondary-color: rgb(254, 236, 243);
+
+body {
+  background-color: $custom-body-color;
+}
+@media (min-width: 1400px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1140px;
+  }
+}

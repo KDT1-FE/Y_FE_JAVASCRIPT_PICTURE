@@ -1,5 +1,1 @@
-const init = () => {
-  console.log('진입');
-};
-
-export default init;
+console.log('실행3');
