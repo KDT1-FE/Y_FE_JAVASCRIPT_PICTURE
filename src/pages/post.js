@@ -28,6 +28,7 @@ async function Post() {
   </div>
           `;
 
+  // 이미지 프리뷰
   document.querySelector("#image").addEventListener("change", async () => {
     const file = document.querySelector("#image").files[0];
 
@@ -44,6 +45,7 @@ async function Post() {
       });
   });
 
+  // 데이터 삽입
   document.querySelector("#post").addEventListener("click", async () => {
     const inputValue = {
       image: imageURL,
