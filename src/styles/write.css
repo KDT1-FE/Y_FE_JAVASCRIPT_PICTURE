@@ -76,7 +76,7 @@
     max-width: 55rem;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 512px) {
   .write-title,
   .write-container {
     max-width: 18.75rem;

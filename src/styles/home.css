@@ -143,7 +143,7 @@
     height: 5rem;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 512px) {
   .title {
     font-size: 1.3rem;
   }
