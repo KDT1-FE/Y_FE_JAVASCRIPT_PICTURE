@@ -34,7 +34,7 @@ body {
   background-color: #00000000;
   color: #ffffff;
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 23.3rem;
   height: 2rem;
   font-size: 25px;
@@ -48,16 +48,18 @@ body {
 .password-check > input::placeholder{
   color: #ffffff;
   font-size: 20px;
+  font-family: "KBO-Dia-Gothic_bold";
+
 }
 
 .password-check button {
   padding: 15px 20px;
   background-color: #ffffff;
-  color: #000000;
+  color: #3da557;
   border: 1px solid #ffffff ;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 20px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "KBO-Dia-Gothic_bold";
   font-weight: 400;
   cursor: pointer;
   width: 24.67rem;

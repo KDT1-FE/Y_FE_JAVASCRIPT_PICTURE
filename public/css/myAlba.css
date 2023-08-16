@@ -56,13 +56,14 @@ body {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 100px;
+  height: 80px;
   font-size: 20px;
+  font-family: "KBO-Dia-Gothic_bold";
   background-color: #3da557;
   border: 1px solid #3da557;
   color: #fff;
   text-decoration: none;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
 }
@@ -108,6 +109,8 @@ body {
     padding: 15px 25px;
     font-size: 25px;
     margin-top: 20px;
+    font-family: "KBO-Dia-Gothic_bold";
+
   }
 
   .alba-button:hover {

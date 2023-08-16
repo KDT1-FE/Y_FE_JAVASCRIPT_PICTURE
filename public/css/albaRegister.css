@@ -79,6 +79,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
+  font-family: "KBO-Dia-Gothic_bold";
 }
 
 .wave-group {
@@ -180,10 +181,10 @@ img#preview {
 .submit-button {
   background-color: #3da557;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 8px 15px;
-  font-size: 1rem;
-  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.3rem;
+  font-family: "KBO-Dia-Gothic_bold";
   margin-top: 10px;
   color: #ffffff;
   cursor: pointer;
@@ -199,10 +200,10 @@ img#preview {
 .back-button {
   background-color: #ffffff;
   border: 1px solid #3da557;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 8px 15px;
-  font-size: 1rem;
-  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.3rem;
+  font-family: "KBO-Dia-Gothic_bold";
   color: #3da557;
   margin-top: 10px;
   cursor: pointer;
@@ -211,8 +212,8 @@ img#preview {
 }
 
 .back-button:hover {
-  background-color: #c1f3ce;
-  color: #3da557;
+  background-color: #023f32;
+  color: #ffffff;
 }
 
 /* 모바일 반응형 스타일 */

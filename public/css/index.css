@@ -66,8 +66,9 @@
   background-color: #3da557;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 20px;
+  font-family: "KBO-Dia-Gothic_bold";
   transition: all 0.3s;
   transform: translateY(20px);
   animation: fadeInUp 2s forwards;
