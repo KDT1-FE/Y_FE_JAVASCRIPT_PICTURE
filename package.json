@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE#readme",
   "devDependencies": {
-    "parcel": "^2.9.3"
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "firebase": "^10.1.0"
   }
 }

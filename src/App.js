@@ -1,4 +1,3 @@
-import Header from "./components/header";
 import { Component } from "./core/core";
 
 export default class App extends Component {
@@ -7,6 +6,6 @@ export default class App extends Component {
   }
   render() {
     const routerView = document.createElement("router-view");
-    this.el.append(new Header().el, routerView);
+    this.el.append(routerView);
   }
 }
