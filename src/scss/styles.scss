@@ -2,9 +2,10 @@
 @import "./common/_variables.scss";
 @import "./common/_common.scss";
 
-// import components
-@import "./components/_load.scss";
-@import "./components/_adminLogin.scss";
+// import screens
+@import "./screens/_load.scss";
+@import "./screens/_adminLogin.scss";
+@import "./screens/_driverList.scss";
 
 // import animations
 @import "./animations/_fadeOut.scss";

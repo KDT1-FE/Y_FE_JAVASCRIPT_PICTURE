@@ -1,0 +1,87 @@
+#moreFunc {
+  width: 90vw;
+  height: auto;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+
+  .func {
+    margin-top: 80px;
+  }
+
+  #addDriverAnc {
+    cursor: pointer;
+  }
+}
+
+#sortList {
+  width: 90vw;
+  height: auto;
+
+  margin: 30px auto;
+
+  display: flex;
+  flex-direction: column;
+
+  #driversListHeaders {
+    border: 1px solid;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    .driversListHeader {
+      width: 9rem;
+      height: 50px;
+
+      line-height: 50px;
+      text-align: start;
+
+      color: $black;
+      background-color: $white;
+    }
+  }
+
+  #drivers {
+    .driver {
+      border-bottom: 1px solid;
+
+      display: flex;
+      align-items: center;
+
+      .driverImg {
+        width: 4rem;
+        height: 4rem;
+
+        border-radius: 50%;
+      }
+
+      .driverData {
+        width: 9rem;
+
+        margin-top: 20px;
+        margin-bottom: 10px;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        .confirmAnc {
+          text-decoration: none;
+          cursor: pointer;
+          color: $gray;
+        }
+
+        &:last-child {
+          text-align: center;
+        }
+        .driverProfileAnc {
+          text-decoration: none;
+          cursor: pointer;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
