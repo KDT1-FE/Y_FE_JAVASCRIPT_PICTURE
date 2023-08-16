@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html style="font-size: 1.5vw" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>운전자 보험금 기다림 제로, zero car!</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="load">
+      <h1 id="load-title">보험금 지급, 빠르게 진행 시켜! 영차!</h1>
+    </div>
+    <form id="addDriver">
+      <label for="insuranceProduct"
+        >보험자 사진
+        <input
+          id="driverImg"
+          type="file"
+          accept="image/jpg, image/png, image/gif"
+          required
+        />
+      </label>
+
+      <input
+        id="driverName"
+        type="text"
+        placeholder="보험자 이름"
+        autocomplete="off"
+        required
+      />
+
+      <input
+        id="driverBirth"
+        type="text"
+        minlength="6"
+        maxlength="6"
+        placeholder="보험자 생년월일 6자리 : 980617"
+        autocomplete="off"
+        required
+      />
+
+      <label for="insuranceProduct"
+        >가입 보험 상품
+        <select id="insuranceProduct" required>
+          <option value="java">현대해상</option>
+          <option value="php">삼성화재</option>
+          <option value="javascript">매리츠</option>
+        </select>
+      </label>
+
+      <input type="submit" value="보험자 추가" />
+    </form>
+  </body>
+  <script defer src="../../assets/js/addDriver.js"></script>
+</html>
