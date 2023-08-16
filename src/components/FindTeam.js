@@ -34,10 +34,5 @@ export default class FindTeam extends Component {
                 console.log(data);
             }
         };
-
-        const buttonEl = this.el.querySelector('#getDocRef');
-        buttonEl.addEventListener('click', () => {
-            printHello();
-        });
     }
 }
