@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <title>직원관리</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <h1>직원관리</h1>
+
+      <!-- <div class="select">
+        <select name="" id="">
+          <option value="관리자">관리자님</option>
+        </select>
+      </div> -->
+
+      <!-- 직원 관리 -->
+      <div class="manage">
+        <div class="employee-search__wrapper">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input
+            type="text"
+            class="employee-search__input"
+            placeholder="이름 또는 이메일로 검색하기"
+          />
+        </div>
+        <div class="button__wrapper">
+          <button type="button" class="employee-add__button">직원 등록</button>
+          <button type="button" class="employee-remove__button">
+            직원 삭제
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 직원 데이터 테이블 -->
+    <section class="employee-table__warpper">
+      <h1>직원테이블</h1>
+      <table class="employee-table">
+        <tr>
+          <th>
+            <input class="checkbox checkbox__all" type="checkbox" />
+          </th>
+          <th>프로필사진</th>
+          <th>이름</th>
+          <th>이메일</th>
+          <th>휴대폰 번호</th>
+          <th>입사날짜</th>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 직원 등록 모달 창 -->
+    <div class="modal__background">
+      <modal class="employee-add__modal">
+        <h1>직원 등록</h1>
+        <span class="material-symbols-outlined close-icon">close</span>
+        <form id="employee__form">
+          <input accept="image/*" type="file" />
+          <div class="add-data">
+            <label>이름</label>
+            <input
+              class="add-data__name"
+              type="text"
+              placeholder="이름을 입력하세요"
+            />
+          </div>
+          <div class="add-data">
+            <label>이메일</label>
+            <input
+              class="add-data__email"
+              type="email"
+              placeholder="이메일을 입력하세요"
+            />
+          </div>
+          <div class="add-data">
+            <label>휴대폰 번호</label>
+            <input
+              class="add-data__tel"
+              type="tel"
+              placeholder="휴대폰 번호를 입력하세요"
+            />
+          </div>
+          <div class="add-data">
+            <label>입사날짜</label>
+            <input class="add-data__date" type="date" />
+          </div>
+          <button class="submit__button" type="submit">등록</button>
+        </form>
+      </modal>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyA0BYrAIfJUyc09tEbBSZkRmDW6pRerOG8",
+        authDomain: "employee-management-59973.firebaseapp.com",
+        projectId: "employee-management-59973",
+        storageBucket: "employee-management-59973.appspot.com",
+        messagingSenderId: "541264054170",
+        appId: "1:541264054170:web:2e032d0b49e158016f9c23",
+        measurementId: "G-WFS0KJ2Y3C",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

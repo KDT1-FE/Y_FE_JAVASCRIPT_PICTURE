@@ -1,0 +1,159 @@
+h1 {
+  margin: 20px;
+}
+
+.manage {
+  width: 95%;
+  margin: 50px auto 0px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.employee-search__wrapper {
+  display: flex;
+  width: 25vw;
+  height: 40px;
+  border: 1px solid #4b4848;
+  border-radius: 6px;
+  align-items: center;
+}
+.search-icon {
+  margin: auto 5px;
+}
+.employee-search__input {
+  width: 100%;
+  height: 4vh;
+  margin-right: 3px;
+  border: none;
+  font-size: 15px;
+}
+.employee-search__input:focus {
+  outline: none;
+}
+
+.employee-add__button,
+.employee-remove__button {
+  padding: 15px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #28288c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.employee-add__button:hover {
+  background-color: #6e6ed7;
+}
+.employee-remove__button:hover {
+  background-color: #e17878;
+}
+
+.employee-table__warpper {
+  width: 95%;
+  margin: 10px auto;
+}
+.employee-table {
+  width: 100%;
+}
+
+.employee-table tbody > tr {
+  height: 5vh;
+  font-weight: 600;
+  margin-top: 3px;
+  border-top: 1px solid #4b4848;
+  border-bottom: 1px solid #4b4848;
+}
+
+.employee-table > tr {
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+}
+
+.employee-table > tr > input[type="checkbox"] {
+  margin-top: 20px;
+}
+.employee-table th,
+.employee-table td {
+  vertical-align: middle;
+}
+
+.modal__background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.employee-add__modal {
+  width: calc(50%);
+  height: calc(70%);
+  position: absolute;
+  left: calc(25%);
+  top: calc(10%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 99px;
+}
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+  cursor: pointer;
+}
+.employee-add__modal > form {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.employee-add__modal > form > input,
+.add-data {
+  width: 35vw;
+  display: flex;
+  margin: 5px;
+  justify-content: space-between;
+}
+.employee-add__modal > form > input {
+  margin: 5vh auto 4vh auto;
+}
+.add-data > label {
+  margin-right: 10px;
+  white-space: nowrap;
+}
+.add-data > input {
+  width: 50%;
+  height: 4vh;
+  margin-right: 3px;
+  font-size: 15px;
+}
+
+.employee-add__modal button {
+  width: 50%;
+  height: 10vh;
+  position: absolute;
+  left: calc(25%);
+  bottom: 3vh;
+  background-color: #28288c;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+.employee-add__modal button:hover {
+  background-color: #6e6ed7;
+}
