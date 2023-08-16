@@ -1,4 +1,4 @@
-import App from "../src/App";
+import App from "./App";
 import router from "./routes/index";
 
 const root = document.querySelector("#root");

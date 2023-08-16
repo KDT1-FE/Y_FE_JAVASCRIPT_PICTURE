@@ -2,7 +2,7 @@ const env = require("dotenv");
 env.config();
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
+  apiKey: "AIzaSyCk0hRXmOkzYjRBrpCk4hBNvmAh2EtNxxI",
 
   authDomain: "employee-database-f5521.firebaseapp.com",
 
