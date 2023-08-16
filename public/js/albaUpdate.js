@@ -33,23 +33,7 @@ $(document).ready(function () {
       .catch((error) => {
         console.log('Error getting document:', error);
       });
-
-    // 이미지 미리보기 업데이트 처리
-    function handleImageChange(event) {
-      const imagePreview = document.getElementById('imagePreview');
-      const selectedImage = event.target.files[0];
-
-      if (selectedImage) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          imagePreview.setAttribute('src', e.target.result);
-        };
-        reader.readAsDataURL(selectedImage);
-      } else {
-        imagePreview.setAttribute('src', '../assets/pictures/no-image.png');
-      }
-    }
-
+      
     // 수정 버튼 클릭 시 데이터 수정
     $('#sendButton').click(function () {
       const updatedData = {

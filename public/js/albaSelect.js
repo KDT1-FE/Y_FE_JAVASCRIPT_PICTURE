@@ -1,5 +1,3 @@
-
-
 // '알바생 등록하기' 버튼 기능
 const registerButton = document.querySelector('.alba-register-button');
 registerButton.addEventListener('click', () => {
