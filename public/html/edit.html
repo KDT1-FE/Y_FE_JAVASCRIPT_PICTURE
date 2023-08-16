@@ -3,24 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>캐릭터 상세</title>
+    <title>캐릭터 수정</title>
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <div class="member-list-container">
-      <h2>⭐ 캐릭터 정보</h2>
+    <div class="member-create-container">
+      <h2>⭐ 정보 수정</h2>
       <br />
       <hr />
-      <div class="character-info">
-        <div>
-        <img class="profile-image-size" id="charImage" />
-       <div><strong id="charName"></strong></div> </div>
-        <div id="charBirth"></div>
-        <div id="charCountry"></div>
-        <div id="charCreator"></div>
-        <button class="edit-button">정보 수정</button>
+      <div class="member-create-list">
+        <input type="file" id="member-image" class="member-image" /><br />
+        <input
+          type="text"
+          id="member-name"
+          class="member-name"
+          placeholder="이름"
+        /><br />
+        <input
+          type="text"
+          id="member-country"
+          class="member-country"
+          placeholder="국적"
+        /><br />
+        <input
+          type="text"
+          id="member-birth"
+          class="member-birth"
+          placeholder="생년월일(ex.2023.01.01)"
+        /><br />
+        <input
+          type="text"
+          id="member-creator"
+          class="member-creator"
+          placeholder="제작"
+        /><br />
+        <button type="submit" class="create-button">캐릭터 수정</button>
       </div>
-     
+      <hr />
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -38,6 +58,6 @@
 
       firebase.initializeApp(firebaseConfig);
     </script>
-    <script src="../js/about.js"></script>
+    <script src="../js/edit.js"></script>
   </body>
 </html>

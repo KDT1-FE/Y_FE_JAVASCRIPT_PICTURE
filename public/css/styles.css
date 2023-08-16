@@ -11,13 +11,6 @@ body {
 }
 
 /* index.html */
-/* .main-container {
-  margin: 10% 15%;
-  padding: 0 30% 0 0;
-  width: 100%;
-  overflow: auto;
-  text-align: center;
-} */
 
 .main-image {
   cursor: pointer;
@@ -140,7 +133,7 @@ body {
   text-align: center;
 }
 
-.image-size {
+.list-image-size {
   width: 100px;
   height: 100px;
   border-radius: 8px;
@@ -174,6 +167,29 @@ body {
   margin-top: 10px;
   border: 1px solid;
   border-radius: 4px;
+}
+
+/* about.html */
+
+.character-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profile-image-size {
+  margin-top: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#charBirth,
+#charCountry,
+#charCreator {
+  text-align: right;
 }
 
 /* update.html */
