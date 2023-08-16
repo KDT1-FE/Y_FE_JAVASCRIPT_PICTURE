@@ -1,3 +1,7 @@
+body {
+  width: 500px;
+}
+
 .title {
   margin: 30px;
 }
@@ -9,6 +13,7 @@
 .p-img {
   width: 200px;
   height: 200px;
+  padding: 10px;
 }
 
 .div1,
@@ -18,7 +23,6 @@
 .div5 {
   display: flex;
   align-items: center;
-  margin: 10px;
   border-bottom: 1px solid whitesmoke;
 }
 
