@@ -1,0 +1,84 @@
+/* Base styles for all devices */
+.header {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+  }
+  
+  img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+  
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  /* Responsive styles for screens smaller than 600px */
+  @media (max-width: 600px) {
+    img {
+      width: 70px;
+      height: 70px;
+    }
+  
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    table tr {
+      margin-bottom: 1em;
+      border-bottom: 2px solid #ddd;
+    }
+  
+    table th {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    table td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      font-size: .8em;
+    }
+  
+    table td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      padding: .625em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  

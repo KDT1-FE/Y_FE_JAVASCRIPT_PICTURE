@@ -37,7 +37,7 @@ db.collection('employee').get().then((snapshot) => {
     });
     
 
-    //모달 창 내부 버튼 이벤트 리스터 추가
+   ////////////////모달 창 내부 버튼 이벤트 리스터 추가//////////////
 
     // 삭제 버튼에 이벤트 리스너 추가
     let deleteButtons2 = document.querySelectorAll('.button--state-delete2');
@@ -125,3 +125,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// 프로필 페이지에 데이터 출력...?
+
+document.addEventListener('DOMContentLoaded', function() {
+    // URL의 쿼리 스트링에서 docId를 추출
+   const queryString = new URLSearchParams(window.location.search);
+   const docId = queryString.get('id');
+   const db = firebase.firestore();
+
+   // Firestore에서 해당하는 직원의 데이터를 가져옴
+   db.collection('employee').doc(docId).get().then((result) => {
+       const data = result.data();
+   // HTML에 직원의 데이터를 동적으로 추가
+       document.getElementById('name').textContent = data.name;
+       document.getElementById('email').textContent = data.email;
+       document.getElementById('phone').textContent = data.phone;
+       document.getElementById('position').textContent = data.position;
+       document.getElementById('photo').innerHTML = '<img src="' + data.image + '" alt="Photo">';
+   });
+});
