@@ -1,6 +1,7 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { initializeApp, getApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_R-euRNqGE2pQb_-lfUbNN6dfHILDE1s",
@@ -17,6 +18,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const usersCollectionRef = collection(db, "profiles");
+const firebaseApp = getApp();
+const storage = getStorage(app);
+const storageRef = ref(storage);
 
 const mainDelBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.outlined"); // 선택 삭제 버튼
 const mainAddBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.filled"); //팝업 켜기 버튼
@@ -57,6 +61,7 @@ logoutBtnEl.onclick = () => {
 // 프로필 생성하기 버튼 클릭 시
 popupAddBtnEl.addEventListener("click", (event) => {
   const popupInputEls = document.querySelectorAll(".popup-contents-container input");
+  const imgFile = document.querySelector(".popup-contents-container input[type='file']");
   const [koName, enName, email, tel, file] = popupInputEls;
   const popupSelectEls = document.querySelectorAll(".popup-contents-container select");
   const [team, author] = popupSelectEls;
@@ -78,6 +83,15 @@ popupAddBtnEl.addEventListener("click", (event) => {
   if (popupHeaderEl.innerText === "직원 프로필 추가" && !checkValid(employeeProfileCard)) {
     sendToast("동일한 연락처 혹은 이메일을 사용하는 사용자가 있습니다.", "error");
     return;
+  }
+
+  if (employeeProfileCard.employeeFile) {
+    let extension = employeeProfileCard.employeeFile.split(".").slice(-1)[0];
+    console.log("file", imgFile.files[0]);
+    const storageRef = ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`);
+    uploadBytes(storageRef, imgFile.files[0]).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
   }
 
   //새로 만드는 녀석인지 변경하는 녀석인지 알아내기
@@ -408,15 +422,17 @@ function configCheckbox() {
   여러 개의(혹은 모든) 리스트 삭제 함수
 */
 function deleteEveryCheckedList() {
-  if (!employeeArr.length) {
+  const checkboxEls = document.querySelectorAll("input[type='checkbox']");
+  const checkArr = Array.from(checkboxEls);
+  console.log(checkboxEls);
+  if (checkboxEls.length === 1 || !checkArr.filter((el) => el.checked).length) {
     sendToast("삭제할 프로필이 없습니다", "error");
     return;
   }
   const decision = confirm("정말 선택한 프로필들을 삭제하시겠습니까?");
   if (!decision) return;
-  const checkboxEls = document.querySelectorAll("input[type='checkbox']");
   console.log("선택 삭제 중");
-  for (let i = 0; i < checkboxEls.length; i++) {
+  for (let i = 1; i < checkboxEls.length; i++) {
     if (!checkboxEls[i].checked) continue;
     const temp = JSON.parse(checkboxEls[i].dataset.obj);
     console.log(temp.employeeID);
