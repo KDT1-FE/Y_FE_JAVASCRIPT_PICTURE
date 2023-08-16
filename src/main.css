@@ -125,6 +125,7 @@ header .bottom .input:focus {
 }
 
 .cards .card {
+  position: relative;
   margin: 1rem;
   padding: 3rem 0;
   background-color: var(--color-white-50);
@@ -144,7 +145,8 @@ header .bottom .input:focus {
   box-shadow: var(--color-black-30) 0px 14px 26px 0px;
 }
 
-.cards .card .card_photo {
+/* CARD ITEM */
+.card .card_photo {
   --width: 160px;
   width: var(--width);
   height: var(--width);
@@ -154,13 +156,13 @@ header .bottom .input:focus {
   margin-bottom: -1px;
 }
 
-.cards .card .card_photo img {
+.card .card_photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.cards .card .card_info {
+.card .card_info {
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
@@ -171,22 +173,46 @@ header .bottom .input:focus {
   color: var(--color-black-80);
 }
 
-.cards .card .card_info .info_name {
+.card .card_info .info_name {
   color: var(--color-black);
   font-weight: 700;
   font-size: 20px;
 }
 
-.cards .card .card_info .info_phone {
+.card .card_info .info_phone {
   margin-bottom: -1px;
 }
 
-.cards .card .card_info .info_email {
+.card .card_info .info_email {
   margin-bottom: -1px;
 }
 
-.cards .card .card_info .info_department {
+.card .card_info .info_department {
   margin-bottom: -1px;
+}
+
+.card .delete {
+  display: none;
+  --width: 46px;
+  height: var(--width);
+  width: var(--width);
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  color: var(--color-warning);
+  font-size: 30px;
+}
+
+.card .delete:hover {
+  cursor: pointer;
+  background-color: var(--color-black-10);
+}
+
+.card:hover .delete {
+  display: block;
 }
 
 /* FOOTER */

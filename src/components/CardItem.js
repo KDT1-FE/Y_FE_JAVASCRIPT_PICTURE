@@ -1,4 +1,5 @@
 import Modal from './Modal.js';
+import { deleteData } from '../firebase/data.js';
 
 export default class CardItem {
   constructor(info = {}) {
@@ -36,5 +37,22 @@ export default class CardItem {
       const modal = new Modal(this.info, 'update', this.id);
       body.append(modal.el);
     });
+
+    // 카드 삭제
+    const deleteBtnEl = document.createElement('button');
+    deleteBtnEl.classList.add('btn', 'delete');
+    deleteBtnEl.innerHTML = `
+        <span class="material-symbols-outlined">
+            close
+        </span>`;
+
+    deleteBtnEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (confirm(`${name}을 정말 삭제하시겠어요?`)) {
+        deleteData(this.id);
+      }
+    });
+
+    this.el.append(deleteBtnEl);
   }
 }
