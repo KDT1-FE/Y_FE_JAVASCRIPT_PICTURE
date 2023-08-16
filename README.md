@@ -28,11 +28,11 @@
 
 - CSS
 
-  - [ ] 애니메이션 구현
+  - [x] 애니메이션 구현
   - [ ] 상대수치 사용(rem, em)
 
 - JavaScript
-  [x] DOM event 조작
+- [x] DOM event 조작
 
 ## [선택 요구사항]
 
