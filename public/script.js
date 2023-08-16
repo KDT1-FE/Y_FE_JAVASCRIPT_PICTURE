@@ -24,7 +24,7 @@ db.collection('employee').get().then((snapshot) => {
                 </span>
             </td>
             <td><img class="img" src="${doc.data().image}" alt="Employee Photo"></td>
-            <td>${doc.data().name}</td>
+            <td><a href="/profile.html?id=${doc.id}"">${doc.data().name}</a></td>
             <td>${doc.data().email}</td>
             <td>${doc.data().phone}</td>
             <td>${doc.data().position}</td>
@@ -35,6 +35,52 @@ db.collection('employee').get().then((snapshot) => {
         </tr>`;
         document.querySelector('tbody').insertAdjacentHTML('beforeend', row);
     });
+    
+
+    //모달 창 내부 버튼 이벤트 리스터 추가
+
+    // 삭제 버튼에 이벤트 리스너 추가
+    let deleteButtons2 = document.querySelectorAll('.button--state-delete2');
+    deleteButtons2.forEach(function(button) {
+        button.addEventListener('click', function() {
+            let modal = document.querySelector('.modal--delete2');
+            modal.classList.remove('hidden');
+        });
+    });
+
+    let deleteButton = document.querySelectorAll('.button--state-delete');
+    deleteButton.forEach(function(button) {
+        button.addEventListener('click', function() {
+            let modal = document.querySelector('.modal--delete');
+            modal.classList.remove('hidden');
+        });
+    });
+
+
+    // 수정 버튼에 이벤트 리스너 추가
+    let editButtons = document.querySelectorAll('.button--state-edit');
+    editButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            let modal = document.querySelector('.modal--edit');
+            modal.classList.remove('hidden');
+        });
+    });
+
+    // 취소 버튼에 이벤트 리스너 추가
+    let cancelButtons = document.querySelectorAll('.button--state-cancel');
+    cancelButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            hideAllModals();
+        });
+    });
+
+    // 등록 버튼에 이벤트 리스너 추가
+    // let addButtons = document.querySelectorAll('.button--state-add');
+    // addButtons.forEach(function(button) {
+    //     let modal = document.querySelector('.modal');
+    //     modal.classList.remove('hidden');
+    // });
+
 });
 
 
@@ -81,3 +127,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// var queryString = new URLSearchParams(window.location.search);
+// db.collection('employee').doc(queryString.get('id')).get().then((result)=>{
+//   console.log(result.data());
+//   $('#name').text(result.data().name);
+//   $('#email').text(result.data().email);
+//   $('#phone').text(result.data().phone);
+//   $('#position').text(result.data().position);
+//   $('#photo').html('<img src="' + result.data().image + '" alt="Photo">');
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const queryString = new URLSearchParams(window.location.search);
+    const docId = queryString.get('id');
+    const db = firebase.firestore();
+
+    db.collection('employee').doc(docId).get().then((result) => {
+        const data = result.data();
+
+        document.getElementById('name').textContent = data.name;
+        document.getElementById('email').textContent = data.email;
+        document.getElementById('phone').textContent = data.phone;
+        document.getElementById('position').textContent = data.position;
+        document.getElementById('photo').innerHTML = '<img src="' + data.image + '" alt="Photo">';
+    });
+});
