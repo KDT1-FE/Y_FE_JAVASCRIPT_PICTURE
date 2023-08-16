@@ -28,7 +28,6 @@ import {
   deleteDoc,
   deleteField,
 } from 'firebase/firestore/lite';
-import dotenv from 'dotenv';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,

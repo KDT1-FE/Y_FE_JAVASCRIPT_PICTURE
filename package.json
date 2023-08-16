@@ -24,10 +24,10 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "dotenv": "^16.3.1"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
     "firebase": "^10.1.0"
   }
 }

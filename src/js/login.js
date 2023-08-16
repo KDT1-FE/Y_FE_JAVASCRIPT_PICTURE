@@ -6,7 +6,6 @@ import {
   onAuthStateChanged,
   browserSessionPersistence,
 } from 'firebase/auth';
-import dotenv from 'dotenv';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,

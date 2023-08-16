@@ -1,3 +1,5 @@
+import '../../assets/image/ic_top_gray.png';
+import '../../assets/image/logo.png';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -5,7 +7,6 @@ import {
   onAuthStateChanged,
   signOut,
 } from 'firebase/auth';
-import dotenv from 'dotenv';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
