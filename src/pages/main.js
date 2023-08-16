@@ -25,8 +25,9 @@ async function Main() {
 
     listWrapper.innerHTML = `
       <ul>
+        <li><img src="${doc.data().image}"/></li>
         <li>${doc.data().name}</li>
-        <li>${doc.data().name}</li>
+        <li>${doc.data().team}</li>
         <li>${doc.data().position}</li>
       </ul>
     `;
