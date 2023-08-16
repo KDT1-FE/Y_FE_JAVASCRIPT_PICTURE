@@ -4,20 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Page</title>
+    <link rel="stylesheet" href="./detail.css" />
   </head>
   <body>
     <header class="header">
-      <h1 class="title">임직원 상세</h1>
+      <!-- <h1 class="title">임직원 상세</h1> -->
     </header>
     <main>
-      <p class="detail-infor">information</p>
+      <h1 class="information">information</h1>
+
       <div class="infor-moim">
-        <img class="p-img" id="profile-image" />
-        <p class="p-name" id="name"></p>
-        <p class="p-email" id="email"></p>
-        <p class="p-phone" id="phone"></p>
-        <p class="p-category" id="category"></p>
+        <div class="div1">
+          <img class="p-img" id="profile-image" />
+        </div>
+        <div class="div2">
+          <h4 class="h4-name">이름</h4>
+          <p class="p-name" id="name"></p>
+        </div>
+        <div class="div3">
+          <h4 class="h4-email">이메일</h4>
+          <p class="p-email" id="email"></p>
+        </div>
+        <div class="div4">
+          <h4 class="h4-phone">휴대번호</h4>
+          <p class="p-phone" id="phone"></p>
+        </div>
+        <div class="div5">
+          <h4 class="h4-category">직위</h4>
+          <p class="p-category" id="category"></p>
+        </div>
       </div>
     </main>
+    <script type="module" src="./aws_functions.js"></script>
+    <script type="module" src="./detail.js"></script>
   </body>
 </html>

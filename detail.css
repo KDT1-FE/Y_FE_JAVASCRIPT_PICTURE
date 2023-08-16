@@ -1,0 +1,31 @@
+.title {
+  margin: 30px;
+}
+.information {
+  margin: 20px;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.p-img {
+  width: 200px;
+  height: 200px;
+}
+
+.div1,
+.div2,
+.div3,
+.div4,
+.div5 {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.h4-name,
+.h4-email,
+.h4-phone,
+.h4-category {
+  width: 100px;
+  margin: 20px;
+}

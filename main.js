@@ -140,7 +140,7 @@ btn1.addEventListener("click", async () => {
     employeeDiv.addEventListener("click", () => {
       // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
       const selectedEmployee = {
-        profileImage: profileImage.src,
+        profileImage: profileImageElement.src,
         name: name_,
         email: email,
         phone: phone,
