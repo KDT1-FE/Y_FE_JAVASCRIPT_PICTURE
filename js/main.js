@@ -161,6 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // 클릭한 유저 상세 페이지로
+        const tableRows = document.querySelectorAll('.body-tr');
+
+        tableRows.forEach(row => {
+            row.addEventListener('click', () => {
+                const userId = row.id;
+                const user = data[userId];
+
+                if (user) {
+                    const queryString = new URLSearchParams({ userId: user.key }).toString();
+                    window.location.href = `detail.html?${queryString}`;
+                }
+            });
+        });
     });
 });
 
