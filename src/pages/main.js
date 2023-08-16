@@ -25,7 +25,7 @@ async function Main() {
 
     listWrapper.innerHTML = `
       <ul>
-        <a href ="/detail/${doc.id}" class="navbar">
+        <a href ="/detail/${doc.id}">
           <li><img src="${doc.data().image}"/></li>
           <li>${doc.data().name}</li>
           <li>${doc.data().team}</li>

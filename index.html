@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2023 선수관리</title>
     <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/navigation.css" />
   </head>
   <body>
-    <div>
-      <h1>2023 선수관리</h1>
-    </div>
-    <div class="main">
-      <nav class="navbar">
-        <a href="/">HOME</a>
-        <a href="/post">등록하기</a>
-      </nav>
-      <div id="app"></div>
-    </div>
+    <nav class="navbar">
+      <div class="navbar-title-wrapper">
+        <h1>2023 선수관리</h1>
+      </div>
+      <div class="navbar-anchor-wrapper">
+        <a class="navbar-anchor" href="/">HOME</a>
+        <a class="navbar-anchor" href="/post">등록하기</a>
+      </div>
+    </nav>
+    <main id="app"></main>
   </body>
   <script type="module" src="./main.js"></script>
 </html>

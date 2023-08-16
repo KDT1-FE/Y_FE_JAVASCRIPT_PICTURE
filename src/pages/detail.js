@@ -35,8 +35,6 @@ async function Detail() {
   <button id="detail-delete">삭제하기</button>
 `;
 
-  console.log(docSnap.data().image);
-
   document
     .querySelector("#detail-delete")
     .addEventListener("click", async () => {
