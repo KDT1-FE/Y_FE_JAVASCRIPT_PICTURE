@@ -577,3 +577,31 @@ html {
     font-size: 1rem;
   }
 } /* 수정 페이지 반응형 */
+
+/*스켈레톤*/
+/* Skeleton Loading Animation */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--color-hover);
+}
+.skeleton::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(270deg, #f7f7f7, #f7f7f7, #f7f7f7);
+  transform: translateX(-100%);
+  animation: skeleton-loader 2s infinite;
+}
+@keyframes skeleton-loader {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
