@@ -4,7 +4,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const characterId = urlParams.get("id");
 
 if (!characterId) {
-  alert("Invalid character ID!");
+  alert("잘못된 접근입니다");
 } else {
   fetchCharacterDetails(characterId);
 }
@@ -41,5 +41,9 @@ function displayCharacterDetails(character) {
 }
 
 document.querySelector(".edit-button").addEventListener("click", () => {
-  window.location.href = `./edit-character.html?id=${characterId}`;
+  window.location.href = `./edit.html?id=${characterId}`;
+});
+
+document.querySelector(".return-button").addEventListener("click", () => {
+  window.location.href = "./list.html";
 });

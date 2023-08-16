@@ -47,3 +47,7 @@ createButton.addEventListener("click", () => {
       console.log(err);
     });
 });
+
+document.querySelector(".return-button").addEventListener("click", () => {
+  window.location.href = "./list.html";
+});

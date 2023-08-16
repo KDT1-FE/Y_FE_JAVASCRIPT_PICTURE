@@ -1,49 +1,89 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-const name = document.querySelector(".member-name");
-const country = document.querySelector(".member-country");
-const birth = document.querySelector(".member-birth");
-const creator = document.querySelector(".member-creator");
-const createButton = document.querySelector(".create-button");
+const urlParams = new URLSearchParams(window.location.search);
+const characterId = urlParams.get("id");
 
-createButton.addEventListener("click", () => {
+if (!characterId) {
+  alert("잘못된 접근입니다");
+} else {
+  fetchCharacterDetails(characterId);
+}
+
+function fetchCharacterDetails(id) {
+  const characterRef = db.collection("character").doc(id);
+
+  characterRef
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        displayCharacterDetails(doc.data());
+      } else {
+        console.error(error);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+let currentImageURL = "";
+
+function displayCharacterDetails(character) {
+  currentImageURL = character.사진;
+  document.getElementById("member-image").src = character.사진;
+  document.getElementById("member-name").value = character.이름;
+  document.getElementById("member-country").value = character.국적;
+  document.getElementById("member-birth").value = character.생년월일;
+  document.getElementById("member-creator").value = character.제작;
+}
+
+const editButton = document.querySelector(".edit-button");
+
+editButton.addEventListener("click", () => {
   const file = document.querySelector(".member-image").files[0];
   const storageRef = storage.ref();
-  const imgPath = storageRef.child("image/" + file.name);
 
-  if (
-    !file ||
-    !name.value ||
-    !country.value ||
-    !birth.value ||
-    !creator.value
-  ) {
-    alert("모든 정보를 입력해주세요!");
-    return;
+  if (file) {
+    const imgPath = storageRef.child("image/" + file.name);
+    imgPath
+      .put(file)
+      .then((snapshot) => {
+        return snapshot.ref.getDownloadURL();
+      })
+      .then((path) => {
+        updateCharacter(characterId, {
+          사진: path,
+          이름: document.getElementById("member-name").value,
+          국적: document.getElementById("member-country").value,
+          생년월일: document.getElementById("member-birth").value,
+          제작: document.getElementById("member-creator").value,
+        });
+      });
+  } else {
+    updateCharacter(characterId, {
+      사진: currentImageURL,
+      이름: document.getElementById("member-name").value,
+      국적: document.getElementById("member-country").value,
+      생년월일: document.getElementById("member-birth").value,
+      제작: document.getElementById("member-creator").value,
+    });
   }
+});
 
-  imgPath
-    .put(file)
-    .then((snapshot) => {
-      return snapshot.ref.getDownloadURL();
-    })
-    .then((path) => {
-      const addChar = {
-        사진: path,
-        이름: name.value,
-        국적: country.value,
-        생년월일: birth.value,
-        제작: creator.value,
-      };
-
-      return db.collection("character").add(addChar);
-    })
+function updateCharacter(id, character) {
+  db.collection("character")
+    .doc(id)
+    .update(character)
     .then(() => {
       alert("캐릭터 수정이 완료 되었습니다.");
-      window.location.href = "./list.html";
+      window.location.href = `./about.html?id=${id}`;
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((error) => {
+      console.error(error);
     });
+}
+
+document.querySelector(".return-button").addEventListener("click", () => {
+  window.location.href = "./list.html";
 });

@@ -15,6 +15,7 @@
           type="search"
           class="member-search"
           placeholder="캐릭터 이름으로 검색하기"
+          onkeyup="searchCharacters(event)"
         />
         <button
           class="member-create"
@@ -29,7 +30,7 @@
       <hr />
       <br />
 
-      <div class="member-list-box">
+      <div>
         <ul class="member-list" id="list">
           <li class="member-list-innercheck"><input type="checkbox" /></li>
           <li class="member-list-inner"><strong>사진</strong></li>
@@ -38,6 +39,10 @@
           <li class="member-list-inner"><strong>생년월일</strong></li>
           <li class="member-list-inner"><strong>제작</strong></li>
         </ul>
+        <br />
+      </div>
+
+      <div class="member-list-box">
         <br />
       </div>
       <br />
