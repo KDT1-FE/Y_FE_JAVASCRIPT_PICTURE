@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply box-border font-light;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+@layer components {
+  .bar {
+    @apply static h-0.5 w-full bg-slate-200;
+  }
+}
