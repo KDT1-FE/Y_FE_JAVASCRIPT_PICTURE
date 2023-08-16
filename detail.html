@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="enroll.css" />
+    <link rel="stylesheet" href="detail.css" />
+  </head>
+  <body>
+    <main>
+      <section class="section__enroll">
+        <nav class="section__enroll--nav">
+          <p>회원 상세 정보</p>
+          <div>
+            <a href="index.html"><button>수정</button></a>
+            <button>삭제</button>
+          </div>
+        </nav>
+        <article class="section__enroll--article">
+          <div class="section__enroll--template">
+            <ul>
+              <li>
+                <span>이름</span>
+                <input type="text" placeholder="성함을 입력해주세요." />
+              </li>
+              <li>
+                <span>연락처</span>
+                <input type="text" placeholder="- 없이 입력해주세요." />
+              </li>
+              <li>
+                <span>등록 기간</span>
+                <input type="date" name="start_of_days" id="start_of_days" />
+                <input type="date" name="end_of_days" id="end_of_days" />
+              </li>
+              <li>
+                <span>PT 등록 여부</span>
+                <input type="checkbox" name="pt_check" id="pt_check" />
+              </li>
+              <li class="section__enroll--pt_check">
+                <span>PT 잔여 세션</span>
+                <form action="#">
+                  <select name="" id="">
+                    <option value="1">1</option>
+                  </select>
+                </form>
+              </li>
+              <li class="section__enroll--pt_check">
+                <span>담당 트레이너</span>
+                <form action="#">
+                  <select name="" id="">
+                    <option value="홍길동">홍길동</option>
+                  </select>
+                </form>
+              </li>
+            </ul>
+          </div>
+          <div class="section__enroll--image">
+            <span>사진</span>
+            <div class="section__enroll--image_upload">
+              <input type="file" accept="image/*" />
+              <div class="section__enroll--image_button">
+                <button>등록</button>
+                <button>삭제</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section>
+        <nav class="section__detail--pt_info">
+          <p>일지</p>
+          <div>
+            <button onclick="pt_add()">추가</button>
+          </div>
+        </nav>
+        <article>
+          <div class="section__detail--pt_list">
+            <div class="section__detail--pt_template">
+              <ul>
+                <li>세션 번호</li>
+                <li>날짜</li>
+                <li>부위</li>
+                <li>내용</li>
+                <li>중량</li>
+                <li>횟수</li>
+                <li>세트</li>
+                <li>비고</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
