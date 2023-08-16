@@ -50,10 +50,13 @@ villagerDocRef.get().then((doc) => {
 //수정 기능
 const editBtn = document.querySelector(".edit-btn");
 
-editBtn.addEventListener("click", async () => {
-  const profileInfoLi = document.querySelectorAll(".profile-info-li");
+editBtn.addEventListener("click", () => {
+  //이미지 관련 요소
+  const imageUploadInput = document.querySelector(".image-upload");
+
   if (editBtn.textContent === "정보 수정") {
     editBtn.textContent = "수정 완료";
+    imageUploadInput.style.display = "block";
 
     // profileContainer 내부의 모든 p 태그 선택
     const pTags = document.querySelectorAll(".villager-info p");
@@ -91,8 +94,32 @@ editBtn.addEventListener("click", async () => {
         input.style.borderBottom = "solid 1px #547a66";
       });
     });
+
+    //image 수정
+    imageUploadInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+
+      if (file) {
+        try {
+          // Storage에 이미지 업로드
+          const storageRef = storage.ref(`${villagerId}`);
+          storageRef.put(file);
+
+          // Storage의 업로드된 이미지 URL을 가져와서 표시
+          const imageUrl = storageRef.getDownloadURL();
+          const imageElement = document.getElementById("villager-img");
+          imageElement.src = imageUrl;
+
+          // Firestore에서 이미지 URL 업데이트
+          villagerDocRef.update({ imageUrl });
+        } catch (error) {
+          console.error("이미지 업로드 오류: ", error);
+        }
+      }
+    });
   } else if (editBtn.textContent === "수정 완료") {
     editBtn.textContent = "정보 수정";
+    imageUploadInput.style.display = "none";
 
     const profileContainer = document.querySelector(".villager-info");
 
@@ -110,9 +137,9 @@ editBtn.addEventListener("click", async () => {
 
     try {
       // Firestore 문서를 새 데이터로 업데이트
-      await villagerDocRef.update(updatedData);
+      villagerDocRef.update(updatedData);
 
-      // UI를 새 정보로 업데이트
+      //새 정보로 업데이트
       Object.keys(updatedData).forEach((field) => {
         const pTag = profileContainer.querySelector(
           `.villager-info-${field} p`

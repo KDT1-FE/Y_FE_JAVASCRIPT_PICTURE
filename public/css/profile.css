@@ -46,6 +46,10 @@ body {
   margin: 0 3rem 1rem 3rem;
 }
 
+.image-upload {
+  display: none;
+}
+
 .villager-img {
   width: 15rem;
 }
