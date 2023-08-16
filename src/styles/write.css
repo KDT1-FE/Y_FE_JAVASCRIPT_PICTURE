@@ -1,0 +1,109 @@
+.write-title,
+.write-container {
+  max-width: 1030px;
+}
+
+.write-title {
+  margin: 50px auto 0 auto;
+
+  color: var(--color-black);
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+.write-container {
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.write-name,
+.write-email,
+.write-image {
+  height: 48px;
+  padding: 0px 16px;
+
+  border-radius: 6px;
+  border: 1px solid var(--color-gray);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  font-size: 1.1rem;
+}
+
+.image-container {
+  display: flex;
+}
+.write-image {
+  flex-grow: 2;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.file-label {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+
+  height: 48px;
+  border-radius: 6px;
+  border: 1px solid var(--color-primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.file-input {
+  display: none;
+}
+.add-member {
+  width: 136px;
+  height: 50px;
+
+  background-color: var(--color-primary);
+
+  border-radius: 10px;
+
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1rem; /* 80% */
+  letter-spacing: 0.125rem;
+
+  align-self: flex-end;
+}
+
+@media (max-width: 1280px) {
+  .write-title,
+  .write-container {
+    max-width: 55rem;
+  }
+}
+@media (max-width: 450px) {
+  .write-title,
+  .write-container {
+    max-width: 18.75rem;
+  }
+
+  .write-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .write-name,
+  .write-email,
+  .write-image {
+    height: 2.6rem;
+
+    font-size: 1rem;
+  }
+  .file-label {
+    flex-grow: 1;
+    height: 2.6rem;
+  }
+  .write-image {
+    flex-grow: 1;
+    width: 5.4rem;
+  }
+  .add-member {
+    width: 6rem;
+    height: 2.6rem;
+    font-size: 1rem;
+  }
+} /* 등록 페이지 반응형 */

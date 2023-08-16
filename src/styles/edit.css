@@ -1,0 +1,78 @@
+/*edit 페이지*/
+.edit-name,
+.edit-email {
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+.photo-edit {
+  width: 400px;
+  height: 480px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+.editButton {
+  width: 136px;
+  height: 50px;
+  margin: 2rem 0 0 29rem;
+
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 6px;
+
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1rem; /* 80% */
+  letter-spacing: 0.125rem;
+}
+
+@media (max-width: 1440px) {
+  .photo-edit {
+    width: 20rem;
+    height: 24rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .photo-edit {
+    width: 21rem;
+    height: 25rem;
+  }
+}
+@media (max-width: 450px) {
+  .photo-edit {
+    width: 12rem;
+    height: 12rem;
+  }
+  .information {
+    padding-left: 0;
+  }
+  .detail-category {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .detail-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    width: 10rem;
+  }
+  .information-container {
+    width: 18rem;
+    padding-bottom: 0;
+  }
+  .edit-container {
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .editButton {
+    margin: 0 0 0 12rem;
+    width: 5rem;
+    height: 1.8rem;
+
+    font-size: 1rem;
+  }
+} /* 수정 페이지 반응형 */
