@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="직원 관리 웹 어플리케이션 Memma" />
+    <title>Memma</title>
+    <link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet" />
+    <link href="./tailwind/output.css" rel="stylesheet" />
+    <script type="module" src="./js/main/main.js"></script>
+  </head>
+
+  <!-- 모달 활성화 시 overflow-hidden 클래스 추가 -->
+  <body class="mx-auto mt-8 max-w-6xl bg-slate-100 px-4">
+    <main>
+      <div class="relative mt-6 flex flex-row items-center justify-between">
+        <div class="text-3xl font-black">임직원 관리</div>
+        <div class="cursor-pointer text-sm underline underline-offset-4" id="user">관리자 님</div>
+        <!-- 로그아웃 창은 관리자를 클릭하면 나타남. h-0 => h-10 -->
+        <div
+          id="logout"
+          class="hover: absolute right-0 top-8 hidden h-10 w-20 translate-x-2 cursor-pointer border-2 bg-white pt-2 text-center text-xs font-medium hover:bg-slate-200 hover:text-red-500">
+          로그아웃
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-row justify-between gap-2">
+        <div class="flex flex-row flex-nowrap gap-4">
+          <button
+            id="add-button"
+            type="button"
+            class="rounded bg-slate-500 px-4 py-2 font-bold text-white hover:bg-blue-500">
+            임직원 등록
+          </button>
+          <button
+            id="remove-button"
+            type="button"
+            class="rounded bg-slate-500 px-4 py-2 font-bold text-white hover:bg-red-500">
+            임직원 삭제
+          </button>
+        </div>
+        <input
+          type="text"
+          id="main-search"
+          class="w-64 text-center outline-none"
+          placeholder="이름 또는 이메일로 검색하기" />
+      </div>
+
+      <div class="bar mb-4 mt-8"></div>
+      <div class="md:flex md:flex-row md:justify-around hidden pl-4 text-center">
+        <input type="checkbox" name="" id="" />
+        <div class="w-[10.6rem] shrink-0 pl-4">프로필 사진</div>
+        <div class="w-[10.2rem] grow pl-6">이름</div>
+        <div class="w-[15.3rem] grow">이메일</div>
+        <div class="w-[13rem] grow pl-4">휴대폰 번호</div>
+        <div class="w-[11.3rem] grow">부서</div>
+      </div>
+      <div class="md:block md:w-full bar static mb-4 mt-4 hidden"></div>
+
+      <ul id="member-list">
+        <!-- 리스트 아이템 데이터 받아와 동적 생성 -->
+        <li class="my-4 flex h-40 cursor-pointer flex-row gap-8 bg-slate-200 pl-4 hover:bg-blue-200">
+          <input type="checkbox" name="" id="" />
+          <img
+            class="object-contain"
+            src="https://newsimg.sedaily.com/2021/12/09/22V85NTJGY_1.jpg"
+            alt="[이름]의 프로필 사진" />
+          <div class="md:flex-row flex grow flex-col items-center justify-around text-center text-lg">
+            <div class="grow pt-1">남궁종민</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">vbghdl@naver.com</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">010-6428-6518</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">상품기획부</div>
+          </div>
+        </li>
+
+        <li class="my-4 flex h-40 cursor-pointer flex-row gap-8 bg-slate-200 pl-4 hover:bg-blue-200">
+          <input type="checkbox" name="" id="" />
+          <img
+            class="object-contain"
+            src="https://newsimg.sedaily.com/2021/12/09/22V85NTJGY_1.jpg"
+            alt="[이름]의 프로필 사진" />
+          <div class="md:flex-row flex grow flex-col items-center justify-around text-center text-lg">
+            <div class="grow pt-1">남궁종민</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">vbghdl@naver.com</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">010-6428-6518</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">상품기획부</div>
+          </div>
+        </li>
+        <li class="my-4 flex h-40 cursor-pointer flex-row gap-8 bg-slate-200 pl-4 hover:bg-blue-200">
+          <input type="checkbox" name="" id="" />
+          <img
+            class="object-contain"
+            src="https://newsimg.sedaily.com/2021/12/09/22V85NTJGY_1.jpg"
+            alt="[이름]의 프로필 사진" />
+          <div class="md:flex-row flex grow flex-col items-center justify-around text-center text-lg">
+            <div class="grow pt-1">남궁종민</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">vbghdl@naver.com</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">010-6428-6518</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">상품기획부</div>
+          </div>
+        </li>
+        <li class="my-4 flex h-40 cursor-pointer flex-row gap-8 bg-slate-200 pl-4 hover:bg-blue-200">
+          <input type="checkbox" name="" id="" />
+          <img
+            class="object-contain"
+            src="https://newsimg.sedaily.com/2021/12/09/22V85NTJGY_1.jpg"
+            alt="[이름]의 프로필 사진" />
+          <div class="md:flex-row flex grow flex-col items-center justify-around text-center text-lg">
+            <div class="grow pt-1">남궁종민</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">vbghdl@naver.com</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">010-6428-6518</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">상품기획부</div>
+          </div>
+        </li>
+        <li class="my-4 flex h-40 cursor-pointer flex-row gap-8 bg-slate-200 pl-4 hover:bg-blue-200">
+          <input type="checkbox" name="" id="" />
+          <img
+            class="object-contain"
+            src="https://newsimg.sedaily.com/2021/12/09/22V85NTJGY_1.jpg"
+            alt="[이름]의 프로필 사진" />
+          <div class="md:flex-row flex grow flex-col items-center justify-around text-center text-lg">
+            <div class="grow pt-1">남궁종민</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">vbghdl@naver.com</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">010-6428-6518</div>
+            <div class="md:hidden h-0.5 w-full bg-white"></div>
+            <div class="grow pt-1">상품기획부</div>
+          </div>
+        </li>
+      </ul>
+    </main>
+
+    <!-- 임직원 등록 클릭 시 backdrop에 hidden class 제거 -->
+    <!-- dialog open 속성 추가-->
+    <div id="modal-backdrop" class="fixed left-0 top-0 hidden h-[100vh] w-[100vw] bg-slate-800 opacity-80"></div>
+    <dialog class="md:w-[40vw] fixed top-[15%] mx-auto h-[75vh] bg-slate-100 opacity-100" id="modal">
+      <form id="modal-form">
+        <div class="p-6">
+          <h2 class="mb-4 text-2xl font-extrabold">임직원 등록하기</h2>
+
+          <label class="mt-4 block p-2 text-base text-slate-500" id="modal-name" for="modal-name">Name</label>
+          <div class="flex flex-row gap-8">
+            <input
+              class="mb-4 h-8 w-full cursor-pointer bg-white pl-2 outline-none"
+              type="text"
+              id="modal-name"
+              name="name"
+              required
+              autocomplete="off" />
+            <select class="h-8">
+              <option value="default">선택</option>
+              <option>총무부</option>
+              <option>인사부</option>
+              <option>기획부</option>
+              <option>영업부</option>
+              <option>회계부</option>
+              <option>품질관리부</option>
+              <option>개발부</option>
+              <option>기술부</option>
+              <option>경리부</option>
+            </select>
+          </div>
+
+          <label class="p-2 text-base text-slate-500" id="modal-email" for="modal-email">Email</label>
+          <input
+            class="mb-4 h-8 w-full cursor-pointer bg-white pl-2 outline-none"
+            type="email"
+            id="modal-email"
+            name="email"
+            required
+            autocomplete="off" />
+
+          <label class="p-2 text-base text-slate-500" id="modal-password" for="modal-password">Password</label>
+          <input
+            class="mb-4 h-8 w-full cursor-pointer bg-white pl-2 outline-none"
+            type="password "
+            id="modal-password"
+            name="password"
+            required
+            autocomplete="off" />
+
+          <label class="block p-2 text-base text-slate-500" id="modal-contact" for="modal-contact">Contact</label>
+          <input
+            class="mb-4 inline-block h-8 w-full cursor-pointer bg-white pl-2 outline-none"
+            type="tel"
+            id="modal-contact"
+            name="contact"
+            required
+            autocomplete="off" />
+
+          <label class="block p-2 text-base text-slate-500" for="image-upload">Upload Profile Picture</label>
+          <input type="file" name="modal-picture" id="modal-picture" />
+
+          <!-- 등록하기 버튼 -->
+          <button
+            class="md:font-medium md:text-base md:mt-4 md:h-[3em] mx-auto mt-4 block h-10 w-full cursor-pointer border-transparent bg-slate-600 text-sm text-white outline-none transition-all hover:text-slate-600 hover:shadow-2xl enabled:hover:bg-blue-200 disabled:border-2 disabled:border-slate-300 disabled:bg-transparent disabled:text-slate-400"
+            type="submit"
+            id="modal-button"
+            disabled>
+            등록하기
+          </button>
+
+          <!-- 모달 창 닫기 -->
+          <div class="absolute right-6 top-6" id="modal-exit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="2rem"
+              height="2rem"
+              viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1); transform: msfilter">
+              <path
+                d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+            </svg>
+          </div>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
