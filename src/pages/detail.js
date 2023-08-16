@@ -14,12 +14,17 @@ async function Detail() {
 
   const divApp = document.getElementById("app");
   divApp.innerHTML = `
-  <ul>
-      <li><img src="${docSnap.data().image}"/></li>
-      <li>${docSnap.data().name}</li>
-      <li>${docSnap.data().team}</li>
-      <li>${docSnap.data().position}</li>
-  </ul>
+  <img src="${docSnap.data().image}"/>
+  <input type="text" name="name" id="name" value=${
+    docSnap.data().name
+  } disabled/>
+  <input type="text" name="position" id="position" value=${
+    docSnap.data().team
+  } disabled/>
+  <input type="text" name="team" id="team" value=${
+    docSnap.data().position
+  } disabled/>
+  <a href ="/edit/${path}">수정하기</a>
 `;
 }
 

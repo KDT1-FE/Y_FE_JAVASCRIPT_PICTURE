@@ -8,8 +8,9 @@ export const BASE_URL = "http://localhost:1234";
 
 // 정규표현식을 활용해 원하는 element 반환
 export const routes = [
+  { path: /^\/index.html$/, element: Main },
   { path: /^\/$/, element: Main },
   { path: /^\/post$/, element: Post },
   { path: /^\/edit\/[\w]+$/, element: Edit },
-  { path: /^\/detail\/[\w]+$/, element: Detail },
+  { path: /^\/detail\/[\w]+$/, element: Detail }
 ];
