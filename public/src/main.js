@@ -9,7 +9,6 @@ collectionRef.get().then((querySnapshot) => {
     const data = doc.data();
 
     const name = data.name;
-    const engName = data.engName;
     const sex = data.sex;
     const birthday = data.birthday;
     const personality = data.personality;
