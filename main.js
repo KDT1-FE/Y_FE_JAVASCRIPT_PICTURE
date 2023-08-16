@@ -65,11 +65,26 @@ document.querySelector('.btn__del').addEventListener('click',()=>{
 async function renderTotalEmployees () {
     let totalEmployees = 0;
     const test = await db.collection('profile').get();
+    
     test.forEach(()=>{
         totalEmployees++;
     })
     document.querySelector('.search__total').innerHTML += totalEmployees    
 }
 
-renderTotalEmployees()
+renderTotalEmployees();
+const tableRow = document.querySelectorAll('.employees__table__row')
+// 직원 상세페이지
+tableRow.forEach((item)=>{
+    item.addEventListener('click',(e)=>{
+        console.log(e.currentTarget);
+    })
+})
+
+
+table.addEventListener('click',(e)=>{
+  let selectEmployee = e.target.parentNode.querySelector('.employeeId')
+  localStorage.setItem('selectEmployee',selectEmployee.innerHTML);
+  setTimeout(()=>window.location.href = "/employee_detail.html",500)
+});
 

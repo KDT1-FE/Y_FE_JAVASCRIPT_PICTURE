@@ -3,7 +3,7 @@ import {db , storage} from './firebase.js'
 
 const getFormData = (event)=>{
     const formData = new FormData(event.target);
-    const file = formData.get("img")
+    const file = formData.get("img");
     const name = formData.get("name");
     const email = formData.get('email');
     const position = formData.get('position');
@@ -41,12 +41,18 @@ const addFirestore = (collection,doc,set) => {
     db.collection(collection).doc(doc).set(set);
 };
 
-const addFirestorage = (file,employeesId)=>{
+export const addFirestorage = (file,employeesId)=>{
     let storageRef = storage.ref();
     let storageUrl = storageRef.child('image/'+employeesId+'.jpg');
     let upload = storageUrl.put(file);
 
 };
+
+export const delFireStorage = async (employeesId)=>{
+    let storageRef = storage.ref();
+    let storageUrl = storageRef.child('image/'+employeesId+'.jpg');
+    await storage.delete()
+}
 
 // 직원 생성
 document.querySelector('#myForm').addEventListener("submit",async (e)=>{
@@ -56,6 +62,7 @@ document.querySelector('#myForm').addEventListener("submit",async (e)=>{
     console.log(typeof(newEmployeeId))
     addFirestore('profile',newEmployeeId.toString(),{employeeId:newEmployeeId,name,email,phonenum:phoneNum,position})
     addFirestorage(file,newEmployeeId);
+    console.log('생성하였습니다');
     setTimeout(()=>window.location.href = "/index.html",500)
 });
 

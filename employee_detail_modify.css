@@ -1,0 +1,9 @@
+#myForm {
+    position: relative;
+}
+#imagePreview {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 2rem;
+}

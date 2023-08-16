@@ -12,11 +12,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="employee_add.css">
+    <link rel="stylesheet" href="emplyoee_detail.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script type="module" src="main.js" defer></script>
+  <script type="module" src="./employee_detail.js" defer></script>
+  
     <title>Document</title>
   </head>
   <body>
@@ -25,29 +28,19 @@
       <div class="employees">
         <div class="employees__main">
           <h1 class="employees__title">직원관리</h1>
-          <div class="employees__action__btns">
-            <button class="btn__add">직원 추가</button>
-            <button class="btn__del">직원 삭제</button>
-          </div>
           <div class="employees__action__search">
             <p class="search__total">총 직원수 : </p>
-            <input class="search__input" type="text" placeholder="이름으로 검색하기" />
           </div>
+          
         </div>
         <section class="employees__content">
-          <table class="employees__table">
-            <tr class="employees__table__row employees__table__row--header">
-              <th><input type="checkbox" /></th>
-              <th>사진</th>
-              <th>이름</th>
-              <th>사원번호</th>
-              <th>직급</th>
-              <th>전화번호</th>
-              <th>이메일</th>
-            </tr>
-            
-            
-          </table>
+            <div class="employees__add">
+                <h2 class="employees__add__title">직원 상세정보</h2>
+                <form id="myForm">
+                    
+                  
+                </form>
+                
         </section>
       </div>
     </main>

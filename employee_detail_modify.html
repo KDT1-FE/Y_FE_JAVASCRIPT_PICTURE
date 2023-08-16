@@ -13,11 +13,12 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="employee_add.css">
+    <link rel="stylesheet" href="employee_detail_modify.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-  <script type="module" src="./employeesAdd.js" defer></script>
+  <script type="module" src="./employee_detail_modify.js" defer></script>
     <title>Document</title>
   </head>
   <body>
@@ -32,7 +33,7 @@
         </div>
         <section class="employees__content">
             <div class="employees__add">
-                <h2 class="employees__add__title">직원 추가하기</h2>
+                <h2 class="employees__add__title">직원 수정하기</h2>
                 <form id="myForm">
                     <div class="myForm__content">
                         <div class="content__label">
@@ -48,11 +49,12 @@
                             <input id="phoneNum" name="phoneNum" type="text" placeholder="010-****-****" required>
                             <input id="position" name = "position" type="text" required>
                             <input id="email" name="email" type="email" required>
-                            <input type="file" id="img" name="img" required>
+                            <input type="file" id="img" name="img" >
                         </div>
+                        <img  id="imagePreview" src="#" alt="Image Preview">
                     </div>
                     <div class="btn__box">
-                        <button class="btn__addi" type="submit">추가</button>
+                        <button class="btn__addi" type="submit">수정</button>
                         <button class="btn__cancel">취소</button>
                     </div>
                 </form>
