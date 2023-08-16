@@ -35,7 +35,6 @@ ul {
   outline: 0;
 }
 :root {
-  /* --color-primary: #1f94ff; */
   --color-primary: #328c45;
   --color-secondary: #000;
   --color-surface: #fafafa;
