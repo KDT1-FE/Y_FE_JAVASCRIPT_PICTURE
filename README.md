@@ -29,6 +29,8 @@
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/jQuery-007ACC?style=for-the-badge&logo=jQuery&logoColor=white)
+
 <br/>
 
 ## 📺 주요 구현화면 및 기능
@@ -77,6 +79,7 @@
   - [눈누 - 강원특별자치도체](https://noonnu.cc/font_page/1199)
   - [눈누 - KBO 다이아고딕체](https://noonnu.cc/font_page/1146)
 
+<br/>
 
 ## 🖱 User Flow Diagram
 ![user_flow](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/122848687/1cc69869-d760-463e-ae1f-384eafda7296)
