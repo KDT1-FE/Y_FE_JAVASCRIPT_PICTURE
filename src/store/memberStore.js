@@ -13,7 +13,12 @@ import {
   where,
 } from 'firebase/firestore';
 import { db, storage } from '../api/firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 
 export const memberStore = new Store({
   members: [],
@@ -80,7 +85,9 @@ export const setData = (data, id) => {
   setDoc(doc(db, 'list', id), data);
 };
 
-export const deleteData = (id) => {
+export const deleteData = (id, photoUrl) => {
+  const desertRef = ref(storage, photoUrl);
+  deleteObject(desertRef);
   deleteDoc(doc(db, 'list', id));
 }; // deleteDoc은 promise를 반환 fulfilled 되기까지 Promise 기다림
 

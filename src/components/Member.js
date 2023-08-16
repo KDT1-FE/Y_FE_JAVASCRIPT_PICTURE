@@ -24,7 +24,10 @@ export default class Member extends Component {
     const checkBox = this.el.querySelector('.checkbox');
     checkBox.addEventListener('change', (event) => {
       if (event.currentTarget.checked) {
-        memberStore.state.deleteMembers.push(member.id);
+        memberStore.state.deleteMembers.push({
+          id: member.id,
+          photoUrl: member.photoUrl,
+        });
       }
     });
   }
