@@ -118,7 +118,7 @@
     <td data-label="phone">010-1234-5678</td>
     <td data-label="position">사원</td>
     <td>
-      <button class="button--state-edit">수정</button>
+      <button class="button--state-edit" data-id="${doc.id}">수정</button>
                   <div class="modal hidden modal--edit">
                   <div class="modal__background"></div>
                   <div class="modal__content">
@@ -128,27 +128,28 @@
                       <div class="modal-body">					
                           <div class="form-group">
                               <label>이름</label>
-                              <input type="text" class="form-control" required>
+                              <input type="text" id="edit-name" class="form-control" required>
                           </div>
                           <div class="form-group">
                               <label>이메일</label>
-                              <input type="email" class="form-control" required>
+                              <input type="email" id="edit-email" class="form-control" required>
                           </div>
                           <div class="form-group">
                               <label>전화번호</label>
-                              <input type="text" class="form-control" required>
+                              <input type="text" id="edit-phone" class="form-control" required>
                           </div>
                           <div class="form-group">
                               <label>직책</label>
-                              <input type="text" class="form-control" required>
+                              <input type="text" id="edit-position" class="form-control" required>
                           </div>	
                           <div class="form-group">
                               <label>사진</label>
                               <div class="filebox preview-image">
                                   <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
-                              
+                                  <img id="edit-image-preview" src="" alt="Image Preview" />
                                   <!-- <label for="input-file">업로드</label>  -->
-                                  <input type="file" id="input-file" class="upload-hidden"> 
+                                  <!-- <input type="file" id="input-file" class="upload-hidden">  -->
+                                  <input type="file" id="edit-image" class="upload-hidden">
                               </div>
                               
                               <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
@@ -188,5 +189,7 @@
     <script src="main.js"></script>
 
     <script src="script.js"></script>
+
+    <script src="edit.js"></script>
 </body>
 </html> 

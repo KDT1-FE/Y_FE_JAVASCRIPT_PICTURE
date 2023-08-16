@@ -23,8 +23,8 @@ db.collection('employee').get().then((snapshot) => {
                     <label for="checkbox${doc.id}"></label>
                 </span>
             </td>
-            <td><img class="img" src="${doc.data().image}" alt="Employee Photo"></td>
-            <td><a href="/profile.html?id=${doc.id}"">${doc.data().name}</a></td>
+            <td><a href="/edit.html?id=${doc.id}"><img class="img" src="${doc.data().image}" alt="Employee Photo"></td>
+            <td><a href="/profile.html?id=${doc.id}">${doc.data().name}</a></td>
             <td>${doc.data().email}</td>
             <td>${doc.data().phone}</td>
             <td>${doc.data().position}</td>
@@ -125,30 +125,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
-
-// var queryString = new URLSearchParams(window.location.search);
-// db.collection('employee').doc(queryString.get('id')).get().then((result)=>{
-//   console.log(result.data());
-//   $('#name').text(result.data().name);
-//   $('#email').text(result.data().email);
-//   $('#phone').text(result.data().phone);
-//   $('#position').text(result.data().position);
-//   $('#photo').html('<img src="' + result.data().image + '" alt="Photo">');
-// });
-
-document.addEventListener('DOMContentLoaded', function() {
-    const queryString = new URLSearchParams(window.location.search);
-    const docId = queryString.get('id');
-    const db = firebase.firestore();
-
-    db.collection('employee').doc(docId).get().then((result) => {
-        const data = result.data();
-
-        document.getElementById('name').textContent = data.name;
-        document.getElementById('email').textContent = data.email;
-        document.getElementById('phone').textContent = data.phone;
-        document.getElementById('position').textContent = data.position;
-        document.getElementById('photo').innerHTML = '<img src="' + data.image + '" alt="Photo">';
-    });
-});

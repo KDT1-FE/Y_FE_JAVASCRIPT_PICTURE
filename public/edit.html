@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/modal.css"/>
+  <link rel="stylesheet" href="css/edit.css"/>
+</head>
+<body>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+  <script>
+
+  </script>
+    <header class = "header">
+      <h1>임직원 수정</h1>
+    </header>
+
+
+<table>
+  <!-- <caption>Statement Summary</caption> -->
+  <thead>
+  <tr>
+      <th scope="col">이름</th>
+      <td>                          
+        <div class="form-group">
+            <label>이름</label>
+            <input type="text" id="edit_name" class="form-control" required>
+        </div>
+        </td>
+  </tr>
+  <tr>
+      <th scope="col">이메일</th>
+      <td>
+        <div class="form-group">
+            <label>이메일</label>
+            <input type="email" id="email" class="form-control" required>
+        </div>
+      </td>
+  </tr>
+  <tr>
+      <th scope="col">전화번호</th>
+      <td>
+        <div class="form-group">
+            <label>전화번호</label>
+            <input type="text" id="phone" class="form-control" required>
+        </div>
+      </td>
+  </tr>
+  <tr>
+      <th scope="col">직책</th>
+      <td>
+        <div class="form-group">
+            <label>직책</label>
+            <input type="text" id="position" class="form-control" required>
+        </div>	
+      </td>
+  </tr>
+  <tr>
+    <th scope="col">사진</th>
+    <td>
+      <div class="form-group">
+          <label>사진</label>
+          <div class="filebox preview-image">
+              <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
+              <img id="edit-image-preview" src="" alt="Image Preview" />
+              <!-- <label for="input-file">업로드</label>  -->
+              <!-- <input type="file" id="input-file" class="upload-hidden">  -->
+              <!-- <input type="file" id="edit-image" class="upload-hidden"> -->
+              <input type="file" id="photo">
+          </div>
+          
+          <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
+      </div>
+    </td>
+</tr>
+  </table>
+
+  <div class="profile-edit-button">
+    <button class="button--state-cancel">취소</button>
+    <button class = "button__edit--profile" id = "profile_edit">수정</button>
+</div>
+  
+    <script src="main.js"></script>
+
+    <script src="script.js"></script>
+    <script src="edit.js"></script>
+</body>
+</html> 
