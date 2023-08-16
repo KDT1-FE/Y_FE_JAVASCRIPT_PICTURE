@@ -120,8 +120,10 @@ async function deleteMatchingImageFromFirestorage(matchingImage) {
 
 async function changeInfo() {
   const image = imageInput.files[0];
-
-  // Firestorage
+  const name = nameInput.value;
+  const group = groupInput.value;
+  if(image && name && group){
+    // Firestorage
   const localstorageData = localStorage.getItem('profile');
   const profiledata = JSON.parse(localstorageData);
 
@@ -168,8 +170,11 @@ async function changeInfo() {
       }, 1500);
     }
   }
-
-  modalOff();
+  }
+  else{
+    uploadError();
+    modalOff();
+  }
 }
 
 
@@ -202,19 +207,10 @@ function uploadError(){
 }
 
 function firebaseError(){
+  // 사진 중복 시
   Swal.fire({
     title: '업로드 오류',
     text: "다시 작성해주세요.",
-    icon: 'warning',
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: '확인',
-  })
-}
-
-function storageError(){
-  Swal.fire({
-    title: '삭제 오류',
-    text: "삭제하는 과정에서 오류가 발생했습니다.",
     icon: 'warning',
     confirmButtonColor: '#3085d6',
     confirmButtonText: '확인',
