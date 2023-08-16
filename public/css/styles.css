@@ -5,9 +5,10 @@ body {
 }
 
 .header-logo {
-  width: 25rem;
-  height: 9.5rem;
-  padding-top: 2rem;
+  width: 100%;
+  height: auto;
+  padding: 2rem 0;
+  max-width: 25rem;
 }
 
 .main {
@@ -62,6 +63,8 @@ body {
 
 .main-middle-hr {
   border: solid 0.15rem #3f5d4d;
+  flex-grow: 1;
+  margin: 0 1rem;
 }
 
 .villagers-info {
@@ -80,6 +83,7 @@ body {
   float: left;
   font-size: 1.3rem;
   font-weight: 600;
+  margin: 0 1rem;
 }
 
 .villagers-list {
@@ -96,11 +100,14 @@ body {
   background-color: #fdf6e8;
   cursor: pointer;
   color: #71b38f;
+  transition: background-color 0.4s, transform 1.9s;
+  transform-origin: center;
 }
 
 .villager:hover {
   transition: 0.4s;
   background-color: #ebedae;
+  transform: scale(0.98);
 }
 
 .delete-villager {
