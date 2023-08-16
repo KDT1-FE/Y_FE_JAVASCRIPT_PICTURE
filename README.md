@@ -4,7 +4,7 @@ https://y-fe-javascript-picture.vercel.app
 
 ## 제작 기간
 
-2023. 8.  08 ~ 2023. 08. 18
+2023/8/8 ~ 2023/8/18
 
 ## 사용 스택
 
