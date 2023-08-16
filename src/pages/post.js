@@ -39,8 +39,7 @@ async function Post() {
           image: url,
           name: document.querySelector("#name").value.toUpperCase(),
           position: document.querySelector("#position").value.toUpperCase(),
-          team: document.querySelector("#team").value.toUpperCase(),
-          date: new Date()
+          team: document.querySelector("#team").value.toUpperCase()
         };
 
         const add = addDoc(collection(db, "employee"), inputValue)

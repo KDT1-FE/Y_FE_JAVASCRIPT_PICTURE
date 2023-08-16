@@ -18,10 +18,10 @@ async function Detail() {
   <input type="text" name="name" id="name" value=${
     docSnap.data().name
   } disabled/>
-  <input type="text" name="position" id="position" value=${
+  <input type="text" name="position" id="team" value=${
     docSnap.data().team
   } disabled/>
-  <input type="text" name="team" id="team" value=${
+  <input type="text" name="team" id="position" value=${
     docSnap.data().position
   } disabled/>
   <a href ="/edit/${path}">수정하기</a>
