@@ -117,6 +117,13 @@ $(document).ready(function () {
         selectedIds.push(id);
       }
 
+      const deleteButton = $('.alba-delete-button');
+      if (selectedIds.length > 0) {
+        deleteButton.removeClass('disabled-button').prop('disabled', false);
+      } else {
+        deleteButton.addClass('disabled-button').prop('disabled', true);
+      }
+
       if (selectedIds.length > 0) {
         console.log(123);
         $('.confirm-modal-container').fadeIn();
