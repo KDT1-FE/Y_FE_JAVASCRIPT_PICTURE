@@ -24,7 +24,6 @@ export const listProfileFromS3 = function () {
     if (err) {
       console.err(err);
     } else {
-      console.log(data);
       data.Contents.forEach((object) => {
         // 각 프로필 정보에 접근
 
@@ -60,6 +59,12 @@ export const listProfileFromS3 = function () {
               }
             }
           );
+
+          tableRow.addEventListener("click", (e) => {
+            localStorage.setItem("profile", folderName);
+            window.location.href =
+              window.location.origin + "/view/profile.html"; // 페이지 이동
+          });
         }
       });
     }
