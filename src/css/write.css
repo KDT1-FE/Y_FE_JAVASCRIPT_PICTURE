@@ -75,6 +75,28 @@ body {
   padding: 5px;
 }
 
+.input-wrap .delete-image-btn {
+  margin: 5px 0 0;
+  background-color: #dc3c50;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 0 #992936;
+  transition: all 0.2s ease;
+}
+
+.delete-image-btn:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.delete-image-btn:active {
+  transform: scale(0.95);
+}
+
 .preview-wrap {
   margin: 10px auto;
   width: 80%;
@@ -158,6 +180,7 @@ body {
   }
   .input-wrap input,
   .input-wrap .get-address-btn,
+  .input-wrap .delete-image-btn,
   .input-wrap button[type='submit'] {
     font-size: 0.9rem;
   }

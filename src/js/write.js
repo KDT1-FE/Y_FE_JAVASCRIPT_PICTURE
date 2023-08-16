@@ -7,11 +7,13 @@ const successMessage = {};
 const title = document.querySelector('.title');
 const getAddressBtn = document.getElementById('get-address-btn');
 const previewImage = document.querySelector('.preview-image');
+const deleteImageBtn = document.querySelector('.delete-image-btn');
 const submitBtn = document.getElementById('submit-button');
 let getItem = JSON.parse(localStorage.getItem('infos'));
 let latelyInfo = JSON.parse(localStorage.getItem('lately-info'));
 let referrer = document.referrer.split('/')[3].replace('.html', ''); // 전에 어떤 페이지에서 왔는지 확인
 let uploadFile = 'undefined.png';
+let oldImage;
 let infos = [];
 let isValid;
 element.forEach((el) => {
@@ -21,6 +23,7 @@ element.forEach((el) => {
 });
 
 write['address'].disabled = true;
+previewImage.src = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile}`;
 
 // localStorage 안에 값이 있는지 확인하고 있다면 값 보존
 if (getItem) {
@@ -31,6 +34,8 @@ if (getItem) {
 // 등록하기인지 수정하기인지 판별
 if (referrer === 'profile') {
   // 수정하기
+  uploadFile = latelyInfo['imageUrl'].split('/')[3]; // 원래 이미지의 이름
+  oldImage = uploadFile;
   write['name'].value = latelyInfo['name'];
   write['email'].value = latelyInfo['email'];
   write['phone'].value = latelyInfo['phone'];
@@ -52,6 +57,27 @@ getAddressBtn.addEventListener('click', getAddress);
 write['name'].addEventListener('blur', getNameMessage);
 write['email'].addEventListener('blur', getEmailMessage);
 write['phone'].addEventListener('blur', getPhoneMessage);
+deleteImageBtn.addEventListener('click', deleteImageFunc);
+
+// uploadFile 변경 함수
+function uploadFileChange(e) {
+  uploadFile = e.target.files[0];
+  const reader = new FileReader();
+
+  // 미리보기 이미지 생성
+  reader.onload = (data) => {
+    previewImage.src = data.target.result;
+  };
+
+  reader.readAsDataURL(uploadFile);
+}
+
+// 사진 삭제 함수
+function deleteImageFunc() {
+  uploadFile = 'undefined.png';
+  previewImage.src = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile}`;
+  write['image'].value = '';
+}
 
 // 이름 유효성 검사
 function getNameMessage() {
@@ -137,19 +163,6 @@ function getAddress() {
   }).open();
 }
 
-// uploadFile 변경 함수
-function uploadFileChange(e) {
-  uploadFile = e.target.files[0];
-  const reader = new FileReader();
-  console.log(reader);
-
-  reader.onload = (data) => {
-    previewImage.src = data.target.result;
-  };
-
-  reader.readAsDataURL(uploadFile);
-}
-
 // 이미지 버킷에 업로드하는 함수
 async function onFileUpload() {
   const ACCESS_KEY = 'AKIA2NGSQAWSFPZMK367';
@@ -229,7 +242,7 @@ function createStaff() {
 function editStaff() {
   isInputValid();
   if (!isValid) return;
-  if (uploadFile !== 'undefined.png') onFileUpload();
+  if (uploadFile !== 'undefined.png' && uploadFile !== oldImage) onFileUpload();
   // 수정하려는 정보의 id값과 모든 정보의 id값과 비교 후 찾아내서 안에 정보 바꾸기
   infos.forEach((el) => {
     if (el.id === latelyInfo['id']) {
@@ -237,10 +250,7 @@ function editStaff() {
       el['email'] = write['email'].value;
       el['phone'] = write['phone'].value;
       el['address'] = write['address'].value;
-      el['imageUrl'] =
-        uploadFile !== 'undefined.png'
-          ? `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name}`
-          : latelyInfo['imageUrl'];
+      el['imageUrl'] = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name ?? uploadFile}`;
 
       // lately-info를 수정한 정보로 변경
       saveToLatelyLocalStorage(el);
