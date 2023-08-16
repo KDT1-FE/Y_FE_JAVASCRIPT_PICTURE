@@ -148,3 +148,74 @@ body {
   margin-right: 4.5rem;
   margin-bottom: 2rem;
 }
+
+@media (max-width: 768px) {
+  .main {
+    margin: 2rem 1rem;
+  }
+
+  .main-wrap {
+    padding: 3rem;
+  }
+
+  .main-top-text {
+    font-size: 2rem;
+  }
+
+  .add-button,
+  .delete-button {
+    width: 100%;
+    max-width: 7rem;
+    margin-right: 2rem;
+  }
+
+  .add-button {
+    width: 100%;
+    max-width: 12rem;
+    font-size: 1rem;
+  }
+
+  .main-middle {
+    margin-top: 2rem;
+  }
+
+  .main-middle-hr {
+    margin: 0 0.5rem;
+  }
+
+  .villagers-info-ul {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+  }
+
+  .villagers-info-li {
+    margin: 0.5rem 0;
+  }
+
+  .villager {
+    height: 15%;
+    margin: 0.5rem auto;
+  }
+
+  .villager .villager-info-ul {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .delete-villager {
+    justify-content: flex-end;
+  }
+
+  .villager .villager-img {
+    width: 6rem;
+  }
+
+  .villager-info-li {
+    margin-top: 1rem;
+  }
+}

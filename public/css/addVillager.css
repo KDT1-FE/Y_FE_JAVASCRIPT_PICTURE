@@ -37,16 +37,20 @@ body {
   flex-direction: row;
   width: 80%;
   padding: 1rem 0;
+  align-items: flex-start;
 }
 
 .profile-left {
   display: flex;
+  flex-direction: column;
   padding: 2rem 3rem;
   text-align: center;
+  align-items: center;
 }
 
 .villager-img {
   width: 18rem;
+  max-height: 25rem;
   cursor: pointer;
 }
 
@@ -60,8 +64,11 @@ body {
 }
 
 .profile-right {
-  padding: 2rem;
-  flex: auto;
+  padding: 0 2rem 2rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .profile-ul {
@@ -131,14 +138,37 @@ body {
   color: #3f5d4d;
   font-weight: 600;
   cursor: pointer;
-  margin: 2rem auto;
-  position: fixed;
-  bottom: 2rem;
-  z-index: 999;
+  margin: 1rem auto 2rem auto;
 }
 
 .add-btn:hover {
   background-color: #547a66;
   color: #71b38f;
   transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .profile-wrap {
+    width: 90%;
+    height: auto;
+  }
+
+  .profile-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-left,
+  .profile-right {
+    padding: 1rem;
+  }
+
+  .villager-img {
+    width: 14rem;
+  }
+
+  .add-btn {
+    max-width: 8rem;
+    bottom: 1rem;
+  }
 }

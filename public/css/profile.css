@@ -115,13 +115,51 @@ body {
   color: #3f5d4d;
   font-weight: 600;
   cursor: pointer;
-  position: fixed;
-  bottom: 4rem;
-  z-index: 999;
+  margin-bottom: 2rem;
 }
 
 .edit-btn:hover {
   background-color: #547a66;
   color: #71b38f;
   transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .profile-wrap {
+    width: 90%;
+    height: auto;
+  }
+
+  .profile-main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .profile-left,
+  .profile-right {
+    margin: 2rem;
+  }
+
+  .profile-info-hr {
+    width: 20rem;
+  }
+
+  .villager-info-name,
+  .villager-info-engName,
+  .villager-info-birthday,
+  .villager-info-sex,
+  .villager-info-personality,
+  .villager-info-favoriteColor,
+  .villager-info-speechHabit {
+    font-size: 1.1rem;
+    margin: 0.9rem 0;
+  }
+
+  .edit-btn {
+    width: 8rem;
+    height: 3.5rem;
+    font-size: 1.2rem;
+  }
 }
