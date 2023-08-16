@@ -1,9 +1,10 @@
-import { uploadImage } from '../firebase/data.js';
+import { uploadImage, updateData } from '../firebase/data.js';
 import SaveButton from './SaveButton.js';
 
 export default class Modal {
-  constructor(info = {}, type) {
+  constructor(info = {}, type, id) {
     this.el = document.createElement('div');
+    this.id = id;
     this.info = {
       photo: info.photo,
       name: info.name,
@@ -96,7 +97,10 @@ export default class Modal {
     infoEl.append(infoImgEl, infoTxtEl);
 
     // save button
-    const saveBtnEl = new SaveButton(this.type).el;
+    const saveBtnEl = new SaveButton(this.type, this.id).el;
+    saveBtnEl.addEventListener('click', () => {
+      this.el.remove();
+    });
 
     // modal close
     const closeBtnEl = document.createElement('button');

@@ -9,13 +9,13 @@ export default class CardList {
   render() {
     setData();
     this.el.classList.add('cards');
-    this.el.append(...data.map((person) => new CardItem(person).el));
+    this.el.append(...data.map((item) => new CardItem(item).el));
   }
 }
 
 const data = [];
 const setData = () => {
   querySnapshot.forEach((element) => {
-    data.push(element.data());
+    data.push({ data: element.data(), id: element.id });
   });
 };

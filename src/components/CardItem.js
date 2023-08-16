@@ -3,12 +3,13 @@ import Modal from './Modal.js';
 export default class CardItem {
   constructor(info = {}) {
     this.el = document.createElement('li');
+    this.id = info.id;
     this.info = {
-      photo: info.photo,
-      name: info.name,
-      email: info.email,
-      phone: info.phone,
-      department: info.department,
+      photo: info.data.photo,
+      name: info.data.name,
+      email: info.data.email,
+      phone: info.data.phone,
+      department: info.data.department,
     };
     this.render();
   }
@@ -32,7 +33,7 @@ export default class CardItem {
 
     this.el.addEventListener('click', () => {
       const body = document.querySelector('body');
-      const modal = new Modal(this.info);
+      const modal = new Modal(this.info, 'update', this.id);
       body.append(modal.el);
     });
   }

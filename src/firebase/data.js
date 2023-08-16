@@ -6,6 +6,7 @@ import {
   getDocs,
   doc,
   setDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 import {
   getStorage,
@@ -68,5 +69,14 @@ export const createData = async (info) => {
     department,
   }).catch((error) => {
     console.log(`something was wrong :  ${error}`);
+  });
+};
+
+// 데이터 수정
+export const updateData = async (id, update) => {
+  const documentRef = doc(db, 'member', id);
+
+  updateDoc(documentRef, update).catch((error) => {
+    console.error(`something was wrong :  ${error}`);
   });
 };
