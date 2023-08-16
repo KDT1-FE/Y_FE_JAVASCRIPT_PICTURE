@@ -45,7 +45,7 @@ addButton.addEventListener("click", async () => {
   const imageUrl = await imageRef.getDownloadURL();
 
   const db = firebase.firestore();
-  //데이터 id를 engName으로 설정
+  //데이터 id를 최초 engName으로 설정 (engName을 사용자가 바꾼다고 해도 id값은 바뀌지 않음)
   await db.collection("villager").doc(engName).set({
     name,
     engName,

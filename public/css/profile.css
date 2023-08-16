@@ -14,7 +14,7 @@ body {
 
 .profile-wrap {
   width: 70%;
-  height: 44rem;
+  height: 45rem;
   background-color: rgba(252, 241, 224, 0.8);
   margin: 0 auto;
   margin-top: 1rem;
@@ -38,11 +38,12 @@ body {
   display: flex;
   flex-direction: row;
   width: 80%;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .profile-left {
-  padding: 0 3rem 0 3rem;
+  margin: 0 3rem 1rem 3rem;
 }
 
 .villager-img {
@@ -50,7 +51,7 @@ body {
 }
 
 .profile-right {
-  padding: 0 5rem 3rem 5rem;
+  margin: 0 5rem 2rem 5rem;
 }
 
 .profile-info-h2 {
@@ -83,15 +84,21 @@ body {
   margin-right: 5rem;
 }
 
-.profile-info-li,
-.villager-info-li {
-  margin: 0.7rem;
-  text-align: center;
-  font-size: 1.5rem;
+.villager-info-name,
+.villager-info-engName,
+.villager-info-birthday,
+.villager-info-sex,
+.villager-info-personality,
+.villager-info-favoriteColor,
+.villager-info-speechHabit {
+  margin: 0.85rem 0;
+  font-size: 1.2rem;
 }
 
 .profile-info-li {
   font-weight: bold;
+  font-size: 1.3rem;
+  margin: 0.8rem;
 }
 
 .edit-btn {
@@ -104,6 +111,9 @@ body {
   color: #3f5d4d;
   font-weight: 600;
   cursor: pointer;
+  position: fixed;
+  bottom: 4rem;
+  z-index: 999;
 }
 
 .edit-btn:hover {
