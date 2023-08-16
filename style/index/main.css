@@ -9,6 +9,8 @@
 
 .middle-checkbox {
     width: 30px;
+    height: 30px;
+    margin-left: 15px;
     
 }
 .middle-text-container {
@@ -119,3 +121,64 @@
     height: 35px;
 }
 
+
+
+#dogInfoContainer {
+    display: flex;
+    flex-direction: column; /* 요소들을 수직으로 나열 */
+    align-items: center; /* 요소들을 수평으로 정렬 */
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+
+.dog-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.dog-checkbox {
+    width: 30px; /* 체크박스의 너비 설정 */
+    height: 30px;
+    margin-left: 15px;
+}
+
+.info-container {
+    display: flex;
+    width: 100%; /* 나머지 요소들의 너비 설정 */
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-container {
+    width: calc(20% - 30px); /* 이미지 컨테이너의 너비 설정 */
+    display: flex; /* 내부 요소를 가로로 정렬하기 위해 설정 */
+    height: 100px;
+    justify-content: center; /* 내부 요소를 가운데 정렬하기 위해 설정 */
+    align-items: center; /* 내부 요소를 수직으로 가운데 정렬하기 위해 설정 */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+/* 이미지의 스타일 */
+.image-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* 이미지를 동그라미 모양으로 만듦 */
+}
+
+
+.info-container span {
+    width: calc(20% - 30px); /* 나머지 요소들의 너비 설정 (체크박스의 너비를 뺀 너비를 4등분) */
+    font-size: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
