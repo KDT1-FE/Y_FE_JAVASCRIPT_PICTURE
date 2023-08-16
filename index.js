@@ -7,7 +7,6 @@ import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query,
 import {showPreview} from "./js/showPreview.js"
 import * as addModal from "./js/addModal.js";
 import * as addProfileCard from "./js/addProfileCard.js";
-//import {fetchProfileIds} from "./js/fetchProfileIds.js";
 
 export {imgFileInput} ;
 
@@ -45,7 +44,7 @@ document.querySelector('.btn__upload').addEventListener('click', async function(
   if(profileContent.name && profileContent.position && profileContent.github && profileContent.email && imgFileInput && imgFileInput.files.length>0){
     try {
       const imgFile = imgFileInput.files[0];
-      const storageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date()).seconds+imgFile.name);
+      const storageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date())+imgFile.name);
       await uploadBytes(storageRef, imgFile);
       const url = await getDownloadURL(storageRef);
       const toSave = {

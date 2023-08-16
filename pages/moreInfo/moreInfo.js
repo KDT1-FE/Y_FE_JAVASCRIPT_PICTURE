@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, getDocs, doc, orderBy, query, onSnapshot, deleteDoc, writeBatch,updateDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-//import {fetchProfileIds} from "../../js/fetchProfileIds.js";
+import { getFirestore, collection, getDocs, doc, orderBy, query, onSnapshot, deleteDoc, Timestamp, updateDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
@@ -82,13 +81,36 @@ onSnapshot(q,(querySnapshot) => {
     modifyBtn.addEventListener("click",async()=>{
       const textContainer = newProfile.querySelector(".detail-text-container");
       const subtitleSpans = textContainer.querySelectorAll(".subtitle");
-      //(이 자리에 추가할 것)modifyBtn이 더이상 눌리지 않게 하는 코드를 추가해야함.
-      const profileIds = await fetchProfileIds(); //id 배열이 담김
 
+    //이미지 수정 버튼 생성
+    const imgModifyBtn = document.createElement("input");
+    imgModifyBtn.type = "file";
+    imgModifyBtn.accept="image/*";
+    imgModifyBtn.setAttribute("id","btn__img-modify")
+    const imgModifyBtnLabel = document.createElement("label");
+    imgModifyBtnLabel.setAttribute("for","btn__img-modify");
+    imgModifyBtnLabel.innerText="이미지 수정";
+    imgModifyBtn.style.display="none";
+    newProfile.insertAdjacentElement("afterend", imgModifyBtnLabel);
+    newProfile.insertAdjacentElement("afterend", imgModifyBtn);
+
+    imgModifyBtn.addEventListener("change", async() => {
+      const selectedFile = imgModifyBtn.files[0];
+      if (selectedFile) {
+        const newImagestorageRef = ref(storage, 'image/'+Timestamp.fromDate(new Date())+selectedFile.name);
+        await uploadBytes(newImagestorageRef, selectedFile);
+        let url = await getDownloadURL(newImagestorageRef);
+        let newToSave = {image: url};
+        const profileId = newProfile.getAttribute("id");
+        imageUpdate(profileId, newToSave);
+      } else {
+        console.log("No file selected.");
+      }
+    });
+    
       clickCount++;
       switch(clickCount%2){
         case 1:
-          console.log('홀수')
           //수정할 수 있는 input 만들기
           subtitleSpans.forEach((subtitle,index) => {
           const input = document.createElement("input");
@@ -97,9 +119,10 @@ onSnapshot(q,(querySnapshot) => {
           subtitle.insertAdjacentElement("afterend", input);
           innerTextSpan.style.display = "none";
           });
+
           break;
         case 0:
-          console.log('짝수');
+
           // 수정한 데이터를 저장하기 위한 객체
           const updatedData = {};
 
@@ -107,7 +130,7 @@ onSnapshot(q,(querySnapshot) => {
           subtitleSpans.forEach((subtitle, index) => {
           const input = subtitle.nextElementSibling;
           const innerTextSpan = input.nextElementSibling;
-      
+
           innerTextSpan.textContent = input.value;
           innerTextSpan.style.display = "inline";
           input.remove();
@@ -116,12 +139,11 @@ onSnapshot(q,(querySnapshot) => {
           updatedData[fieldName] = input.value;
           });
           const profileId = newProfile.getAttribute("id");
-
           dbUpdate(profileId, updatedData);
+          // window.location.reload();
           break;
       }
     });
-
     newProfile.prepend(modifyBtn);
 
     // 해시값 변화 감지
@@ -162,28 +184,24 @@ function deleteEvent(target, doc){
   });
 }
 
-async function fetchProfileIds() {
-  const profilesCollectionRef = collection(db, 'profiles');
-  try {
-    const querySnapshot = await getDocs(profilesCollectionRef);
-    const profileIds = querySnapshot.docs.map((doc)=>doc.id);
-    return profileIds;
-  } catch (error) {
-    console.error("Error fetching profile IDs:", error);
-    return [];
+async function dbUpdate (profileId, updatedData){
+  try{
+    const docRef = doc(db,"profiles",profileId)
+    await updateDoc(docRef,updatedData);
+    alert("수정 완료!")
+    window.location.reload();
+  }catch(error){
+    console.log("오류발생",error)
   }
 }
 
-async function dbUpdate (profileId, updatedData){
+async function imageUpdate(profileId, newToSave){
   try{
-    console.log(profileId)
-    if (Object.keys(updatedData).length > 0) {
-      const docRef = doc(db,"profiles",profileId)
-      await updateDoc(docRef,updatedData);
-      alert("수정 완료!")
-      window.location.reload();
-    }
+    console.log("함수내부")
+    const docRef = doc(db,"profiles",profileId)
+    await updateDoc(docRef,newToSave);
+    window.location.reload();
   }catch(error){
-    console.log("오류발생",error)
+    console.log('이미지수정 오류발생',error)
   }
 }
