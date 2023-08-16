@@ -1,7 +1,22 @@
+.manage-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.manage-bar > button {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
 .profile {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 2rem 0;
 }
 
 .profile__photo-box {
@@ -37,4 +52,87 @@
 
 .profile__detail > ul > li > span {
   width: 50%;
+}
+
+.edit-form {
+  width: 100%;
+  height: 25rem;
+  display: none;
+}
+
+.edit-form__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80%;
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+.edit-form__photoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  margin: 0 0.5rem;
+  border: 1px dashed gray;
+  border-radius: 0.3rem;
+}
+
+.photo-input__label {
+  margin: 2rem 0;
+  text-align: center;
+  padding: 0.7rem 0;
+  width: 65%;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#photo-input {
+  visibility: hidden;
+}
+
+#preview {
+  max-width: 80%;
+  max-height: 60%;
+  margin: 2rem;
+}
+
+.edit-form__inputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 100%;
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 800px) {
+  .edit-form {
+    height: auto;
+  }
+  .edit-form__container {
+    flex-direction: column;
+    height: auto;
+  }
+  .edit-form__photoBox {
+    width: 70%;
+    height: 100%;
+  }
+  .edit-form__inputBox {
+    width: 70%;
+    height: auto;
+  }
+  .edit-form__inputBox > input {
+    margin-bottom: 0.5rem;
+  }
+  .edit-form__inputBox > label {
+    margin-top: 0.5rem;
+  }
+  .edit-form__inputBox > button {
+    margin: 0.5rem 0;
+  }
 }
