@@ -11,6 +11,6 @@ export default class Header extends Component {
 
     //title 클릭시 메인 페이지로 이동
     const title = this.el.querySelector('.title');
-    title.addEventListener('click', () => navigate('/'));
+    title.addEventListener('click', () => navigate());
   }
 }

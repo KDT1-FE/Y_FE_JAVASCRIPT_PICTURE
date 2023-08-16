@@ -5,19 +5,19 @@ import Write from './Write';
 import NotFound from './NotFound';
 export const routes = [
   {
-    path: '/',
+    path: '#/',
     component: Home,
   },
   {
-    path: '/detail',
+    path: '#/detail',
     component: Detail,
   },
   {
-    path: '/write',
+    path: '#/write',
     component: Write,
   },
   {
-    path: '/edit',
+    path: '#/edit',
     component: Edit,
   },
   {

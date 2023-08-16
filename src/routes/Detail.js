@@ -20,7 +20,7 @@ export default class Detail extends Component {
       </section>
       </main>`;
     this.el.prepend(new Header().el);
-    const member = await getMemberDetail(getUrlParam('id')); // 현재 url의 아이디를 가지고 member의 상세 데이터를 받아옴
+    const member = await getMemberDetail(getUrlParam()); // 현재 url의 아이디를 가지고 member의 상세 데이터를 받아옴
     this.el.innerHTML = `
     <main class="detail">
       <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
@@ -43,7 +43,7 @@ export default class Detail extends Component {
     this.el.prepend(new Header().el);
     const navigateEditButton = this.el.querySelector('button');
     navigateEditButton.addEventListener('click', () =>
-      navigate(`/edit?id=${member.id}`)
+      navigate(`/#/edit?id=${member.id}`)
     );
   }
 }
