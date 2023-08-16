@@ -20,15 +20,20 @@ header {
       padding: 0 1rem;
       width: 100%;
 
+      .header__logo {
+        .header__title {
+          font-size: 1.2rem;
+        }
+      }
+
       .header__btn-container {
         display: flex;
 
         .header__home-btn {
           border: none;
           background-color: transparent;
-          width: 50px;
-          height: 50px;
-          padding: 10px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
           margin-right: 1rem;
           cursor: pointer;
@@ -47,14 +52,14 @@ header {
           }
 
           i {
+            color: inherit;
             font-size: 1rem;
           }
         }
 
         .header__btn-add-user {
-          width: 50px;
-          height: 50px;
-          padding: 10px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
           cursor: pointer;
           transition: all 0.2s ease;

@@ -8,8 +8,16 @@ const userContainer = document.querySelector(".user__container");
 const categoriesContainer = document.createElement("div");
 categoriesContainer.className = "user__categories";
 
+const arrow = `
+  <div class="arrow">
+    <i class="fa-solid fa-angle-down"></i>
+  </div>
+`;
+
+categoriesContainer.innerHTML = arrow;
+
 const category = document.createElement("select");
-category.className = "user__selected-category";
+category.className = ["user__selected-category", "select"].join(" ");
 
 const innerHTML = `
   <option selected>All</option>
