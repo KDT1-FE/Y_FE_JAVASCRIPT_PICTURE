@@ -42,7 +42,8 @@ window.addEventListener('message', (event) => {
 // firebase 기본 설정
 import firebaseConfig from '../config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js';
-import { getDatabase, ref as dbRef, onValue } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
+import { getDatabase, ref as dbRef, onValue, remove } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
+import { getStorage,  ref as storageRef, deleteObject } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-storage.js';
 
 const apiKey = firebaseConfig.apiKey;
 const authDomain = firebaseConfig.authDomain;
@@ -54,6 +55,7 @@ const measurementId = firebaseConfig.measurementId;
 const databaseURL = firebaseConfig.databaseURL;
 const firebaseApp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 
 // user Data 가져오기
@@ -72,10 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 테이블에 유저 정보 추가
                 const row = document.createElement('tr');
                 row.className = 'body-tr';
+                row.id = key;
     
                 const checkboxCell = document.createElement('td');
                 const checkboxInput = document.createElement('input');
                 checkboxInput.type = 'checkbox';
+                checkboxInput.className = 'input-checkbox';
                 checkboxCell.className = 'td-checkbox';
                 checkboxCell.appendChild(checkboxInput);
     
@@ -109,7 +113,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 userTableBody.appendChild(row);
             }
         }
+
+        // 체크된 cell 값 가져오기 
+        const checkboxInputs = document.querySelectorAll('.input-checkbox');
+        const checkedUser = []; 
+
+        checkboxInputs.forEach(checkboxInput => {
+            checkboxInput.addEventListener('change', () => {
+                const userId = checkboxInput.closest('tr').id;
+                checkedUser.push(userId);
+            });
+        });
+
+
+        // 체크된 user 삭제
+        const deleteButton = document.getElementById('delete-button');
+
+        deleteButton.addEventListener('click', () => {
+            console.log(checkedUser);
+ 
+            for (const userId of checkedUser) {
+                const user = data[userId];
+
+                if (user) {
+                    // database 삭제
+                    const databaseRef = dbRef(database, `users/${userId}`);
+
+                    console.log( `users/${userId}`);
+                    
+                    remove(databaseRef).then(() => {
+                        console.log(`user 삭제 성공 - ${name}`);
+                    }).catch(error => {
+                        console.error(`user 삭제 오류 - ${name}:`, error);
+                    });
+
+                    // storage 이미지 삭제
+                    const name = user.name;
+                    const imageRef = storageRef(storage, `images/${name}-profile`);
+                    
+                    deleteObject(imageRef).then(() => {
+                        console.log(`이미지 삭제 성공 - ${name}`);
+                    }).catch(error => {
+                        console.error(`이미지 삭제 오류 - ${name}:`, error);
+                    });
+
+                    alert('삭제되었습니다!');
+                }
+            }
+        });
     });
 });
+
 
 
