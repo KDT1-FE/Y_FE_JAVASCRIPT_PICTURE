@@ -43,9 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(err);
         });
     });
+
+    // 데이터 삭제 처리
+    document.querySelector('.button__delete--profile').addEventListener('click', function() {
+        if (confirm('정말로 삭제하시겠습니까?')) {
+            db.collection('employee').doc(docId).delete().then(() => {
+                window.location.href = "index.html";
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    });
 });
 
 //취소버튼
 document.querySelector('.button--state-cancel').addEventListener('click', function() {
     window.location.href = "index.html";
 });
+
+
