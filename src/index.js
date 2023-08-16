@@ -1,5 +1,8 @@
 import "./styles/style.scss";
 
+// DOM
+import "./categories";
+
 // firebase
 import "./firebase";
 import "./displayUserList";
@@ -13,7 +16,5 @@ import "./editUser";
 import "./btnEvents";
 import "./formValidation";
 import "./searchUser";
-
-import "./categories";
 
 console.log("connected");

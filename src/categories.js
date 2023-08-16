@@ -20,7 +20,7 @@ const category = document.createElement("select");
 category.className = ["user__selected-category", "select"].join(" ");
 
 const innerHTML = `
-  <option selected>All</option>
+  <option value="All">All</option>
   <option value="student">Student</option>
   <option value="manager">Manager</option>
   <option value="educator">Educator</option>
@@ -47,3 +47,4 @@ category.addEventListener("input", async () => {
 
 categoriesContainer.appendChild(category);
 userContainer.insertAdjacentElement("afterbegin", categoriesContainer);
+console.log("category is made");

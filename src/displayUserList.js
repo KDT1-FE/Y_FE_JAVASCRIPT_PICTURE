@@ -9,13 +9,17 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+console.log("display users");
+
 let userLength = 8;
 let lastVisible;
 const userRef = collection(db, "users");
 const userQuery = query(userRef, orderBy("name"), limit(userLength));
 
 const userListContainer = document.querySelector(".user__list");
-const homeBtn = document.querySelector(".header__title");
+const homeBtnDesk = document.querySelector(".header__title");
+const homeBtnMobile = document.querySelector(".logo");
+const selectedCategory = document.querySelector(".user__selected-category");
 const scrollEnd = document.querySelector(".scroll-end");
 
 export function appendUsers(docs) {
@@ -68,7 +72,6 @@ export async function initialFetch() {
 
 // 다음 8개 리스트 받아오기
 async function nextFetch() {
-  // console.log("lastVisible", lastVisible);
   const nextQuery = query(
     userRef,
     orderBy("name"),
@@ -84,7 +87,6 @@ async function nextFetch() {
     observer.unobserve(scrollEnd);
     return;
   } else {
-    // console.log("lastVisible2", lastVisible);
     appendUsers(next);
     userLength += next.docs.length;
   }
@@ -104,7 +106,14 @@ export function handleChangeData() {
 }
 
 // 홈 버튼 눌렀을 때 첫 화면으로
-homeBtn.addEventListener("click", () => {
+homeBtnDesk.addEventListener("click", () => {
+  userListContainer.innerHTML = "";
+  initialFetch();
+});
+
+homeBtnMobile.addEventListener("click", () => {
+  // selectedCategory.value = "All";
+  console.log(selectedCategory);
   userListContainer.innerHTML = "";
   initialFetch();
 });

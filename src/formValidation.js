@@ -8,7 +8,6 @@ const message = document.createElement("p");
 message.className = ["form__validation", "warning"].join(" ");
 
 nameInput.addEventListener("input", (e) => {
-  console.log(e.target);
   message.textContent =
     e.target.value.length < 5 || e.target.value.length > 15
       ? "Name should be between 5 and 15 characters"
