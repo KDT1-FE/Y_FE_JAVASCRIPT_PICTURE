@@ -7,24 +7,23 @@ body {
 }
 
 .header-logo {
-  width: 20rem;
-  height: 8rem;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
   margin-top: 2rem;
 }
 
 .profile-wrap {
-  width: 67%;
+  width: 70%;
   height: 44rem;
   background-color: rgba(252, 241, 224, 0.8);
-  margin: 0 auto;
+  margin: 1rem auto;
   border-radius: 3rem;
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .header-text {
@@ -37,19 +36,18 @@ body {
   display: flex;
   flex-direction: row;
   width: 80%;
+  padding: 1rem 0;
 }
 
 .profile-left {
   display: flex;
-  flex-direction: column;
-  padding: 3rem 3rem 2rem 3rem;
+  padding: 2rem 3rem;
   text-align: center;
 }
 
 .villager-img {
   width: 18rem;
   cursor: pointer;
-  margin-bottom: 1rem;
 }
 
 .villager-img:hover {
@@ -62,12 +60,13 @@ body {
 }
 
 .profile-right {
-  padding: 3rem;
-  width: 100%;
+  padding: 2rem;
+  flex: auto;
 }
 
 .profile-ul {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   margin-top: 2rem;
 }
@@ -76,7 +75,9 @@ body {
 .villager-info-input {
   display: flex;
   flex-direction: column;
-  align-items: first baseline;
+  align-items: flex-start;
+  width: 100%;
+  margin: 1rem;
 }
 
 .villager-info-li {
@@ -89,6 +90,7 @@ body {
 
 .villager-info-input-li {
   margin: 0.6rem;
+  width: 100%;
 }
 
 .villager-info-name,
@@ -98,6 +100,7 @@ body {
 .villager-info-personality,
 .villager-info-favoriteColor,
 .villager-info-speechHabit {
+  width: 100%;
   height: 1.8rem;
   border: none;
   border-bottom: solid 1px #547a66;
@@ -118,7 +121,8 @@ body {
 }
 
 .add-btn {
-  width: 10rem;
+  width: 100%;
+  max-width: 10rem;
   height: 4rem;
   border-radius: 1rem;
   border-style: none;
@@ -127,7 +131,7 @@ body {
   color: #3f5d4d;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin: 2rem auto;
   position: fixed;
   bottom: 2rem;
   z-index: 999;
