@@ -1,3 +1,5 @@
+
+
 // '알바생 등록하기' 버튼 기능
 const registerButton = document.querySelector('.alba-register-button');
 registerButton.addEventListener('click', () => {
@@ -11,22 +13,13 @@ backButton.addEventListener('click', () => {
 });
 
 /* ----------------------------------------------------------------------------------- */
-
 // Firebase SDK
-const firebaseConfig = {
-  apiKey: 'AIzaSyCUfBccVzvG5Eh25qNxqpuerxn2NXotpxo',
-  authDomain: 'we-alba-b3313.firebaseapp.com',
-  projectId: 'we-alba-b3313',
-  storageBucket: 'we-alba-b3313.appspot.com',
-  messagingSenderId: '495601569025',
-  appId: '1:495601569025:web:a2ad855c6c90f52eed9f00',
-};
+import { firebaseConfig } from './firebaseConfig.js';
 
 // Firebase 초기화
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
-const storage = firebase.storage();
 
 // 알바생 데이터 받아옴
 db.collection('albainfo')
