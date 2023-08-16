@@ -33,7 +33,7 @@ async function Post() {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
-    const uploadTask = uploadBytes(storageRef, file);
+    const uploadTask = await uploadBytes(storageRef, file);
 
     await getDownloadURL(storageRef)
       .then(url => {
