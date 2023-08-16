@@ -438,6 +438,7 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# 그 외의 다른 파일들
+# 그 외 다른 파일들 
+firebaseConfig.js
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudio,git

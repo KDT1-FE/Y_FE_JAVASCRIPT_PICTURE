@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "dotenv": "^16.3.1",
     "firebase": "^10.1.0"
-  }
+  },
+  "name": "y_fe_javascript_picture",
+  "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
