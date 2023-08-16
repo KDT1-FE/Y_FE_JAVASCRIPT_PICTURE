@@ -29,29 +29,21 @@ export default class Edit extends Component {
     this.el.prepend(new Header().el); // 공통 헤더 추가
 
     let photoUrl = member.photoUrl; // 현재 member의 photo url
-    let imageLoading = false;
 
     const previewImage = async (event) => {
-      imageLoading = true; // 이미지 미리보기전에 submit 방지
-
-      photoUrl = await uploadImage(
-        event.currentTarget.files[0],
-        member.photoUrl
-      );
       const photoEdit = this.el.querySelector('.photo-edit');
-      photoEdit.style.backgroundImage = `url(${photoUrl})`; // 미리보기
+      let reader = new FileReader();
+      reader.onload = (event) => {
+        photoEdit.style.backgroundImage = `url(${event.currentTarget.result})`;
+      };
+      reader.readAsDataURL(event.currentTarget.files[0]);
 
-      imageLoading = false;
+      photoEdit.style.backgroundImage = `url(${photoUrl})`; // 미리보기
     };
     // 미리보기 함수
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
-
-      if (imageLoading) {
-        alert('이미지 로딩 후 완료 버튼을 클릭해주세요');
-        return;
-      } // 이미지 미리보기전에 submit 방지
 
       const formData = new FormData(event.currentTarget);
 
@@ -64,6 +56,8 @@ export default class Edit extends Component {
         alert('이메일 형식을 지켜주세요');
         return;
       } // 이메일을 바꿨는데 형식을 안 지킬때
+
+      photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
 
       const data = {
         name: formData.get('name') === '' ? member.name : formData.get('name'),
