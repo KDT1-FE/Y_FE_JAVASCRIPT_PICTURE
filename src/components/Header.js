@@ -1,3 +1,6 @@
+import Modal from './Modal.js';
+import SaveButton from './SaveButton.js';
+
 export default class Header {
   constructor() {
     this.el = document.createElement('header');
@@ -22,11 +25,11 @@ export default class Header {
     searchBtnEl.classList.add('btn', 'search', 'material-symbols-outlined');
     searchBtnEl.innerText = `search`;
 
-    const createBtnEl = document.createElement('button');
-    createBtnEl.classList.add('btn', 'create');
-    createBtnEl.innerText = '새로운 멤버 추가';
+    const addBtnEl = document.createElement('button');
+    addBtnEl.classList.add('btn', 'add');
+    addBtnEl.innerText = '새로운 멤버 추가';
 
-    btnsEl.append(toggleModeBtnEl, searchBtnEl, createBtnEl);
+    btnsEl.append(toggleModeBtnEl, searchBtnEl, addBtnEl);
 
     const topEl = document.createElement('div');
     topEl.classList.add('top');
@@ -50,6 +53,12 @@ export default class Header {
 
     searchBtnEl.addEventListener('click', () => {
       bottomEl.classList.toggle('hide');
+    });
+
+    addBtnEl.addEventListener('click', () => {
+      const body = document.querySelector('body');
+      const modal = new Modal({}, 'create');
+      body.append(modal.el);
     });
 
     this.el.append(topEl, bottomEl);

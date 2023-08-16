@@ -1,7 +1,8 @@
 import { uploadImage } from '../firebase/data.js';
+import SaveButton from './SaveButton.js';
 
 export default class Modal {
-  constructor(info = {}) {
+  constructor(info = {}, type) {
     this.el = document.createElement('div');
     this.info = {
       photo: info.photo,
@@ -10,6 +11,7 @@ export default class Modal {
       phone: info.phone,
       department: info.department,
     };
+    this.type = type;
     this.render();
   }
 
@@ -67,12 +69,22 @@ export default class Modal {
     const infoTxtEl = document.createElement('div');
     infoTxtEl.classList.add('info_txt');
     const inputNameEl = document.createElement('input');
+    inputNameEl.setAttribute('placeholder', '이름');
+    inputNameEl.setAttribute('name', 'name');
     inputNameEl.value = name;
     const inputEmailEl = document.createElement('input');
+    inputEmailEl.setAttribute('placeholder', '이메일');
+    inputEmailEl.setAttribute('type', 'email');
+    inputEmailEl.setAttribute('name', 'email');
     inputEmailEl.value = email;
     const inputPhoneEl = document.createElement('input');
+    inputPhoneEl.setAttribute('placeholder', '핸드폰 번호');
+    inputPhoneEl.setAttribute('type', 'tel');
+    inputPhoneEl.setAttribute('name', 'phone');
     inputPhoneEl.value = phone;
     const inputDepartmentEl = document.createElement('input');
+    inputDepartmentEl.setAttribute('placeholder', '소속부서');
+    inputDepartmentEl.setAttribute('name', 'department');
     inputDepartmentEl.value = department;
 
     infoTxtEl.append(
@@ -83,12 +95,10 @@ export default class Modal {
     );
     infoEl.append(infoImgEl, infoTxtEl);
 
-    // update
-    const updateBtnEl = document.createElement('button');
-    updateBtnEl.classList.add('btn', 'update');
-    updateBtnEl.innerText = '저장';
+    // save button
+    const saveBtnEl = new SaveButton(this.type).el;
 
-    // modal remove
+    // modal close
     const closeBtnEl = document.createElement('button');
     closeBtnEl.classList.add('btn', 'remove');
     closeBtnEl.innerHTML = `
@@ -104,7 +114,7 @@ export default class Modal {
     });
 
     // append
-    containerEl.append(infoEl, updateBtnEl, closeBtnEl);
+    containerEl.append(infoEl, saveBtnEl, closeBtnEl);
     this.el.append(containerEl);
   }
 }

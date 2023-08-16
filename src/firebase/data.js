@@ -4,6 +4,8 @@ import {
   getFirestore,
   collection,
   getDocs,
+  doc,
+  setDoc,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 import {
   getStorage,
@@ -12,6 +14,7 @@ import {
   getDownloadURL,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 
+// 초기세팅
 const {
   API_KEY,
   AUTH_DOMAIN,
@@ -34,10 +37,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage();
 
+// 데이터 읽어오기
+const storage = getStorage();
 export const querySnapshot = await getDocs(collection(db, 'member'));
 
+// 이미지 업로드
 export const uploadImage = (name, file, el) => {
   const storageRef = ref(storage, name);
   uploadBytes(storageRef, file)
@@ -50,4 +55,18 @@ export const uploadImage = (name, file, el) => {
     .catch((error) => {
       console.error('Error uploading image:', error);
     });
+};
+
+// 데이터 추가
+export const createData = async (info) => {
+  const { name, email, phone, photo, department } = info;
+  await setDoc(doc(collection(db, 'member')), {
+    name,
+    email,
+    phone,
+    photo,
+    department,
+  }).catch((error) => {
+    console.log(`something was wrong :  ${error}`);
+  });
 };

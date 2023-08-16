@@ -69,7 +69,7 @@ header .top .btns .search {
   border-radius: 50%;
 }
 
-header .top .btns .create {
+header .top .btns .add {
   padding: 6px 14px;
   border: var(--color-black) solid 2px;
   border-radius: 25px;
@@ -78,7 +78,7 @@ header .top .btns .create {
   transition: background-color 0.5s;
 }
 
-header .top .btns .create:hover {
+header .top .btns .add:hover {
   background-color: var(--color-black);
   color: var(--color-white);
 }
@@ -322,7 +322,7 @@ footer .copyright {
   border-bottom: var(--color-highlight) solid 2px;
 }
 
-.modal .modal_container .update {
+.modal .modal_container .save {
   margin-top: 2rem;
   width: 100%;
   border: none;
@@ -335,7 +335,7 @@ footer .copyright {
   transition: opcity 0.1s;
 }
 
-.modal .modal_container .update:hover {
+.modal .modal_container .save:hover {
   cursor: pointer;
   opacity: 0.7;
 }
