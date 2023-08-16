@@ -11,6 +11,7 @@ async function Main() {
   const q = await getDocs(collection(db, "employee"));
 
   const divApp = document.getElementById("app");
+  divApp.innerHTML = "";
 
   const listContainer = document.createElement("ul");
   listContainer.setAttribute("class", "list-container");
@@ -25,7 +26,8 @@ async function Main() {
     listWrapper.innerHTML = `
       <ul>
         <li>${doc.data().name}</li>
-        <li>${doc.data().division}</li>
+        <li>${doc.data().name}</li>
+        <li>${doc.data().position}</li>
       </ul>
     `;
     listContainer.append(listWrapper);
