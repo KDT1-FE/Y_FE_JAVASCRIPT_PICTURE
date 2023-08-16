@@ -9,14 +9,14 @@ function App(container) {
   const init = () => {
     // 클릭 이벤트 발생 시 a 태그의 페이지 새로고침 차단하고
     // naviagte 함수 실행
-    document.querySelector(".navbar").addEventListener("click", e => {
+    document.querySelector(".main").addEventListener("click", e => {
       const target = e.target.closest("a");
       // anchor 태그인지 확인
       if (!(target instanceof HTMLAnchorElement)) return;
 
       // 새로고침하는 기존 기능 차단
       e.preventDefault();
-      const targetURL = e.target.href.replace(BASE_URL, "");
+      const targetURL = target.href.replace(BASE_URL, "");
       navigate(targetURL);
     });
 

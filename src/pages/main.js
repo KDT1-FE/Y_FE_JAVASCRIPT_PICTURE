@@ -25,10 +25,12 @@ async function Main() {
 
     listWrapper.innerHTML = `
       <ul>
-        <li><img src="${doc.data().image}"/></li>
-        <li>${doc.data().name}</li>
-        <li>${doc.data().team}</li>
-        <li>${doc.data().position}</li>
+        <a href ="/detail/${doc.id}" class="navbar">
+          <li><img src="${doc.data().image}"/></li>
+          <li>${doc.data().name}</li>
+          <li>${doc.data().team}</li>
+          <li>${doc.data().position}</li>
+        </a>
       </ul>
     `;
     listContainer.append(listWrapper);
