@@ -8,14 +8,10 @@
   flex-direction: column;
 
   input {
-    border: none;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
 
-    padding: 15px;
-    margin-bottom: 25px;
-
-    font-size: 18px;
-    color: $white;
-    background: transparent;
+    font-size: 15px;
 
     transition: border-color 0.3s ease-in-out;
 
@@ -24,27 +20,11 @@
     }
 
     &:not([type="submit"]) {
-      border-bottom: 2px solid $white;
-
       transition: border-color 0.3s ease-in-out;
     }
 
     &[type="submit"] {
-      border-radius: 5px;
       padding: 20px 0px;
-
-      cursor: pointer;
-
-      color: $black;
-      background-color: $white;
-    }
-
-    &::placeholder {
-      color: $gray;
-    }
-
-    &:focus {
-      outline: none;
     }
   }
 

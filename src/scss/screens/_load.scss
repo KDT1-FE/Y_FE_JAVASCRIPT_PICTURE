@@ -1,7 +1,7 @@
 @mixin fadeInAni() {
   opacity: 0;
 
-  animation: fadeIn 1.2s ease-in-out forwards;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 #load {
