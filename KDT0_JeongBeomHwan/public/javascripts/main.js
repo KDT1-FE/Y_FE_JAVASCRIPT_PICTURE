@@ -1,5 +1,26 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC_R-euRNqGE2pQb_-lfUbNN6dfHILDE1s",
+  authDomain: "profilebase-bm0729.firebaseapp.com",
+  projectId: "profilebase-bm0729",
+  storageBucket: "profilebase-bm0729.appspot.com",
+  messagingSenderId: "912453268999",
+  appId: "1:912453268999:web:2dd4a7cdca257e18e0dca2",
+  measurementId: "G-LSMWWEY4DY",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
+
 const delBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.outlined"); // 선택 삭제 버튼
 const mainAddBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.filled"); //팝업 켜기 버튼
+const logoutBtnEl = document.querySelector(".header-userinfo_logout");
 
 const dimEl = document.querySelector("#DIM"); // DIM요소
 const popUpEl = document.querySelector("section.popup-container"); //팝업 컨테이너
@@ -12,6 +33,26 @@ const ProfileListContainerEl = document.querySelector(".listtable-tablerows-cont
 const primeCheckbox = document.querySelector("input[type='checkbox']");
 
 let employeeArr = [];
+
+/*
+  로그아웃 버튼 눌렀을 때
+*/
+logoutBtnEl.onclick = () => {
+  const check = confirm("정말 로그아웃하시겠어요?");
+  if (!check) return;
+  auth
+    .signOut()
+    .then(() => {
+      // 로그아웃 성공
+      console.log("로그아웃되었습니다.");
+      // 여기에서 로그아웃 후 필요한 동작을 추가로 수행할 수 있습니다.
+      window.location.href = "../index.html";
+    })
+    .catch((error) => {
+      // 로그아웃 실패
+      console.error("로그아웃 중 에러가 발생했습니다:", error);
+    });
+};
 
 // 프로필 생성하기 버튼 클릭 시
 popupAddBtnEl.addEventListener("click", (event) => {
@@ -347,10 +388,8 @@ function deleteEveryCheckedList() {
   sendToast("선택한 프로필들을 삭제하였습니다.", "success");
 }
 
-console.log("!!");
 getUserName();
 function getUserName() {
-  console.log("!!");
   const userName = localStorage.getItem("UserDisplayName");
   const greetingEl = document.querySelector(".header-userinfo_greeting");
   greetingEl.innerText = `안녕하세요 ${userName} 님`;
@@ -365,3 +404,19 @@ dimEl.addEventListener("click", closePopup); //딤 클릭으로 팝업 닫기
 popupCancelBtnEl.addEventListener("click", closePopup); //취소버튼으로 팝업 닫기
 primeCheckbox.addEventListener("click", configCheckbox);
 delBtnEl.addEventListener("click", deleteEveryCheckedList);
+
+const docRef = doc(db, "profiles", "employeeProfileCard");
+const data = {
+  name: "John Doe",
+  email: "johndoe@example.com",
+};
+
+setDoc(docRef, data);
+
+getDoc(docRef).then((doc) => {
+  if (doc.exists()) {
+    console.log("Document data:", doc.data());
+  } else {
+    console.log("No such document!");
+  }
+});
