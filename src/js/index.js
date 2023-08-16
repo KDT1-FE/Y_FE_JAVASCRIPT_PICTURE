@@ -1,8 +1,10 @@
 import "regenerator-runtime/runtime.js";
 
-// components
+// common components
 import "./components/load.js";
-import "./components/adminLogin.js";
+
+// login components
+import "./components/login/adminLogin.js";
 
 // style
 import "../scss/styles.scss";

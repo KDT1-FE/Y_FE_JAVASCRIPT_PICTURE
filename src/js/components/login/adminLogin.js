@@ -15,6 +15,6 @@ function adminLoginCheck(event) {
       "관리자 비밀번호가 일치하지 않습니다.";
   } else {
     adminLoginForm.setAttribute("method", "get");
-    adminLoginForm.setAttribute("action", process.env.DRIVERLIST_URL);
+    adminLoginForm.setAttribute("action", "./src/templates/driverList.html");
   }
 }
