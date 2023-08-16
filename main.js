@@ -98,12 +98,10 @@ btn1.addEventListener("click", async () => {
       inputName.focus();
     });
 
-    const savebtn = document.createElement("img");
-    savebtn.src = "p_img/save.png";
+    const savebtn = document.createElement("button");
     savebtn.className = "p-savebtn";
-    savebtn.width = 20;
-    savebtn.height = 20;
     savebtn.style.display = "none";
+    savebtn.textContent = "수정완료"; // 수정 완료 텍스트 설정
 
     savebtn.addEventListener("click", async () => {
       inputName.disabled = true;
@@ -138,6 +136,21 @@ btn1.addEventListener("click", async () => {
     employeeDiv.appendChild(savebtn);
 
     list.appendChild(employeeDiv);
+
+    employeeDiv.addEventListener("click", () => {
+      // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
+      const selectedEmployee = {
+        profileImage: profileImage.src,
+        name: name_,
+        email: email,
+        phone: phone,
+        category: category,
+      };
+
+      // 선택한 직원의 정보를 쿼리 파라미터로 인코딩하여 URL에 전달
+      const queryParams = new URLSearchParams(selectedEmployee);
+      window.location.href = `detail.html?${queryParams.toString()}`;
+    });
 
     try {
       // 이미지를 AWS S3에 업로드하기 위해 putFile 함수 호출
