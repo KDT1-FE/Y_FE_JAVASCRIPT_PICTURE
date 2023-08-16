@@ -42,14 +42,14 @@
             <input id="photo-input" type="file" />
           </div>
           <div class="edit-form__inputBox">
-            <label for="name-edit">이름</label>
-            <input id="name-edit" />
-            <label for="email-edit">이메일</label>
-            <input id="email-edit" />
-            <label for="phoneNum-edit">전화번호</label>
-            <input id="phoneNum-edit" />
-            <label for="position-edit">포지션</label>
-            <input id="position-edit" />
+            <label for="edit-name">이름</label>
+            <input id="edit-name" />
+            <label for="edit-email">이메일</label>
+            <input id="edit-email" />
+            <label for="edit-phoneNum">전화번호</label>
+            <input id="edit-phoneNum" />
+            <label for="edit-position">포지션</label>
+            <input id="edit-position" />
             <button class="edit-form__submit bg-blue text-s" type="submit">
               submit
             </button>
@@ -64,9 +64,11 @@
     <script type="module" src="/js/api/editProfile.js"></script>
     <script type="module">
       import { S3endpoint } from "/js/config/aws.js";
+      import { editProfile } from "/js/api/editProfile.js";
       import {
         profile,
         editForm,
+        edit_photo,
         openEditorBtn,
         previewImg,
         submit,
@@ -77,11 +79,11 @@
       const key = localStorage.getItem("profile");
       previewImg.src = S3endpoint + "/" + key + "/profile_photo";
 
-      // 수정창 오픈 이벤트
+      // 이벤트
       openEditorBtn.addEventListener("click", openEdit);
-
-      // 수정창 닫기
+      edit_photo.addEventListener("change", previewEditPhoto);
       cancel.addEventListener("click", closeEdit);
+      submit.addEventListener("click", editProfile);
 
       function openEdit() {
         profile.style.display = "none";
@@ -92,6 +94,11 @@
         event.preventDefault();
         profile.style.display = "flex";
         editForm.style.display = "none";
+      }
+
+      function previewEditPhoto() {
+        const imageSrc = URL.createObjectURL(edit_photo.files[0]);
+        previewImg.src = imageSrc;
       }
     </script>
   </body>
