@@ -347,6 +347,15 @@ function deleteEveryCheckedList() {
   sendToast("선택한 프로필들을 삭제하였습니다.", "success");
 }
 
+console.log("!!");
+getUserName();
+function getUserName() {
+  console.log("!!");
+  const userName = localStorage.getItem("UserDisplayName");
+  const greetingEl = document.querySelector(".header-userinfo_greeting");
+  greetingEl.innerText = `안녕하세요 ${userName} 님`;
+}
+
 /*
   addEventListener들 모음
 */
