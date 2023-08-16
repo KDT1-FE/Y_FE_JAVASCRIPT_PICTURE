@@ -73,7 +73,7 @@
     margin-left: 2rem;
   }
 }
-@media (max-width: 512px) {
+@media (max-width: 768px) {
   .detail {
     max-width: 18.75rem;
     margin: 1rem auto 0 auto;
