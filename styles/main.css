@@ -32,7 +32,7 @@ h1 {
 }
 
 .employee-add__button,
-.employee-remove__button {
+.employee-delete__button {
   padding: 15px 30px;
   font-size: 14px;
   font-weight: 600;
@@ -46,7 +46,7 @@ h1 {
 .employee-add__button:hover {
   background-color: #6e6ed7;
 }
-.employee-remove__button:hover {
+.employee-delete__button:hover {
   background-color: #e17878;
 }
 
@@ -131,6 +131,7 @@ h1 {
 }
 .add-data > label {
   margin-right: 10px;
+  font-weight: 600;
   white-space: nowrap;
 }
 .add-data > input {
