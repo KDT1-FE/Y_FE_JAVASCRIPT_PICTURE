@@ -11,9 +11,13 @@
       align-items: center;
       margin: 1rem 2rem 1rem 2rem;
 
+      .user__selected-category {
+        width: 100px;
+      }
+
       .arrow {
         position: absolute;
-        left: 60px;
+        left: 80px;
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;

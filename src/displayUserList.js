@@ -15,7 +15,7 @@ const userRef = collection(db, "users");
 const userQuery = query(userRef, orderBy("name"), limit(userLength));
 
 const userListContainer = document.querySelector(".user__list");
-const homeBtn = document.querySelector(".header__home-btn");
+const homeBtn = document.querySelector(".header__title");
 const scrollEnd = document.querySelector(".scroll-end");
 
 export function appendUsers(docs) {

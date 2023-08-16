@@ -15,47 +15,58 @@ header {
 
     .header__nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 0 1rem;
+      padding: 1rem 2rem;
       width: 100%;
 
-      .header__logo {
+      @include respond-to(sm) {
+        justify-content: space-between;
+      }
+
+      .header__left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
         .header__title {
+          display: none;
           font-size: 1.2rem;
+          font-weight: $font-bold;
+          margin-right: 10px;
+          cursor: pointer;
+
+          @include respond-to(sm) {
+            display: block;
+          }
         }
       }
 
-      .header__btn-container {
+      // .header__btn-container {
+      //   display: flex;
+
+      //   .header__home-btn {
+      //     border: none;
+      //     background-color: transparent;
+      //     width: 30px;
+      //     height: 30px;
+      //     border-radius: 10px;
+      //     margin-right: 1rem;
+      //     cursor: pointer;
+      //     transition: all 0.2s ease;
+
+      //     i {
+      //       color: inherit;
+      //       font-size: 1rem;
+      //     }
+      //   }
+
+      // }
+
+      .header__right {
         display: flex;
-
-        .header__home-btn {
-          border: none;
-          background-color: transparent;
-          width: 30px;
-          height: 30px;
-          border-radius: 10px;
-          margin-right: 1rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-
-          &:hover {
-            width: 160px;
-            background-color: map-get($map: $theme-colors, $key: bg-primary);
-          }
-
-          &:hover::after {
-            content: "Go Home";
-            white-space: nowrap;
-            margin-left: 1rem;
-            font-size: 1rem;
-          }
-
-          i {
-            color: inherit;
-            font-size: 1rem;
-          }
-        }
+        align-items: center;
+        column-gap: 10px;
 
         .header__btn-add-user {
           width: 30px;
@@ -64,49 +75,37 @@ header {
           cursor: pointer;
           transition: all 0.2s ease;
 
-          &:hover {
-            width: 160px;
-            background-color: map-get($map: $theme-colors, $key: bg-primary);
-          }
-
-          &:hover::after {
-            content: "Create User";
-            white-space: nowrap;
-            margin-left: 1rem;
-          }
-
           i {
             font-size: 1.2rem;
           }
         }
-      }
 
-      .header__search-user {
-        margin: 1rem;
-        position: relative;
-        width: 200px;
-        cursor: pointer;
+        .header__search-user {
+          position: relative;
+          cursor: pointer;
 
-        .header__btn-search-user {
-          top: 50%;
-          right: 10px;
-          transform: translateY(-50%);
-          position: absolute;
-          font-size: 1rem;
-        }
+          .header__btn-search-user {
+            position: absolute;
+            font-size: 1rem;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
 
-        .header__input-search {
-          font-size: 1rem;
-          width: 100%;
-          padding: 8px;
-          padding-right: calc(1rem + 20px);
-          border: none;
-          outline: none;
-          border: 1px solid $bg-gray-900;
-          border-radius: 8px;
+          .header__input-search {
+            // display: none;
+            font-size: 1rem;
+            width: 150px;
+            padding: 8px;
+            padding-right: calc(1rem + 20px);
+            border: none;
+            outline: none;
+            border: 1px solid $bg-gray-900;
+            border-radius: 8px;
 
-          &:focus {
-            border: 2px solid;
+            &:focus {
+              border: 2px solid;
+            }
           }
         }
       }

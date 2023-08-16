@@ -1,0 +1,9 @@
+.logo {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: $font-bold;
+
+  @include respond-to(sm) {
+    display: none;
+  }
+}
