@@ -1,5 +1,5 @@
 import { Component } from '../core/component';
-import { memberStore, nextMemberList } from '../store/memberStore';
+import { memberStore, getNextMembersData } from '../store/memberStore';
 import Member from './Member';
 
 export default class MemberList extends Component {
@@ -21,12 +21,13 @@ export default class MemberList extends Component {
     this.el.append(
       ...memberStore.state.members.map((member) => new Member({ member }).el)
     );
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 다음 요소 또 가져오기
-          // 요소의 마지막 요소가 뷰포트로 들어오면~
-          nextMemberList();
+        if (entry.isIntersecting && !memberStore.state.search) {
+          // 요소의 마지막 요소가 뷰포트로 들어오면 다음 요소들 가져오기
+          // 만약 memberStore.state.search가 true라면 마지막 요소가 뷰포트로 들어와도 다음 멤버 데이터를 가져오지않음
+          getNextMembersData();
         } // entry is 'IntersectionObserverEntry'
       });
     });

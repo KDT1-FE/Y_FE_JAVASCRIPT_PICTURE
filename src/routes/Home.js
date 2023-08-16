@@ -4,7 +4,8 @@ import { navigate, routeRender } from '../core/router';
 import {
   deleteData,
   memberStore,
-  renderMemberList,
+  getMembersData,
+  searchData,
 } from '../store/memberStore';
 
 export default class Home extends Component {
@@ -19,9 +20,9 @@ export default class Home extends Component {
     </header>
     <div class="the-loader"></div>
     `;
-    await renderMemberList(); // renderMemberList 함수를 통해 store 업데이트 (store에 memberList를 담음)
+    await getMembersData(); // getMembersData 함수를 통해 store 업데이트 (store에 memberList를 담음)
     const memberList = new MemberList().el;
-    //renderMemberList 를 사용해서 얻은 결과값을 MemberList에 넘겨줄 수도 있지만
+    //getMembersData 를 사용해서 얻은 결과값을 MemberList에 넘겨줄 수도 있지만
 
     const header = this.el.querySelector('.header');
     header.after(memberList);
@@ -48,5 +49,13 @@ export default class Home extends Component {
 
     const deleteButton = this.el.querySelector('#delete-members');
     deleteButton.addEventListener('click', deleteMembers);
+    // 삭제
+
+    const searchInput = this.el.querySelector('.search');
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && searchInput.value.trim()) {
+        searchData(searchInput.value);
+      }
+    });
   }
 }
