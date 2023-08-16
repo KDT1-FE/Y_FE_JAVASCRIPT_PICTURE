@@ -200,6 +200,8 @@ h1.main-title {
 .employeecard-column .employeecard-column_profilecard {
   width: 106px;
   height: 106px;
+  background-repeat: no-repeat;
+  object-fit: cover;
   background-color: var(--color-gray100);
 }
 

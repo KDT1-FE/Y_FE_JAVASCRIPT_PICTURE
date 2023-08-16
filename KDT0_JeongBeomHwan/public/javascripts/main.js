@@ -1,7 +1,7 @@
 import { initializeApp, getApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_R-euRNqGE2pQb_-lfUbNN6dfHILDE1s",
@@ -61,10 +61,11 @@ logoutBtnEl.onclick = () => {
 // 프로필 생성하기 버튼 클릭 시
 popupAddBtnEl.addEventListener("click", (event) => {
   const popupInputEls = document.querySelectorAll(".popup-contents-container input");
-  const imgFile = document.querySelector(".popup-contents-container input[type='file']");
   const [koName, enName, email, tel, file] = popupInputEls;
   const popupSelectEls = document.querySelectorAll(".popup-contents-container select");
   const [team, author] = popupSelectEls;
+
+  let extension = file.value.split(".").slice(-1)[0];
 
   let employeeProfileCard = {
     employeeKoName: koName.value,
@@ -85,11 +86,16 @@ popupAddBtnEl.addEventListener("click", (event) => {
     return;
   }
 
-  if (employeeProfileCard.employeeFile) {
-    let extension = employeeProfileCard.employeeFile.split(".").slice(-1)[0];
-    console.log("file", imgFile.files[0]);
-    const storageRef = ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`);
-    uploadBytes(storageRef, imgFile.files[0]).then((snapshot) => {
+  if (file.value) {
+    let storageRef;
+    if (popupHeaderEl.innerText === "직원 프로필 추가") {
+      storageRef = ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`);
+    } else {
+      let temp = JSON.parse(popupAddBtnEl.dataset.obj);
+      storageRef = ref(storage, `images/${temp.employeeID}.${extension}`);
+    }
+
+    uploadBytes(storageRef, file.files[0]).then((snapshot) => {
       console.log("Uploaded a blob or file!");
     });
   }
@@ -196,8 +202,6 @@ function loadLocalStorage() {
       .then((querySnapshot) => {
         sendToast("서버에서 데이터를 불러왔습니다.", "success");
         querySnapshot.forEach((doc) => {
-          // console.log("Document ID:", doc.id); // 문서 이름 출력
-          // console.log("Document data:", doc.data());
           employeeArr.push(doc.data());
           paintProfileEl(doc.data());
         });
@@ -264,8 +268,23 @@ function paintProfileEl(employeeProfileCard) {
   checkboxCol.dataset.obj = JSON.stringify(employeeProfileCard);
   profileCheckEl.append(checkboxCol);
 
-  const profileCol = document.createElement("div");
+  const profileCol = document.createElement("img");
   profileCol.classList.add("employeecard-column_profilecard");
+
+  if (employeeProfileCard.employeeFile) {
+    let extension = employeeProfileCard.employeeFile.split(".").slice(-1)[0];
+    setTimeout(() => {
+      getDownloadURL(ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`))
+        .then((url) => {
+          profileCol.src = url;
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.log("no image");
+        });
+    }, 1000);
+  }
+
   profileCheckEl.append(profileCol);
 
   const koNameCol = document.createElement("span");
@@ -342,7 +361,6 @@ function openPopup(event) {
     enName.value = temp.employeeEnName;
     email.value = temp.employeeEmail;
     tel.value = temp.employeeTel;
-    file.value = temp.employeeFile;
     team.value = temp.employeeTeam;
     author.value = temp.employeeAuthor;
   }
