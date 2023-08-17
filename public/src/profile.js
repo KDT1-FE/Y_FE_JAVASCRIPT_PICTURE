@@ -106,9 +106,12 @@ editBtn.addEventListener("click", async () => {
       });
     });
 
+    let imgChanged = false;
+
     //image 수정
     imageUploadInput.addEventListener("change", async (event) => {
       file = event.target.files[0];
+      imgChanged = true;
 
       if (file) {
         //사진 선택만 하고 저장은 하지 않았을 때를 대비해 e에서 파일 가져옴
@@ -153,26 +156,28 @@ editBtn.addEventListener("click", async () => {
         }
       });
 
-      try {
-        //예전 사진 삭제
-        const currentDoc = await villagerDocRef.get();
-        const currentData = currentDoc.data();
-        const oldImageUrl = currentData.imageUrl;
+      if (imgChanged) {
+        try {
+          //예전 사진 삭제
+          const currentDoc = await villagerDocRef.get();
+          const currentData = currentDoc.data();
+          const oldImageUrl = currentData.imageUrl;
 
-        if (oldImageUrl) {
-          const storageRef = storage.refFromURL(oldImageUrl);
-          await storageRef.delete();
+          if (oldImageUrl) {
+            const storageRef = storage.refFromURL(oldImageUrl);
+            await storageRef.delete();
+          }
+
+          //storage에 이미지 업로드
+          const storageRef = storage.ref(`${villagerId}`);
+          const imageRef = await storageRef.put(file);
+          const imageUrl = await imageRef.ref.getDownloadURL();
+
+          //firestore에서 이미지 URL 업데이트
+          await villagerDocRef.update({ imageUrl });
+        } catch (error) {
+          console.error("이미지 업로드 오류: ", error);
         }
-
-        //storage에 이미지 업로드
-        const storageRef = storage.ref(`${villagerId}`);
-        const imageRef = await storageRef.put(file);
-        const imageUrl = await imageRef.ref.getDownloadURL();
-
-        //firestore에서 이미지 URL 업데이트
-        await villagerDocRef.update({ imageUrl });
-      } catch (error) {
-        console.error("이미지 업로드 오류: ", error);
       }
     } catch (error) {
       console.error("오류: ", error);
