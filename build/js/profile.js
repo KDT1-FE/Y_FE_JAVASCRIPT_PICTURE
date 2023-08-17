@@ -82,18 +82,19 @@ async function loadFirebaseData() {
   const imagesCollection = collection(db, 'images');
   try {
     const querySnapshot = await getDocs(imagesCollection);
-    querySnapshot.forEach((docs) => {
-      const data = docs.data();
-      const item = {
-        id: data.id,
-        image: data.imageUrl,
-        name: data.name,
-        group: data.group,
-        complete: false
-      };
-      profiles.push(item);
-    });
-
+    setTimeout(() => {
+      querySnapshot.forEach((docs) => {
+        const data = docs.data();
+        const item = {
+          id: data.id,
+          image: data.imageUrl,
+          name: data.name,
+          group: data.group,
+          complete: false
+        };
+        profiles.push(item);
+      });
+    }, 1000);
   } catch (error) {
     console.error('Error loading Firebase data:', error);
     // 오류 처리

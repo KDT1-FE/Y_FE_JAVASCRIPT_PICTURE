@@ -96,25 +96,29 @@ function createProfileElement(item) {
 
 async function loadFirebaseData() {
   profiles = [];
+  const imagesCollection = collection(db, 'images');
   try {
     const querySnapshot = await getDocs(imagesCollection);
-    querySnapshot.forEach((docs) => {
-      const data = docs.data();
-      const item = {
-        id: data.id,
-        image: data.imageUrl,
-        name: data.name,
-        group: data.group,
-        complete: false
-      };
-
-      // Check if an item with the same image URL already exists in profiles
-      const existingItem = profiles.find(existing => existing.image === item.image);
-
-      if (!existingItem) {
-        profiles.push(item);
-      }
-    });
+    setTimeout(() => {
+      querySnapshot.forEach((docs) => {
+        const data = docs.data();
+        const item = {
+          id: data.id,
+          image: data.imageUrl,
+          name: data.name,
+          group: data.group,
+          complete: false
+        };
+  
+        // Check if an item with the same image URL already exists in profiles
+        const existingItem = profiles.find(existing => existing.image === item.image);
+  
+        if (!existingItem) {
+          profiles.push(item);
+        }
+      });
+    }, 1000);
+    
 
     // Clear existing items in the list
 
