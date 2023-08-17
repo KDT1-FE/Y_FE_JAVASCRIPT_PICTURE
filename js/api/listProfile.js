@@ -42,7 +42,7 @@ export const listProfileFromS3 = function () {
           tableRow.prepend(photoContainer);
 
           const photo = document.createElement("img");
-          photo.style = "width:200px; height:auto";
+          photo.classList.add("member-info__photo");
           photo.src = `${S3endpoint}/${folderName}/profile_photo`;
           photoContainer.appendChild(photo);
 
@@ -60,8 +60,9 @@ export const listProfileFromS3 = function () {
             }
           );
 
+          // 3. 해당 프로필 클릭 시 프로필 상세 페이지로 이동
           tableRow.addEventListener("click", (e) => {
-            localStorage.setItem("profile", folderName);
+            localStorage.setItem("profile", folderName); // 프포필 키값 로컬 스토리지에 저장
             window.location.href = window.location.origin + "/profile.html"; // 페이지 이동
           });
         }
