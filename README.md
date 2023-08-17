@@ -53,7 +53,18 @@ https://animal-crossing-project.web.app/animal.html
 
 ## [유저플로우]
 
+![유저플로우](image.png)
 ![animal-crossing 유저플로우](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/93272421/5d06602f-6575-432d-bc0c-04035f1ce6c1)
 <br><br>
 상단바의 주민 관리를 누르면 주민 관리 페이지로 이동할 수 있다. <br>
 미니 게임을 누르면 동숲 카드 뒤집기 게임 페이지로 이동할 수 있다.
+
+## 기술 스택
+
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+<img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
