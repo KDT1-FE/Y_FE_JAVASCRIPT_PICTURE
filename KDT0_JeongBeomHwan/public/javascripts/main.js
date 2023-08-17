@@ -36,6 +36,8 @@ const popupCancelBtnEl = document.querySelector(".popup-buttons .btn-md:first-ch
 const ProfileListContainerEl = document.querySelector(".listtable-tablerows-container"); // 프로필이 쌓이는 컨테이너
 const primeCheckbox = document.querySelector("input[type='checkbox']"); // 전체 체크박스
 const teamFilter = document.querySelector(".main-container_header #filter-teams"); // 팀 선택 드롭다운
+const registFilter = document.querySelector(".main-container_header #filter-order"); // 팀 선택 드롭다운
+const searchEl = document.querySelector("input[type='search']"); // 검색 인풋
 
 let employeeArr = [];
 
@@ -65,8 +67,7 @@ popupAddBtnEl.addEventListener("click", (event) => {
   const [koName, enName, email, tel, file] = popupInputEls;
   const popupSelectEls = document.querySelectorAll(".popup-contents-container select");
   const [team, author] = popupSelectEls;
-
-  let extension = file.value.split(".").slice(-1)[0];
+  console.log(popupSelectEls, "popupselectEls");
 
   let employeeProfileCard = {
     employeeKoName: koName.value,
@@ -79,6 +80,14 @@ popupAddBtnEl.addEventListener("click", (event) => {
     employeeID: new Date().getTime(),
   };
 
+  if (popupHeaderEl.innerText === "직원 프로필 변경") {
+    let temp = JSON.parse(popupAddBtnEl.dataset.obj);
+    if (!file.value) {
+      employeeProfileCard.employeeFile = temp.employeeFile;
+    }
+    employeeProfileCard.employeeID = temp.employeeID;
+  }
+
   if (!confirmInputAll(popupInputEls)) return; //모든 입력값을 다 입력했는지 체크
   if (!confirmKorAlp(employeeProfileCard.employeeKoName)) return; // 한글 입력란에 한글만 있는지 체크
   if (employeeProfileCard.employeeEnName.length && !confirmEngAlp(employeeProfileCard.employeeEnName)) return; // 영어 입력란에 영어만 있는지 체크
@@ -89,7 +98,6 @@ popupAddBtnEl.addEventListener("click", (event) => {
     employeeProfileCard.employeeEnName = makePascal(employeeProfileCard.employeeEnName); // 영어 첫문자만 대문자, 나머지 소문자로 만듦
     employeeProfileCard.employeeTel = makeTelForm(employeeProfileCard.employeeTel);
   }
-  employeeProfileCard.employeeTel = makeTelForm(employeeProfileCard.employeeTel);
 
   if (popupHeaderEl.innerText === "직원 프로필 추가" && !checkValid(employeeProfileCard)) {
     sendToast("동일한 연락처 혹은 이메일을 사용하는 사용자가 있습니다.", "error");
@@ -97,6 +105,7 @@ popupAddBtnEl.addEventListener("click", (event) => {
   }
 
   if (file.value) {
+    let extension = file.value.split(".").slice(-1)[0];
     const sizeChecked = checkFileSize(file.files[0].size);
     if (!sizeChecked) {
       sendToast("3MB 이하의 이미지만 추가 가능합니다.", "error");
@@ -135,6 +144,7 @@ popupAddBtnEl.addEventListener("click", (event) => {
       if (employeeArr[i].employeeID === temp.employeeID) {
         employeeArr[i].employeeKoName = employeeProfileCard.employeeKoName;
         employeeArr[i].employeeEnName = employeeProfileCard.employeeEnName;
+        employeeArr[i].employeeTeam = employeeProfileCard.employeeTeam;
         employeeArr[i].employeeEmail = employeeProfileCard.employeeEmail;
         employeeArr[i].employeeTel = employeeProfileCard.employeeTel;
         employeeArr[i].employeeAuthor = employeeProfileCard.employeeAuthor;
@@ -218,7 +228,12 @@ function makePascal(enName) {
   연락처 '-' 넣어주기 함수
 */
 function makeTelForm(tel) {
-  return `${tel.slice(0, 3)}-${tel.slice(3, 7)}-${tel.slice(7)}`;
+  if (tel.length >= 10) {
+    console.log(tel, "tel");
+    return `${tel.slice(0, 3)}-${tel.slice(3, 7)}-${tel.slice(7)}`;
+  } else {
+    return `${tel.slice(0, 3)}-${tel.slice(3, 6)}-${tel.slice(6)}`;
+  }
 }
 
 /*
@@ -295,11 +310,15 @@ function sendToast(msg, type) {
 }
 
 /*
-  로컬 스토리지 저장하기 / 불러오기 함수
+  로컬 스토리지 저장하기 함수
 */
 function saveLocalStorage() {
   localStorage.setItem("employeeCard", JSON.stringify(employeeArr));
 }
+
+/*
+  로컬 스토리지 불러오기 함수
+*/
 loadLocalStorage();
 function loadLocalStorage() {
   employeeArr = JSON.parse(localStorage.getItem("employeeCard")) || [];
@@ -313,6 +332,8 @@ function loadLocalStorage() {
         querySnapshot.forEach((doc) => {
           employeeArr.push(doc.data());
           paintProfileEl(doc.data());
+          console.log(doc.data(), "독데이터");
+          console.log("-----------------");
         });
       })
       .then(() => {
@@ -376,7 +397,7 @@ function paintProfileEl(employeeProfileCard, newType) {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("no image");
+          console.log("no image[1]");
         });
     }, 2000);
   } else if (employeeProfileCard.employeeFile) {
@@ -388,7 +409,8 @@ function paintProfileEl(employeeProfileCard, newType) {
       })
       .catch((error) => {
         // Handle any errors
-        console.log("no image");
+        console.log(`images/${employeeProfileCard.employeeID}.${extension}`);
+        console.log("no image[2]");
       });
   } else {
     profileCol.src = "../images/noimage.png";
@@ -668,6 +690,9 @@ function getUserName() {
   greetingEl.innerText = `안녕하세요 ${userName} 님`;
 }
 
+/*
+  프로필 호버 시 미리보기 함수
+*/
 function expandImage(event) {
   const IMG = document.getElementById("IMGPREVIEW");
   const DIM = document.getElementById("DIM");
@@ -675,6 +700,10 @@ function expandImage(event) {
   IMG.style.display = "block";
   DIM.classList.remove("none");
 }
+
+/*
+  프로필 호버 종료 시 사라지기 함수
+*/
 function hideImage(event) {
   const IMG = document.getElementById("IMGPREVIEW");
   IMG.src = "";
@@ -682,6 +711,9 @@ function hideImage(event) {
   DIM.classList.add("none");
 }
 
+/*
+  팀 별로 보기 드롭다운 필터 함수
+*/
 function sortTeam(event) {
   const selVal = event.target.value;
   const lists = document.querySelectorAll("article");
@@ -698,9 +730,9 @@ function sortTeam(event) {
   });
 }
 
-const searchEl = document.querySelector("input[type='search']");
-searchEl.addEventListener("change", searchName);
-
+/*
+  이름 검색하기 함수
+*/
 function searchName(event) {
   console.log("진행 중?");
   let word = event.target.value.toLowerCase();
@@ -709,7 +741,6 @@ function searchName(event) {
   lists.forEach((el) => {
     const korVal = el.querySelector(".employeecard-column.name span.ko-name").innerText.toLowerCase();
     const engVal = el.querySelector(".employeecard-column.name span.en-name").innerText.toLowerCase();
-    const teamFilterVal = teamFilter.value;
 
     if (korVal.includes(word) || engVal.includes(word)) {
       el.classList.remove("search-none");
@@ -717,6 +748,30 @@ function searchName(event) {
       el.classList.add("search-none");
     }
   });
+}
+
+/*
+  등록순 / 가나다 순 정렬
+*/
+function sortBy(event) {
+  const ProfileListContainerEl = document.querySelector(".listtable-tablerows-container"); // 프로필이 쌓이는 컨테이너
+  if (event.target.value === "등록순") {
+    ProfileListContainerEl.replaceChildren();
+    loadLocalStorage();
+  } else {
+    ProfileListContainerEl.replaceChildren();
+    let copy = employeeArr.slice().sort((a, b) => {
+      if (a.employeeKoName < b.employeeKoName) {
+        return 1;
+      } else if (a.employeeKoName > b.employeeKoName) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    console.log(copy, "cp");
+    copy.forEach((el) => paintProfileEl(el));
+  }
 }
 
 /*
@@ -729,3 +784,7 @@ popupCancelBtnEl.addEventListener("click", closePopup); //취소버튼으로 팝
 primeCheckbox.addEventListener("click", configCheckbox); // 모두 선택하기, 모두 해제하기
 mainDelBtnEl.addEventListener("click", deleteEveryCheckedList); // 모두 삭제하기
 teamFilter.addEventListener("change", sortTeam); // 팀별로 나눠보기
+searchEl.addEventListener("change", searchName); // 한/영 이름 검색하기
+registFilter.addEventListener("change", sortBy); // 등록순/가나다순 정렬하기
+
+console.log(employeeArr);

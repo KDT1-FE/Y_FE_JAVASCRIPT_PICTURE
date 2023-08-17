@@ -21,12 +21,26 @@
 
   .listtable-column,
   .employeecard-column {
-    width: 180px;
+    width: 190px;
   }
 
   .employeecard-column.e-mail,
   .listtable-column.e-mail {
-    width: 230px;
+    width: 260px;
+  }
+
+  .employeecard-column.e-mail span {
+    width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .employeecard-column.team,
+  .listtable-column.team,
+  .employeecard-column.author,
+  .listtable-column.author {
+    width: 160px;
   }
 
   .listtable-tablerows-container,
@@ -73,6 +87,15 @@
 }
 
 @media screen and (max-width: 390px) {
+  #IMGPREVIEW {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+  }
+
   body.mo {
     width: 100%;
     height: 100%;
@@ -215,6 +238,7 @@
     width: 100vw;
     display: flex;
     align-items: center;
+    position: relative;
   }
   .employeecard-container > div:last-child {
     margin-left: 16px;
@@ -235,6 +259,12 @@
 
   .employeecard-column.name .ko-name {
     font-weight: 700;
+  }
+
+  .employeecard-column.icon-area {
+    position: absolute;
+    bottom: 8px;
+    right: 0;
   }
 
   .br-point {

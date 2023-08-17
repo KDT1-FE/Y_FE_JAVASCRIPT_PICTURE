@@ -206,6 +206,9 @@ h1.main-title {
   align-items: center;
   color: var(--color-black);
   flex-shrink: 0;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+  overflow: hidden;
 }
 
 .employeecard-column input[type="checkbox"] {
