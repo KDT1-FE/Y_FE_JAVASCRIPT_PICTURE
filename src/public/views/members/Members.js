@@ -1,5 +1,5 @@
 import AbstractView from '../AbstractView.js'
-
+import modalTemplate from '../components/modal.hbs'
 export default class extends AbstractView {
   constructor(params) {
     super(params)
@@ -7,7 +7,10 @@ export default class extends AbstractView {
   }
 
   async getContent() {
+    const modal = modalTemplate()
+
     return /* HTML */ `
+      ${modal}
       <div class="members__container container">
         <div class="members__title d-flex align-items-center p-3 my-3 rounded">
           <div class="lh-1">
@@ -15,7 +18,11 @@ export default class extends AbstractView {
           </div>
         </div>
         <div class="members__contents p-3">
-          <h6 class="members__contents__title">Members workspace</h6>
+          <div class="members__contents__header">
+            <h6 class="members__contents__title">Members workspace</h6>
+            <button type="button" id="openModal-btn" class="btn btn-sm btn-pink members__modal-btn" data-bs-target="#myModal">Add member</button>
+          </div>
+          <hr class="members-hr" />
         </div>
       </div>
     `

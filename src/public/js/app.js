@@ -29,7 +29,8 @@ const router = async () => {
   const routes = [
     { path: '/', view: Home },
     { path: '/members', view: Members },
-    { path: '/members/:id', view: Profile },
+    { path: '/profile', view: Profile },
+    { path: '/profile/:id', view: Profile },
   ]
 
   const potentialMatches = routes.map((route) => {

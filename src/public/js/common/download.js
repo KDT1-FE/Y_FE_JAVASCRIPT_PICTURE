@@ -3,10 +3,12 @@ import { db, storage } from './firebase'
 import { memberConverter } from './FormData'
 import { buildHTMLList } from './htmlListBuilder.js'
 
-export function initializeDownload() {
+export function initDownload() {
+  const mycollection = 'members'
+
   const membersContainer = document.querySelector('.members__contents')
   console.log(membersContainer)
-  const q = query(collection(db, 'members'), orderBy('createdAt'))
+  const q = query(collection(db, mycollection), orderBy('createdAt'))
   const dataMap = new Map()
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
     querySnapshot.docChanges().forEach((change) => {
@@ -22,8 +24,8 @@ export function initializeDownload() {
         membersContainer.appendChild(memberRow)
         dataMap.set(id, memberRow) // Map에 추가
       } else if (change.type === 'modified') {
-        // const updatedMemberRow = dataMap.get(id);
-        // const updatedMemberData = doc.data();
+        // const updatedMemberRow = dataMap.get(id)
+        // const updatedMemberData = doc.data()
         // 업데이트된 데이터로 DOM 업데이트
         // 예: updatedMemberRow.querySelector('.members__col__name').textContent = updatedMemberData.name;
         // 이와 같은 방식으로 업데이트해야 할 내용을 선택하고 업데이트하십시오.

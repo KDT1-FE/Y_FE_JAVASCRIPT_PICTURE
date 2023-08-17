@@ -4,6 +4,7 @@
   &__container {
   }
   &__title {
+    justify-content: space-between;
   }
 
   &__contents {
@@ -11,16 +12,29 @@
     box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 3%), inset 0 2px 4px 0 rgb(255 255 255);
     background: linear-gradient(179deg, rgb(242, 242, 243) -50%, rgb(255, 255, 255) 100%);
 
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     &__title {
       font-size: 1rem;
       font-weight: 500;
       line-height: 1.2;
       color: var(--bs-heading-color);
       margin-top: 0;
-      padding-bottom: 0.8rem;
       margin-bottom: 0;
-      border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
     }
+  }
+  &__modal-btn {
+    margin: 0.5rem;
+  }
+
+  &-hr {
+    color: var(--bs-border-color);
+    opacity: 1;
+    margin: 0;
   }
 
   &__row {
