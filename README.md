@@ -7,7 +7,7 @@
 
 ##  :computer: 배포 주소
 
-https://beamish-kringle-001ac1.netlify.app/
+https://fastcampusxyanolja-assginment.web.app/
 
 <br>
 
