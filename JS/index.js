@@ -308,7 +308,7 @@ function registerImageTdClickHandler() {
       const category = row.querySelector('td:nth-child(6)').textContent;
 
       // 프로필 페이지로 데이터 전달 및 이동
-      const profileUrl = `/HTML/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
+      const profileUrl = `/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
       window.location.href = profileUrl;
     });
   });
