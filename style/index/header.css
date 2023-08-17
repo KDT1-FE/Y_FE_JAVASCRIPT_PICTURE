@@ -1,3 +1,12 @@
+/* 헤더 고정 */
+header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+
 .main-header-top {
     padding-left: 150px;
     padding-right: 150px;
