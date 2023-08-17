@@ -36,9 +36,17 @@ async function selectEmployeeRender (){;
 
 } 
 
-
 selectEmployeeRender()
 
 
-const modifyBtn = document.querySelector('.btn__addi');
-console.log(modifyBtn);
+async function renderTotalEmployees () {
+    let totalEmployees = 0;
+    const test = await db.collection('profile').get();
+    
+    test.forEach(()=>{
+        totalEmployees++;
+    })
+    document.querySelector('.search__total').innerHTML += totalEmployees    
+}
+
+renderTotalEmployees();

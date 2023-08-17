@@ -15,7 +15,7 @@ db.collection('profile')
   <tr  class="employees__table__row">
     <td><input type="checkbox" class="checkbox" id="profile" /></td>
     <td><img  class="table__row__img"  src="${res}"></td>
-    <td>${item.data().name}</td>
+    <td class="employeeName">${item.data().name}</td>
     <td class="employeeId">${item.data().employeeId}</td>
     <td>${item.data().position}</td>
     <td>${item.data().phonenum}</td>
@@ -47,11 +47,9 @@ function getCheckEmployeeId (){
     return employeeIds;
 }
 document.querySelector('.btn__del').addEventListener('click',()=>{
-    const userConfirmed = confirm(`직원 0명을 삭제하시겠습니까?`)
+  let checkIds = getCheckEmployeeId();
+    const userConfirmed = confirm(`직원 ${checkIds.length}명을 삭제하시겠습니까?`)
     if (userConfirmed) {
-        console.log("사용자가 확인을 선택했습니다.");
-        let checkIds = getCheckEmployeeId();
-        console.log(checkIds);
         checkIds.forEach(checkId=>{
             deleteFirestore('profile',checkId)
             setTimeout(()=>window.location.href = "/index.html",500)
@@ -73,18 +71,66 @@ async function renderTotalEmployees () {
 }
 
 renderTotalEmployees();
-const tableRow = document.querySelectorAll('.employees__table__row')
-// 직원 상세페이지
-tableRow.forEach((item)=>{
-    item.addEventListener('click',(e)=>{
-        console.log(e.currentTarget);
-    })
-})
 
 
 table.addEventListener('click',(e)=>{
-  let selectEmployee = e.target.parentNode.querySelector('.employeeId')
+  if(e.target.value === undefined){
+    let selectEmployee = e.target.parentNode.querySelector('.employeeId')
   localStorage.setItem('selectEmployee',selectEmployee.innerHTML);
   setTimeout(()=>window.location.href = "/employee_detail.html",500)
+  }
+  
 });
 
+function changeAllcheckbox (){
+  const allCheckbox = document.querySelector('.checkbox__all');
+  const checkboxs = document.querySelectorAll('.checkbox');
+  
+  allCheckbox.addEventListener('change',(e)=>{
+    const checkboxs = document.querySelectorAll('.checkbox');
+   
+    checkboxs.forEach(item=>{
+      
+      if (e.target.checked){
+        item.checked = e.target.checked;
+        
+      }
+      else if (!e.target.checked){
+        item.checked = e.target.checked;
+      }
+    })
+  })
+}
+changeAllcheckbox()
+
+function searchList () {
+  
+  const searchInput = document.querySelector('.search__input');
+  searchInput.addEventListener('input',(e)=>{
+  const tableRow = document.querySelectorAll('.employees__table__row');
+
+    if (e.target.value.length >= 2){
+      tableRow.forEach(item=>{
+        const employeeName = item.querySelector('.employeeName');
+      
+        if (employeeName.innerHTML.includes(e.target.value)){
+          const employee = employeeName.closest('.employees__table__row');
+          employee.classList.contains('hide') ? employee.classList.remove('hide') : undefined;
+        }
+        else {
+          const employee = employeeName.closest('.employees__table__row');
+          employee.classList.add('hide');
+          
+        }
+      })
+    }
+    else if (e.target.value.length === 0 ){
+      tableRow.forEach((item)=>{
+        if (item.classList.contains('hide')){
+          item.classList.remove('hide')
+        }
+      })
+    }
+  })
+}
+searchList()

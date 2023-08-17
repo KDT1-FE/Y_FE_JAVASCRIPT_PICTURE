@@ -82,4 +82,16 @@ document.querySelector('#myForm').addEventListener('submit',async (e)=>{
     }
     )
 
+    async function renderTotalEmployees () {
+      let totalEmployees = 0;
+      const test = await db.collection('profile').get();
+      
+      test.forEach(()=>{
+          totalEmployees++;
+      })
+      document.querySelector('.search__total').innerHTML += totalEmployees    
+  }
+  
+  renderTotalEmployees();
 
+  

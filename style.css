@@ -153,7 +153,7 @@ body {
     border-top: 1px solid var(--color--gray);
 }
 
-.employees__table__row {
+.employees__table__row , .employees__table__row--header {
     font-size: 1.6rem;
     border-bottom: 1px solid var(--color--gray);
 }
@@ -172,4 +172,8 @@ body {
 .table__row__img{ 
     width: 5rem;
     height: 5rem;
+}
+
+.hide {
+  display: none;
 }
