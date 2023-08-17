@@ -47,7 +47,6 @@ export function handleRemoveBtn(memberId, imgScr) {
 async function onClickRemoveBtn(event, memberId, imgScr) {
   event.preventDefault()
   const removeEl = event.target.closest('.remove-btn')
-  // const parentElement = removeBtn.parentElement;
   if (removeEl) {
     await deleteMemberDocument(collection, memberId)
     await removeTask(imgScr)

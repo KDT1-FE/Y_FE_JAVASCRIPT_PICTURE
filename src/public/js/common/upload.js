@@ -54,6 +54,7 @@ export function initUpload() {
       return // 유효성 검사 실패 시 중단
     }
 
+    // 폼 데이터 추출
     const formData = new FormData(myForm)
     const name = formData.get('name').trim()
     const email = formData.get('email').trim()
