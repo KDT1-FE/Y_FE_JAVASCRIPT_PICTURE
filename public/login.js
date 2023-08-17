@@ -38,9 +38,9 @@ loginDataFormEl.addEventListener("submit", (e) => {
           .then((doc) => {
             if (doc.exists) {
               const user_data = JSON.stringify(doc.data());
-              if (sessionStorage.getItem("user_data") !== null) {
-                sessionStorage.setItem("user_data", user_data);
-              }
+              sessionStorage.setItem("user_data", user_data);
+              console.log(user_data);
+              console.log(sessionStorage.getItem("user_data"));
               window.location.href = "./index.html";
             } else {
               console.log("No such user!");
