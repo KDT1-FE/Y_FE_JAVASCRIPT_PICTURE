@@ -1,0 +1,78 @@
+.modal__background {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 98;
+}
+
+.employee-add__modal {
+  width: calc(50%);
+  height: calc(70%);
+  position: absolute;
+  left: calc(25%);
+  top: calc(10%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 99;
+}
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+  cursor: pointer;
+}
+.employee-add__modal > form {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.employee-add__modal > form > input,
+.add-data {
+  width: 35vw;
+  display: flex;
+  margin: 5px;
+  justify-content: space-between;
+}
+.employee-add__modal > form > input {
+  margin: 5vh auto 4vh auto;
+}
+.add-data > label {
+  margin-right: 10px;
+  font-weight: 600;
+}
+.add-data > input {
+  width: 50%;
+  height: 4vh;
+  margin-right: 3px;
+  font-size: 15px;
+}
+
+.employee-add__modal button {
+  width: 50%;
+  height: 10vh;
+  position: absolute;
+  left: calc(25%);
+  bottom: 3vh;
+  background-color: #28288c;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+.employee-add__modal button:hover {
+  background-color: #6e6ed7;
+}

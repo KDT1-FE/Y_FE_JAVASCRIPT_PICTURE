@@ -1,0 +1,57 @@
+.employee-table__warpper {
+  width: 90vw;
+  margin: 30px auto;
+}
+.employee-add__modal > h1,
+.employee-table__warpper > h1 {
+  margin: 0.8em;
+}
+.employee-table {
+  width: 100%;
+}
+
+.employee-table tbody > tr {
+  position: sticky;
+  top: 50px;
+  height: 5vh;
+  font-weight: 600;
+  margin-top: 3px;
+  border-top: 1px solid #4b4848;
+  border-bottom: 1px solid #4b4848;
+}
+
+.employee-table > tr {
+  width: 100vw;
+  text-align: center;
+}
+
+.employee-table > tr > input[type="checkbox"] {
+  margin-top: 20px;
+}
+
+.employee-table th,
+.employee-table td {
+  vertical-align: middle;
+}
+
+.employee-table > tr:hover {
+  font-weight: 600;
+  color: black;
+  background-color: #ececec;
+}
+.employee__img {
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid #4b4848;
+  border-radius: 50%;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.8s;
+}
+.employee__img:hover {
+  transform: scale(1.1);
+  transition: transform 0.8s;
+}

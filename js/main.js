@@ -1,5 +1,6 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
+const header = document.querySelector(".header");
 const employeeTable = document.querySelector(".employee-table");
 const employeeAddBtn = document.querySelector(".employee-add__button");
 const employeeDeleteBtn = document.querySelector(".employee-delete__button");
@@ -28,7 +29,7 @@ function readEmployee() {
     .get()
     .then((result) => {
       result.forEach((doc) => {
-        // element 생성하고 data innerHTML로 작성
+        // element 생성
         const tr = document.createElement("tr");
         const inputTd = document.createElement("td");
         const checkbox = document.createElement("input");
@@ -40,12 +41,12 @@ function readEmployee() {
         const imgTd = document.createElement("td");
         const img = document.createElement("img");
         img.src = doc.data().이미지;
-        img.style.width = "100px";
-        img.style.height = "100px";
+        img.className = "employee__img";
         imgTd.append(img);
 
         const name = document.createElement("td");
         name.innerHTML = doc.data().이름;
+        name.className = "employee__name";
         const tel = document.createElement("td");
         tel.innerHTML = doc.data().전화번호;
         const email = document.createElement("td");
@@ -102,6 +103,7 @@ function createEmployee() {
           db.collection("직원")
             .add(employee)
             .then((result) => {
+              console.log(result);
               alert("직원 등록이 완료되었습니다.");
               window.location.href = "./index.html";
             })

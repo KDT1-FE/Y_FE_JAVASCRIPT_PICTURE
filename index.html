@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/table.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -12,38 +14,48 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
     />
     <title>직원관리</title>
   </head>
   <body>
     <!-- 헤더 -->
-    <header>
-      <h1>직원관리</h1>
 
-      <!-- <div class="select">
+    <!-- <div class="select">
         <select name="" id="">
           <option value="관리자">관리자님</option>
         </select>
       </div> -->
 
-      <!-- 직원 관리 -->
-      <div class="manage">
-        <div class="employee-search__wrapper">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input
-            type="text"
-            class="employee-search__input"
-            placeholder="이름 또는 이메일로 검색하기"
-          />
-        </div>
-        <div class="button__wrapper">
-          <button type="button" class="employee-add__button">직원 등록</button>
-          <button type="button" class="employee-delete__button">
-            직원 삭제
-          </button>
-        </div>
+    <!-- 직원 관리 -->
+    <div class="header">
+      <div class="header__icon" onclick="location.href='index.html'">
+        <img
+          src="./image/free-icon-company-2761008.png"
+          alt="메인 아이콘"
+          class="main__icon"
+          loading="lazy"
+        />
+        <span>직원관리</span>
       </div>
-    </header>
+      <div class="employee-search__wrapper">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input
+          type="text"
+          class="employee-search__input"
+          placeholder="이름 또는 이메일로 검색하기"
+        />
+      </div>
+      <div class="button__wrapper">
+        <button type="button" class="employee-add__button">직원 등록</button>
+        <button type="button" class="employee-delete__button">직원 삭제</button>
+      </div>
+    </div>
 
     <!-- 직원 데이터 테이블 -->
     <section class="employee-table__warpper">
@@ -56,7 +68,7 @@
           <th>프로필사진</th>
           <th>이름</th>
           <th>이메일</th>
-          <th>휴대폰 번호</th>
+          <th>휴대폰번호</th>
           <th>입사날짜</th>
         </tr>
       </table>
@@ -106,7 +118,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script src="./js/firebaseConfig.js"></script>
+    <script type="module" src="./js/firebaseConfig.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>
