@@ -1,6 +1,3 @@
-// script.js
-
-// ...Firebase 초기화 코드 등...
 
 const registerDogButton = document.getElementById("registerDogButton");
 const modalContainer = document.getElementById("addDogDialog");
@@ -62,54 +59,6 @@ dogImageInput.addEventListener("change", (event) => {
 imagePreviewLabel.addEventListener("click", () => {
   dogImageInput.click();
 });
-
-// dialogRegisterDogButton.addEventListener("click", () => {
-//   // 등록 처리하는 코드 추가
-  
-//   // 강아지 정보 생성
-//   const dogInfo = document.createElement("div");
-//   dogInfo.className = "dog-info";
-
-//   // 체크박스 생성
-//   const checkBox = document.createElement("input");
-//   checkBox.type = "checkbox";
-//   checkBox.classList.add("dog-checkbox");
-  
-//   // 체크박스를 dogInfo에 추가
-//   dogInfo.appendChild(checkBox);
-
-//   // 강아지 정보 내용 생성
-//   const dogImage = document.createElement("img");
-//   dogImage.src = imagePreview.src;
-//   dogImage.alt = "강아지 사진";
-//   dogImage.style.borderRadius = "50%"; // 동그라미 모양으로 표시
-
-//   const dogName = document.createElement("span");
-//   dogName.textContent = dogNameInput.value;
-
-//   const dogBreed = document.createElement("span");
-//   dogBreed.textContent = dogBreedInput.value;
-
-//   const dogBirthday = document.createElement("span");
-//   dogBirthday.textContent = dogBirthdayInput.value;
-
-//   const dogGender = document.createElement("span");
-//   dogGender.textContent = dogGenderInput.value;
-
-//   // 생성한 엘리먼트들을 강아지 정보 엘리먼트에 추가
-//   dogInfo.appendChild(dogImage);
-//   dogInfo.appendChild(dogName);
-//   dogInfo.appendChild(dogBreed);
-//   dogInfo.appendChild(dogBirthday);
-//   dogInfo.appendChild(dogGender);
-
-//   // 강아지 정보 엘리먼트를 dogInfoContainer에 추가
-//   const dogInfoContainer = document.getElementById("dogInfoContainer");
-//   dogInfoContainer.appendChild(dogInfo);
-
-//   // 다이얼로그 숨기기
-//   modalContainer.style.display = "none";
-// });
 
 
 dialogRegisterDogButton.addEventListener("click", () => {

@@ -27,7 +27,6 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-
         // Firebase 설정을 추가하세요
         const firebaseConfig = {
             apiKey: "AIzaSyDbIZHxlYJfqnLaXxXUpAUsPY_k6C3CvJY",
@@ -40,25 +39,39 @@
           };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-
+        const googleAuthProvider = new GoogleAuthProvider();
+        
         // 구글 로그인 팝업을 띄우는 함수
-        async function signInWithGooglePopup() {
-            const provider = new GoogleAuthProvider();
-            try {
-                await signInWithPopup(auth, provider);
-                console.log("구글 로그인 성공!");
-                // 로그인이 성공하면 index.html로 리디렉션
-                window.location.href = "index.html";
-            } catch (error) {
-                console.error("구글 로그인 실패:", error);
-            }
-        }
-        // 구글 로그인 버튼 클릭 시 구글 로그인 팝업 호출
-        const googleLoginButton = document.getElementById("google-login-button");
-        googleLoginButton.addEventListener("click", () => {
-            signInWithGooglePopup();
+async function signInWithGooglePopup() {
+    const provider = new GoogleAuthProvider();
+    try {
+        const result = await signInWithPopup(auth, provider);
+        console.log("구글 로그인 성공!", result);
+        
+        // 사용자 정보 가져오기
+        const user = result.user;
+        
+        // providerData에 접근하여 사용자 정보 출력
+        user.providerData.forEach((profile) => {
+            console.log("Sign-in provider: " + profile.providerId);
+            console.log("  Provider-specific UID: " + profile.uid);
+            console.log("  Name: " + profile.displayName);
+            console.log("  Email: " + profile.email);
+            console.log("  Photo URL: " + profile.photoURL);
         });
-    </script>
-    
+        
+        // 로그인이 성공하면 index.html로 리디렉션
+        // window.location.href = "index.html";
+    } catch (error) {
+        console.error("구글 로그인 실패:", error);
+    }
+}
+
+    // 구글 로그인 버튼 클릭 시 구글 로그인 팝업 호출
+    const googleLoginButton = document.getElementById("google-login-button");
+    googleLoginButton.addEventListener("click", () => {
+        signInWithGooglePopup();
+    });
+    </script>   
 </body>
 </html>

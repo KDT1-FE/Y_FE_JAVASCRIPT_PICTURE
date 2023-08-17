@@ -1,3 +1,12 @@
+.main-header-text-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-header-text2 {
+    margin-top: 50px;
+}
+
 .main-middle {
     padding-left: 150px;
     padding-right: 150px;
@@ -11,8 +20,8 @@
     width: 30px;
     height: 30px;
     margin-left: 15px;
-    
 }
+
 .middle-text-container {
     display: flex;
     width: 100%;
