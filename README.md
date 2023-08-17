@@ -22,7 +22,9 @@ https://y-fe-javascript-picture.vercel.app
 - 프로필 사진 클릭 시 상세 정보 보기
 - 모바일/PC 반응형
 
-##
+## 유저 플로우
+<img width="1109" alt="스크린샷 2023-08-17 오후 12 45 39" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/123650056/c1e6bb60-77e0-4665-a7a1-c5d6089fc140">
+
 
 ## [필수 요구사항]
 
