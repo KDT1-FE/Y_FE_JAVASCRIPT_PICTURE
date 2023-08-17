@@ -6,4 +6,60 @@
     width: 100px;
     height: 100px;
     right: 2rem;
+    top: 1rem;
 }
+
+@media (max-width: 768px) {
+    :root {
+     font-size: 10px;
+    }
+
+    .employees {
+        padding: 10rem 0;
+       
+    }
+
+    .employees__add {
+        width: 95%;
+        
+    }
+
+    .content__label {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        padding: 1rem 0 1rem 1rem;
+        
+    }
+
+    .content__label > label {
+        font-size: 1.6rem;
+    
+    }
+
+    .content__input {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem;
+
+        
+    }
+
+    .content__input > input {
+        font-size: 1.6rem;
+        width: 150px;
+    }
+
+    .search__total {
+        padding-top: 2rem;
+        padding-left: 2rem;
+    }
+
+    #imagePreview {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        right: 1rem;
+    
+    }
+  }
