@@ -39,6 +39,10 @@
         /><br />
         <button type="submit" class="return-button">돌아가기</button>
         <button type="submit" class="create-button">캐릭터 등록</button>
+        <div class="loading" style="display: none">
+          <div class="spinner"></div>
+          로딩 중...
+        </div>
       </div>
       <hr />
     </div>
@@ -47,18 +51,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyDYAsOP-H0K5dsd9TPEs2yoCl93VLIjq7s",
-        authDomain: "member-65170.firebaseapp.com",
-        projectId: "member-65170",
-        storageBucket: "member-65170.appspot.com",
-        messagingSenderId: "395536268148",
-        appId: "1:395536268148:web:f7f0c315826abb00ed0a21",
-      };
-
-      firebase.initializeApp(firebaseConfig);
-    </script>
+    <script src="../js/firebaseInit.js"></script>
     <script src="../js/create.js"></script>
   </body>
 </html>

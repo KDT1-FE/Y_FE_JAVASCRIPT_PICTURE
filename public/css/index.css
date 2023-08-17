@@ -1,0 +1,36 @@
+* {
+  background-color: #fff9f2;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-image {
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 10px 0 10px 0;
+}
+
+.main-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 100%;
+  margin: 10% 0%;
+  transform: translate(-50%, -50%);
+  animation: slide 2s ease-out;
+  text-align: center;
+  align-items: center;
+}
+
+@keyframes slide {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+  to {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}

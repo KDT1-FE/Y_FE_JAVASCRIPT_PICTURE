@@ -23,6 +23,8 @@ createButton.addEventListener("click", () => {
     return;
   }
 
+  document.querySelector(".loading").style.display = "block";
+
   imgPath
     .put(file)
     .then((snapshot) => {
@@ -45,6 +47,9 @@ createButton.addEventListener("click", () => {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      document.querySelector(".loading").style.display = "none";
     });
 });
 
