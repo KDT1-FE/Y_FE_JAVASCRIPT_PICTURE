@@ -122,10 +122,7 @@ function getUserInfoData() {
                   }
                   </div>
                   <div class="section__user_button_container">
-                    <button class="section__user_edit_btn" type="submit">
-                      수정
-                    </button>
-                    <button class="section__user_cancel_btn">취소</button>
+                    <button class="section__user_cancel_btn">확인</button>
                   </div>
                 </form>
                   `;
