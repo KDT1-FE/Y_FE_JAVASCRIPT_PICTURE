@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="/index.748ad148.css">
   </head>
   <body>
@@ -18,11 +19,15 @@
     <div class="element-box profile">
       <h5 class="form-header">임직원 상세</h5>
       <form id="form">
-        <div class="form-group">
+        <div class="img-wrap file-box form-group">
           <img id="profile-img" class="profile-img" alt="Profile Image">
+          <input id="image-upload" type="file" class="">
+          <label for="image-upload" class="settings">
+            <div class="btn">파일수정</div>
+            <!-- <span class="material-symbols-outlined">settings</span> -->
+          </label> 
         </div>
-        <input id="image-upload" type="file" class="file-box">
-        <div class="flex">
+        <div class="">
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" class="form-control">
@@ -36,8 +41,10 @@
             <input type="tel" id="phone" name="phone" class="form-control">
           </div>
         </div>
-        <button id="save-btn" type="submit" class="btn">저장</button>
-        <button id="delete-btn" type="submit" class="btn btn-danger">직원 삭제</button>
+        <div class="btn-wrap">
+          <button id="save-btn" type="submit" class="btn">저장</button>
+          <button id="delete-btn" type="submit" class="btn btn-danger">직원 삭제</button>  
+        </div>
       </form>
     </div>
 

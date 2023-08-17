@@ -69,3 +69,8 @@ body {
   width: 150px;
   border-radius: 50%;
 }
+
+.img-wrap {
+  width: 100%;
+  position: relative;
+}
