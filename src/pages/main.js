@@ -25,9 +25,13 @@ async function Main() {
 
   const utilsTitle = document.createElement("h1");
   utilsTitle.setAttribute("class", "utils-title");
-  utilsTitle.innerHTML = `대한민국 선수 DB`;
-
+  utilsTitle.innerHTML = `대한민국 선수 관리 DB`;
   utilsContainer.append(utilsTitle);
+
+  const utilsText = document.createElement("div");
+  utilsText.setAttribute("class", "utils-text");
+  utilsText.innerHTML = "대한민국 선수 관리 DB 입니다.";
+  utilsContainer.append(utilsText);
 
   contentContainer.append(utilsContainer);
 
