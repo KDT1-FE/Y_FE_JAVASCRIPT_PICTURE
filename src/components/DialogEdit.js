@@ -2,6 +2,8 @@ import { Component } from "../core/core";
 import { storage, getDownloadURL, uploadBytes , ref } from "../../firebase"
 import store from '../store/champion'
 import Loader from './Loader'
+import Cropper from "./Cropper";
+import cropperStore from'../store/cropper'
 
 export default class Dialog extends Component{
   constructor(props = {
@@ -66,15 +68,16 @@ export default class Dialog extends Component{
           </select>
           <div class="select_arrow"></div>
         </div>
+        
         <div class="form-basic"><div>썸네일이미지 </div><input class="form-thumbnail" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
-        <div class="form-basic"><div> 배경이미지 </div><input class="form-image" placeholder="썸네일 이미지" type="file" accept="image/*"></div>
+        <div class="cropper-thumb"></div>
+        <div class="form-basic"><div> 배경이미지 </div><input class="form-image" placeholder="배경 이미지" type="file" accept="image/*"></div>
+        <div class="cropper-image"></div>
+
         <button class="btn btn-edit-confirm"><span>수정</span></button>
       </form>
     </dialog>
     `
-
-
-    
 
     const modal = this.el.querySelector('dialog')
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
@@ -85,8 +88,22 @@ export default class Dialog extends Component{
     const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
     const obj = localStorageArray[idx]
     const formEl = this.el.querySelector('form')
-  
+    const cropperThumbEl = this.el.querySelector('.cropper-thumb')
+    const cropperImageEl = this.el.querySelector('.cropper-image')
+    const formThumbEl = this.el.querySelector('.form-thumbnail')
+    const formImageEl = this.el.querySelector('.form-image')
+    
     modal.append(new Loader().el)
+    cropperThumbEl.append(new Cropper({
+      aspectRatio : 2/3,
+      name: 'thumbnail',
+      src: obj.thumbnail
+    }).el)
+    cropperImageEl.append(new Cropper({
+      aspectRatio : 16/9,
+      name: 'image',
+      src: obj.image
+    }).el)
 
     this.el.querySelector('.btn-close').addEventListener('click',()=>{
       modal.close()
@@ -95,6 +112,16 @@ export default class Dialog extends Component{
 
     this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
       formEl.dispatchEvent(new Event('submit'))
+    })
+
+    formThumbEl.addEventListener('input',event=>{
+      cropperStore.state.thumbnailFile = event.target.files[0]
+      console.log('cropperStore.state.thumbFile', cropperStore.state.thumbFile )
+    })
+
+    formImageEl.addEventListener('input',event=>{
+      cropperStore.state.imageFile = event.target.files[0]
+      console.log('cropperStore.state.imageFile', cropperStore.state.imageFile )
     })
 
     formEl.addEventListener('submit',event=>{
@@ -110,7 +137,11 @@ export default class Dialog extends Component{
             localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
             console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
             modal.close() 
-            //store.state.loading = false
+            cropperStore.state.thumbnailBlob = ''
+            cropperStore.state.imageBlob = ''
+            cropperStore.state.thumbnailFile = ''
+            cropperStore.state.imageFile = ''
+            store.state.loading = false
             location.replace(`/#/champion?name=${obj.name}`)
           }
           )
@@ -141,19 +172,23 @@ export default class Dialog extends Component{
           const promises = []
           let imageChange = false
           let thumbChange = false
-          if(event.target.querySelector('.form-image').files.length){
-            promises.push(storeImageAndGetURL(event.target.querySelector('.form-image').files[0]))
-            imageChange = true
-            }
-          if(event.target.querySelector('.form-thumbnail').files.length){
-            promises.push(storeImageAndGetURL(event.target.querySelector('.form-thumbnail').files[0]))
+          if(cropperStore.state.thumbnailBlob){
+            let temp = storeImageAndGetURL(cropperStore.state.thumbnailBlob)
+            promises.push(temp)
+            console.log('thumbnailBlob',temp )
             thumbChange = true
+            }
+          if(cropperStore.state.imageBlob){
+            let temp = storeImageAndGetURL(cropperStore.state.imageBlob)
+            promises.push(temp)
+            console.log('imageBlob',temp )
+            imageChange = true
             }
 
           if(promises.length === 2){
             Promise.all(promises).then(values=>{
-              obj.image = values[0]
-              obj.thumbnail = values[1]
+              obj.image = values[1]
+              obj.thumbnail = values[0]
               resolve()
             }).catch(error=>{
               console.log('StoreImageAndGetURL :',error)
@@ -194,16 +229,13 @@ export default class Dialog extends Component{
             })
         }
     })
+  
 
-    function storeImageAndGetURL(file){
+    // blob을 받아, 링크를 리턴
+    function storeImageAndGetURL(blob){
       return new Promise((resolve,reject)=>{
-        console.log('URL가져오기')
-        if (!file) reject('storeImageAndGetURL : file doesnt exist!')
-        // 이미지 파일을 Blob으로 변환
-        const blob = new Blob([file], { type: file.type });
-        console.log(file)
         const filename = Date.now();
-        const imageRef = ref(storage, `newImage/${filename}.${file.type.split('/')[1]}`)
+        const imageRef = ref(storage, `newImage/${filename}.${blob.type.split('/')[1]}`)
       
         uploadBytes(imageRef, blob).then(snapshot => {
           console.log('Image uploaded:', snapshot.metadata.fullPath);
@@ -218,9 +250,7 @@ export default class Dialog extends Component{
         });  
         console.log('URL 가져오기 종료')
       }
-
       )
-      
     }
   }
 }

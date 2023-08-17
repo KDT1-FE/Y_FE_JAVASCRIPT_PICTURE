@@ -32,7 +32,6 @@ export const searchChampions = (page = 1) =>{
 
 // localStorage에 있는 배열에서 특정 단어가 들어 있는 경우만 filter하여 state.storage를 변경하고 searchChampion 함수 호출
 export const searchChampionsbyName = () => {
-  store.state.loading = true
   store.state.page = 1
   
   const reg = new RegExp(store.state.searchText)
