@@ -334,3 +334,77 @@ iframe {
     width: 100%; 
     height: 100%; 
 }
+
+/* 모바일 */
+@media all and (max-width:479px) {
+    nav {
+        display: none;
+    }
+
+    .contents-wrap {
+        width: 100%;
+        padding: 0 0.5rem;  
+    }
+
+    /* main */
+    .contents-header {
+        flex-direction: column;
+        width: 100%;
+        height: 5.5rem;
+        padding: 0.1rem 0;
+    }
+
+    .search-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .search-input {
+        width: 20rem;
+        height: 2.2rem;
+    }
+
+    .button-wrap {
+        justify-content: flex-end;
+    }
+
+    .profile-image {
+        width: 108px;
+        height: 144px;
+    }
+
+    .head-tr {
+        font-size: 1rem;
+        word-break: keep-all;
+    }
+
+    .body-tr {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+
+    .td-checkbox {
+        width: 8%;
+    }
+
+
+
+
+
+
+    /* detail */
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+    }    
+
+    .information-container {
+        display: flex;
+        flex-direction: column;
+        width: 22rem;
+    }
+}

@@ -147,3 +147,10 @@ label {
     border-radius: 5px;
     padding: 0.4rem 0.7rem;
 }
+
+
+@media all and (max-width:479px) {
+    .modal{
+        width: 20rem;
+    }
+}
