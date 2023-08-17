@@ -1,15 +1,42 @@
+#home {
+  position: relative;
+}
+
+.title {
+  padding: 3rem;
+}
+
 .control-container {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
   margin: 1rem;
+  font-size: large;
+  font-weight: 500;
+}
+
+#modal {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  visibility: hidden;
 }
 
 .enroll-form {
-  width: 100%;
-  height: 45%;
-  display: none;
+  display: flex;
+  width: 50%;
+  min-width: 400px;
+  height: 40%;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 20%;
 }
 
 .enroll-form__container {
@@ -26,7 +53,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: 45%;
   height: 100%;
   margin: 0 0.5rem;
   border: 1px dashed gray;
@@ -61,7 +88,12 @@
   margin: 0 0.5rem;
 }
 
-@media (max-width: 800px) {
+.enroll-form__inputBox > button {
+  font-size: large;
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
   .enroll-form {
     height: auto;
   }
@@ -70,8 +102,9 @@
     height: auto;
   }
   .enroll-form__photoBox {
-    width: 70%;
+    width: 75%;
     height: 100%;
+    margin-bottom: 2rem;
   }
   .enroll-form__inputBox {
     width: 70%;
@@ -97,24 +130,40 @@
 .member-info__header {
   display: table-row;
   width: 100%;
+  font-size: large;
+  font-weight: 500;
 }
 
 .member-info__header > div {
   display: table-cell;
-  padding: 0.5rem;
-  border: 1px solid gray;
+  padding: 1em;
+  border-right: 1px solid gray;
+}
+
+.member-info__header :nth-last-child(1) {
+  border: none;
 }
 
 .member-info__main {
   display: table-row;
   width: 100%;
   position: relative;
+  font-size: larger;
+}
+
+.member-info__main:hover {
+  opacity: 0.7;
+  background-color: gainsboro;
+  font-weight: 800;
+  font-size: x-large;
+  transition: all 0.5s;
 }
 
 .member-info__main > div {
   display: table-cell;
-  padding: 0.5rem;
+  padding: 1rem;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .member-info__img {
@@ -133,14 +182,37 @@
   width: 10%;
 }
 
+.member-info__photo {
+  width: auto;
+  height: 200px;
+  border-radius: 0.3rem;
+}
+.member-info__photo:hover {
+  border-radius: 1rem;
+  transition: all 0.5s;
+}
+
 @media (max-width: 800px) {
+  .member-info__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+  }
   .member-info__header {
     display: none;
   }
   .member-info__main > div {
     display: block;
-    width: 100%;
+    width: 80%;
+    min-width: 400px;
     height: auto;
-    padding: 0;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 0.3rem;
+  }
+  .member-info__photo {
+    object-fit: cover;
   }
 }
