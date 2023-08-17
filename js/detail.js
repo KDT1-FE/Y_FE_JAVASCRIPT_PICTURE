@@ -91,6 +91,7 @@ modifyBtn.addEventListener("click", () => {
 document.querySelector(".cancel-btn").addEventListener("click", (e) => {
   e.preventDefault();
   toggleModifyBtn();
+  imgRemoveBtn.classList.add("hidden");
 });
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
