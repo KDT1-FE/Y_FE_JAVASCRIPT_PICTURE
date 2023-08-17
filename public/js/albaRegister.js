@@ -8,12 +8,32 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 
 $('#sendButton').click(function () {
-  // 이미지 업로드 기능
+  const imagePreview = document.getElementById('imagePreview');
+  const imageUrl = imagePreview.getAttribute('src');
+  // 이미지파일 유효성 검사
+  if (imageUrl === '../assets/pictures/no-image.png') {
+    alert('이미지를 선택해주세요.');
+    return;
+  }
+
+  // 인적사항 Form 유효성 검사
+  if (
+    $('#name').val() === '' ||
+    $('#phone').val() === '' ||
+    $('#position').val() === '' ||
+    $('#workingHours').val() === ''
+  ) {
+    alert('빈 값이 있습니다. 다시 확인해주세요!');
+    return;
+  }
+
+  // 이미지 파일 선택
   var file = document.querySelector('#photoInput').files[0];
   var storageRef = storage.ref();
-  var 저장할경로 = storageRef.child('image/' + file.name);
+  var 저장할경로 = storageRef.child('image/' + file.name + $('#name'));
   var 업로드작업 = 저장할경로.put(file);
 
+  // 이미지 업로드 기능
   업로드작업.on(
     'state_changed',
     // 변화시 동작하는 함수
@@ -37,12 +57,6 @@ $('#sendButton').click(function () {
           이미지: url,
         };
 
-        // 유효성 검사 코드
-        if (albaInfo.이름 === '' || albaInfo.연락처 === '' || albaInfo.직급 === '' || albaInfo.근무시간 === '') {
-          alert('빈 값이 있습니다.');
-          return;
-        }
-
         db.collection('albainfo')
           .add(albaInfo)
           .then((result) => {
@@ -61,8 +75,8 @@ $('#sendButton').click(function () {
 // ------------------------------------------------------------------------
 
 // '이전으로' 버튼 기능
-const backButton = document.querySelector(".back-button");
-backButton.addEventListener("click", () => {
+const backButton = document.querySelector('.back-button');
+backButton.addEventListener('click', () => {
   window.history.go(-1);
 });
 
