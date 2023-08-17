@@ -10,6 +10,7 @@ const nameInput = document.getElementById('nameInput');
 const groupInput = document.getElementById('groupInput');
 const insertmodal = document.getElementById('modalinsert');
 const allcheckbox = document.getElementById('allcheckbox');
+const list = document.getElementById('list');
 
 let profiles=[];
 
@@ -24,11 +25,114 @@ const firebaseConfig = {
   appId: "1:946409350884:web:050748a6262fce560faef1",
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 insertmodal.addEventListener('click', uploadInfo);
+
+const imagesCollection = collection(db, 'images');
+
+// div -> checkbox / div -> image() / div(name) / div(group)
+function createProfileElement(item) {
+
+  const itemEl = document.createElement('div');
+  itemEl.classList.add('item');
+
+  const outcheckboxEl = document.createElement('div');
+  outcheckboxEl.classList.add('checkbox');
+
+  const checkboxEl = document.createElement('input');
+  checkboxEl.type = 'checkbox';
+  checkboxEl.classList.add('che');
+  checkboxEl.checked = item.complete;
+
+  outcheckboxEl.append(checkboxEl);
+
+  const imageEl = document.createElement('div');
+  imageEl.classList.add('image');
+
+  const innerimage = document.createElement('img');
+  imageEl.append(innerimage);
+
+  const nameEl = document.createElement('div');
+  nameEl.classList.add('name');
+
+  const groupEl = document.createElement('div');
+  groupEl.classList.add('group');
+
+
+  if (item.complete) {
+      itemEl.classList.add('complete');
+  }
+
+
+  //Events
+  checkboxEl.addEventListener('change',()=>{
+      item.complete = checkboxEl.checked
+      if(item.complete){
+          itemEl.classList.add('complete')
+      }else{
+          itemEl.classList.remove('complete')
+      }
+  })
+
+
+  
+  innerimage.src = item.image;
+  nameEl.innerHTML = item.name;
+  groupEl.innerHTML = item.group;
+
+  outcheckboxEl.append(checkboxEl);
+  imageEl.append(innerimage);
+  itemEl.append(outcheckboxEl);
+  itemEl.append(imageEl);
+  itemEl.append(nameEl);
+  itemEl.append(groupEl);
+
+  return { itemEl, checkboxEl, innerimage, nameEl, groupEl };
+}
+
+async function loadFirebaseData() {
+  profiles = [];
+  try {
+    const querySnapshot = await getDocs(imagesCollection);
+    querySnapshot.forEach((docs) => {
+      const data = docs.data();
+      const item = {
+        id: data.id,
+        image: data.imageUrl,
+        name: data.name,
+        group: data.group,
+        complete: false
+      };
+
+      // Check if an item with the same image URL already exists in profiles
+      const existingItem = profiles.find(existing => existing.image === item.image);
+
+      if (!existingItem) {
+        profiles.push(item);
+      }
+    });
+
+    // Clear existing items in the list
+
+    // Create HTML elements for each profile item and append them to the list
+    profiles.forEach((item) => {
+      const { itemEl } = createProfileElement(item);
+      list.append(itemEl);
+    });
+
+  } catch (error) {
+    console.error('Error loading Firebase data:', error);
+    // 오류 처리
+  }
+}
+
+loadFirebaseData();
+
+
 
 async function uploadInfo() {
   const image = imageInput.files[0];
@@ -89,7 +193,6 @@ async function uploadInfo() {
   }
 }
 
-const list = document.getElementById('list');
 
 function newprofiles(id, downloadURL, name, group) {
   const item = {
@@ -100,112 +203,13 @@ function newprofiles(id, downloadURL, name, group) {
     complete: false
   };
 
-  profiles.unshift(item); // 새로운 프로필 아이템을 배열에 추가합니다
+  profiles.push(item); // 새로운 프로필 아이템을 배열에 추가합니다
 
   console.log(profiles);
   const { itemEl } = createProfileElement(item);
 
-  list.prepend(itemEl);
-  saveToLocalStorage();
+  list.append(itemEl);
 }
-
-// div -> checkbox / div -> image() / div(name) / div(group)
-function createProfileElement(item) {
-
-  const itemEl = document.createElement('div');
-  itemEl.classList.add('item');
-
-  const outcheckboxEl = document.createElement('div');
-  outcheckboxEl.classList.add('checkbox');
-
-  const checkboxEl = document.createElement('input');
-  checkboxEl.type = 'checkbox';
-  checkboxEl.classList.add('che');
-  checkboxEl.checked = item.complete;
-
-  outcheckboxEl.append(checkboxEl);
-
-  const imageEl = document.createElement('div');
-  imageEl.classList.add('image');
-
-  const innerimage = document.createElement('img');
-  imageEl.append(innerimage);
-
-  const nameEl = document.createElement('div');
-  nameEl.classList.add('name');
-
-  const groupEl = document.createElement('div');
-  groupEl.classList.add('group');
-
-
-  if (item.complete) {
-      itemEl.classList.add('complete');
-  }
-
-
-  //Events
-  checkboxEl.addEventListener('change',()=>{
-      item.complete = checkboxEl.checked
-      if(item.complete){
-          itemEl.classList.add('complete')
-      }else{
-          itemEl.classList.remove('complete')
-      }
-      saveToLocalStorage();
-  })
-
-
-  
-  innerimage.src = item.image;
-  nameEl.innerHTML = item.name;
-  groupEl.innerHTML = item.group;
-  // deletebutton.addEventListener('click',()=>{
-  //     profiles=profiles.filter(t => t.id !== item.id)
-  //     itemEl.remove()
-  // })
-
-  outcheckboxEl.append(checkboxEl);
-  imageEl.append(innerimage);
-  itemEl.append(outcheckboxEl);
-  itemEl.append(imageEl);
-  itemEl.append(nameEl);
-  itemEl.append(groupEl);
-
-  return { itemEl, checkboxEl, innerimage, nameEl, groupEl };
-}
-
-function displayprofile(){
-  loadFromLocalStorage()
-  for(let i=0;i<profiles.length;i++){
-    const item = profiles[i]
-
-    const existingItem = document.querySelector(`[data-id="${item.id}"]`);
-    
-    // 만약 화면에 해당 프로필이 없다면 새로 추가
-    if (!existingItem) {
-      const { itemEl } = createProfileElement(item);
-      list.append(itemEl);
-  }
-} 
-}
-
-function saveToLocalStorage(){
-  const data = JSON.stringify(profiles)
-  localStorage.setItem('profile', data)
-}
-
-function loadFromLocalStorage(){
-  const data = localStorage.getItem('profile')
-
-  if(data){
-      profiles = JSON.parse(data)
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadFromLocalStorage();
-  displayprofile();
-});
 
 allcheckbox.addEventListener('click', () => {
   const isChecked = allcheckbox.checked;
@@ -260,7 +264,6 @@ export async function deleteBoard() {
         }
       });
 
-      saveToLocalStorage();
     }
   });
 }

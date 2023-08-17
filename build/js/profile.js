@@ -75,12 +75,39 @@ const queryimage = getQueryParam('image');
 const queryname = getQueryParam('name');
 const querygroup = getQueryParam('group');
 
-async function updateItemFields(matchingid, newGroup, newName, newImageUrl) {
-  const localstorageData = localStorage.getItem('profile');
-  const profiledata = JSON.parse(localstorageData);
-  const localstorageid = profiledata.map(profile => profile.id);
+let profiles = [];
 
-  if (localstorageid.includes(matchingid)) {
+async function loadFirebaseData() {
+  profiles = [];
+  const imagesCollection = collection(db, 'images');
+  try {
+    const querySnapshot = await getDocs(imagesCollection);
+    querySnapshot.forEach((docs) => {
+      const data = docs.data();
+      const item = {
+        id: data.id,
+        image: data.imageUrl,
+        name: data.name,
+        group: data.group,
+        complete: false
+      };
+      profiles.push(item);
+    });
+
+  } catch (error) {
+    console.error('Error loading Firebase data:', error);
+    // 오류 처리
+  }
+}
+
+// 호출하여 Firebase 데이터를 로드합니다.
+loadFirebaseData();
+
+
+async function updateItemFields(matchingid, newGroup, newName, newImageUrl) {
+  const idValues = profiles.map(item => item.id);
+
+  if (idValues.includes(matchingid)) {
     const querySnapshot = await getDocs(collection(db, 'images'));
     querySnapshot.forEach(async (docs) => {
       const docData = docs.data();
@@ -117,19 +144,20 @@ async function deleteMatchingImageFromFirestorage(matchingImage) {
   }
 }
 
+// console.log(profiles)
 
 async function changeInfo() {
   const image = imageInput.files[0];
   const name = nameInput.value;
   const group = groupInput.value;
+  const idValues = profiles.map(item => item.id);
   if(image && name && group){
     const storage = getStorage();
     const storageRef = ref(storage, 'images');
     const listitems = await listAll(storageRef);
-    const localstorageData = localStorage.getItem('profile');
-    const profiledata = JSON.parse(localstorageData);
-    const localstorageid = profiledata.map(profile => profile.id);
+    console.log(listitems);
     const numericId = parseInt(queryid, 10);
+    // 리스트 내 중복 사진은 수정 불가
     for(const item of listitems.items){
       const fileName = item.name;
       if(fileName == image.name){
@@ -142,8 +170,8 @@ async function changeInfo() {
       }
     }
     // Firestorage
-      if (localstorageid.includes(numericId)) {
-        const matchingProfile = profiledata.find(profile => profile.id === numericId);
+      if (idValues.includes(numericId)) {
+        const matchingProfile = profiles.find(profile => profile.id === numericId);
     
         if (matchingProfile) {
           const storage = getStorage();
@@ -158,12 +186,6 @@ async function changeInfo() {
           const uploadTask = uploadBytes(newStorageRef, image);
           await uploadTask;
           const newDownloadURL = await getDownloadURL(newStorageRef);
-    
-          // 로컬 스토리지 데이터 업데이트
-          matchingProfile.image = newDownloadURL;
-          matchingProfile.name = nameInput.value;
-          matchingProfile.group = groupInput.value;
-          localStorage.setItem('profile', JSON.stringify(profiledata));
     
           // Firestore 데이터 업데이트
           await updateItemFields(matchingId, groupInput.value, nameInput.value, newDownloadURL);
