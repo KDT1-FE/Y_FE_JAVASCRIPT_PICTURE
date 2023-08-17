@@ -1,20 +1,20 @@
 /*detail 페이지*/
 .detail {
-  max-width: 66.25rem;
+  max-width: 63rem;
   margin: 3.75rem auto 0 auto;
 
   display: flex;
   justify-content: space-between;
 }
 .photo-detail {
-  width: 25rem;
-  height: 30rem;
+  width: 23rem;
+  height: 25rem;
 
   background-size: contain;
   background-repeat: no-repeat;
 }
 .information-container {
-  width: 39.375rem;
+  width: 39rem;
   padding-bottom: 0.125rem;
 }
 .information-title {
