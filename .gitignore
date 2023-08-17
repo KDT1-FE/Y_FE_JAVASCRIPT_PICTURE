@@ -1,9 +1,9 @@
+.parcel-cache
 dist
 node_modules
-.parcel-cache
+.env
 .firebaserc
 firebase.json
 firestore.indexes.json
 firestore.rules
 storage.rules
-.env

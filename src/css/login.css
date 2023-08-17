@@ -1,3 +1,49 @@
+@media all and (min-width: 1024px) and (max-width: 1279px) {
+  .container-img-box {
+    width: 50% !important;
+  }
+
+  .login-container {
+    width: 50% !important;
+  }
+
+  .login-box {
+    width: 70% !important;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 1023px) {
+  .container-img-box {
+    display: none;
+  }
+
+  .login-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .login-box {
+    width: 50% !important;
+  }
+}
+
+@media all and (max-width: 479px) {
+  .container-img-box {
+    display: none;
+  }
+
+  .login-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .login-box {
+    width: 80% !important;
+  }
+}
+
 .login-wrap {
   width: 100vw;
   height: 100vh;
