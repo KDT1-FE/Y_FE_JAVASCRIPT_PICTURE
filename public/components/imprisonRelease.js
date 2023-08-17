@@ -1,17 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-require('dotenv').config();
 
-// Firebase configuration
 const firebaseConfig = {
-    apiKey: API_KEY,
-    authDomain: AUTH_DOMAIN,
-    projectId: PROJECT_ID,
-    storageBucket: STORAGE_BUCKET,
-    messagingSenderId: MESSAGING_SENDER_ID,
-    appId: APP_ID
-};
+    apiKey: "AIzaSyBmLvUo54Jzhiin0qNBWwut9AG3z5n1zdE",
+    authDomain: "azkaban-bef73.firebaseapp.com",
+    projectId: "azkaban-bef73",
+    storageBucket: "azkaban-bef73.appspot.com",
+    messagingSenderId: "61881098784",
+    appId: "1:61881098784:web:97038c5ce63f0d2ab95245"
+  };
+
 
 // Initialize the Firebase app
 const app = initializeApp(firebaseConfig);
