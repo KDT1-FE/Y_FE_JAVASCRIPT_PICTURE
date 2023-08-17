@@ -13,10 +13,29 @@ async function Main() {
   const divApp = document.getElementById("app");
   divApp.innerHTML = "";
 
+  // contentContainer
+  const contentContainer = document.createElement("div");
+  contentContainer.setAttribute("class", "content-container");
+
+  divApp.append(contentContainer);
+
+  // utilsContainer [타이틀, 검색, 삭제 등]
+  const utilsContainer = document.createElement("div");
+  utilsContainer.setAttribute("class", "utils-container");
+
+  const utilsTitle = document.createElement("h1");
+  utilsTitle.setAttribute("class", "utils-title");
+  utilsTitle.innerHTML = `대한민국 선수 DB`;
+
+  utilsContainer.append(utilsTitle);
+
+  contentContainer.append(utilsContainer);
+
+  // listContainer [리스트]
   const listContainer = document.createElement("ul");
   listContainer.setAttribute("class", "list-container");
 
-  divApp.append(listContainer);
+  contentContainer.append(listContainer);
 
   // 데이터 받아와서 ul(list-container) > li(list-wrapper) > [ul > li]로 담아서 줌
   q.forEach(doc => {
