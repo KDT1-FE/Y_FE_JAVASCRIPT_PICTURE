@@ -32,7 +32,7 @@ export const changeAvatar = (coustomerId) => {
       deleteData(imgTextInput.value);
     }
     const file = imageInputEl.files[0];
-    const storageRef = ref(storage, "avatar/" + file.name);
+    const storageRef = ref(storage, "avatar/" + Math.random() + file.name);
     // storage에 사진 저장
     uploadBytes(storageRef, file).then(() => {
       // storage에 저장된 사진 url 가져오기
