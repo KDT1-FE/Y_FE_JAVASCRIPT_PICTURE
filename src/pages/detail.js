@@ -38,7 +38,7 @@ async function Detail() {
   document
     .querySelector("#detail-delete")
     .addEventListener("click", async () => {
-      const storageRef = ref(storage, "images/son.jpeg");
+      const storageRef = ref(storage, docSnap.data().image);
       await deleteObject(storageRef);
       await deleteDoc(docRef)
         .then(() => {

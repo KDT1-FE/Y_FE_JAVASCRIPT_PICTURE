@@ -2,21 +2,26 @@
     border-bottom: 1px solid black;
     background-color: #E6002D;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-left: 2rem;
-    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .navbar-title-wrapper{
     font-size: 1.5rem;
+    margin-right: 2rem;
+    color: #fff;
+}
+
+.navbar-title-anchor{
     color: #fff;
 }
 
 .navbar-anchor-wrapper{
     display: flex;
     justify-content: space-between;
-    width: 12rem;
+    width: 11rem;
     font-size: 1.2rem;
 }
 
