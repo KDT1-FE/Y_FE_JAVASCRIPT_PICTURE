@@ -183,12 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        
-
-
     });
 });
 
+const scrollToTopButton = document.querySelector('.scroll-button');
+
+scrollToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
 
 
