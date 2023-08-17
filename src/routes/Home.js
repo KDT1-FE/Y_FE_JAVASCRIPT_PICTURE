@@ -44,6 +44,7 @@ export default class Home extends Component {
         })
       ); // 멤버를 삭제하는 순서는 순차적으로 X
       // 하지만 Promise.all로 병렬처리 , 모두 끝난 후 routeRender 함수 실행
+      memberStore.state.deleteData = [];
       routeRender();
     };
 
