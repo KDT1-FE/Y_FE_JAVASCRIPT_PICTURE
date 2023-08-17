@@ -2,12 +2,16 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "./firebase";
+import { deleteData } from "./util";
 
 const imageInputEl = document.getElementById("profilePic");
 const registForm = document.querySelector(".regist-form");
 
 // 프로필 이미지가 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 imageInputEl.addEventListener("change", (event) => {
+  if (registForm.elements[1].value) {
+    deleteData(registForm.elements[1].value);
+  }
   const file = document.getElementById("profilePic").files[0];
   const storageRef = ref(storage, "avatar/" + file.name);
   uploadBytes(storageRef, file).then((snapshot) => {

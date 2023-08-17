@@ -1,11 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "./firebase";
+import { deleteData } from "./util";
 
 const url = new URL(window.location);
 const urlParams = url.searchParams;
@@ -45,6 +41,9 @@ const imgRemoveBtn = document.querySelector(".img-remove-btn");
 // 프로필 이미지가 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 const imageInputEl = document.getElementById("profilePic");
 imageInputEl.addEventListener("change", () => {
+  if (imgTextInput.value) {
+    deleteData(imgTextInput.value);
+  }
   const file = imageInputEl.files[0];
   const storageRef = ref(storage, "avatar/" + file.name);
   // storage에 사진 저장
@@ -98,11 +97,6 @@ document.querySelector(".cancel-btn").addEventListener("click", (e) => {
   toggleModifyBtn();
   imgRemoveBtn.classList.add("hidden");
 });
-
-export const deleteData = (photoUrl) => {
-  const desertRef = ref(storage, photoUrl);
-  deleteObject(desertRef);
-};
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
 imgRemoveBtn.addEventListener("click", (e) => {
