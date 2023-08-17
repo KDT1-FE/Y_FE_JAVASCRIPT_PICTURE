@@ -145,6 +145,16 @@ editBtn.addEventListener("click", async () => {
       });
 
       try {
+        //예전 사진 삭제
+        const currentDoc = await villagerDocRef.get();
+        const currentData = currentDoc.data();
+        const oldImageUrl = currentData.imageUrl;
+
+        if (oldImageUrl) {
+          const storageRef = storage.refFromURL(oldImageUrl);
+          await storageRef.delete();
+        }
+
         // Storage에 이미지 업로드
         const storageRef = storage.ref(`${villagerId}`);
         const imageRef = await storageRef.put(file);
