@@ -11,7 +11,7 @@ export default class Worker extends Component {
     this.el.innerHTML = /* html */ `
       <ul class="worker-box" id="worker">
           <li>
-            <div class="worker-img-box">
+            <div class="home-worker-img-box">
               <img src=${imgURL}/>
             </div>
           </li>
@@ -24,7 +24,7 @@ export default class Worker extends Component {
     `;
     const workerEl = this.el.querySelector("#worker");
     workerEl.addEventListener("click", () => {
-      location.replace(`/#/detail?name=${name}&number=${number}`);
+      location.href = `/#/detail?name=${name}&number=${number}`;
     });
   }
 }

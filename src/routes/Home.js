@@ -1,7 +1,7 @@
 import { Component } from "../core/core";
 import Header from "../components/common/Header";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import Worker from "../components/Home/Worker";
 export default class Home extends Component {
   constructor() {
@@ -29,7 +29,7 @@ export default class Home extends Component {
             <span class="material-symbols-outlined">
             search
             </span>
-            <input type="text" placeholder="이름 또는 이메일을 입력하세요"/>
+            <input type="text" id="search-worker" placeholder="직원의 이름을 입력하세요"/>
           </div>
         </div>
       </div>
@@ -47,12 +47,15 @@ export default class Home extends Component {
         <div class="worker-items"></div>
       </div>
     </div>
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
     `;
     this.el.appendChild(homeContainer);
 
     const registerButton = this.el.querySelector(".button-register");
     registerButton.addEventListener("click", () => {
-      location.replace("/#/registration");
+      location.href = "/#/registration";
     });
 
     const fetchWorkersData = async () => {
@@ -76,5 +79,39 @@ export default class Home extends Component {
     };
 
     fetchWorkersData();
+    const inputEl = this.el.querySelector("#search-worker");
+    inputEl.addEventListener("keyup", (event) => {
+      if (event.keyCode === 13) searchWorker();
+    });
+
+    async function searchWorker() {
+      const searchKeyword = inputEl.value.trim();
+      if (searchKeyword === "") return;
+
+      const workerItemsContainer = document.querySelector(".worker-items");
+      workerItemsContainer.innerHTML = "";
+
+      const q = query(
+        collection(db, "board"),
+        where("name", "==", searchKeyword)
+      );
+      const querySnapshot = await getDocs(q);
+
+      const searchedWorkers = [];
+      querySnapshot.forEach((doc) => {
+        searchedWorkers.push(doc.data());
+      });
+
+      workerItemsContainer.append(
+        ...searchedWorkers.map(
+          (worker) =>
+            new Worker({
+              props: {
+                ...worker,
+              },
+            }).el
+        )
+      );
+    }
   }
 }

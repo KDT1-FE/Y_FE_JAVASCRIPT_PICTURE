@@ -92,9 +92,22 @@ detail-wrap {
   font-size: 1.2rem;
 }
 
+.detail-item > input {
+  outline: none;
+  padding: 0.5rem 0.5rem;
+  width: 100%;
+  border: 1px solid #868e96;
+  border-radius: 7px;
+}
+
+#select-img {
+  border: none;
+}
 .detail-item > span {
   width: 30%;
   color: #868e96;
+  display: flex;
+  align-items: center;
 }
 
 .worker-detail-box-right {
@@ -107,4 +120,9 @@ detail-wrap {
   width: 20rem;
   height: 24rem;
   border-radius: 1rem;
+}
+
+.info-message {
+  font-size: 0.5rem;
+  color: #868e96;
 }

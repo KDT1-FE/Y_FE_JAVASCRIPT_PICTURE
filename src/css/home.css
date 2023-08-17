@@ -107,15 +107,15 @@
   cursor: pointer;
 }
 
-.worker-img-box > img {
+.home-worker-img-box > img {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
 }
 
-.worker-img-box {
+.home-worker-img-box {
   width: 100%;
   height: 10rem;
-  border-radius: 10px;
   cursor: pointer;
 }
 

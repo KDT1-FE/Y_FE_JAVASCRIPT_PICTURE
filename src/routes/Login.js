@@ -53,7 +53,7 @@ export default class Login extends Component {
         enteredId === adminData.id &&
         enteredPassword === adminData.password
       ) {
-        location.replace("/#/home");
+        location.href = "/#/home";
       } else {
         alert("아이디 또는 비밀번호가 일치하지 않습니다.");
       }

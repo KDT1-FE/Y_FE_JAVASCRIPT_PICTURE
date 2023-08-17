@@ -16,7 +16,7 @@ export default class Header extends Component {
 
     const headerLogoEl = this.el.querySelector(".header-item-box-logo");
     headerLogoEl.addEventListener("click", () => {
-      location.replace("/#/home");
+      location.href = "/#/home";
     });
   }
 }
