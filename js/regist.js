@@ -29,7 +29,7 @@ imageInputEl.addEventListener("change", (event) => {
 registForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   try {
-    const docRef = await addDoc(collection(db, "customers"), {
+    await addDoc(collection(db, "customers"), {
       avatar: registForm.elements[1].value,
       name: registForm.elements[2].value,
       email: registForm.elements[3].value,
