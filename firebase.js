@@ -44,6 +44,7 @@ function writeUserData(
 ) {
   const db = getDatabase();
   set(ref(db, "users/" + userId), {
+    userId: userId,
     username: name,
     phoneNumber: phone,
     startDate: start,
@@ -62,7 +63,12 @@ function readUserData() {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         const customerNum = document.getElementById("customer_number");
-        customerNum.value = snapshot.val().length;
+        if (customerNum) {
+          customerNum.value = snapshot.val().length;
+        }
+        if (window.location.pathname === "/index.html") {
+          displayUserData(snapshot.val());
+        }
       } else {
         console.log("nothing");
       }
@@ -70,6 +76,55 @@ function readUserData() {
     .catch((error) => {
       console.error(error);
     });
+}
+
+function displayUserData(arr) {
+  console.log(window.location.pathname);
+  const userBox = document.getElementsByClassName(
+    "section__customer--template"
+  )[0];
+  arr.forEach((element) => {
+    console.log(element);
+    const userInfoFrame = document.createElement("ul");
+    const userSelectBox = document.createElement("input");
+    const userIndex = document.createElement("li");
+    const userImage = document.createElement("img");
+    const userName = document.createElement("li");
+    const userphoneNumber = document.createElement("li");
+    const userDate = document.createElement("li");
+    const userPtCheck = document.createElement("li");
+    const userPtSession = document.createElement("li");
+    const userTrainer = document.createElement("li");
+    if (element.sessionNumber === "") {
+      userPtCheck.innerHTML = "X";
+    } else {
+      userPtCheck.innerHTML = "O";
+    }
+    userSelectBox.type = "checkbox";
+    userIndex.innerHTML = 0;
+    userImage.src = element.imagePath;
+    userImage.style.width = "5vw";
+    userName.innerHTML = element.username;
+    userphoneNumber.innerHTML = element.phoneNumber;
+    userDate.innerHTML = `${element.startDate} ~ ${element.endDate}`;
+    userPtSession.innerHTML =
+      element.sessionNumber !== "" ? element.sessionNumber : "-";
+    userTrainer.innerHTML =
+      element.trainerName !== "" ? element.trainerName : "-";
+
+    userInfoFrame.append(
+      userSelectBox,
+      userIndex,
+      userImage,
+      userName,
+      userphoneNumber,
+      userDate,
+      userPtCheck,
+      userPtSession,
+      userTrainer
+    );
+    userBox.append(userInfoFrame);
+  });
 }
 
 function uploadImageData(image, imageName) {

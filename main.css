@@ -161,9 +161,19 @@ body {
   flex-direction: column;
 }
 
-.section__customer--template > ul {
+/* .section__customer--template > ul {
   display: flex;
   list-style: none;
   justify-content: space-between;
   padding: 0 2rem;
+} */
+
+.section__customer--template>ul {
+  display: grid;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+  grid-template-columns: 0.1fr 0.1fr 0.2fr 0.2fr 0.15fr 0.1fr 0.1fr 0.1fr 0.1fr;
 }
