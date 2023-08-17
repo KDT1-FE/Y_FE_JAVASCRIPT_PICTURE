@@ -22,18 +22,107 @@ async function Edit() {
   var imageURL;
 
   const divApp = document.getElementById("app");
-  divApp.innerHTML = `
-  <div>
-    <input type="file" id="image" />
-    <img id="myimg" src="${docSnap.data().image}"/>
-    <input type="text" name="name" id="name" value=${docSnap.data().name} />
-    <input type="text" name="position" id="team" value=${docSnap.data().team} />
-    <input type="text" name="team" id="position" value=${
-      docSnap.data().position
-    } />
-    <button id="edit">수정완료</button>
-  </div>
-`;
+  divApp.innerHTML = "";
+
+  const editContainer = document.createElement("div");
+  editContainer.setAttribute("class", "edit-container");
+  divApp.append(editContainer);
+
+  const editTitleContainer = document.createElement("div");
+  editTitleContainer.setAttribute("class", "edit-title-container");
+  editContainer.append(editTitleContainer);
+
+  const editContentContainer = document.createElement("div");
+  editContentContainer.setAttribute("class", "edit-content-container");
+  editContainer.append(editContentContainer);
+
+  // edit 타이틀 및 텍스트 생성
+  const editTitleContainerTitle = document.createElement("h2");
+  editTitleContainerTitle.setAttribute("class", "edit-title__title");
+  editTitleContainerTitle.innerHTML = `대한민국 선수 관리 DB`;
+  editTitleContainer.append(editTitleContainerTitle);
+
+  const editTitleContainerText = document.createElement("p");
+  editTitleContainerText.setAttribute("class", "edit-title__p");
+  editTitleContainerText.innerHTML = `대한민국 선수 상세 페이지입니다.`;
+  editTitleContainer.append(editTitleContainerText);
+
+  // edit 페이지 - content
+  const editContentWrapper = document.createElement("div");
+  editContentWrapper.setAttribute("class", "edit-content-wrapper");
+  editContentContainer.append(editContentWrapper);
+
+  // edit 페이지 - content - title
+  const editContentTitleWrapper = document.createElement("div");
+  editContentTitleWrapper.setAttribute("class", "edit-content-title-wrapper");
+  editContentWrapper.append(editContentTitleWrapper);
+
+  const editTitle = document.createElement("h3");
+  editTitle.setAttribute("class", "edit-content-title_title");
+  editTitle.innerHTML = "선수 등록";
+  editContentTitleWrapper.append(editTitle);
+
+  const editBtnWrapper = document.createElement("div");
+  editBtnWrapper.setAttribute("class", "edit-content-btn-wrapper");
+  editContentTitleWrapper.append(editBtnWrapper);
+
+  const editEditBtn = document.createElement("a");
+  editEditBtn.setAttribute("id", "edit");
+  editEditBtn.href = `/edit/${path}`;
+  editEditBtn.innerHTML = `수정완료`;
+  editBtnWrapper.append(editEditBtn);
+
+  const editDeletBtn = document.createElement("button");
+  editDeletBtn.setAttribute("id", "detail-delete");
+  editDeletBtn.innerHTML = "삭제하기";
+  editBtnWrapper.append(editDeletBtn);
+
+  //edit 페이지 - content - input
+  const editContentInputwrapper = document.createElement("div");
+  editContentInputwrapper.setAttribute("class", "edit-content-input-wrapper");
+  editContentWrapper.append(editContentInputwrapper);
+
+  editContentInputwrapper.innerHTML = `
+      <div>
+      <span>이름</span>
+      <input type="text" name="name" id="name" value="${docSnap.data().name}"/>
+      </div>
+      <div>
+      <span>팀명</span>
+      <input type="text" name="team" id="team" value="${docSnap.data().team}"/>
+            </div>
+      <div>
+      <span>포지션</span>
+      <select name="position" id="position">
+        <option value="FW">FW</option>
+        <option value="MF">MF</option>
+        <option value="DF">DF</option>
+        <option value="GK">GK</option>
+      </select>
+      </div>
+      <div>
+      <span>사진</span>
+      <input type="file" id="image"/>
+  `;
+
+  // edit 페이지 - img
+  const editContentImageWrapper = document.createElement("div");
+  editContentImageWrapper.setAttribute("class", "edit-content-image-wrapper");
+  editContentContainer.append(editContentImageWrapper);
+
+  editContentImageWrapper.innerHTML = `
+  <img id = "edit-myimg"src="${docSnap.data().image}"/>
+  `;
+
+  // option selected 설정
+  const positionId = document.getElementById("position");
+
+  for (let i = 0; i < positionId.options.length; i++) {
+    console.log(positionId.options[i], docSnap.data().position);
+    if (positionId.options[i].value == docSnap.data().position) {
+      positionId.options[i].selected = true;
+    }
+  }
 
   // 프리뷰 구현
   document.querySelector("#image").addEventListener("change", async () => {
