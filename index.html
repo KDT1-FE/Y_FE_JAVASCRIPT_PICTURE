@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/header.css" />
-    <link rel="stylesheet" href="./styles/table.css" />
-    <link rel="stylesheet" href="./styles/modal.css" />
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/header.css" />
+    <link rel="stylesheet" href="./src/css/table.css" />
+    <link rel="stylesheet" href="./src/css/modal.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -36,7 +36,7 @@
     <div class="header">
       <div class="header__icon" onclick="location.href='index.html'">
         <img
-          src="./image/free-icon-company-2761008.png"
+          src="./src/image/free-icon-company-2761008.png"
           alt="메인 아이콘"
           class="main__icon"
           loading="lazy"
@@ -59,13 +59,13 @@
 
     <!-- 직원 데이터 테이블 -->
     <section class="employee-table__warpper">
-      <h1>직원테이블</h1>
+      <!-- <h1>직원테이블</h1> -->
       <table class="employee-table">
         <tr>
           <th>
             <input class="checkbox__all" type="checkbox" />
           </th>
-          <th>프로필사진</th>
+          <th>프로필</th>
           <th>이름</th>
           <th>이메일</th>
           <th>휴대폰번호</th>
@@ -118,7 +118,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script type="module" src="./js/firebaseConfig.js"></script>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./src/js/firebaseConfig.js"></script>
+    <script type="module" src="./src/js/firebaseData.js"></script>
+    <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

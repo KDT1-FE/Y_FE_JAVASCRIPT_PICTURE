@@ -11,8 +11,6 @@
 }
 
 .employee-table tbody > tr {
-  position: sticky;
-  top: 50px;
   height: 5vh;
   font-weight: 600;
   margin-top: 3px;
@@ -36,8 +34,6 @@
 
 .employee-table > tr:hover {
   font-weight: 600;
-  color: black;
-  background-color: #ececec;
 }
 .employee__img {
   margin: 10px;
