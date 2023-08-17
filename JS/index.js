@@ -6,7 +6,7 @@ const S3_BUCKET = 'y-fe-javascript-picture';
 async function initializeAWS() {
   if (!AWS.config.credentials) { // 이미 초기화하였다면 다시 초기화하지 않음
     try {
-      const data = await fetch('../env.json');
+      const data = await fetch('/env.json');
       const { ACCESS_KEY, SECRET_ACCESS_KEY } = await data.json();
 
       AWS.config.update({
@@ -308,7 +308,7 @@ function registerImageTdClickHandler() {
       const category = row.querySelector('td:nth-child(6)').textContent;
 
       // 프로필 페이지로 데이터 전달 및 이동
-      const profileUrl = `../HTML/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
+      const profileUrl = `/HTML/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
       window.location.href = profileUrl;
     });
   });
@@ -339,7 +339,7 @@ function onSelectAllCheckboxChange(event) {
 }
 
 // env.json 파일 로드
-fetch('../env.json')
+fetch('/env.json')
   .then(response => response.json())
   .then(data => {
     // 로드한 JSON 데이터를 envVars 객체에 저장
