@@ -40,6 +40,10 @@ $white: #fff;
     transform: scale(1.1);
   }
 }
+.loading {
+  display: none;
+  width: 100%;
+}
 .main__header {
   display: flex;
   width: 90%;
@@ -409,5 +413,46 @@ $white: #fff;
   /* 데스크탑용 스타일 지정 */
   .users-list-box {
     overflow: auto;
+  }
+}
+
+.loading span {
+  display: inline-block; /* span 내부요소들을 한줄로 세우기 */
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%; /* span을 동그랗게 */
+  animation: loading 1s 0s linear infinite;
+  /* 이벤트명  반복시간  딜레이시간  이벤트처리부드럽게  이벤트무한반복*/
+}
+
+.loading span:nth-child(1) {
+  /*loading의 자식 중 첫번째 span*/
+  /*nth-child : 형제 사이에서의 순서*/
+  animation-delay: 0s;
+  background-color: red;
+}
+
+.loading span:nth-child(2) {
+  animation-delay: 0.2s;
+  background-color: orange;
+}
+
+.loading span:nth-child(3) {
+  animation-delay: 0.4s;
+  background-color: yellowgreen;
+}
+@keyframes loading {
+  /*loading이라는 keyframe 애니메이션*/
+  0%,                      /* 0, 50, 100은 구간*/
+  100% {
+    opacity: 0; /* 안보였다가 */
+    transform: scale(
+      0.5
+    ); /*transform의 scale로 요소를 확대 또는 축소할 수 있음*/
+  }
+  50% {
+    opacity: 1; /* 보였다가 */
+    transform: scale(1.2); /* 1.2배 */
   }
 }
