@@ -84,6 +84,8 @@ export default class Dialog extends Component{
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
+    const nameEl = this.el.querySelector('.form-name')
+    const nicknameEl = this.el.querySelector('.form-nickname')
     const obj = this.props
     let isSubmit = false
     const formEl = this.el.querySelector('form')
@@ -123,35 +125,59 @@ export default class Dialog extends Component{
     
     formEl.addEventListener('submit',event=>{
       event.preventDefault()
-      if(!isSubmit){
-        isSubmit = true
-        store.state.loading = true
-        addInformation()
-        .then(()=>{
-          console.log('localStorage에 저장')
-          localStorageArray.push(obj)
-          localStorageArray.sort(
-            (a,b)=>{
-              if(a.name > b.name){
-                return 1
-              }else if(a.name<b.name){
-                return -1
-              }else return 0
-            }
-            )
-          localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
-          console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
-          store.state.loading = false
-          cropperStore.state.thumbnailBlob = ''
-          cropperStore.state.imageBlob = ''
-          cropperStore.state.thumbnailFile = ''
-          cropperStore.state.imageFile = ''
-          modal.close() 
-          location.replace(`/#/`)
+      if(chkValid()){
+        if(!isSubmit){
+          isSubmit = true
+          store.state.loading = true
+          addInformation()
+          .then(()=>{
+            console.log('localStorage에 저장')
+            localStorageArray.push(obj)
+            localStorageArray.sort(
+              (a,b)=>{
+                if(a.name > b.name){
+                  return 1
+                }else if(a.name<b.name){
+                  return -1
+                }else return 0
+              }
+              )
+            localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
+            console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
+            store.state.loading = false
+            cropperStore.state.thumbnailBlob = ''
+            cropperStore.state.imageBlob = ''
+            cropperStore.state.thumbnailFile = ''
+            cropperStore.state.imageFile = ''
+            modal.close() 
+            location.replace(`/#/`)
+          }
+          )
         }
-        )
       }
       
+
+      function chkValid(){
+        if(!nameEl.value){
+          alert('이름을 입력하세요!')
+          return false
+        }
+        if(!nicknameEl.value){
+          alert('별명을 입력하세요!')
+          return false
+        }
+        if(!cropperStore.state.thumbnailBlob){
+          alert("썸네일 확정을 눌러주세요")
+          return false
+        }
+        if(!cropperStore.state.imageBlob){
+          alert("이미지 확정을 눌러주세요")
+          return false
+        }
+        return true
+      }
+      
+
 
       function addInformation(){
         return new Promise((resolve,reject)=>{

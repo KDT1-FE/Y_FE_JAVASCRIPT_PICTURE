@@ -81,6 +81,8 @@ export default class Dialog extends Component{
 
     const modal = this.el.querySelector('dialog')
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
+    const nameEl = this.el.querySelector('.form-name')
+    const nicknameEl = this.el.querySelector('.form-nickname')
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
@@ -126,25 +128,47 @@ export default class Dialog extends Component{
 
     formEl.addEventListener('submit',event=>{
       event.preventDefault()
-      store.state.loading = true
-      if(!isSubmit){
-        isSubmit = true
-
-        changeInformation()
-          .then(()=>{
-            console.log('localStorage에 저장')
-            localStorageArray[idx] = obj
-            localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
-            console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
-            modal.close() 
-            cropperStore.state.thumbnailBlob = ''
-            cropperStore.state.imageBlob = ''
-            cropperStore.state.thumbnailFile = ''
-            cropperStore.state.imageFile = ''
-            store.state.loading = false
-            location.replace(`/#/champion?name=${obj.name}`)
-          }
-          )
+      if(chkValid()){
+        store.state.loading = true
+        if(!isSubmit){
+          isSubmit = true
+  
+          changeInformation()
+            .then(()=>{
+              console.log('localStorage에 저장')
+              localStorageArray[idx] = obj
+              localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
+              console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
+              modal.close() 
+              cropperStore.state.thumbnailBlob = ''
+              cropperStore.state.imageBlob = ''
+              cropperStore.state.thumbnailFile = ''
+              cropperStore.state.imageFile = ''
+              store.state.loading = false
+              location.replace(`/#/champion?name=${obj.name}`)
+            }
+            )
+        }
+      }
+      
+      function chkValid(){
+        if(!nameEl.value){
+          alert('이름을 입력하세요!')
+          return false
+        }
+        if(!nicknameEl.value){
+          alert('별명을 입력하세요!')
+          return false
+        }
+        if(!cropperStore.state.thumbnailBlob){
+          alert("썸네일 확정을 눌러주세요")
+          return false
+        }
+        if(!cropperStore.state.imageBlob){
+          alert("이미지 확정을 눌러주세요")
+          return false
+        }
+        return true
       }
       
 
@@ -152,12 +176,12 @@ export default class Dialog extends Component{
         return new Promise((resolve,reject)=>{
           console.log('changeInformation 시작')
 
-          if(obj.name !== event.target.querySelector('.form-name').value){
-            obj.name = event.target.querySelector('.form-name').value
+          if(obj.name !== nameEl.value){
+            obj.name = nameEl.value
             history.state.name = obj.name
           }
             
-          obj.nickname = event.target.querySelector('.form-nickname').value
+          obj.nickname = nicknameEl.value
 
           if(regionFormEl.value !== "국가 / 지역"){
             obj.region = regionFormEl.value

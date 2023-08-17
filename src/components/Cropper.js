@@ -18,7 +18,7 @@ export default class Cropper extends Component{
       <div class="cropper-inner-container">
         <img id="image${name}" >
       </div>
-      <button type="button" class="btn btn-crop"> 이미지 확정</button>
+      <button type="button" class="btn btn-crop"> ${name==='thumbnail'?'썸네일':'이미지'} 확정</button>
     `
     
     const image = this.el.querySelector(`#image${name}`)
