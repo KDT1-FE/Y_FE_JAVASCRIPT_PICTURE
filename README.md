@@ -59,6 +59,15 @@ https://animal-crossing-project.web.app/animal.html
 상단바의 주민 관리를 누르면 주민 관리 페이지로 이동할 수 있다. <br>
 미니 게임을 누르면 동숲 카드 뒤집기 게임 페이지로 이동할 수 있다.
 
+## 주민 등록하는 방법
+
+상단바의 게임모양 아이콘을 누르면 동숲 백과 사이트로 이동한다. <br>
+![게임 아이콘](image-1.png)
+<br>
+원하는 주민을 선택해서 정보를 등록하면 된다!<br>
+
+![모동숲 백과](image-2.png)
+
 ## 기술 스택
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
