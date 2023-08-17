@@ -1,0 +1,13 @@
+@mixin insuranceInfo {
+  width: 10rem;
+  height: 60px;
+
+  margin: 0 1.5rem;
+  border-radius: 5px;
+
+  text-align: center;
+  line-height: 60px;
+
+  color: $black;
+  background-color: $white;
+}
