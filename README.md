@@ -91,4 +91,4 @@ https://fastcampusxyanolja-assginment.web.app/
 <br>
 
 ## :ok_person: User Flow
-![user flows drawio](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/7a8017d4-5ec2-433b-b4ac-545a7da93f4b)
+![user flows](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/fb0f2e8b-d689-44f7-a7d9-af412e35cd85)
