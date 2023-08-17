@@ -7,7 +7,6 @@ export function routeRender() {
   const routerView = document.querySelector('router-view');
   const [hash, queryString] = location.hash.split('?');
   const currentRoute = routes.find((route) => {
-    console.log(route.path);
     return new RegExp(route.path + '/?$').test(hash);
   });
   routerView.innerHTML = '';
