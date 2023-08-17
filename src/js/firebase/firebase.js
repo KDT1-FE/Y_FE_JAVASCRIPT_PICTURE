@@ -1,6 +1,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js';
 import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
+import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCy7QYDgKpkn-0eH42AmxAki6u4DH1oGZ0',
@@ -35,4 +36,17 @@ const signinSubmit = (auth, email, password) => {
     });
 };
 
-export { auth, signinSubmit };
+/* ------------------------------------ - ----------------------------------- */
+const db = getFirestore(app);
+
+const getData = async members => {
+  const snapshot = await getDocs(collection(db, 'members'));
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    members.unshift(data);
+  });
+};
+
+export { auth, signinSubmit, db, getData };
