@@ -3,7 +3,7 @@ const db = firebase.firestore();
 
 const villagerList = document.querySelector(".villagers-list");
 
-const collectionRef = db.collection("villagers");
+const collectionRef = db.collection("villager");
 let lastVisibleDoc = null;
 let visibleVillagers = 4;
 const loadMoreThreshold = 2;
