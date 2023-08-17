@@ -3,7 +3,7 @@ const db = firebase.firestore();
 
 const villagerList = document.querySelector(".villagers-list");
 
-const collectionRef = db.collection("villager");
+const collectionRef = db.collection("villagers");
 let lastVisibleDoc = null;
 let visibleVillagers = 4;
 const loadMoreThreshold = 2;
@@ -109,6 +109,7 @@ collectionRef
   .then((querySnapshot) => {
     if (querySnapshot.empty) {
       const noVillagersMessage = document.createElement("h1");
+      noVillagersMessage.className = "noVillager-message";
       noVillagersMessage.textContent =
         "등록된 주민이 없습니다! 새로운 주민을 등록해주세요";
       villagerList.appendChild(noVillagersMessage);
