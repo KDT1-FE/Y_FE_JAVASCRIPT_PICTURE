@@ -1,10 +1,15 @@
 const joinFormEl = document.querySelector(".main__join_box");
 const joinBtnEl = document.querySelector(".join-btn");
+const loginBtnEl = document.querySelector(".login-btn");
 const user_checkboxsEl = document.querySelectorAll(
   ".checkbox_division_box[type='checkbox']"
 );
 
 //
+
+loginBtnEl.addEventListener("click", () => {
+  window.location.href = "./login.html";
+});
 user_checkboxsEl.forEach((checkbox) => {
   checkbox.onchange = (e) => {
     if (e.target.checked) {
