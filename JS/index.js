@@ -5,17 +5,17 @@ const S3_BUCKET = 'y-fe-javascript-picture';
 // AWS 설정 초기화 함수
 async function initializeAWS() {
   if (!AWS.config.credentials) { // 이미 초기화하였다면 다시 초기화하지 않음
-    try {
-      const data = await fetch('/env.json');
-      const { ACCESS_KEY, SECRET_ACCESS_KEY } = await data.json();
+    // try {
+    //   const data = await fetch('/env.json');
+    //   const { ACCESS_KEY, SECRET_ACCESS_KEY } = await data.json();
 
       AWS.config.update({
         credentials: new AWS.Credentials(ACCESS_KEY, SECRET_ACCESS_KEY),
         region: 'ap-northeast-2',
       });
-    } catch (error) {
-      console.error('Failed to load env.json', error);
-    }
+    // } catch (error) {
+    //   console.error('Failed to load env.json', error);
+    // }
   }
 }
 
@@ -338,17 +338,17 @@ function onSelectAllCheckboxChange(event) {
   });
 }
 
-// env.json 파일 로드
-fetch('/env.json')
-  .then(response => response.json())
-  .then(data => {
-    // 로드한 JSON 데이터를 envVars 객체에 저장
-    envVars.ACCESS_KEY = data.ACCESS_KEY;
-    envVars.SECRET_ACCESS_KEY = data.SECRET_ACCESS_KEY;
-  })
-  .catch(error => {
-    console.error('Failed to load env.json', error);
-  });
+// // env.json 파일 로드
+// fetch('/env.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     // 로드한 JSON 데이터를 envVars 객체에 저장
+//     envVars.ACCESS_KEY = data.ACCESS_KEY;
+//     envVars.SECRET_ACCESS_KEY = data.SECRET_ACCESS_KEY;
+//   })
+//   .catch(error => {
+//     console.error('Failed to load env.json', error);
+//   });
 
 // 임직원 삭제 버튼 클릭 이벤트 핸들러
 const deleteEmployeeButton = document.getElementById('deleteEmployeeBtn');
