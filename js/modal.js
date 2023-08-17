@@ -79,7 +79,13 @@ registerButton.addEventListener('click', () => {
             console.error('이미지 다운로드 오류:', error);
         });
 
-    // 등록 후 모달 닫기
+    // 등록 후 input 초기화 및 모달 닫기
+    document.getElementById('name').value = ''; 
+    document.getElementById('email').value = ''; 
+    document.getElementById('department').value = '';
+    document.querySelector('.profile-image').src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; // 투명 이미지로 에러 이미지 감추기
+    fileUploadButton.style.display = 'flex';
+    profileImage.style.border = 'none';
     modalWrap.style.display = 'none';
     window.parent.postMessage('modalClosed', '*');
 });
@@ -90,6 +96,14 @@ const modalWrap = document.querySelector('.modal-wrap');
 const closeButton = document.querySelector('.close-button');
 
 closeButton.addEventListener('click', () => {
+    // input 초기화
+    document.getElementById('name').value = ''; 
+    document.getElementById('email').value = ''; 
+    document.getElementById('department').value = '';
+    document.querySelector('.profile-image').src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; // 투명 이미지로 에러 이미지 감추기
+    fileUploadButton.style.display = 'flex';
+    profileImage.style.border = 'none';
+
     modalWrap.style.display = 'none';
     window.parent.postMessage('modalClosed', '*');
 });
