@@ -225,6 +225,7 @@ infochange.addEventListener('click',()=>{
   }
   else{
     modalOn();
+    
   }
 })
 
