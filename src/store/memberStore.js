@@ -59,10 +59,13 @@ export const getNextMembersData = async () => {
 
 export const getMemberDetail = async (id) => {
   const docRef = doc(db, 'list', `${id}`);
-  const res = await getDoc(docRef);
+  const response = await getDoc(docRef);
+  if (response.data() === undefined) {
+    return null;
+  } // 해당 id의 데이터가 존재하지 않을 때
   return {
-    ...res.data(),
-    id: res.id,
+    ...response.data(),
+    id: response.id,
   };
 };
 

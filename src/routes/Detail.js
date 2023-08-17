@@ -1,3 +1,4 @@
+import { ChildProcess } from 'child_process';
 import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, navigate } from '../core/router';
@@ -21,6 +22,9 @@ export default class Detail extends Component {
       </main>`;
     this.el.prepend(new Header().el);
     const member = await getMemberDetail(getUrlParam()); // 현재 url의 아이디를 가지고 member의 상세 데이터를 받아옴
+    if (!member) {
+      return navigate('/#/*');
+    } // 해당 아이디를 가진 멤버가 존재하지 않을 때
     this.el.innerHTML = `
     <main class="detail">
       <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
