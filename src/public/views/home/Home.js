@@ -1,6 +1,6 @@
-import AbstractView from './AbstractView.js'
-const headerTemplate = require('./components/header.hbs')
-const footerTemplate = require('./components/footer.hbs')
+import AbstractView from '../AbstractView.js'
+const headerTemplate = require('../components/header.hbs')
+const footerTemplate = require('../components/footer.hbs')
 
 export default class extends AbstractView {
   constructor(params) {

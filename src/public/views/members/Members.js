@@ -1,14 +1,9 @@
-import AbstractView from './AbstractView.js'
-import { initMembers } from '../js/members.controller.js'
+import AbstractView from '../AbstractView.js'
 
 export default class extends AbstractView {
   constructor(params) {
     super(params)
     this.setTitle('Members')
-  }
-
-  init() {
-    initMembers() // initMembers 함수 호출
   }
 
   async getContent() {

@@ -1,7 +1,10 @@
-import '../assets/styles/main.scss'
-import Home from '../views/Home.js'
-import Members from '../views/Members'
-import { initMembers } from './members.controller.js'
+import '/src/public/views/home/main.scss'
+import Home from '/src/public/views/home/Home.js'
+import Members from '/src/public/views/members/Members.js'
+import Profile from '/src/public/views/profile/Profile.js'
+
+import { initMembers } from '/src/public/views/members/members.controller.js'
+import {} from '/src/public/views/profile/profile.controller.js'
 import * as bootstrap from 'bootstrap'
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
@@ -22,21 +25,11 @@ const navigateTo = (url) => {
   router()
 }
 
-// const loadView = async (viewPath, match) => {
-//   console.log(`Loading view from: ../views/${viewPath}.js`)
-//   const { default: View } = await import(`../views/${viewPath}.js`)
-//   const viewInstance = new View(getParams(match))
-
-//   // await viewInstance.init()
-//   // console.log('View initialized')
-//   return viewInstance
-// }
-
 const router = async () => {
   const routes = [
     { path: '/', view: Home },
     { path: '/members', view: Members },
-    // { path: '/members/:id', view: 'Profile' },
+    { path: '/members/:id', view: Profile },
   ]
 
   const potentialMatches = routes.map((route) => {
