@@ -164,14 +164,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 클릭한 유저 상세 페이지로
         const tableRows = document.querySelectorAll('.body-tr');
-        const inputCheckbox = document.querySelector('.input-checkbox');
 
         tableRows.forEach(row => {
             row.addEventListener('click', (event) => {
-                if (event.target === inputCheckbox) {
-                    return; 
-                }
+                const inputCheckbox = row.querySelector('.input-checkbox');
 
+                if (event.target === inputCheckbox) {
+                    console.log('Check')
+                    return;
+                }
+                
                 const userId = row.id;
                 const user = data[userId];
 
@@ -181,6 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+
+        
+
+
     });
 });
 
