@@ -23,7 +23,7 @@ export default class Detail extends Component {
     this.el.prepend(new Header().el);
     const member = await getMemberDetail(getUrlParam()); // 현재 url의 아이디를 가지고 member의 상세 데이터를 받아옴
     if (!member) {
-      return navigate('/#/*');
+      return navigate('/#/404');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
     this.el.innerHTML = `
     <main class="detail">
