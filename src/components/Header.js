@@ -47,6 +47,11 @@ export default class Header {
     // Event
     toggleModeBtnEl.addEventListener('click', () => {
       this.isDark = !this.isDark;
+      if (this.isDark) {
+        document.documentElement.setAttribute('color-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('color-theme', 'light');
+      }
       this.el.innerHTML = '';
       this.render();
     });

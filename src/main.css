@@ -1,17 +1,24 @@
+:root[color-theme='light'] {
+  --color-background: #f2f2f2;
+  --color-text: #1a1a1a;
+  --color-text-30: rgba(26, 26, 26, 0.3);
+  --color-text-10: rgba(26, 26, 26, 0.1);
+}
+
+:root[color-theme='dark'] {
+  --color-background: #1a1a1a;
+  --color-text: #fff;
+  --color-text-30: rgba(255, 255, 255, 0.3);
+  --color-text-10: rgba(255, 255, 255, 0.1);
+}
+
 :root {
   --color-black: #1a1a1a;
-  --color-black-80: rgba(26, 26, 26, 0.8);
-  --color-black-30: rgba(26, 26, 26, 0.3);
-  --color-black-10: rgba(26, 26, 26, 0.1);
-
   --color-white: #fff;
   --color-white-50: rgba(255, 255, 255, 0.5);
-  --color-white-30: rgba(255, 255, 255, 0.3);
-  --color-white-10: rgba(255, 255, 255, 0.1);
 
   --color-highlight: #eb4c78;
   --color-warning: #ce342e;
-  --color-background: #f2f2f2;
 }
 
 html {
@@ -21,7 +28,7 @@ html {
 body {
   margin: 0;
   background-color: var(--color-background);
-  color: var(--color-black);
+  color: var(--color-text);
 }
 
 ul {
@@ -58,7 +65,7 @@ header .top .btns .btn {
 
 header .top .btns .btn:hover {
   cursor: pointer;
-  background-color: var(--color-black-10);
+  background-color: var(--color-text-10);
 }
 
 header .top .btns .toggle,
@@ -67,11 +74,13 @@ header .top .btns .search {
   width: var(--width);
   height: var(--width);
   border-radius: 50%;
+  color: var(--color-text);
 }
 
 header .top .btns .add {
   padding: 6px 14px;
-  border: var(--color-black) solid 2px;
+  color: var(--coloor-text);
+  border: var(--color-text) solid 2px;
   border-radius: 25px;
   font-size: 1em;
   font-weight: 700;
@@ -79,7 +88,8 @@ header .top .btns .add {
 }
 
 header .top .btns .add:hover {
-  background-color: var(--color-black);
+  border: var(--color-highlight) solid 2px;
+  background-color: var(--color-highlight);
   color: var(--color-white);
 }
 
@@ -101,9 +111,11 @@ header .bottom.hide .input::placeholder {
 }
 
 header .bottom .input {
+  color: var(--coloor-text);
   padding: 0 1.2em;
   background-color: transparent;
-  border: var(--color-black-30) solid 2px;
+  border: var(--color-text-30) solid 2px;
+
   border-radius: 4px;
   width: 50%;
   height: 90%;
@@ -112,7 +124,7 @@ header .bottom .input {
 
 header .bottom .input:focus {
   outline: none;
-  border: var(--color-black) solid 2px;
+  border: var(--color-text) solid 2px;
 }
 
 /* CARD LIST */
@@ -129,7 +141,7 @@ header .bottom .input:focus {
   margin: 1rem;
   padding: 3rem 0;
   background-color: var(--color-white-50);
-  box-shadow: var(--color-black-10) 0px 4px 16px 0px;
+  box-shadow: var(--color-text-10) 0px 4px 16px 0px;
   border-radius: 4px;
   min-width: calc(25% - 2rem);
   display: flex;
@@ -142,7 +154,7 @@ header .bottom .input:focus {
 .cards .card:hover {
   cursor: pointer;
   transform: translateY(-10px);
-  box-shadow: var(--color-black-30) 0px 14px 26px 0px;
+  box-shadow: var(--color-text-30) 0px 14px 26px 0px;
 }
 
 /* CARD ITEM */
@@ -170,11 +182,10 @@ header .bottom .input:focus {
   line-height: 1;
   font-weight: 400;
   font-size: 20px;
-  color: var(--color-black-80);
+  color: var(--color-black);
 }
 
 .card .card_info .info_name {
-  color: var(--color-black);
   font-weight: 700;
   font-size: 20px;
 }
@@ -208,7 +219,7 @@ header .bottom .input:focus {
 
 .card .delete:hover {
   cursor: pointer;
-  background-color: var(--color-black-10);
+  background-color: var(--color-text-10);
 }
 
 .card:hover .delete {
@@ -222,16 +233,15 @@ footer {
   margin: 3rem auto;
   padding: 4rem 0 0;
   font-size: 16px;
-  border-top: var(--color-black-10) solid 1px;
+  border-top: var(--color-text-10) solid 1px;
 }
 
 footer .github {
-  color: var(--color-black);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: var(--color-black-80);
   transition: font-size 0.1s;
 }
 
@@ -241,7 +251,7 @@ footer .github:hover {
 }
 
 footer .copyright {
-  color: var(--color-black-30);
+  color: var(--color-text-30);
 }
 
 /* MODAL */
@@ -249,7 +259,7 @@ footer .copyright {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--color-black-80);
+  background-color: var(--color-text-30);
   backdrop-filter: blur(3px);
   width: 100%;
   height: 100%;
@@ -268,7 +278,7 @@ footer .copyright {
   padding: 4rem;
   width: 40%;
   height: 50%;
-  background-color: var(--color-white);
+  background-color: var(--color-background);
   border-radius: 20px;
 }
 
@@ -288,7 +298,7 @@ footer .copyright {
 
 .modal .modal_container .remove:hover {
   cursor: pointer;
-  background-color: var(--color-black-10);
+  background-color: var(--color-text-10);
 }
 
 .modal .modal_container .info {
@@ -312,7 +322,7 @@ footer .copyright {
   top: 4rem;
   left: 4rem;
   font-size: 12px;
-  color: var(--color-black-80);
+  color: var(--color-text);
   border: #1a1a1a 1px solie;
 }
 
@@ -335,9 +345,11 @@ footer .copyright {
 }
 
 .modal .modal_container .info .info_txt input {
+  background-color: transparent;
+  color: var(--coloor-text);
   padding: 0.7rem;
   border: none;
-  border-bottom: var(--color-black-30) solid 2px;
+  border-bottom: var(--color-text-30) solid 2px;
   display: block;
   width: 100%;
   font-size: 16px;
