@@ -26,7 +26,7 @@ const initPrisonerDetailModal = () => {
     const saveNameBtn = document.getElementById('saveNameBtn');
     const saveLvBtn = document.getElementById('saveLvBtn');
     const lvOptions = document.querySelectorAll('.lvOption');
-    let currentPrisonCell = null; // 현재 선택된 prisonCell
+    let currentPrisonCell = null;
 
     const openPrisonerDetailModal = (prisonCell) => {
         const prisonerName = prisonCell.querySelector('.prisonerName');
@@ -45,16 +45,16 @@ const initPrisonerDetailModal = () => {
             }
         });
 
-        saveNameBtn.removeEventListener('click', saveNameClickHandler); // 기존 이벤트 리스너 삭제
-        saveNameBtn.addEventListener('click', saveNameClickHandler); // 새로운 이벤트 리스너 등록
+        saveNameBtn.removeEventListener('click', saveNameClickHandler); 
+        saveNameBtn.addEventListener('click', saveNameClickHandler); 
 
-        saveLvBtn.removeEventListener('click', saveLvClickHandler); // 기존 이벤트 리스너 삭제
-        saveLvBtn.addEventListener('click', saveLvClickHandler); // 새로운 이벤트 리스너 등록
+        saveLvBtn.removeEventListener('click', saveLvClickHandler); 
+        saveLvBtn.addEventListener('click', saveLvClickHandler); 
 
-        saveMugshotBtn.removeEventListener('change', saveMugshotChangeHandler); // 기존 이벤트 리스너 삭제
-        saveMugshotBtn.addEventListener('change', saveMugshotChangeHandler); // 새로운 이벤트 리스너 등록
+        saveMugshotBtn.removeEventListener('change', saveMugshotChangeHandler); 
+        saveMugshotBtn.addEventListener('change', saveMugshotChangeHandler); 
 
-        currentPrisonCell = prisonCell; // 현재 prisonCell 업데이트
+        currentPrisonCell = prisonCell;
     };
 
     const saveNameClickHandler = async (event) => {
@@ -111,7 +111,7 @@ const initPrisonerDetailModal = () => {
         const newDetailMugshot = saveMugshotBtn.files[0];
         const prisonerId = currentPrisonCell.getAttribute('dataId');
 
-                 // Get the old mugshot image URL from storage and attempt to delete it
+        // Get the old mugshot image URL from storage and attempt to delete it
         const oldImageUrl = currentPrisonCell.style.backgroundImage.slice(5, -2);
         const oldImageFileName = oldImageUrl.split('/').pop().split('?')[0];
 

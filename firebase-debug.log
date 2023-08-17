@@ -1,0 +1,43 @@
+[debug] [2023-08-17T20:33:16.900Z] ----------------------------------------------------------------------
+[debug] [2023-08-17T20:33:16.902Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sungh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2023-08-17T20:33:16.902Z] CLI Version:   12.4.8
+[debug] [2023-08-17T20:33:16.902Z] Platform:      win32
+[debug] [2023-08-17T20:33:16.902Z] Node Version:  v18.16.1
+[debug] [2023-08-17T20:33:16.904Z] Time:          Fri Aug 18 2023 05:33:16 GMT+0900 (대한민국 표준시)
+[debug] [2023-08-17T20:33:16.904Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-17T20:33:16.984Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-17T20:33:16.985Z] > authorizing via signed-in user (loading2us@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2023-08-17T20:33:16.996Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-08-17T20:33:16.996Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-08-17T20:33:16.996Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-08-17T20:33:17.006Z] [hub] writing locator at C:\Users\sungh\AppData\Local\Temp\hub-azkaban-bef73.json
+[debug] [2023-08-17T20:33:17.017Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/azkaban-bef73/sites 
+[debug] [2023-08-17T20:33:17.760Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/azkaban-bef73/sites 200
+[debug] [2023-08-17T20:33:17.760Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/azkaban-bef73/sites {"sites":[{"name":"projects/azkaban-bef73/sites/azkaban-bef73","defaultUrl":"https://azkaban-bef73.web.app","appId":"1:61881098784:web:97038c5ce63f0d2ab95245","type":"DEFAULT_SITE"}]}
+[debug] [2023-08-17T20:33:17.760Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73/webApps/1:61881098784:web:97038c5ce63f0d2ab95245/config [none]
+[debug] [2023-08-17T20:33:18.794Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73/webApps/1:61881098784:web:97038c5ce63f0d2ab95245/config 200
+[debug] [2023-08-17T20:33:18.794Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73/webApps/1:61881098784:web:97038c5ce63f0d2ab95245/config {"projectId":"azkaban-bef73","appId":"1:61881098784:web:97038c5ce63f0d2ab95245","storageBucket":"azkaban-bef73.appspot.com","locationId":"asia-northeast3","apiKey":"AIzaSyBmLvUo54Jzhiin0qNBWwut9AG3z5n1zdE","authDomain":"azkaban-bef73.firebaseapp.com","messagingSenderId":"61881098784"}
+[debug] [2023-08-17T20:33:18.926Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73 [none]
+[debug] [2023-08-17T20:33:19.324Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73 200
+[debug] [2023-08-17T20:33:19.324Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/azkaban-bef73 {"projectId":"azkaban-bef73","projectNumber":"61881098784","displayName":"AZKABAN","name":"projects/azkaban-bef73","resources":{"hostingSite":"azkaban-bef73","storageBucket":"azkaban-bef73.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_3ed9d568-60ee-4f90-a5ae-bb32872c925d"}
+[info] i  hosting[azkaban-bef73]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[azkaban-bef73]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[warn] !  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ 127.0.0.1:5000 │
+└──────────┴────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-08-17T20:40:21.857Z] Received signal SIGHUP 1
