@@ -28,16 +28,9 @@ module.exports = {
     historyApiFallback: {
       index: 'index.html', // 인덱스 HTML로 리다이렉트
     },
-    proxy: {
-      '/api': 'http://localhost:8080', // API 요청은 서버로 프록시
-    },
     compress: true,
-    port: 5500,
-    open: {
-      app: {
-        name: 'google chrome',
-      },
-    },
+    hot: true,
+    port: 1008,
   },
   module: {
     rules: [

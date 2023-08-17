@@ -15,8 +15,7 @@ export default class extends AbstractView {
     // 렌더링된 HTML 반환
     return `
       ${header}
-      <h1>Dashboard</h1>
-      <p>This is the dashboard page.</p>
+      ${content}
       ${footer}
     `
   }

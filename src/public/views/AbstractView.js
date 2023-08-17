@@ -1,7 +1,8 @@
+import headerTemplate from './components/header.hbs'
+import footerTemplate from './components/footer.hbs'
 export default class {
   constructor(params, template) {
     this.params = params
-    this.template = template
   }
   /**
    *
@@ -12,6 +13,17 @@ export default class {
   }
 
   async getHtml() {
-    return this.template
+    const header = headerTemplate()
+    const content = await this.getContent()
+    const footer = footerTemplate()
+
+    return /*html*/ `
+      ${header}
+      ${content}
+      ${footer}
+    `
+  }
+  async getContent() {
+    throw new Error('getContent() method must be overridden')
   }
 }

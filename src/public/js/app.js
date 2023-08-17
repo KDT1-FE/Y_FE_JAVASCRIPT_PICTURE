@@ -2,14 +2,14 @@
  * client-side entry points
  * routers
  */
-import '../assets/styles/style.scss'
-import Dashboard from '../views/Dashboard.js'
+import '../assets/styles/main.scss'
+import Home from '../views/Home.js'
 import Members from '../views/Members.js'
 import Profile from '../views/Profile.js'
 
 import * as bootstrap from 'bootstrap'
-// import HomeApp from './homeApp.js';
-// import membersApp from './membersApp.js';
+// import HomeApp from './homeApp.js'
+import MembersApp from './members.controller.js'
 // import profileApp from './profileApp.js';
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
@@ -32,7 +32,7 @@ const navigateTo = (url) => {
 
 const router = async () => {
   const routes = [
-    { path: '/', view: Dashboard },
+    { path: '/', view: Home },
     { path: '/members', view: Members },
     // { path: '/members/:id', view: Profile },
   ]
@@ -58,7 +58,9 @@ const router = async () => {
 
   document.querySelector('#app').innerHTML = await view.getHtml()
 
-  // match.route.script();
+  const path = location.pathname
+  if (path === '/') MembersApp()
+  if (path.includes('/members')) await MembersApp()
 }
 
 window.addEventListener('popstate', router)
