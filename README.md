@@ -60,24 +60,30 @@ https://fastcampusxyanolja-assginment.web.app/
       <th>게스트 / 매니저 권한 분리</th>
     </tr>
     <tr>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/cdbcbb77-9697-4066-af19-3832126e8d05"alt="gif-main-page" width="370"></td>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/7dd25142-6c6e-4176-a3cb-baeb5c8013fb"alt="gif-main-page" width="370"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/cdbcbb77-9697-4066-af19-3832126e8d05"alt="gif-main-page" width="500"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/7dd25142-6c6e-4176-a3cb-baeb5c8013fb"alt="gif-main-page" width="500"></td>
     </tr>
     <tr align="center">
       <th>기본 타이틀 조작 방지</th>
       <th>정보 등록</th>
     </tr>
     <tr>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/c88c5cbd-832b-4090-9dc7-31f4ae39f429"alt="gif-main-page" width="370"></td>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/b4a2ed0f-0877-43c4-a001-9a6257612d5b" width="370"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/c88c5cbd-832b-4090-9dc7-31f4ae39f429"alt="gif-main-page" width="500"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/b4a2ed0f-0877-43c4-a001-9a6257612d5b"alt="gif-main-page" width="500"></td>
     </tr>
    <tr align="center">
       <th>정보 변경</th>
       <th>정보 삭제</th>
     </tr>
     <tr>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/f3d6d5ae-a8c2-4014-ac0a-fff41b92ec3c"alt="gif-main-page" width="370"></td>
-      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/c3c0e62c-15e3-4377-a1f8-b5e9f1f7325f"alt="gif-main-page" width="370"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/f3d6d5ae-a8c2-4014-ac0a-fff41b92ec3c"alt="gif-main-page" width="500"></td>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/c3c0e62c-15e3-4377-a1f8-b5e9f1f7325f"alt="gif-main-page" width="500"></td>
+    </tr>
+    <tr align="center">
+      <th>모바일 반응형</th>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/348a4d11-1909-4052-9a7b-e95e41686865"alt="gif-main-page" width="500"></td>
     </tr>
   </table>
 </div>
