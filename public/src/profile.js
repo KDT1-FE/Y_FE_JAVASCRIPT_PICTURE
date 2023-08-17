@@ -36,13 +36,22 @@ villagerDocRef.get().then((doc) => {
         <li class="villager-info-speechHabit"><p>${speechHabit}</p></li>
     `;
 
-    // div 추가
+    //div 추가
     profileInfoUl.appendChild(profileContainer);
 
-    // img 가져오기
+    //img 가져오기
     const imageElement = document.getElementById("villager-img");
+
+    //로딩
+    const loadingElement = document.createElement("div");
+    loadingElement.classList.add("loading");
+    imageElement.parentElement.insertBefore(loadingElement, imageElement);
+
     if (imageUrl) {
       imageElement.src = imageUrl;
+      imageElement.onload = () => {
+        loadingElement.remove();
+      };
     }
   }
 });
