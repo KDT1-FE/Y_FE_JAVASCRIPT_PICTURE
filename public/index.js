@@ -10,21 +10,131 @@ const user_checkboxsEl = document.querySelectorAll(
 );
 const loadEl = document.querySelector("#loading");
 
-function updateText() {
-  const spanElement = document.querySelector(".users-list-img");
-  const btnElement = document.querySelector(".section__user_add_btn");
-  const delBtnElement = document.querySelector(".user-list-btn-delete");
-  if (window.innerWidth <= 796) {
-    spanElement.textContent = "프로필";
-    btnElement.textContent = "등록";
+function getUserInfoData() {
+  const userData = JSON.parse(sessionStorage.getItem("user_data"));
+  console.log(userData);
+  if (userData !== null) {
+    const headerEl = document.querySelector(".main__header");
+    const aEl = document.createElement("a");
+    aEl.innerHTML = `<a class="user_data_name">${userData.name}</a>`;
+    headerEl.appendChild(aEl);
   } else {
-    spanElement.textContent = "프로필 이미지";
-    btnElement.textContent = "임직원 등록";
+    const headerEl = document.querySelector(".main__header");
+    const aEl = document.createElement("a");
+    aEl.innerHTML = `<a href="./login.html">로그인</a>`;
+    headerEl.appendChild(aEl);
+  }
+
+  const user_data_name = document.querySelector(".user_data_name");
+  if (user_data_name !== null) {
+    user_data_name.addEventListener("click", () => {
+      console.log("ggg");
+      console.log(userData);
+      const userEditFormEl = document.querySelector(".section__user-add-box");
+      userEditFormEl.style.display = "block";
+      userEditFormEl.innerHTML = "";
+      const userForm = document.createElement("form");
+      userForm.setAttribute("class", "section__user_form");
+      userForm.setAttribute("id", "section__user_form");
+      userForm.innerHTML = `
+                  <form action="" class="section__user_form" id="section__user_form">
+                  <div class="section__user_img_container">
+                    <input
+                      style="display: none"
+                      name="image"
+                      type="file"
+                      class="user_imgInput"
+                    />
+                    ${
+                      userData.image === undefined
+                        ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
+                        : `<img class='user-list-img' src=${userData.image} alt="" />`
+                    }
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    class="user_name"
+                    value="${userData.name}"
+                    placeholder="이름을 입력해주세요."
+                  />
+                  <input
+                    type="text"
+                    name="phone"
+                    class="user_phone"
+                    maxlength="14"
+                    value="${userData.phone}"
+                    placeholder="전화번호를 입력해주세요."
+                  />
+                  <div class="section__user_email_container">
+                    <input
+                      type="text"
+                      class="user_email"
+                      name="email"
+                      value="${userData.email}"
+                      placeholder="이메일을 입력해주세요."
+                    />
+                  </div>
+                  <input
+                    type="password"
+                    name="password"
+                    class="user_password"
+                    value="${userData.password}"
+                    placeholder="비밀번호를 입력해주세요."
+                  />
+                  <div class="section__user_division_checkbox">
+                  ${
+                    userData.division === "vip"
+                      ? `<label>
+                  <input
+                    type="checkbox"
+                    name="division"
+                    value="vip"
+                    class="section__user_checkbox_division"
+                    checked
+                  />vip
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="division"
+                    value="manager"
+                    class="section__user_checkbox_division"
+                  />관리자
+                </label>`
+                      : `<label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="vip"
+                  class="section__user_checkbox_division"
+                />vip
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="manager"
+                  class="section__user_checkbox_division"
+                  checked
+                />관리자
+              </label>`
+                  }
+                  </div>
+                  <div class="section__user_button_container">
+                    <button class="section__user_edit_btn" type="submit">
+                      수정
+                    </button>
+                    <button class="section__user_cancel_btn">취소</button>
+                  </div>
+                </form>
+                  `;
+      userEditFormEl.append(userForm);
+    });
   }
 }
-// 초기 로딩 시와 화면 크기 변경 시 텍스트 업데이트
-window.addEventListener("resize", updateText);
-window.addEventListener("load", updateText);
+
+window.addEventListener("load", getUserInfoData);
 
 userAddBtnsEl.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -139,7 +249,7 @@ addBtnEl.addEventListener("click", async (e) => {
           alert("분류를 선택해주세요");
           return;
         } else {
-          db.collection("userlist")
+          db.collection("usersInfo")
             .add({
               ...dataObj,
               date: firebase.firestore.FieldValue.serverTimestamp(),
@@ -158,7 +268,7 @@ addBtnEl.addEventListener("click", async (e) => {
 });
 
 loadEl.style.display = "block";
-db.collection("userlist")
+db.collection("usersInfo")
   .orderBy("date", "desc")
   .get()
   .then((res) => {
@@ -171,7 +281,11 @@ db.collection("userlist")
       userData.setAttribute("data-doc-id", doc.id);
       userData.innerHTML = `
         <input type="checkbox" name="docId" class="doc-id" value="${doc.id}" />
-        <img class='user-list-img' src=${image} alt="" />
+        ${
+          image === undefined
+            ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
+            : `<img class='user-list-img' src=${image} alt="" />`
+        }
         <span>${name}</span>
         <span>${email}</span>
         <span>${phone}</span>
@@ -181,7 +295,7 @@ db.collection("userlist")
         </div>`;
       userData.addEventListener("click", async () => {
         const userEditFormEl = document.querySelector(".section__user-add-box");
-        db.collection("userlist")
+        db.collection("usersInfo")
           .doc(doc.id)
           .get()
           .then((doc) => {
@@ -202,7 +316,11 @@ db.collection("userlist")
                     type="file"
                     class="user_imgInput"
                   />
-                  <img class="img_section" src="${image}" />
+                  ${
+                    image === undefined
+                      ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
+                      : `<img class='user-list-img' src=${image} alt="" />`
+                  }
                 </div>
                 <input
                   type="text"
@@ -283,8 +401,9 @@ db.collection("userlist")
               </form>
                 `;
               userEditFormEl.append(userForm);
+
               userForm
-                .querySelector(".img_section")
+                .querySelector(".user-list-img")
                 .addEventListener("click", () => {
                   console.log("수정이미지");
                   console.log(userForm);
@@ -298,7 +417,7 @@ db.collection("userlist")
                   if (file) {
                     const reader = new FileReader();
                     reader.onload = function (e) {
-                      userForm.querySelector(".img_section").src =
+                      userForm.querySelector(".user-list-img").src =
                         e.target.result;
                     };
                     reader.readAsDataURL(file);
@@ -381,7 +500,7 @@ db.collection("userlist")
                           return;
                         } else {
                           const docId = userData.getAttribute("data-doc-id");
-                          const docRef = db.collection("userlist").doc(docId);
+                          const docRef = db.collection("usersInfo").doc(docId);
                           return docRef
                             .update({
                               ...dataObj,
@@ -409,7 +528,7 @@ db.collection("userlist")
         .querySelector(".user-list-btn-delete")
         .addEventListener("click", () => {
           const docId = userData.getAttribute("data-doc-id");
-          db.collection("userlist")
+          db.collection("usersInfo")
             .doc(docId)
             .delete()
             .then(() => {
