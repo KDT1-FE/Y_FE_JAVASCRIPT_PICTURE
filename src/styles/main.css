@@ -6,7 +6,7 @@ a {
 }
 html {
     font-family: 'Harry Potter', sans-serif;
-    cursor: url(/icon/cursor50-brown.png), auto;
+    cursor: url(/public/icon/cursor50-brown.png), auto;
 }
 body {
     margin: 0;
@@ -40,7 +40,7 @@ nav .menubarTop {
 }
 nav .menubarTop .logo {
     width: 80%;
-    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
 }
 nav .menubarTop input {
     width: 80%;
@@ -92,7 +92,7 @@ nav .menubarMid .HpText > a {
 }
 .HpText a:hover {
     background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
-    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
 }
 nav .menubarBot {
     width: 100%;
@@ -109,7 +109,7 @@ nav .menubarBot {
     border: none;
     color: #e2e2e2;
     font-family: 'Harry Potter', sans-serif;
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
 }
 
 .imprisonBtn:hover {
@@ -139,7 +139,7 @@ nav .menubarBot {
 }
 .modalBox {
     position: absolute;
-    background-image: url(/image/modalBox.png);
+    background-image: url(/public/image/modalBox.png);
     background-size:contain;
     background-repeat: no-repeat;
     padding: 90px 50px 100px 50px;
@@ -176,7 +176,7 @@ input[type="file"]::file-selector-button {
     padding: 5px;
     font-size: 14px;
     font-weight: 600;
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
 }
 .modalBox button {
     display: block;
@@ -187,7 +187,7 @@ input[type="file"]::file-selector-button {
     margin: 20px auto 25px;
     padding: 15px;
     background-color: rgba(14,17,27,.1);
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
     font-family: 'Harry Potter', sans-serif;
 }
 .approveBtn:hover {
@@ -237,7 +237,7 @@ main .prison .prisonCell {
     background-position: center;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 5px rgb(30, 30, 30);
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
 }
 main .prison .prisonCell:hover {
     animation-duration: .7s;
@@ -349,5 +349,6 @@ main .prison .prisonCell .prisonerName {
 .saveNameBtn:hover,
 .saveLvBtn:hover {
     box-shadow: 2px 2px 2px 2px #424141;
-    cursor: url(/icon/cursor50-brown-pointer.png), pointer;
+    cursor: url(/public/icon/cursor50-brown-pointer.png),pointer;
+
 }

@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AZKABAN : Despair Of Prison</title>
-    <link rel="shortcut icon" href="/icon/favicon-16.png" sizes="16x16">
-    <link rel="shortcut icon" href="/icon/favicon-32.png" sizes="32x32">
-    <link rel="shortcut icon" href="/icon/favicon-48.png" sizes="48x48">
-    <link rel="shortcut icon" href="/icon/favicon-64.png" sizes="64x64">
-    <link rel="shortcut icon" href="/icon/favicon-128.png" sizes="128x128">
+    <link rel="shortcut icon" href="/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" href="/favicon-32.png" sizes="32x32">
+    <link rel="shortcut icon" href="/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/favicon-64.png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon-128.png" sizes="128x128">
     <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
@@ -24,14 +24,14 @@
             </div>
             <div class="menubarMid">
                 <div class="HpText">
-                    <a href="history.html"> History </a>
+                    <a href="/history.html"> History </a>
                 </div>
                 <div class="HpText">
-                    <a href="roles.html"> Roles </a>
+                    <a href="/roles.html"> Roles </a>
                 </div>
             </div>
             <div class="menubarBot">
-                <button class="imprisonBtn">IMPRISON</button>                
+                <button class="imprisonBtn">IMPRISON</button>
                 <div class="modal imprison hidden">
                     <div class="modalBg"></div>
                     <div class="modalBox">
@@ -72,7 +72,7 @@
     </nav>
     <main>
         <div class="container">
-            <video src="/videos/Azkaban background.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
+            <video src="/videos/mainBg-10s.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
             <!-- prisoner info modal -->
             <div class=" detailModal hidden" id="detailModal">
                 <div class=" detailModalBg" id="detailModalBg"></div>
@@ -106,37 +106,38 @@
             </div>
             <!-- Insert PrisonCell -->
             <div class="prison" id="responseBox">
-                <div id="Bellatrix Lestrange" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/BellatrixLestrange.jpg);">
-                    <p class="prisonerName">Bellatrix Lestrange</p>
-                    <span class="releaseWord hidden" id="releaseWord">Release</span>
-                </div>
-                <div id="Gellert Grindelwald" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/GellertGrindelwald.jpg);">
-                    <p class="prisonerName">Gellert Grindelwald</p>
-                    <span class="releaseWord hidden" id="releaseWord">Release</span>
-                </div>
-                <div id="Dolores Umbridge" class="prisonCell" prisonerLv="Never Release"
-                    style="background-image: url(/image/DoloresUmbridge.jpg);">
-                    <p class="prisonerName">Dolores Umbridge</p>
-                    <span class="releaseWord hidden" id="releaseWord">Release</span>
-                </div>
+                
+            
                 <div id="Lucius Malfoy" class="prisonCell" prisonerLv="Never Release"
                     style="background-image: url(/image/LuciusMalfoy.jpg);">
                     <p class="prisonerName">Lucius Malfoy</p>
                     <span class="releaseWord hidden" id="releaseWord">Release</span>
                 </div>
-                <div id="Sirius Black" class="prisonCell" prisonerLv="Eye Of Goat"
-                    style="background-image: url(/image/SiriusBlack.jpg);">
-                    <p class="prisonerName">Sirius Black</p>
-                    <span class="releaseWord hidden" id="releaseWord">Release</span>
-                </div>
+                
             </div>
         </div>
     </main>
-    <script src="/src/components/imprisonRelease.js"></script>
-    <script src="/src/components/prisonerDetailModal.js"></script>
-    <script src="/src/components/search.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+        import { getStorage } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmLvUo54Jzhiin0qNBWwut9AG3z5n1zdE",
+            authDomain: "azkaban-bef73.firebaseapp.com",
+            projectId: "azkaban-bef73",
+            storageBucket: "azkaban-bef73.appspot.com",
+            messagingSenderId: "61881098784",
+            appId: "1:61881098784:web:97038c5ce63f0d2ab95245"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+    </script>
+    <script type="module" src="../components/imprisonRelease.js"></script>
+    <script type="module" src="../components/prisonerDetailModal.js"></script>
+    <script src="../components/search.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,22 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getFirestore, updateDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+
+// Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyBmLvUo54Jzhiin0qNBWwut9AG3z5n1zdE",
+    authDomain: "azkaban-bef73.firebaseapp.com",
+    projectId: "azkaban-bef73",
+    storageBucket: "azkaban-bef73.appspot.com",
+    messagingSenderId: "61881098784",
+    appId: "1:61881098784:web:97038c5ce63f0d2ab95245"
+};
+
+// Initialize the Firebase app
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
 const initPrisonerDetailModal = () => {
     const prison = document.querySelector('.prison');
     const detailModal = document.querySelector('.detailModal');
@@ -26,7 +45,7 @@ const initPrisonerDetailModal = () => {
                 option.removeAttribute('selected');
             }
         });
-        
+
         saveNameBtn.removeEventListener('click', saveNameClickHandler); // 기존 이벤트 리스너 삭제
         saveNameBtn.addEventListener('click', saveNameClickHandler); // 새로운 이벤트 리스너 등록
 
@@ -39,30 +58,64 @@ const initPrisonerDetailModal = () => {
         currentPrisonCell = prisonCell; // 현재 prisonCell 업데이트
     };
 
-    const saveNameClickHandler = (event) => {
+    const saveNameClickHandler = async (event) => {
         event.preventDefault();
         const name = detailName.value;
-        currentPrisonCell.id = name;
+        const prisonerId = currentPrisonCell.getAttribute('dataId');
+        console.log("New name:", name); // 변경된 이름 콘솔 출력
+        console.log("Prisoner ID:", prisonerId);
+        // Update the Firestore document's name field
+        try {
+            await updateDoc(doc(db, "prisoner", prisonerId), {
+                name: name
+            });
+        } catch (error) {
+            console.error("Error updating name in Firestore: ", error);
+        }
+
+        // Update the displayed prisoner name in the UI
         const prisonerName = currentPrisonCell.querySelector('.prisonerName');
         prisonerName.textContent = name;
+
         detailMugshot.alt = name;
         detailForm.reset();
         resetDetailModal();
     };
 
-    const saveLvClickHandler = (event) => {
+    const saveLvClickHandler = async (event) => {
         event.preventDefault();
         const detailLv = document.getElementById('detailLv');
+
+        // Update the Firestore document's prisonerLv field
+        try {
+            await updateDoc(doc(db, "prisoner", currentPrisonCell.getAttribute('dataId')), {
+                prisonerLv: detailLv.value
+            });
+        } catch (error) {
+            console.error("Error updating prisonerLv in Firestore: ", error);
+        }
+
         currentPrisonCell.setAttribute('prisonerLv', detailLv.value);
         resetDetailModal();
     };
 
-    const saveMugshotChangeHandler = () => {
+    const saveMugshotChangeHandler = async () => {
         const newDetailMugshot = saveMugshotBtn.files[0];
         const imageUrl = URL.createObjectURL(newDetailMugshot);
+
+        // Update the Firestore document's imageURL field
+        try {
+            await updateDoc(doc(db, "prisoner", currentPrisonCell.getAttribute('dataId')), {
+                imageURL: imageUrl
+            });
+        } catch (error) {
+            console.error("Error updating imageURL in Firestore: ", error);
+        }
+
         currentPrisonCell.style.backgroundImage = `url(${imageUrl})`;
         resetDetailModal();
     };
+
 
     const resetDetailModal = () => {
         lvOptions.forEach(option => option.removeAttribute('selected'));

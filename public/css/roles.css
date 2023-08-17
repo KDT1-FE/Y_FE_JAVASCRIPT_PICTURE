@@ -6,7 +6,7 @@ a {
 }
 html {
     font-family: 'Harry Potter', sans-serif;
-    cursor: url(/icon/cursor50-brown.png), auto;
+    cursor: url(../icon/cursor50-brown.png), auto;
 }
 body {
     margin: 0;
@@ -40,7 +40,8 @@ nav .menubarTop {
 }
 nav .menubarTop .logo {
     width: 80%;
-    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+
 }
 nav .menubarMid {
     width: 100%;
@@ -63,7 +64,7 @@ nav .menubarMid .HpText > a {
 }
 .HpText a:hover {
     background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
-    cursor: url(/icon/cursor50-brown-pointer.png),pointer;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
 }
 nav .menubarBot {
     width: 100%;
@@ -78,7 +79,7 @@ main .container{
     height: 100vh;
 }
 .rolesBg {
-    background-image: url('/image/historyBg.png');
+    background-image: url('../image/historyBg.png');
     background-size: cover;
     background-position: center;
     min-height: 100%;

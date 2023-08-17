@@ -1,0 +1,355 @@
+* {
+    letter-spacing: 1px;
+}
+a {
+    text-decoration: none;
+}
+html {
+    font-family: 'Harry Potter', sans-serif;
+    cursor: url(../icon/cursor50-brown.png), auto;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+
+/****** Nav ******/
+/* nav {
+    
+} */
+nav .menubar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    min-width: 180px;
+    height: 100vh;
+    background: linear-gradient(to bottom, #000000, #001F3F);
+}
+nav .menubarTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+nav .menubarTop .logo {
+    width: 80%;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+}
+nav .menubarTop input {
+    width: 80%;
+    height: 25px;
+    margin: auto;
+    border: none;
+    border-bottom: 1px solid #e2e2e2;
+    background: transparent;
+    color: #e2e2e2;
+    animation: glow 2s infinite linear ;
+}
+@keyframes glow {
+    0% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    20% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    40% {background: linear-gradient(210deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    60% {background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    80% {background: linear-gradient(190deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+    100% {background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));}
+  }
+nav .menubarTop input::placeholder{
+    font-size: 16px;
+    font-family: 'Harry Potter', sans-serif;
+}
+nav .menubarTop input:focus{
+    outline: none;
+    animation-play-state: paused;
+}
+nav .menubarTop input:focus::placeholder{
+    color: transparent;
+}
+nav .menubarMid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+nav .menubarMid .HpText > a {
+    display: block;
+    width: 100%;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 1.5rem 0;
+    letter-spacing: 10px;
+    text-align: center;
+}
+.HpText a:hover {
+    background: linear-gradient(200deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+}
+nav .menubarBot {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+.imprisonBtn,
+.releaseBtn {
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #e2e2e2;
+    font-family: 'Harry Potter', sans-serif;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+}
+
+.imprisonBtn:hover {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+    color: #007bff;
+}
+.releaseBtn:hover {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+    color: #dc3545;
+}
+/****** Nav/Modal ******/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.modalBg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modalBox {
+    position: absolute;
+    background-image: url(../image/modalBox.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    padding: 90px 50px 100px 50px;
+}
+.modalBox p {
+    font-size: 1.2rem;
+}
+.modalBox label {
+    margin-bottom: 17px;
+}
+input[type="text"] {
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    padding: 10px;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+input:focus::placeholder {
+    color: transparent;
+}
+select {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font: 16px;
+    font-family: 'Harry Potter', sans-serif;
+}
+input[type="file"]::file-selector-button {
+    background-color: maroon;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+}
+.modalBox button {
+    display: block;
+    width: 80%;
+    border: 1px rgb(30, 30, 30);
+    border-left: none;
+    border-right: none;
+    margin: 20px auto 25px;
+    padding: 15px;
+    background-color: rgba(14,17,27,.1);
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+    font-family: 'Harry Potter', sans-serif;
+}
+.approveBtn:hover {
+    background-color: rgba(14,17,27,.3);
+    color: #007bff;
+}
+.dismissBtn:hover {
+    background-color: rgba(14,17,27,.3);
+    color: #dc3545;
+}
+.hidden {
+    display: none;
+}
+
+
+/******Main******/
+main .container{
+    width: 80vw;
+    height: 100vh;
+}
+main .container video{
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+main .prison {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px;
+    overflow:auto;
+    box-sizing: border-box;
+}
+main .prison .prisonCell {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    --width: 200px;
+    width: var(--width);
+    height: calc(var(--width)*3/2);
+    background-size:cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 5px rgb(30, 30, 30);
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+}
+main .prison .prisonCell:hover {
+    animation-duration: .7s;
+    transform: scale(1.04);
+}
+main .prison .prisonCell p {
+    margin: 0px;
+    width: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+main .prison .prisonCell .prisonerName {
+    background-color: rgba(14,17,27,.3);
+    backdrop-filter: blur(10px);
+    color: rgb( 200,200,200);
+    text-align: center;
+}
+.releaseWord {
+    background-color: rgba(215,0,0,.6);
+    color: white;
+    border-radius: 20%;
+    padding: 3px 3px 0px 3px;
+}
+.releaseWord .hidden {
+    display: none;
+}
+
+
+/******Main / DetailModal ******/
+/* Detail Modal 스타일 */
+.detailModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.hidden {
+    display: none;
+}
+.detailModalBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.detailModalBox {
+    background-color: rgb(133, 121, 103);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    gap: 10px;
+    text-align: center;
+    max-width: 400px;
+}
+.detailForm {
+    display: flex;
+    flex-direction: row;
+}
+.mugshotArea {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+.detailMugshot {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: auto;
+}
+.detailName,
+.detailLv {
+    display: flex;
+    justify-content: space-between;
+}
+#detailName::placeholder {
+    color: #000000 ;
+    font-family: 'Harry Potter', sans-serif;
+}
+#detailName:focus::placeholder {
+    color: transparent ;
+}
+.saveMugshotBtn {
+    display: none;
+}
+.suedoSaveMugshotBtn,
+.saveNameBtn,
+.saveLvBtn {
+    background-color: darkred;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    font-family: 'Harry Potter', sans-serif;
+}
+.suedoSaveMugshotBtn:hover,
+.saveNameBtn:hover,
+.saveLvBtn:hover {
+    box-shadow: 2px 2px 2px 2px #424141;
+    cursor: url(../icon/cursor50-brown-pointer.png),pointer;
+
+}
