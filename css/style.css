@@ -130,6 +130,11 @@ nav ul {
     font-size: 0.8em;
 }
 
+.table-button:hover {
+    background-color: #0d54b6;
+    color: #efefef;
+}
+
 .employee-view, .employee-detail-view {
     margin-bottom: 60px;
 }
@@ -276,6 +281,11 @@ input[type="checkbox"] {
     border-radius: 6px;
     font-size: 0.8em;
     padding: 0.5rem 1rem;
+}
+
+.image-update-button:hover, .image-update-done-button:hover {
+    background-color: #0d54b6;
+    color: #efefef;
 }
 
 .information-container {
