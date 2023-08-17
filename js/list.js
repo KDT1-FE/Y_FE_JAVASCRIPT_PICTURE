@@ -3,6 +3,7 @@ const deleteBtn = document.querySelector(".ex_delete_btn");
 const dialog = document.querySelector("#dialog");
 const yesBtn = document.querySelector("#yesBtn");
 const noBtn = document.querySelector("#noBtn");
+const plusBtn = document.querySelector("#plus_btn");
 
 let infos = [];
 
@@ -26,7 +27,7 @@ function displayUsers() {
         const itemEL = createInfoElement(infos[i]);
 
         //console.log(infos[i]);
-        list.append(itemEL);
+        list.prepend(itemEL);
     }
 }
 
@@ -60,7 +61,7 @@ function createInfoElement(info) {
         profileEl.src = info.profileImgUrl;
     }
     else {
-        profileEl.src = "assets/user.png";
+        profileEl.src = "assets/user_white.png";
     }
     
 
@@ -113,39 +114,45 @@ function createInfoElement(info) {
     itemEl.append(checkboxEl);
     itemEl.append(profileEl);
     itemEl.append(nameEl);
+    itemEl.append(statusEl);
     itemEl.append(emailEl);
     itemEl.append(phoneNumEl);
-    itemEl.append(statusEl);
+    
     itemEl.append(moreEl);
 
     return itemEl;
 
 }
-const totalcheckBox = document.querySelector(".checkbox input");
-totalcheckBox.addEventListener("change", () => {
-    const checkBoxes = document.querySelectorAll("#check_btn");
-    
-    checkBoxes.forEach(checkbox => {
-        checkbox.checked = totalcheckBox.checked;
-    });
-});
-
-
 
 list.addEventListener("click", (event) => {
     const itemEl = event.target.closest(".list_item");
+    console.log(itemEl);
     if (itemEl) {
         // 체크박스가 클릭되었을 때는 event.target이 checkbox이므로 클릭 이벤트를 무시
         if (event.target.tagName === "INPUT" && event.target.type === "checkbox") {
             return;
         }
 
-        const itemIndex = Array.from(list.children).indexOf(itemEl);
-        if (itemIndex !== -1) {
+        const itemIndex = list.children.length - Array.from(list.children).indexOf(itemEl) - 2;
+        if (itemIndex >= 0) {
             showDetail(itemIndex);
             console.log("clicked!");
         }
+
     }
+});
+
+function showDetail(index) {
+    window.location.href = `detail.html?index=${index}`;
+}
+
+const totalcheckBox = document.querySelector(".ex_select_all_btn");
+totalcheckBox.addEventListener("click", () => {
+    const checkBoxes = document.querySelectorAll("#check_btn");
+    
+    checkBoxes.forEach(checkbox => {
+        checkbox.checked = true;
+    });
 });
 
 
@@ -153,16 +160,12 @@ list.addEventListener("click", (event) => {
 function getIndexFromEvent(event) {
     const itemEl = event.target.closest(".list_item");
     if (itemEl) {
-        const index = Array.from(list.children).indexOf(itemEl);
+        const index = list.children.length - Array.from(list.children).indexOf(itemEl) - 2;
         return index >= 0 ? index : null;
     }
     return null;
 }
 
-
-function showDetail(index) {
-    window.location.href = `detail.html?index=${index}`;
-}
 
 deleteBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -183,12 +186,11 @@ function checkboxItemdelete() {
 
     checkBoxes.forEach((checkbox, index) => {
         if (checkbox.checked) {
-            itemsToDelete.push(index);
+            itemsToDelete.push(infos.length - index - 1);
         }
     });
 
-    itemsToDelete.reverse(); // 뒤에서부터 삭제하도록 순서 뒤집기
-
+    
     itemsToDelete.forEach(index => {
         deleteItem(index);
     });
@@ -209,6 +211,14 @@ function updateLocalStorage() {
 }
 
 function updateList() {
-    list.innerHTML = ""; // 리스트 비우기
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+        if (list.firstChild === plusBtn) {
+            plusBtn.remove(); // plus_btn을 명시적으로 제거하지 않아도 됨
+        }
+    }
     displayUsers(); // 변경된 정보로 리스트 업데이트
+    if (!list.contains(plusBtn)) {
+        list.appendChild(plusBtn);
+    }
 }

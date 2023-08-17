@@ -43,7 +43,7 @@ main {
     max-width: 1280px;
     justify-content: space-between;
 }
-.ex_create_btn{
+.ex_select_all_btn{
     width: 80px;
     height: 30px;
     color: #fff;
@@ -66,7 +66,7 @@ main {
     border-color: #7c7c7c;
     background: linear-gradient(180deg,#e6e6e6 0%,rgba(0, 0, 0, 0.25) 49%, rgba(38, 38, 38, 0.6) 51%,rgba(0, 0, 0, 0.25) 100%);  }
 
-.ex_create_btn:active{
+.ex_select_all_btn:active{
     -webkit-transform: translateY(2px);
     transform: translateY(2px);
   }
@@ -120,11 +120,10 @@ main {
     font-family: 'Lato', sans-serif;
 }
 .list_container {
-    background-color: #c4c1c188;
     background-clip: content-box;
-    max-width: 1280px;
+    max-width: 1100px;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 80px;
     margin: 40px auto;
     height: 500px;
     overflow-y: auto; /* 내용이 넘칠 때 수직 스크롤 생성 */
@@ -133,12 +132,48 @@ main {
 .material-symbols-outlined{
     cursor: pointer;
 }
-
-.list_wrap {
-    display: grid;
-    grid-template-columns: repeat( 1, 1fr );
-    padding:20px;
+.list {
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 40px;
 }
+
+
+#plus_btn {
+    background-color: #4D76C188;
+    padding: 10px;
+    height: 400px;
+    position: relative;
+    border-radius: 5%;
+    min-width: 260px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin: 5px;
+
+}
+#plus_btn span {
+    font-size: 7rem;
+    margin: auto 0;
+    color: #fff;
+}
+.list_item {
+    background-color: white;
+    padding: 10px;
+    height: 400px;
+    position: relative;
+    border-radius: 5%;
+    min-width: 260px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin: 5px;
+}
+
+.list_item:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
 .list_header {
     display: flex;
     flex-direction: row;
@@ -152,47 +187,6 @@ main {
     text-align: center;
     margin: 0;
 }
-.list {
-    display : flex;
-    position: relative;
-    flex-direction: column;
-    padding: 0.5rem 1rem;
-}
-
-.list_item {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin: 5px 0;
-    box-shadow: 5px 5px 5px rgb(77, 118, 193, 0.2);
-}
-
-.list_item > * {
-    flex: 1;
-    margin: 0.25rem;
-    text-align: center;
-}
-
-
-/*.list_item {
-    display : flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 1px solid #6495ed;
-    margin: 5px 0;
-}*/
 
 p {
     font-size: 0.9rem;
@@ -200,12 +194,15 @@ p {
     font-weight: 500;
 }
 #check_btn {
+    display: block;
     max-width: 50px;
+    margin-top: 30px;
+    
 }
 
 .checkbox {
     max-width: 50px;
-    padding-left: 16px;
+    
 
 }
 .list_profile {
@@ -213,6 +210,7 @@ p {
 }
 .list_name{
     max-width: 200px;
+    
 
 }
 .list_email {
@@ -220,37 +218,57 @@ p {
 }
 
 .profile {
-    max-width: 3rem;
-    max-height: 3rem;
-    width: 100%; /* 추가 */
-    height: auto; /* 추가 */
-    border-radius: 50%;
-    object-fit: cover;
-    padding: 0 15px;
+    width: 7rem;
+    height: 8.7rem;
+    border-radius: 15%;
+    object-fit: fill;
+    margin: 0 auto;
+    display: block;
+    
+
 }
 .name {
-    font-size: 0.9rem;
+    margin-top: 40px;
+    margin-left: 20px;
+    font-size: 1.3rem;
     color: #3a3939;
+    display: inline-block;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: .7px;
+    
+    
     
 }
 .email {
+    margin-left: 20px;
+    margin-top: 40px;
     font-size: 0.9rem;
     color: #3a3939;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 500;
 
 }
 .phoneNum {
+    margin-left: 20px;
+    margin-top: 5px;
     font-size: 0.9rem;
     color: #3a3939;
+    letter-spacing: 1px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .status {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin-left: 20px;
 
 }
 
 .status span {
+    
     display: inline-block;
     width: 0.35rem;
     height: 0.35rem;
@@ -259,12 +277,16 @@ p {
 }
 .status p {
     margin-left: 0.5rem;
+    font-size: .55rem;
 }
 .status .inactive {
     background-color: red ;
 }
 .more_btn {
     max-width: 30px; 
+    position: absolute;
+    top : 40px;
+    right : 20px;
 }
 
 .icon span {
@@ -272,6 +294,7 @@ p {
     width: 0.35rem;
     height: 0.35rem;
     border-radius: 50%;
+    margin-bottom: .25em;
     background-color: rgba(14, 131, 214) ;
 }
 #dialog {

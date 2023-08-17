@@ -66,8 +66,9 @@
     padding: 0 20px;
     color: #4D76C1;
     font-size: 2em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     margin-left: 40px;
+    letter-spacing: 3px;
 }
 .icon {
     display: flex;
@@ -118,11 +119,12 @@
 }
 .name, .email, .phoneNum {
     font-size: 1em;
-    font-family: 'Lato', sans-serif;
+    
     font-weight: 300;
     margin: auto 30px;
     width: fit-content;
     text-overflow: clip;
+
 
 }
 

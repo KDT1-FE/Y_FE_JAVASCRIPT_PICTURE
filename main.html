@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Montserrat:wght@600&family=Pacifico&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Montserrat:wght@600&family=Pacifico&family=Roboto&family=Roboto+Condensed&family=Ubuntu:ital,wght@0,300;1,500&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -41,7 +42,7 @@
         <h1 class="title">Coworker</h1>
         <div class="bar_container">
             <div class="ex_btn_container">
-                <button class="ex_create_btn" onclick="location.href='create.html'" ><span>NEW</span></button>
+                <button class="ex_select_all_btn"><span>SELECT ALL</span></button>
                 <button class="ex_delete_btn"><span>DELETE</span></button>
             </div>
 
@@ -57,18 +58,12 @@
 
         </div>
         <div class="list_container"> 
-            <div class="list_wrap">
-                <div class="list_header">
-                    <div class="list_header_item checkbox"><input type="checkbox"></div>
-                    <div class="list_header_item list_profile"><span>Profile</span></div>
-                    <div class="list_header_item list_name"><span>Name</span></div>
-                    <div class="list_header_item list_email"><span>E-mail</span></div>
-                    <div class="list_header_item list_phoneNumber"><span>Phone Number</span></div>
-                    <div class="list_header_item list_status"><span>Status</span></div>
-                </div>
-                <div class="list">
+            <div class="list">
+                <div id="plus_btn" onclick="location.href='create.html'">
+                    <span>+</span>
 
                 </div>
+                
             </div>
 
         </div>
