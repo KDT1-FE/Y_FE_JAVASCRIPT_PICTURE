@@ -56,6 +56,8 @@ checkbox를 통한 직원 삭제 구현
 
 ### 모바일 반응형
 
+<img width="974" alt="image" src="https://github.com/gahyuun/clone_coding/assets/81469686/a922c5a3-fa82-4442-8b90-6d24e6cb4870">
+
 <br/>
 
 # **✔️**과제 요구사항
