@@ -8,6 +8,7 @@ const img_inputEl = document.querySelector(".user_imgInput");
 const user_checkboxsEl = document.querySelectorAll(
   ".section__user_checkbox_division[type='checkbox']"
 );
+const loadEl = document.querySelector("#loading");
 
 function updateText() {
   const spanElement = document.querySelector(".users-list-img");
@@ -156,14 +157,12 @@ addBtnEl.addEventListener("click", async (e) => {
   );
 });
 
-//
-//
-//
-//
+loadEl.style.display = "block";
 db.collection("userlist")
   .orderBy("date", "desc")
   .get()
   .then((res) => {
+    loadEl.style.display = "none";
     res.forEach((doc) => {
       const usersListBox = document.querySelector(".users-list-box");
       const { image, name, email, phone, division } = doc.data();
@@ -421,4 +420,8 @@ db.collection("userlist")
             });
         });
     });
+  })
+  .catch((error) => {
+    loadEl.style.display = "none";
+    console.log(error);
   });
