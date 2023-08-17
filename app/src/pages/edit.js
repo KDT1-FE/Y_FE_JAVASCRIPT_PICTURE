@@ -118,7 +118,6 @@ async function Edit() {
   const positionId = document.getElementById("position");
 
   for (let i = 0; i < positionId.options.length; i++) {
-    console.log(positionId.options[i], docSnap.data().position);
     if (positionId.options[i].value == docSnap.data().position) {
       positionId.options[i].selected = true;
     }
