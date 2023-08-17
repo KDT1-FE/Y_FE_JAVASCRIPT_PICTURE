@@ -77,15 +77,24 @@ function joinUserInfo(e) {
       .then((userCredential) => {
         // 회원가입 성공
         const user = firebase.auth().currentUser;
-        firebase.firestore().collection("users").doc(user.uid).set({
-          name: dataObj.name,
-          phone: dataObj.phone,
-          email: dataObj.email,
-          password: dataObj.password,
-          division: dataObj.division,
-          date: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-        window.location.href = "./login.html";
+        firebase
+          .firestore()
+          .collection("usersInfo")
+          .doc(user.uid)
+          .set({
+            name: dataObj.name,
+            phone: dataObj.phone,
+            email: dataObj.email,
+            password: dataObj.password,
+            division: dataObj.division,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+          .then(() => {
+            window.location.href = "./login.html";
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         // 오류 처리
