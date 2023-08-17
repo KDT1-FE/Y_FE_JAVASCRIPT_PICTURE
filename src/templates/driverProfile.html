@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html style="font-size: 1.5vw" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>운전자 보험금 기다림 제로, zero car!</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="load">
+      <h1 id="load-title">프로필 확인, 빠르게 진행 시켜! 0차!</h1>
+    </div>
+    <div id="back">
+      <button>← 뒤로가기</button>
+    </div>
+    <main id="driverProfile">
+      <img id="driverImg" alt="보험자 사진" />
+      <form id="driverName">
+        <input type="text" autocomplete="off" readonly />
+      </form>
+      <p id="driverBirth"></p>
+      <div id="driverInsurance">
+        <div class="InsuranceText">
+          <p id="product"></p>
+          <p>가입 보험 상품</p>
+        </div>
+        <div class="InsuranceText">
+          <p id="subsPeriod"></p>
+          <p>가입 기간</p>
+        </div>
+        <div class="InsuranceText">
+          <p id="paymentAmount"></p>
+          <p>납부 금액</p>
+        </div>
+      </div>
+
+      <button id="editDriverBtn">보험자 정보 수정하기</button>
+    </main>
+  </body>
+  <script defer src="../../assets/js/driverProfile.js"></script>
+</html>
