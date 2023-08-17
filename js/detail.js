@@ -1,5 +1,10 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { db, storage } from "./firebase";
 
 const url = new URL(window.location);
@@ -29,7 +34,7 @@ window.onload = async () => {
       phoneInput.value = docSnap.data().phone;
       gradeInput.value = docSnap.data().grade;
     } else {
-      alert("존재하지 않는 사용자입니다.");
+      alert("존재하지 않는 고객입니다.");
       location.href = "/";
     }
   });
@@ -94,9 +99,15 @@ document.querySelector(".cancel-btn").addEventListener("click", (e) => {
   imgRemoveBtn.classList.add("hidden");
 });
 
+export const deleteData = (photoUrl) => {
+  const desertRef = ref(storage, photoUrl);
+  deleteObject(desertRef);
+};
+
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
 imgRemoveBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  deleteData(imgTextInput.value);
   if (imgTextInput.value) {
     imgTextInput.value = "";
     avatarImg.src = "";
