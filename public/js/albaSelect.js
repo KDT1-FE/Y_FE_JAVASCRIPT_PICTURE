@@ -126,17 +126,19 @@ $(document).ready(function () {
             // Firestore에서 해당 데이터 가져오기
             const docRef = db.collection('albainfo').doc(id);
             const docRefData = await docRef.get();
+
             // Firestore 문서에 저장된 이미지 URL주소 가져오기
             const imageData = docRefData.data();
             const imageUrl = imageData.이미지; // 속성값에서 이미지 파일 URL 추출
 
+            // Firestore DB에서 데이터 삭제
+            await docRef.delete();
+            
             // Storage에서 이미지 삭제
             if (imageUrl) {
               const storageRef = storage.refFromURL(imageUrl);
               await storageRef.delete();
             }
-            // Firestore DB에서 데이터 삭제
-            await docRef.delete();
           });
 
           // 삭제 Promise 모두 완료될 때까지 기다림
