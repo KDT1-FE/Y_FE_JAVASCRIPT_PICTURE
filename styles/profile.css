@@ -1,3 +1,19 @@
+#profile-main {
+  font-size: large;
+  font-weight: 500;
+  height: 100vh;
+  position: relative;
+}
+
+.title {
+  padding: 3rem;
+}
+@media (max-width: 500px) {
+  .title {
+    line-height: 1.4;
+  }
+}
+
 .manage-bar {
   display: flex;
   align-items: center;
@@ -8,15 +24,19 @@
 }
 
 .manage-bar > button {
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
+  padding: 0.8rem 1.2rem;
   cursor: pointer;
+  font-size: large;
+  font-weight: 700;
 }
 
 .profile {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 2rem 0;
+  padding: 3rem 0;
+  border-radius: 0.5rem;
 }
 
 .profile__photo-box {
@@ -28,6 +48,7 @@
 
 #profile-photo {
   width: 90%;
+  border-radius: 0.5rem;
 }
 
 .profile__detail {
@@ -36,6 +57,9 @@
   align-items: center;
   justify-content: center;
   width: 50%;
+  font-size: x-large;
+  font-weight: 600;
+  padding: 3rem;
 }
 .profile__detail > ul {
   margin-block-start: 0;
@@ -54,10 +78,46 @@
   width: 50%;
 }
 
+@media (max-width: 1200px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile__detail {
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    font-size: large;
+    font-weight: 600;
+    padding: 3rem;
+  }
+  .profile__detail > ul {
+    width: 50%;
+    min-width: 20rem;
+  }
+  .profile__photo-box {
+    width: 80%;
+  }
+}
+
+#modal {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  visibility: hidden;
+}
+
 .edit-form {
-  width: 100%;
-  height: 25rem;
-  display: none;
+  width: 60%;
+  height: 50%;
+  display: block;
+  border-radius: 0.5rem;
 }
 
 .edit-form__container {
@@ -75,7 +135,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: 40%;
   height: 100%;
   margin: 0 0.5rem;
   border: 1px dashed gray;
@@ -105,14 +165,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
+  width: 40%;
   height: 100%;
   margin: 0 0.5rem;
+}
+
+.edit-form__inputBox > button {
+  font-size: large;
+  font-weight: 700;
 }
 
 @media (max-width: 800px) {
   .edit-form {
     height: auto;
+    width: 70%;
   }
   .edit-form__container {
     flex-direction: column;

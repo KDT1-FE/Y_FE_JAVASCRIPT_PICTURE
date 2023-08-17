@@ -8,15 +8,29 @@
     <link rel="stylesheet" href="/styles/general.css" />
     <link rel="stylesheet" href="/styles/theme.css" />
     <link rel="stylesheet" href="/styles/profile.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 class="">프로필페이지 입니다!</h1>
+    <header class="header">
+      <a id="header-title" href="/">TK MemberDB</a>
+    </header>
     <main id="profile-main">
-      <div class="manage-bar bg-main150">
-        <button id="manage-bar__edit-btn">수정</button>
-        <button id="manage-bar__remove-btn">회원정보삭제</button>
+      <h1 class="title text-xl">
+        <span id="member-name"></span>님의 프로필 정보
+      </h1>
+      <div class="manage-bar">
+        <button id="manage-bar__edit-btn" class="bg-blue">수정</button>
+        <button id="manage-bar__remove-btn" class="bg-pink">
+          회원정보삭제
+        </button>
       </div>
-      <div class="profile bg-main100">
+      <div class="profile bg-main150">
         <div class="profile__photo-box">
           <img id="profile-photo" />
         </div>
@@ -30,33 +44,35 @@
         </div>
       </div>
 
-      <form class="edit-form bg-main100">
-        <div class="edit-form__container">
-          <div class="edit-form__photoBox bg-gray">
-            <img id="preview" />
-            <label
-              class="photo-input__label bg-main150 text-s"
-              for="photo-input"
-              >Change Image</label
-            >
-            <input id="photo-input" type="file" />
+      <div id="modal">
+        <form class="edit-form bg-main100">
+          <div class="edit-form__container">
+            <div class="edit-form__photoBox bg-gray">
+              <img id="preview" />
+              <label
+                class="photo-input__label bg-main150 text-s"
+                for="photo-input"
+                >Change Image</label
+              >
+              <input id="photo-input" type="file" />
+            </div>
+            <div class="edit-form__inputBox">
+              <label for="edit-name">이름</label>
+              <input id="edit-name" />
+              <label for="edit-email">이메일</label>
+              <input id="edit-email" />
+              <label for="edit-phoneNum">전화번호</label>
+              <input id="edit-phoneNum" />
+              <label for="edit-position">포지션</label>
+              <input id="edit-position" />
+              <button class="edit-form__submit bg-blue" type="submit">
+                submit
+              </button>
+              <button class="edit-form__cancel bg-pink">cancel</button>
+            </div>
           </div>
-          <div class="edit-form__inputBox">
-            <label for="edit-name">이름</label>
-            <input id="edit-name" />
-            <label for="edit-email">이메일</label>
-            <input id="edit-email" />
-            <label for="edit-phoneNum">전화번호</label>
-            <input id="edit-phoneNum" />
-            <label for="edit-position">포지션</label>
-            <input id="edit-position" />
-            <button class="edit-form__submit bg-blue text-s" type="submit">
-              submit
-            </button>
-            <button class="edit-form__cancel bg-pink text-s">cancel</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </main>
     <script type="module" src="/js/config/aws.js"></script>
     <script type="module" src="/js/constant/profile.js"></script>
@@ -78,6 +94,11 @@
         cancel,
       } from "/js/constant/profile.js"; // DOM객체 import
 
+      let name = document.querySelector("#member-name");
+      name.innerText = localStorage.getItem("profile");
+
+      const modal = document.querySelector("#modal");
+
       // 수정창 프리뷰 기본 이미지 설정
       const key = localStorage.getItem("profile");
       previewImg.src = S3endpoint + "/" + key + "/profile_photo";
@@ -90,14 +111,13 @@
       submit.addEventListener("click", editProfile);
 
       function openEdit() {
-        profile.style.display = "none";
         editForm.style.display = "block";
+        modal.style.visibility = "visible";
       }
 
       function closeEdit(event) {
         event.preventDefault();
-        profile.style.display = "flex";
-        editForm.style.display = "none";
+        modal.style.visibility = "hidden";
       }
 
       function previewEditPhoto() {
