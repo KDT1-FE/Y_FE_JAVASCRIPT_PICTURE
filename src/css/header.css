@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 50px;
+  padding: 0 2rem;
+  box-shadow: 0 5px 15px -5px #ced4da;
+}
+
+.header-item-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-item-box-logo img {
+  width: 14rem;
+  cursor: pointer;
+}

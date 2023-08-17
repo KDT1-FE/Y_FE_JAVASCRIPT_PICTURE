@@ -15,7 +15,7 @@ export default class Login extends Component {
   }
   async render() {
     const adminData = await this.fetchData();
-    this.el.classList.add("wrap");
+    this.el.classList.add("login-wrap");
     this.el.innerHTML = /* html */ `
         <div class="container">
           <div class="container-img-box">
