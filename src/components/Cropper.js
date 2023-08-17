@@ -13,7 +13,7 @@ export default class Cropper extends Component{
   }
   render(){
     const { aspectRatio, name, src } = this.props
-    this.el.classList.add('cropper-container')
+    // this.el.classList.add('cropper--container')
     this.el.innerHTML = /* html */`
       <div class="cropper-inner-container">
         <img id="image${name}" >
@@ -24,9 +24,6 @@ export default class Cropper extends Component{
     const image = this.el.querySelector(`#image${name}`)
 
     let cropper 
-    image.style.display = 'block'
-    image.style.maxWidth = '100%'
-
     const filereader = new FileReader()
     filereader.addEventListener('load',e=>{
       image.src = e.target.result
@@ -66,5 +63,8 @@ export default class Cropper extends Component{
         }
       )
     })
+    image.style.display = 'block'
+    image.style.maxWidth = '100%'
+
   }
 }

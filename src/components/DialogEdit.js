@@ -150,7 +150,8 @@ export default class Dialog extends Component{
             )
         }
       }
-      
+
+      // input 태그들이 유효한지 검사
       function chkValid(){
         if(!nameEl.value){
           alert('이름을 입력하세요!')
@@ -171,7 +172,7 @@ export default class Dialog extends Component{
         return true
       }
       
-
+      // 입력받은 input 태그들의 값으로 obj을 변경시킴
       function changeInformation(){
         return new Promise((resolve,reject)=>{
           console.log('changeInformation 시작')

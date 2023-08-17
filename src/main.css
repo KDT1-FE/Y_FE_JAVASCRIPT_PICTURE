@@ -74,6 +74,13 @@ body{
   background: var(--color-sora);
 }
 
+@media screen and (max-width : 450px){
+  .btn{
+    height: 35px;
+    width: 52.5px;
+  }
+}
+
 .hide{
   display:none;
 }
@@ -371,6 +378,7 @@ form > div{
 }
 form input{
   height: 40px;
+  padding: 5px 10px;
 }
 
 .select_field{
@@ -446,17 +454,26 @@ form input{
 }
 
 .cropper-inner-container{
-  width: 700px;
-  height: 500px;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .cropper-thumb, .cropper-image {
-  width: 750px;
-  height: 500px;
-  margin-bottom: 80px;
+  width: 90%;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 .btn-crop{
   font-size: 14px;
   margin-top: 20px;
+}
+
+.btn-crop::after{
+  background: var(--color-yellow);
+}
+
+#imagethumbnail, #imageimage{
+  display:block;
+  max-width: 100%;
 }
