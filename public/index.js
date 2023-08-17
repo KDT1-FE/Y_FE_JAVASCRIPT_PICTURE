@@ -11,21 +11,19 @@ const user_checkboxsEl = document.querySelectorAll(
 
 function updateText() {
   const spanElement = document.querySelector(".users-list-img");
-
-  if (window.innerWidth <= 768) {
+  const btnElement = document.querySelector(".section__user_add_btn");
+  const delBtnElement = document.querySelector(".user-list-btn-delete");
+  if (window.innerWidth <= 796) {
     spanElement.textContent = "프로필";
+    btnElement.textContent = "등록";
   } else {
     spanElement.textContent = "프로필 이미지";
+    btnElement.textContent = "임직원 등록";
   }
 }
 // 초기 로딩 시와 화면 크기 변경 시 텍스트 업데이트
 window.addEventListener("resize", updateText);
 window.addEventListener("load", updateText);
-
-headerMenuBtnEl.addEventListener("click", () => {
-  console.log("click");
-  document.querySelector(".header").classList.add("menuon");
-});
 
 userAddBtnsEl.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -174,13 +172,13 @@ db.collection("userlist")
       userData.setAttribute("data-doc-id", doc.id);
       userData.innerHTML = `
         <input type="checkbox" name="docId" class="doc-id" value="${doc.id}" />
-        <img src=${image} alt="" />
+        <img class='user-list-img' src=${image} alt="" />
         <span>${name}</span>
         <span>${email}</span>
         <span>${phone}</span>
         <span>${division}</span>
         <div class="user-list-btn-box data-01">
-            <button class="user-list-btn-delete">삭제</button>
+            <button class="user-list-btn-delete"><img class='delete-btn-icon' src='../images/icons/delete.png'/></button>
         </div>`;
       userData.addEventListener("click", async () => {
         const userEditFormEl = document.querySelector(".section__user-add-box");
