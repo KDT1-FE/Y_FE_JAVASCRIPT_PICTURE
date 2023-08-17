@@ -55,9 +55,11 @@ export default class Edit extends Component {
       ) {
         alert('이메일 형식을 지켜주세요');
         return;
-      } // 이메일을 바꿨는데 형식을 안 지킬때
+      } // 이메일 변경시 이메일 유효성 검사
 
-      photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
+      if (formData.get('file').name !== '') {
+        photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
+      } // 사진 변경 시 uploadImage 함수 실행
 
       const data = {
         name: formData.get('name') === '' ? member.name : formData.get('name'),
