@@ -1,6 +1,6 @@
 .modify {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
 }
 
 .modify:hover {
@@ -80,7 +80,7 @@
 .img-remove-btn {
   right: 0.9375rem;
   background-color: #d22e2e;
-  color: white;
+  color: #ffffff;
 }
 
 .img-remove-btn:hover {
@@ -105,7 +105,7 @@
   border: none;
   border-radius: 5px;
   height: 2.8125rem;
-  color: white;
+  color: #ffffff;
   font-size: 1.125rem;
 }
 

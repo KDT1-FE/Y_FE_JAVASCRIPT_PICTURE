@@ -6,7 +6,7 @@
   padding: 1.5rem;
 
   z-index: 100;
-  background-color: white;
+  background-color: #ffffff;
 
   transition: 0.3s;
 }
@@ -38,7 +38,7 @@
 
 .regist {
   background-color: #000000;
-  color: white;
+  color: #ffffff;
 }
 
 .regist:hover {
