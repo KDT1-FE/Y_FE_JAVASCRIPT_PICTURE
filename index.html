@@ -44,33 +44,6 @@
         </div>
 </header>
 <body>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
-        import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyDbIZHxlYJfqnLaXxXUpAUsPY_k6C3CvJY",
-          authDomain: "js-project-b9579.firebaseapp.com",
-          projectId: "js-project-b9579",
-          storageBucket: "js-project-b9579.appspot.com",
-          messagingSenderId: "364495315069",
-          appId: "1:364495315069:web:85a6cb78f642b054d35114",
-          measurementId: "G-QNNZXRNBFJ"
-        };
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-        const googleAuthProvider = new GoogleAuthProvider();
-
-        export { auth, googleAuthProvider };
-      </script>
     <div id="dogInfoContainer">
     <div id="addDogDialog" class="dialog">
         <div class="dialog-content">
@@ -97,5 +70,32 @@
     </div>
     </div>
 </div>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+    import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbIZHxlYJfqnLaXxXUpAUsPY_k6C3CvJY",
+      authDomain: "js-project-b9579.firebaseapp.com",
+      projectId: "js-project-b9579",
+      storageBucket: "js-project-b9579.appspot.com",
+      messagingSenderId: "364495315069",
+      appId: "1:364495315069:web:85a6cb78f642b054d35114",
+      measurementId: "G-QNNZXRNBFJ"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const googleAuthProvider = new GoogleAuthProvider();
+
+    export { auth, googleAuthProvider };
+  </script>
 </body>
 </html>

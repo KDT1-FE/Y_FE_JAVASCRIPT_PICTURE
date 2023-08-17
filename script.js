@@ -1,3 +1,22 @@
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import { getDatabase, ref as dbRef, push } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"; 
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDbIZHxlYJfqnLaXxXUpAUsPY_k6C3CvJY",
+  authDomain: "js-project-b9579.firebaseapp.com",
+  projectId: "js-project-b9579",
+  storageBucket: "js-project-b9579.appspot.com",
+  messagingSenderId: "364495315069",
+  appId: "1:364495315069:web:85a6cb78f642b054d35114",
+  measurementId: "G-QNNZXRNBFJ"
+};
+
+// Firebase SDK 초기화
+const app = initializeApp(firebaseConfig);
 
 const registerDogButton = document.getElementById("registerDogButton");
 const modalContainer = document.getElementById("addDogDialog");
@@ -6,6 +25,11 @@ const dialogRegisterDogButton = document.getElementById("dialogRegisterDogButton
 // 파일 입력 요소와 미리보기를 위한 이미지 요소 가져오기
 const dogImageInput = document.getElementById("dogImageInput");
 const imagePreview = document.getElementById("imagePreview");
+const imagePreviewText = document.getElementById("imagePreviewText");
+
+
+const dogNameInput = document.getElementById("dogNameInput");
+
 
 registerDogButton.addEventListener("click", () => {
     modalContainer.style.display = "block"; // 모달 보이기
@@ -19,11 +43,6 @@ closeModalButton.addEventListener("click", () => {
     modalContainer.style.display = "none"; // 모달 숨기기
 });
 
-dialogRegisterDogButton.addEventListener("click", () => {
-    // 등록 처리하는 코드 추가
-
-    modalContainer.style.display = "none"; // 모달 숨기기
-});
 
 window.addEventListener("click", (event) => {
     if (event.target === modalContainer) {
@@ -115,6 +134,54 @@ dialogRegisterDogButton.addEventListener("click", () => {
   const dogInfoContainer = document.getElementById("dogInfoContainer");
   dogInfoContainer.appendChild(dogInfo);
 
+
+  const selectedImage = dogImageInput.files[0];
+
+  if (!selectedImage) {
+    console.error("이미지가 선택되지 않았습니다.");
+    return; // 이미지가 선택되지 않은 경우 함수 종료
+  }
+
+   // Firebase의 Cloud Storage에 이미지 업로드
+   const storage = getStorage(app); // Firebase Storage 객체 가져오기
+   const storageRef = ref(storage, `dog_images/${dogImageInput.files[0].name}`);
+   const uploadTask = uploadBytes(storageRef, dogImageInput.files[0]);
+ 
+   console.log(storageRef);
+ 
+   // 이미지 업로드가 완료된 후, 이미지 URL을 가져오기 위한 작업 수행
+   uploadTask
+     .then((snapshot) => {
+       // 이미지 업로드가 완료된 후, 이미지 URL을 가져오기 위한 작업 수행
+       return getDownloadURL(snapshot.ref).then((imageUrl) => {
+         // 이미지 URL 가져오기가 성공적으로 완료된 경우, Cloud Firestore에 데이터 추가
+         const db = getFirestore(app);
+         return addDoc(collection(db, "dogs"), {
+           name: dogNameInput.value,
+           breed: dogBreedInput.value,
+           birthday: dogBirthdayInput.value,
+           gender: dogGenderInput.value,
+           imageUrl: imageUrl, // 이미지 URL 값 사용
+         });
+       });
+     })
+     .then(() => {
+       // 데이터 추가가 완료된 경우
+       console.log("강아지 정보가 성공적으로 등록되었습니다.");
+ 
+       // 입력한 정보 초기화
+       dogNameInput.value = "";
+       dogBreedInput.value = "";
+       dogBirthdayInput.value = "";
+       dogGenderInput.value = "male";
+       imagePreview.src = "#";
+       imagePreviewText.style.display = "block";
+       modalContainer.style.display = "none";
+     })
+     .catch((error) => {
+       console.error("강아지 정보 등록에 실패했습니다:", error);
+     });
+ 
   // 다이얼로그 숨기기
   modalContainer.style.display = "none";
 });
