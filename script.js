@@ -1,5 +1,5 @@
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getDatabase, ref as dbRef, push } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"; 
 
@@ -185,3 +185,58 @@ dialogRegisterDogButton.addEventListener("click", () => {
   // 다이얼로그 숨기기
   modalContainer.style.display = "none";
 });
+
+
+window.addEventListener("load", () => {
+  const db = getFirestore(app);
+  const dogInfoContainer = document.getElementById("dogInfoContainer");
+
+  // Firestore에서 강아지 정보 가져와 화면에 표시
+  const dogsRef = collection(db, "dogs");
+  getDocs(dogsRef)
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const dogData = doc.data();
+        const dogInfo = createDogInfoElement(dogData);
+        dogInfoContainer.appendChild(dogInfo);
+      });
+    })
+    .catch((error) => {
+      console.error("강아지 정보 불러오기에 실패했습니다:", error);
+    });
+});
+
+// 강아지 정보 엘리먼트 생성
+function createDogInfoElement(dogData) {
+  const dogInfo = document.createElement("div");
+  dogInfo.className = "dog-info";
+
+  // 강아지 이미지
+  const dogImage = document.createElement("img");
+  dogImage.src = dogData.imageUrl; // 이미지 URL을 가져와서 설정
+  dogImage.alt = "강아지 사진";
+  dogImage.style.borderRadius = "50%";
+  dogInfo.appendChild(dogImage);
+
+  // 강아지 이름
+  const dogName = document.createElement("span");
+  dogName.textContent = dogData.name;
+  dogInfo.appendChild(dogName);
+
+  // 강아지 견종
+  const dogBreed = document.createElement("span");
+  dogBreed.textContent = dogData.breed;
+  dogInfo.appendChild(dogBreed);
+
+  // 강아지 생년월일
+  const dogBirthday = document.createElement("span");
+  dogBirthday.textContent = dogData.birthday;
+  dogInfo.appendChild(dogBirthday);
+
+  // 강아지 성별
+  const dogGender = document.createElement("span");
+  dogGender.textContent = dogData.gender;
+  dogInfo.appendChild(dogGender);
+
+  return dogInfo;
+}
