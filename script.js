@@ -66,7 +66,20 @@ window.addEventListener("click", (event) => {
 });
 
 window.addEventListener("load", () => {
-    // displayDogInfo(); 여기서 강아지 정보 표시 함수 호출 등을 추가하세요.
+  const dogInfoContainer = document.getElementById("dogInfoContainer");
+  const db = getFirestore(app);
+  const dogsCollection = collection(db, "dogs");
+
+  getDocs(dogsCollection).then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const dogData = doc.data();
+      dogData.id = doc.id; // Firestore 문서의 ID 값을 dogData 객체에 추가
+      const dogInfo = createDogInfoElement(dogData);
+      dogInfoContainer.appendChild(dogInfo);
+    });
+  }).catch((error) => {
+    console.error("Firestore 데이터 가져오기 실패:", error);
+  });
 });
 
 // 파일 선택 시 이미지 미리보기
@@ -149,16 +162,6 @@ dialogRegisterDogButton.addEventListener("click", () => {
   const dogInfoContainer = document.getElementById("dogInfoContainer");
   dogInfoContainer.appendChild(dogInfo);
 
-  // 체크박스와 강아지 데이터를 연결하여 추적
-  // dogCheckboxes.push({ checkbox, dogData: {
-  //   name: dogNameInput.value,
-  //   breed: dogBreedInput.value,
-  //   birthday: dogBirthdayInput.value,
-  //   gender: dogGenderInput.value,
-  //   imageUrl: imageUrl,
-  //   isChecked: checkbox.checked
-  // }});
-
 
   const selectedImage = dogImageInput.files[0];
 
@@ -174,6 +177,24 @@ dialogRegisterDogButton.addEventListener("click", () => {
    const uploadTask = uploadBytes(storageRef, dogImageInput.files[0]);
  
    console.log(storageRef);
+
+   // 강아지 정보 등록 후에 Firestore 데이터 다시 가져와서 표시
+  const db = getFirestore(app);
+  const dogsCollection = collection(db, "dogs");
+
+  getDocs(dogsCollection).then((querySnapshot) => {
+    const dogInfoContainer = document.getElementById("dogInfoContainer");
+    dogInfoContainer.innerHTML = ""; // 기존의 강아지 정보 엘리먼트 모두 삭제
+
+    querySnapshot.forEach((doc) => {
+      const dogData = doc.data();
+      dogData.id = doc.id; // Firestore 문서의 ID 값을 dogData 객체에 추가
+      const dogInfo = createDogInfoElement(dogData);
+      dogInfoContainer.appendChild(dogInfo);
+    });
+  }).catch((error) => {
+    console.error("Firestore 데이터 가져오기 실패:", error);
+  });
  
    let imageUrl; // imageUrl 변수를 블록 밖에서 선언
 
@@ -181,7 +202,7 @@ dialogRegisterDogButton.addEventListener("click", () => {
    uploadTask
     .then((snapshot) => {
       return getDownloadURL(snapshot.ref).then((url) => {
-        imageUrl = url; // imageUrl 변수에 URL 할당
+        imageUrl = url; // 이미지 URL을 가져와서 설정
         const db = getFirestore(app);
         return addDoc(collection(db, "dogs"), {
           name: dogNameInput.value,
@@ -191,17 +212,15 @@ dialogRegisterDogButton.addEventListener("click", () => {
           imageUrl: imageUrl,
           isChecked: checkbox.checked
         }).then((docRef) => {
-          // 데이터베이스에서 반환받은 문서 ID를 dogData에 추가
-          const dogData = {
+          dogCheckboxes.push({ checkbox, dogData: {
             name: dogNameInput.value,
             breed: dogBreedInput.value,
             birthday: dogBirthdayInput.value,
             gender: dogGenderInput.value,
             imageUrl: imageUrl,
             isChecked: checkbox.checked,
-            id: docRef.id // 문서 ID 추가
-          };
-          dogCheckboxes.push({ checkbox, dogData }); // 체크박스와 강아지 데이터를 연결하여 추적
+            id: docRef.id
+          }});
         });
       });
     })
@@ -209,20 +228,20 @@ dialogRegisterDogButton.addEventListener("click", () => {
        // 데이터 추가가 완료된 경우
        console.log("강아지 정보가 성공적으로 등록되었습니다.");
 
-       // 등록한 정보를 로컬 스토리지에 저장
-      const storedDogInfo = JSON.parse(localStorage.getItem("dogInfo")) || [];
-      storedDogInfo.push({
-        name: dogNameInput.value,
-        breed: dogBreedInput.value,
-        birthday: dogBirthdayInput.value,
-        gender: dogGenderInput.value,
-        imageUrl: imageUrl,
-      });
-      localStorage.setItem("dogInfo", JSON.stringify(storedDogInfo));
-       // 로컬 스토리지에 체크박스 상태 저장
-      localStorage.setItem("checkboxStatus", checkbox.checked ? "checked" : "unchecked");
+      //  // 등록한 정보를 로컬 스토리지에 저장
+      // const storedDogInfo = JSON.parse(localStorage.getItem("dogInfo")) || [];
+      // storedDogInfo.push({
+      //   name: dogNameInput.value,
+      //   breed: dogBreedInput.value,
+      //   birthday: dogBirthdayInput.value,
+      //   gender: dogGenderInput.value,
+      //   imageUrl: imageUrl,
+      // });
+      // localStorage.setItem("dogInfo", JSON.stringify(storedDogInfo));
+      //  // 로컬 스토리지에 체크박스 상태 저장
+      // localStorage.setItem("checkboxStatus", checkbox.checked ? "checked" : "unchecked");
 
-      console.log("강아지 정보가 성공적으로 등록되었습니다.");
+      // console.log("강아지 정보가 성공적으로 등록되었습니다.");
  
        // 입력한 정보 초기화
        dogNameInput.value = "";
@@ -236,28 +255,19 @@ dialogRegisterDogButton.addEventListener("click", () => {
      .catch((error) => {
        console.error("강아지 정보 등록에 실패했습니다:", error);
      });
+
+  //  체크박스와 강아지 데이터를 연결하여 추적
+  dogCheckboxes.push({ checkbox, dogData: {
+    name: dogNameInput.value,
+    breed: dogBreedInput.value,
+    birthday: dogBirthdayInput.value,
+    gender: dogGenderInput.value,
+    imageUrl: imageUrl,
+    isChecked: checkbox.checked
+  }});
  
   // 다이얼로그 숨기기
   modalContainer.style.display = "none";
-});
-
-
-window.addEventListener("load", () => {
-  const db = getFirestore(app);
-  const dogInfoContainer = document.getElementById("dogInfoContainer");
-
-  const dogsRef = collection(db, "dogs");
-  getDocs(dogsRef)
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const dogData = doc.data();
-        const dogInfo = createDogInfoElement(dogData);
-        dogInfoContainer.appendChild(dogInfo);
-      });
-    })
-    .catch((error) => {
-      console.error("강아지 정보 불러오기에 실패했습니다:", error);
-    });
 });
 
 
@@ -327,24 +337,67 @@ deleteButton.addEventListener("click", () => {
   const dogsToDelete = dogCheckboxes.filter(item => item.checkbox.checked);
 
   // 강아지 정보 엘리먼트와 파이어베이스 데이터베이스에서 삭제
-  dogsToDelete.forEach(({ checkbox, dogData }) => {
+  const deletePromises = dogsToDelete.map(({ checkbox, dogData }) => {
     // 화면에서 삭제
     const dogInfoContainer = document.getElementById("dogInfoContainer");
     const dogInfoElement = checkbox.parentNode;
     dogInfoContainer.removeChild(dogInfoElement);
 
+    // dogCheckboxes 배열에서 삭제
+    const index = dogCheckboxes.findIndex(item => item.checkbox === checkbox);
+    if (index !== -1) {
+      dogCheckboxes.splice(index, 1);
+    }
+
     // 파이어베이스 데이터베이스에서 삭제
     const db = getFirestore(app);
-    const dogRef = doc(db, "dogs", dogData.id); // dogData.id는 각 데이터의 실제 ID 값이어야 합니다.
-    console.log(dogData.id)
-    
-    deleteDoc(dogRef)
-      .then(() => {
-        console.log("강아지 정보가 성공적으로 삭제되었습니다.");
-      })
-      .catch((error) => {
-        console.error("강아지 정보 삭제에 실패했습니다:", error);
-      });
+    if (dogData && dogData.id) {
+      console.log("Deleting document with ID:", dogData.id); // 추가된 로그
+      const dogRef = doc(db, "dogs", dogData.id);
+      return deleteDoc(dogRef)  // 반환된 프로미스를 반환
+        .then(() => {
+          // 로컬 스토리지에서도 삭제
+          const storedDogInfo = JSON.parse(localStorage.getItem("dogInfo")) || [];
+          const updatedDogInfo = storedDogInfo.filter(info => info.id !== dogData.id);
+          localStorage.setItem("dogInfo", JSON.stringify(updatedDogInfo));
+        })
+        .catch((error) => {
+          console.error("강아지 정보 삭제에 실패했습니다:", error);
+        })
+        .finally(() => {
+          // 삭제 후에 화면 업데이트
+          updateDogInfoOnScreen();
+        });
+    }
+  });
+
+  // 삭제 작업이 모두 완료된 후에 로컬 스토리지와 화면을 업데이트
+  Promise.all(deletePromises).then(() => {
+    console.log("삭제 작업이 완료되어 화면을 업데이트합니다.");
+    updateDogInfoOnScreen();
   });
 });
+
+
+// 강아지 정보를 화면에 업데이트하는 함수
+function updateDogInfoOnScreen() {
+  const dogInfoContainer = document.getElementById("dogInfoContainer");
+  const db = getFirestore(app);
+  const dogsCollection = collection(db, "dogs");
+
+  getDocs(dogsCollection)
+    .then((querySnapshot) => {
+      // 기존 정보를 모두 삭제
+      dogInfoContainer.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        const dogData = doc.data();
+        dogData.id = doc.id; // Firestore 문서의 ID 값을 dogData 객체에 추가
+        const dogInfo = createDogInfoElement(dogData);
+        dogInfoContainer.appendChild(dogInfo);
+      });
+    })
+    .catch((error) => {
+      console.error("Firestore 데이터 가져오기 실패:", error);
+    });
+}
 
