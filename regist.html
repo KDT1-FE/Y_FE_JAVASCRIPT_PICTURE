@@ -32,16 +32,27 @@
               accept=".jpg, .jpeg, .png"
               required
             />
+            <button class="img-remove-btn hidden">삭제하기</button>
             <img id="avatarImg" class="avatar-img" />
           </div>
         </div>
         <div class="input-box">
           <label class="hidden">프로필 이미지 URL</label>
-          <input class="regist-text-input hidden" placeholder="이름" />
+          <input
+            id="imgTextInput"
+            class="regist-text-input hidden"
+            placeholder="이름"
+          />
           <label class="regist-label">이름</label>
-          <input class="regist-text-input" placeholder="이름" required />
+          <input
+            id="nameInput"
+            class="regist-text-input"
+            placeholder="이름"
+            required
+          />
           <label class="regist-label">이메일</label>
           <input
+            id="emailInput"
             type="email"
             class="regist-text-input"
             placeholder="이메일"
@@ -49,13 +60,14 @@
           />
           <label class="regist-label">전화번호</label>
           <input
+            id="phoneInput"
             type="tel"
             class="regist-text-input"
             placeholder="전화번호"
             required
           />
           <label class="regist-label">구분</label>
-          <select class="regist-text-input" required>
+          <select id="gradeInput" class="regist-text-input" required>
             <option selected>일반</option>
             <option>VIP</option>
             <option>VVIP</option>

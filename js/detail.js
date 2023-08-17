@@ -1,7 +1,6 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db, storage } from "./firebase";
-import { deleteData } from "./util";
+import { db } from "./firebase";
+import { changeAvatar, preventEnter, removeAvatar } from "./util";
 
 const url = new URL(window.location);
 const urlParams = url.searchParams;
@@ -19,9 +18,11 @@ window.onload = async () => {
   // 고객 정보 조회
   const docRef = doc(db, "customers", coustomerId);
   await getDoc(docRef).then((docSnap) => {
+    // 스켈레톤 레이아웃 삭제
     document.querySelectorAll(".skeleton").forEach((skeleton) => {
       skeleton.classList.remove("skeleton");
-    }); // 값이 존재하면 고객 정보 표시
+    });
+    // 값이 존재하면 고객 정보 표시
     if (docSnap.exists()) {
       avatarImg.src = docSnap.data().avatar;
       imgTextInput.value = docSnap.data().avatar;
@@ -36,33 +37,11 @@ window.onload = async () => {
   });
 };
 
-const imgRemoveBtn = document.querySelector(".img-remove-btn");
-
-// 프로필 이미지가 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
-const imageInputEl = document.getElementById("profilePic");
-imageInputEl.addEventListener("change", () => {
-  if (imgTextInput.value) {
-    deleteData(imgTextInput.value);
-  }
-  const file = imageInputEl.files[0];
-  const storageRef = ref(storage, "avatar/" + file.name);
-  // storage에 사진 저장
-  uploadBytes(storageRef, file).then(() => {
-    // storage에 저장된 사진 url 가져오기
-    getDownloadURL(storageRef).then((url) => {
-      // 프로필 이미지 url input에 저장
-      imgTextInput.value = url;
-
-      // 프로필 이미지 변경
-      avatarImg.src = url;
-
-      // 프로필 이미지 삭제 버튼 표시
-      imgRemoveBtn.classList.remove("hidden");
-    });
-  });
-});
+// input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
+changeAvatar(coustomerId);
 
 const modifyBtn = document.querySelector(".modify");
+const imgRemoveBtn = document.querySelector(".img-remove-btn");
 
 // 수정관련 버튼 토글 함수
 const toggleModifyBtn = () => {
@@ -78,6 +57,7 @@ const toggleModifyBtn = () => {
   modifyBtn.classList.toggle("hidden");
   // 만약 사진 url 값이 있다면 이미지 '삭제하기' 버튼 숨기기/보여주기 토글
   if (imgTextInput.value) {
+    document.querySelector(".avatar-label").classList.toggle("hidden");
     imgRemoveBtn.classList.toggle("hidden");
   }
   // '취소하기','수정하기' 버튼 숨기기/보여주기 토글
@@ -99,14 +79,7 @@ document.querySelector(".cancel-btn").addEventListener("click", (e) => {
 });
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
-imgRemoveBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  deleteData(imgTextInput.value);
-  if (imgTextInput.value) {
-    imgTextInput.value = "";
-    avatarImg.src = "";
-  }
-});
+removeAvatar();
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
 document.querySelector(".submit-btn").addEventListener("click", async (e) => {
@@ -121,3 +94,6 @@ document.querySelector(".submit-btn").addEventListener("click", async (e) => {
     location.href = "/";
   });
 });
+
+// input 태그에서 엔터 눌러도 submit 막기
+preventEnter();
