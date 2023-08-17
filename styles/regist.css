@@ -8,7 +8,7 @@
   margin-bottom: 0.625rem;
 }
 
-#profilePic,
+#avatarBox,
 .regist-text-input {
   border: 1px solid #dedede;
   border-radius: 5px;
@@ -40,6 +40,28 @@
   border-radius: 5px;
 }
 
+.avatar-label,
+.img-remove-btn {
+  position: absolute;
+  top: 0.9375rem;
+  padding: 4px 6px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background-color: #d3d3d3;
+
+  cursor: pointer;
+  z-index: 15;
+}
+
+.avatar-label {
+  left: 0.9375rem;
+}
+.avatar-label:hover {
+  background-color: #bdbebd;
+}
+
 .avatar {
   width: auto;
   height: 100%;
@@ -47,19 +69,13 @@
 }
 
 .img-remove-btn {
-  position: absolute;
-  top: 0.9375rem;
   right: 0.9375rem;
-  padding: 4px 6px;
-
-  border: 0;
-  border-radius: 5px;
-
-  background-color: #e61919;
+  background-color: #d22e2e;
   color: white;
+}
 
-  cursor: pointer;
-  z-index: 15;
+.img-remove-btn:hover {
+  background-color: #e61919;
 }
 
 .regist-text-input {
