@@ -55,6 +55,7 @@ a {
 .inner {
   /* common 으로 inner를 정의함으로써 하위 inner들은 height만을 지정하여 편리하게 사용할 수 있도록 함 */
   width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   /* 하위 구조에서 position 사용중이기 때문에 부모인 .inner에서 position relative로 지정하여 기준을 명시해줌 */
   position: relative;
@@ -81,6 +82,7 @@ a {
 
 /* HEADER */
 header {
+  max-width: 100%;
 }
 header .inner {
 }
@@ -95,6 +97,7 @@ header .inner h1 {
 
 /* TOOLBAR */
 .toolbar {
+  max-width: 100%;
 }
 .toolbar .inner {
   display: flex;
@@ -112,14 +115,15 @@ header .inner h1 {
 .toolbar .inner .toolbar__search {
 }
 .toolbar .inner .toolbar__search .search {
-  /* TODO: 아이콘 추가 및 스타일 변경, 기능 부여 */
 }
 
 /* STAFF LIST */
 .staff-list {
   display: inline-block;
+  max-width: 100%;
 }
 .staff-list .inner {
+  max-width: 100%;
 }
 .staff-list .inner .staff-list__title {
   display: grid;
@@ -383,4 +387,166 @@ header .inner h1 {
   right: 30px;
   z-index: 9;
   transform: translateX(100px); /* 초기에 오른쪽으로 밀기 */
+}
+
+/* 기본: 데스크탑 우선 */
+
+/* 태블릿 스타일 (너비 768px~1024px) */
+/* 태블릿은 이번 과제 조건에서 벗어남, 추후 태블릿 적용도 고려 예정 */
+/* 태블릿 전용으로 따로 미디어 쿼리를 설정하지는 않았지만, 기본적으로 데스크탑 또한 반응형을 고려하여 상대수치를 적극 사용하였기에, */
+/* 일정 수준의 태블릿에 대해서는 문제 없이 화면 크기에 맞춰 지원 됨 */
+
+/* 모바일 스타일 (너비 768px 미만) */
+@media (max-width: 768px) {
+  /* MOBILE: COMMON */
+  body {
+    width: auto;
+    padding: 1.6em;
+  }
+  .inner {
+    width: auto;
+  }
+
+  /* MOBILE: TOOLBAR */
+  .toolbar .inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toolbar .inner .toolbar__btn {
+    margin-bottom: 1.2em;
+  }
+
+  /* MOBILE: STAFF LIST */
+  .staff-list {
+    display: block;
+  }
+  .staff-list__title span:nth-child(3),
+  .staff-list__title span:nth-child(4),
+  .staff-list__title span:nth-child(5),
+  .staff-list__title span:nth-child(6) {
+    display: none; /* 이름, 이메일, 연락처, 구분을 숨김 */
+  }
+  .staff-list__title input[type='checkbox'] + span {
+    display: none; /* 체크박스 옆의 '사진' 문자열 숨김 */
+  }
+  .staff-list__title {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 체크박스와 '임직원 정보'를 위한 그리드 */
+  }
+  .staff-list__title input[type='checkbox'] {
+    order: 1; /* 체크박스를 첫 번째로 위치 */
+  }
+  .staff-list__title:before {
+    content: '임직원 정보'; /* 체크박스 옆에 '임직원 정보'라는 문자열 표시 */
+    order: 2; /* 두 번째로 위치 */
+    display: flex;
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    justify-content: center; /* 가로 방향 중앙 정렬 */
+  }
+  .staff-list .inner .staff-list__title {
+    grid-template-columns: 1fr 3fr;
+  }
+  .staff-list .inner .staff-list__item .item-image {
+    display: none; /* 리스트 아이템 내부 이미지 숨김 */
+    visibility: hidden; /* 안 보이게 설정 */
+  }
+
+  /* MOBILE: SORT CONTROL */
+  .staff-modal .staff-modal__content .info-image {
+    display: block; /* 모달 창에서 이미지 보이게 설정 */
+    visibility: visible; /* 보이게 설정 */
+  }
+  .staff-list .inner .staff-list__item ul li {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 체크박스와 이름을 위한 그리드 */
+    grid-template-rows: auto auto auto auto;
+    gap: 8px;
+    width: 100%;
+  }
+  .item-checkbox {
+    grid-row: 1;
+    grid-column: 1; /* 첫 번째 컬럼 차지 */
+  }
+  .item-name,
+  .item-email,
+  .item-phone,
+  .item-category {
+    grid-column: 2; /* 두 번째 컬럼 차지 */
+    display: flex;
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    justify-content: center; /* 가로 방향 중앙 정렬 */
+  }
+
+  /* MOBILE: MODAL */
+  .register-modal,
+  .staff-modal {
+    position: fixed;
+    top: 0;
+    right: -80%;
+    width: 80%;
+    height: 100%;
+    background: #fff;
+    overflow-y: auto; /* 모달 내부의 스크롤 적용 */
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 101; /* overlay보다 높은 z-index */
+    text-align: left;
+  }
+
+  /* MOBILE: REGISTER MODAL */
+  .register-modal .register-modal__content .register-modal__input-field #staff-form {
+    width: 100%;
+  }
+  /* MOBILE: STAFF MODAL */
+  .staff-modal .staff-modal__sub-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 2em 0.4em;
+  }
+  .staff-modal .staff-modal__sub-title h3 {
+    margin-bottom: 0.8em;
+  }
+  .staff-modal__sub-title .btn {
+    margin-right: 0.4em;
+  }
+  /* 사진 변경 버튼 스타일 */
+  .change-image-btn {
+    width: 100%;
+  }
+  .staff-modal .staff-modal__content {
+    display: flex; /* 플렉스박스로 설정 */
+    flex-direction: column;
+    align-items: stretch; /* 자식 요소들을 부모의 너비로 늘림 */
+    width: 100%; /* 컨텐츠 영역 너비를 최대로 설정 */
+  }
+  .staff-modal .staff-modal__content .info-image,
+  .staff-modal .staff-modal__content .staff-modal__info {
+    flex: 0 0 100%; /* 이미지 및 인포 영역 너비를 100%로 설정 */
+    max-width: 100%;
+  }
+  .staff-modal .staff-modal__content .info-image {
+    margin-bottom: 2em;
+  }
+  .staff-modal .staff-modal__content .staff-modal__info {
+    font-size: 1.4em; /* 폰트 사이즈 조정 */
+    width: 100%; /* 전체 영역의 너비를 모달의 최대 넓이로 설정 */
+  }
+  .staff-modal .staff-modal__content .staff-modal__info input[type='text'] {
+    width: 85%; /* 입력 필드 너비 조절 */
+  }
+  .staff-modal .staff-modal__content .staff-modal__info .info-name,
+  .staff-modal .staff-modal__content .staff-modal__info .info-email,
+  .staff-modal .staff-modal__content .staff-modal__info .info-phone,
+  .staff-modal .staff-modal__content .staff-modal__info .info-category {
+    margin: 0;
+  }
+  .staff-modal .staff-modal__content .info-name__label,
+  .staff-modal .staff-modal__content .info-email__label,
+  .staff-modal .staff-modal__content .info-phone__label,
+  .staff-modal .staff-modal__content .info-category__label {
+    min-width: 50%; /* 라벨의 최소 너비 설정 (필요에 따라 조정) */
+    white-space: nowrap; /* 글씨가 세로로 나열되지 않게 설정 */
+  }
 }
