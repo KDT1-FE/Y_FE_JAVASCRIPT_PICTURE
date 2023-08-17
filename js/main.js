@@ -1,17 +1,9 @@
 import _ from 'lodash';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { firebaseConfig } from './firebase-config.js';
 
 // Firebase 설정
-var firebaseConfig = {
-  apiKey: 'AIzaSyBLqI_ORJ_DuJCQs2fMdiJ8B77-bpkZtsI',
-  authDomain: 'staff-managing-project.firebaseapp.com',
-  projectId: 'staff-managing-project',
-  storageBucket: 'staff-managing-project.appspot.com',
-  messagingSenderId: '742894439459',
-  appId: '1:742894439459:web:c14e0ab228e38bed07f596',
-  measurementId: 'G-B0PRSPPYND',
-};
 firebase.initializeApp(firebaseConfig);
 
 // Database와 Storage 참조
