@@ -101,10 +101,14 @@
 }
 
 .worker-box > li {
-  width: 14%;
+  width: 15%;
   justify-content: center;
   display: flex;
   padding: 1rem 0;
+}
+
+.worker-box > li:last-child {
+  width: 16%;
 }
 
 #check {
@@ -123,5 +127,5 @@
 }
 
 #worker {
-  border-bottom: 1px solid #868e96;
+  border-bottom: 1px solid #e9ecef;
 }

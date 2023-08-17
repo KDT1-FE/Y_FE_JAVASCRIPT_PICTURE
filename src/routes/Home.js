@@ -2,7 +2,15 @@ import { Component } from "../core/core";
 import Header from "../components/common/Header";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Worker from "../components/Home/Worker";
 export default class Home extends Component {
+  constructor() {
+    super({
+      state: {
+        workers: [],
+      },
+    });
+  }
   render() {
     const header = new Header().el;
     this.el.classList.add("wrap");
@@ -34,13 +42,12 @@ export default class Home extends Component {
             <li>프로필 사진</li>
             <li>사원번호</li>
             <li>이름</li>
-            <li>핸드폰 번호</li>
             <li>부서</li>
             <li>직급</li>
             <li>이메일</li>
           </ul>
         </div>
-        <div class="worker-item"></div>
+        <div class="worker-items"></div>
       </div>
     `;
     this.el.appendChild(homeContainer);
@@ -50,13 +57,27 @@ export default class Home extends Component {
       location.replace("/#/registration");
     });
 
-    async function fetchWorkersData() {
+    const fetchWorkersData = async () => {
       const querySnapshot = await getDocs(collection(db, "board"));
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-      });
-    }
+      const workerItemsContainer = document.querySelector(".worker-items");
 
+      querySnapshot.forEach((doc) => {
+        this.state.workers.push(doc.data());
+      });
+
+      workerItemsContainer.append(
+        ...this.state.workers.map(
+          (worker) =>
+            new Worker({
+              props: {
+                ...worker,
+              },
+            }).el
+        )
+      );
+    };
+
+    // console.log(this.state.workers);
     fetchWorkersData();
   }
 }
