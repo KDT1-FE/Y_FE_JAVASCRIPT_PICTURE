@@ -1,7 +1,6 @@
 @charset "UTF-8";
 .main {
   width: 70%;
-  height: 100%;
   margin: 50px 50px;
   padding: 50px 10px;
   display: flex;
