@@ -63,6 +63,7 @@ let file;
 editBtn.addEventListener("click", async () => {
   //이미지 관련 요소
   const imageUploadInput = document.querySelector(".image-upload");
+  let imgChanged = false;
 
   if (editBtn.textContent === "정보 수정") {
     //button text content가 수정완료일 때 => 수정모드
@@ -106,8 +107,6 @@ editBtn.addEventListener("click", async () => {
       });
     });
 
-    let imgChanged = false;
-
     //image 수정
     imageUploadInput.addEventListener("change", async (event) => {
       file = event.target.files[0];
@@ -124,23 +123,31 @@ editBtn.addEventListener("click", async () => {
       }
     });
   } else if (editBtn.textContent === "수정 완료") {
-    editBtn.textContent = "정보 수정";
-    imageUploadInput.style.display = "none";
-    alert("정보가 수정되었습니다!");
-
     const profileContainer = document.querySelector(".villager-info");
-
     //profileContainer 내부의 모든 input 엘리먼트 선택
     const inputElements = profileContainer.querySelectorAll("input");
+    let isInputValid = true;
 
     //업데이트된 정보를 저장할 객체 생성
     const updatedData = {};
 
-    //input을 반복하며 객체 업데이트
     inputElements.forEach((input) => {
       const field = input.id;
+      const value = input.value.trim();
+      if (value === "") {
+        isInputValid = false;
+        return;
+      }
       updatedData[field] = input.value;
     });
+
+    if (!isInputValid) {
+      alert("모든 정보를 채워주세요!");
+      return;
+    }
+
+    editBtn.textContent = "정보 수정";
+    imageUploadInput.style.display = "none";
 
     try {
       //firestore 업데이트
@@ -182,6 +189,7 @@ editBtn.addEventListener("click", async () => {
     } catch (error) {
       console.error("오류: ", error);
     }
+    alert("정보 수정이 완료되었습니다!");
   }
 });
 
