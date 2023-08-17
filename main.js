@@ -10,6 +10,10 @@ const nameInput = document.getElementById("inputName");
 const emailInput = document.getElementById("inputEmail");
 const phoneInput = document.getElementById("inputPhone");
 const categoryInput = document.getElementById("inputCategory");
+const employees = Array.from(list.getElementsByClassName("employee"));
+const searchInput = document.getElementById("searchInput");
+
+const employeeList = [];
 
 nameInput.value = "hello";
 emailInput.value = "email";
@@ -25,6 +29,14 @@ btn1.addEventListener("click", async () => {
   const category = categoryInput.value;
 
   if (profileImage && name_ && email && category && phone) {
+    const newEmployee = {
+      profileImage: profileImage,
+      name: name_,
+      email: email,
+      phone: phone,
+      category: category,
+    };
+
     const employeeDiv = document.createElement("div");
     employeeDiv.classList.add("employee");
 
@@ -136,6 +148,8 @@ btn1.addEventListener("click", async () => {
     employeeDiv.appendChild(savebtn);
 
     list.appendChild(employeeDiv);
+
+    employeeList.push(newEmployee);
 
     profileImageElement.addEventListener("click", () => {
       // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
@@ -268,3 +282,18 @@ const deleteImageFromS3 = async (imageName) => {
     console.error("Error deleting image:", error);
   }
 };
+
+searchInput.addEventListener("input", () => {
+  const searchText = searchInput.value.trim().toLowerCase(); // 검색어 앞뒤 공백 제거 및 소문자로 변환
+
+  employeeList.forEach((employee) => {
+    alert(employeeList);
+    const nameElement = employee.querySelector(".p-name");
+    const name = nameElement.textContent.toLowerCase(); // 이름 소문자로 변환
+    if (name.includes(searchText)) {
+      employee.style.display = "block";
+    } else {
+      employee.style.display = "none";
+    }
+  });
+});
