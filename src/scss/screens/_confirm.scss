@@ -1,0 +1,141 @@
+#confirm {
+  width: 80vw;
+  height: 80vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  #accidentProfile {
+    display: flex;
+    flex-direction: column;
+
+    #accidentDriver {
+      margin: 20px 0 10px;
+
+      display: flex;
+
+      #driverImg {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50%;
+
+        transition: 0.5s;
+
+        @include tablet {
+          width: 40px;
+          height: 40px;
+        }
+
+        @include mobile {
+          width: 8rem;
+          height: 8rem;
+        }
+      }
+
+      #driverName {
+        margin-left: 1rem;
+
+        font-size: 18px;
+        line-height: 50px;
+
+        transition: 0.5s;
+
+        @include tablet {
+          font-size: 15px;
+          line-height: 40px;
+        }
+
+        @include mobile {
+          font-size: 14px;
+          line-height: 8rem;
+        }
+      }
+    }
+    #accidentInfo {
+      margin: 10px 0 50px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      #accidentImg {
+        width: 500px;
+        height: 350px;
+
+        border-radius: 10px;
+
+        transition: 0.5s;
+
+        @include tablet {
+          width: 320px;
+          height: 200px;
+        }
+
+        @include mobile {
+          width: 280px;
+          height: 200px;
+        }
+      }
+
+      #accidentDate {
+        margin-top: 20px;
+        font-size: 16px;
+
+        transition: 0.5s;
+
+        @include mobile {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .confirmBtn {
+    width: 500px;
+    height: 100px;
+
+    border: 1px solid $white;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: $white;
+    background-color: transparent;
+
+    transition: 0.5s;
+
+    &:hover {
+      border: 1px solid $black;
+
+      color: $black;
+      background-color: $white;
+    }
+
+    @include tablet {
+      width: 320px;
+
+      font-size: 17px;
+    }
+
+    @include mobile {
+      width: 280px;
+
+      font-size: 14px;
+    }
+  }
+
+  #confirmNote {
+    margin-top: 15px;
+
+    color: $alert;
+    font-size: 15px;
+  }
+}
