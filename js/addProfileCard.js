@@ -15,7 +15,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //profile카드 추가하기 관련 선언
-const profileContainer = document.querySelector('.container');
+const profileContainer = document.querySelector('.profile-container');
 let template = `
     <div class="profile-card">
       <img class="profile-image" src="{{__profile_image__}}" alt="profile image">

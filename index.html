@@ -4,31 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+  <!-- <link rel="stylesheet" href="./css/reset.css"> -->
   <link rel="stylesheet" href="./css/modal.css">
-  <link rel="stylesheet" href="./css/main.css">
+  <!-- <link rel="stylesheet" href="./css/humanResources.css"> -->
+  <link href="/dist/humanResourcesOutput.css" rel="stylesheet">
+  <link href="/dist/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="font-Pretendard">
   <header>
-    <span class="header-name">SOLMI KOH</span>
-    <div class="menu-container">
-      <a href="/">
-        <span>Human Resources</span>
-      </a>
-      <a href="./pages/moreInfo/moreInfo.html">
-        <span>More Info</span>
-      </a>
-      <a href="./pages/playground/playground.html">
-        <span>Playground</span>
-      </a>
+    <div class="header-box">
+      <span class="header-name">SOLMI KOH</span>
+      <div class="menu-container">
+        <a href="/" class="px-2 sm:px-7">
+          <span>Human Resources</span>
+        </a>
+        <a href="./pages/moreInfo/moreInfo.html" class="px-2 sm:px-7">
+          <span>More Info</span>
+        </a>
+        <a href="./pages/playground/playground.html" class="px-2 sm:px-7">
+          <span>Playground</span>
+        </a>
+      </div>
     </div>
   </header>
   <div id="content"></div>
-  <section>
-    <h1>Human Resources</h1>
-    <button class="btn__add">ADD</button>
-    <div class="container"></div>
+  <section class="w-full">
+    <h1 class="mt-[170px] mb-8 font-bold text-3xl text-center">Human Resources</h1>
+    <button class="btn__add block justify-center h-8 font-bold w-20">ADD</button>
+    <div class="profile-container"></div>
   </section>
   <dialog class="modal__add-profile">
     <div class="guide-text"> 반갑습니다!🖐 프로필을 등록해주세요</div>
@@ -66,9 +70,6 @@
         </div>
     </form>
   </dialog>
-  <!-- <div>
-    <img id="myimg" src="" alt="test">
-  </div> -->
   <script type="module" src="./index.js"></script>
 </body>
 </html>

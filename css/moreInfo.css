@@ -8,15 +8,16 @@
   font-weight: 900;
 }
 .detail-profile-card{
+  display:block;
   background-color: rgb(30,30,30);
   color:rgb(173, 255, 80);
-  display: flex;
   padding:50px 40px;
   margin:10px 20px;
   box-shadow: 10px 10px 20px lightgray;
   border-radius: 15px;
   align-items:center;
 }
+
 .detail-button{
   background-color: rgb(30,30,30);
   color:rgb(173, 255, 80);
@@ -74,4 +75,16 @@ label, #btn__img-delete {
 label:hover, #btn__img-delete:hover {
   background-color: rgb(173, 255, 80);
   color:rgb(30,30,30);
+}
+
+@media (min-width:1024px){
+  .detail-container{
+    width:1010px;
+    margin:8rem auto;
+  }
+}
+@media (min-width:640px){
+  .detail-profile-card{
+    display: flex;
+  }
 }
