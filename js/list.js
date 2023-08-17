@@ -99,10 +99,10 @@ deleteBtn.addEventListener("click", async (e) => {
     if (window.confirm("삭제하시겠습니까?")) {
       deleteList.forEach(async (id) => {
         await deleteDoc(doc(db, "customers", id)).then(() => {
+          alert("삭제되었습니다.");
           location.reload();
         });
       });
-      alert("삭제되었습니다.");
     } else {
       alert("취소되었습니다.");
     }
