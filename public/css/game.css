@@ -8,7 +8,7 @@
   background: #f9f6e5;
   border-radius: 10px;
   position: absolute;
-  top: 240px;
+  top: 280px;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -95,4 +95,39 @@
 
 .card.flip .back-view {
   transform: rotateY(0);
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    height: 400px;
+    width: 400px;
+  }
+
+  .card .front-view .front-leaf {
+    padding: 25px;
+  }
+
+  .card .back-view img {
+    max-width: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    height: 200px;
+    width: 200px;
+    top: 250px;
+  }
+
+  .cards .card {
+    margin: 0 5px;
+  }
+
+  .card .front-view .front-leaf {
+    padding: 12px;
+  }
+
+  .card .back-view img {
+    max-width: 20px;
+  }
 }
