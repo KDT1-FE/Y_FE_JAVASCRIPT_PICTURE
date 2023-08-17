@@ -8,49 +8,78 @@
     <link rel="stylesheet" href="enroll.css" />
   </head>
   <body>
+    <input type="number" style="display: none" id="customer_number" />
     <main>
       <section class="section__enroll">
         <nav class="section__enroll--nav">
           <p>회원 등록</p>
-          <a href="index.html"><button>등록</button></a>
+          <a href="index.html" id="enroll_submit"><button>등록</button></a>
         </nav>
         <article class="section__enroll--article">
           <div class="section__enroll--template">
             <ul>
               <li>
                 <span>이름</span>
-                <input type="text" placeholder="성함을 입력해주세요." />
+                <input
+                  type="text"
+                  class="section__enroll--name"
+                  placeholder="성함을 입력해주세요."
+                />
               </li>
               <li>
                 <span>연락처</span>
-                <input type="text" placeholder="- 없이 입력해주세요." />
+                <input
+                  type="text"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                  maxlength="11"
+                  class="section__enroll--phone"
+                  placeholder="- 없이 입력해주세요."
+                />
               </li>
               <li>
                 <span>등록 기간</span>
-                <input type="date" name="start_of_days" id="start_of_days" />
-                <input type="date" name="end_of_days" id="end_of_days" />
+                <input
+                  type="date"
+                  class="section__enroll--start_day"
+                  name="start_of_days"
+                />
+                <input
+                  type="date"
+                  class="section__enroll--end_day"
+                  name="end_of_days"
+                />
               </li>
               <li>
                 <span>PT 등록 여부</span>
-                <input type="checkbox" name="pt_check" id="pt_check" />
-              </li>
-              <li class="section__enroll--pt_check">
-                <span>PT 잔여 세션</span>
-                <form action="#">
-                  <select name="" id="">
-                    <option value="1">1</option>
-                  </select>
-                </form>
-              </li>
-              <li class="section__enroll--pt_check">
-                <span>담당 트레이너</span>
-                <form action="#">
-                  <select name="" id="">
-                    <option value="홍길동">홍길동</option>
-                  </select>
-                </form>
+                <input
+                  type="checkbox"
+                  name="is_pt"
+                  class="section__enroll--is_pt"
+                />
               </li>
             </ul>
+            <div class="section__enroll--pt_check">
+              <div>
+                <span>PT 잔여 세션</span>
+                <form action="#">
+                  <select name="" id="pt_session">
+                    <option value="0" selected disabled>
+                      횟수를 선택해주세요.
+                    </option>
+                  </select>
+                </form>
+              </div>
+              <div>
+                <span>담당 트레이너</span>
+                <form action="#">
+                  <select name="" id="pt_trainer">
+                    <option value="" selected disabled>
+                      담당 트레이너를 선택해주세요.
+                    </option>
+                  </select>
+                </form>
+              </div>
+            </div>
           </div>
           <div class="section__enroll--image">
             <span>사진</span>
@@ -59,13 +88,16 @@
               <div id="image_location"></div>
               <div class="section__enroll--image_button">
                 <button>등록</button>
-                <button onclick="deleteImage()">삭제</button>
+                <button class="section__enroll--image_delete">삭제</button>
               </div>
             </div>
           </div>
         </article>
       </section>
     </main>
-    <script src="image.js"></script>
+
+    <script src="enroll.js" type="module"></script>
+    <script src="image.js" type="module"></script>
+    <script src="firebase.js" type="module"></script>
   </body>
 </html>
