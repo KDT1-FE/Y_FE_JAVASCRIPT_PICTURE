@@ -20,12 +20,12 @@ villagerDocRef.get().then((doc) => {
     const speechHabit = data.speechHabit;
     const imageUrl = data.imageUrl;
 
-    // ul 새로 만들기
+    //ul 새로 만들기
     const profileContainer = document.createElement("ul");
     profileContainer.classList.add("villager-info");
     profileContainer.dataset.id = doc.id;
 
-    // 어떤 구조로 들어갈지
+    //어떤 구조로 들어갈지
     profileContainer.innerHTML = `
         <li class="villager-info-name"><p>${name}</p></li>
         <li class="villager-info-engName"><p>${engName}</p></li>
@@ -60,10 +60,10 @@ editBtn.addEventListener("click", async () => {
     editBtn.textContent = "수정 완료";
     imageUploadInput.style.display = "block";
 
-    // profileContainer 내부의 모든 p 태그 선택
+    //profileContainer 내부의 모든 p 태그 선택
     const pTags = document.querySelectorAll(".villager-info p");
 
-    // 각 p 태그를 input으로 교체
+    //각 p 태그를 input으로 교체
     pTags.forEach((pTag) => {
       const input = document.createElement("input");
       input.value = pTag.textContent;
@@ -71,7 +71,7 @@ editBtn.addEventListener("click", async () => {
         "villager-info-",
         ""
       );
-      input.id = field; // 필드 이름을 id로 설정
+      input.id = field; //필드 이름을 id로 설정
       pTag.textContent = "";
       pTag.appendChild(input);
 
@@ -155,12 +155,12 @@ editBtn.addEventListener("click", async () => {
           await storageRef.delete();
         }
 
-        // Storage에 이미지 업로드
+        //storage에 이미지 업로드
         const storageRef = storage.ref(`${villagerId}`);
         const imageRef = await storageRef.put(file);
         const imageUrl = await imageRef.ref.getDownloadURL();
 
-        // Firestore에서 이미지 URL 업데이트
+        //firestore에서 이미지 URL 업데이트
         await villagerDocRef.update({ imageUrl });
       } catch (error) {
         console.error("이미지 업로드 오류: ", error);
@@ -175,7 +175,7 @@ window.addEventListener("beforeunload", (event) => {
   if (editBtn.textContent === "수정 완료") {
     //수정 모드일 때 페이지 이동을 막음
     event.preventDefault();
-    // alert 표시
+    //alert 표시
     event.returnValue = "정보 수정 중입니다. 페이지를 나가시겠습니까?";
   }
 });
