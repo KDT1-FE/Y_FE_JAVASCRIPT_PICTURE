@@ -174,6 +174,7 @@
     align-items: center; /* 내부 요소를 수직으로 가운데 정렬하기 위해 설정 */
     margin-left: auto;
     margin-right: auto;
+    object-fit: cover;
   }
   
 /* 이미지의 스타일 */
@@ -190,4 +191,31 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+
+/* 새로고침 시 비율 깨지는 것 방지 */
+.dog-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* 이미지를 동그라미 모양으로 만듦 */
+}
+
+.dog-info span {
+    width: calc(20% - 30px); /* 나머지 요소들의 너비 설정 (체크박스의 너비를 뺀 너비를 4등분) */
+    font-size: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dog-checkbox {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+.dog-info img {
+    margin-left: 100px;
+    margin-right: 110px;
 }
