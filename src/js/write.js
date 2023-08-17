@@ -1,5 +1,7 @@
 import AWS from 'aws-sdk';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const element = ['name', 'email', 'phone', 'address', 'image'];
 const write = {};
 const errorMessage = {};
@@ -11,7 +13,8 @@ const deleteImageBtn = document.querySelector('.delete-image-btn');
 const submitBtn = document.getElementById('submit-button');
 let getItem = JSON.parse(localStorage.getItem('infos'));
 let latelyInfo = JSON.parse(localStorage.getItem('lately-info'));
-let referrer = document.referrer.split('/')[3].replace('.html', ''); // 전에 어떤 페이지에서 왔는지 확인
+let referrer = document.referrer.split('/'); // 전에 어떤 페이지에서 왔는지 확인
+referrer = referrer[referrer.length - 1].replace('.html', '');
 let uploadFile = 'undefined.png';
 let oldImage;
 let infos = [];
@@ -164,9 +167,9 @@ function getAddress() {
 }
 
 // 이미지 버킷에 업로드하는 함수
-async function onFileUpload() {
-  const ACCESS_KEY = 'AKIA2NGSQAWSFPZMK367';
-  const SECRET_ACCESS_KEY = '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';
+function onFileUpload() {
+  const ACCESS_KEY = process.env.ACCESS_KEY;
+  const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY;
   const REGION = 'ap-northeast-2';
   const S3_BUCKET = 'hong-upload-image';
 
@@ -235,7 +238,7 @@ function createStaff() {
   saveToLatelyLocalStorage(item);
 
   alert('등록이 완료되었습니다.');
-  location.href = '/profile.html';
+  location.href = './profile.html';
 }
 
 // 임직원 수정 함수
@@ -260,5 +263,5 @@ function editStaff() {
   saveToLocalStorage();
 
   alert('정보변경이 완료되었습니다.');
-  location.href = '/profile.html';
+  location.href = './profile.html';
 }

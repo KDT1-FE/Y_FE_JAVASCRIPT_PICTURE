@@ -3,22 +3,31 @@
   "version": "1.0.0",
   "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
   "scripts": {
-    "dev": "parcel ./src/html/index.html",
-    "build": "parcel build ./src/html/profile.html"
+    "dev": "parcel ./src/html/*.html",
+    "build": "parcel build ./src/html/*.html --no-source-maps --public-url https://jihongkyu.github.io/staffList",
+    "deploy": "push-dir --dir=dist--branch=gh-pages"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1432.0",
+    "dotenv": "^16.3.1",
     "lodash": "^4.17.21",
+    "parcel-plugin-envkey": "^1.1.0",
     "util": "^0.12.5"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "cssnano": "^6.0.1",
     "events": "^3.3.0",
+    "os-browserify": "^0.3.0",
     "parcel": "^2.9.3",
+    "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "punycode": "^1.4.1",
-    "querystring-es3": "^0.2.1"
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0"
   }
 }

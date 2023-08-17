@@ -1,3 +1,5 @@
-node_modules/
-dist/
-.parcel-cache/
+node_modules
+.parcel-cache
+dist
+.env
+apikey.js

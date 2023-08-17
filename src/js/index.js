@@ -1,4 +1,7 @@
+import { debounce } from 'lodash';
+
 const tBody = document.querySelector('tbody');
+const searchInput = document.querySelector('.search-input');
 const modal = document.querySelector('.modal');
 const profileBtn = document.querySelector('.profile-btn');
 const deleteBtn = document.querySelector('.delete-btn');
@@ -11,6 +14,21 @@ if (getItem) {
     createStaffList(item);
   });
 }
+
+// debounce를 활용한 검색 함수
+const searchStaff = debounce(() => {
+  const listInner = document.getElementsByClassName('list-inner');
+
+  for (let i = 0; i < listInner.length; i++) {
+    if (listInner[i].cells[1].innerText.includes(searchInput.value)) {
+      listInner[i].style.display = 'table-row';
+    } else {
+      listInner[i].style.display = 'none';
+    }
+  }
+}, 500);
+
+searchInput.addEventListener('input', searchStaff);
 
 // 리스트 생성 함수
 function createStaffList(item) {
@@ -26,6 +44,7 @@ function createStaffList(item) {
   <td>${phone1}-${phone2}-${phone3}</td>
   <td>${item.address}</td>
   `;
+  tr.classList.add('list-inner');
 
   tBody.append(tr);
 
@@ -42,7 +61,7 @@ function createStaffList(item) {
     // 상세보기 버튼
     profileBtn.addEventListener('click', function () {
       modal.classList.remove('active');
-      location.href = '/profile.html';
+      location.href = './profile.html';
     });
 
     // 삭제하기 버튼

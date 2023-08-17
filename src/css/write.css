@@ -168,7 +168,7 @@ body {
 }
 
 /* 768px 이하 화면 크기에 대한 스타일 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .wrapper {
     padding: 20px;
   }

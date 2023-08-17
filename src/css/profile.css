@@ -131,7 +131,7 @@ a:active {
 }
 
 /* 1024px 이하 화면 크기에 대한 스타일 */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .wrapper {
     max-width: 90%;
     padding: 40px 30px;
@@ -160,7 +160,7 @@ a:active {
 }
 
 /* 768px 이하 화면 크기에 대한 스타일 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .wrapper {
     padding: 30px;
   }

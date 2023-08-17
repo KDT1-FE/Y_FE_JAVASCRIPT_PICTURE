@@ -19,5 +19,5 @@ profileImage.src = data.imageUrl;
 
 // 정보변경 페이지로 이동
 staffInfoEdit.addEventListener('click', function () {
-  location.href = '/write.html';
+  location.href = './write.html';
 });
