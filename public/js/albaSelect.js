@@ -101,6 +101,7 @@ $(document).ready(function () {
       const collection = db.collection('albainfo');
       const docRef = collection.where('연락처', '==', phoneNum);
       const querySnapshot = await docRef.get();
+      const storage = firebase.storage();
 
       if (querySnapshot.size > 0) {
         const doc = querySnapshot.docs[0];
@@ -121,8 +122,21 @@ $(document).ready(function () {
         // 삭제하기 버튼 클릭 이벤트 리스너 등록
         $('.confirm-button').on('click', async function () {
           // 선택한 알바생 데이터 삭제 처리
-          const deletePromises = selectedIds.map((id) => {
-            return db.collection('albainfo').doc(id).delete();
+          const deletePromises = selectedIds.map(async (id) => {
+            // Firestore에서 해당 데이터 가져오기
+            const docRef = db.collection('albainfo').doc(id);
+            const docRefData = await docRef.get();
+            // Firestore 문서에 저장된 이미지 URL주소 가져오기
+            const imageData = docRefData.data();
+            const imageUrl = imageData.이미지; // 속성값에서 이미지 파일 URL 추출
+
+            // Storage에서 이미지 삭제
+            if (imageUrl) {
+              const storageRef = storage.refFromURL(imageUrl);
+              await storageRef.delete();
+            }
+            // Firestore DB에서 데이터 삭제
+            await docRef.delete();
           });
 
           // 삭제 Promise 모두 완료될 때까지 기다림
