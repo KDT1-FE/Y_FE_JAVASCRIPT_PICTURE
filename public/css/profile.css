@@ -150,6 +150,10 @@ body {
     height: auto;
   }
 
+  .profile-top-text {
+    font-size: 1.5rem;
+  }
+
   .profile-main {
     flex-direction: column;
     align-items: center;
@@ -164,6 +168,14 @@ body {
 
   .profile-info-hr {
     width: 20rem;
+  }
+
+  .profile-info-li {
+    margin: 0.9rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-right: 2rem;
   }
 
   .villager-info-name,
