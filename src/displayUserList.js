@@ -19,7 +19,6 @@ const userQuery = query(userRef, orderBy("name"), limit(userLength));
 const userListContainer = document.querySelector(".user__list");
 const homeBtnDesk = document.querySelector(".header__title");
 const homeBtnMobile = document.querySelector(".logo");
-const selectedCategory = document.querySelector(".user__selected-category");
 const scrollEnd = document.querySelector(".scroll-end");
 
 export function appendUsers(docs) {
@@ -112,7 +111,9 @@ homeBtnDesk.addEventListener("click", () => {
 });
 
 homeBtnMobile.addEventListener("click", () => {
-  // selectedCategory.value = "All";
+  const selectedCategory = document.querySelector(".user__selected-category");
+
+  selectedCategory.value = "All";
   console.log(selectedCategory);
   userListContainer.innerHTML = "";
   initialFetch();
