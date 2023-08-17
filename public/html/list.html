@@ -32,7 +32,11 @@
       <div>
         <ul class="member-title" id="list">
           <li class="member-innercheck-title">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              id="selectAllCheckbox"
+              onchange="checkAllBoxes(this)"
+            />
           </li>
           <li class="member-inner-title"><strong>사진</strong></li>
           <li class="member-inner-title"><strong>이름</strong></li>

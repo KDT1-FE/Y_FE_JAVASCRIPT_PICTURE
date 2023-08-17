@@ -70,6 +70,7 @@ function searchCharacters(event) {
   const listBox = document.querySelector(".member-list-box");
 
   listBox.innerHTML = "";
+  // console.log(list.innerHTML);
 
   db.collection("character")
     .get()
@@ -78,12 +79,13 @@ function searchCharacters(event) {
         listBox.innerHTML = "<div>검색하신 캐릭터는 없습니다.</div>";
         return;
       }
+      // console.log(snapshot);
       snapshot.forEach((doc) => {
         const charData = doc.data();
         const charName = charData.이름.toLowerCase();
 
         if (charName.includes(query)) {
-          let charItem = `
+          const charItem = `
                 <ul class="member-list">
                     <li class="member-list-innercheck">
                         <input type="checkbox" data-id="${doc.id}" />
@@ -109,3 +111,12 @@ function searchCharacters(event) {
 //       document.getElementById("navbar").innerHTML = data;
 //     });
 // };
+
+function checkAllBoxes(topCheckbox) {
+  const checkboxes = document.querySelectorAll(
+    ".member-list-innercheck input[type='checkbox']"
+  );
+  for (let checkbox of checkboxes) {
+    checkbox.checked = topCheckbox.checked;
+  }
+}
