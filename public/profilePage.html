@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원관리시스템</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/general.css">
+<link rel="stylesheet" href="./css/profilePage.css">
+</head>
+
+<body>
+    <header id = "header">
+        <div id = "logo"><a href="./listPage.html">직원관리시스템</a></div>
+        <div id = "profile">
+            <div id = "name">반갑습니다 <u>이승연 </u>관리자님!</div>
+            <div id = "profileImg"></div>
+        </div>
+    </header>    
+
+    <main id = "main">
+        <section id = "profileTitle">
+                <div id = "TitleWrap">
+                    <div id = "arrow"></div>
+                    <h3>직원 개인정보</h3>
+                </div>
+                <div id = "profileAction">
+                    <button id="profileEdit">수정</button>
+                    <button id="profileDel">삭제</button>
+                </div>
+            </div>
+        </section>
+        <section id="profileWrap">
+                <div id="profileImgWrap">
+                    <img id = "mainprofileImg" width="480em" height="480em">
+                </div>
+                <div id = "profileInfo">
+                    <div id = "info_top">
+                            <div class="info_title">이름</div>
+                            <div id = "info_name_data"></div>
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">생년월일</div>
+                            <div id = "info_birth_data"></div>
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">이메일주소</div>
+                            <div id = "info_email_data"></div>
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">휴대전화번호</div>
+                            <div id = "info_phone_data"></div>
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">입사일자</div>
+                            <div id = "info_join_data"></div>
+                    </div>
+                    <div id = "info_bottom">
+                            <div class="info_title">최신업데이트일자</div>
+                            <div id = "info_update_data"></div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="./js/main.js"></script>
+<script src="./js/profilePage.js"></script>
+</body>
+</html>

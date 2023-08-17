@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원관리시스템</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/general.css">
+<link rel="stylesheet" href="./css/addPage.css">
+</head>
+
+<body>
+    <header id = "header">
+        <div id = "logo"><a href="./listPage.html">직원관리시스템</a></div>
+        <div id = "profile">
+            <div id = "name">반갑습니다 <u>이승연 </u>관리자님!</div>
+            <div id = "profileImg"></div>
+        </div>
+</header>    
+    
+    <main id = "main">
+        <section id = "profileTitle">
+                <div id = "TitleWrap">
+                    <div id = "arrow"></div>
+                    <h3>직원 개인정보 수정</h3>
+                </div>
+                    <button id="profileSave">저장</button>
+            </div>
+        </section>
+        <section id="profileWrap">
+            <div id = "mainprofileWrap">
+                    <img id = "mainprofileImg" src="./assets/emptyset.png"/ width="480em" height="480em">
+                </div>
+                <form id = "profileInfo">
+                    <div id = "info_top">
+                        <div class="info_title">프로필사진</div>
+                        <div id = "profileImgWrap">
+                            <div id = "profileFile">
+                                <label class="editWrap" for="profileImgEdit">업로드</label>
+                                <div id ="editContent">파일을 선택해주세요.</div>
+                            </div>
+                            <input id = "profileImgEdit" type="file" accept="image/*"> 
+                            <button id = "profileImgDel" type="button">삭제</button>
+                        </div>
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">이름</div>
+                            <input id = "info_name_data"  value="" placeholder="이름을 입력해주세요.">
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">생년월일</div>
+                            <input id = "info_birth_data" type="number" value="" placeholder="생년월일을 입력해주세요. (YYYYMMDD)">
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">이메일주소</div>
+                            <input id = "info_email_data" value="" placeholder="이메일주소를 입력해주세요.">
+                    </div>
+                    <div class = "info_normal">
+                            <div class="info_title">휴대전화번호</div>
+                            <input id = "info_phone_data" type="number" value="" placeholder="휴대전화번호를 입력해주세요. (-는 제외)">
+                    </div>
+                    <div id = "info_bottom">
+                            <div class="info_title">입사일자</div>
+                            <input id = "info_join_data" type="number" value="" placeholder="입사일자를 입력해주세요. (YYYYMMDD)">
+                    </div>
+            </form>
+    </section>
+    <div id = "progressBarWrap"></div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script> 
+    
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    
+
+    
+<script src="./js/main.js"></script>    
+<script src="./js/editPage.js"></script>    
+</body>
+</html>

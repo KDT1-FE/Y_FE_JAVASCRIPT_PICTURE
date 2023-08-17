@@ -1,0 +1,18 @@
+html{
+    display: block;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+Body{
+    display: block;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.88em;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+    background-color: #F0F2F7;
+}

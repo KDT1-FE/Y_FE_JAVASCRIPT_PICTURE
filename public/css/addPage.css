@@ -1,0 +1,228 @@
+#header{
+    height: 2.38em;
+    padding: 0.88em 2.50em 0.88em 2.50em;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #0F59C9;
+}
+
+#logo{
+    font-weight: 700;
+    font-size: 1.13em;
+    color: #fff;
+
+}
+
+#logo > a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#profile{
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+#profileImg{
+    background-image: url(../assets/person3.png);
+    border-radius: 8em;
+    height: 1.88em;
+    width: 1.88em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 0em 0 0.94em;
+}
+#main{
+    padding: 1.3em 2.5em 1.3em 2.5em;
+}
+
+#profileTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.08em solid #D3D3D3;
+    padding-bottom: 1em;
+    flex-wrap: wrap;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0.66em 0 0.66em 0;
+}
+
+#profileAction{
+    display: flex;
+    align-items: center;
+}
+
+#profileSave, #profileImgDel{
+    width: 3em;
+    height: 1.88em;
+    border: 0.06em solid #D3D3D3;
+    border-radius: 0.25em;
+    background-color: #fff;
+    color: #222;
+    cursor: pointer;
+}
+
+#profileWrap{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#mainprofileImg{
+    margin-top: 1.56em;
+    border-radius: 1.06em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: block;
+    background-color: #222;
+}
+
+#profileImgWrap{
+    width: 66.5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#profileImgEdit{
+    width: 80%
+}
+
+#profileInfo{
+    width: 49%;
+    min-width: 18.5em;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.56em;
+}
+
+
+#info_top, .info_normal, #info_bottom{
+    width: 100%;
+    padding: 1em 2em 1em 2em;
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.08em solid #e9e9e9;
+}
+
+#info_top{
+    border-radius: 1.06em 1.06em 0em 0em;
+}
+
+#info_bottom{
+    border-radius:0 0 1.06em 1.06em;
+}
+
+
+
+.info_title{
+    color: #4a4a4a;
+    font-size: 1.1em;
+    font-weight: 300;
+    width: 10em;
+}
+
+#info_name_data, #info_birth_data, #info_email_data, #info_phone_data, #info_join_data, #info_update_data{
+    width: 65%;
+    padding: 0.4em;
+    border: 0.08em solid #D3D3D3;
+    border-radius: 0.4em;
+    font-size: 1em;
+}
+
+#Bar_Background{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.7);
+    z-index: 9999;
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+#Bar_Back{
+    position:relative ;
+    top:50%; 
+    left: 40%;
+    width: 20em;
+    height: 1em;
+    border-radius: 100em;
+    background-color: rgb(167, 167, 167);
+    overflow: hidden;
+    align-content: center;
+    position: inherit;
+}
+
+#Bar_Front{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10em;
+    height: 1em;
+    border-radius: 100em;
+    background-color: rgb(44, 108, 228);
+    animation-name: loading-bar;
+    animation-duration: 1600ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+@keyframes flicker{
+    from{
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes loading-bar{
+    0% {
+        width:0;
+        opacity:1;
+    }
+    80% {
+        width:100%;
+        opacity:1;
+    }
+    100% {
+        width:100%;
+        opacity:1;
+    }
+
+}
+
+
+.editWrap{
+  padding: 0.5em 1.7em;
+  background-color:#0F59C9;;
+  border-radius: 0.5em;
+  color: white;
+  cursor: pointer;
+}
+
+#profileImgEdit{
+    display: none;
+}
+
+#profileFile{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1em;
+}
