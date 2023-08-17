@@ -10,7 +10,7 @@
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
-  display: block; /* 처음 새로고침 때는 보이게 설정, 이후 js 로직에 의해 사라짐 */
+  z-index: 999;
 }
 @keyframes spin {
   0% {
@@ -21,6 +21,20 @@
   }
 }
 
+/* HIGILIGHT FADE */
+@keyframes highlightFade {
+  from {
+    background-color: #e1c196;
+  }
+  to {
+    background-color: transparent; /* 투명으로 서서히 사라짐 */
+  }
+}
+
+.highlighted {
+  animation: highlightFade 3s forwards; /* 3초 동안 진행하며 애니메이션 끝나면 마지막 상태 유지 */
+}
+
 /* COMMON */
 body {
   color: #333;
@@ -28,6 +42,8 @@ body {
   font-weight: 400;
   line-height: 1.4;
   font-family: 'Nanum Gothic', sans-serif;
+  overflow: auto;
+  text-align: center;
 }
 img {
   /* img를 block으로 처리하여 기존 inline의 baseline으로 인한 불필요한 margin 제거 */
@@ -54,10 +70,13 @@ a {
   background-color: #ccc; /* 회색 배경으로 설정 */
   cursor: not-allowed; /* 마우스 커서를 not-allowed로 표시 */
 }
-
 .search {
   width: 200px;
   padding: 10px;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
 }
 
 /* HEADER */
@@ -69,7 +88,9 @@ header .inner h1 {
   /* body의 font-size가 10px로 설정되어 있으므로, body 이하의 font-size는 상대 사이즈 사용 */
   font-size: 3.6em; /* 타이틀 크기 설정 */
   font-weight: bold;
-  padding: 20px 0; /* 패딩 추가 */
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: left;
 }
 
 /* TOOLBAR */
@@ -96,6 +117,7 @@ header .inner h1 {
 
 /* STAFF LIST */
 .staff-list {
+  display: inline-block;
 }
 .staff-list .inner {
 }
@@ -142,16 +164,19 @@ header .inner h1 {
 }
 
 /* OVERLAY */
-.overlay {
+.overlay-register,
+.overlay-staff {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
   display: none;
 }
-.overlay.show {
+.overlay-register.show,
+.overlay-staff.show {
   display: block;
 }
 /* 오버레이시 선택된 스태프 아이템 강조 색상 표시 */
@@ -159,7 +184,71 @@ header .inner h1 {
   background-color: #f0f0f0;
 }
 
-/* MODAL */
+/* REGISTER MODAL */
+.register-modal {
+  position: fixed;
+  top: 0;
+  right: -60%;
+  width: 60%;
+  height: 100%;
+  background: #fff;
+  overflow-y: auto; /* 모달 내부의 스크롤 적용 */
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 101; /* overlay보다 높은 z-index */
+  text-align: left;
+}
+.register-modal.show {
+  right: 0;
+}
+.register-modal .container {
+  padding: 2em;
+}
+.register-modal .register-modal__title {
+  justify-content: center;
+  align-items: center;
+}
+.register-modal .register-modal__title h2 {
+  font-size: 3.2em;
+  font-weight: bold;
+}
+.register-modal .register-modal__sub-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 0.4em;
+}
+.register-modal .register-modal__sub-title h3 {
+  font-size: 2.4em;
+  font-weight: bold;
+}
+.register-modal .register-modal__sub-title .btn {
+  border-radius: 0.4em;
+}
+.divider {
+  border-bottom: 1px solid #e0e0e0;
+}
+.register-modal .register-modal__content {
+  padding: 2em 0;
+}
+.register-modal .register-modal__content .register-modal__input-field #staff-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  font-size: 1.2em;
+  padding: 1.6em 0;
+}
+.register-modal__content .register-modal__input-field #staff-form input {
+  margin-bottom: 1.2em;
+  padding: 15px;
+  font-size: 1.2em;
+  border-radius: 0.4em;
+  border: 1px solid #e0e0e0;
+}
+
+/* STAFF MODAL */
 .staff-modal {
   position: fixed;
   top: 0;
@@ -171,6 +260,8 @@ header .inner h1 {
   transition: right 0.3s ease;
   display: flex;
   flex-direction: column;
+  z-index: 101; /* overlay보다 높은 z-index */
+  text-align: left;
 }
 .staff-modal.show {
   right: 0;
@@ -200,7 +291,6 @@ header .inner h1 {
 .staff-modal__sub-title .btn,
 .change-image-btn {
   border-radius: 0.4em;
-  margin: 0 0.5em;
 }
 .staff-modal__sub-title .btn.cancel-btn {
   background-color: #ccc;
@@ -226,12 +316,14 @@ header .inner h1 {
   display: flex;
 }
 .staff-modal .staff-modal__content .info-image {
-  width: 40%; /* 이미지가 너비를 꽉 채우도록 설정 */
-  height: auto; /* 이미지가 원본 비율을 유지하도록 설정 */
+  flex: 0 0 40%; /* 이미지는 고정 너비 40%로 설정 */
+  max-width: 40%;
+  height: auto;
   border-radius: 1.6em;
 }
 .staff-modal .staff-modal__content .staff-modal__info {
   font-size: 1.8em;
+  flex: 1; /* 나머지 부분을 채우도록 설정 */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -239,14 +331,16 @@ header .inner h1 {
 .staff-modal .staff-modal__content .staff-modal__info input[type='text'] {
   width: 100%; /* 입력 필드의 높이를 해당 셀의 높이와 동일하게 설정 */
   font-size: 1em;
-  padding: 0.5em;
+  padding: 0.5em 1em;
+  align-items: center; /* 값 수직으로 중앙 정렬 */
+  justify-content: start;
 }
 .staff-modal .staff-modal__content .staff-modal__info .info-name,
 .staff-modal .staff-modal__content .staff-modal__info .info-email,
 .staff-modal .staff-modal__content .staff-modal__info .info-phone,
 .staff-modal .staff-modal__content .staff-modal__info .info-category {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* 첫 번째 열은 레이블, 두 번째 열은 정보 */
+  grid-template-columns: 1fr 3fr; /* 첫 번째 열은 레이블, 두 번째 열은 정보 */
   border: 1px solid #e0e0e0; /* grid 보더 적용 */
   margin: 0 2em;
 }
@@ -266,8 +360,27 @@ header .inner h1 {
 .staff-modal .staff-modal__content .staff-modal__info .info-email__content,
 .staff-modal .staff-modal__content .staff-modal__info .info-phone__content,
 .staff-modal .staff-modal__content .staff-modal__info .info-category__content {
-  padding: 1em; /* 값에 패딩 추가 */
+  padding: 1em;
   display: flex;
-  align-items: center; /* 값 수직으로 중앙 정렬 */
+  align-items: center;
   justify-content: start;
+}
+
+/* TO TOP */
+#to-top {
+  width: 42px;
+  height: 42px;
+  background-color: #d2a362;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;
+  transform: translateX(100px); /* 초기에 오른쪽으로 밀기 */
 }

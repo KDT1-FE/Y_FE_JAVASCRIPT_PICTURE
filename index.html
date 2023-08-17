@@ -18,13 +18,19 @@
     <!-- google material icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
+    <!-- Firebase App (필수, 핵심 컴포넌트) -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <!-- Firebase Database (실시간 데이터베이스) -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!-- Firebase Storage (파일 저장소) -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+
     <link rel="stylesheet" href="./css/main.css" />
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="./js/firebase.js"></script>
   </head>
   <body>
     <!-- LOADING ANIMATION -->
-    <div id="loader" id="loader"></div>
+    <div id="loader"></div>
 
     <!-- HEADER -->
     <header>
@@ -37,11 +43,40 @@
     <div class="toolbar">
       <div class="inner">
         <div class="toolbar__btn">
-          <button class="btn">임직원 등록</button>
-          <button class="btn disabled" disabled>임직원 삭제</button>
+          <button class="btn register-staff">임직원 등록</button>
+          <button class="btn delete-staff disabled" disabled>임직원 삭제</button>
         </div>
         <div class="toolbar__search">
           <input type="text" class="search" placeholder="이름 또는 이메일로 검색하기" />
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERLAY for register modal -->
+    <div class="overlay-register"></div>
+
+    <!-- REGISTER MODAL -->
+    <div class="register-modal">
+      <div class="container">
+        <div class="register-modal__title">
+          <h2>임직원 등록</h2>
+        </div>
+        <div class="register-modal__sub-title">
+          <h3>입력 필드</h3>
+          <button class="btn submit-btn">등록</button>
+        </div>
+        <div class="divider"></div>
+        <div class="register-modal__content">
+          <img id="image-preview" src="#" alt="Image Preview" style="display: none; width: 100%; max-height: 300px" />
+          <input type="file" id="staff-photo" accept="image/*" required onchange="previewImage(event)" />
+          <div class="register-modal__input-field">
+            <form id="staff-form">
+              <input type="text" id="staff-name" placeholder="이름" required />
+              <input type="email" id="staff-email" placeholder="이메일" required />
+              <input type="text" id="staff-phone" placeholder="연락처" required />
+              <input type="text" id="staff-category" placeholder="구분" required />
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -55,59 +90,18 @@
           <span>사진</span>
           <span>이름</span>
           <span>이메일</span>
-          <span>휴대폰 번호</span>
+          <span>연락처</span>
           <span>구분</span>
         </div>
         <!-- STAFF LIST ITEM -->
         <div class="staff-list__item">
-          <ul>
-            <li>
-              <input type="checkbox" class="item-checkbox" />
-              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
-              <span class="item-name">박지성</span>
-              <span class="item-email">example1@example.com</span>
-              <span class="item-phone">010-1234-5678</span>
-              <span class="item-category">사원</span>
-            </li>
-            <li>
-              <input type="checkbox" class="item-checkbox" />
-              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
-              <span class="item-name">김주력</span>
-              <span class="item-email">example2@example.com</span>
-              <span class="item-phone">010-1234-5678</span>
-              <span class="item-category">사원</span>
-            </li>
-            <li>
-              <input type="checkbox" class="item-checkbox" />
-              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
-              <span class="item-name">이재희</span>
-              <span class="item-email">example3@example.com</span>
-              <span class="item-phone">010-1234-5678</span>
-              <span class="item-category">사원</span>
-            </li>
-            <li>
-              <input type="checkbox" class="item-checkbox" />
-              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
-              <span class="item-name">박지현</span>
-              <span class="item-email">example4@example.com</span>
-              <span class="item-phone">010-1234-5678</span>
-              <span class="item-category">사원</span>
-            </li>
-            <li>
-              <input type="checkbox" class="item-checkbox" />
-              <img src="./images/profile.jpeg" alt="사진" class="item-image" />
-              <span class="item-name">홍길동</span>
-              <span class="item-email">example5@example.com</span>
-              <span class="item-phone">010-1234-5678</span>
-              <span class="item-category">사원</span>
-            </li>
-          </ul>
+          <ul></ul>
         </div>
       </div>
     </div>
 
-    <!-- OVERLAY for modal -->
-    <div class="overlay"></div>
+    <!-- OVERLAY for staff modal -->
+    <div class="overlay-staff"></div>
 
     <!-- STAFF MODAL -->
     <div class="staff-modal">
@@ -147,6 +141,11 @@
         </div>
         <button class="change-image-btn" style="display: none">사진 변경</button>
       </div>
+    </div>
+
+    <!-- 최상단 이동 버튼 -->
+    <div id="to-top">
+      <div class="material-icons">arrow_upward</div>
     </div>
   </body>
 </html>
