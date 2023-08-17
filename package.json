@@ -2,9 +2,9 @@
   "name": "y_fe_javascript_picture",
   "version": "1.0.0",
   "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
-  "main": "index.js",
   "scripts": {
-    "dev": "parcel ./index.html"
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
   },
   "repository": {
     "type": "git",
