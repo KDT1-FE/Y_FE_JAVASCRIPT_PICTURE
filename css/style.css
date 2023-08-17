@@ -9,6 +9,14 @@ button {
     border: none;
 }
 
+a {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-weight: 400;
+}
+
 a:hover, button:hover {
     cursor: pointer;
 }
@@ -17,7 +25,7 @@ a:hover, button:hover {
 /* main */
 
 header {
-    background-color: antiquewhite;
+    background-color: #0d54b6;
     position: fixed;
     top: 0;
     left: 0;
@@ -35,12 +43,14 @@ header {
 }
 
 nav {
-    background-color: salmon;
+    background-color: #efefef;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 8.5vw;
     padding-top: 1rem;
+    min-width: 107px;
+    min-height: 900px;
 }
 
 nav ul {
@@ -69,10 +79,11 @@ nav ul {
 }
 
 .navigation-title {
-    background-color: antiquewhite;
+    background-color: #0d54b6;
+    color: #e5e5e5;
     border-radius: 5px 5px 0 0;
-    font-size: 1.2rem;
-    padding: 6px;
+    font-size: 1.1rem;
+    padding: 0.5rem;
 }
 
 .search-wrap {
@@ -162,6 +173,10 @@ table {
     width: 20%;
 }
 
+input[type="checkbox"] {
+    zoom: 1.5;
+}
+
 .image-container {
     display: flex;
     align-items: center;
@@ -188,7 +203,8 @@ table {
     justify-content: center;
     align-items: center;
     border-radius: 24px;
-    background: salmon;
+    background: #0d54b6;
+    color: white;
 }
 
 
@@ -262,22 +278,16 @@ table {
     padding: 0.5rem 1rem;
 }
 
-.information-update-button {
-    background-color: #e5e5e5;
-    border-radius: 6px;
-    font-size: 0.8em;
-    padding: 0.5rem 1rem;
-}
-
 .information-container {
     display: flex;
     flex-direction: column;
     width: 30rem;
-    margin-top: 2rem;
+    margin-top: 4.5rem;
 }
 
 .information-header {
-    background-color: aquamarine;
+    background-color: #0d54b6;
+    color: #efefef;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -337,6 +347,10 @@ iframe {
 
 /* 모바일 */
 @media all and (max-width:479px) {
+    a, button {
+        color: black;
+    }
+
     nav {
         display: none;
     }
