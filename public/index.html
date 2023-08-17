@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회원관리</title>
+    <!--폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <!-- 스타일 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="logo">LOGO</div>
+      <nav class="nav">
+        <ul class="nav__main">
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+            </div>
+          <li class="nav__main--active">
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> person </span>직원게시판
+            </div>
+            <ul class="nav__sub">
+              <li class="nav__sub--active">직원 현황</li>
+              <li>연차 휴가</li>
+              <li>직원 게시판</li>
+            </ul>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> mail </span>메세지
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> notifications </span>알림
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> article </span>사내문서
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="container">
+      <header class="header">
+        <div class="header__left"></div>
+        <div class="header__right">
+          <div class="icon-box">
+            <span class="icon material-symbols-outlined"> mail </span>
+            <span class="icon material-symbols-outlined"> notifications </span>
+          </div>
+          <div class="date-box">
+            <span class="date"></span>
+            <span class="time"></span>
+          </div>
+          <div class="user-box">
+            <div class="user__pic">
+              <!-- <img src="" alt=""> -->
+            </div>
+            <div class="user__name">user-name</div>
+          </div>
+        </div>
+      </header>
+      <div class="content-wrap">
+        <section class="content-box">
+          <h3>직원 관리</h3>
+          <div class="control-box">
+            <label>
+              <input type="search" class="control-box__search" />
+            </label>
+            <div class="control-box__btn-wrap">
+              <button class="btn__upload">입력</button>
+              <button class="btn__delete">삭제</button>
+            </div>
+          </div>
+          <div class="employee-list__container">
+            <header class="employee-list__header">
+              <div class="checkbox">선택</div>
+              <div class="picture">사진</div>
+              <div class="name">이름</div>
+              <div class="mail">메일</div>
+              <div class="phone">번호</div>
+              <div class="group">부서/팀</div>
+              <div class="position">직급</div>
+              <div class="etc">비고</div>
+            </header>
+            <div class="employee-list__wrap"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      const storageRef = storage.ref();
+      db.collection("profile")
+        .get()
+        .then((res) => {
+          res.forEach((doc) => {
+            let profileList = `
+            <div class="employee-list">
+              <a href="/detail.html?id=${doc.id}">
+                <div class="checkbox">
+                  <input type="checkbox" data-id="${doc.id}" />
+                </div>
+                <div class="picture">
+                  <div class="picture__box">
+                    <img src="${doc.data().img}" alt="${doc.data().name}" />
+                  </div>
+                </div>
+                <div class="name">${doc.data().name}</div>
+                <div class="mail">${doc.data().mail}</div>
+                <div class="phone">${doc.data().phone}</div>
+                <div class="group">${doc.data().group}</div>
+                <div class="position">${doc.data().position}</div>
+                <div class="etc">${doc.data().etc}</div>
+                
+              </a>
+            </div>
+          `;
+            document.querySelector(".employee-list__wrap").innerHTML += profileList;
+          });
+        });
+
+        document.querySelector(".btn__delete").addEventListener("click", () => {
+          const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]:checked');
+          if (checkboxes.length) {
+            const confirmation = confirm("선택한 직원의 정보를 삭제하시겠습니까?");
+            if (confirmation) {
+              checkboxes.forEach(checkbox => {
+                const docId = checkbox.getAttribute('data-id');
+                db.collection('profile').doc(docId).delete().then(() => {
+                  // 데이터 삭제 후 해당 리스트 항목 제거
+                  checkbox.closest('.employee-list').remove();
+                }).catch(error => {
+                  console.error("Error removing document: ", error);
+                });
+              });
+            }
+          } else {
+            alert("삭제할 직원을 선택하세요.");
+          }
+        });
+    </script>
+    <script>
+      document.querySelector(".btn__upload").addEventListener("click", () => {
+        window.location.href = "/upload.html";
+      });
+    </script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

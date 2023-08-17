@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회원상세</title>
+    <!--폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <!-- 스타일 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/detail.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="logo">
+        <a href="/index.html">LOGO</a>
+      </div>
+      <nav class="nav">
+        <ul class="nav__main">
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+            </div>
+          <li class="nav__main--active">
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> person </span>직원게시판
+            </div>
+            <ul class="nav__sub">
+              <li class="nav__sub--active">직원 현황</li>
+              <li>연차 휴가</li>
+              <li>직원 게시판</li>
+            </ul>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> mail </span>메세지
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> notifications </span>알림
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> article </span>사내문서
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="container">
+      <header class="header">
+        <div class="header__left"></div>
+        <div class="header__right">
+          <div class="icon-box">
+            <span class="icon material-symbols-outlined"> mail </span>
+            <span class="icon material-symbols-outlined"> notifications </span>
+          </div>
+          <div class="date-box">
+            <span class="date"></span>
+            <span class="time"></span>
+          </div>
+          <div class="user-box">
+            <div class="user__pic">
+              <!-- <img src="" alt=""> -->
+            </div>
+            <div class="user__name">user-name</div>
+          </div>
+        </div>
+      </header>
+      <div class="content-wrap">
+        <div class="content-box">
+          <header class="content-box__header">
+            <h3>회원 상세</h3>
+            <button type="button" class="btn__edit">수정</button>
+          </header>
+          <div class="user-box">
+            <div class="user__picture"></div>
+            <div class="user__info">
+              <div class="user__info__list user__name">
+                <span class="user__info__tit">이름</span>
+                <div class="user__info__content"></div>
+              </div>
+              <div class="user__info__list user__mail">
+                <span class="user__info__tit">메일</span>
+                <div class="user__info__content">메일---</div>
+              </div>
+              <div class="user__info__list user__phone">
+                <span class="user__info__tit">번호</span>
+                <div class="user__info__content">번호----</div>
+              </div>
+              <div class="user__info__list user__group">
+                <span class="user__info__tit">부서/팀</span>
+                <div class="user__info__content">부서/팀----</div>
+              </div>
+              <div class="user__info__list user__position">
+                <span class="user__info__tit">직급</span>
+                <div class="user__info__content">직급---</div>
+              </div>
+            </div>
+          </div>
+          <div class="etc-box">
+            <span>비고</span>
+            <div class="etc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      const storageRef = storage.ref();
+      const defaultImg = storageRef.child("image/profile_none.jpg");
+
+      let docId = new URLSearchParams(window.location.search)
+
+      db.collection('profile').doc(docId.get('id')).get().then((res)=>{
+        document.querySelector('.user__picture').innerHTML = `<img src="${res.data().img}" alt="${res.data().name}" />`
+        document.querySelector('.user__name .user__info__content').innerHTML = res.data().name;
+        document.querySelector('.user__mail .user__info__content').innerHTML = res.data().mail;
+        document.querySelector('.user__phone .user__info__content').innerHTML = res.data().phone;
+        document.querySelector('.user__group .user__info__content').innerHTML = res.data().group;
+        document.querySelector('.user__position .user__info__content').innerHTML = res.data().position;
+        document.querySelector('.etc-box .etc').innerHTML = res.data().etc;
+      });
+
+      document.querySelector('.btn__edit').addEventListener("click",()=>{
+        window.location.href = '/edit.html?id=' + docId.get('id')
+      })
+    </script>
+  </body>
+</html>

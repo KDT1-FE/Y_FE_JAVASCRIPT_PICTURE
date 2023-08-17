@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>회원관리</title>
+    <!--폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <!-- 스타일 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/upload.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="logo">
+        <a href="#">LOGO</a>
+      </div>
+      <nav class="nav">
+        <ul class="nav__main">
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+            </div>
+          <li class="nav__main--active">
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> person </span>직원게시판
+            </div>
+            <ul class="nav__sub">
+              <li class="nav__sub--active">직원 현황</li>
+              <li>연차 휴가</li>
+              <li>직원 게시판</li>
+            </ul>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> mail </span>메세지
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="icon material-symbols-outlined"> notifications </span>알림
+            </div>
+          </li>
+          <li>
+            <div class="nav__main__text">
+              <span class="material-symbols-outlined"> article </span>사내문서
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="container">
+      <header class="header">
+        <div class="header__left"></div>
+        <div class="header__right">
+          <div class="icon-box">
+            <span class="icon material-symbols-outlined"> mail </span>
+            <span class="icon material-symbols-outlined"> notifications </span>
+          </div>
+          <div class="date-box">
+            <span class="date"></span>
+            <span class="time"></span>
+          </div>
+          <div class="user-box">
+            <div class="user__pic">
+              <!-- <img src="" alt=""> -->
+            </div>
+            <div class="user__name">user-name</div>
+          </div>
+        </div>
+      </header>
+      <div class="content-wrap">
+        <div class="content-box">
+          <h3>회원 정보 수정</h3>
+          <div class="upload__contents">
+            <div class="upload__list">
+              <span>이름</span>
+              <label>
+                <input type="text" class="input__name" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>메일</span>
+              <label>
+                <input type="text" class="input__mail" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>번호</span>
+              <label>
+                <input type="number" class="input__phone" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>부서/팀</span>
+              <label>
+                <input type="text" class="input__group" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>직급</span>
+              <label>
+                <input type="text" class="input__position" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>비고</span>
+              <label>
+                <input type="text" class="input__etc" />
+              </label>
+            </div>
+            <div class="upload__list">
+              <span>사진</span>
+              <label>
+                <img class="photo-preview" src="" alt="사진 미리보기" style="max-width: 100px;">
+                <input type="file" class="input__photo" onchange="updatePreview(this)"/>
+              </label>
+            </div>
+          </div>
+          <div class="upload__btn-wrap">
+            <button type="submit" class="btn__update">수정</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      const storageRef = storage.ref();
+
+      let docId = new URLSearchParams(window.location.search);
+
+      db.collection('profile').doc(docId.get('id')).get().then((res)=>{
+        document.querySelector('.input__name').value = res.data().name;
+        document.querySelector('.input__mail').value = res.data().mail;
+        document.querySelector('.input__phone').value = res.data().phone;
+        document.querySelector('.input__group').value = res.data().group;
+        document.querySelector('.input__position').value = res.data().position;
+        document.querySelector('.input__etc').value = res.data().etc;
+        
+        // 사진 미리보기
+        const previewImg = document.querySelector('.photo-preview');
+        if (res.data().img) {
+            previewImg.src = res.data().img;
+        } else {
+            previewImg.alt = "이미지가 없습니다.";
+        }
+      });
+      // 새로운 이미지가 선택되면 미리보기 갱신
+      function updatePreview(input) {
+          const previewImg = document.querySelector('.photo-preview');
+          const file = input.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  previewImg.src = e.target.result;
+              }
+              reader.readAsDataURL(file);
+          }
+      }
+
+      document.querySelector(".btn__update").addEventListener("click", function () {
+        // 1. 빈칸 확인
+        const inputs = document.querySelectorAll(".upload__list input:not([type='file'])");
+        for (let input of inputs) {
+          if (input.value.trim() === "") {
+            alert("빈칸을 채워주세요!");
+            input.focus();
+            return;
+          }
+        }
+
+        // 2. 이미지 파일 확인
+        let imageFile = document.querySelector(".input__photo").files[0];
+        if (!imageFile) {
+          alert("사진을 업로드 해주세요!");
+          return;
+        }
+
+        // 3. 이미지 업로드
+        let imageUrl = storageRef.child("image/" + imageFile.name);
+        let imageUpload = imageUrl.put(imageFile);
+
+        imageUpload.on(
+          "state_changed",
+          null, // 변화
+          //에러
+          (error) => {
+              console.error("실패사유는", error);
+          },
+          // 성공
+          () => {
+            imageUpload.snapshot.ref.getDownloadURL().then((url) => {
+              let saveData = {
+                name: document.querySelector(".input__name").value,
+                mail: document.querySelector(".input__mail").value,
+                phone: Number(document.querySelector(".input__phone").value),
+                group: document.querySelector(".input__group").value,
+                position: document.querySelector(".input__position").value,
+                etc: document.querySelector(".input__etc").value,
+                img: url,
+              };
+
+              // 4. 데이터 저장
+              db.collection("profile")
+                .add(saveData)
+                .then((res) => {
+                  window.location.href = '/index.html'
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+              });
+            }
+          );
+      });
+
+      
+    </script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

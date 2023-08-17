@@ -1,0 +1,70 @@
+.content-box__header {
+  display: flex;
+  justify-content: space-between;
+}
+.content-box__header .btn__edit {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.user-box {
+  display: flex;
+  padding: 0 20px;
+}
+.user-box .user__picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20%;
+  aspect-ratio: 1/1;
+  background: lightgray;
+  margin-right: 20px;
+}
+.user-box .user__picture > img {
+  width: 100%;
+}
+.user-box .user__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+.user-box .user__info__list {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.user-box .user__info__tit {
+  flex-shrink: 0;
+  font-weight: 700;
+  width: 75px;
+  padding: 8px;
+  background: rgb(46, 91, 174);
+  color: white;
+}
+.user-box .user__info__content {
+  background: whitesmoke;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+
+.etc-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+.etc-box span {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.etc-box .etc {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #999;
+  padding: 10px;
+}
