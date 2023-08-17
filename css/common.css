@@ -35,3 +35,37 @@ body {
   background-color: #0368d2;
   border-color: #0362c6;
 }
+.btn-danger {
+  color: #fff;
+  background-color: #e65252;
+  border-color: #e65252;
+}
+
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  margin: 0px;
+  padding: 10px 30px 10px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: transparent;
+  letter-spacing: 0.7px;
+}
+.breadcrumb-item {
+  margin-bottom: 0px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: #636c72;
+  content: "/";
+}
+
+.profile-img {
+  width: 150px;
+  border-radius: 50%;
+}

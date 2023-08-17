@@ -641,13 +641,12 @@ document.addEventListener("DOMContentLoaded", async ()=>{
                 if (confirmDelete) try {
                     await (0, _firestore.deleteDoc)(docRef);
                     console.log("데이터 삭제 완료");
-                    // 이동 등의 로직 추가
                     window.location.href = "index.html";
                 } catch (error) {
                     console.error("데이터 삭제 에러:", error);
                 }
             });
-            // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
+            // 저장 버튼 클릭 시 Firestore에 데이터 업데이트 또는 새 문서 추가
             const saveButton = document.getElementById("save-btn");
             saveButton.addEventListener("click", async (event)=>{
                 event.preventDefault();
@@ -657,11 +656,16 @@ document.addEventListener("DOMContentLoaded", async ()=>{
                     email: emailInput.value,
                     phone: phoneInput.value
                 };
-                // Firestore에 업데이트된 데이터 저장
-                try {
+                if (!documentId) try {
+                    const newDocRef = await (0, _firestore.addDoc)((0, _firestore.collection)(db, "database"), updatedProfileData);
+                    console.log("새로운 문서 ID:", newDocRef.id);
+                } catch (error) {
+                    console.error("새로운 문서 추가 에러:", error);
+                }
+                else try {
+                    const docRef = (0, _firestore.doc)(db, "database", documentId);
                     await (0, _firestore.updateDoc)(docRef, updatedProfileData);
-                    console.log("데이터 업데이트 완료");
-                // window.location.href = "index.html";
+                    alert("데이터 업데이트 완료");
                 } catch (error) {
                     console.error("데이터 업데이트 에러:", error);
                 }

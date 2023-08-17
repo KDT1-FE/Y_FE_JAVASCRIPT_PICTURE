@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         }
       });
+
       // 삭제 버튼 클릭 시 데이터 삭제
       const deleteButton = document.getElementById("delete-btn");
       deleteButton.addEventListener("click", async (event) => {
@@ -87,7 +88,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         }
       });
-      // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
+
+      // 저장 버튼 클릭 시 Firestore에 데이터 업데이트 또는 새 문서 추가
       const saveButton = document.getElementById("save-btn");
       saveButton.addEventListener("click", async (event) => {
         event.preventDefault();
@@ -99,13 +101,21 @@ document.addEventListener("DOMContentLoaded", async () => {
           phone: phoneInput.value,
         };
 
-        // Firestore에 업데이트된 데이터 저장
-        try {
-          await updateDoc(docRef, updatedProfileData);
-          console.log("데이터 업데이트 완료");
-          // window.location.href = "index.html";
-        } catch (error) {
-          console.error("데이터 업데이트 에러:", error);
+        if (!documentId) {
+          try {
+            const newDocRef = await addDoc(collection(db, "database"), updatedProfileData);
+            console.log("새로운 문서 ID:", newDocRef.id);
+          } catch (error) {
+            console.error("새로운 문서 추가 에러:", error);
+          }
+        } else {
+          try {
+            const docRef = doc(db, "database", documentId);
+            await updateDoc(docRef, updatedProfileData);
+            alert("데이터 업데이트 완료");
+          } catch (error) {
+            console.error("데이터 업데이트 에러:", error);
+          }
         }
       });
     } else {

@@ -14,6 +14,9 @@
 
 .btn-wrap {
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 #table {
@@ -33,6 +36,9 @@
   font-weight: 700;
   text-align: center;
 }
+#table thead:hover tr {
+  background: transparent;
+}
 
 #table thead th:first-child {
   text-align: center;
@@ -48,7 +54,7 @@
 
 #table td {
   border-top: 1px solid rgba(83, 101, 140, 0.08);
-  padding: 0.7rem 0.5rem;
+  padding: 1rem;
   text-align: center;
   vertical-align: middle;
 }
