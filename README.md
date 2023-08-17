@@ -8,7 +8,11 @@
 ##  :computer: 배포 주소
 
 https://fastcampusxyanolja-assginment.web.app/
+<br>
 
+id : user
+<br>
+password : 1234
 <br>
 
 ##  :calendar: 개발 기간
