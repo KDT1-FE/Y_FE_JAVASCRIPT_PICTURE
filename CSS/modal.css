@@ -1,0 +1,66 @@
+form{
+    text-align: left;
+}
+
+#submit-content-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#submit-content{
+    margin-right: 10px;
+}
+
+.submit-content__label{
+    font-weight: bold;
+}
+
+.create-modal {
+    position: fixed;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #373A3C;
+    font-size: .9rem;
+    line-height: 35px;
+  }
+  
+.create-modal > div {
+    display: inline-block;
+    width: 400px;
+    height: 275px;
+    top: 20%;
+    background: white;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.12);
+    background-color: white;
+    border-radius: 6px;
+    position: relative;
+    padding: 0;
+}
+
+
+.close-modal-button {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#submit-button{
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+}
+
+#modal-title{
+    margin: 1rem 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}

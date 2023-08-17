@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- reset.css -->
+        <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+        <!-- 폰트 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+        <!-- 외부 파일 -->
+        <link rel="stylesheet" href="../CSS/listing.css">
+        <link rel="stylesheet" href="../CSS/modal.css">
+        <link rel="stylesheet" href="../CSS/loading.css">
+        <title>리스팅 페이지</title>
+    </head>
+    <body>
+        <header>
+            <div>임직원 관리</div>
+        </header>
+        <main>
+            <div id="main-contents">
+                <div class="profile">
+                    <button id="addEmployeeBtn">임직원 등록</button>
+                    <button id="deleteEmployeeBtn">임직원 삭제</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="employee-checkbox" id="select-all-checkbox"/></th>
+                            <th>프로필 사진</th>
+                            <th>이름</th>
+                            <th>이메일</th>
+                            <th>연락처</th>
+                            <th>구분</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="employee-list" id="employeeList">
+                        <!-- Employee 데이터가 여기에 동적으로 추가될 예정 -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <div class="create-modal">
+            <div>
+                <button class="close-modal-button">×</button>
+                <div id="modal-title">임직원 등록</div>
+                <form method="post" enctype="multipart/form-data">
+                    <div id="submit-content-wrapper">
+                        <div id="submit-content">
+                            <div class="submit-content__label">이미지</div>
+                            <div class="submit-content__label">이름</div>
+                            <div class="submit-content__label">이메일</div>
+                            <div class="submit-content__label">연락처</div>
+                            <div class="submit-content__label">구분</div>
+                        </div>
+                        <div>
+                            <input type="file" id="image" name="image" accept="image/*" required><br/>
+                            <input type="text" id="name" name="name" required><br/>
+                            <input type="email" id="email" name="email" required><br/>
+                            <input type="tel" id="phone" name="phone" required><br/>
+                            <select id="category" name="category" required>
+                                <option value="사원">사원</option>
+                                <option value="주임">주임</option>
+                                <option value="대리">대리</option>
+                                <option value="과장">과장</option>
+                                <option value="차장">차장</option>
+                                <option value="부장">부장</option>
+                                <option value="사장">사장</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="submit-button" >
+                        <input type="submit" value="제출">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
+            <div class="loading-content">
+              로딩중...
+            </div>
+        </div>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1431.0.min.js"></script>
+        <script type="module" src="../JS/listing.js"></script>
+        <script type="module" src="../JS/modal.js"></script>
+        <script type="module" src="../JS/loading.js"></script>
+    </body>
+</html>

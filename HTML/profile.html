@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 페이지</title>
+      <!-- reset.css -->
+      <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+      <!-- 폰트 -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+      <!-- 외부 파일 -->
+      <link rel="stylesheet" href="../CSS/profile.css">
+</head>
+<body>
+    <header>
+      <div>프로필</div>
+    </header>
+    <main>
+      <div id="main-contents">
+        <div id="img-wrapper">
+          <img src="" alt="프로필 사진" id="profileImage" style="max-width: 200px;">
+        </div>
+        <div id="profile-wrapper">
+            <div class="profile-contents" id="labels">
+                <div class="label">이름</div>
+                <div class="label">이메일</div>
+                <div class="label">연락처</div>
+                <div class="label">구분</div>
+            </div>
+            <div class="profile-contents">
+              <div><span id="name"></span></div>
+              <div><span id="email"></span></div>
+              <div><span id="phone"></span></div>
+              <div><span id="category"></span></div>
+            </div>
+        </div>
+        <div id="go-back-wrapper">
+          <a href="../HTML/listing.html" id="go-back">뒤로가기</a>
+        </div>
+      </div>
+    </main>
+
+  <script type="module" src="../JS/profile.js"></script>
+</body>
+</html>
