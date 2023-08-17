@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HR service</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section class="header-section">
+      <div class="service-logo">임직원 관리</div>
+      <button id="open-dialog">정보 등록</button>
+      <dialog class="add-dialog">
+        <input type="file" class="input-img" />
+        <div>이름<input type="text" class="name" /></div>
+        <div>
+          전화번호<input
+            type="text"
+            placeholder="010-0000-0000"
+            class="phone-num"
+          />
+        </div>
+        <div>
+          이메일<input type="text" placeholder="***.@aaa.com" class="mail" />
+        </div>
+        <div>
+          직급<input
+            type="text"
+            placeholder="사원,대리,과장,차장,부장"
+            class="position"
+          />
+        </div>
+        <div id="profile-form">
+          <button type="submit" class="profile-submit">직원 등록</button>
+          <button value="cancle" class="close-modal">취소</button>
+        </div>
+      </dialog>
+    </section>
+    <section id="profile-container">
+      <div id="profile-table"></div>
+    </section>
+    <footer>
+      <div>
+        <img
+          src="img/NsKg8pJTmegh6N7nzEi4WMr2WiXxAGV4BqY4X8s7Oefx6eL9TkgWQf5m69_p2KAnAXAIPV1LptB4Jz-VUUgGTg.webp"
+          class="logo"
+        />
+      </div>
+    </footer>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(43, 39, 39);
+}
+
+a {
+  text-decoration-line: none;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 6%;
+}
+
+.service-logo {
+  font-size: 2.5rem;
+  margin-left: 5%;
+  font-weight: 800;
+  color: rgb(243, 196, 72);
+}
+
+.company-name {
+  margin-left: auto;
+  margin-right: 10%;
+  font-size: 1.5rem;
+}
+
+#open-dialog {
+  margin-left: 10%;
+  background-color: rgb(243, 196, 72);
+  color: rgb(43, 39, 39);
+  border: 1px solid rgb(243, 196, 72);
+  padding: 1% 2.5%;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 20%;
+  text-align: center;
+  border-radius: 3%;
+}
+
+details summary::marker {
+  font-size: 0;
+}
+
+#profile-container {
+  margin-top: 10%;
+  background-color: rgb(43, 39, 39);
+}
+
+#profile-table {
+  overflow-x: scroll;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.profile-card {
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.profile-image {
+  width: 12rem;
+  height: 15rem;
+  object-fit: contain;
+  overflow: hidden;
+  margin-right: 1.5rem;
+  margin-top: 2rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  color: rgb(243, 196, 72);
+  font-size: 1.5rem;
+}
+
+.logo {
+  width: 20%;
+  margin-left: 75%;
+  margin-top: 5%;
+}
