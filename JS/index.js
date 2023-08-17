@@ -121,6 +121,7 @@ function loadEmployeeInfosFromLocalstorage() {
 // 임직원 정보와 함께 임직원을 표시하는 함수
 function displayEmployeeWithInfo(employeeInfo) {
   const tableRow = document.createElement('tr');
+  tableRow.classList.add('trHover') // css 적용을 위해
 
   const checkboxCell = document.createElement('td');
   const checkbox = document.createElement('input');
@@ -132,7 +133,6 @@ function displayEmployeeWithInfo(employeeInfo) {
   const imgCell = document.createElement('td');
   const imgElement = displayImage(employeeInfo.imageName);
   imgCell.appendChild(imgElement);
-  imgCell.classList.add('imgHover') // css 적용을 위해
   tableRow.appendChild(imgCell);
 
   const nameCell = document.createElement('td');
@@ -287,21 +287,30 @@ function registerImageTdClickHandler() {
   const rows = document.querySelectorAll('tbody tr');
 
   rows.forEach(row => {
-      const image = row.querySelector('img.employee-image');
-      if (image) {
-          const td = image.closest('td');
-          td.addEventListener('click', () => {
-              const imageName = image.getAttribute('src').split('/').pop();
-              const name = row.querySelector('td:nth-child(3)').textContent;
-              const email = row.querySelector('td:nth-child(4)').textContent;
-              const phone = row.querySelector('td:nth-child(5)').textContent;
-              const category = row.querySelector('td:nth-child(6)').textContent;
+    // 체크박스 클릭 이벤트를 중단시킴
+    const checkboxCell = row.querySelector('.employee-checkbox');
+    checkboxCell.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
 
-              // 프로필 페이지로 데이터 전달 및 이동
-              const profileUrl = `../HTML/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
-              window.location.href = profileUrl;
-          });
-      }
+    // 수정 버튼 클릭 이벤트를 중단시킴
+    const editButton = row.querySelector('.edit-button');
+    editButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    // 행 클릭 이벤트
+    row.addEventListener('click', () => {
+      const imageName = row.querySelector('img.employee-image').getAttribute('src').split('/').pop();
+      const name = row.querySelector('td:nth-child(3)').textContent;
+      const email = row.querySelector('td:nth-child(4)').textContent;
+      const phone = row.querySelector('td:nth-child(5)').textContent;
+      const category = row.querySelector('td:nth-child(6)').textContent;
+
+      // 프로필 페이지로 데이터 전달 및 이동
+      const profileUrl = `../HTML/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
+      window.location.href = profileUrl;
+    });
   });
 }
 

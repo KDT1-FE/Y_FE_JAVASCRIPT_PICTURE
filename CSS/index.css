@@ -44,7 +44,7 @@ th, td {
     vertical-align: middle;
 }
 
-td.imgHover:hover{
+tr.trHover:hover{
     background-color: skyblue ; /* 배경색 추가 */
     cursor: pointer;
 }
