@@ -1,5 +1,5 @@
-// import { handleTooltipClick } from './tooltip'
-// import { handleRemoveBtn } from './removeDB'
+import { handleTooltipClick } from './tooltip'
+import { handleRemoveBtn } from './removeDB'
 
 export function buildHTMLList(member) {
   const membersRow = document.createElement('div')
@@ -85,12 +85,12 @@ export function buildHTMLList(member) {
   membersColEllipsis.appendChild(tooltipSpan)
 
   // 이클립스&툴팁 버튼 이벤트 리스너 등록
-  // handleTooltipClick()
+  handleTooltipClick()
 
   // 제거 버튼에 이벤트 리스너 등록
-  // removeTooltipItem.addEventListener('click', () => {
-  //   handleRemoveBtn(member.id, img.src) // 이벤트 핸들러에 memberId 전달
-  // })
+  removeTooltipItem.addEventListener('click', () => {
+    handleRemoveBtn(member.id, img.src) // 이벤트 핸들러에 memberId 전달
+  })
 
   // 생성한 요소들을 구조에 추가
   membersRow.appendChild(membersCol)

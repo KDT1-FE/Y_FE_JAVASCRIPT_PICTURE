@@ -8,6 +8,8 @@ export default class extends AbstractView {
     this.setTitle('Dashboard')
   }
 
+  async init() {}
+
   async getHtml() {
     const header = headerTemplate()
     const footer = footerTemplate()
@@ -15,7 +17,7 @@ export default class extends AbstractView {
     // 렌더링된 HTML 반환
     return `
       ${header}
-      ${content}
+
       ${footer}
     `
   }

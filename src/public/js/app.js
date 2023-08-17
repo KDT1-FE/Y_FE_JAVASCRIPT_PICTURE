@@ -1,16 +1,8 @@
-/**
- * client-side entry points
- * routers
- */
 import '../assets/styles/main.scss'
 import Home from '../views/Home.js'
-import Members from '../views/Members.js'
-import Profile from '../views/Profile.js'
-
+import Members from '../views/Members'
+import { initMembers } from './members.controller.js'
 import * as bootstrap from 'bootstrap'
-// import HomeApp from './homeApp.js'
-import MembersApp from './members.controller.js'
-// import profileApp from './profileApp.js';
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
 
@@ -30,11 +22,21 @@ const navigateTo = (url) => {
   router()
 }
 
+// const loadView = async (viewPath, match) => {
+//   console.log(`Loading view from: ../views/${viewPath}.js`)
+//   const { default: View } = await import(`../views/${viewPath}.js`)
+//   const viewInstance = new View(getParams(match))
+
+//   // await viewInstance.init()
+//   // console.log('View initialized')
+//   return viewInstance
+// }
+
 const router = async () => {
   const routes = [
     { path: '/', view: Home },
     { path: '/members', view: Members },
-    // { path: '/members/:id', view: Profile },
+    // { path: '/members/:id', view: 'Profile' },
   ]
 
   const potentialMatches = routes.map((route) => {
@@ -54,13 +56,16 @@ const router = async () => {
     }
   }
 
-  const view = new match.route.view(getParams(match))
-
+  const view = await new match.route.view(getParams(match))
   document.querySelector('#app').innerHTML = await view.getHtml()
 
   const path = location.pathname
-  if (path === '/') MembersApp()
-  if (path.includes('/members')) await MembersApp()
+  if (path === '/') {
+    // HomeApp()
+  }
+  if (path.includes('/members')) {
+    initMembers()
+  }
 }
 
 window.addEventListener('popstate', router)

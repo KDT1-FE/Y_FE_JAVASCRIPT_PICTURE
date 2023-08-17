@@ -5,6 +5,7 @@ import { buildHTMLList } from './htmlListBuilder.js'
 
 export function initializeDownload() {
   const membersContainer = document.querySelector('.members__contents')
+  console.log(membersContainer)
   const q = query(collection(db, 'members'), orderBy('createdAt'))
   const dataMap = new Map()
   const unsubscribe = onSnapshot(q, (querySnapshot) => {

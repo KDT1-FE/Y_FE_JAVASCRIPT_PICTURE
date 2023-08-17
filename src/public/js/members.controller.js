@@ -7,8 +7,6 @@ import './common/removeDB'
 
 import '../assets/styles/members.scss'
 
-const init = () => {
+export async function initMembers() {
   initializeDownload()
 }
-
-export default init
