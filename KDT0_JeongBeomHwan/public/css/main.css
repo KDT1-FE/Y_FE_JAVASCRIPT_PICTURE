@@ -18,6 +18,21 @@
   메인 영역
 
 */
+#IMGPREVIEW {
+  position: absolute;
+  width: 400px;
+  height: 550px;
+  left: 300px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  object-fit: cover;
+  z-index: 200;
+  display: none;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
 main.main-container {
   width: calc(100% - var(--size-sidebar));
   overflow: hidden;
@@ -200,6 +215,7 @@ h1.main-title {
 .employeecard-column .employeecard-column_profilecard {
   width: 106px;
   height: 106px;
+  border-radius: 4px;
   background-repeat: no-repeat;
   object-fit: cover;
   background-color: var(--color-gray100);

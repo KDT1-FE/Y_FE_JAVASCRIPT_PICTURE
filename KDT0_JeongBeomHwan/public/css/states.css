@@ -19,3 +19,7 @@
   -khtml-user-select: none;
   user-select: none;
 }
+
+.search-none {
+  display: none;
+}

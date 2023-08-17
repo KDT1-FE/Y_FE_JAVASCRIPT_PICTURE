@@ -31,9 +31,10 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--color-white700);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
 }
 
-#login-form img {
+#login-form > img {
   margin-top: 101px;
   width: 314px;
 }
@@ -48,4 +49,23 @@ body {
   border: none;
   margin-top: 40px;
   font-family: pretendard;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.google-logo {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-white700);
+  background-image: url(../images/Google__G__Logo.svg.png);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+#login-form button span {
+  margin-left: 60px;
 }

@@ -24,7 +24,7 @@ const storageRef = ref(storage);
 
 const mainDelBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.outlined"); // 선택 삭제 버튼
 const mainAddBtnEl = document.querySelector(".main-toolbar_rightcontainer_buttons .btn-sm.filled"); //팝업 켜기 버튼
-const logoutBtnEl = document.querySelector(".header-userinfo_logout");
+const logoutBtnEl = document.querySelector(".header-userinfo_logout"); //로그아웃 버튼
 
 const dimEl = document.querySelector("#DIM"); // DIM요소
 const popUpEl = document.querySelector("section.popup-container"); //팝업 컨테이너
@@ -34,7 +34,8 @@ const popupAddBtnEl = document.querySelector(".popup-buttons .btn-md:last-child"
 const popupCancelBtnEl = document.querySelector(".popup-buttons .btn-md:first-child"); //팝업 취소 버튼
 
 const ProfileListContainerEl = document.querySelector(".listtable-tablerows-container"); // 프로필이 쌓이는 컨테이너
-const primeCheckbox = document.querySelector("input[type='checkbox']");
+const primeCheckbox = document.querySelector("input[type='checkbox']"); // 전체 체크박스
+const teamFilter = document.querySelector(".main-container_header #filter-teams"); // 팀 선택 드롭다운
 
 let employeeArr = [];
 
@@ -78,8 +79,17 @@ popupAddBtnEl.addEventListener("click", (event) => {
     employeeID: new Date().getTime(),
   };
 
-  let inputAll = checkInputAll(popupInputEls); //모든 입력값을 다 체크했는지 확인하는 함수
-  if (inputAll === false) return;
+  if (!confirmInputAll(popupInputEls)) return; //모든 입력값을 다 입력했는지 체크
+  if (!confirmKorAlp(employeeProfileCard.employeeKoName)) return; // 한글 입력란에 한글만 있는지 체크
+  if (employeeProfileCard.employeeEnName.length && !confirmEngAlp(employeeProfileCard.employeeEnName)) return; // 영어 입력란에 영어만 있는지 체크
+  if (!confirmEmail(employeeProfileCard.employeeEmail)) return; // 이메일 형식이 맞는지 체크
+  if (!confirmTel(employeeProfileCard.employeeTel)) return; // 연락처 형식이 맞는지 체크
+
+  if (employeeProfileCard.employeeEnName) {
+    employeeProfileCard.employeeEnName = makePascal(employeeProfileCard.employeeEnName); // 영어 첫문자만 대문자, 나머지 소문자로 만듦
+    employeeProfileCard.employeeTel = makeTelForm(employeeProfileCard.employeeTel);
+  }
+  employeeProfileCard.employeeTel = makeTelForm(employeeProfileCard.employeeTel);
 
   if (popupHeaderEl.innerText === "직원 프로필 추가" && !checkValid(employeeProfileCard)) {
     sendToast("동일한 연락처 혹은 이메일을 사용하는 사용자가 있습니다.", "error");
@@ -87,6 +97,11 @@ popupAddBtnEl.addEventListener("click", (event) => {
   }
 
   if (file.value) {
+    const sizeChecked = checkFileSize(file.files[0].size);
+    if (!sizeChecked) {
+      sendToast("3MB 이하의 이미지만 추가 가능합니다.", "error");
+      return;
+    }
     let storageRef;
     if (popupHeaderEl.innerText === "직원 프로필 추가") {
       storageRef = ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`);
@@ -111,7 +126,7 @@ popupAddBtnEl.addEventListener("click", (event) => {
     const docRef = doc(db, "profiles", `${employeeProfileCard.employeeID}`);
     setDoc(docRef, employeeProfileCard);
 
-    paintProfileEl(employeeProfileCard);
+    paintProfileEl(employeeProfileCard, true);
     sendToast("직원 프로필을 생성하였습니다.", "success"); // 토스트 생성
   } else {
     let temp = JSON.parse(popupAddBtnEl.dataset.obj);
@@ -151,8 +166,8 @@ popupAddBtnEl.addEventListener("click", (event) => {
 /*
   모든 필수 입력값을 다 기입했는지 체크하는 함수
 */
-function checkInputAll(popupInputEls) {
-  let flag;
+function confirmInputAll(popupInputEls) {
+  let flag = true;
   for (let i = 0; i < 4; i++) {
     if (i === 1) continue;
     if (!popupInputEls[i].value) {
@@ -162,6 +177,100 @@ function checkInputAll(popupInputEls) {
     }
   }
   return flag;
+}
+
+/*
+  한글 이름에 한글만 있는지 체크 함수
+*/
+function confirmKorAlp(koName) {
+  const korAlp = /^[가-힣|]+$/;
+  let flag = true;
+  if (!korAlp.test(koName)) {
+    flag = false;
+    sendToast("한글이름란에는 자모 조합 한글만 입력 가능합니다", "error");
+  }
+  return flag;
+}
+
+/*
+  영어 이름에 영어만 있는지 체크 함수
+*/
+function confirmEngAlp(enName) {
+  const engAlp = /^[a-z|A-Z]+$/;
+  let flag = true;
+  if (!engAlp.test(enName)) {
+    flag = false;
+    sendToast("영어이름란에는 영어만 입력 가능합니다", "error");
+  }
+  return flag;
+}
+
+/*
+  영어 이름 맨 앞자리만 대문자, 나머지 소문자로 만들기 함수
+*/
+function makePascal(enName) {
+  let first = enName[0].toUpperCase();
+  let rest = enName.slice(1).toLowerCase();
+  return first + rest;
+}
+
+/*
+  연락처 '-' 넣어주기 함수
+*/
+function makeTelForm(tel) {
+  return `${tel.slice(0, 3)}-${tel.slice(3, 7)}-${tel.slice(7)}`;
+}
+
+/*
+  파일 사이즈 제한 체크 함수
+*/
+function checkFileSize(fileSize) {
+  console.log(fileSize, "파일 사이즈");
+  return fileSize > 3 * 1024 * 1024 ? false : true;
+}
+
+/*
+  이메일 형식 체크 함수
+*/
+function confirmEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  let flag = true;
+  if (!emailRegex.test(email)) {
+    sendToast("이메일 형식이 올바르지 않습니다", "error");
+    flag = false;
+  }
+  return flag;
+}
+
+/*
+  연락처 형식 체크 함수 & '-'추가
+*/
+function confirmTel(tel) {
+  let flag = true;
+  if (parseInt(tel) === NaN) {
+    flag = false;
+  } else if (tel.length < 10 || tel.length > 11) {
+    flag = false;
+  } else if (tel.slice(0, 3) !== "010") {
+    flag = false;
+  }
+  if (!flag) sendToast("연락처 형식이 올바르지 않습니다", "error");
+  return flag;
+}
+
+/*
+  이메일과 연락처 유일성 체크 함수
+*/
+function checkValid(employeeProfileCard) {
+  if (!employeeArr.length) return true;
+  for (let i = 0; i < employeeArr.length; i++) {
+    if (employeeArr[i].employeeEmail === employeeProfileCard.employeeEmail) {
+      return false;
+    } else if (employeeArr[i].employeeTel === employeeProfileCard.employeeTel) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /* 
@@ -215,24 +324,9 @@ function loadLocalStorage() {
 }
 
 /*
-  valid 체크 함수
-*/
-function checkValid(employeeProfileCard) {
-  if (!employeeArr.length) return true;
-  for (let i = 0; i < employeeArr.length; i++) {
-    if (employeeArr[i].employeeEmail === employeeProfileCard.employeeEmail) {
-      return false;
-    } else if (employeeArr[i].employeeTel === employeeProfileCard.employeeTel) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/*
   프로필 그리기 함수
 */
-function paintProfileEl(employeeProfileCard) {
+function paintProfileEl(employeeProfileCard, newType) {
   const profileCardEl = document.createElement("article");
   profileCardEl.classList.add("employeecard-container");
 
@@ -271,8 +365,10 @@ function paintProfileEl(employeeProfileCard) {
   const profileCol = document.createElement("img");
   profileCol.classList.add("employeecard-column_profilecard");
 
-  if (employeeProfileCard.employeeFile) {
-    let extension = employeeProfileCard.employeeFile.split(".").slice(-1)[0];
+  let extension = employeeProfileCard.employeeFile.split(".").slice(-1)[0];
+  if (employeeProfileCard.employeeFile && newType) {
+    profileCol.addEventListener("mouseenter", expandImage);
+    profileCol.addEventListener("mouseleave", hideImage);
     setTimeout(() => {
       getDownloadURL(ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`))
         .then((url) => {
@@ -282,7 +378,20 @@ function paintProfileEl(employeeProfileCard) {
           // Handle any errors
           console.log("no image");
         });
-    }, 1000);
+    }, 2000);
+  } else if (employeeProfileCard.employeeFile) {
+    profileCol.addEventListener("mouseenter", expandImage);
+    profileCol.addEventListener("mouseleave", hideImage);
+    getDownloadURL(ref(storage, `images/${employeeProfileCard.employeeID}.${extension}`))
+      .then((url) => {
+        profileCol.src = url;
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.log("no image");
+      });
+  } else {
+    profileCol.src = "../images/noimage.png";
   }
 
   profileCheckEl.append(profileCol);
@@ -334,7 +443,30 @@ function paintProfileEl(employeeProfileCard) {
 }
 
 /* 
-  팝업 켜기 함수 & 끄기 함수
+  이미지 미리보기 함수
+*/
+function previewImage(event) {
+  const imagePreviewEl = document.querySelector(".profile-image");
+  const selectedFile = event.target.files[0];
+
+  if (selectedFile) {
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.style.maxWidth = "100%";
+
+      imagePreviewEl.innerHTML = ""; // Clear any previous preview
+      imagePreviewEl.appendChild(img);
+    };
+
+    reader.readAsDataURL(selectedFile);
+  }
+}
+
+/* 
+  팝업 켜기 함수
 */
 function openPopup(event) {
   const popupInputEls = document.querySelectorAll(".popup-contents-container input");
@@ -346,6 +478,8 @@ function openPopup(event) {
   team.value = "개발";
   author.value = "직원";
 
+  file.addEventListener("change", previewImage);
+
   if (event.target === mainAddBtnEl) {
     popupHeaderEl.innerText = "직원 프로필 추가";
   } else {
@@ -354,21 +488,30 @@ function openPopup(event) {
   }
 
   if (event.target.dataset.obj) {
-    // 변경인 경우
+    // 수정하는 경우 데이터들 다 불러오기
     let temp = JSON.parse(event.target.dataset.obj);
 
     koName.value = temp.employeeKoName;
     enName.value = temp.employeeEnName;
     email.value = temp.employeeEmail;
-    tel.value = temp.employeeTel;
+    tel.value = temp.employeeTel.includes("-") ? temp.employeeTel.split("-").join("") : temp.employeeTel; // - 연락처 빼고 불러오기
     team.value = temp.employeeTeam;
     author.value = temp.employeeAuthor;
+
+    previewModifying(event.target);
   }
 
   dimEl.classList.remove("none");
   popUpEl.classList.remove("none");
 }
+/* 
+  팝업 끄기 함수
+*/
 function closePopup() {
+  const file = document.querySelector("input[type='file']");
+  const imagePreviewEl = document.querySelector(".profile-image");
+  imagePreviewEl.innerHTML = "";
+  file.removeEventListener("change", previewImage);
   popupAddBtnEl.dataset.obj = ""; //데이터셋 초기화
   dimEl.classList.add("none");
   popUpEl.classList.add("none");
@@ -399,7 +542,20 @@ function deleteList(event) {
       console.error("Error deleting document:", error);
     });
 
+  if (temp.employeeFile) {
+    let extension = temp.employeeFile.split(".").slice(-1)[0];
+    const imgRef = ref(storage, `images/${temp.employeeID}.${extension}`);
+    deleteObject(imgRef)
+      .then(() => {
+        console.log("image Deleted");
+      })
+      .catch((error) => {
+        console.log("image not Deleted");
+      });
+  }
+
   checkEmpTotalNum();
+  sendToast("해당 프로필이 삭제되었습니다.", "success");
 }
 
 /*
@@ -421,6 +577,18 @@ function checkEmptyList() {
   } else {
     EmptyListEl.classList.remove("none");
   }
+}
+
+/*
+  수정 시 이미지 불러오기 함수
+*/
+function previewModifying(target) {
+  const listImg = target.closest("article").querySelector("img");
+  const imagePreviewEl = document.querySelector(".profile-image");
+  const img = document.createElement("img");
+  img.src = listImg.src;
+  img.style.maxWidth = "100%";
+  imagePreviewEl.append(img);
 }
 
 /*
@@ -469,6 +637,18 @@ function deleteEveryCheckedList() {
         console.error("Error deleting document:", error);
       });
 
+    if (temp.employeeFile) {
+      let extension = temp.employeeFile.split(".").slice(-1)[0];
+      const imgRef = ref(storage, `images/${temp.employeeID}.${extension}`);
+      deleteObject(imgRef)
+        .then(() => {
+          console.log("image Deleted");
+        })
+        .catch((error) => {
+          console.log("image not Deleted");
+        });
+    }
+
     const painted = checkboxEls[i].closest("article");
     painted.remove();
   }
@@ -488,6 +668,57 @@ function getUserName() {
   greetingEl.innerText = `안녕하세요 ${userName} 님`;
 }
 
+function expandImage(event) {
+  const IMG = document.getElementById("IMGPREVIEW");
+  const DIM = document.getElementById("DIM");
+  IMG.src = event.target.src;
+  IMG.style.display = "block";
+  DIM.classList.remove("none");
+}
+function hideImage(event) {
+  const IMG = document.getElementById("IMGPREVIEW");
+  IMG.src = "";
+  IMG.style.display = "none";
+  DIM.classList.add("none");
+}
+
+function sortTeam(event) {
+  const selVal = event.target.value;
+  const lists = document.querySelectorAll("article");
+
+  lists.forEach((el) => {
+    const teamVal = el.querySelector(".employeecard-column.team span");
+    if (selVal === "전체") {
+      el.classList.remove("none");
+    } else if (teamVal.innerText !== selVal) {
+      el.classList.add("none");
+    } else {
+      el.classList.remove("none");
+    }
+  });
+}
+
+const searchEl = document.querySelector("input[type='search']");
+searchEl.addEventListener("change", searchName);
+
+function searchName(event) {
+  console.log("진행 중?");
+  let word = event.target.value.toLowerCase();
+  const lists = document.querySelectorAll("article");
+
+  lists.forEach((el) => {
+    const korVal = el.querySelector(".employeecard-column.name span.ko-name").innerText.toLowerCase();
+    const engVal = el.querySelector(".employeecard-column.name span.en-name").innerText.toLowerCase();
+    const teamFilterVal = teamFilter.value;
+
+    if (korVal.includes(word) || engVal.includes(word)) {
+      el.classList.remove("search-none");
+    } else {
+      el.classList.add("search-none");
+    }
+  });
+}
+
 /*
   addEventListener들 모음
 */
@@ -495,5 +726,6 @@ mainAddBtnEl.addEventListener("click", openPopup); //팝업 켜기
 popUpCloseBtnEl.addEventListener("click", closePopup); //팝업 닫기
 dimEl.addEventListener("click", closePopup); //딤 클릭으로 팝업 닫기
 popupCancelBtnEl.addEventListener("click", closePopup); //취소버튼으로 팝업 닫기
-primeCheckbox.addEventListener("click", configCheckbox);
-mainDelBtnEl.addEventListener("click", deleteEveryCheckedList);
+primeCheckbox.addEventListener("click", configCheckbox); // 모두 선택하기, 모두 해제하기
+mainDelBtnEl.addEventListener("click", deleteEveryCheckedList); // 모두 삭제하기
+teamFilter.addEventListener("change", sortTeam); // 팀별로 나눠보기

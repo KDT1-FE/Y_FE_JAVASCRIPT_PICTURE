@@ -57,6 +57,17 @@
   height: 340px;
   background-color: var(--color-gray100);
   margin-right: 24px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+.popup-contents-container .profile-image img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .profile-row {
