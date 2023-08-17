@@ -16,7 +16,7 @@ const inquireListFunc = (querySnapshotArray) => {
   document.querySelectorAll(".list-box").forEach((i) => {
     i.remove();
   });
-  // 새로운 고객 목록 삽입
+  // 새로운 목록 삽입
   querySnapshotArray.forEach((doc) => {
     const boxTag = document.createElement("a");
     boxTag.href = `detail.html?id=${doc.id}`;
