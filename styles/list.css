@@ -43,6 +43,12 @@
   font-weight: bold;
 }
 
+@media only screen and (max-width: 348px) {
+  .list-box {
+    width: 100%;
+  }
+}
+
 @media only screen and (min-width: 769px) {
   .list-box {
     width: 30%;
