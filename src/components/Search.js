@@ -18,6 +18,8 @@ export default class Search extends Component{
     let localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
     const modal = this.el.querySelector('dialog')
     const inputEl = this.el.querySelector('input')
+
+    // 검색창 입력
     inputEl.addEventListener('input',()=>{
       championStore.state.searchText = inputEl.value
     })

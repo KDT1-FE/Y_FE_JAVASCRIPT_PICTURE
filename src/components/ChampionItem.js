@@ -39,6 +39,7 @@ export default class ChampionItem extends Component{
       new Icon(champion.position).el
     )
     
+    
     if(championStore.state.isDeleteState){
       labelEl.classList.remove('hide')
       deleteInputEl.classList.remove('hide')
@@ -48,7 +49,7 @@ export default class ChampionItem extends Component{
       labelEl.classList.add('hide')
       championEl.style.backgroundBlendMode = "normal"
     }
-    // championStore.state.deleteObj = {}
+
     deleteInputEl.addEventListener('input',event=>{
       championStore.state.deleteObj[champion.name] = event.target.checked
     })

@@ -2,6 +2,7 @@ import { Component } from "../core/core"
 import Icon from "../components/Icon"
 import DialogEdit from '../components/DialogEdit'
 
+// 챔피언 상세 페이지
 export default class Champion extends Component{
   constructor(){
     super()

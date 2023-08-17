@@ -5,6 +5,7 @@ import Loader from './Loader'
 import Cropper from "./Cropper";
 import cropperStore from'../store/cropper'
 
+// 기존의 챔피언을 수정하기 위해 사용자의 입력을 받기위한 모달창과 form 태그를 가짐
 export default class Dialog extends Component{
   constructor(props = {
     name:'',
@@ -81,21 +82,25 @@ export default class Dialog extends Component{
 
     const modal = this.el.querySelector('dialog')
     const localStorageArray = JSON.parse(localStorage.getItem('champ'))['char']
+    const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
+    const obj = localStorageArray[idx]
+
     const nameEl = this.el.querySelector('.form-name')
     const nicknameEl = this.el.querySelector('.form-nickname')
     const regionFormEl = this.el.querySelector('.form-region')
     const roleFormEl = this.el.querySelector('.form-role')
     const positionFormEl = this.el.querySelector('.form-position')
-    let isSubmit = false
-    const idx = localStorageArray.findIndex(obj=> obj.name === champion.name) 
-    const obj = localStorageArray[idx]
     const formEl = this.el.querySelector('form')
     const cropperThumbEl = this.el.querySelector('.cropper-thumb')
     const cropperImageEl = this.el.querySelector('.cropper-image')
     const formThumbEl = this.el.querySelector('.form-thumbnail')
     const formImageEl = this.el.querySelector('.form-image')
+    let isSubmit = false
     
+    // 로딩창 화면 삽입
     modal.append(new Loader().el)
+
+    // 사진 수정을 위한 Cropper 삽입(thumbnail, 배경 이미지 용도로 총 2개)
     cropperThumbEl.append(new Cropper({
       aspectRatio : 2/3,
       name: 'thumbnail',
@@ -112,20 +117,32 @@ export default class Dialog extends Component{
       store.state.loading = false
     })
 
+    // 제출 버튼 클릭시 강제 submit 이벤트 발생
     this.el.querySelector('.btn-edit-confirm').addEventListener('click',()=>{
       formEl.dispatchEvent(new Event('submit'))
     })
 
+    // 썸네일 사진을 사용자로부터 입력 받을 경우 file 형태로 store에 저장
     formThumbEl.addEventListener('input',event=>{
       cropperStore.state.thumbnailFile = event.target.files[0]
       console.log('cropperStore.state.thumbFile', cropperStore.state.thumbFile )
     })
 
+    // 배경 사진을 사용자로부터 입력 받을 경우 file 형태로 store에 저장
     formImageEl.addEventListener('input',event=>{
       cropperStore.state.imageFile = event.target.files[0]
       console.log('cropperStore.state.imageFile', cropperStore.state.imageFile )
     })
 
+    // 제출 했을 경우 다음고 같은 순서로 실행된다
+    // 1. 유효성 검사 - chkValid()
+    // 2. 중복 제출 방지 - isSubmit
+    // 3. 정보를 변경(비동기) - changeInformation()
+    //   3-1. 사용자의 입력 값을 받아 Obj 객체를 생성 후에 덮어씌움
+    //   3-2. 사진은 비동기적으로 작동을 하며, File 인스턴스를 입력받아 firebase URL을 가져옴(비동기) - storeIamgeAndgetURL
+    //     3-2-1. blob 객체를 받아 파이어베이스 storage에 저장 후 URL을 받아옴(비동기) - storeImageAndGetURL
+    // 4. localStorage에 변경사항 저장
+    
     formEl.addEventListener('submit',event=>{
       event.preventDefault()
       if(chkValid()){
