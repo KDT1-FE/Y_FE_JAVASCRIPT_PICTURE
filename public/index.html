@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>임원 관리 시스템</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
@@ -29,17 +29,22 @@
       const db = firebase.firestore();
       const storage = firebase.storage();
     </script>
-    <script src="./index.js" type="module" defer></script>
+    <script src="./index.js" defer></script>
     <!-- <script src="./firebase.js" type="module"></script> -->
   </head>
   <body class="body">
+    <img src="./images/icons/stain.png" class="background_stain" alt="" />
     <main class="main">
       <nav class="main__header">
         <h1>임직원 관리</h1>
-        <a href="#">관리자님</a>
       </nav>
       <section class="main__btn-box">
-        <button class="main__add-btn" id="user-add-btn">임직원 등록</button>
+        <div class="main__btn-box-sub">
+          <button class="main__add-btn" id="user-add-btn">임직원 등록</button>
+          <button class="main__delete-btn" id="user-delete-btn">
+            모두삭제
+          </button>
+        </div>
         <form class="main__search-form">
           <input
             type="text"
@@ -128,9 +133,7 @@
           </label>
         </div>
         <div class="section__user_button_container">
-          <button class="section__user_add_btn" type="submit">
-            임직원 등록
-          </button>
+          <button class="section__user_add_btn" type="submit">등록</button>
           <button class="section__user_cancel_btn">취소</button>
         </div>
       </form>

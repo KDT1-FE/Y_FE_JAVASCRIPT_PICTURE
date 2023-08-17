@@ -10,19 +10,24 @@ $gray: #c6c3bd;
 $white: #fff;
 
 .main {
-  width: 100%;
+  width: 70%;
   height: 100%;
-  margin: 100px 50px;
+  margin: 50px 50px;
+  padding: 50px 10px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   overflow: hidden;
+  margin: 65px auto;
+  background-color: $white;
+  border-radius: 20px;
+  z-index: 1;
   h1 {
     font-size: 1.5rem;
   }
-  input.doc-id {
-    visibility: hidden;
-  }
+  // input.doc-id {
+  //   visibility: hidden;
+  // }
   .main__header_menu-btn {
     outline: none;
     background-color: transparent;
@@ -39,6 +44,11 @@ $white: #fff;
   .main__header_menu-btn:hover {
     transform: scale(1.1);
   }
+}
+.background_stain {
+  position: absolute;
+  width: 70%;
+  transform: translate(-45%, -20%);
 }
 .loading {
   display: none;
@@ -75,6 +85,20 @@ $white: #fff;
   }
   .main__add-btn:hover {
     background-color: $pink;
+    color: $white;
+    border: none;
+  }
+  .main__delete-btn {
+    width: 6rem;
+    height: 2.3rem;
+    border: 1px solid $black;
+    outline: none;
+    border-radius: 5px;
+    color: $black;
+    background-color: $white;
+  }
+  .main__delete-btn:hover {
+    background-color: $black;
     color: $white;
     border: none;
   }
@@ -188,6 +212,7 @@ $white: #fff;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 .section__user_img_container {
   img {
@@ -455,4 +480,7 @@ $white: #fff;
     opacity: 1; /* 보였다가 */
     transform: scale(1.2); /* 1.2배 */
   }
+}
+.user_data_name {
+  cursor: pointer;
 }

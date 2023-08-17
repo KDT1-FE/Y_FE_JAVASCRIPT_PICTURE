@@ -1,18 +1,20 @@
 @charset "UTF-8";
 .main {
-  width: 100%;
+  width: 70%;
   height: 100%;
-  margin: 100px 50px;
+  margin: 50px 50px;
+  padding: 50px 10px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
   overflow: hidden;
+  margin: 65px auto;
+  background-color: #fff;
+  border-radius: 20px;
+  z-index: 1;
 }
 .main h1 {
   font-size: 1.5rem;
-}
-.main input.doc-id {
-  visibility: hidden;
 }
 .main .main__header_menu-btn {
   outline: none;
@@ -29,6 +31,12 @@
 }
 .main .main__header_menu-btn:hover {
   transform: scale(1.1);
+}
+
+.background_stain {
+  position: absolute;
+  width: 70%;
+  transform: translate(-45%, -20%);
 }
 
 .loading {
@@ -68,6 +76,20 @@
 }
 .main__btn-box .main__add-btn:hover {
   background-color: #e64980;
+  color: #fff;
+  border: none;
+}
+.main__btn-box .main__delete-btn {
+  width: 6rem;
+  height: 2.3rem;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 5px;
+  color: black;
+  background-color: #fff;
+}
+.main__btn-box .main__delete-btn:hover {
+  background-color: black;
   color: #fff;
   border: none;
 }
@@ -182,6 +204,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
 .section__user_img_container img {
@@ -458,4 +481,7 @@
     opacity: 1; /* 보였다가 */
     transform: scale(1.2); /* 1.2배 */
   }
+}
+.user_data_name {
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */
