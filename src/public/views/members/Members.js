@@ -1,5 +1,6 @@
 import AbstractView from '../AbstractView.js'
 import modalTemplate from '../components/modalForm.hbs'
+import { compile } from 'handlebars'
 export default class extends AbstractView {
   constructor(params) {
     super(params)
@@ -7,7 +8,9 @@ export default class extends AbstractView {
   }
 
   async getContent() {
-    const modal = modalTemplate()
+    const title = 'Add member'
+    // Handlebars 템플릿 렌더링
+    const modal = modalTemplate({ title: title })
 
     return /* HTML */ `
       ${modal}

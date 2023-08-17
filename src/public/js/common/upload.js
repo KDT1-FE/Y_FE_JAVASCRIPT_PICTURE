@@ -102,14 +102,15 @@ export function initUpload() {
 
   // Storage에 이미지 업로드
   async function uploadTask(file) {
-    const fileName = file.name // 이름 중복 해결해야함
+    const fileName = file.name
+    const id = Date.now() / fileName.length
     try {
       // 폼 유효성 검사 결과 확인
       if (!isFormValid) {
         console.log('유효성 검사 통과못함 1')
         return // 유효성 검사 실패 시 중단
       }
-      const storageRef = ref(storage, `images/${fileName}`)
+      const storageRef = ref(storage, `images/${fileName}_${id}`)
       const uploadImg = uploadBytesResumable(storageRef, file)
 
       const snapshot = await uploadImg
