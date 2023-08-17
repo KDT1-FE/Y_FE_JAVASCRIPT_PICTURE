@@ -7,8 +7,12 @@
 }
 
 .home-container {
-  padding: 0 4rem;
   margin-top: 2rem;
+  padding: 0 10rem;
+}
+
+.home-main-container {
+  width: 100%;
 }
 
 .page-title {
@@ -26,36 +30,26 @@
 }
 
 .button-box {
-  display: flex;
-  gap: 1.5rem;
   width: 20%;
 }
 
 .button-box > button {
-  width: 40%;
+  width: 100%;
   height: 3rem;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   font-weight: 700;
+  color: #ffffff;
+  background-color: #1c69d4;
 }
 
 .button-box > button:hover {
   opacity: 0.8;
 }
 
-.button-register {
-  color: #ffffff;
-  background-color: #1c69d4;
-}
-
-.button-delete {
-  color: #868e96;
-  background-color: #eeeeee;
-}
-
 .search-box {
-  width: 25%;
+  width: 50%;
   height: 100%;
 }
 
@@ -85,7 +79,7 @@
   width: 100%;
   height: 3rem;
   border-style: solid;
-  border-width: 1px 0 1px 0;
+  border-width: 1.5px 0 1.5px 0;
   border-color: #868e96;
 }
 
@@ -93,26 +87,18 @@
   align-items: center;
   display: flex;
   width: 100%;
-  height: 100%;
   font-size: 0.8rem;
+  height: 100%;
   font-weight: 700;
-  color: #868e96;
+  color: #495057;
   padding: 0 1rem;
 }
 
 .worker-box > li {
-  width: 15%;
   justify-content: center;
   display: flex;
+  flex: 1;
   padding: 1rem 0;
-}
-
-.worker-box > li:last-child {
-  width: 16%;
-}
-
-#check {
-  width: 9%;
 }
 
 .worker-box > li > input {
@@ -121,9 +107,16 @@
   cursor: pointer;
 }
 
-.worker-box > li > img {
+.worker-img-box > img {
+  width: 100%;
+  height: 100%;
+}
+
+.worker-img-box {
   width: 100%;
   height: 10rem;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 #worker {

@@ -18,11 +18,11 @@ export default class Home extends Component {
     const homeContainer = document.createElement("div");
     homeContainer.className = "home-container";
     homeContainer.innerHTML = /* html */ `
+    <div class="home-main-container">
       <h2 class="page-title">직원 관리</h2>
       <div class="action-bar">
         <div class="button-box">
           <button type="button" class="button-register">직원 등록</button>
-          <button class="button-delete">직원 삭제</button>
         </div>
         <div class="search-box">
           <div class="search-input-box">
@@ -36,9 +36,6 @@ export default class Home extends Component {
       <div class="workers-info-box">
         <div class="workers-info-box-header">
           <ul class="worker-box">
-            <li id="check">
-              <input type="checkbox"/>
-            </li>
             <li>프로필 사진</li>
             <li>사원번호</li>
             <li>이름</li>
@@ -49,6 +46,7 @@ export default class Home extends Component {
         </div>
         <div class="worker-items"></div>
       </div>
+    </div>
     `;
     this.el.appendChild(homeContainer);
 
@@ -77,7 +75,6 @@ export default class Home extends Component {
       );
     };
 
-    // console.log(this.state.workers);
     fetchWorkersData();
   }
 }

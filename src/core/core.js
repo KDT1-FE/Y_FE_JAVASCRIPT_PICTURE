@@ -24,6 +24,8 @@ function routeRender(routes) {
     return acc;
   }, {});
 
+  history.replaceState(query, "");
+
   const currentRoute = routes.find((route) =>
     new RegExp(`${route.path}/?$`).test(hash)
   );

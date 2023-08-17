@@ -13,5 +13,10 @@ export default class Header extends Component {
         </nav>
       </header>
     `;
+
+    const headerLogoEl = this.el.querySelector(".header-item-box-logo");
+    headerLogoEl.addEventListener("click", () => {
+      location.replace("/#/home");
+    });
   }
 }

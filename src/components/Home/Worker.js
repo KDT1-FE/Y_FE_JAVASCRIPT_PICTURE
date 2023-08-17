@@ -10,11 +10,10 @@ export default class Worker extends Component {
     const { imgURL, name, department, number, rank, email } = this.props;
     this.el.innerHTML = /* html */ `
       <ul class="worker-box" id="worker">
-          <li id="check">
-              <input type="checkbox"/>
-          </li>
           <li>
+            <div class="worker-img-box">
               <img src=${imgURL}/>
+            </div>
           </li>
           <li>${number}</li>
           <li>${name}</li>
@@ -23,5 +22,9 @@ export default class Worker extends Component {
           <li>${email}</li>
       </ul>
     `;
+    const workerEl = this.el.querySelector("#worker");
+    workerEl.addEventListener("click", () => {
+      location.replace(`/#/detail?name=${name}&number=${number}`);
+    });
   }
 }
