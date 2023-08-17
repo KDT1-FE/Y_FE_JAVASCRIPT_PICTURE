@@ -149,6 +149,33 @@ label {
     padding: 0.4rem 0.7rem;
 }
 
+/* toast message */
+.toast-wrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%, -50%);
+    background-color: rgba(0, 61, 145, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: none;
+    white-space: nowrap;
+    animation: fadeInOut 0.5s ease-in-out forwards;
+    z-index: 9999;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
 
 @media all and (max-width:479px) {
     .modal{

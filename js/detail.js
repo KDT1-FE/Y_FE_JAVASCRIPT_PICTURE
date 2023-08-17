@@ -17,6 +17,20 @@ const database = getDatabase(firebaseApp);
 const storage = getStorage(firebaseApp);
 
 
+// toast message
+const toast = document.querySelector('.toast-wrap');
+
+function showToast(message) {
+    const toastMessage = document.querySelector('.toast-message');
+    toastMessage.textContent = message;
+
+    toast.style.display = 'block';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2000); 
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // 클릭한 user 정보 가져오기
     const queryString = window.location.search;
@@ -81,9 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         update(userRef, userData).then(() => {
-                            console.log(`유저 등록 성공 ID ${userRef.key}`);
+                            console.log(`유저 업데이트 성공 ID ${userRef.key}`);
+                            showToast(`사진이 변경되었습니다!`);
                         }).catch((error) => {
-                            console.error('유저 등록 오류: ', error);
+                            console.error('유저 업데이트 오류: ', error);
                         });
     
                     }).catch((error) => {

@@ -36,6 +36,32 @@ fileInput.addEventListener('change', (event) => {
 });
 
 
+// toast message
+const toast = document.querySelector('.toast-wrap');
+
+function showToast(message) {
+    const toastMessage = document.querySelector('.toast-message');
+    toastMessage.textContent = message;
+
+    toast.style.display = 'block';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2000); 
+}
+
+// 등록 후 input 초기화 및 모달 닫기
+function resetInputsAndCloseModal() {
+    document.getElementById('name').value = ''; 
+    document.getElementById('email').value = ''; 
+    document.getElementById('department').value = '';
+    document.querySelector('.profile-image').src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+    fileUploadButton.style.display = 'flex';
+    profileImage.style.border = 'none';
+    modalWrap.style.display = 'none';
+    window.parent.postMessage('modalClosed', '*');
+}
+
+
 //  입력한 값 등록
 const registerButton = document.querySelector('.register-button');
 
@@ -64,10 +90,13 @@ registerButton.addEventListener('click', () => {
                 
                     set(newUserRef, userData).then(() => {
                         console.log(`유저 등록 성공 ID ${newUserRef.key}`);
+                        showToast(`등록되었습니다!`);
+                        setTimeout(() => {
+                            resetInputsAndCloseModal();
+                        }, 2000);
                     }).catch((error) => {
                         console.error('유저 등록 오류: ', error);
                     });
-
                 }).catch((error) => {
                     console.error('이미지 url 오류', error);
                 });
@@ -78,16 +107,6 @@ registerButton.addEventListener('click', () => {
         .catch((error) => {
             console.error('이미지 다운로드 오류:', error);
         });
-
-    // 등록 후 input 초기화 및 모달 닫기
-    document.getElementById('name').value = ''; 
-    document.getElementById('email').value = ''; 
-    document.getElementById('department').value = '';
-    document.querySelector('.profile-image').src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; // 투명 이미지로 에러 이미지 감추기
-    fileUploadButton.style.display = 'flex';
-    profileImage.style.border = 'none';
-    modalWrap.style.display = 'none';
-    window.parent.postMessage('modalClosed', '*');
 });
 
 

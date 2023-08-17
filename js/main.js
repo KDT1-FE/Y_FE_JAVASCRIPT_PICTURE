@@ -58,6 +58,20 @@ const database = getDatabase(firebaseApp);
 const storage = getStorage(firebaseApp);
 
 
+// toast message
+const toast = document.querySelector('.toast-wrap');
+
+function showToast(message) {
+    const toastMessage = document.querySelector('.toast-message');
+    toastMessage.textContent = message;
+
+    toast.style.display = 'block';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 2000); 
+}
+
+
 // user Data 가져오기
 document.addEventListener('DOMContentLoaded', () => {
     const usersRef = dbRef(database, 'users');
@@ -157,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error(`이미지 삭제 오류 - ${name}:`, error);
                     });
 
-                    alert('삭제되었습니다!');
+                    showToast(`삭제되었습니다!`);
                 }
             }
         });
