@@ -12,11 +12,10 @@
   width: 100;
 }
 .profile-info {
+  border: 1px solid white;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
-
-  border-top: 1px solid gainsboro;
-  border-bottom: 1px solid gainsboro;
 }
 .profile-container input {
   margin: 10px;
@@ -27,6 +26,7 @@
   flex-wrap: wrap;
   align-items: center;
   margin: 10px;
+  border: 1px solid white;
 }
 
 .p-img,
@@ -35,4 +35,30 @@
 .p-phone,
 .p-category {
   margin: 20px;
+}
+
+/* desktop 규격 */
+@media screen and (min-width: 1024px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* tablet 규격 */
+@media screen and (max-width: 1023px) {
+  body {
+    background-color: navajowhite;
+  }
+  .profile-info {
+    flex-basis: calc(50% - 50px); /* 두 개의 요소가 한 줄에 배치되도록 설정 */
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .employee {
+    flex-basis: 100%; /* 두 개의 요소가 한 줄에 배치되도록 설정 */
+    text-align: center;
+    box-sizing: border-box;
+  }
 }
