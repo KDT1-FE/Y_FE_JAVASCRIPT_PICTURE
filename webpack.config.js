@@ -6,7 +6,10 @@ module.exports = {
   // 번들링 위치, scss의 경우 index.js 파일에 import
   entry: {
     index: "./src/js/index.js",
-    fb: "./src/js/fb.js"
+    driverList: "./src/js/pages/driverList.js",
+    addDriver: "./src/js/pages/addDriver.js",
+    driverProfile: "./src/js/pages/driverProfile.js",
+    confirm: "./src/js/pages/confirm.js"
   },
   mode: "development",
   // .js.map 파일 생성
