@@ -12,7 +12,7 @@ export default class MemberList extends Component {
   render() {
     this.el.classList.add('table');
     this.el.innerHTML = `<div class="row">  <div class='checkbox-container'>
-        <input class='checkbox' type='checkbox'></input>
+        <input class='checkbox' type='checkbox' disabled></input>
       </div>
       <p class='photo-title'>PHOTO</p>
       <p class="name-title">NAME</p>
