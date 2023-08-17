@@ -1,3 +1,6 @@
+#firebase information
+firebaseInit.js
+
 # Logs
 logs
 *.log
@@ -66,5 +69,3 @@ node_modules/
 .env
 
 
-#firebase information
-firebaseInit.js

@@ -75,7 +75,7 @@ function searchCharacters(event) {
     .get()
     .then((snapshot) => {
       if (snapshot.size === 0) {
-        listBox.innerHTML = "<div>현재 관리되고 있는 캐릭터가 없습니다.</div>";
+        listBox.innerHTML = "<div>검색하신 캐릭터는 없습니다.</div>";
         return;
       }
       snapshot.forEach((doc) => {
@@ -101,3 +101,11 @@ function searchCharacters(event) {
       });
     });
 }
+
+// window.onload = function () {
+//   fetch("../html/navbar.html")
+//     .then((response) => response.text())
+//     .then((data) => {
+//       document.getElementById("navbar").innerHTML = data;
+//     });
+// };
