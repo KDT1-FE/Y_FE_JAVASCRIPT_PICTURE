@@ -22,18 +22,20 @@ async function Main() {
   q.forEach(doc => {
     const listWrapper = document.createElement("li");
     listWrapper.setAttribute("class", "list-wrapper");
-
-    listWrapper.innerHTML = `
-      <ul>
-        <a href ="/detail/${doc.id}">
-          <li><img src="${doc.data().image}"/></li>
-          <li>${doc.data().name}</li>
-          <li>${doc.data().team}</li>
-          <li>${doc.data().position}</li>
-        </a>
-      </ul>
-    `;
     listContainer.append(listWrapper);
+
+    const listAnchor = document.createElement("a");
+    listAnchor.setAttribute("class", "list-anchor");
+    listAnchor.href = `/detail/${doc.id}`;
+
+    listAnchor.innerHTML = `
+          <img class="list-anchor__img" src="${doc.data().image}"/>
+          <p class="list-anchor__name">${doc.data().name}</p>
+          <p class="list-anchor__team">${doc.data().team}</p>
+          <p class="list-anchor__position">${doc.data().position}</p>
+    `;
+
+    listWrapper.append(listAnchor);
   });
 }
 
