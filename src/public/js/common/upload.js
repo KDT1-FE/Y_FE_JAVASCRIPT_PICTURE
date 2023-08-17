@@ -3,13 +3,31 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db, storage } from './firebase'
 import { Member, memberConverter } from './FormData'
 import { handlePreviewImg } from './previewimg'
-import { setupFormValidation } from './validation'
+import { formValidation } from './validation'
 
 export function initUpload() {
-  console.log('업로드실행')
-
   const myForm = document.getElementById('myForm')
   myForm.addEventListener('submit', handleSubmit)
+
+  // input & select readonly 제거
+  function formControl(el) {
+    el.forEach((el) => {
+      el.removeAttribute('readonly')
+      el.className = 'form-control'
+    })
+  }
+  // input 요소 처리
+  const inputEls = document.querySelectorAll('.readonly')
+  formControl(inputEls)
+
+  // select 요소 처리
+  const selectEl = document.querySelector('select')
+  selectEl.removeAttribute('disabled')
+  selectEl.className = 'form-select'
+
+  // file input 요소 처리
+  const fileEl = document.querySelector('.input-file')
+  fileEl.removeAttribute('disabled')
 
   // 이미지 input 이벤트
   const imageInput = document.getElementById('image')
@@ -22,7 +40,7 @@ export function initUpload() {
 
   // 폼 유효성 검사 실행
   let isFormValid
-  setupFormValidation('#myForm', (isValid) => {
+  formValidation('#myForm', (isValid) => {
     isFormValid = isValid
   })
 
@@ -32,7 +50,7 @@ export function initUpload() {
 
     // 폼 유효성 검사 결과 확인
     if (!isFormValid) {
-      console.log('유효성 검사 통과못함')
+      console.log('유효성 검사 통과못함 1')
       return // 유효성 검사 실패 시 중단
     }
 
@@ -88,6 +106,7 @@ export function initUpload() {
     try {
       // 폼 유효성 검사 결과 확인
       if (!isFormValid) {
+        console.log('유효성 검사 통과못함 1')
         return // 유효성 검사 실패 시 중단
       }
       const storageRef = ref(storage, `images/${fileName}`)

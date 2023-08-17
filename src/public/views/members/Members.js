@@ -1,5 +1,5 @@
 import AbstractView from '../AbstractView.js'
-import modalTemplate from '../components/modal.hbs'
+import modalTemplate from '../components/modalForm.hbs'
 export default class extends AbstractView {
   constructor(params) {
     super(params)

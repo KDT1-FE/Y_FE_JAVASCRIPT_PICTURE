@@ -21,25 +21,25 @@
               <div class='myForm__row__wrap row'>
                 <div class='col'>
                   <label for='name' class='form-label'>Name</label>
-                  <input type='text' class='form-control-plaintext' id='name' name='name' placeholder='Name' required='' readonly />
+                  <input type='text' class='form-control-plaintext readonly' id='name' name='name' placeholder='Name' required='' readonly />
                   <div class='invalid-feedback'>이름을 입력해주세요.</div>
                 </div>
 
                 <div class='col-12'>
                   <label for='email' class='form-label'>Email</label>
-                  <input type='email' class='form-control-plaintext' id='email' name='email' placeholder='you@example.com' readonly />
+                  <input type='email' class='form-control-plaintext readonly' id='email' name='email' placeholder='you@example.com' required readonly />
                   <div class='invalid-feedback'>이메일을 입력해주세요.</div>
                 </div>
 
                 <div class='col-md'>
                   <label for='Team' class='form-label'>Team <span class='text-muted'>(Optional)</span></label>
-                  <input type='text' class='form-control-plaintext' id='team' name='team' placeholder='Team' readonly />
+                  <input type='text' class='form-control-plaintext readonly' id='team' name='team' placeholder='Team' readonly />
                   <div class='invalid-feedback'>팀 이름을 입력해주세요.</div>
                 </div>
 
                 <div class='col-md'>
                   <label for='Position' class='form-label'>Position <span class='text-muted'>(Optional)</span></label>
-                  <select class='form-select-plaintext' id='position' name='position' form='updateForm' disabled>
+                  <select class='form-select-plaintext' id='position' name='position' form='myForm' disabled>
                     <option selected disabled value=''>Choose...</option>
                     <option value='FE'>FE</option>
                     <option value='BE'>BE</option>
