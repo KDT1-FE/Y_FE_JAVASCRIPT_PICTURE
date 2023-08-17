@@ -18,7 +18,7 @@ try {
         driverData.birth,
         driverData.product,
         driverData.subsPeriod,
-        driverData.done
+        driverData.confirm
       ];
 
       driverDataValues.forEach(driverDataValue => {
@@ -39,10 +39,12 @@ try {
           confirmAnc.classList.add("confirmAnc");
           confirmAnc.setAttribute("href", `./confirm.html?${driverDoc.id}`);
           confirmAnc.innerText = "심사하기 →";
+          confirmAnc.style.color = "white";
 
           td.append(confirmAnc);
         } else if (driverDataValue === true) {
           td.innerText = "지급 완료";
+          td.style.color = "orange";
         } else {
           td.innerText = driverDataValue;
         }

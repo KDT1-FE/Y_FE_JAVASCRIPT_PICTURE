@@ -6,11 +6,12 @@ import { collection, addDoc } from "firebase/firestore";
 import getInputData from "./getInputData.js";
 // 목업 데이터 생성 모듈
 import createMockData from "./creatMockData.js";
-
+// storage에 이미지 등록하는 모듈
 import addDriverImg from "./addDriverImg.js";
 
-// 보험자 추가 form 요소
+// 보험자 추가 form과 input 요소
 const addDriverForm = document.querySelector("#addDriver");
+const addDriverFormSubmit = document.querySelector("input[type='submit']");
 
 // 보험자 추가 버튼 클릭 시 보험자 데이터 등록
 addDriverForm.addEventListener("submit", addDriver);
@@ -20,6 +21,8 @@ function addDriver(event) {
   try {
     // submit 이벤트의 reload 동작 방지
     event.preventDefault();
+    // 더블 클릭으로 인한 중복 업로드 방지
+    addDriverFormSubmit.setAttribute("disabled", true);
     // Input data [driverImg, driverName, driverBirth, insuranceProduct]를 db에 등록
     addDriverDoc(...getInputData());
   } catch (err) {
@@ -31,7 +34,8 @@ function addDriver(event) {
 async function addDriverDoc(img, name, birth, product) {
   try {
     // 목업 데이터 생성하기
-    const [subsPeriod, paymentAmount, accidentDate] = createMockData(product);
+    const [subsPeriod, paymentAmount, expectMoney, accidentDate, accidentImg] =
+      createMockData(product);
 
     // 보험자 등록
     const driver = await addDoc(collection(db, "drivers"), {
@@ -41,8 +45,10 @@ async function addDriverDoc(img, name, birth, product) {
       product,
       subsPeriod,
       paymentAmount,
+      expectMoney,
       accidentDate,
-      done: false
+      accidentImg,
+      confirm: false
     });
 
     // storage에 img 등록 후
@@ -50,7 +56,8 @@ async function addDriverDoc(img, name, birth, product) {
     const driverId = driver.id;
 
     if (driverId) {
-      addDriverImg(driverId, img);
+      const redirectUrl = "./driverList.html";
+      addDriverImg(driverId, img, redirectUrl);
     } else {
       // 오류 처리 로직
       return;
