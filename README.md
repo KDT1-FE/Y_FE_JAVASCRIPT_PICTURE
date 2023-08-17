@@ -1,49 +1,164 @@
+# **직원 관리 서비스**
 
-# :camera: 직원 사진 관리 서비스
+<img width="1437" src="https://github.com/ewinkite/dev_EMS/assets/139189610/c500a43e-1bd9-48e9-9414-6584313343a8"> <br>
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+- 프로젝트 기간 : 2023.08.07 ~ 2023.08.18
+- 프로젝트 소개: JavaScript 과제의 일환으로서 진행된 프로젝트입니다. Firebase를 활용하여 직원 정보 등록/수정/삭제/조회가 가능합니다.
+- 배포 링크: 🔗 [클릭시 이동합니다.](https://emsproject-68867.web.app/listPage.html)
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+<br/>
 
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
+## 🖥 기술 스택
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+### Front-end
 
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+`HTML5` `CSS3` `JavaScript` `jquery`
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
+### Back-end
 
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+`firebase`
+
+### Deploy
+
+`firebase`
+
+### etc
+
+`figma`
+
+<br/>
+<br/>
+
+## 🗂 디렉토리 구조
+
+```
+📦 public                            배포 대상이 되는 폴더입니다.
+ ┣📦 assets                          아이콘이 모여있는 폴더입니다.
+ ┣📦 css                             공통 css와 페이지별 css가 포함된 폴더입니다.
+ ┣📦 js                              공통 js와 페이지별 js가 포함된 폴더입니다.
+ ┃ ┣ 📜 addPage.js
+ ┃ ┣ 📜 editPage.js
+ ┃ ┣ 📜 listPage.js
+ ┃ ┣ 📜 profilePage.js
+ ┃ ┣ 📜 main.js
+ ┃ ┣ 📜 addPage.js
+ ┣📜 addPage.html
+ ┣📜 editPage.html
+ ┣📜 listPage.html
+ ┣📜 profilePage.html
+```
+
+<br/>
+<br/>
+
+## 💡 유저 플로우
+![직원리스트_대표](https://github.com/ewinkite/dev_EMS/assets/139189610/8916366f-7e8b-4c54-9db8-3d65030deb18)
+
+## 💡 화면 설계
+<br/>
+단계적인 개발을 위하여 유저 플로우와 요구사항을 바탕으로 간단한 화면 설계를 진행하였습니다.<br/>
+기능별 진입점 및 구동 방식에 대한 설명은 아래의 기획서를 참고해주세요! 😁 
+
+![list_pc](https://github.com/ewinkite/dev_EMS/assets/139189610/d0e812d5-59d2-4c81-bfe7-1a368b8ebdcf)
+![add_pc](https://github.com/ewinkite/dev_EMS/assets/139189610/26dd8fd5-bf9b-473b-a5fe-c4494e6097f1)
 
 
+### 요구사항 반영여부
+
+<div align="center">
+  <table>
+    <tr align="left">
+      <th width="500">필수 요구사항</th>
+      <th width="500">선택 요구사항</th>
+    </tr>
+      <td>
+✅ “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요. </br>
+✅ 프로필 페이지를 개발하세요.</br>
+✅ 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.</br>
+✅ 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.</br>
+✅ 사진을 등록, 수정, 삭제가 가능해야 합니다.</br>
+✅ 유저 플로우를 제작하여 리드미에 추가하세요.</br>
+✅ 애니메이션 구현</br>
+✅ 상대수치 사용(em)</br>
+✅ JavaScript </br>
+✅ DOM event 조작 </br>
+      </td>
+      <td>
+✅ 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.</br>
+✅ 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.</br>
+✅ 직원을 등록, 수정, 삭제가 가능하게 해보세요.</br>
+👩🏽‍💻 직원 검색 기능을 추가해 보세요.</br>
+👩🏽‍💻 infinity scroll 기능을 추가해 보세요.</br>
+👩🏽‍💻 사진을 편집할 수 있는 기능을 추가해 보세요.</br>
+❌ LocalStorage 사용</br>
+      </td>
+  </table>
+</div>
+<br>
+
+## 💡 구현 기능
+<div align="center">
+  <table>
+    <tr align="center">
+      <th>테이블 조회 (listPage)</th>
+      <th>등록 (addPage)</th>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/ewinkite/dev_EMS/assets/139189610/c500a43e-1bd9-48e9-9414-6584313343a8" width="500"> </br>
+       * 업데이트 최신순으로 테이블 노출 </br>
+       * 등록된 전체 인원 count 노출</br>
+       * 테이블 항목 마우스 오버시 효과</br>
+      </td>
+      <td>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/cbfbe35c-3cb5-4287-8ae5-2d02e16533ea" width="500"> </br>
+       * 파일첨부기능 커스텀 (editPage에서 활용시 기존 파일명을 불러오기 위함)</br>
+       * 삭제 버튼 클릭시 첨부 사진 삭제</br>
+       * 첨부한 사진 미리보기 </br>
+       * empty set 설정 </br>
+       * 등록시 로딩 애니메이션 노출 </br>
+      </td>
+    </tr>
+    <tr align="center">
+      <th>상세 조회 (profilePage)</th>
+      <th>삭제 (profilePage)</th>
+    </tr>
+    <tr>
+      <td>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/59783b29-5867-445c-9218-fd74373b071e" width="500"> </br>
+       * 직원 정보 업데이트시 최신업데이트일자 갱신되어 노출 </br>
+       * 수정/ 삭제 기능 제공 </br>
+      </td>
+      <td>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/36cd5856-5255-410c-b8c3-8a99b8ec367d" width="500"> </br>
+       * 삭제 완료 얼럿 노출 </br>
+       * 리스트 페이지로 이동 </br>
+      </td>
+    </tr>
+   <tr align="center">
+      <th>수정 (editPage)</th>
+      <th>모바일 반응형</th>
+    </tr>
+    <tr>
+      <td>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/ab6de56d-641b-487e-b047-acece65164e6" width="500"> </br>
+       * addPage와 동일하나, 최초 진입시 기존 데이터 노출
+      </td>
+      <td>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/b7c1a807-9f00-48d4-af11-1d5135c644f6" width="220">
+          <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/eb69fb57-5438-4c5a-a5b4-75315b923dbe" width="220"> </br>
+       * Desktop~mobile까지 전 해상도 반응형 지원 </br>
+      </td>
+  </table>
+</div>
+<br>
+
+
+<br/>
+<br/>
+
+## 🔥 남아있는 과제
+<br>
+- [ ] 테이블 선택 항목 삭제 기능/ 검색 필터 기능 구현 <br>
+- [ ] 사진 편집 기능 구현 <br>
+- [ ] 무한 스크롤 기능 구현 <br>
+<br>
