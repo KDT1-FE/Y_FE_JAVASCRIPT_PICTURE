@@ -1,7 +1,7 @@
-import data from "./data.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { addDoc, deleteDoc, collection, getFirestore, getDocs, updateDoc, doc, query, where } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
+import dotenv from "dotenv";
 
 const dotenv = require("dotenv");
 dotenv.config();
