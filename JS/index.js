@@ -67,7 +67,7 @@ async function uploadImageAndAddToList(file, employeeInfo) {
     // 수정된 이미지 정보 표시
     await displayEmployeeWithInfo(employeeInfo);
     await saveEmployeeInfoToLocalstorage(employeeInfo);
-    await location.reload();
+    location.reload();
     
   } catch (error) {
     console.error('업로드 실패', error);
