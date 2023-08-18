@@ -1,0 +1,117 @@
+.sub_nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.player_search {
+  border: 1px solid #332a3e;
+  border-radius: 0.25rem;
+  padding: 0.625rem;
+  margin-right: 1.875rem;
+}
+
+button {
+  background: none;
+  border: 1px solid #332a3e;
+  padding: 0.625rem;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #453954;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #d5d3da;
+}
+
+/* 모달 창 css */
+
+.open_modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.bg {
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1111;
+}
+
+/* .open_modal .bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1111;
+} */
+
+.modalBox {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 38rem;
+  height: 26rem;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 9999;
+  transform: translateY(66%);
+}
+
+.hidden {
+  display: none;
+}
+
+/* 선수 등록 input css */
+.preview_box {
+  width: 200px;
+  height: 300px;
+  margin-top: 1rem;
+}
+
+.preview_text {
+  text-align: center;
+}
+
+.preview_image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.player_inform {
+  display: flex;
+  flex-direction: row;
+}
+
+.player_input_text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.input_box > input {
+  outline: #332a3e;
+  border: 1px solid #d5d3da;
+  background: none;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.5s;
+}
+
+.input_box > input:focus {
+  background-color: #d5d3da;
+  border: 1px solid rgb(119, 34, 136);
+  color: black;
+}
+
+/* 모달창 취소 및 등록 버튼 */
+.modal_btn_container {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
