@@ -154,6 +154,12 @@
   }
 }
 
+.red {
+  margin-top: 10px;
+  font-size: small;
+  color: red;
+}
+
 /* about.html */
 
 .character-info {
@@ -195,4 +201,42 @@
 
 .edit-button :hover {
   background-color: #ffd19a;
+}
+
+@media (max-width: 768px) {
+  .member-list-container,
+  .member-create-container {
+    padding: 5%;
+  }
+
+  .member-search {
+    flex: 1;
+    margin-right: 100px;
+    padding: 5px;
+    width: 3rem;
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+
+  .member-create,
+  .member-delete {
+    padding: 5px 10px;
+    background-color: bisque;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .member-create:hover,
+  .member-delete:hover {
+    background-color: #ffd19a;
+  }
+
+  #charName,
+  #charBirth,
+  #charCountry,
+  #charCreator {
+    text-align: right;
+  }
 }
