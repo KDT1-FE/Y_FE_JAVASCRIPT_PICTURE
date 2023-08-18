@@ -1,4 +1,4 @@
-import { accessKeyId, secretAccessKey } from "/js/config/key.js";
+import { accessKeyId, accessKey } from "/js/config/key.js";
 
 import { bucketName, region } from "/js/constant/aws.js";
 
@@ -12,7 +12,7 @@ import {
 
 AWS.config.update({
   region,
-  credentials: new AWS.Credentials(accessKeyId, secretAccessKey),
+  credentials: new AWS.Credentials(accessKeyId, accessKey),
 });
 
 const s3 = new AWS.S3({
