@@ -126,13 +126,26 @@ async function Post() {
       team: document.querySelector("#team").value.toUpperCase()
     };
 
-    const add = addDoc(collection(db, "employee"), inputValue)
-      .then(() => {
-        window.location.href = "/";
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // 빈 칸이 있는지 먼저 확인
+    if (
+      inputValue.name == "" ||
+      inputValue.image == "" ||
+      inputValue.position == "" ||
+      inputValue.team == ""
+    ) {
+      alert("빈 칸 없이 똑바로 입력해주세요 !");
+    } else {
+      // 확인 알림
+      if (confirm("정말 정말 등록합니다?")) {
+        const add = addDoc(collection(db, "employee"), inputValue)
+          .then(() => {
+            window.location.href = "/";
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
   });
 }
 

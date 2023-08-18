@@ -44,7 +44,6 @@ async function Edit() {
 
   const editTitleContainerText = document.createElement("p");
   editTitleContainerText.setAttribute("class", "edit-title__p");
-  editTitleContainerText.innerHTML = `대한민국 선수 상세 페이지입니다.`;
   editTitleContainer.append(editTitleContainerText);
 
   // edit 페이지 - content
@@ -71,11 +70,6 @@ async function Edit() {
   editEditBtn.href = `/edit/${path}`;
   editEditBtn.innerHTML = `수정완료`;
   editBtnWrapper.append(editEditBtn);
-
-  const editDeletBtn = document.createElement("button");
-  editDeletBtn.setAttribute("id", "detail-delete");
-  editDeletBtn.innerHTML = "삭제하기";
-  editBtnWrapper.append(editDeletBtn);
 
   //edit 페이지 - content - input
   const editContentInputwrapper = document.createElement("div");
@@ -104,6 +98,11 @@ async function Edit() {
       <span>사진</span>
       <input type="file" id="image"/>
   `;
+
+  // 페이지 설명에 선수 이름 삽입
+  editTitleContainerText.innerHTML = `${
+    document.querySelector("#name").value
+  } 선수 데이터 수정 페이지입니다.`;
 
   // edit 페이지 - img
   const editContentImageWrapper = document.createElement("div");
@@ -145,18 +144,30 @@ async function Edit() {
     // 이미지 수정 시 imageURL 변경
     if (!imageURL) imageURL = docSnap.data().image;
 
-    setDoc(doc(db, "employee", path), {
-      image: imageURL,
-      name: document.querySelector("#name").value.toUpperCase(),
-      position: document.querySelector("#position").value.toUpperCase(),
-      team: document.querySelector("#team").value.toUpperCase()
-    })
-      .then(() => {
-        window.location.href = "/";
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // 빈 칸 확인
+    if (
+      document.querySelector("#name").value.toUpperCase() == "" ||
+      document.querySelector("#position").value.toUpperCase() == "" ||
+      document.querySelector("#team").value.toUpperCase() == ""
+    ) {
+      alert("빈 칸 없이 똑바로 입력해주세요 !");
+    } else {
+      // 확인 알림
+      if (confirm("정말 이렇게 수정합니다?")) {
+        setDoc(doc(db, "employee", path), {
+          image: imageURL,
+          name: document.querySelector("#name").value.toUpperCase(),
+          position: document.querySelector("#position").value.toUpperCase(),
+          team: document.querySelector("#team").value.toUpperCase()
+        })
+          .then(() => {
+            window.location.href = "/";
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
   });
 }
 

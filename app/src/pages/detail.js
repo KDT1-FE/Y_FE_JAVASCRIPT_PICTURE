@@ -42,7 +42,6 @@ async function Detail() {
 
   const detailTitleContainerText = document.createElement("p");
   detailTitleContainerText.setAttribute("class", "detail-title__p");
-  detailTitleContainerText.innerHTML = `대한민국 선수 상세 페이지입니다.`;
   detailTitleContainer.append(detailTitleContainerText);
 
   // detail 페이지 - content
@@ -110,6 +109,11 @@ async function Detail() {
       <input type="file" id="image" disabled/>
   `;
 
+  // 페이지 설명에 선수 이름 삽입
+  detailTitleContainerText.innerHTML = `${
+    document.querySelector("#name").value
+  } 선수 상세 페이지입니다.`;
+
   // detail 페이지 - img
   const detailContentImageWrapper = document.createElement("div");
   detailContentImageWrapper.setAttribute(
@@ -125,15 +129,17 @@ async function Detail() {
   document
     .querySelector("#detail-delete")
     .addEventListener("click", async () => {
-      const storageRef = ref(storage, docSnap.data().image);
-      await deleteObject(storageRef);
-      await deleteDoc(docRef)
-        .then(() => {
-          window.location.href = "/";
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (confirm("정말 이 선수를 삭제하시려는 겁니까?.. ㅠ")) {
+        const storageRef = ref(storage, docSnap.data().image);
+        await deleteObject(storageRef);
+        await deleteDoc(docRef)
+          .then(() => {
+            window.location.href = "/";
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     });
 }
 
