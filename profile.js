@@ -10,17 +10,25 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// 로그인 버튼을 클릭하면 구글 로그인 팝업 띄우기
 const loginButton = document.getElementById("login-button");
+
 loginButton.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-    .then((result) => {
-        // 로그인 성공 시 index.html로 리다이렉션
-        window.location.href = "index.html";
-    })
-    .catch((error) => {
-        console.error("로그인 실패:", error);
-    });
+    const redirectURL = encodeURIComponent(window.location.href);
+    const loginURL = `login.html?redirect=${redirectURL}`;
+    window.open(loginURL, "_blank");
+});
+
+const urlParams = new URLSearchParams(window.location.search);
+const redirectURL = urlParams.get("redirect");
+
+// 리다이렉션 버튼을 클릭하면 로그인을 처리하고 원래 페이지로 돌아갑니다.
+const redirectButton = document.getElementById("redirect-button");
+
+redirectButton.addEventListener("click", () => {
+    // 로그인 처리 코드 (signInWithPopup 등)
+
+    // 로그인이 성공하면 원래 페이지로 리다이렉션
+    window.location.href = redirectURL;
 });
 
 // 사용자 정보를 표시할 영역 선택
