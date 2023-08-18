@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>직원 등록</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/regist.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">Photo Manager</a>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">직원 등록</h2>
+      </div>
+      <form class="regist-form">
+        <div class="input-box">
+          <label class="regist-label">직원 이미지</label>
+          <div id="profileBox">
+            <label for="profilePic" class="profile-label">파일 선택</label>
+            <input
+              type="file"
+              id="profilePic"
+              class="hidden"
+              name="profilePic"
+              accept=".jpg, .jpeg, .png"
+              required
+            />
+            <button class="img-remove-btn hidden">삭제하기</button>
+            <img class="profile-img" />
+          </div>
+        </div>
+        <div class="input-box">
+          <label class="hidden">프로필 이미지 URL</label>
+          <input
+            id="imgTextInput"
+            class="regist-text-input hidden"
+            placeholder="이름"
+          />
+          <label class="regist-label">이름</label>
+          <input
+            id="nameInput"
+            class="regist-text-input"
+            placeholder="이름"
+            required
+          />
+          <label class="regist-label">이메일</label>
+          <input
+            id="emailInput"
+            type="email"
+            class="regist-text-input"
+            placeholder="이메일"
+            required
+          />
+          <label class="regist-label">전화번호</label>
+          <input
+            id="phoneInput"
+            type="tel"
+            class="regist-text-input"
+            placeholder="전화번호 (010-0000-0000)"
+            required
+          />
+          <button type="submit" class="submit-btn">완료</button>
+        </div>
+      </form>
+    </main>
+
+    <script type="module" src="./js/regist.js"></script>
+  </body>
+</html>

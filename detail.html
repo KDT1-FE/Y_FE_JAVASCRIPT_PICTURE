@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>개인 정보</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/regist.css" />
+    <link rel="stylesheet" href="./styles/skeleton.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">Photo Manager</a>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">직원 개인 정보</h2>
+        <button class="modify-btn">정보 수정</button>
+      </div>
+      <form class="regist-form">
+        <div class="input-box">
+          <label class="regist-label skeleton">직원 이미지</label>
+          <div id="profileBox" class="skeleton">
+            <label for="profilePic" class="profile-label hidden"
+              >파일 선택</label
+            >
+            <input
+              type="file"
+              id="profilePic"
+              class="modify-input hidden"
+              name="profilePic"
+              accept=".jpg, .jpeg, .png"
+              disabled
+              required
+            />
+            <button class="img-remove-btn hidden">삭제하기</button>
+            <img id="profileImg" class="profile-img" />
+          </div>
+        </div>
+        <div class="input-box">
+          <label class="hidden">프로필 이미지 URL</label>
+          <input
+            id="imgTextInput"
+            class="regist-text-input modify-input hidden"
+          />
+          <label class="regist-label skeleton">이름</label>
+          <input
+            id="nameInput"
+            class="regist-text-input modify-input skeleton"
+            disabled
+            required
+          />
+          <label class="regist-label skeleton">이메일</label>
+          <input
+            id="emailInput"
+            type="email"
+            class="regist-text-input modify-input skeleton"
+            disabled
+          />
+          <label class="regist-label skeleton">전화번호</label>
+          <input
+            id="phoneInput"
+            class="regist-text-input modify-input skeleton"
+            disabled
+            required
+          />
+          <div class="modify-btn-container">
+            <button class="cancel-btn modifying hidden">취소하기</button>
+            <button type="submit" class="submit-btn modifying hidden">
+              수정하기
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="./js/detail.js"></script>
+  </body>
+</html>

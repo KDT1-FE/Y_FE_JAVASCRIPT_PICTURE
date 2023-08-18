@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>직원 목록</title>
+    <link rel="stylesheet" href="./styles/general.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/list.css" />
+    <link rel="stylesheet" href="./styles/skeleton.css" />
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="header-nav">
+        <a class="header-logo" href="/">Photo Manager</a>
+        <div class="btn-wrapper">
+          <a class="regist-btn" href="regist.html">직원 등록</a>
+          <button class="delete-btn">직원 삭제</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="main-title-box">
+        <h2 class="main-title">직원 목록</h2>
+        <form class="search-container">
+          <button class="search-btn">
+            <img
+              class="search-icon"
+              alt="search icon"
+              src="./assets/icons/searchIcon.svg"
+            />
+          </button>
+          <input
+            class="search-input"
+            type="search"
+            placeholder="이름, 이메일로 검색하기"
+          />
+        </form>
+      </div>
+      <section class="list-container">
+        <a href="/detail.html" class="hidden"></a>
+      </section>
+    </main>
+    <script>
+      // 스켈레톤
+      new Array(8).fill(1).map(() => {
+        const skeletonBox = document.createElement("div");
+        skeletonBox.className = "list-box";
+
+        const skeletonInput = document.createElement("input");
+        skeletonInput.type = "checkbox";
+        skeletonBox.appendChild(skeletonInput);
+
+        const skeletonArr = ["img", "name", "email", "phone"];
+        skeletonArr.map((i) => {
+          const skeletonDiv = document.createElement("div");
+          skeletonDiv.className = `skeleton-${i} skeleton`;
+          skeletonBox.appendChild(skeletonDiv);
+        });
+
+        document.querySelector(".list-container").appendChild(skeletonBox);
+      });
+    </script>
+    <script type="module" src="./js/list.js"></script>
+  </body>
+</html>
