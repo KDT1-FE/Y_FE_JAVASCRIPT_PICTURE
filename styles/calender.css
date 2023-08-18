@@ -1,0 +1,21 @@
+.header {
+  font-family: "Noto Light", sans-serif;
+  margin: 30px;
+}
+
+.div1 {
+  display: flex;
+  font-family: "Noto Light", sans-serif;
+  margin: 20px;
+}
+.name {
+  margin-left: 60px;
+  margin-right: 120px;
+}
+.div-moim {
+  margin: 20px;
+}
+
+.div-moim div {
+  padding: 20px;
+}

@@ -12,13 +12,9 @@ const phoneInput = document.getElementById("inputPhone");
 const categoryInput = document.getElementById("inputCategory");
 const employees = Array.from(list.getElementsByClassName("employee"));
 const searchInput = document.getElementById("searchInput");
+const calender = document.getElementById("calender");
 
 const employeeList = [];
-
-nameInput.value = "hello";
-emailInput.value = "email";
-phoneInput.value = "phone";
-categoryInput.value = "category";
 
 btn1.addEventListener("click", async () => {
   //const checkbox = checkBoxInput.checked;
@@ -376,3 +372,7 @@ function loadFromLocalStorage() {
     JSON.parse(data);
   }
 }
+
+calender.addEventListener("click", () => {
+  window.location.href = "calender.html";
+});

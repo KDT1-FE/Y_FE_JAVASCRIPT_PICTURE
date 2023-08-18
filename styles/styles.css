@@ -37,6 +37,7 @@
   flex-wrap: wrap;
   align-items: center;
   margin: 10px;
+  border-bottom: 0.5px solid gray;
 }
 
 .p-img,
@@ -93,4 +94,35 @@
 #loading img {
   width: 200px; /* 로딩 이미지의 최대 너비 설정 */
   height: 200px;
+}
+
+.calender {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.logo {
+  width: 150px;
+  height: 130px;
+}
+
+.logo {
+  /* 이미지의 초기 위치 설정 */
+  position: relative;
+  top: 0;
+
+  /* 애니메이션 설정 */
+  animation: updown 4s infinite; /* 3초 간격으로 반복 */
+}
+
+/* @keyframes를 사용하여 애니메이션 세부 설정 */
+@keyframes updown {
+  0%,
+  100% {
+    top: 0;
+  }
+  50% {
+    top: -10px; /* 이미지를 오른쪽 끝까지 이동 */
+  }
 }
