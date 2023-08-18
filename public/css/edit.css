@@ -1,132 +1,130 @@
+/* Base styles for all devices */
+.header {
+    text-align: center;
+    padding: 20px;
+  }
+  
+ .body {
+  margin : 50px;
+ } 
+
+  img {
+    width: 90px;
+    height: 90px;
+    /* border-radius: 50%; */
+  }
+  
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+  
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
 
   .profile-edit-button {
     text-align: center;
     margin-top:30px;
   }
 
-  /* 수정버튼 */
+  button {
+    all: unset;
+    color: white;
+    padding: 5px 25px; 
+    cursor: pointer;
+  }
+
   .button__edit--profile {
-	/* background-color: #03A9F4; */
     background-color: #1E3269;
-    /* margin-bottom: 60px; */
-    margin-left: auto;
     margin-right:10px;
   }
-
-  /* 삭제버튼 */
+  
   .button__delete--profile {
-    /* margin-top: 60px; */
     background-color: #B90000;
-    /* margin-bottom: 60px; */
-    /* margin-left: 10px; */
-    text-align: center;
   }
 
-  /* 프로필 이미지 */
-  img {
-    width: 90px;
-    height: 90px;
-}
-
-/* .filebox img {
-  width: 50%;
-  height: 50%;
-  object-fit: cover;
-} */
-
-/* 테이블  */
-table {
-	border: 1px solid #ccc;
-	border-collapse: collapse;
-	margin: 0;
-	padding-right: 0;
-	width: 100%;
-	table-layout: fixed;
-  /* margin:200px;
-  margin-right:500px; */
-  }
-  
-  table caption {
-	font-size: 1.5em;
-	margin: .5em 0 .75em;
-  }
-  
-  table tr {
-	background-color: #f8f8f8;
-	border: 1px solid #ddd;
-	padding: .35em;
-  }
-  
-  table th,
-  table td {
-	padding: .625em;
-	text-align: center;
-  }
-  
-  table th {
-	font-size: .85em;
-	letter-spacing: .1em;
-	text-transform: uppercase;
-  }
-  
-  @media screen and (max-width: 600px) {
-	table {
-	  border: 0;
-	}
-  
-	table caption {
-	  font-size: 1.3em;
-	}
-	
-	table thead {
-	  border: none;
-	  clip: rect(0 0 0 0);
-	  height: 1px;
-	  margin: -1px;
-	  overflow: hidden;
-	  padding: 0;
-	  position: absolute;
-	  width: 1px;
-	}
-	
-	table tr {
-	  border-bottom: 3px solid #ddd;
-	  display: block;
-	  margin-bottom: .625em;
-	}
-    
-	table td {
-	  border-bottom: 1px solid #ddd;
-	  display: block;
-	  font-size: .8em;
-	  text-align: right;
-	}
-	
-	table td::before {
-	  /*
-	  * aria-label has no advantage, it won't be read inside a table
-	  content: attr(aria-label);
-	  */
-	  content: attr(data-label);
-	  float: left;
-	  font-weight: bold;
-	  text-transform: uppercase;
-	}
-	
-	table td:last-child {
-	  border-bottom: 0;
-	}
-
-  .profile-edit-button {
-    flex-direction: column;
-    align-items: center;
+  .form-group {
+    margin-left: auto;
+    margin-bottom: 20px;
   }
 
-  .button__edit--profile,
-  .button__delete--profile,
-  .button--state-cancel {
+  .form-control {
+    margin-top: 20px;
+    height: 30px;
+    /* border-color: #d2d2d2; */
     width: 100%;
-    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+
+  
+  /* Responsive styles for screens smaller than 600px */
+  @media (max-width: 600px) {
+    img {
+      width: 70px;
+      height: 70px;
+    }
+  
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    table tr {
+      margin-bottom: 1em;
+      border-bottom: 2px solid #ddd;
+    }
+  
+    table th {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    table td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      font-size: .8em;
+    }
+  
+    table td::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      padding: .625em;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 30px;
+    }
+
+    .button--state-edit, .button--state-delete, .button--state-delete2, .button--state-add {
+      padding: 3px 15px; /* 버튼 패딩을 조절하여 크기를 줄임 */
+      font-size: 0.8em; /* 폰트 크기를 조절 */
   }
 
 }
+  
+  

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>임직원 수정</title>
   <link rel="stylesheet" href="css/general.css"/>
   <link rel="stylesheet" href="css/modal.css"/>
   <link rel="stylesheet" href="css/edit.css"/>
@@ -29,45 +29,40 @@
   <thead>
   <tr>
       <th scope="col">이름</th>
-      <td>                          
+      <td data-label="이름">                       
         <div class="form-group">
-            <label>이름</label>
             <input type="text" id="edit_name" class="form-control" required>
         </div>
         </td>
   </tr>
   <tr>
       <th scope="col">이메일</th>
-      <td>
+      <td data-label="이메일">
         <div class="form-group">
-            <label>이메일</label>
             <input type="email" id="email" class="form-control" required>
         </div>
       </td>
   </tr>
   <tr>
       <th scope="col">전화번호</th>
-      <td>
+      <td data-label="전화번호">
         <div class="form-group">
-            <label>전화번호</label>
             <input type="text" id="phone" class="form-control" required>
         </div>
       </td>
   </tr>
   <tr>
       <th scope="col">직책</th>
-      <td>
+      <td data-label="직책">
         <div class="form-group">
-            <label>직책</label>
             <input type="text" id="position" class="form-control" required>
         </div>	
       </td>
   </tr>
   <tr>
     <th scope="col">사진</th>
-    <td>
+    <td data-label="사진">
       <div class="form-group">
-          <label>사진</label>
           <div class="filebox preview-image">
               <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
               <img id="edit-image-preview" src="" alt="Image Preview" />

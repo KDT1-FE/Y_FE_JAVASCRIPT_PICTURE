@@ -95,6 +95,10 @@ table {
   }
   
   @media screen and (max-width: 600px) {
+	.header h1 {
+		font-size: 1rem;
+	}
+
 	table {
 	  border: 0;
 	}
@@ -125,6 +129,10 @@ table {
 	  display: block;
 	  font-size: .8em;
 	  text-align: right;
+
+
+	  width: auto; /* 셀 너비 자동 조절 */
+	  min-width: 50px; /* 셀 최소 너비 설정 */
 	}
 	
 	table td::before {
@@ -142,18 +150,9 @@ table {
 	  border-bottom: 0;
 	}
 
-	/* 모달 인풋박스 */
-	/* input[type=text]{
-		width: 100%;
-		margin-top: 0;
-		}
-	input[type=email]{
-		width: 100%;
-		margin-top: 0;
-		} */
+	.button--state-add, .button--state-delete {
+		padding : 3px 7px;
+	}
+
+
   }
-  /* general styling */
-/* body {
-	font-family: "Open Sans", sans-serif;
-	line-height: 1.25;
-  } */

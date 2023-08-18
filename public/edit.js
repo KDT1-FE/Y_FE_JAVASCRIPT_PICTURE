@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 데이터 삭제 처리
+    // 데이터 삭제 
     document.querySelector('.button__delete--profile').addEventListener('click', function() {
         if (confirm('정말로 삭제하시겠습니까?')) {
             db.collection('employee').doc(docId).delete().then(() => {
