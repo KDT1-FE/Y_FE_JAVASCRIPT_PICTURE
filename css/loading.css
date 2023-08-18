@@ -1,0 +1,90 @@
+@import url(common.css);
+
+body {
+  background-color: rgb(242, 238, 232);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-title {
+  position: absolute;
+  top: 40%;
+  transform: translate(15%, -0%);
+  color: #ffffff;
+
+  z-index: 1;
+}
+
+.row {
+  position: relative;
+  margin: 0 auto;
+}
+
+:before,
+:after {
+  position: absolute;
+  content: '';
+}
+
+.beans {
+  margin: 20px auto;
+  width: 35px;
+  height: 50px;
+  background: #8B4C39;
+  border-radius: 50%;
+  animation: drop2 1s ease-in infinite;
+}
+
+.beans:before {
+  left: 18px;
+  width: 3px;
+  border-radius: 50%;
+  height: 98%;
+  background: #5E2605;
+  transform: rotate(-5deg);
+}
+
+
+@keyframes drop {
+  0% {
+    transform: translate(0px, -70px) rotate(45deg);
+  }
+  100% {
+    transform: translate(0px, 130px) rotate(45deg);
+  }
+}
+
+@keyframes drop2 {
+  0% {
+    transform: translate(0px, -70px);
+  }
+  100% {
+    transform: translate(0px, 130px);
+  }
+}
+.cup {
+  margin: 40px auto;
+  width: 190px;
+  height: 150px;
+  background: #999182;
+  border-radius: 5px 5px 80px 80px;
+}
+
+.cup:after {
+  top: 10px;
+  right: -45px;
+  width: 60px;
+  height: 80px;
+  border: 15px solid #999182;
+  border-radius: 70px;
+}

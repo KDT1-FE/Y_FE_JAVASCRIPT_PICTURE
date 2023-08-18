@@ -1,0 +1,153 @@
+@import url(common.css);
+@import url(registration-form.css);
+@import url(information-form.css);
+
+.title {
+  margin-bottom: 50px;
+}
+
+.buttons {
+  display: inline-block;
+}
+
+.search {
+  float: right;
+
+  width: 300px;
+
+  margin: 20px;
+
+  position: relative;
+}
+
+.search input {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  border: 1px solid #bbb;
+  border-radius: 8px;
+
+  font-size: 12px;
+}
+
+.search img {
+  width: 17px;
+
+  margin: 0;
+
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  cursor: pointer;
+}
+
+/* 화면 너비가 768px 이하일 때의 스타일 */
+@media screen and (max-width: 768px) {
+  .search {
+    float: none;
+    width: 300px;
+    margin: 20px 0;
+  }
+}
+
+.emp-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.emp-list .list-header {
+  border-top: 2px solid #bbb;
+  border-bottom: 2px solid #bbb;
+}
+
+
+.list-row {
+  border-bottom: 1px solid #d7d7d7;
+
+  display: flex;
+}
+
+.emp-list .list-row .checkbox {
+  margin: 0 20px;
+  width: 20px;
+}
+
+
+.emp-list .list-row .list-cell {
+  flex: 1;
+
+  padding: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emp-list-items .emp-category {
+  color: red;
+}
+
+.emp-list .list-row .emp-img {
+  height: 200px;
+  margin: 20px;
+
+  overflow: hidden;
+}
+
+.emp-list .list-row .emp-img img {
+  width: 150px;
+  height: 100%;
+  
+  object-fit: cover;
+}
+
+/* 화면 너비가 768px 이하일 때의 스타일 */
+@media screen and (max-width: 768px) {
+  .emp-list .list-header .list-cell{
+    display: none;
+  }
+
+  .emp-list .emp-list-items .list-item {
+    display: inline;
+    border: none;
+  }
+
+  .emp-list .list-row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+
+    margin: 20px;
+  }
+
+  .emp-list .list-header input[type="checkbox"]::after {
+    padding-left: 40px;
+    display: inline-block;
+    content: " ALL";
+
+    transform: translateY(10%);
+  }
+
+  .emp-list .list-row .list-cell {
+    text-align: center; /* 가운데 정렬 */
+  }
+
+  .emp-list .list-row .list-cell:last-child {
+    padding-bottom: 30px;
+  }
+
+  .emp-list .list-row .emp-img {
+    height: auto; 
+    margin: 10px 0; 
+  }
+
+  .emp-list .list-row .emp-img img {
+    width: 80%; 
+    height: auto; 
+  }
+
+  .emp-list-items .emp-category {
+    border-bottom: 1px solid #bbb;
+  }
+}

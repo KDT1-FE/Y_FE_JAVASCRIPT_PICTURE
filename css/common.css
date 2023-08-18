@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+  
+    box-sizing: border-box;
+    font-family: 'Gowun Dodum', sans-serif;
+  }
+  
+  button {
+    padding: 10px;
+    margin: 20px 3px;
+
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  
+    cursor: pointer;
+
+    background-color: rgb(108, 75, 61);
+    color: #fff;
+  }
+
+  button:hover{
+    background-color: rgb(75, 58, 51);
+  }
+
+  main {
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+
+    background-color: rgb(242, 238, 232);
+  }
+  
+  input[type="checkbox"]:hover {
+    cursor: pointer;
+  }

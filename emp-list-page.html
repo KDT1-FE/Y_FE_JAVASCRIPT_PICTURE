@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원 관리 서비스</title>
+    <link rel="stylesheet" href="./css/employee-list.css">
+    <link rel="stylesheet" href="./css/registration-form.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <h1 class="title">카페 직원 관리</h1>
+        <div class="buttons">
+            <button id="register-button">직원 등록</button>
+            <button id="delete-button">직원 삭제</button>
+        </div>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="이름 또는 이메일로 검색하기">
+            <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" id="searchButton">
+        </div>
+        <div class="emp-list">
+            <div class="list-row list-header">
+                <input type="checkbox" class="checkbox" id="select-all">
+                <div class="list-cell">프로필 사진</div>
+                <div class="list-cell">이름</div>
+                <div class="list-cell">이메일</div>
+                <div class="list-cell">휴대폰 번호</div>
+                <div class="list-cell">직급</div>
+            </div>
+            <div class="emp-list-items" id="list">
+            </div>
+        </div>
+    </main>
+    <div id="registrationForm" class="registration-form">
+        <h2>직원 등록</h2>
+
+        <label for="photo">사진 업로드:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+        <div class="uploaded-photo-container">
+            <img id="defaultPhoto" src="img/defaultPhoto.png" alt="Default Image">
+            <img id="uploadedPhoto" src="" alt="">
+        </div>
+
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name">
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email">
+        <label for="phone">휴대폰 번호:</label>
+        <input type="tel" id="phone" name="phone">
+        <label for="category">구분:</label>
+        <input type="text" id="category" name="category">
+        <button id="register-form-button">등록</button>
+        <button id="close-form-button">취소</button>
+    </div>
+    <div id="informationForm" class="information-form">
+        <h2>직원 정보</h2>
+        <div class="form-content"></div>
+        <button id="edit-info-form-button">정보 변경</button>
+        <button id="close-info-form-button">닫기</button>
+    </div>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1438.0.min.js"></script>
+    <script type="module" src="./script/register-emp.js"></script>
+    <script type="module" src="./script/aws.js"></script>
+<script type="module" src="./script/search.js"></script>
+</body>
+
+</html>

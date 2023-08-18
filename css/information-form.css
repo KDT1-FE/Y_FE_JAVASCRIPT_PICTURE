@@ -1,0 +1,63 @@
+.information-form {
+    width: 500px;
+    height: 28em;
+    background-color: #f9f9f9;
+  
+    padding: 20px;
+    margin-top: 10px;
+  
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  
+    display: none;
+  
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .information-form h2 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  .information-form .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-weight: bold;
+  }
+
+  .information-form .form-content div{
+    margin-bottom: 10px;
+  }
+
+  .information-form .emp-img img{
+    width: 120px;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .registration-form #defaultPhoto {
+    width: 120px;
+    height: 150px;
+  }
+
+  /* 화면 너비가 768px 이하일 때의 스타일 */
+@media screen and (max-width: 768px) {
+  .information-form {
+    width: 80%; 
+    max-width: 400px; 
+    height: auto; 
+
+    padding: 10px;
+
+    top: 50%;
+  }
+
+  .information-form h2 {
+    font-size: 1em; 
+    margin-bottom: 10px; 
+  }}
