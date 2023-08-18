@@ -8,11 +8,13 @@
 
 ## [배포 링크]
 
-radiant-seahorse-0a2581.netlify.app
+firebase를 이용해 사진과 데이터를 저장하고 배포까지 진행했습니다.
+
+https://js-portrait-list.web.app/
 
 ## [used Jquery to Solve for EventLisner Error]
 
-js에서 일부 `addeventlistener`가 작동하지 않아 Jquery를 사용한  부분이 있습니다.
+js에서 일부 `addeventlistener`가 작동하지 않아 Jquery를 사용한 부분이 있습니다.
 
 Jquery 없이 해결은 가능했지만 아래와 같이 가독성이 떨어져 일부 사용했습니다.
 ```js
