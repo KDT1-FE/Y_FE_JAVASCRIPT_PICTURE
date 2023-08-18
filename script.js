@@ -108,6 +108,45 @@ imagePreviewLabel.addEventListener("click", () => {
 });
 
 
+// // 이미지 로딩 상태를 감지하고 처리하는 함수
+// function handleImageLoad(image, callback) {
+//   if (image.complete) {
+//     callback();
+//   } else {
+//     image.addEventListener('load', callback);
+//   }
+// }
+
+// // 이미지 로딩 후에 정보 엘리먼트를 추가하는 함수
+// function addDogInfoAfterImageLoad(dogData) {
+//   const dogInfoContainer = document.getElementById("dogInfoContainer");
+//   const dogInfo = createDogInfoElement(dogData);
+//   dogInfoContainer.appendChild(dogInfo);
+// }
+
+// // 이미지 로딩 후에 정보 엘리먼트 추가 처리
+// function handleImageLoadAndAdd(dogData) {
+//   const dogImage = document.createElement("img");
+//   dogImage.src = dogData.imageUrl; // 이미지 URL을 가져와서 설정
+//   dogImage.alt = "강아지 사진";
+//   dogImage.style.borderRadius = "50%";
+
+//   // 이미지 로딩 완료를 감지하고 정보 엘리먼트를 추가
+//   handleImageLoad(dogImage, () => {
+//     const imageContainer = document.createElement("div");
+//     imageContainer.className = "image-container";
+//     imageContainer.style.width = "calc(20% - 30px)";
+
+//     // 이미지 클릭 시 수정 다이얼로그 열기
+//     imageContainer.addEventListener("click", () => {
+//       openEditDialog(dogData); // 수정 다이얼로그 열기
+//     });
+
+//     imageContainer.appendChild(dogImage);
+//     addDogInfoAfterImageLoad(dogData);
+//   });
+// }
+
 dialogRegisterDogButton.addEventListener("click", () => {
 
   //  정보 생성
@@ -126,13 +165,14 @@ dialogRegisterDogButton.addEventListener("click", () => {
   // 이미지 컨테이너 생성
   const imageContainer = document.createElement("div");
   imageContainer.className = "image-container";
+  imageContainer.style.width = "calc(20% - 30px)";
 
   //  정보 내용 생성
   const dogImage = document.createElement("img");
   dogImage.src = imagePreview.src;
   dogImage.alt = "강아지 사진";
   dogImage.style.borderRadius = "50%";
-
+  
   const dogName = document.createElement("span");
   dogName.textContent = dogNameInput.value;
 
@@ -268,28 +308,65 @@ function createDogInfoElement(dogData) {
   const dogInfo = document.createElement("div");
   dogInfo.className = "dog-info";
 
-  dogInfo.addEventListener("click", () => {
-    openEditDialog(dogData); // 수정 다이얼로그 열기
-  });
-
-   // 체크박스 생성 및 추가
-   const checkbox = document.createElement("input");
-   checkbox.type = "checkbox";
-   checkbox.className = "dog-checkbox";
-   if (dogData.isChecked) {
-     checkbox.checked = true;
-   }
-   dogInfo.appendChild(checkbox);
-   checkbox.addEventListener("change", () => {
-    dogData.isChecked = checkbox.checked; // 체크박스 상태를 데이터와 동기화
-  });
-  dogInfo.appendChild(checkbox);
-  dogCheckboxes.push({ checkbox, dogData }); // 체크박스와 데이터를 연결하여 추적
-
-  // 이미지 컨테이너 생성
   const imageContainer = document.createElement("div");
   imageContainer.className = "image-container";
+  imageContainer.style.width = "calc(20% - 30px)";
 
+  // // 이미지 클릭 시 수정 다이얼로그 열기
+  imageContainer.addEventListener("click", () => {
+    openEditDialog(dogData); // 수정 다이얼로그 열기
+    
+  });
+
+  // imageContainer.addEventListener("click", async (event) => {
+  //   const clickedElement = event.target;
+  //   const dogId = clickedElement.id;
+  //   console.log("클릭한 개의 Document ID:", dogId);
+  
+  //   // Firestore에서 개의 정보 가져오기
+  //   const db = getFirestore(app);
+  //   const dogRef = doc(db, "dogs", dogId); // 문서 참조 생성
+  
+  //   try {
+  //     const dogSnapshot = await getDoc(dogRef);
+  //     if (dogSnapshot.exists()) {
+  //       const dogData = dogSnapshot.data();
+  //       dogData.id = dogSnapshot.id; // Document ID 추가
+  //       openEditDialog(dogData); // 수정 다이얼로그 열기
+  //     } else {
+  //       console.log("개의 정보가 존재하지 않습니다.");
+  //     }
+  //   } catch (error) {
+  //     console.error("개의 정보를 가져오는 중에 오류가 발생했습니다:", error);
+  //   }
+  // });
+  
+  
+
+  // dogInfo.addEventListener("click", () => {
+  //   openEditDialog(dogData); // 수정 다이얼로그 열기
+  // });
+
+
+   // 체크박스 생성 및 추가
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.className = "dog-checkbox";
+  if (dogData.isChecked) {
+    checkbox.checked = true;
+  }
+  dogInfo.appendChild(checkbox);
+  checkbox.addEventListener("change", () => {
+    dogData.isChecked = checkbox.checked;
+  });
+  dogInfo.appendChild(checkbox);
+  dogCheckboxes.push({ checkbox, dogData });
+
+  // // 이미지 컨테이너 생성
+  // const imageContainer = document.createElement("div");
+  // imageContainer.className = "image-container";
+  // imageContainer.style.width = "calc(20% - 30px)";
+  dogInfo.appendChild(imageContainer);
 
   // 이미지
   const dogImage = document.createElement("img");
@@ -297,7 +374,7 @@ function createDogInfoElement(dogData) {
   dogImage.alt = "강아지 사진";
   dogImage.style.borderRadius = "50%";
   imageContainer.appendChild(dogImage);
-  dogInfo.appendChild(dogImage);
+  dogInfo.appendChild(imageContainer);
 
   // 이름
   const dogName = document.createElement("span");
@@ -371,7 +448,105 @@ deleteButton.addEventListener("click", () => {
 });
 
 
-// 정보 업데이트
+// 수정 다이얼로그 열기 함수
+function openEditDialog(dogData) {
+  // 수정 가능한 입력 요소들에 기존 데이터를 설정
+  dialogNameInput.value = dogData.name;
+  dialogBreedInput.value = dogData.breed;
+  dialogBirthdayInput.value = dogData.birthday;
+  dialogGenderInput.value = dogData.gender;
+
+  // 다이얼로그 열기
+  editDialog.style.display = "block";
+
+  // "저장" 버튼 클릭 이벤트 핸들러 등록하기 전에 이전의 핸들러를 제거
+  dialogEditDogButton.removeEventListener("click", saveEditAndClose);
+
+  // "저장" 버튼 클릭 이벤트 핸들러 등록
+  dialogEditDogButton.addEventListener("click", () => {
+    saveEditAndClose(dogData); // 선택한 객체의 정보를 전달
+  });
+}
+
+// "저장" 버튼 클릭 시 업데이트 처리 및 다이얼로그 닫기
+function saveEditAndClose(dogData) {
+  // 업데이트할 정보 설정
+  const updatedInfo = {
+    name: dialogNameInput.value,
+    breed: dialogBreedInput.value,
+    birthday: dialogBirthdayInput.value,
+    gender: dialogGenderInput.value
+    // 나머지 필요한 정보 추가
+  };
+
+  // 개별 객체의 정보를 업데이트
+  dogData.name = updatedInfo.name;
+  dogData.breed = updatedInfo.breed;
+  dogData.birthday = updatedInfo.birthday;
+  dogData.gender = updatedInfo.gender;
+
+  // 객체 정보 업데이트
+  updateDogDataInFirestore(dogData)
+    .then(() => {
+      console.log("정보 업데이트 완료");
+      // 화면 업데이트
+      updateDogInfoOnScreen();
+    })
+    .catch((error) => {
+      console.error("정보 업데이트 실패:", error);
+    });
+
+  // 다이얼로그 닫기
+  editDialog.style.display = "none";
+}
+
+// ... 이하 동일한 부분은 그대로 유지합니다 ...
+
+
+// 정보 업데이트 함수
+function updateDogDataInFirestore(dogData) {
+  const db = getFirestore(app);
+  const dogRef = doc(db, "dogs", dogData.id);
+
+  // 업데이트할 정보 설정
+  const updatedData = {
+    name: dogData.name,
+    breed: dogData.breed,
+    birthday: dogData.birthday,
+    gender: dogData.gender,
+    // 나머지 필요한 정보 추가
+  };
+
+  // Firestore 문서 업데이트
+  return updateDoc(dogRef, updatedData); // 반환된 프로미스를 반환
+}
+
+// ... 이하 동일한 부분은 그대로 유지합니다 ...
+
+
+// 객체 정보 엘리먼트 업데이트
+function updateDogInfoElement(dogData) {
+  const dogInfoElement = document.getElementById(dogData.id);
+  if (dogInfoElement) {
+    dogInfoElement.innerHTML = createDogInfoElement(dogData).innerHTML;
+  }
+}
+
+const closeEditDialogButton = document.getElementById("closeEditDialogButton");
+closeEditDialogButton.addEventListener("click", () => {
+  editDialog.style.display = "none";
+});
+
+const closeBtn = document.getElementById('dialogNoEditDogButton')
+closeBtn.addEventListener("click", () => {
+  editDialog.style.display = 'none';
+});
+
+
+// 서치바 엘리먼트 선택
+const searchInput = document.querySelector(".main-header-middle-search input");
+
+// 정보 업데이트 및 화면 업데이트
 function updateDogInfoOnScreen() {
   const dogInfoContainer = document.getElementById("dogInfoContainer");
   const db = getFirestore(app);
@@ -394,66 +569,7 @@ function updateDogInfoOnScreen() {
 }
 
 
-// 수정 다이얼로그 열기 함수
-function openEditDialog(dogData) {
-  // 수정 가능한 입력 요소들에 기존 데이터를 설정
-  dialogNameInput.value = dogData.name;
-  dialogBreedInput.value = dogData.breed;
-  dialogBirthdayInput.value = dogData.birthday;
-  dialogGenderInput.value = dogData.gender;
 
-  // 다이얼로그 열기
-  editDialog.style.display = "block";
 
-  // "저장" 버튼 클릭 이벤트 핸들러 설정하기 전에 이전의 핸들러를 제거
-  dialogEditDogButton.removeEventListener("click", saveEditAndClose);
 
-  // "저장" 버튼 클릭 이벤트 핸들러 등록
-  // dialogEditDogButton.addEventListener("click", saveEditAndClose);
 
-  // "저장" 버튼 클릭 이벤트 핸들러 등록
-  dialogEditDogButton.addEventListener("click", () => saveEditAndClose(dogData));
-}
-
-// "저장" 버튼 클릭 시 업데이트 처리 및 다이얼로그 닫기
-function saveEditAndClose(dogData) {
-  // 업데이트 작업 수행
-  updateDogDataInFirestore(dogData);
-  // 다이얼로그 닫기
-  editDialog.style.display = "none";
-}
-
-// 정보 업데이트 함수
-function updateDogDataInFirestore(dogData) {
-  const db = getFirestore(app);
-  const dogRef = doc(db, "dogs", dogData.id);
-
-  // 업데이트할 정보 설정
-  const updatedData = {
-    name: dialogNameInput.value,
-    breed: dialogBreedInput.value,
-    birthday: dialogBirthdayInput.value,
-    gender: dialogGenderInput.value
-  };
-
-  // Firestore 문서 업데이트
-  updateDoc(dogRef, updatedData)
-    .then(() => {
-      console.log("정보 업데이트 완료");
-      // 화면 재로드 또는 업데이트 작업 수행
-      updateDogInfoOnScreen();
-    })
-    .catch((error) => {
-      console.error("정보 업데이트 실패:", error);
-    });
-}
-
-const closeEditDialogButton = document.getElementById("closeEditDialogButton");
-closeEditDialogButton.addEventListener("click", () => {
-  editDialog.style.display = "none";
-});
-
-const closeBtn = document.getElementById('dialogNoEditDogButton')
-closeBtn.addEventListener("click", () => {
-  editDialog.style.display = 'none';
-});
