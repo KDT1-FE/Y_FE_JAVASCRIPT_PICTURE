@@ -133,7 +133,6 @@ window.addEventListener("DOMContentLoaded", async () => {
           editStatus = false;
           plantsForm["btn-data-save"].innerText = "저장";
           plantsForm.reset();
-          refresh();
 
           return;
         }
@@ -157,7 +156,6 @@ window.addEventListener("DOMContentLoaded", async () => {
         },
         async () => {
           progress.textContent = "Upload Complete!";
-          //refresh();
           const downloadURL = await getDownloadURL(
             imageUploadTask.snapshot.ref
           );
@@ -177,7 +175,6 @@ window.addEventListener("DOMContentLoaded", async () => {
               note.value
             );
             alert("저장되었습니다!");
-            refresh();
             // Add a new row to the table
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
@@ -222,9 +219,3 @@ window.addEventListener("DOMContentLoaded", async () => {
     plantsForm.reset();
   });
 });
-
-function refresh() {
-  setTimeout(function () {
-    location.reload();
-  }, 2000);
-}
