@@ -56,6 +56,7 @@ const signinSubmit = (auth, email, password) => {
       // Signed in
       const user = userCredential.user;
 
+      localStorage.setItem('isSignin', email);
       location.replace('main.html');
 
       // ...

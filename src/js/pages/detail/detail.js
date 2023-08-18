@@ -7,6 +7,11 @@ const $editButton = document.getElementById('edit-button');
 const $editComplete = document.getElementById('edit-complete');
 
 window.addEventListener('DOMContentLoaded', async e => {
+  if (JSON.stringify(localStorage.getItem('isSignin')) === 'null') {
+    location.replace('signin.html');
+    return;
+  }
+
   const receiveData = await getMember(urlData);
 
   await loadData($form, receiveData);

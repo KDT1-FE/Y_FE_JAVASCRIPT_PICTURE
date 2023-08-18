@@ -80,6 +80,11 @@ $allCheckbox.addEventListener('click', e => {
 /* ------------------------------------ - ----------------------------------- */
 // main page list redering
 window.addEventListener('DOMContentLoaded', async e => {
+  if (JSON.stringify(localStorage.getItem('isSignin')) === 'null') {
+    location.replace('signin.html');
+    return;
+  }
+
   await getAllMembers(state.members);
 
   await render(state.members);
