@@ -91,5 +91,6 @@
 }
 
 #loading img {
-  max-width: 100px; /* 로딩 이미지의 최대 너비 설정 */
+  width: 200px; /* 로딩 이미지의 최대 너비 설정 */
+  height: 200px;
 }
