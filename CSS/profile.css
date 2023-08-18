@@ -19,47 +19,47 @@ body {
     background-color: #f5f5f5;
 }
 
-main{
+#pf-main{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 70vh; /* 화면 높이의 70%로 설정 */
 }
 
-#main-contents{
+#pf-main-contents{
     background-color: white;
     border: 1px solid black;
     padding: 15px 30px;
 }
 
-#profile-wrapper{
+#pf-profile-wrapper{
     display: flex;
     justify-content: center;
 }
 
-#labels{
+#pf-labels{
     margin-right: 15px;
 }
 
-.label{
+.pf-label{
     font-weight: bold;
 }
 
-.profile-contents > div{
+.pf-profile-contents > div{
     margin: 10px 0;
 }
 
-#img-wrapper{
+#pf-img-wrapper{
     display: flex;
     justify-content: center;
 }
 
-#go-back-wrapper{
+#pf-go-back-wrapper{
     display: flex;
     justify-content: center;
 }
 
-#go-back{
+#pf-go-back{
     font-weight: bold;
     color: white;
     text-decoration: none;

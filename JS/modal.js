@@ -1,7 +1,7 @@
 // 모달
 const showModalDiv = document.getElementById("addEmployeeBtn");
-const closeModalButton = document.querySelector(".close-modal-button");
-const createModal = document.querySelector(".create-modal");
+const closeModalButton = document.querySelector(".md-close-modal-button");
+const createModal = document.querySelector(".md-create-modal");
 
 function showModal() {
     createModal.style.display = "block";

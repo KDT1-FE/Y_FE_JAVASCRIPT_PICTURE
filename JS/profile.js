@@ -1,3 +1,4 @@
+import '../CSS/profile.css';
 // URL 매개변수 파싱 함수
 function parseUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -14,10 +15,10 @@ const S3_BUCKET = 'y-fe-javascript-picture';
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
     const profileData = parseUrlParameters();
-    const nameElement = document.getElementById('name');
-    const emailElement = document.getElementById('email');
-    const phoneElement = document.getElementById('phone');
-    const categoryElement = document.getElementById('category');
+    const nameElement = document.getElementById('pf-name');
+    const emailElement = document.getElementById('pf-email');
+    const phoneElement = document.getElementById('pf-phone');
+    const categoryElement = document.getElementById('pf-category');
     const profileImageElement = document.getElementById('profileImage');
 
     // 데이터 화면에 표시

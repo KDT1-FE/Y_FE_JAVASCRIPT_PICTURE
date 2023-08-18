@@ -6,10 +6,6 @@ html{
     font-size: 20px;
 }
 
-body {
-    background-color: #f5f5f5;
-}
-
 header {
     background-color: #333;
     color: white;
@@ -19,7 +15,11 @@ header {
     padding: 1rem 0;
 }
 
-main{
+body {
+    background-color: #f5f5f5;
+}
+
+#idx-main{
     display: flex;
     justify-content: center;
 }
@@ -44,21 +44,21 @@ th, td {
     vertical-align: middle;
 }
 
-tr.trHover:hover{
+tr.idx-trHover:hover{
     background-color: skyblue ; /* 배경색 추가 */
     cursor: pointer;
 }
 
-#main-contents {
+#idx-main-contents {
     width: 50rem;
     margin: 1rem;
 }
 
-.profile {
+.idx-profile {
     margin-bottom: 1rem;
 }
 
-.profile button {
+.idx-profile button {
     margin: 0 0.5rem;
     border: none;
     cursor: pointer;
@@ -69,19 +69,12 @@ tr.trHover:hover{
     border-radius: 10px;
 }
 
-.profile button:hover {
+.idx-profile button:hover {
     background-color: skyblue;
     color: white;
   }
 
-.search input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.employee {
+.idx-employee {
     width: 235px;
     margin: 0.5rem;
     padding: 1rem;
@@ -92,12 +85,12 @@ tr.trHover:hover{
     transition: opacity 1s;
 }
 
-.employee-checkbox {
+.idx-employee-checkbox {
     width: 1rem;
     height: 1rem;
 }
 
-.loading {
+.idx-loading {
     display: none;
     text-align: center;
     padding: 1rem;

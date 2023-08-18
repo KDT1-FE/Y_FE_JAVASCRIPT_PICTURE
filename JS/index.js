@@ -1,21 +1,20 @@
-// 환경 변수를 담을 전역 객체
-const envVars = {};
+import AWS from 'aws-sdk'; 
+import '../CSS/index.css';
+import '../CSS/loading.css';
+import '../CSS/modal.css';
+import '../JS/loading.js';
+import '../JS/modal.js';
+
 const S3_BUCKET = 'y-fe-javascript-picture';
-
+console.log('ACCESS_KEY:', process.env.ACCESS_KEY);
+console.log('SECRET_ACCESS_KEY:', process.env.SECRET_ACCESS_KEY);
 // AWS 설정 초기화 함수
-async function initializeAWS() {
+function initializeAWS() {
   if (!AWS.config.credentials) { // 이미 초기화하였다면 다시 초기화하지 않음
-    // try {
-    //   const data = await fetch('/env.json');
-    //   const { ACCESS_KEY, SECRET_ACCESS_KEY } = await data.json();
-
       AWS.config.update({
-        credentials: new AWS.Credentials(ACCESS_KEY, SECRET_ACCESS_KEY),
+        credentials: new AWS.Credentials(process.env.ACCESS_KEY, process.env.SECRET_ACCESS_KEY),
         region: 'ap-northeast-2',
       });
-    // } catch (error) {
-    //   console.error('Failed to load env.json', error);
-    // }
   }
 }
 
@@ -25,7 +24,7 @@ function displayImage(imageKey) {
   const imgElement = document.createElement('img');
   imgElement.src = imageUrl;
   imgElement.alt = '이미지';
-  imgElement.classList.add('employee-image'); // 이미지에 스타일을 적용하기 위한 클래스 추가
+  imgElement.classList.add('employee-image'); 
   imgElement.style.maxWidth = '100px';
   imgElement.style.maxHeight = '100px';
   return imgElement;
@@ -34,7 +33,7 @@ function displayImage(imageKey) {
 // 이미지 생성 후 리스트에 추가
 function displayEmployee(imageName) {
   const employee = document.createElement('div');
-  employee.classList.add('employee');
+  employee.classList.add('idx-employee');
 
   const imgElement = displayImage(imageName);
   employee.appendChild(imgElement);
@@ -51,7 +50,6 @@ function saveEmployeeInfoToLocalstorage(employeeInfo) {
 // 이미지 업로드 및 리스트에 추가
 async function uploadImageAndAddToList(file, employeeInfo) {
   await initializeAWS();
-
   const myBucket = new AWS.S3({
     params: { Bucket: S3_BUCKET },
   });
@@ -121,12 +119,12 @@ function loadEmployeeInfosFromLocalstorage() {
 // 임직원 정보와 함께 임직원을 표시하는 함수
 function displayEmployeeWithInfo(employeeInfo) {
   const tableRow = document.createElement('tr');
-  tableRow.classList.add('trHover') // css 적용을 위해
+  tableRow.classList.add('idx-trHover') // css 적용을 위해
 
   const checkboxCell = document.createElement('td');
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.classList.add('employee-checkbox');
+  checkbox.classList.add('idx-employee-checkbox');
   checkboxCell.appendChild(checkbox);
   tableRow.appendChild(checkboxCell);
 
@@ -154,7 +152,7 @@ function displayEmployeeWithInfo(employeeInfo) {
   const editCell = document.createElement('td');
   const editButton = document.createElement('button');
   editButton.innerText = '수정';
-  editButton.classList.add('edit-button');
+  editButton.classList.add('idx-edit-button');
   editCell.appendChild(editButton);
   tableRow.appendChild(editCell);
 
@@ -188,17 +186,6 @@ function insertEmployeeInfoAtIndex(employeeInfo, index) {
 function getCurrentEmployeeInfos() {
   const savedEmployeeInfos = JSON.parse(localStorage.getItem('employeeInfos')) || [];
   return savedEmployeeInfos;
-}
-
-// 이미지 정보 배열을 기반으로 이미지를 재배치하는 함수
-function rearrangeEmployeeInfos(employeeInfos) {
-  const employeeList = document.getElementById('employee-list');
-  employeeList.innerHTML = ''; // 기존 목록을 모두 지움
-
-  employeeInfos.forEach(employeeInfo => {
-    displayEmployeeWithInfo(employeeInfo);
-  });
- 
 }
 
 async function onEditEmployee(employeeInfo) {
@@ -288,13 +275,13 @@ function registerImageTdClickHandler() {
 
   rows.forEach(row => {
     // 체크박스 클릭 이벤트를 중단시킴
-    const checkboxCell = row.querySelector('.employee-checkbox');
+    const checkboxCell = row.querySelector('.idx-employee-checkbox');
     checkboxCell.addEventListener('click', (event) => {
       event.stopPropagation();
     });
 
     // 수정 버튼 클릭 이벤트를 중단시킴
-    const editButton = row.querySelector('.edit-button');
+    const editButton = row.querySelector('.idx-edit-button');
     editButton.addEventListener('click', (event) => {
       event.stopPropagation();
     });
@@ -321,7 +308,7 @@ window.addEventListener('load', () => {
   loadEmployeeInfosFromLocalstorage();
   registerImageTdClickHandler(); // TableRow 클릭 이벤트 핸들러 등록
 
-  const submitButton = document.getElementById('submit-button');
+  const submitButton = document.getElementById('md-submit-button');
   submitButton.addEventListener('click', onFormSubmit);
 
   const selectAllCheckbox = document.getElementById('select-all-checkbox');
@@ -331,24 +318,12 @@ window.addEventListener('load', () => {
 // 전체 체크박스 선택/해제 이벤트 핸들러
 function onSelectAllCheckboxChange(event) {
   const isChecked = event.target.checked;
-  const employeeCheckboxes = document.querySelectorAll('.employee-checkbox');
+  const employeeCheckboxes = document.querySelectorAll('.idx-employee-checkbox');
   
   employeeCheckboxes.forEach(checkbox => {
     checkbox.checked = isChecked;
   });
 }
-
-// // env.json 파일 로드
-// fetch('/env.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     // 로드한 JSON 데이터를 envVars 객체에 저장
-//     envVars.ACCESS_KEY = data.ACCESS_KEY;
-//     envVars.SECRET_ACCESS_KEY = data.SECRET_ACCESS_KEY;
-//   })
-//   .catch(error => {
-//     console.error('Failed to load env.json', error);
-//   });
 
 // 임직원 삭제 버튼 클릭 이벤트 핸들러
 const deleteEmployeeButton = document.getElementById('deleteEmployeeBtn');
@@ -356,7 +331,7 @@ deleteEmployeeButton.addEventListener('click', onDeleteEmployee);
 
 // 선택한 임직원 삭제 함수
 function onDeleteEmployee() {
-  const checkboxes = document.querySelectorAll('.employee-checkbox');
+  const checkboxes = document.querySelectorAll('.idx-employee-checkbox');
 
   checkboxes.forEach(checkbox => {
     if (checkbox.checked) {

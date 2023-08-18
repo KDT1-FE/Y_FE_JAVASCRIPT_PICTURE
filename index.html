@@ -10,25 +10,25 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
         <!-- 외부 파일 -->
-        <link rel="stylesheet" href="/CSS/index.css">
+    <!-- <link rel="stylesheet" href="/CSS/index.css">
         <link rel="stylesheet" href="/CSS/modal.css">
-        <link rel="stylesheet" href="/CSS/loading.css">
+        <link rel="stylesheet" href="/CSS/loading.css"> -->
         <title>리스팅 페이지</title>
     </head>
     <body>
         <header>
             <div>임직원 관리</div>
         </header>
-        <main>
-            <div id="main-contents">
-                <div class="profile">
+        <main id="idx-main">
+            <div id="idx-main-contents">
+                <div class="idx-profile">
                     <button id="addEmployeeBtn">임직원 등록</button>
                     <button id="deleteEmployeeBtn">임직원 삭제</button>
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th><input type="checkbox" class="employee-checkbox" id="select-all-checkbox"/></th>
+                            <th><input type="checkbox" class="idx-employee-checkbox" id="select-all-checkbox"/></th>
                             <th>프로필 사진</th>
                             <th>이름</th>
                             <th>이메일</th>
@@ -44,18 +44,18 @@
             </div>
         </main>
 
-        <div class="create-modal">
+        <div class="md-create-modal">
             <div>
-                <button class="close-modal-button">×</button>
-                <div id="modal-title">임직원 등록</div>
-                <form method="post" enctype="multipart/form-data">
-                    <div id="submit-content-wrapper">
-                        <div id="submit-content">
-                            <div class="submit-content__label">이미지</div>
-                            <div class="submit-content__label">이름</div>
-                            <div class="submit-content__label">이메일</div>
-                            <div class="submit-content__label">연락처</div>
-                            <div class="submit-content__label">구분</div>
+                <button class="md-close-modal-button">×</button>
+                <div id="md-modal-title">임직원 등록</div>
+                <form id="md-form" method="post" enctype="multipart/form-data">
+                    <div id="md-md-submit-content-wrapper">
+                        <div id="md-submit-content">
+                            <div class="md-submit-content__label">이미지</div>
+                            <div class="md-submit-content__label">이름</div>
+                            <div class="md-submit-content__label">이메일</div>
+                            <div class="md-submit-content__label">연락처</div>
+                            <div class="md-submit-content__label">구분</div>
                         </div>
                         <div>
                             <input type="file" id="image" name="image" accept="image/*" required><br/>
@@ -73,22 +73,22 @@
                             </select>
                         </div>
                     </div>
-                    <div id="submit-button" >
+                    <div id="md-submit-button" >
                         <input type="submit" value="제출">
                     </div>
                 </form>
             </div>
         </div>
 
-        <div id="loading-overlay" class="loading-overlay">
-            <div class="loading-spinner"></div>
-            <div class="loading-content">
+        <div id="ld-loading-overlay" class="ld-loading-overlay">
+            <div class="ld-loading-spinner"></div>
+            <div class="ld-loading-content">
               로딩중...
             </div>
         </div>
-        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1431.0.min.js"></script>
-        <script type="module" src="/JS/index.js"></script>
+        <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1431.0.min.js"></script> -->
+    <!-- <script type="module" src="/JS/index.js"></script>
         <script type="module" src="/JS/modal.js"></script>
-        <script type="module" src="/JS/loading.js"></script>
+        <script type="module" src="/JS/loading.js"></script> -->
     </body>
 </html>

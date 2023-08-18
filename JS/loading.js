@@ -1,7 +1,7 @@
 setTimeout(() => {
-    const loadingOverlay = document.getElementById('loading-overlay');
-    const mainContent = document.getElementsByTagName('main');
+    const loadingOverlay = document.getElementById('ld-loading-overlay');
+    if (loadingOverlay) {
+      loadingOverlay.style.display = 'none';
+    }
 
-    loadingOverlay.style.display = 'none';
-    mainContent.style.display = 'block';
   }, 1000); 

@@ -1,21 +1,21 @@
-form{
+#md-form{
     text-align: left;
 }
 
-#submit-content-wrapper{
+#md-md-submit-content-wrapper{
     display: flex;
     justify-content: center;
 }
 
-#submit-content{
+#md-submit-content{
     margin-right: 10px;
 }
 
-.submit-content__label{
+.md-submit-content__label{
     font-weight: bold;
 }
 
-.create-modal {
+.md-create-modal {
     position: fixed;
     text-align: center;
     left: 0;
@@ -29,7 +29,7 @@ form{
     line-height: 35px;
   }
   
-.create-modal > div {
+.md-create-modal > div {
     display: inline-block;
     width: 400px;
     height: 275px;
@@ -43,7 +43,7 @@ form{
 }
 
 
-.close-modal-button {
+.md-close-modal-button {
     position: absolute;
     right: 10px;
     top: 6px;
@@ -53,13 +53,13 @@ form{
     cursor: pointer;
 }
 
-#submit-button{
+#md-submit-button{
     position: absolute;
     right: 2rem;
     bottom: 1rem;
 }
 
-#modal-title{
+#md-modal-title{
     margin: 1rem 0;
     font-weight: bold;
     font-size: 1.5rem;
