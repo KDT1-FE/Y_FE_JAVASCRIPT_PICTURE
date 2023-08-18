@@ -113,23 +113,33 @@ deleteBtn.addEventListener("click", async (e) => {
 
 // 고객 목록 검색 기능
 const searchInput = document.querySelector(".search-input");
-searchInput.addEventListener("input", async () => {
-  const searchQuerySnapshot = await getDocs(
-    query(
-      collection(db, "customers"),
-      or(
-        where("name", "==", searchInput.value),
-        where("email", "==", searchInput.value),
-        where("phone", "==", searchInput.value),
-        where("grade", "==", searchInput.value)
+document
+  .querySelector(".search-container")
+  .addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const searchQuerySnapshot = await getDocs(
+      query(
+        collection(db, "customers"),
+        or(
+          where("name", "==", searchInput.value),
+          where("email", "==", searchInput.value),
+          where("phone", "==", searchInput.value),
+          where("grade", "==", searchInput.value)
+        )
       )
-    )
-  );
-  // 검색 결과 표시
-  // 검색어가 없을 때는 전체 목록 표시
-  if (searchInput.value) {
-    inquireListFunc(searchQuerySnapshot);
-  } else {
+    );
+    // 검색 결과 표시
+    // 검색어가 없을 때는 전체 목록 표시
+    if (searchInput.value) {
+      inquireListFunc(searchQuerySnapshot);
+    } else {
+      getAllCustomers();
+    }
+  });
+
+// 검색어 지우면 전체 리스트 보여주기
+searchInput.addEventListener("input", async (e) => {
+  if (e.target.value === "") {
     getAllCustomers();
   }
 });
