@@ -151,7 +151,20 @@ btn1.addEventListener("click", async () => {
 
     employeeList.push(newEmployee);
 
+    // 로딩 함수
+    function showLoading() {
+      const loadingDiv = document.getElementById("loading");
+      loadingDiv.style.display = "flex"; // 로딩 GIF를 보이게 설정
+    }
+
+    function hideLoading() {
+      const loadingDiv = document.getElementById("loading");
+      loadingDiv.style.display = "none"; // 로딩 GIF를 숨기게 설정
+    }
+
     profileImageElement.addEventListener("click", () => {
+      showLoading();
+
       // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
       const selectedEmployee = {
         profileImage: profileImageElement.src,
@@ -163,7 +176,21 @@ btn1.addEventListener("click", async () => {
 
       // 선택한 직원의 정보를 쿼리 파라미터로 인코딩하여 URL에 전달
       const queryParams = new URLSearchParams(selectedEmployee);
-      window.location.href = `detail.html?${queryParams.toString()}`;
+
+      // 페이지를 떠날 때 로딩 이미지를 숨기는 처리
+      window.addEventListener("beforeunload", function () {
+        hideLoading();
+      });
+
+      // 페이지 로딩이 완료되면 로딩 GIF를 숨기는 처리를 위해 이벤트 리스너 등록
+      window.addEventListener("load", function () {
+        hideLoading();
+      });
+
+      // 일정 시간(예: 1초) 후에 페이지로 넘어가도록 설정
+      setTimeout(function () {
+        window.location.href = `detail.html?${queryParams.toString()}`;
+      }, 1000); // 1초 지연
     });
 
     try {
@@ -282,6 +309,8 @@ const deleteImageFromS3 = async (imageName) => {
     console.error("Error deleting image:", error);
   }
 };
+
+// 검색 기능
 searchInput.addEventListener("input", function () {
   var searchValue = this.value.toLowerCase(); // 검색어를 소문자로 변환합니다.
 
