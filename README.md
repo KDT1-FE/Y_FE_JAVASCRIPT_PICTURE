@@ -1,5 +1,8 @@
 # 직원 사진 관리 서비스
 
+##
+배포링크: https://thriving-fenglisu-0e5367.netlify.app/
+
 ## 사용 언어
 HTML, CSS, JavaScript
 
@@ -37,7 +40,7 @@ Firebase
 
 ## 유의사항
 * 초기 데이터를 적게 생성
-
+* .gitignore을 사용하여 firebase 모듈을 숨김처리
 
 ## 어려웠던 점
 * js파일, function 정리
