@@ -72,8 +72,22 @@ function showToast(message) {
 }
 
 
+// 로딩 애니메이션
+const loadingAnimation = document.querySelector('.loading-animation');
+
+function showLoadingAnimation() {
+    loadingAnimation.style.display = 'block';
+}
+
+function hideLoadingAnimation() {
+    loadingAnimation.style.display = 'none';
+}
+
+
 // user Data 가져오기
 document.addEventListener('DOMContentLoaded', () => {
+    showLoadingAnimation();
+
     const usersRef = dbRef(database, 'users');
 
     onValue(usersRef, (snapshot) => {
@@ -197,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+        hideLoadingAnimation();
     });
 });
 

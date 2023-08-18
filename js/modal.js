@@ -62,6 +62,18 @@ function resetInputsAndCloseModal() {
 }
 
 
+// 로딩 애니메이션
+const loadingAnimation = document.querySelector('.loading-animation');
+
+function showLoadingAnimation() {
+    loadingAnimation.style.display = 'block';
+}
+
+function hideLoadingAnimation() {
+    loadingAnimation.style.display = 'none';
+}
+
+
 //  입력한 값 등록
 const registerButton = document.querySelector('.register-button');
 
@@ -72,7 +84,9 @@ registerButton.addEventListener('click', () => {
 
     // 이미지 storage 업로드
     const imageRef = storageRef(storage, `images/${name}-profile`);
-   
+
+    showLoadingAnimation();
+
     fetch(imageUrl)
         .then(response => response.blob())
         .then(blob => {
@@ -90,22 +104,27 @@ registerButton.addEventListener('click', () => {
                 
                     set(newUserRef, userData).then(() => {
                         console.log(`유저 등록 성공 ID ${newUserRef.key}`);
+                        hideLoadingAnimation();
                         showToast(`등록되었습니다!`);
                         setTimeout(() => {
                             resetInputsAndCloseModal();
                         }, 2000);
                     }).catch((error) => {
                         console.error('유저 등록 오류: ', error);
+                        hideLoadingAnimation();
                     });
                 }).catch((error) => {
                     console.error('이미지 url 오류', error);
+                    hideLoadingAnimation();
                 });
             }).catch((error) => {
                 console.error('이미지 업로드 오류:', error);
+                hideLoadingAnimation();
             });
         })
         .catch((error) => {
             console.error('이미지 다운로드 오류:', error);
+            hideLoadingAnimation();
         });
 });
 

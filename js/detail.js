@@ -31,7 +31,21 @@ function showToast(message) {
 }
 
 
+// 로딩 애니메이션
+const loadingAnimation = document.querySelector('.loading-animation');
+
+function showLoadingAnimation() {
+    loadingAnimation.style.display = 'block';
+}
+
+function hideLoadingAnimation() {
+    loadingAnimation.style.display = 'none';
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
+    showLoadingAnimation();
+
     // 클릭한 user 정보 가져오기
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -85,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageRef = storageRef(storage, `images/${user.name}-profile`);
             const userRef = dbRef(database, `users/${userId}`);
                 
+            showLoadingAnimation();
+
             fetch(imageUrl)
             .then(response => response.blob())
             .then(blob => {
@@ -97,24 +113,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         update(userRef, userData).then(() => {
                             console.log(`유저 업데이트 성공 ID ${userRef.key}`);
                             showToast(`사진이 변경되었습니다!`);
+                            hideLoadingAnimation(); 
                         }).catch((error) => {
                             console.error('유저 업데이트 오류: ', error);
+                            hideLoadingAnimation(); 
                         });
     
                     }).catch((error) => {
                         console.error('이미지 url 오류', error);
+                        hideLoadingAnimation(); 
                     });
                 }).catch((error) => {
                     console.error('이미지 업로드 오류:', error);
+                    hideLoadingAnimation(); 
                 });
             })
             .catch((error) => {
                 console.error('이미지 다운로드 오류:', error);
+                hideLoadingAnimation(); 
             });
 
             imageUpdateDoneButton.style.display = 'none';
             imageUpdateButton.style.display = 'block';
         });
+
+        hideLoadingAnimation();
     });
 
 });
