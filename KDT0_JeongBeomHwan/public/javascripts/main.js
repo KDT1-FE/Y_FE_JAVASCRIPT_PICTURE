@@ -2,6 +2,7 @@ import { initializeApp, getApp } from "https://www.gstatic.com/firebasejs/10.1.0
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import { spreadConfetti } from "./confetti.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_R-euRNqGE2pQb_-lfUbNN6dfHILDE1s",
@@ -136,7 +137,16 @@ popupAddBtnEl.addEventListener("click", (event) => {
     setDoc(docRef, employeeProfileCard);
 
     paintProfileEl(employeeProfileCard, true);
-    sendToast("직원 프로필을 생성하였습니다.", "success"); // 토스트 생성
+    if (employeeArr.length % 10 === 0) {
+      console.log("goooooooooooo");
+      const canvasEl = document.querySelector(".canvas-container");
+      canvasEl.classList.remove("none");
+      spreadConfetti();
+      setTimeout(() => canvasEl.classList.add("none"), 6000);
+      sendToast(`축하합니다. 총 직원 ${employeeArr.length}명 달성했어요!`, "success"); // 토스트 생성
+    } else {
+      sendToast("직원 프로필을 생성하였습니다.", "success"); // 토스트 생성
+    }
   } else {
     let temp = JSON.parse(popupAddBtnEl.dataset.obj);
     let flag = false;
@@ -164,6 +174,8 @@ popupAddBtnEl.addEventListener("click", (event) => {
 
     ProfileListContainerEl.replaceChildren();
     loadLocalStorage();
+
+    console.log("goooooooooooo");
 
     sendToast("해당 직원 프로필을 변경하였습니다.", "success"); // 토스트 생성
   }
@@ -399,7 +411,7 @@ function paintProfileEl(employeeProfileCard, newType) {
           // Handle any errors
           console.log("no image[1]");
         });
-    }, 2000);
+    }, 3000);
   } else if (employeeProfileCard.employeeFile) {
     profileCol.addEventListener("mouseenter", expandImage);
     profileCol.addEventListener("mouseleave", hideImage);
@@ -477,8 +489,8 @@ function previewImage(event) {
     reader.onload = (e) => {
       const img = document.createElement("img");
       img.src = e.target.result;
-      img.style.maxWidth = "100%";
-      img.style.maxHeight = "100%";
+      img.style.width = "100%";
+      img.style.height = "100%";
       img.style.objectFit = "cover";
 
       imagePreviewEl.innerHTML = ""; // Clear any previous preview

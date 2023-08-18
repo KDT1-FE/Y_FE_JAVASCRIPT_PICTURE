@@ -1,4 +1,12 @@
 @media screen and (max-width: 1440px) {
+  #IMGPREVIEW {
+    width: 400px;
+    height: 550px;
+    left: 300px;
+    top: 0;
+    bottom: 0;
+  }
+
   .sidemenu-container {
     width: 72px;
   }

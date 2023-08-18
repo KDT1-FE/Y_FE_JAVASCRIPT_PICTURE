@@ -18,19 +18,26 @@
   메인 영역
 
 */
+.canvas-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
 #IMGPREVIEW {
   position: absolute;
   width: 400px;
   height: 550px;
-  left: 300px;
+  left: 600px;
   top: 0;
   bottom: 0;
   margin: auto 0;
   object-fit: cover;
   z-index: 200;
   display: none;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
 }
 
 main.main-container {
@@ -46,15 +53,15 @@ main.main-container {
 }
 
 h1.main-title {
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: 700;
-  margin-left: 40px;
-  margin-top: 32px;
+  margin-left: 2.5em;
+  margin-top: 2em;
 }
 
 .main-toolbar {
   height: 50px;
-  margin: 24px 40px 12px 40px;
+  margin: 1.5em 2.5em 12px 2.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,11 +87,11 @@ h1.main-title {
 }
 
 .main-toolbar_rightcontainer input[type="search"] {
-  height: 32px;
+  height: 2em;
   width: 194px;
   border: 1px solid var(--color-gray200);
-  border-radius: 4px;
-  padding: 8px;
+  border-radius: 0.25em;
+  padding: 0.5em;
   place-content: var(--color-gray400);
   box-sizing: border-box;
 }
@@ -98,15 +105,15 @@ h1.main-title {
 }
 
 .main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons {
-  margin-left: 32px;
+  margin-left: 2em;
 }
 
 .main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons button:last-child {
-  margin-left: 16px;
+  margin-left: 1em;
 }
 
 .main-toolbar_filter-container {
-  margin-left: 32px;
+  margin-left: 2em;
 }
 
 .main-toolbar_filter-container span {
@@ -114,14 +121,14 @@ h1.main-title {
 }
 
 .main-toolbar_filter-container select {
-  margin-left: 8px;
+  margin-left: 0.5em;
   width: 142px;
-  height: 32px;
+  height: 2em;
   box-sizing: border-box;
   border: 1px solid var(--color-gray200);
-  border-radius: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
+  border-radius: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .main-toolbar_filter-container select:hover {
@@ -142,7 +149,7 @@ h1.main-title {
   background-color: var(--color-gray100);
   height: 38px;
   width: 1566px;
-  margin: 0 40px 0 40px;
+  margin: 0 2.5em 0 2.5em;
   display: flex;
   align-items: center;
 }
@@ -166,7 +173,7 @@ h1.main-title {
   overflow-x: hidden;
   overflow-y: auto;
   width: 1566px;
-  margin-left: 40px;
+  margin-left: 2.5em;
   position: relative;
 }
 
@@ -177,7 +184,7 @@ h1.main-title {
   justify-content: center;
   align-items: center;
   position: absolute;
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: 500;
   color: var(--color-gray300);
   top: 0;
@@ -218,7 +225,7 @@ h1.main-title {
 .employeecard-column .employeecard-column_profilecard {
   width: 106px;
   height: 106px;
-  border-radius: 4px;
+  border-radius: 0.25em;
   background-repeat: no-repeat;
   object-fit: cover;
   background-color: var(--color-gray100);
@@ -242,7 +249,7 @@ h1.main-title {
 
 .employeecard-column.name .ko-name {
   font-weight: 500;
-  margin-right: 4px;
+  margin-right: 0.25em;
 }
 
 .employeecard-column.name .en-name {
@@ -250,7 +257,7 @@ h1.main-title {
 }
 
 .employeecard-container .employeecard-column.icon-area span {
-  margin-right: 32px;
+  margin-right: 2em;
 
   display: none;
 }
