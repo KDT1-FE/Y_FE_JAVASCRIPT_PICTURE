@@ -1,4 +1,4 @@
-# KDT0_ParkJisung (작성중)
+# KDT0_ParkJisung
 
 ## DEMO 및 사이트 링크
 
