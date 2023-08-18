@@ -158,7 +158,7 @@ function displayEmployeeWithInfo(employeeInfo) {
   editButton.addEventListener('click', () => onEditEmployee(employeeInfo));
   employeeList.appendChild(tableRow);
 
-  location.reload()
+
 }
 
 // TableRow 클릭 이벤트 핸들러 등록
