@@ -21,6 +21,8 @@ const s3 = new AWS.S3({
 });
 
 async function fetchImageAndAssignBlob(url) {
+  // assets 폴더 내부의 기본 이미지 blob 객체로 변환
+  // s3버킷으로 기본 프로필 이미지 전송 시 사용
   try {
     const response = await fetch(url);
     const blob = await response.blob();
@@ -36,7 +38,7 @@ export const uploadProfileToS3 = async function (e) {
 
   let photo = enroll_photo.files[0]
     ? enroll_photo.files[0]
-    : await fetchImageAndAssignBlob("/assets/img/profile.jpeg");
+    : await fetchImageAndAssignBlob("/assets/img/profile.jpeg"); // 업로드된 이미지가 없을 시 기본 프로필 이미지 할당
 
   const profileInfo = {
     name: enroll_name.value,
