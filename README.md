@@ -2,6 +2,8 @@
 
 > firebase를 이용해 직원들의 사진을 관리 할 수 있는 admin 페이지 제작
 
+> https://admin2-b0193.web.app/
+
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/scss-CC6699?style=for-the-badge&logo=sass&logoColor=white">
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
