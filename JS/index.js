@@ -6,8 +6,7 @@ import '../JS/loading.js';
 import '../JS/modal.js';
 
 const S3_BUCKET = 'y-fe-javascript-picture';
-console.log('ACCESS_KEY:', process.env.ACCESS_KEY);
-console.log('SECRET_ACCESS_KEY:', process.env.SECRET_ACCESS_KEY);
+
 // AWS 설정 초기화 함수
 function initializeAWS() {
   if (!AWS.config.credentials) { // 이미 초기화하였다면 다시 초기화하지 않음
