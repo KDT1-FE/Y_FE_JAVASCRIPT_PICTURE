@@ -2,6 +2,8 @@
 카페 직원들의 정보를 관리하는 서비스입니다.
 
 ## [배포 사이트]
+![배포 사이트 url](employee-management-cafe.netlify.app)
+
 키 관리 이슈 때문에 AWS S3를 제외한 (local storage를 이용) 기능 구현 페이지를 배포하였습니다.
 
 ## [과제 기간]
