@@ -8,7 +8,8 @@
 
 ### 직원 목록 읽기
 
-![home](https://github.com/gahyuun/git_Test/assets/81469686/c31f8cdf-5696-4c0b-a47b-f637375bdf94)
+![home](https://github.com/gahyuun/employee_system/assets/81469686/c98fd3ed-6db9-488c-b5d3-9bd4070de925)
+
 
 메인 페이지에서 직원 목록 읽기 구현
 
@@ -18,7 +19,7 @@ intersection observer를 통해 무한 스크롤 구현
 
 ### 직원 등록
 
-<img width="911" alt="write" src="https://github.com/gahyuun/git_Test/assets/81469686/23116f78-72be-4cd3-93b4-95d0bb6b2a82">
+<img width="911" alt="write" src="https://github.com/gahyuun/employee_system/assets/81469686/7174e20c-aff7-456f-b116-e470b982c88a">
 
 직원 등록 구현
 
@@ -26,7 +27,7 @@ intersection observer를 통해 무한 스크롤 구현
 
 ### 직원 삭제
 
-![delete](https://github.com/gahyuun/git_Test/assets/81469686/dcdb3bf1-0770-4ca0-b5e6-9b5c88734d7d)
+![delete](https://github.com/gahyuun/employee_system/assets/81469686/f248062e-1b4f-4e6f-b59d-68b2f6a0107a)
 
 checkbox를 통한 직원 삭제 구현
 
@@ -34,7 +35,8 @@ checkbox를 통한 직원 삭제 구현
 
 ### 직원 수정
 
-<img width="818" alt="edit" src="https://github.com/gahyuun/git_Test/assets/81469686/b362efdd-0224-4be5-bd79-28dbd5950eff">
+<img width="818" alt="edit" src="https://github.com/gahyuun/employee_system/assets/81469686/2861102b-9f54-4a09-af49-07cefd851832">
+
 
 직원 정보 수정 구현
 
@@ -42,7 +44,8 @@ checkbox를 통한 직원 삭제 구현
 
 ### 직원 상세 페이지
 
-<img width="920" alt="detail" src="https://github.com/gahyuun/git_Test/assets/81469686/14873bdb-715d-4601-a83c-6889c1c5d598">
+<img width="920" alt="detail" src="https://github.com/gahyuun/employee_system/assets/81469686/ef36db7f-c493-4329-8805-35e92582ac91">
+
 
 직원 상세 페이지 구현
 
@@ -50,7 +53,7 @@ checkbox를 통한 직원 삭제 구현
 
 ### 직원 검색 기능
 
-<img width="877" alt="search" src="https://github.com/gahyuun/git_Test/assets/81469686/5a5ef4d1-a976-4ae7-8771-80cb5fb1dd93">
+<img width="877" alt="search" src="https://github.com/gahyuun/employee_system/assets/81469686/cd1b77b3-4896-4b7f-a50b-eebfad123e40">
 
 이름을 통한 직원 검색 구현
 
@@ -91,8 +94,7 @@ checkbox를 통한 직원 삭제 구현
 
 # 📒USER FLOW
 
-<img width="1067" alt="userflow" src="https://github.com/gahyuun/git_Test/assets/81469686/f2fbab3a-b040-4951-912f-10240d81be90">
-
+<img width="1067" alt="userflow" src="https://github.com/gahyuun/employee_system/assets/81469686/1900d0e5-6bc9-4ac3-8442-26cecea452e2">
 <br/>
 
 # 🤲이슈 및 느낀 점
