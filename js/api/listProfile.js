@@ -59,7 +59,8 @@ export const listProfileFromS3 = function () {
           // 3. 해당 프로필 클릭 시 프로필 상세 페이지로 이동
           tableRow.addEventListener("click", (e) => {
             localStorage.setItem("profile", folderName); // 프포필 키값 로컬 스토리지에 저장
-            window.location.href = window.location.origin + "/profile.html"; // 페이지 이동
+            window.location.href =
+              window.location.origin + "/view/profile.html"; // 페이지 이동
           });
         }
       });
