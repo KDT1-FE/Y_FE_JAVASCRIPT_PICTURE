@@ -1,0 +1,42 @@
+[debug] [2023-08-18T13:30:22.125Z] ----------------------------------------------------------------------
+[debug] [2023-08-18T13:30:22.129Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\LG\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2023-08-18T13:30:22.130Z] CLI Version:   12.4.8
+[debug] [2023-08-18T13:30:22.131Z] Platform:      win32
+[debug] [2023-08-18T13:30:22.131Z] Node Version:  v18.16.1
+[debug] [2023-08-18T13:30:22.137Z] Time:          Fri Aug 18 2023 22:30:22 GMT+0900 (대한민국 표준시)
+[debug] [2023-08-18T13:30:22.137Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-18T13:30:22.142Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-08-18T13:30:22.326Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-18T13:30:22.327Z] > authorizing via signed-in user (jyu4813@gmail.com)
+[debug] [2023-08-18T13:30:22.327Z] [iam] checking project cupid-32b7f for permissions ["firebase.projects.get"]
+[debug] [2023-08-18T13:30:22.329Z] > refreshing access token with scopes: []
+[debug] [2023-08-18T13:30:22.331Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-08-18T13:30:22.331Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-18T13:30:22.592Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-08-18T13:30:22.593Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-18T13:30:22.617Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cupid-32b7f:testIamPermissions [none]
+[debug] [2023-08-18T13:30:22.618Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cupid-32b7f:testIamPermissions x-goog-quota-user=projects/cupid-32b7f
+[debug] [2023-08-18T13:30:22.618Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cupid-32b7f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-08-18T13:30:22.799Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-08-18T13:30:22.799Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-08-18T13:30:23.452Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cupid-32b7f:testIamPermissions 200
+[debug] [2023-08-18T13:30:23.452Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cupid-32b7f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-08-18T13:30:23.454Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f [none]
+[debug] [2023-08-18T13:30:23.908Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f 200
+[debug] [2023-08-18T13:30:23.908Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f {"projectId":"cupid-32b7f","projectNumber":"102484094770","displayName":"cupid","name":"projects/cupid-32b7f","resources":{"hostingSite":"cupid-32b7f","storageBucket":"cupid-32b7f.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_47983cc4-33c9-401c-8af4-c059fc3be30d"}
+[debug] [2023-08-18T13:30:23.912Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/cupid-32b7f/sites 
+[debug] [2023-08-18T13:30:24.706Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/cupid-32b7f/sites 200
+[debug] [2023-08-18T13:30:24.706Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/cupid-32b7f/sites {"sites":[{"name":"projects/cupid-32b7f/sites/cupid-32b7f","defaultUrl":"https://cupid-32b7f.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-08-18T13:30:24.707Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f/webApps/-/config [none]
+[debug] [2023-08-18T13:30:25.830Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f/webApps/-/config 200
+[debug] [2023-08-18T13:30:25.830Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f/webApps/-/config {"projectId":"cupid-32b7f","appId":"1:102484094770:web:f355446e96d81a1226f12b","storageBucket":"cupid-32b7f.appspot.com","locationId":"asia-northeast3","apiKey":"AIzaSyDH41YTt_vxlfIELSOXrCpk96aUsBvmvOU","authDomain":"cupid-32b7f.firebaseapp.com","messagingSenderId":"102484094770"}
+[debug] [2023-08-18T13:30:25.858Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f [none]
+[debug] [2023-08-18T13:30:26.256Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f 200
+[debug] [2023-08-18T13:30:26.257Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cupid-32b7f {"projectId":"cupid-32b7f","projectNumber":"102484094770","displayName":"cupid","name":"projects/cupid-32b7f","resources":{"hostingSite":"cupid-32b7f","storageBucket":"cupid-32b7f.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE","etag":"1_47983cc4-33c9-401c-8af4-c059fc3be30d"}
+[debug] [2023-08-18T13:30:26.261Z] Specified "public" directory "public" does not exist; Deploy to Hosting site "cupid-32b7f" may fail or be empty.
+[info] i  hosting[cupid-32b7f]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting[cupid-32b7f]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [18/Aug/2023:13:30:31 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [18/Aug/2023:13:30:31 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200\""}}
+[info] i  hosting: ::1 - - [18/Aug/2023:13:30:54 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [18/Aug/2023:13:30:54 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200\""}}
+[info] i  hosting: ::1 - - [18/Aug/2023:13:31:33 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [18/Aug/2023:13:31:33 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.200\""}}

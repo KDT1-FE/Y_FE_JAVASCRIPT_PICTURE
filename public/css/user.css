@@ -1,0 +1,151 @@
+@keyframes move {
+  from {
+    top: 0px;
+    left: 0px;
+  }
+  to {
+    top: 0px;
+    left: 170px;
+  }
+}
+
+section .inner {
+  max-width: 1200px;
+  min-width: 500px;
+  /* background-color: rgb(127, 255, 136); */
+  margin: 0 auto;
+}
+section h1 {
+  color: #55433c;
+  font-size: 2.8rem;
+  margin: 40px auto;
+  display: block;
+  margin: auto;
+  width: 180px;
+  padding-top: 40px;
+  font-weight: 500;
+}
+
+section .top {
+  /* background-color: aqua; */
+  position: relative;
+  height: 100px;
+}
+
+section .user-search {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+section .user-search .material-symbols-outlined {
+  animation: move 1.5s linear forwards;
+  position: relative;
+}
+
+section .user-search input {
+  /* width: 30px;
+  height: 50px; */
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+section .user-delete-button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+section .inner .top .user-delete-button button {
+  background-color: #c7a88c;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 130px;
+  display: block;
+  border: none;
+  font-size: 1rem;
+  margin-left: 20px;
+}
+
+section .user-profile .user-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+section .user-profile .user-list span {
+  padding: 30px;
+}
+
+section .user-profile .user-list .list-tit {
+  padding: 0 20px 0 20px;
+}
+
+section .user-profile .user-list-item .list-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #55433c;
+}
+
+section .user-profile .user-list-item .list-item a .user-image {
+  width: 150px;
+  height: 200px;
+  padding: 0 10px 0 20px;
+}
+
+section .user-profile .user-list-item .list-item div {
+  padding: 0 35px;
+}
+
+/* footer */
+footer .info {
+  height: 200px;
+}
+
+@media all and (max-width: 560px) {
+  section .inner {
+    max-width: 360px;
+    min-width: 300px;
+  }
+
+  .form_top {
+    display: flex;
+  }
+
+  section .user-profile .user-list {
+    display: none;
+  }
+
+  /* section .user-profile hr:nth-last-of-type(1) {
+    display: none;
+  }
+  section .user-profile hr:nth-last-of-type(2) {
+    display: none;
+  } */
+
+  section .user-profile .user-list-item .list-item a {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section .inner .top .user-delete-button button {
+    display: none;
+  }
+
+  section .user-profile .user-list-item .list-item a input {
+    display: none;
+  }
+  section .user-profile .user-list-item .list-item a div {
+    padding: 10px;
+  }
+}
