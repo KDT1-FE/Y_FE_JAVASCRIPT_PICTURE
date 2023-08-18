@@ -19,10 +19,16 @@ export default function postEditDriver() {
   // 기존 보험자 이미지 가져오기
   const driverImg = document.querySelector("#driverImg");
   const oldDriverImgUrl = driverImg.src;
+  const basicUserImgUrl =
+    "https://firebasestorage.googleapis.com/v0/b/zero-car.appspot.com/o/basicImgs%2FbasicUserImg.png?alt=media&token=094111ba-a4f7-4619-9a35-d2f878921b45";
 
+  // 새로운 이미지가 있으면서,
+  // 새로운 이미지가 기본 사진이 아닐 때만 storage 사진 삭제
   if (newDriverImg) {
-    // storage에 기존 보험자 이미지 삭제
-    deleteDriverImg(oldDriverImgUrl);
+    if (oldDriverImgUrl !== basicUserImgUrl) {
+      // storage에 기존 보험자 이미지 삭제
+      deleteDriverImg(oldDriverImgUrl);
+    }
   } else {
     setTimeout(() => {
       location.href = redirectUrl;

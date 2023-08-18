@@ -1,4 +1,5 @@
-import postEditDriver from "./postEditDriver";
+import setBasicImg from "./setBasicImg.js";
+import postEditDriver from "./postEditDriver.js";
 
 const editDriverBtn = document.querySelector("#editDriverBtn");
 
@@ -8,11 +9,7 @@ function editDriver() {
   // main 컨테이너에 새로 생성한 요소 추가
   const driverProfile = document.querySelector("#driverProfile");
 
-  // 기존 display: none
-  const driverImg = document.querySelector("#driverImg");
-  // driverImg.style.display = "none";
-
-  // 보험자 이름, 생년월일 input readonly 제거
+  // 보험자 이름 input readonly 제거
   const driverNameInput = document.querySelector("#driverName input");
 
   driverNameInput.removeAttribute("readonly");
@@ -21,7 +18,7 @@ function editDriver() {
     "margin: 3px 0; border-bottom: .8px solid gray; width: 15rem"
   );
 
-  // 새로운 이미지 Input file 생성
+  // 새로운 이미지 file Input 생성
   const newImgInput = document.createElement("input");
   newImgInput.id = "newDriverImgInput";
   newImgInput.setAttribute("type", "file");
@@ -30,13 +27,22 @@ function editDriver() {
 
   driverProfile.prepend(newImgInput);
 
+  // 새로운 이미지 삭제 button 생성
+  const setBasicImgBtn = document.createElement("button");
+  setBasicImgBtn.id = "setBasicImgBtn";
+  setBasicImgBtn.textContent = "이미지 삭제";
+
+  driverProfile.prepend(setBasicImgBtn);
+
+  setBasicImgBtn.addEventListener("click", setBasicImg);
+
   // 기존 수정 및 삭제 버튼 display: none
   editDriverBtn.style.display = "none";
 
   // 새로운 수정 완료하기 버튼 생성
   const postEditDriverBtn = document.createElement("button");
   postEditDriverBtn.id = "postEditDriverBtn";
-  postEditDriverBtn.textContent = "수정 완료하기";
+  postEditDriverBtn.textContent = "수정 완료";
   postEditDriverBtn.setAttribute(
     "style",
     "margin-top: 20px; padding: 15px; border: 1px solid white;"
