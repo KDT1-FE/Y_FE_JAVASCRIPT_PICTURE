@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
+
 module.exports = {
     mode: 'development',
     entry: './src/main.js',
@@ -12,6 +13,7 @@ module.exports = {
         filename: '[name].js',
     },
     devServer: {
+
         port: 3033,
         proxy: {
             '/api/': {
@@ -20,6 +22,7 @@ module.exports = {
                 secure: false,
             },
         },
+
         open: true,
         hot: true,
         historyApiFallback: true,
@@ -52,7 +55,9 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
 
+
         // loadash
         new LodashModuleReplacementPlugin(),
+
     ],
 };

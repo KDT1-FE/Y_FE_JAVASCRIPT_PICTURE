@@ -1,5 +1,6 @@
 import { Component } from '../core/index.js';
 
+<<<<<<< HEAD
 import Store from '../store/myValley.js';
 import Involve from '../store/involvedValley.js';
 
@@ -47,5 +48,16 @@ export default class About extends Component {
         } else {
             alert('잘못된 접근입니다.');
         }
+=======
+export default class About extends Component {
+    render() {
+        const { a, b } = history.state;
+        this.el.innerHTML = /*html*/ `
+                <h1>About</h1>
+                <p>About 화면입니다.</p>
+                <p>a: ${a}</p>
+                <p>b: ${b}</p>
+                `;
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     }
 }

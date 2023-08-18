@@ -3,12 +3,19 @@ header {
     justify-content: center;
 
     width: 100%;
+<<<<<<< HEAD
     height: 5vh;
 
     z-index: 1;
 
     margin: 0 auto;
     padding: 1rem 0;
+=======
+    height: 4.2rem;
+
+    margin: 0 auto;
+
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     background-color: var(--color-space);
     border-bottom: 0.1rem solid;
 

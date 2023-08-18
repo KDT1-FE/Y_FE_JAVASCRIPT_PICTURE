@@ -1,6 +1,9 @@
 import { Component } from './core/index.js';
 import Header from './components/Header.js';
+<<<<<<< HEAD
 import MoveUp from './components/MoveUp.js';
+=======
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 
 // Component 클래스를 상속받아서 App 클래스를 제작
 class App extends Component {
@@ -10,6 +13,7 @@ class App extends Component {
         });
     }
     render() {
+<<<<<<< HEAD
         const headerEl = new Header().el;
         const moveUpEl = new MoveUp().el;
         const routerView = document.createElement('main');
@@ -39,6 +43,10 @@ class App extends Component {
 
         const observer = new IntersectionObserver(callback, options);
         observer.observe(target);
+=======
+        const routerView = document.createElement('main');
+        this.el.append(new Header().el, routerView);
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     }
 }
 

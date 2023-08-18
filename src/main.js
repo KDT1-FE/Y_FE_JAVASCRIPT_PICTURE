@@ -1,10 +1,14 @@
 import App from './App.js';
 import router from './routes/index.js';
+<<<<<<< HEAD
 import Firstpage from './components/FirstPage.js';
+=======
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 import './css/style.css';
 import './css/header.css';
 import './css/headerBanner.css';
 import './css/modal.css';
+<<<<<<< HEAD
 import './css/viewBanner.css';
 import './css/detailBanner.css';
 import './css/fixModal.css';
@@ -29,3 +33,10 @@ if (isFirstVisit) {
     root.append(app);
     router();
 }
+=======
+
+const root = document.getElementById('root');
+root.append(new App().el);
+
+router();
+>>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
