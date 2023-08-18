@@ -5,9 +5,42 @@ import { db, storage } from './firebase'
 
 const collectionName = 'members'
 
+export function downloadCollection(callback) {
+  const q = query(collection(db, collectionName), orderBy('createdAt'))
+  console.log('데이터다운로드')
+
+  const dataMap = new Map()
+  const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    querySnapshot.docChanges().forEach((change) => {
+      const doc = change.doc
+      const id = doc.id
+
+      const memberData = memberConverter.fromFirestore(doc, {})
+      memberData.id = id
+
+      if (change.type === 'added') {
+        // 추가된 데이터를 콜백 함수로 전달
+        callback('added', memberData, id) // Pass the id
+        dataMap.set(id, memberData)
+      } else if (change.type === 'modified') {
+        // 수정된 데이터를 콜백 함수로 전달
+        callback('modified', memberData, id) // Pass the id
+        // ...
+      } else if (change.type === 'removed') {
+        // 제거된 데이터를 콜백 함수로 전달
+        callback('removed', memberData, id) // Pass the id
+        dataMap.delete(id)
+      }
+    })
+  })
+
+  return unsubscribe
+}
+
 // DB 제거
 export async function removeDB(memberId) {
   try {
+    console.log('db제거 실행')
     const memberRef = doc(db, collectionName, memberId)
     await deleteDoc(memberRef)
     console.log('Member document deleted successfully')
@@ -19,6 +52,7 @@ export async function removeDB(memberId) {
 // DB 업로드
 export async function uploadDB(name, email, team, position, image) {
   let isSubmit = false
+
   try {
     const collectionRef = collection(db, collectionName)
     const newMemberData = new Member(name, email, team, position, image)
@@ -40,8 +74,9 @@ export async function uploadDB(name, email, team, position, image) {
 
 // 스토리지에서 제거
 export async function removeStorage(imgSrc) {
+  console.log('imgSrc: ', imgSrc)
   const storageImgRef = ref(storage, imgSrc)
-
+  console.log('스토리지제거 실행')
   try {
     await deleteObject(storageImgRef)
     console.log('File deleted successfully')
@@ -71,33 +106,26 @@ export async function uploadStorage(file) {
   }
 }
 
-export function downloadCollection(callback) {
-  const q = query(collection(db, collectionName), orderBy('createdAt'))
+// db 업데이트
+export async function updateDB(memberId, name, email, team, position, image) {
+  try {
+    const docRef = doc(db, collectionName, memberId)
+    const upadateMemberData = new Member(name, email, team, position, image)
+    const firestoreData = memberConverter.toFirestore(upadateMemberData)
 
-  const dataMap = new Map()
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    querySnapshot.docChanges().forEach((change) => {
-      const doc = change.doc
-      const id = doc.id
+    const memberData = {
+      ...firestoreData,
+      updatedAt: serverTimestamp(),
+    }
 
-      const memberData = memberConverter.fromFirestore(doc, {})
-      memberData.id = id
+    await setDoc(docRef, memberData, { merge: true })
 
-      if (change.type === 'added') {
-        // 추가된 데이터를 콜백 함수로 전달
-        callback('added', memberData, id) // Pass the id
-        dataMap.set(id, memberData)
-      } else if (change.type === 'modified') {
-        // 수정된 데이터를 콜백 함수로 전달
-        callback('modified', memberData, id) // Pass the id
-        // ...
-      } else if (change.type === 'removed') {
-        // 제거된 데이터를 콜백 함수로 전달
-        callback('removed', memberData, id) // Pass the id
-        dataMap.delete(id)
-      }
-    })
-  })
-
-  return unsubscribe
+    console.log('Member updated successfully')
+  } catch (error) {
+    console.error('Error updating member: ', error)
+    throw error
+  }
 }
+
+// 스토리지 업데이트
+export async function updateStorage() {}

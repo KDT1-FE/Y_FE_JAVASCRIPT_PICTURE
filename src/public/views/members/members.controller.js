@@ -4,7 +4,7 @@ import '../../js/common/FormData'
 import '../../js/common/htmlListBuilder'
 import { removeDB, uploadDB, removeStorage, uploadStorage } from '../../js/common/firebaseUtils'
 import { dataChangeHandler } from '../../js/common/dataChangeHandler'
-// import { handleRemoveBtn } from '../../js/common/removeEventHandler'
+import { handleBtn } from '../../js/common/btnEventHandler'
 import { initModal, closeModal } from '../../js/common/modalUtils'
 import { setupImagePreview, handlePreviewImg, clearPreviewImage } from '../../js/common/previewimg'
 import { enableForm, readonlyForm } from '../../js/common/formUtils'
@@ -14,9 +14,9 @@ import './members.scss'
 
 export async function initMembers() {
   initModal(resetForm)
-  initUpload()
   dataChangeHandler()
-  // handleRemoveBtn()
+  initUpload()
+  handleBtn()
 }
 
 // 모달 창 폼 초기화
@@ -30,8 +30,6 @@ function resetForm() {
 
 // 멤버 추가
 function initUpload() {
-  console.log('initUpload called')
-
   // 폼 상태 관리
   const inputEls = document.querySelectorAll('.readonly')
   const selectEl = document.querySelector('select')

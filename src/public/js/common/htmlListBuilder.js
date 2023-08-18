@@ -1,6 +1,5 @@
 import { handleTooltipClick } from './tooltip'
-import { handleRemoveBtn } from './removeDB'
-// import { handleSettingBtn } from './upadate'
+// import { handleupdateBtn } from './upadate'
 
 export function buildHTMLList(member) {
   const membersRow = document.createElement('div')
@@ -60,15 +59,15 @@ export function buildHTMLList(member) {
   tooltipContent.className = 'tooltipcontent'
 
   // 설정 버튼
-  const settingLink = document.createElement('a')
-  settingLink.href = '#/setting'
-  settingLink.className = 'setting-link'
-  const settingIcon = document.createElement('i')
-  settingIcon.className = 'fa-solid fa-gear'
-  settingLink.appendChild(settingIcon)
-  const settingTooltipItem = document.createElement('div')
-  settingTooltipItem.className = 'setting-btn tooltipitem'
-  settingTooltipItem.appendChild(settingLink)
+  const updateLink = document.createElement('a')
+  updateLink.href = '#/update'
+  updateLink.className = 'update-link'
+  const updateIcon = document.createElement('i')
+  updateIcon.className = 'fa-solid fa-gear'
+  updateLink.appendChild(updateIcon)
+  const updateTooltipItem = document.createElement('div')
+  updateTooltipItem.className = 'update-btn tooltipitem'
+  updateTooltipItem.appendChild(updateLink)
   // 제거 버튼
   const removeLink = document.createElement('a')
   removeLink.href = '#/remove'
@@ -79,7 +78,7 @@ export function buildHTMLList(member) {
   const removeTooltipItem = document.createElement('div')
   removeTooltipItem.className = 'remove-btn tooltipitem'
   removeTooltipItem.appendChild(removeLink)
-  tooltipContent.appendChild(settingTooltipItem)
+  tooltipContent.appendChild(updateTooltipItem)
   tooltipContent.appendChild(removeTooltipItem)
   tooltipSpan.appendChild(ellipsisIcon)
   tooltipSpan.appendChild(tooltipContent)
@@ -87,18 +86,6 @@ export function buildHTMLList(member) {
 
   // 이클립스&툴팁 버튼 이벤트 리스너 등록
   handleTooltipClick()
-
-  // 제거 버튼에 이벤트 리스너 등록
-  // 해당 버튼을 누르면 요소의 정보를 넘겨줌
-  removeTooltipItem.addEventListener('click', (event) => {
-    console.log(event)
-    handleRemoveBtn(event, member.id, img.src)
-  })
-
-  // 설정 버튼에 이벤트 리스너 등록
-  // settingTooltipItem.addEventListener('click', () => {
-  //   handleSettingBtn(member.id, img.src)
-  // })
 
   // 생성한 요소들을 구조에 추가
   membersRow.appendChild(membersCol)
