@@ -18,7 +18,7 @@
   </head>
   <body>
     <header class="header">
-      <a id="header-title" href="/">TK MemberDB</a>
+      <a id="header-title" href="/">TK company MemberDB</a>
     </header>
     <main id="home">
       <h1 class="title text-xl">우리 회사 직원들</h1>
@@ -32,10 +32,8 @@
         <form class="enroll-form bg-main150">
           <div class="enroll-form__container">
             <div class="enroll-form__photoBox bg-gray">
-              <img id="preview" />
-              <label
-                class="photo-input__label bg-main150 text-s"
-                for="photo-input"
+              <img id="preview" src="/assets/img/profile.jpeg" />
+              <label class="photo-input__label" for="photo-input"
                 >Upload Image</label
               >
               <input id="photo-input" type="file" />
@@ -107,6 +105,8 @@
         const modal = document.querySelector("#modal");
         modal.style.visibility = "hidden";
       }
+
+      const photo = enroll_photo.files[0];
     </script>
   </body>
 </html>

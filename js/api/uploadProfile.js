@@ -23,9 +23,23 @@ const s3 = new AWS.S3({
   params: { Bucket: bucketName },
 });
 
-export const uploadProfileToS3 = function (e) {
+async function fetchImageAndAssignBlob(url) {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return blob;
+  } catch (error) {
+    console.error("Error fetching image:", error);
+    return null;
+  }
+}
+
+export const uploadProfileToS3 = async function (e) {
   e.preventDefault();
-  const photo = enroll_photo.files[0]; // 업로드할 프로필 사진
+
+  let photo = enroll_photo.files[0]
+    ? enroll_photo.files[0]
+    : await fetchImageAndAssignBlob("/assets/img/profile.jpeg");
 
   const profileInfo = {
     name: enroll_name.value,
@@ -56,6 +70,7 @@ export const uploadProfileToS3 = function (e) {
       console.log("info uploaded");
       location.reload();
     } catch (err) {
+      alert("모든 정보를 기입하셔야합니다.");
       console.error(err);
     }
   };
