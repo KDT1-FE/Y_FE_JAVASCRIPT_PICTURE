@@ -1,0 +1,26 @@
+#title {
+  width: 100%;
+  height: 11rem;
+
+  padding: 2rem 0 0;
+
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 15rem;
+
+  @include tablet {
+    height: 8rem;
+
+    padding: 8rem 0 0;
+
+    font-size: 3rem;
+  }
+
+  @include mobile {
+    height: 10rem;
+
+    padding: 20rem 0 0;
+    font-size: 3.5rem;
+  }
+}
