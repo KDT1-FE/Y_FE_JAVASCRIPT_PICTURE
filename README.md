@@ -12,20 +12,17 @@
 
 ### 주요 기능 상세
 
-|       기능        |                        이미지                        | 설명                                                                                        |
-| :---------------: | :--------------------------------------------------: | :------------------------------------------------------------------------------------------ |
-|   1. 직원 조회    |  <img src="assets/img/readMe/home.png" width="500">  | - S3의 직원목록 로드                                                                        |
-|   2. 직원 등록    | <img src="assets/img/readMe/enroll.png" width="500"> | - 모달창 구현 <br> - 업로드 사진 미리보기 <br> - 사진 미등록 시, <br>기본프로필 이미지 설정 |
-|   3. 정보 수정    |  <img src="assets/img/readMe/edit.gif" width="500">  | - 모달창 구현 <br> - 사진/인적사항 변경                                                     |
-| 4. 직원 정보 삭제 | <img src="assets/img/readMe/delete.gif" width="500"> |
-|   5. 반응형 웹    | <img src="assets/img/readMe/mobile.gif" width="500"> |
+|       기능        |                                           이미지                                            | 설명                                                                                        |
+| :---------------: | :-----------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------ |
+|   1. 직원 조회    |  <img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/home.png" width="500">  | - S3의 직원목록 로드                                                                        |
+|   2. 직원 등록    | <img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/enroll.png" width="500"> | - 모달창 구현 <br> - 업로드 사진 미리보기 <br> - 사진 미등록 시, <br>기본프로필 이미지 설정 |
+|   3. 정보 수정    |  <img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/edit.gif" width="500">  | - 모달창 구현 <br> - 사진/인적사항 변경                                                     |
+| 4. 직원 정보 삭제 | <img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/delete.gif" width="500"> |
+|   5. 반응형 웹    | <img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/mobile.gif" width="500"> |
 
 ### 스택
 
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/js-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-<img src="https://img.shields.io/badge/AMAZON S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/js-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/AMAZON S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
 
 <br>
 
