@@ -146,7 +146,7 @@ Y_FE ParkJisung(flamozzi) 임직원 관리 서비스 제작
 
 ### 모바일 반응형을 위한 리사이즈 구현부
 
-![image](https://github.com/flamozzi/intro/assets/42928784/7f99b898-b4fc-4094-9780-25cc75078e59)
+![모바일 반응형](https://github.com/flamozzi/intro/assets/42928784/fb058f07-a9cb-40d8-956d-7adc39e1aa94)
 
 - 모바일 환경에서는 리스트 아이템 내부에 사진이 있을 경우 너무 과도한 영역을 차지하기 때문에 데스크탑 버전에서는 사진 visible, 모바일 버전에서는 invisible 하게 세팅함
 - 실시간으로 window 사이즈를 추적하여 적용되기 때문에 웹 사이트 상에서도 창 크기를 줄이면 자연스럽게 실시간으로 반영됨
