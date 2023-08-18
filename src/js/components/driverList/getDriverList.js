@@ -39,6 +39,7 @@ try {
         const td = document.createElement("td");
         td.classList.add("driverData");
 
+        // 보험자 사진 element 생성
         if (driverDataValue === driverDataValues[0]) {
           td.setAttribute("align", "center");
 
@@ -50,18 +51,24 @@ try {
           td.classList.add("largeWidthData");
 
           td.append(img);
-        } else if (driverDataValue === false) {
+        }
+        // 보험자 심사 여부 element 생성
+        else if (driverDataValue === false) {
           const confirmAnc = document.createElement("a");
           confirmAnc.classList.add("confirmAnc");
-          confirmAnc.setAttribute("href", `./confirm.html?${driverDoc.id}`);
+          confirmAnc.setAttribute(
+            "href",
+            `./confirmAccident.html?${driverDoc.id}`
+          );
           confirmAnc.innerText = "심사하기 →";
           confirmAnc.style.color = "white";
           td.classList.add("largeWidthData");
 
           td.append(confirmAnc);
         } else if (driverDataValue === true) {
-          td.innerText = "지급 완료";
+          td.innerText = "심사 완료";
           td.style.color = "orange";
+          td.classList.add("largeWidthData");
         } else {
           td.innerText = driverDataValue;
         }
