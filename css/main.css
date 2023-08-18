@@ -70,9 +70,9 @@ body {
   top: 50%;
   left: 50%;
 
-  transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+  border: 2px solid #353535;
   border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
-  z-index: -1;
+  transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
 }
 
 .footer-wrapper {
