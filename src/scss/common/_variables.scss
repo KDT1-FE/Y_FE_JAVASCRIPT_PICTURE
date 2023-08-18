@@ -8,15 +8,3 @@ $alert: rgba(216, 123, 41, 1);
 // width
 $breakpoint-tablet: 850px;
 $breakpoint-mobile: 450px;
-
-@mixin tablet {
-  @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: $breakpoint-mobile) {
-    @content;
-  }
-}
