@@ -11,7 +11,7 @@ export default class Header {
     // Header top
     const titleEl = document.createElement('h1');
     titleEl.classList.add('title');
-    titleEl.innerText = '회원관리 시스템';
+    titleEl.innerText = '멤버 관리 시스템';
 
     const btnsEl = document.createElement('div');
     btnsEl.classList.add('btns');

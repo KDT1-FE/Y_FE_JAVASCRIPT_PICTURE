@@ -3,8 +3,9 @@ import {
   collection,
   onSnapshot,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
-import CardItem from './CardItem.js';
 import { db } from '../firebase/data.js';
+import CardItem from './CardItem.js';
+import Empty from './Empty.js';
 
 export default class CardList {
   constructor() {
@@ -24,6 +25,10 @@ export default class CardList {
   render() {
     this.el.classList.add('cards');
     this.el.innerHTML = '';
-    this.el.append(...this.data.map((item) => new CardItem(item).el));
+    if (this.data.length == 0) {
+      this.el.append(new Empty().el);
+    } else {
+      this.el.append(...this.data.map((item) => new CardItem(item).el));
+    }
   }
 }

@@ -422,3 +422,14 @@ footer .copyright {
     top: 5%;
   }
 }
+
+/* EMPTY LIST*/
+
+.cards .empty {
+  background-color: var(--color-text-10);
+  width: 90%;
+  margin: 1rem auto;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 4px;
+}
