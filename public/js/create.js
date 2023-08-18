@@ -56,3 +56,23 @@ createButton.addEventListener("click", () => {
 document.querySelector(".return-button").addEventListener("click", () => {
   window.location.href = "./list.html";
 });
+
+const imageInput = document.querySelector(".member-image");
+const imagePreview = document.getElementById("image-preview");
+
+imageInput.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      imagePreview.setAttribute("src", this.result);
+      imagePreview.style.display = "block";
+    });
+
+    reader.readAsDataURL(file);
+  } else {
+    imagePreview.style.display = "none";
+  }
+});
