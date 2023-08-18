@@ -149,6 +149,7 @@
   row-gap: 20px;
   padding: 20px 0px;
   margin: 0 auto;
+  overflow: auto;
 }
 .users-list-box .user-list-img {
   width: 5rem;
@@ -397,9 +398,6 @@
   .users-list-kategorie {
     display: none;
   }
-  .users-list-box {
-    overflow: auto;
-  }
   .users-list-box .user-list-img {
     width: 10rem;
     height: 10rem;
@@ -423,18 +421,6 @@
     display: flex;
     align-items: center;
     margin: 0 auto;
-  }
-  .users-list-box {
-    width: 90%;
-    height: 100%;
-    max-height: 30rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    padding: 20px 0px;
-    margin: 0 auto;
-    overflow: auto;
   }
 }
 /* 데스크탑 스타일 */
