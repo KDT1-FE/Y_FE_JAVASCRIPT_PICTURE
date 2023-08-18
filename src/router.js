@@ -1,4 +1,5 @@
 import { routes } from "./constants/routeInfo.js";
+import NotFound from "./pages/notfound.js";
 
 function Router(container) {
   this.container = container;
