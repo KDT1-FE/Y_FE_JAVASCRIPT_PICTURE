@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/member/memberList.js" defer></script>
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/memberList.css" />
+    <title>직원 리스트</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <header class="profile-header">
+        <h1 class="profile-header__title">직원 리스트</h1>
+        <div class="profile-actions">
+          <button class="profile-actions__btn profile-actions__btn--add">
+            직원 추가
+          </button>
+          <button class="profile-actions__btn profile-actions__btn--delete">
+            직원 삭제
+          </button>
+          <div class="profile-search">
+            <input
+              type="text"
+              placeholder="직원 검색"
+              class="profile-search__input"
+            />
+          </div>
+        </div>
+      </header>
+      <table class="profile-table">
+        <thead class="profile-table__header">
+          <tr class="profile-table__row">
+            <th class="profile-table-header__check-box">
+              <input
+                type="checkbox"
+                class="profile-table-header__check-box__input"
+              />
+            </th>
+            <th class="profile-table-header__index"></th>
+            <th class="profile-table-header__image">프로필 이미지</th>
+            <th class="profile-table__id">ID</th>
+            <th class="profile-table__name">이름</th>
+            <th class="profile-table__position">직위</th>
+          </tr>
+        </thead>
+        <tbody class="profile-list"></tbody>
+      </table>
+      <div id="profile-loader" class="profile-loader">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </body>
+</html>

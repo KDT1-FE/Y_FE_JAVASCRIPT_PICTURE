@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/memberForm.css" />
+    <link rel="stylesheet" href="/css/editMember.css" />
+    <script src="/js/member/editMember.js" defer></script>
+    <title>직원 정보 수정</title>
+  </head>
+  <body>
+    <div class="main">
+      <header class="profile-header">
+        <h1 id="page-title" class="profile-header__title">직원 정보 수정</h1>
+      </header>
+
+      <form class="profile-form" enctype="multipart/form-data">
+        <div class="profile-image-main">
+          <img class="profile-image-preview" alt="Profile Image" />
+          <button class="image-delete-btn">X</button>
+          <label for="profile-image-input" class="profile-upload-label">
+            <span>프로필 사진 변경</span>
+            <input
+              type="file"
+              id="profile-image-input"
+              name="profile-image-input"
+              class="profile-image-input"
+              accept=".jpg, .jpeg, .png"
+            />
+          </label>
+        </div>
+
+        <div class="profile-info">
+          <label for="profile-id">ID</label>
+          <input
+            type="text"
+            id="profile-id"
+            class="profile-id"
+            name="profile-id"
+            required
+            readonly
+          />
+
+          <label for="profile-name">이름</label>
+          <input type="text" id="profile-name" name="profile-name" />
+          <label for="profile-position">직책</label>
+          <select id="profile-position" name="profile-position">
+            <option value="" disabled selected>Select Position</option>
+            <option value="1">CEO</option>
+            <option value="2">CFO</option>
+            <option value="3">Director</option>
+            <option value="4">Manager</option>
+            <option value="5">Assistant Manager</option>
+            <option value="6">Staff</option>
+          </select>
+        </div>
+
+        <div class="profile-actions">
+          <button
+            type="submit"
+            class="profile-actions__btn profile-actions__btn--edit"
+          >
+            정보 수정
+          </button>
+          <button
+            type="button"
+            class="profile-actions__btn profile-actions__btn--delete"
+          >
+            회원 삭제
+          </button>
+          <button
+            type="button"
+            class="profile-actions__btn profile-actions__btn--back"
+          >
+            돌아가기
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
