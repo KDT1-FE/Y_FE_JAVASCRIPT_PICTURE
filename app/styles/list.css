@@ -5,37 +5,103 @@
 }
 
 .utils-container{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.search-wrapper{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-top:10px;
+    padding-bottom: 20px;
+}
+
+#search{
+    margin-right: 20px;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #666;
+}
+
+.search-wrapper__input-anchor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #E6002D;
+
+}
+
+.search-wrapper__input-anchor:hover{
+    background-color: #B40028;
+}
+
+.list-top{
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-top-profile{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-top-data-wrapper{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .list-container{
-    border-top: 1px solid black;
     padding-top:20px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
+
 
 .list-wrapper{
-    border: 1px solid black;
-    margin-top: 5px;
+    border-bottom: 1px solid #666;
 }
 
+
 .list-anchor{
-    display: block;
-    box-sizing: border-box;
-    width: 235px;
-    height: 300px;
+    display: flex;
     padding: 20px;
-    text-align: center;
 }
 
 .list-anchor:hover{
-    border:1px solid #B40028;
-    box-shadow: 2px 2px 2px 2px gray;
+    background-color: #f9f9f9;
+}
+
+.list-anchor-img-wrapper{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .list-anchor__img{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+.list-anchor-p-wrapper{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    color: black;
 }
