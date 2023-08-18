@@ -1,7 +1,24 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
+
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js';
+
 import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
-import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+  deleteDoc,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCy7QYDgKpkn-0eH42AmxAki6u4DH1oGZ0',
@@ -42,11 +59,45 @@ const db = getFirestore(app);
 const getData = async members => {
   const snapshot = await getDocs(collection(db, 'members'));
 
-  snapshot.forEach(doc => {
+  await snapshot.forEach(doc => {
     const data = doc.data();
 
     members.unshift(data);
   });
 };
 
-export { auth, signinSubmit, db, getData };
+const addData = async (person, email, contact, division, profileUrl) => {
+  await setDoc(doc(db, 'members', email), {
+    person: person,
+    email: email,
+    contact: contact,
+    division: division,
+    profileUrl: profileUrl,
+  });
+};
+
+const deleteData = async email => {
+  await deleteDoc(doc(db, 'members', email));
+};
+
+/* ------------------------------------ - ----------------------------------- */
+
+const storage = getStorage(app);
+
+const uploadImage = async (email, file) => {
+  const storageRef = ref(storage, `${email}.png`);
+
+  await uploadBytes(storageRef, file).then(snapshot => {
+    console.log('uploaded successful', 'to', email);
+  });
+
+  return await getDownloadURL(storageRef);
+};
+
+const deleteImage = async email => {
+  const desertRef = ref(storage, `${email}.png`);
+
+  await deleteObject(desertRef);
+};
+
+export { auth, signinSubmit, getData, addData, deleteData, uploadImage, deleteImage };
