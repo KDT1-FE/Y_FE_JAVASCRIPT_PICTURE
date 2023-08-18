@@ -22,15 +22,14 @@
       </div>
 
       <div class="md:flex-row md:items-start mt-16 flex w-full flex-col items-center bg-slate-100">
-        <input
-          type="image"
-          src="https://file2.nocutnews.co.kr/newsroom/image/2016/11/09/20161109000213391575.jpg"
-          class="h-80 border-slate-300 object-fill" />
+        <input type="image" src="" class="h-80 border-slate-300 object-fill" id="profile-image" />
 
         <form id="detail-form" class="md:mt-0 md:pl-10 mt-4 w-full flex-col px-4">
           <div class="flex flex-row items-center justify-between">
             <div class="text-xl font-bold">임직원 정보</div>
-            <button class="rounded bg-slate-500 px-4 py-2 text-white hover:bg-blue-500">정보 변경</button>
+            <button class="rounded bg-slate-500 px-4 py-2 text-white hover:bg-blue-500" id="edit-button">
+              정보 변경
+            </button>
           </div>
 
           <div class="bar my-4 bg-slate-400"></div>
@@ -40,7 +39,8 @@
               class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
               type="text"
               disabled
-              value="남궁종민" />
+              name="person"
+              value="" />
           </div>
 
           <div class="flex w-full flex-row justify-between leading-10">
@@ -49,7 +49,8 @@
               class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
               type="text"
               disabled
-              value="vbghdl@naver.com" />
+              name="email"
+              value="" />
           </div>
 
           <div class="flex w-full flex-row justify-between leading-10">
@@ -58,7 +59,8 @@
               class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
               type="text"
               disabled
-              value="010-6428-6518" />
+              name="contact"
+              value="" />
           </div>
 
           <div class="flex w-full flex-row justify-between leading-10">
@@ -67,7 +69,8 @@
               class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
               type="text"
               disabled
-              value="개발부" />
+              name="division"
+              value="" />
           </div>
         </form>
       </div>
