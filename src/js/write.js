@@ -55,13 +55,6 @@ if (referrer === 'profile') {
   submitBtn.addEventListener('click', createStaff);
 }
 
-write['image'].addEventListener('change', uploadFileChange);
-getAddressBtn.addEventListener('click', getAddress);
-write['name'].addEventListener('blur', getNameMessage);
-write['email'].addEventListener('blur', getEmailMessage);
-write['phone'].addEventListener('blur', getPhoneMessage);
-deleteImageBtn.addEventListener('click', deleteImageFunc);
-
 // uploadFile 변경 함수
 function uploadFileChange(e) {
   uploadFile = e.target.files[0];
@@ -83,7 +76,7 @@ function deleteImageFunc() {
 }
 
 // 이름 유효성 검사
-function getNameMessage() {
+function nameIsValid() {
   if (!write['name'].value) {
     errorMessage['name'].classList.add('active');
     successMessage['name'].classList.remove('active');
@@ -97,7 +90,7 @@ function getNameMessage() {
 }
 
 // 이메일 유효성 검사
-function getEmailMessage() {
+function emailIsValid() {
   if (!write['email'].value) {
     errorMessage['email'].classList.add('active');
     successMessage['email'].classList.remove('active');
@@ -116,7 +109,7 @@ function getEmailMessage() {
 }
 
 // 휴대폰 번호 유효성 검사
-function getPhoneMessage() {
+function phoneIsValid() {
   if (!write['phone'].value) {
     errorMessage['phone'].classList.add('active');
     successMessage['phone'].classList.remove('active');
@@ -138,11 +131,11 @@ function getPhoneMessage() {
 function isInputValid() {
   isValid = true;
   // 이름 검사
-  getNameMessage();
+  nameIsValid();
   // 이메일 검사
-  getEmailMessage();
+  emailIsValid();
   // 휴대폰 번호 검사
-  getPhoneMessage();
+  phoneIsValid();
 
   // 주소 검사
   if (!write['address'].value) {
@@ -166,28 +159,23 @@ function getAddress() {
   }).open();
 }
 
-// 이미지 버킷에 업로드하는 함수
 function onFileUpload() {
   const ACCESS_KEY = process.env.ACCESS_KEY;
   const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY;
   const REGION = 'ap-northeast-2';
   const S3_BUCKET = 'hong-upload-image';
 
-  // AWS ACCESS KEY를 세팅합니다.
   AWS.config.update({
     accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
   });
 
-  // 버킷에 맞는 이름과 리전을 설정합니다.
   const myBucket = new AWS.S3({
     params: { Bucket: S3_BUCKET },
     region: REGION
   });
 
   const file = uploadFile;
-
-  // 파일과 파일이름을 넘겨주면 됩니다.
   const params = {
     ACL: 'public-read',
     Body: file,
@@ -223,7 +211,6 @@ function createStaff() {
   if (!isValid) return;
   if (uploadFile !== 'undefined.png') onFileUpload();
 
-  // 새로운 아이템 생성
   const item = {
     id: new Date().getTime(),
     name: write['name'].value,
@@ -246,7 +233,7 @@ function editStaff() {
   isInputValid();
   if (!isValid) return;
   if (uploadFile !== 'undefined.png' && uploadFile !== oldImage) onFileUpload();
-  // 수정하려는 정보의 id값과 모든 정보의 id값과 비교 후 찾아내서 안에 정보 바꾸기
+
   infos.forEach((el) => {
     if (el.id === latelyInfo['id']) {
       el['name'] = write['name'].value;
@@ -255,7 +242,6 @@ function editStaff() {
       el['address'] = write['address'].value;
       el['imageUrl'] = `https://hong-upload-image.s3.ap-northeast-2.amazonaws.com/${uploadFile.name ?? uploadFile}`;
 
-      // lately-info를 수정한 정보로 변경
       saveToLatelyLocalStorage(el);
     }
   });
@@ -265,3 +251,10 @@ function editStaff() {
   alert('정보변경이 완료되었습니다.');
   location.href = './profile.html';
 }
+
+write['image'].addEventListener('change', uploadFileChange);
+getAddressBtn.addEventListener('click', getAddress);
+write['name'].addEventListener('blur', nameIsValid);
+write['email'].addEventListener('blur', emailIsValid);
+write['phone'].addEventListener('blur', phoneIsValid);
+deleteImageBtn.addEventListener('click', deleteImageFunc);

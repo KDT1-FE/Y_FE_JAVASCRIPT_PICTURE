@@ -3,20 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>직원 관리 시스템</title>
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/index.css" />
+    <link rel="icon" href="../assets/image/favicon.ico" type="image/x-icon" />
     <script type="module" src="../js/index.js"></script>
+    <script src="https://kit.fontawesome.com/bb248ffd99.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="modal">
-      <div class="modal-content">
-        <div class="modal-cancel">X</div>
+      <div class="modal-content modal-select">
+        <div class="modal-cancel select-cancel"><i class="fa-solid fa-power-off"></i></div>
         <h1>둘 중 하나를 선택하세요.</h1>
         <div class="modal-btns">
-          <div class="profile-btn">상세보기</div>
-          <div class="delete-btn">삭제하기</div>
+          <div class="left-btn profile-btn">상세보기</div>
+          <div class="right-btn delete-btn">삭제하기</div>
         </div>
+      </div>
+      <div class="modal-content modal-confirm">
+        <div class="modal-cancel confirm-cancel"><i class="fa-solid fa-power-off"></i></div>
+        <h1>정말로 삭제하겠습니까?</h1>
+        <div class="modal-btns">
+          <div class="left-btn yes-btn">예</div>
+          <div class="right-btn no-btn">아니오</div>
+        </div>
+      </div>
+      <div class="modal-content modal-delete-success">
+        <div class="success-img"><i class="fa-solid fa-circle-check"></i></div>
+        <h1>삭제되었습니다!</h1>
       </div>
     </div>
     <div class="wrapper">
