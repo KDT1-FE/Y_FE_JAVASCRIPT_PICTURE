@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Playground</title>
   <!-- <link rel="stylesheet" href="../../css/reset.css"> -->
   <link href="/dist/output.css" rel="stylesheet">
+  <style>
+    .interaction{
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius:50%;
+      left: 0;
+      top: 0;
+    }
+  </style>
 </head>
 <body class="font-Pretendard">
   <header>
     <div class="header-box">
-      <span class="header-name">SOLMI KOH</span>
+      <span class="header-name waviy">
+        <span style="--i:1">S</span>
+        <span style="--i:2">O</span>
+        <span style="--i:3">L</span>
+        <span style="--i:4">M</span>
+        <span style="--i:5">I</span>
+      </span>
       <div class="menu-container">
         <a href="/" class="px-2 sm:px-7">
           <span>Human Resources</span>
@@ -24,19 +43,12 @@
       </div>
     </div>
   </header>
-  
-  <h1>안녕 여긴 플레이그라운드</h1>
-  <button id="btn-favorites" type="button">Add to favorites</button>
+  <div class="interaction">
+    <h1 class="mt-[170px] mb-8 font-bold text-3xl text-center text-white z-10">Playground</h1>
+  </div>  
 
-  <script>
-    var el = document.getElementById("btn-favorites");
-
-    const onClickBtn = () => {
-      console.log("onClickBtn");
-    };
-    for (let i = 0; i < 5; i++) {
-      el.addEventListener("click", onClickBtn);
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="./playground.js"></script>
 </body>
 </html>

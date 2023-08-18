@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>직원 관리</title>
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
   <!-- <link rel="stylesheet" href="./css/reset.css"> -->
   <link rel="stylesheet" href="./css/modal.css">
@@ -14,7 +14,13 @@
 <body class="font-Pretendard">
   <header>
     <div class="header-box">
-      <span class="header-name">SOLMI KOH</span>
+      <span class="header-name waviy">
+        <span style="--i:1">S</span>
+        <span style="--i:2">O</span>
+        <span style="--i:3">L</span>
+        <span style="--i:4">M</span>
+        <span style="--i:5">I</span>
+      </span>
       <div class="menu-container">
         <a href="/" class="px-2 sm:px-7">
           <span>Human Resources</span>
@@ -30,9 +36,13 @@
   </header>
   <div id="content"></div>
   <section class="w-full">
-    <h1 class="mt-[170px] mb-8 font-bold text-3xl text-center">Human Resources</h1>
+    <h1 class="mt-[170px] mb-8 font-bold text-3xl text-center text-white z-10">Human Resources</h1>
     <button class="btn__add block justify-center h-8 font-bold w-20">ADD</button>
-    <div class="profile-container"></div>
+    <div class="text-white text-center mt-[50px]">직원들의 프로필 카드를 확인할 수 있습니다.
+      <br>더욱 자세한 정보를 원한다면 '클릭'해주세요 :D
+    </div>
+    <div class="profile-container">
+    </div>
   </section>
   <dialog class="modal__add-profile">
     <div class="guide-text"> 반갑습니다!🖐 프로필을 등록해주세요</div>
@@ -71,5 +81,6 @@
     </form>
   </dialog>
   <script type="module" src="./index.js"></script>
+  <!-- <script src="./js/intersectionObserver.js"></script> -->
 </body>
 </html>

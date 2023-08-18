@@ -46,6 +46,7 @@ body{
 
 /* human resources section */
 .btn__add{
+  z-index: 3;
   margin:0px auto;
   background-color: #FFFAFA;
   border-radius: 10px;
@@ -55,6 +56,7 @@ body{
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.176);
 }
 .btn__add:hover{
+  z-index: 3;
   background-color: rgb(0, 0, 0);
   color:rgb(173, 255, 80);
 }
@@ -63,7 +65,9 @@ body{
   justify-content: center;
   margin:100px auto;
 }
-
+.item{
+  z-index: 3;
+}
 .profile-card{
   background-color: #FFFAFA;
   padding:5px 0px;
@@ -74,7 +78,7 @@ body{
   margin:50px 0px;
 }
 .profile-card:hover{
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.566);
   color:rgb(173, 255, 80);
 }
 .item:nth-child(1){
@@ -132,4 +136,6 @@ body{
   text-align: center;
   margin:1rem 0px;
   padding-bottom: 20px;
+  font-weight: 900;
+  font-size: 1.5rem;
 }

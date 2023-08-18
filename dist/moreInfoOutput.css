@@ -2,6 +2,7 @@
   margin-top:10rem;
   min-width: 375px;
 }
+
 .detail-index{
   font-size: 2rem;
   margin-left: 2rem;
@@ -9,6 +10,7 @@
   font-weight: 900;
   color:rgb(173, 255, 80);
 }
+
 .detail-profile-card{
   display:block;
   background-color: rgb(30,30,30);
@@ -33,43 +35,53 @@
   font-weight: 600;
   transition: background-color 0.35s;
 }
+
 .detail-button:first-child{
   margin-left:30px;
 }
+
 .detail-button:hover{
   background-color: rgb(173, 255, 80);
   color:black;
 }
+
 .detail-profile-card h1{
   font-weight: 900;
 }
+
 .detail-profile-image{
   width:240px;
   height:240px;
   margin:10px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
+
 .detail-text-container{
   display:flex;
   flex-direction: column;
   /* margin-left:2rem; */
   color:aliceblue;
 }
+
 .detail-text-container h1{
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color:rgb(173, 255, 80);
 }
+
 .detail-text-container input{
   color:black;
   border-radius: 10px;
   padding:0px 5px;
 }
+
 .detail-text-container .subtitle{
   margin-top:1rem;
   font-weight: 900;
   color:rgb(173, 255, 80);
 }
+
 label, #btn__img-delete {
   background-color: rgb(30,30,30);
   border: 1px solid rgb(173, 255, 80);
@@ -80,9 +92,11 @@ label, #btn__img-delete {
   font-weight: 900;
   transition: background-color 0.3s, color 0.2s;
 }
+
 #btn__img-delete {
   margin-left:30px;
 }
+
 label:hover, #btn__img-delete:hover {
   background-color: rgb(173, 255, 80);
   color:rgb(30,30,30);
@@ -94,10 +108,12 @@ label:hover, #btn__img-delete:hover {
     margin:8rem auto;
   }
 }
+
 @media (min-width:640px){
   .detail-profile-card{
     display: flex;
   }
+
   .detail-text-container{
     margin-left:2rem;
   }
