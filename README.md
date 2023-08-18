@@ -8,6 +8,7 @@
 
 ## [배포 링크]
 
+radiant-seahorse-0a2581.netlify.app
 
 ## [used Jquery to Solve for EventLisner Error]
 

@@ -4,15 +4,16 @@ import { getFirestore, Timestamp, FieldValue, query, collection, doc, addDoc, de
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
 import { getStorage, ref, getDownloadURL, uploadBytes } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
+process.env
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC1T9NbXNdWsWWnGDhJv9gK-dR8RSlT7PQ",
-  authDomain: "js-portrait-list.firebaseapp.com",
-  projectId: "js-portrait-list",
-  storageBucket: "js-portrait-list.appspot.com",
-  messagingSenderId: "207109367443",
-  appId: "1:207109367443:web:4e6675c67ca83c1f7f4f66",
-  measurementId: "G-XPYJPCSN9W"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY ,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN ,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID ,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET ,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID ,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID ,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
