@@ -120,8 +120,16 @@ const deleteModeButton = document.querySelectorAll(".delete-mode-buttons");
 const selectedSoldiers = document.querySelectorAll(".selected");
 const deleteCancelButtons = document.querySelectorAll(".delete-cancel");
 
+function toggleDeleteMode() {
+  const soldierDivs = document.querySelectorAll(".soldier");
+  soldierDivs.forEach((div) => {
+    div.classList.toggle("deletemode");
+  });
+}
+
 const handleDeleteModeOff = () => {
   deleteMode = false;
+  toggleDeleteMode();
   selectedIndexes.length = 0;
   deleteModeButton.forEach((item) => {
     item.classList.add("hidden");
@@ -137,6 +145,7 @@ const handleDeleteModeOff = () => {
 
 const handleDeleteModeOn = () => {
   deleteMode = true;
+  toggleDeleteMode();
   deleteButton.innerHTML = "삭제";
   deleteButton.className = "delete-on";
   deleteButton.id = "delete-confirm";
@@ -252,7 +261,7 @@ editConfirmButton.addEventListener("click", () => {
 
 async function editDocument() {
   try {
-    let imgUrl = ""; 
+    let imgUrl = "";
     let file = editModal.querySelector("#modal-photo-button").files[0]; // 선택된 파일 가져오기
 
     if (file) {
@@ -298,4 +307,3 @@ async function editDocument() {
     console.error("Error editing document:", error);
   }
 }
-

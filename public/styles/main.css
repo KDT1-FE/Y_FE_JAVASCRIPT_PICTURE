@@ -112,7 +112,7 @@ body {
   transition: transform ease 2s;
 }
 
-.left:hover {
+.left:not(.deletemode):hover {
   transform: translate(50%, 50%) scale(1.2);
   z-index: 2;
 }
@@ -120,7 +120,7 @@ body {
   transition: transform ease 2s;
 }
 
-.right:hover {
+.right:not(.deletemode):hover {
   transform: translate(-50%, 50%) scale(1.2);
   z-index: 2;
 }
@@ -134,7 +134,7 @@ body {
   }
 }
 
-.soldier:hover .edit-button {
+.soldier:not(.deletemode):hover .edit-button {
   display: block;
   animation: enlarge 2s ease forwards;
 }
@@ -385,7 +385,7 @@ body {
     transition: transform ease 2s;
   }
 
-  .left:hover {
+  .left:not(.deletemode):hover {
     transform: translate(0%, 30%) scale(1.1);
     z-index: 2;
   }
@@ -393,7 +393,7 @@ body {
     transition: transform ease 2s;
   }
 
-  .right:hover {
+  .right:not(.deletemode):hover {
     transform: translate(0%, 30%) scale(1.1);
     z-index: 2;
   }
