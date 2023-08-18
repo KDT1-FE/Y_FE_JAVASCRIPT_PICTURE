@@ -4,7 +4,7 @@
   align-items: center;
 
   width: 80%;
-  margin: 20px auto;
+  margin: 40px auto;
 }
 
 .character-list {
@@ -38,4 +38,10 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+@media (min-width: 1440px) {
+  .character-container {
+    width: 1200px;
+  }
 }

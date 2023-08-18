@@ -10,7 +10,6 @@ $update.addEventListener('submit', (e) => {
 
   let $file = document.querySelector('.update--image').files[0];
   if ($file) {
-    // 파일 삭제
     const desertRef = ref(storage, `characters/${docSnap.data().filename}`);
     deleteObject(desertRef).then(() => {
       console.log('Delete successfully');

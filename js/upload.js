@@ -27,9 +27,7 @@ $upload.addEventListener('submit', (e) => {
           interests: $upload.interests.value,
         })
           .then(() => {
-            // console.log(`이름: ${$upload.name.value}`); // 클래스명이 아닌가봉가
             $upload.reset();
-            // console.log('Added successfully');
             window.location.replace('/index.html');
           })
           .catch((err) => {
