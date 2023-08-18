@@ -1,6 +1,5 @@
 import { firstBuildImg, buildImg, deleteImg } from './firestore.js';
 
-const screen = document.querySelector('.screen-wrap');
 const formBtnEl = document.querySelector('#form-btn');
 const deleteBtnEl = document.querySelector('#delete-btn');
 const listBox = document.querySelector('.list');
@@ -18,18 +17,15 @@ let peoples = [];
 let hadPeoples = localStorage.length - 1;
 
 formBtnEl.addEventListener('click', () => {
-  screen.classList.add('click-x');
   changeVisible(information);
   changeVisible(wall);
 });
 deleteBtnEl.addEventListener('click', deletePeopleEl);
 wall.addEventListener('click', () => {
-  screen.classList.remove('click-x');
   changeHidden(information);
   changeHidden(wall);
 });
 formExitBtn.addEventListener('click', () => {
-  screen.classList.remove('click-x');
   changeHidden(information);
   changeHidden(wall);
 });
@@ -39,7 +35,6 @@ information.addEventListener('click', function (event) {
 submit.addEventListener('click', () => {
   if (!localStorage.getItem(nameEl.value)) {
     addNewPeople(nameEl, emailEl, phoneEl);
-    screen.classList.remove('click-x');
     changeHidden(information);
     changeHidden(wall);
   } else {
@@ -55,6 +50,7 @@ function addNewPeople(name, email, phone) {
     name: name.value,
     email: email.value,
     phone: phone.value,
+    type: 'add',
     check: false,
   };
   localStorage.setItem(
@@ -64,6 +60,7 @@ function addNewPeople(name, email, phone) {
       name: name.value,
       email: email.value,
       phone: phone.value,
+      type: 'add',
     })
   );
   firstBuildImg(people.name, people.id);
@@ -80,7 +77,7 @@ function addNewPeople(name, email, phone) {
 
 function addPeopleEl(people) {
   const itemEl = document.createElement('div');
-  itemEl.classList.add('item');
+  itemEl.classList.add('item', people.id);
 
   const checkImg = document.createElement('div');
   checkImg.classList.add('checkbox-img-wrap');
@@ -99,12 +96,14 @@ function addPeopleEl(people) {
   peopleName.classList.add('name', 'text');
   peopleName.innerHTML = people.name;
   const peopleEmail = document.createElement('div');
-  peopleEmail.classList.add('emaie', 'text');
+  peopleEmail.classList.add('email', 'text');
   peopleEmail.innerHTML = people.email;
   const peoplePhone = document.createElement('div');
   peoplePhone.classList.add('phone', 'text');
   peoplePhone.innerHTML = people.phone;
-
+  const editIcon = document.createElement('span');
+  editIcon.classList.add('material-symbols-outlined', 'edit');
+  editIcon.innerHTML = 'edit';
   checkbox.addEventListener('change', () => {
     peoples.forEach((e) => {
       if (e.id === people.id) {
@@ -120,14 +119,33 @@ function addPeopleEl(people) {
   textEl.append(peopleName);
   textEl.append(peopleEmail);
   textEl.append(peoplePhone);
-
+  itemEl.append(editIcon);
+  checkbox.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+  itemEl.addEventListener('click', (e) => {
+    location.href = 'profile.html';
+    console.log(e.target.querySelector('.name').innerHTML);
+    localStorage.setItem(
+      'profile',
+      JSON.stringify({
+        id: people.id,
+        name: e.target.querySelector('.name').innerHTML,
+        email: e.target.querySelector('.email').innerHTML,
+        phone: e.target.querySelector('.phone').innerHTML,
+        type: people.type,
+      })
+    );
+  });
   return itemEl;
 }
 
 function deletePeopleEl() {
   peoples.forEach((e) => {
-    localStorage.removeItem(e.name);
-    deleteImg(e.name);
+    if (e.check === true) {
+      localStorage.removeItem(e.name);
+      deleteImg(e.name, e.type);
+    }
   });
   peoples = peoples.filter((e) => e.check === false);
   for (let i = list.childNodes.length - 1; i >= 0; i--) {
@@ -151,14 +169,16 @@ function changeHidden(item) {
 }
 
 function buildList() {
-  for (let i = 0; i < localStorage.length; i++) {
+  for (let i = localStorage.length - 1; i >= 0; i--) {
     if (localStorage.key(i) === 'owner') {
       console.log(
         `${JSON.parse(localStorage.getItem('owner')).name}님이 접속하셨습니다.`
       );
+    } else if (localStorage.key(i) === 'profile') {
+      continue;
     } else {
-      const a = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      buildPeoples(a);
+      const pData = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      buildPeoples(pData);
     }
   }
   addHadPeoples();
@@ -171,12 +191,13 @@ async function buildPeoples(item) {
     name: item.name,
     email: item.email,
     phone: item.phone,
+    type: item.type,
     check: false,
   };
   peoples.unshift(people);
   const itemEl = addPeopleEl(people);
+  await buildImg(people.name, people.id, people.type);
   list.append(itemEl);
-  await buildImg(people.name, people.id);
 }
 
 buildList();
@@ -192,7 +213,9 @@ function allCheck(event) {
 }
 
 function addHadPeoples() {
-  hadPeoples = localStorage.length - 1;
+  if (JSON.parse(localStorage.getItem('profile'))) {
+    hadPeoples = localStorage.length - 2;
+  }
   console.log(`현재 직원 수 = ${hadPeoples}`);
   employees.innerHTML = `직원: ${hadPeoples}`;
 }

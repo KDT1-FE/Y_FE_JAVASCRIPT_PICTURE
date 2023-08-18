@@ -1,0 +1,30 @@
+.logo {
+  font-size: 3.5rem;
+}
+.logo.one {
+  animation: wave 3s ease-out infinite;
+}
+.logo.two {
+  animation: wave 2s ease-out infinite;
+}
+.logo.three {
+  animation: wave 4s ease-out infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

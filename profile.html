@@ -16,6 +16,8 @@
     />
 
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/logo.css" />
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
@@ -24,7 +26,55 @@
 
     <script type="module" src="./js/firebase.js"></script>
     <script type="module" src="./js/firestore.js"></script>
-    <script type="module" defer src="./js/main.js"></script>
+    <script defer type="module" src="./js/profile.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="inner">
+        <div class="logo one">E</div>
+        <div class="logo two">N</div>
+        <div class="logo one">J</div>
+        <div class="logo three">O</div>
+        <div class="logo one">Y</div>
+        <div class="logo"></div>
+        <div class="logo three">T</div>
+        <div class="logo two">H</div>
+        <div class="logo one">E</div>
+        <div class="logo"></div>
+        <div class="logo two">L</div>
+        <div class="logo one">I</div>
+        <div class="logo three">S</div>
+        <div class="logo two">T</div>
+        <div class="logo one">!</div>
+      </div>
+    </header>
+    <main>
+      <div class="inner">
+        <div class="main"></div>
+        <div class="edit-profile">
+          <form>
+            <div>
+              <input type="file" accept="image/*" id="file" />
+            </div>
+            <div>
+              <h2>이름</h2>
+              <input type="text" id="name" />
+            </div>
+            <div>
+              <h2>이메일</h2>
+              <input type="text" id="email" />
+            </div>
+            <div>
+              <h2>전화번호</h2>
+              <input type="number" id="phone" />
+            </div>
+            <div id="submit" class="button">정보 수정</div>
+          </form>
+          <span id="return" class="material-symbols-outlined">
+            keyboard_return
+          </span>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

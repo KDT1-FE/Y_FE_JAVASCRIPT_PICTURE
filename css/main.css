@@ -2,146 +2,19 @@ html,
 body {
   width: 100%;
   height: 100%;
-  border-collapse: collapse;
   font-size: 20px;
-}
-
-@media (max-width: 1439px) {
-  html,
-  body {
-    font-size: 15px;
-  }
-  .inner {
-    width: 72rem;
-  }
-}
-@media (max-width: 1079px) {
-  html,
-  body {
-    font-size: 10.7px;
-  }
-}
-@media (max-width: 700px) {
-  html,
-  body {
-    font-size: 5.4px;
-  }
-  .inner {
-    width: 100%;
-  }
-}
-h1 {
-  font-size: 1.5rem;
   font-weight: 600;
 }
-.wall {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 1s;
-  z-index: 1;
+a {
+  text-decoration: none;
+  color: white;
 }
 .inner {
-  height: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  border-collapse: collapse;
+  width: 72rem;
 }
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-.visible {
-  visibility: visible;
-  opacity: 1;
-}
-.click-x {
-  pointer-events: none;
-}
-
-header {
-  height: 10rem;
-  border-collapse: collapse;
-  background-color: gray;
-}
-
 main .inner {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 1rem;
   border-left: 3px solid black;
   border-right: 3px solid black;
-  gap: 30px;
-}
-
-.profile {
-  position: relative;
-  height: 10rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: rgba(0, 0, 0, 0.7);
-}
-.owner {
-  width: 3rem;
-  height: 1.5rem;
-  position: absolute;
-  text-align: center;
-  line-height: 1.5rem;
-  top: 0;
-  left: 6.2rem;
-  background-color: yellow;
-}
-.blink {
-  animation: blinking 0.2s infinite;
-}
-@keyframes blinking {
-  0%,
-  100% {
-    background-color: rgba(255, 255, 0, 0);
-  }
-  50% {
-    background-color: rgba(255, 255, 0);
-  }
-}
-
-.to-profile {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 1.5rem;
-  line-height: 1.5rem;
-  background-color: rgb(1, 1, 160);
-  color: white;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.add-function-wrap {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-}
-.buttons {
-  display: flex;
-}
-.button {
-  width: 5rem;
-  height: 2.5rem;
-  background-color: rgb(1, 1, 160);
-  color: white;
-  text-align: center;
-  line-height: 2.5rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-.button:last-child {
-  margin-left: 20px;
 }
 
 .information {
@@ -168,19 +41,136 @@ main .inner {
   gap: 4rem;
   margin-top: 4rem;
 }
+.information form input {
+  width: 15rem;
+  height: 1.5rem;
+}
+.text {
+  width: 7.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+.button {
+  width: auto;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background-color: rgb(1, 1, 160);
+  color: white;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.wall {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 1s;
+  z-index: 1;
+}
+.inner {
+  height: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+header .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  border-bottom: 3px solid black;
+  gap: 2rem;
+}
+
+main .inner {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  gap: 30px;
+}
+
+.profile {
+  position: relative;
+  height: 10rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
+}
+.profile .people-img {
+  margin: 0;
+  border-radius: 0;
+}
+
+.owner {
+  position: absolute;
+  text-align: center;
+  line-height: 1.5rem;
+  top: 0;
+  left: 0;
+  background-color: yellow;
+  padding: 5px;
+}
+.blink {
+  animation: blinking 0.2s infinite;
+}
+@keyframes blinking {
+  0%,
+  100% {
+    background-color: rgba(255, 255, 0, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 0);
+  }
+}
+
+.add-function-wrap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.buttons {
+  display: flex;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+#delete-btn {
+  margin-left: 20px;
+}
+
 .information #form-exit {
+  font-size: 2rem;
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
 }
-.information form input {
-  width: 15rem;
-  height: 1.5rem;
-}
 
 .list-head {
-  width: 70rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -207,13 +197,17 @@ main .inner {
 }
 
 .item {
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   text-align: center;
   height: 15rem;
   box-sizing: border-box;
-  border: 3px solid black;
+  box-sizing: border-box;
   margin: 0.5rem 0;
+  border: 3px solid black;
+  cursor: pointer;
 }
 
 .item .checkbox-img-wrap {
@@ -221,7 +215,7 @@ main .inner {
   gap: 5rem;
 }
 
-.item .people-img {
+.people-img {
   width: 10rem;
   height: 10rem;
   background-color: white;
@@ -235,13 +229,102 @@ main .inner {
   justify-content: space-around;
   align-items: center;
 }
-.text {
-  width: 7.5rem;
-  text-align: center;
+
+.material-symbols-outlined.edit {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  visibility: hidden;
+}
+
+.item:hover .material-symbols-outlined.edit {
+  visibility: visible;
 }
 
 footer {
+  width: 100%;
   height: 10rem;
-  border-collapse: collapse;
-  background-color: gray;
+}
+footer .inner {
+  border-top: 3px solid black;
+}
+@media (max-width: 1439px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1079px) {
+  html,
+  body {
+    font-size: 10.7px;
+  }
+  .list-head .second {
+    margin-left: 7px;
+  }
+}
+@media (max-width: 700px) {
+  html,
+  body {
+    font-size: 5.4px;
+  }
+  .inner {
+    width: 100%;
+    min-width: 400px;
+    font-size: 12px;
+  }
+  #all-check {
+    flex: 1;
+  }
+  .list-head .second {
+    padding-left: 10px;
+  }
+  main .inner {
+    border-left: none;
+    border-right: none;
+  }
+  .information {
+    position: absolute;
+    top: calc(50% - 35rem);
+    left: calc(50% - 25rem);
+    width: 50rem;
+    height: 70rem;
+    font-size: 15px;
+  }
+  .information form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7rem;
+    margin-top: 2rem;
+  }
+  .information #form-exit {
+    font-size: 4rem;
+  }
+  .information form h1 {
+    font-size: 3rem;
+  }
+  .information form input {
+    width: 30rem;
+    height: 3rem;
+  }
+  .information form input[type='file'] {
+    width: auto;
+    height: auto;
+    margin-left: 90px;
+  }
+  .p-data {
+    line-height: 19px;
+  }
+  input {
+    font-size: 15px;
+  }
+  .button {
+    padding: 2rem;
+    font-size: 3rem;
+  }
+  .material-symbols-outlined.edit {
+    font-size: 3rem;
+  }
 }

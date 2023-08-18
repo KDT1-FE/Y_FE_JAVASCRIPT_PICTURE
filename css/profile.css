@@ -1,0 +1,60 @@
+.inner {
+  position: relative;
+  border-bottom: 3px solid black;
+}
+.edit-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  padding: 1rem 0;
+}
+.edit-profile form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.edit-profile form input[type='file'] {
+  margin-left: 3.8rem;
+}
+.button {
+  width: 4.4rem;
+}
+.material-symbols-outlined {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background-color: rgb(1, 1, 160);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.material-symbols-outlined:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 1439px) {
+  .edit-profile form input[type='file'] {
+    margin-left: 5rem;
+  }
+}
+
+@media (max-width: 1079px) {
+  .edit-profile form input[type='file'] {
+    margin-left: 6.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .button {
+    width: auto;
+  }
+  .material-symbols-outlined {
+    font-size: 4rem;
+  }
+}
