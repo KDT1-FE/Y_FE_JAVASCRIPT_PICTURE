@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.0625rem;
+  color: #d5d3da;
+}
+
+body {
+  width: 75rem;
+  margin: 0 auto;
+  background-color: #251b2d;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+img {
+  border: none;
+  display: inline-block;
+  content: "";
+}
+
+/* 구분 선 css */
+.separate_line {
+  border: 2px solid #d5d3da;
+  border-radius: 4px;
+  margin-top: 1.875rem;
+}
