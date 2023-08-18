@@ -34,53 +34,66 @@ readUserData().then((res) => {
   imageFrame.appendChild(userImage);
 
   readPtData(userIdx.value).then((res) => {
-    for (let i = 1; i < res.length; i++) {
-      let ptFrame = document.createElement("ul");
-      let ptSessionId = document.createElement("input");
-      let ptDate = document.createElement("input");
-      let ptSubject = document.createElement("textarea");
-      let ptWorkout = document.createElement("textarea");
-      let ptWeight = document.createElement("textarea");
-      let ptReps = document.createElement("textarea");
-      let ptSets = document.createElement("textarea");
-      let ptOther = document.createElement("textarea");
+    console.log(res);
+    console.log(res.length);
+    const ptArr = [];
+    if (res) {
+      for (let element in res) {
+        ptArr.push(res[element]);
+      }
+    }
 
-      // userPtIdx.value = res[userIdx.value].sessionIdx;
-      ptSessionId.value = i;
-      ptSessionId.disabled = true;
-      ptDate.value = todayString;
-      ptDate.disabled = true;
-      ptSubject.value = res[i].subject;
-      ptSubject.disabled = true;
-      ptWorkout.value = res[i].workout;
-      ptWorkout.rows = "10";
-      ptWorkout.disabled = true;
-      ptWeight.value = res[i].weight;
-      ptWeight.rows = "10";
-      ptWeight.disabled = true;
-      ptReps.value = res[i].reps;
-      ptReps.rows = "10";
-      ptReps.disabled = true;
-      ptSets.value = res[i].sets;
-      ptSets.rows = "10";
-      ptSets.disabled = true;
-      ptOther.value = res[i].other;
-      ptOther.rows = "10";
-      ptOther.disabled = true;
+    if (ptArr) {
+      console.log(ptArr);
+      ptArr.forEach((element) => {
+        let ptFrame = document.createElement("ul");
+        let ptSessionId = document.createElement("input");
+        let ptDate = document.createElement("input");
+        let ptSubject = document.createElement("textarea");
+        let ptWorkout = document.createElement("textarea");
+        let ptWeight = document.createElement("textarea");
+        let ptReps = document.createElement("textarea");
+        let ptSets = document.createElement("textarea");
+        let ptOther = document.createElement("textarea");
 
-      ptFrame.append(
-        ptSessionId,
-        ptDate,
-        ptSubject,
-        ptWorkout,
-        ptWeight,
-        ptReps,
-        ptSets,
-        ptOther
-      );
-      document
-        .getElementsByClassName("section__detail--pt_template")[0]
-        .appendChild(ptFrame);
+        console.log(element);
+        // userPtIdx.value = res[userIdx.value].sessionIdx;
+        ptSessionId.value = element.sessionIdx;
+        ptSessionId.disabled = true;
+        ptDate.value = todayString;
+        ptDate.disabled = true;
+        ptSubject.value = element.subject;
+        ptSubject.disabled = true;
+        ptWorkout.value = element.workout;
+        ptWorkout.rows = "10";
+        ptWorkout.disabled = true;
+        ptWeight.value = element.weight;
+        ptWeight.rows = "10";
+        ptWeight.disabled = true;
+        ptReps.value = element.reps;
+        ptReps.rows = "10";
+        ptReps.disabled = true;
+        ptSets.value = element.sets;
+        ptSets.rows = "10";
+        ptSets.disabled = true;
+        ptOther.value = element.other;
+        ptOther.rows = "10";
+        ptOther.disabled = true;
+
+        ptFrame.append(
+          ptSessionId,
+          ptDate,
+          ptSubject,
+          ptWorkout,
+          ptWeight,
+          ptReps,
+          ptSets,
+          ptOther
+        );
+        document
+          .getElementsByClassName("section__detail--pt_template")[0]
+          .appendChild(ptFrame);
+      });
     }
   });
 });

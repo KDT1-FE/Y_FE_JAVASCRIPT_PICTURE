@@ -168,8 +168,21 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  grid-template-columns: 0.1fr 0.1fr 0.2fr 0.2fr 0.15fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  /* grid-template-columns: 0.1fr 0.1fr 0.2fr 0.2fr 0.15fr 0.1fr 0.1fr 0.1fr 0.1fr; */
   justify-items: center;
+}
+
+@media (min-width: 300px) {
+  .section__customer--template>ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .section__customer--template>ul {
+      grid-template-columns: 0.1fr 0.1fr 0.2fr 0.2fr 0.15fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  }
 }
 
 .section__customer--template>ul:nth-child(n+2)>li:nth-child(2) {

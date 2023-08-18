@@ -59,7 +59,8 @@ readUserData().then((res) => {
   userImage.append(imageFrame, imageDeleteButton);
 
   readPtData(userIdx.value).then((res) => {
-    for (let i = 1; i < res.length; i++) {
+    console.log(res);
+    for (let i = 1; i < res; i++) {
       let ptFrame = document.createElement("ul");
       let ptSessionId = document.createElement("input");
       let ptDate = document.createElement("input");
@@ -163,6 +164,9 @@ ptAddButton.addEventListener("click", function (e) {
   let ptSets = document.createElement("textarea");
   let ptOther = document.createElement("textarea");
   ptSessionId.value = ++userPtIdx.value;
+  if (!Boolean(userPtIdx.value)) {
+    ptSessionId.value = 1;
+  }
   ptSessionId.disabled = true;
   ptDate.value = todayString;
   ptDate.disabled = true;
