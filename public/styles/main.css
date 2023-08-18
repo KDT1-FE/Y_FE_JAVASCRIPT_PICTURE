@@ -141,6 +141,7 @@
 
 .users-list-box {
   width: 90%;
+  height: 65%;
   max-height: 30rem;
   text-align: center;
   display: flex;
