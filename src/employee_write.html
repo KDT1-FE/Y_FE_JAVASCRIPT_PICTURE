@@ -60,36 +60,69 @@
       <div id="container" class="container">
         <header id="header" class="header">
           <ul class="header__wrap">
-            <li class="header__list">
-              <div class="header__notice">
-                <p class="header__alert">17</p>
+            <li class="header__menu">
+              <a href="javascript:void(0)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
-                  class="icon icon--notice"
+                  class="icon icon--menu"
                   viewBox="0 0 24 24"
                 >
                   <g>
                     <path
-                      d="M19.822 19.106H4.287a1.007 1.007 0 0 1-.977-1.251L4 15.081V10.05a8.05 8.05 0 1 1 16.1 0v5.031l.693 2.774a1.006 1.006 0 0 1-.976 1.251"
-                      transform="translate(.02 .012)"
-                      style="fill: var(--color-gray400)"
+                      d="M20 11.35H5.569L9.116 7.8a.65.65 0 0 0-.916-.916L3.541 11.54a.652.652 0 0 0 0 .92L8.2 17.116a.65.65 0 0 0 .919-.919l-3.55-3.547H20a.65.65 0 0 0 0-1.3"
+                      style="fill: var(--color-gray500)"
                     ></path>
                     <path
-                      d="M12.019 22.011a3.506 3.506 0 0 0 3.005-1.711H9.013a3.506 3.506 0 0 0 3.006 1.711"
-                      transform="translate(.056 .127)"
-                      style="fill: var(--color-gray400)"
+                      d="M13 5.65h7a.65.65 0 0 0 0-1.3h-7a.65.65 0 0 0 0 1.3"
+                      style="fill: var(--color-gray500)"
+                    ></path>
+                    <path
+                      d="M20 18.35h-7a.65.65 0 0 0 0 1.3h7a.65.65 0 0 0 0-1.3"
+                      style="fill: var(--color-gray500)"
                     ></path>
                   </g>
                 </svg>
+              </a>
+            </li>
+            <li class="header__logo">
+              <h1>
+                <a href="/"><img src="asset/logo.png" alt="CMS 솔루션" /></a>
+              </h1>
+            </li>
+            <li class="header__list">
+              <div class="header__notice">
+                <a href="/">
+                  <p class="header__alert">17</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    class="icon icon--notice"
+                    viewBox="0 0 24 24"
+                  >
+                    <g>
+                      <path
+                        d="M19.822 19.106H4.287a1.007 1.007 0 0 1-.977-1.251L4 15.081V10.05a8.05 8.05 0 1 1 16.1 0v5.031l.693 2.774a1.006 1.006 0 0 1-.976 1.251"
+                        transform="translate(.02 .012)"
+                        style="fill: var(--color-gray400)"
+                      ></path>
+                      <path
+                        d="M12.019 22.011a3.506 3.506 0 0 0 3.005-1.711H9.013a3.506 3.506 0 0 0 3.006 1.711"
+                        transform="translate(.056 .127)"
+                        style="fill: var(--color-gray400)"
+                      ></path>
+                    </g>
+                  </svg>
+                </a>
               </div>
             </li>
             <li class="header__list">
               <div class="dropdown dropdown--account">
                 <div class="dropdown__container">
                   <div class="dropdown__display">
-                    <span>관리자</span>
+                    <span></span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -220,9 +253,31 @@
                   </div>
                 </div>
               </div>
-
-              <button type="button" id="employee-submit">전송</button>
             </div>
+          </section>
+
+          <section class="button__wrap">
+            <button
+              type="button"
+              class="button button--lg button--blue400"
+              id="employee-submit"
+            >
+              등록
+            </button>
+            <a
+              href="/employee_list.html"
+              type="button"
+              class="button button--lg button--white"
+            >
+              리스트
+            </a>
+            <button
+              type="button"
+              class="button button--lg button--gray800"
+              id="employee-delete"
+            >
+              삭제
+            </button>
           </section>
         </div>
       </div>

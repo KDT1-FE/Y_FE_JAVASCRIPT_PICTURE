@@ -2,68 +2,98 @@ $breakpoint-tablet: 800px;
 $breakpoint-desktop: 1200px;
 
 @mixin mobile {
-    @media (max-width: #{$breakpoint-tablet - 1px}) {
-        @content;
-    }
-}
-  
-@mixin tablet {
-    @media (max-width: #{$breakpoint-desktop - 1px}) {
-        @content;
-    }
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
 }
 
+@mixin tablet {
+  @media (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
 
 @include tablet {
-    html {font-size: 14px;}
-    .wrap {
-        .container {
-            &__head {
-                flex-direction: column;
-                gap:1.6rem;
-                margin:1.5rem 0 0.8rem;
-
-                .head-inner {
-
-
-                    &--right{
-
-                        justify-content: end;
-                    }
-
-                }
-
-                .search {
-                    width: 100%;
-                    
-                    &__container {
-                        width: 100%;
-                    }
-                }
-            }
+  html {
+    font-size: 14px;
+  }
+  .wrap {
+    .container {
+      .header {
+        &__wrap {
+          position: relative;
         }
-        .nav.close {
-
-            .nav__control a{
-                width: 3rem;
-            }
-
-            .nav__list a  {
-                width: 3.5rem;
-            }
+        &__logo {
+          display: block;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
         }
+        &__menu {
+          display: block;
+          position: absolute;
+          left: 0;
+          width: 2.9rem;
+          height: 2.9rem;
+          padding: 0.6rem;
+          background-color: var(--color-white);
+          border-radius: 2.9rem;
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &__head {
+        flex-direction: column;
+        gap: 1.6rem;
+        margin: 1.5rem 0 0.8rem;
+
+        .head-inner {
+          &--right {
+            justify-content: end;
+          }
+        }
+
+        .search {
+          width: 100%;
+
+          &__container {
+            width: 100%;
+          }
+        }
+      }
     }
+    .nav.mobile {
+      position: fixed;
+      height: 100vh;
+      width: auto;
+      z-index: 2;
 
-    .table {
-        .phone {
-            display: none;
+      .nav__wrap {
+        position: relative;
+      }
+
+      &.close {
+        display: none;
+
+        .nav__control a {
+          display: none;
         }
-    }
 
+        .nav__list a {
+          width: 3.5rem;
+        }
+      }
+    }
+  }
+
+  .table {
+    .phone {
+      display: none;
+    }
+  }
 }
 
-
 @include mobile {
-
-
 }

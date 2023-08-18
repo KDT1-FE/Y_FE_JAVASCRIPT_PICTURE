@@ -24,6 +24,7 @@ import {
   deleteDoc,
 } from 'firebase/firestore/lite';
 import inputFocusEvent from './basic.js';
+import { loading, hideLoading } from './loading.js';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -44,6 +45,7 @@ let db = getFirestore(app);
 const sort = document.querySelector('.dropdown--sort');
 const sortWrap = sort.children[0].lastElementChild;
 const sortArr = sortWrap.querySelectorAll('.dropdown__list');
+let nowPageValue = 1;
 
 // drop list value 값 지정
 for (let i = 0; i < sortArr.length; i++) {
@@ -68,6 +70,7 @@ sortArr.forEach((sortList) => {
     const searchValue = searchInput.value;
     getList(targetEl.value, searchValue);
     valueReturn(targetEl);
+    removeAllCheck();
   });
 });
 
@@ -87,6 +90,7 @@ function searchFunc() {
     document.querySelector('.dropdown--sort').firstElementChild.children[1]
       .value;
   getList(Number(inputVal), searchValue);
+  removeAllCheck();
 }
 
 // 검색창 엔터 시 버튼 click
@@ -106,6 +110,7 @@ searchButton.addEventListener('click', () => {
 
 // 임직원 관리 리스팅
 const getList = async (inputVal, value) => {
+  loading();
   const table = document.querySelector('.table__list');
   table.innerHTML = '';
   let q;
@@ -137,18 +142,30 @@ const getList = async (inputVal, value) => {
   }
 
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
+
+  // 정렬 함수 호출
+  const sortData = sortDocs(querySnapshot, inputVal);
+
+  // 페이지네이션 함수 호출
+  const { totalPage, SliceDocs } = getPagination(sortData, nowPageValue, 5);
+
+  // 페이지네이션 버튼 생성 함수 호출
+  createPagination(totalPage, nowPageValue, inputVal, value);
+
+  SliceDocs.forEach((doc) => {
     const employee = doc.data();
     const trEl = document.createElement('tr');
+    let imgUrl, imgLabel;
+    if (employee.imgUrl) {
+      imgUrl = employee.imgUrl;
+      imgLabel = `${employee.name} 이미지`;
+    } else {
+      imgUrl = '/asset/no-image.png';
+      imgLabel = '이미지 없음';
+    }
     trEl.innerHTML = `
             <td>
-                <div id="checkbox" class="checkbox">
-                    <input type="checkbox" id="${employee.uid}">
-                    <label for="${employee.uid}"><span></span>${employee.name} 선택</label>
-                </div>
-            </td>
-            <td>
-                <div class="photo-wrap"><img src="${employee.imgUrl}" alt="${employee.name}"></div>
+                <div class="photo-wrap" style="background-image:url(${imgUrl})" aria-label="${imgLabel}"></div>
             </td>
             <td>
                 <a class="link" href="employee_write.html?uid=${employee.uid}">${employee.name}</a>
@@ -157,10 +174,152 @@ const getList = async (inputVal, value) => {
             <td class="phone">${employee.phone}</td>
             <td>${employee.grade}</td>
         `;
+    const td = document.createElement('td');
+    const div = document.createElement('div');
+    div.id = 'checkbox';
+    div.classList.add('checkbox');
+    td.appendChild(div);
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.id = employee.uid;
+    div.appendChild(input);
+    const label = document.createElement('label');
+    label.setAttribute('for', `${employee.uid}`);
+    label.innerHTML = '선택';
+    div.appendChild(label);
+    const span = document.createElement('span');
+    span.addEventListener('click', (e) => {
+      const target = e.target;
+      const checkbox = target.closest('.checkbox');
+      const inputCheck = checkbox.firstElementChild;
+      checkbox.classList.toggle('checkbox--checked');
+      inputCheck.toggleAttribute('checked');
+    });
+
+    let checkAll = document.getElementById('checkAll');
+    checkAll.addEventListener('input', (e) => {
+      const isSelect = e.target.parentElement;
+      const isChecked = e.target.checked;
+      if (!isChecked) input.setAttribute('checked', '');
+      else input.removeAttribute('checked');
+      div.classList = isSelect.classList;
+    });
+
+    label.prepend(span);
+    trEl.prepend(td);
     table.appendChild(trEl);
   });
+  hideLoading();
 };
 await getList(0, '');
+
+// 정렬 함수
+function sortDocs(querySnapshot, inputVal) {
+  const sortData = [...querySnapshot.docs];
+
+  if (inputVal === 1) {
+    sortData.sort((a, b) => {
+      if (a.data().name > b.data().name) return 1;
+      else if ((a.data().name = b.data().name))
+        return a.data().email > b.data().email ? 1 : -1;
+      else return -1;
+    });
+  } else if (inputVal === 2) {
+    sortData.sort((a, b) => {
+      if (a.data().email > b.data().email) return 1;
+      else if ((a.data().email = b.data().email))
+        return a.data().name > b.data().name ? 1 : -1;
+      else return -1;
+    });
+  } else if (inputVal === 0) {
+    sortData.sort((a, b) => {
+      return a.data().date > b.data().date ? -1 : 1;
+    });
+  }
+
+  return sortData;
+}
+
+// 페이지네이션 함수
+function getPagination(docs, nowPage, limit) {
+  const totalPage = Math.ceil(docs.length / limit);
+  const SliceDocs = docs.slice((nowPage - 1) * limit, nowPage * limit);
+
+  return { totalPage, SliceDocs };
+}
+
+// 페이지네이션 버튼 생성 함수
+function createPagination(totalPage, nowPage, inputVal, value) {
+  const paginationList = document.querySelector('.pagination__list');
+  paginationList.innerHTML = ''; // 기존 페이지 버튼 제거
+
+  const buttonsPerGroup = 5; // 한 그룹당 버튼 개수
+  let currentPageGroup = Math.ceil(nowPage / buttonsPerGroup); // 현재 페이지의 그룹 번호
+  const totalPageGroups = Math.ceil(totalPage / buttonsPerGroup); // 전체 페이지 그룹 개수
+
+  const startButton = (currentPageGroup - 1) * buttonsPerGroup + 1;
+  const endButton = Math.min(currentPageGroup * buttonsPerGroup, totalPage);
+
+  const prevGroupButton = document.getElementById('list-previous');
+  const nextGroupButton = document.getElementById('list-next');
+
+  for (let i = startButton; i <= endButton; i++) {
+    const button = document.createElement('button');
+    button.textContent = i;
+    button.classList.add('pagination__item');
+    if (i === nowPage) button.classList.add('pagination__item--selected');
+    button.addEventListener('click', (e) => {
+      prevGroupButton.removeEventListener('click', prevGroupButtonClickHandler);
+      nextGroupButton.removeEventListener('click', nextGroupButtonClickHandler);
+      nowPageValue = Number(e.target.textContent);
+      getList(inputVal, value);
+      removeAllCheck();
+    });
+    paginationList.appendChild(button);
+  }
+
+  function prevGroupButtonClickHandler() {
+    prevGroupButton.removeEventListener('click', prevGroupButtonClickHandler);
+    prevGroupButton.removeAttribute('disabled');
+    currentPageGroup -= 1;
+    const startButton = (currentPageGroup - 1) * buttonsPerGroup + 1;
+    nowPageValue = startButton;
+    getList(inputVal, value);
+    removeAllCheck();
+    if (currentPageGroup > 1) {
+      prevGroupButton.removeAttribute('disabled');
+    } else {
+      prevGroupButton.setAttribute('disabled', '');
+    }
+  }
+  function nextGroupButtonClickHandler() {
+    nextGroupButton.removeEventListener('click', nextGroupButtonClickHandler);
+    const table = document.querySelector('.table__list');
+    table.innerHTML = '';
+    currentPageGroup += 1;
+    const startButton = (currentPageGroup - 1) * buttonsPerGroup + 1;
+    nowPageValue = startButton;
+    getList(inputVal, value);
+    removeAllCheck();
+    if (currentPageGroup < totalPageGroups) {
+      nextGroupButton.removeAttribute('disabled');
+    } else {
+      nextGroupButton.setAttribute('disabled', '');
+    }
+  }
+
+  // 이전 페이지 그룹 버튼
+  if (currentPageGroup > 1) {
+    prevGroupButton.removeAttribute('disabled');
+    prevGroupButton.addEventListener('click', prevGroupButtonClickHandler);
+  }
+
+  // 다음 페이지 그룹 버튼
+  if (currentPageGroup < totalPageGroups) {
+    nextGroupButton.removeAttribute('disabled');
+    nextGroupButton.addEventListener('click', nextGroupButtonClickHandler);
+  }
+}
 
 // 체크박스 input 대체
 const table = document.querySelector('.table');
@@ -168,14 +327,13 @@ const checkboxes = table.querySelectorAll('.checkbox label');
 let checkAll = document.getElementById('checkAll');
 
 // span check시 input checked 설정
-checkboxes.forEach((selectCheck) => {
-  selectCheck.addEventListener('click', (e) => {
-    const target = e.target;
-    const checkbox = target.closest('.checkbox');
-    const inputCheck = checkbox.firstElementChild;
-    checkbox.classList.toggle('checkbox--checked');
-    inputCheck.toggleAttribute('checked');
-  });
+
+checkAll.addEventListener('click', (e) => {
+  const target = e.target;
+  const checkbox = target.closest('.checkbox');
+  const inputCheck = checkbox.firstElementChild;
+  checkbox.classList.toggle('checkbox--checked');
+  inputCheck.toggleAttribute('checked');
 });
 
 // 전체 선택 체크박스가 check되면 모든 체크박스 check
@@ -191,6 +349,14 @@ checkAll.addEventListener('input', (e) => {
   });
 });
 
+// 전체 선택 체크박스 선택 해제
+function removeAllCheck() {
+  let checkAll = document.getElementById('checkAll');
+  checkAll.removeAttribute('checked');
+  checkAll.parentElement.classList.remove('checkbox--checked');
+  window.scrollTo(0, 0);
+}
+
 // 선택한 데이터 삭제
 const delButton = document.getElementById('delButton');
 delButton.addEventListener('click', async () => {
@@ -199,14 +365,15 @@ delButton.addEventListener('click', async () => {
   for (let i = 0; i < checkedAll.length; i++) {
     const uid = checkedAll[i].firstElementChild.id;
     const photoURL = ref(storage, 'images/' + uid);
+    const photoLabel = document.querySelector('.photo-wrap').ariaLabel;
     try {
-      await deleteObject(photoURL);
+      if (photoLabel !== '이미지 없음') await deleteObject(photoURL);
       const userRef = doc(getFirestore(), 'employee', uid);
       await deleteDoc(userRef);
+      alert('삭제가 완료되었습니다.');
+      window.location.href = '/employee_list.html';
     } catch (error) {
-      reportError(error);
+      console.log(error.code);
     }
   }
-  alert('삭제가 완료되었습니다.');
-  window.location.href = '/';
 });

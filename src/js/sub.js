@@ -28,6 +28,8 @@ import {
   deleteDoc,
   deleteField,
 } from 'firebase/firestore/lite';
+import inputFocusEvent from './basic.js';
+import { loading, hideLoading } from './loading.js';
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -51,7 +53,7 @@ let email = document.getElementById('employee-email');
 let phone = document.getElementById('employee-phone');
 let grade = document.getElementById('employee-grade');
 let photo = document.getElementById('employee-img');
-let uid, urlCheck, storageURL;
+let uid, urlCheck, storageURL, previewCheck;
 
 // 파라미터값 가져오기
 const urlParams = new URL(location.href).searchParams;
@@ -82,6 +84,7 @@ function addPreview(target) {
     preview.style.backgroundImage = `url(${target}`;
     imgCont.removeChild(label);
     imgCont.prepend(preview);
+    previewCheck = true;
   }
   //clearEvent 함수 실행 (이벤트 핸들러 장착)
   clearEvent();
@@ -102,6 +105,7 @@ photo.addEventListener('change', (e) => {
 
 // 저장된 데이터 input value로 반환 함수
 async function employeeUpdate() {
+  loading();
   const q = query(collection(db, 'employee'), where('uid', '==', checkUid));
   const searchUid = await getDocs(q);
   searchUid.forEach((doc) => {
@@ -115,6 +119,7 @@ async function employeeUpdate() {
       urlCheck = true;
     }
   });
+  hideLoading();
 }
 
 // 정보 입력 됐는지 확인 (유효성 검사)
@@ -129,7 +134,7 @@ function inputCheck(name, email, phone, grade) {
     checkResult = true;
   }
   return new Promise(function (resolve, reject) {
-    if (checkResult) resolve(checkResult);
+    if (checkResult) resolve();
     else reject('입력되지 않은 정보가 있습니다');
   });
 }
@@ -192,7 +197,7 @@ async function addEmployeePhotoUrl(userRef, photoVal, storageURL, photoURL) {
       const employee = doc.data();
       return (img = employee.imgUrl);
     });
-    if (img && !storageURL) {
+    if (!previewCheck && img && !storageURL) {
       await updateDoc(userRef, { imgUrl: deleteField() });
       await deleteObject(photoURL);
     }
@@ -225,7 +230,7 @@ saveButton.addEventListener('click', async () => {
   const userRef = doc(getFirestore(), 'employee', uid);
 
   inputCheck(name, email, phone, grade)
-    .then(async (checkResult) => {
+    .then(async () => {
       await addEmployeePhoto(photoURL, photoVal);
       await addEmployeeInfo(userRef, uid);
       await addEmployeePhotoUrl(userRef, photoVal, storageURL, photoURL);
@@ -234,15 +239,13 @@ saveButton.addEventListener('click', async () => {
     .catch((error) => {
       alert(error);
     });
-
-  //      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  //      const uid = userCredential.user.uid;
 });
 
 // preview 이미지 클릭 시 preview 삭제
 function clearEvent() {
   const clearButton = document.querySelector('.upload-clear');
   clearButton.addEventListener('click', (e) => {
+    previewCheck = false;
     const target = e.target;
     const preview = target.parentElement;
     const imgCont = preview.parentElement;
@@ -261,7 +264,46 @@ function clearEvent() {
       photo = e.target;
     });
     label.appendChild(input);
-
     imgCont.prepend(label);
   });
 }
+
+// 임직원 수정으로 변경
+function employeeEdit() {
+  const title = document.querySelector('.container__subtitle');
+  const button = document.getElementById('employee-submit');
+  if (checkUid) {
+    title.innerHTML = '임직원 수정';
+    button.innerHTML = '수정';
+  }
+}
+employeeEdit();
+
+// 임직원 삭제
+function employeeDelete() {
+  const button = document.getElementById('employee-delete');
+  button.addEventListener('click', async () => {
+    const uid = checkUid;
+    const photoURL = ref(storage, 'images/' + uid);
+    try {
+      const q = query(collection(db, 'employee'), where('uid', '==', uid));
+      const imgDoc = await getDocs(q);
+      let img;
+      imgDoc.forEach((doc) => {
+        const employee = doc.data();
+        return (img = employee.imgUrl);
+      });
+      console.log(img);
+
+      if (img) await deleteObject(photoURL);
+      const userRef = doc(getFirestore(), 'employee', uid);
+      await deleteDoc(userRef);
+      alert('삭제가 완료되었습니다.');
+      window.location.href = '/employee_list.html';
+    } catch (error) {
+      console.log(error.code);
+    }
+  });
+}
+employeeDelete();
+inputFocusEvent();
