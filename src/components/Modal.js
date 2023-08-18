@@ -80,12 +80,16 @@ export default class Modal {
     inputEmailEl.value = email;
     const inputPhoneEl = document.createElement('input');
     inputPhoneEl.setAttribute('placeholder', '핸드폰 번호');
-    inputPhoneEl.setAttribute('type', 'tel');
     inputPhoneEl.setAttribute('name', 'phone');
     inputPhoneEl.value = phone;
-    const inputDepartmentEl = document.createElement('input');
+    const inputDepartmentEl = document.createElement('select');
     inputDepartmentEl.setAttribute('placeholder', '소속부서');
     inputDepartmentEl.setAttribute('name', 'department');
+    inputDepartmentEl.innerHTML = `
+      <option value="FE"> FE
+      <option value="BE"> BE
+      <option value="PM"> PM
+    `;
     inputDepartmentEl.value = department;
 
     infoTxtEl.append(
@@ -98,9 +102,6 @@ export default class Modal {
 
     // save button
     const saveBtnEl = new SaveButton(this.type, this.id).el;
-    saveBtnEl.addEventListener('click', () => {
-      this.el.remove();
-    });
 
     // modal close
     const closeBtnEl = document.createElement('button');
