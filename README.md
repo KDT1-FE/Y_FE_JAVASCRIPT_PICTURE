@@ -36,6 +36,16 @@ https://villagers-list.web.app/
 - [ ] 사진을 편집할 수 있는 기능을 추가해 보세요.
 - [ ] LocalStorage 사용
 
+## [기술 스택]
+
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=black">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+<img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=Firebase&logoColor=black">
+<br>
+<img src="https://img.shields.io/badge/html5-e34f26?style=for-the-badge&logo=Html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572b6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-f7df1e?style=for-the-badge&logo=Javascript&logoColor=black">
+
 ## [구현 중 버그 관련]
 
 💡사용자 입장에서 사이트를 이용해보며 발생할 수 있는 버그를 최소한으로 하기 위해 노력했습니다.
