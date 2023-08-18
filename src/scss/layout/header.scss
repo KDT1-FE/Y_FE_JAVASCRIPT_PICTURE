@@ -1,0 +1,23 @@
+#header {
+    background-color: $grayFA;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.6rem 1.6rem 0.8rem;
+        .header-left {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            .logo {
+                width: 3.2rem;
+                height: 3.2rem;
+            }
+            .user-id {
+                font-size: 1.4rem;
+                cursor: pointer;
+                font-weight: 600;
+            }
+        }
+    }
+}

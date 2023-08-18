@@ -1,0 +1,19 @@
+// abstracts
+@import './abstracts/mixins.scss'; // 믹스인
+@import './abstracts/variables.scss'; // 변수
+
+// base
+@import './base/common.scss'; // 공통
+@import './base/reset.scss'; // 리셋
+@import './base/typography.scss'; // 글꼴
+
+// components
+@import './components/btn.scss'; // 버튼
+@import './components/input.scss'; // 인풋
+
+// layout
+@import './layout/header.scss'; // 헤더
+@import './layout/notice.scss'; // 공지
+@import './layout/profile-list.scss'; // 프로필 리스트
+@import './layout/upload.scss'; // 업로드
+@import './layout/footer.scss'; // 푸터

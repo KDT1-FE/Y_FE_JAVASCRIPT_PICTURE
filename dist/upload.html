@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>쿠키 임직원</title>
+        <link rel="stylesheet" href="/index.e8265c92.css">
+        <link rel="icon" href="https://cdn.icon-icons.com/icons2/1494/PNG/512/cookies_102939.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/97e703ac45.js" crossorigin="anonymous"></script>
+        <script defer="" src="/upload.ed908fa2.js"></script>
+    </head>
+    <body>
+        <header id="header">
+            <div class="container">
+                <div class="header-left">
+                    <h1 class="logo">
+                        <a href="/index.html"><img src="/logo.e4bf3f87.png" alt="로고" loading="lazy"></a>
+                    </h1>
+                    <div class="user-id btn">ID</div>
+                </div>
+                <div class="header-right">
+                    <div class="login">
+                        <button class="btn btn-login" type="button">
+                            로그인
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="upload">
+                <div class="inner">
+                    <form>
+                        <div class="image-wrap">
+                            <img class="image" src="/image.37111abb.png">
+                            <input class="input-file" type="file" accept="image/*" required="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="util-btns">
+                                <button class="btn btn-modify" type="button">수정</button>
+                                <button class="btn btn-delete" type="button">삭제</button>
+                            </div>
+                            <label for="rank">직급</label>
+                            <select class="input-rank" name="rank" id="rank">
+                                <option value="사원">사원</option>
+                                <option value="주임">주임</option>
+                                <option value="대리">대리</option>
+                                <option value="부장">부장</option>
+                                <option value="과장">과장</option>
+                                <option value="사장">사장</option>
+                            </select>
+                            <label for="name">이름</label>
+                            <input class="input-name" name="name" id="name" type="text" placeholder="이름을 입력해주세요">
+                            <label for="email">이메일</label>
+                            <input class="input-email" name="email" id="email" type="email" placeholder="이메일을 입력해주세요">
+                            <label for="self">자기소개</label>
+                            <textarea class="input-self" name="self" id="self" cols="30" rows="10"></textarea>
+                            <div class="btns">
+                                <button class="btn btn-add btn-submit" type="button">
+                                    등록
+                                </button>
+                                <button class="btn btn-cancel" type="button">
+                                    취소
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="/index.html"><img src="/logo.e4bf3f87.png" alt="로고" loading="lazy">
+                    </a>
+                </h1>
+                <span>&#169; 2023 Cookie, Inc</span>
+            </div>
+        </footer>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>        
+    </body>
+</html>

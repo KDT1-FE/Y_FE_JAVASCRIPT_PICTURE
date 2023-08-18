@@ -1,0 +1,43 @@
+.btn {
+    padding: 0.8rem 3rem;
+}
+
+.btn:hover {
+    border-radius: 0.6rem;
+    background-color: rgba(208, 215, 222, 0.32);
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    background-color: $green37;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 0 3rem;
+    border-radius: 0.6rem;
+    white-space: nowrap;
+    font-weight: 500;
+}
+.btn-add:hover {
+    background-color: rgb(24, 116, 50);
+}
+
+.btn-delete {
+    white-space: nowrap;
+    border-radius: 0.6rem;
+    border: 1px solid rgb(208, 215, 222);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.btn-modify {
+    white-space: nowrap;
+    border-radius: 0.6rem;
+    border: 1px solid rgb(208, 215, 222);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.btn-delete:hover {
+    background-color: $grayFA;
+}

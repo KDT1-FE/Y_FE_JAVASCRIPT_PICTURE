@@ -1,0 +1,18 @@
+.notice {
+    .inner {
+        .text {
+            padding: 2.4rem;
+            border: 1px solid $grayFA;
+            border-radius: 0.6rem;
+            text-align: center;
+            p {
+                font-size: 1.4rem;
+                span {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    margin-bottom: 0.4rem;
+                }
+            }
+        }
+    }
+}

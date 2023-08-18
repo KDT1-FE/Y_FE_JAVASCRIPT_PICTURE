@@ -1,0 +1,5 @@
+@mixin isMobile($width: 640px) {
+    @media (min-width: 0) and (max-width: $width) {
+        @content;
+    }
+}
