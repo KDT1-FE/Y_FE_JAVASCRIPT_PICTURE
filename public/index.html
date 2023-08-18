@@ -15,6 +15,12 @@
       rel="preload"
       as="style"
       onload="this.rel = 'stylesheet'"
+      href="/loading.css"
+    />
+    <link
+      rel="preload"
+      as="style"
+      onload="this.rel = 'stylesheet'"
       href="/main.css"
     />
     <link
@@ -27,8 +33,23 @@
     href="https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css"
     rel="stylesheet"
   >  
+  <!-- <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff" rel="stylesheet"> -->
   </head>
   <body>
+
+    <div id="wrap">       
+            
+      <!-- 로딩 -->
+      <div id="loading" class="loading">   
+          <div>                  
+            <p class="loading_txt">....<span class="hi">🙋</span>....</p>
+            <p class="loading_txt"> ....로....</p>
+            <p class="loading_txt"> ....오....</p>
+            <p class="loading_txt"> ....오....</p>
+            <p class="loading_txt"> ....딩....</p>
+            <p class="loading_txt">....<span class="rotate">🌞</span>....</p>              
+        </div>                                 
+      </div>
     <header>
       <h1>🙋‍♂️---logo--- 🙋‍♀️</h1>
       <nav class="nav">
@@ -69,7 +90,7 @@
   
       </div>
     </main>
-
+    <script defer src="loading.js"></script>
     <script      
       src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"
     ></script>
@@ -98,7 +119,7 @@
       src="https://kit.fontawesome.com/3e1fab0201.js"
       crossorigin="anonymous"
     ></script>
-    <script defer type="module" defer src="main.js"></script>
+    <script defer type="module" src="main.js"></script>
     <script defer src="login_ck.js"></script>
 
   </body>
