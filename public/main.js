@@ -1,153 +1,15 @@
-let soldierDummy = [
-  {
-    이름: "윤석민",
-    부서: "지휘부",
-    직급: "여단장",
-    생년월일: "1998.07.13",
-    사진: "assets/images/0.jpg",
-  },
-  {
-    이름: "손흥민",
-    부서: "지휘부",
-    직급: "1대대장",
-    생년월일: "1992.07.08",
-    사진: "assets/images/1.jpg",
-  },
-  {
-    이름: "김민재",
-    부서: "지휘부",
-    직급: "2대대장",
-    생년월일: "1996.11.15",
-    사진: "assets/images/2.jpg",
-  },
-  {
-    이름: "이강인",
-    부서: "지휘부",
-    직급: "3대대장",
-    생년월일: "2001.02.19",
-    사진: "assets/images/3.jpg",
-  },
-  {
-    이름: "황희찬",
-    부서: "지휘부",
-    직급: "4대대장",
-    생년월일: "1996.01.26",
-    사진: "assets/images/4.jpg",
-  },
-  {
-    이름: "황의조",
-    부서: "작전과",
-    직급: "작전과장",
-    생년월일: "1992.08.28",
-    사진: "assets/images/5.jpg",
-  },
-  {
-    이름: "김진수",
-    부서: "작전과",
-    직급: "작전장교",
-    생년월일: "1992.06.13",
-    사진: "assets/images/6.jpg",
-  },
-  {
-    이름: "엄원상",
-    부서: "작전과",
-    직급: "작전병",
-    생년월일: "1999.01.06",
-    사진: "assets/images/7.jpg",
-  },
-  {
-    이름: "황인범",
-    부서: "인사과",
-    직급: "인사과장",
-    생년월일: "1996.09.20",
-    사진: "assets/images/8.jpg",
-  },
-  {
-    이름: "정우영",
-    부서: "인사과",
-    직급: "인사장교",
-    생년월일: "1989.12.14",
-    사진: "assets/images/9.jpg",
-  },
-  {
-    이름: "홍정호",
-    부서: "인사과",
-    직급: "인사행정병",
-    생년월일: "1989.08.12",
-    사진: "assets/images/10.jpg",
-  },
-  {
-    이름: "박지성",
-    부서: "본부중대",
-    직급: "본부중대장",
-    생년월일: "1981.02.25",
-    사진: "assets/images/11.jpg",
-  },
-  {
-    이름: "차범근",
-    부서: "본부중대",
-    직급: "본부행정보급관",
-    생년월일: "1953.05.22",
-    사진: "assets/images/12.jpg",
-  },
-  {
-    이름: "세징야",
-    부서: "본부중대",
-    직급: "본부1분대장",
-    생년월일: "1989.11.29",
-    사진: "assets/images/13.jpg",
-  },
-  {
-    이름: "제르소",
-    부서: "본부중대",
-    직급: "본부2분대장",
-    생년월일: "1991.02.23",
-    사진: "assets/images/14.jpg",
-  },
-  {
-    이름: "조현우",
-    부서: "통신중대",
-    직급: "통신중대장",
-    생년월일: "1991.09.25",
-    사진: "assets/images/15.jpg",
-  },
-  {
-    이름: "이천수",
-    부서: "통신중대",
-    직급: "통신행정보급관",
-    생년월일: "1981.07.09",
-    사진: "assets/images/16.jpg",
-  },
-  {
-    이름: "구스타보",
-    부서: "통신중대",
-    직급: "통신1분대장",
-    생년월일: "1994.03.29",
-    사진: "assets/images/17.jpg",
-  },
-  {
-    이름: "바코",
-    부서: "통신중대",
-    직급: "통신2분대장",
-    생년월일: "1993.01.29",
-    사진: "assets/images/18.jpg",
-  },
-];
+const db = firebase.firestore();
+const storage = firebase.storage();
 
-const container = document.querySelector(".soldier-container");
-const deleteButton = document.getElementById("delete-soldier");
-let deleteMode = false;
-const selectedIndexes = [];
+let soldierDB = [];
 
-const deleteModeButton = document.querySelectorAll(".delete-mode-buttons");
-const selectedSoldiers = document.querySelectorAll(".selected");
-const deleteCancelButtons = document.querySelectorAll(".delete-cancel");
-
-// 데이터를 HTML 요소로 painting하는 함수
 const paintSoldierElement = () => {
-  soldierDummy.forEach((soldier, index) => {
+  soldierDB.forEach((soldier, index) => {
     const soldierDiv = document.createElement("div");
     soldierDiv.classList.add("soldier");
+    soldierDiv.id = index;
+    if (index % 2) soldierDiv.classList.add("right");
+    else soldierDiv.classList.add("left");
 
     soldierDiv.addEventListener("click", () => {
       if (deleteMode) {
@@ -169,29 +31,94 @@ const paintSoldierElement = () => {
       const img = document.createElement("img");
       img.src = soldier.사진;
       soldierPhotoDiv.appendChild(img);
+      if (index > 5) {
+        img.style.loading = "lazy";
+      }
+    } else {
+      const img = document.createElement("img");
+      img.src = "";
+      img.style.display = "none";
+      soldierPhotoDiv.appendChild(img);
     }
     soldierDiv.appendChild(soldierPhotoDiv);
 
     const soldierInfoDiv = document.createElement("div");
     soldierInfoDiv.classList.add("soldier-info");
-    for (const key in soldier) {
-      if (key === "사진") break;
-      const itemDiv = document.createElement("div");
-      itemDiv.classList.add(key.toLowerCase());
-      itemDiv.textContent =
-        key === "이름"
-          ? soldier[key]
-            ? soldier[key]
-            : "공석"
-          : key + ": " + soldier[key];
-      soldierInfoDiv.appendChild(itemDiv);
-    }
+
+    const 이름Div = document.createElement("div");
+    이름Div.classList.add("이름");
+    이름Div.innerText = soldier.이름 ? soldier.이름 : "공석";
+    soldierInfoDiv.appendChild(이름Div);
+
+    const 부서Div = document.createElement("div");
+    부서Div.classList.add("부서");
+    부서Div.innerText = "부서 : " + soldier.부서;
+    soldierInfoDiv.appendChild(부서Div);
+
+    const 직급Div = document.createElement("div");
+    직급Div.classList.add("직급");
+    직급Div.innerText = "직급 : " + soldier.직급;
+    soldierInfoDiv.appendChild(직급Div);
+
+    const 생년월일Div = document.createElement("div");
+    생년월일Div.classList.add("생년월일");
+    생년월일Div.innerText = "생년월일 : " + soldier.생년월일;
+    soldierInfoDiv.appendChild(생년월일Div);
+
     soldierDiv.appendChild(soldierInfoDiv);
+
+    const 수정Btn = document.createElement("button");
+    수정Btn.classList.add("edit-button");
+    수정Btn.innerText = "수정하기";
+    soldierDiv.appendChild(수정Btn);
+
+    수정Btn.addEventListener("click", () => {
+      const soldierDiv = 수정Btn.closest(".soldier");
+      const 인덱스 = soldierDiv.id;
+      const 사진 = soldierDiv.querySelector("img").src;
+      const 이름 = soldierDiv.querySelector(".이름").textContent;
+      const 부서 = soldierDiv.querySelector(".부서").textContent.slice(5);
+      const 직급 = soldierDiv.querySelector(".직급").textContent.slice(5);
+      const 생년월일 = soldierDiv
+        .querySelector(".생년월일")
+        .textContent.slice(7);
+
+      openEditModal(
+        사진,
+        이름 === "공석" ? "" : 이름,
+        부서,
+        직급,
+        생년월일,
+        인덱스
+      );
+    });
 
     container.appendChild(soldierDiv);
   });
 };
-paintSoldierElement();
+
+async function fetchDataAndPaint() {
+  try {
+    const snapshot = await db.collection("user").orderBy("timestamp").get();
+    snapshot.forEach((doc) => {
+      soldierDB.push(doc.data());
+    });
+    paintSoldierElement();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+fetchDataAndPaint();
+
+const container = document.querySelector(".soldier-container");
+const deleteButton = document.getElementById("delete-soldier");
+let deleteMode = false;
+const selectedIndexes = [];
+
+const deleteModeButton = document.querySelectorAll(".delete-mode-buttons");
+const selectedSoldiers = document.querySelectorAll(".selected");
+const deleteCancelButtons = document.querySelectorAll(".delete-cancel");
 
 const handleDeleteModeOff = () => {
   deleteMode = false;
@@ -220,12 +147,15 @@ const handleDeleteModeOn = () => {
 
 const handleDeleteSoldiers = () => {
   // 선택된 장병 공석으로 변경
-  selectedIndexes.sort((a, b) => b - a); // 뒤에서부터 삭제해야 인덱스가 꼬이지 않음
+  selectedIndexes.sort((a, b) => b - a);
   selectedIndexes.forEach((index) => {
-    soldierDummy[index].이름 = "";
-    if (soldierDummy[index].사진) soldierDummy[index].사진 = "";
+    const nullData = {
+      이름: "",
+      생년월일: "",
+      사진: "",
+    };
+    db.collection("user").doc(`${index}`).update(nullData);
   });
-
   // 선택 해제
   selectedIndexes.length = 0;
   const selectedSoldiers = document.querySelectorAll(".selected");
@@ -234,7 +164,11 @@ const handleDeleteSoldiers = () => {
   });
   // 장병 목록 다시 그리기
   container.innerHTML = "";
-  paintSoldierElement();
+  setTimeout(() => {
+    alert("삭제하시겠습니까?");
+    location.reload();
+  }, 500);
+  fetchDataAndPaint();
 };
 
 deleteButton.addEventListener("click", () => {
@@ -259,3 +193,109 @@ deleteConfirmButtons.forEach((item) => {
     handleDeleteModeOff();
   });
 });
+
+// 수정
+function openEditModal(사진, 이름, 부서, 직급, 생년월일, 인덱스) {
+  const modalDiv = document.querySelector("#edit-modal");
+  modalDiv.querySelector(".modal").id = 인덱스;
+  modalDiv.querySelector("img").src = 사진;
+  modalDiv.querySelector("#이름").value = 이름;
+  modalDiv.querySelector("#부서").value = 부서;
+  modalDiv.querySelector("#직급").value = 직급;
+  modalDiv.querySelector("#생년월일").value = 생년월일;
+  modalDiv.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+const editModal = document.querySelector("#edit-modal");
+const editModalBg = editModal.querySelector(".modal-background");
+const editConfirmButton = editModal.querySelector("#confirm-modal-button");
+const editCancelButton = editModal.querySelector("#close-modal-button");
+const editPreviewImage = editModal.querySelector("#preview-image");
+
+const handleEditModalClose = () => {
+  document.body.style.overflow = "";
+  editModal.classList.add("hidden");
+  editModal.querySelector(".modal").removeAttribute("id");
+};
+
+editModalBg.addEventListener("click", handleEditModalClose);
+editCancelButton.addEventListener("click", handleEditModalClose);
+
+function handleFileUpload(event) {
+  const selectedFile = event.target.files[0];
+  if (selectedFile) {
+    editPreviewImage.style.display = "block";
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      editPreviewImage.src = event.target.result;
+    };
+    reader.readAsDataURL(selectedFile);
+  } else {
+    editPreviewImage.style.display = "none";
+    editPreviewImage.src = "";
+  }
+}
+
+const editmodalInputPhoto = editModal.querySelector(".modal-input-photo");
+editmodalInputPhoto.addEventListener("click", () => {
+  const fileInput = editModal.querySelector("#modal-photo-button");
+  fileInput.click();
+});
+
+const editFileInput = editModal.querySelector("#modal-photo-button");
+editFileInput.addEventListener("change", handleFileUpload);
+
+editConfirmButton.addEventListener("click", () => {
+  editDocument();
+});
+
+async function editDocument() {
+  try {
+    let imgUrl = ""; 
+    let file = editModal.querySelector("#modal-photo-button").files[0]; // 선택된 파일 가져오기
+
+    if (file) {
+      let storageRef = storage.ref();
+      let path = storageRef.child("image/" + file.name);
+      await path.put(file);
+      imgUrl = await path.getDownloadURL();
+    } else {
+      imgUrl = editModal.querySelector("#preview-image").src;
+    }
+
+    let 이름 = editModal.querySelector("#이름");
+    let 부서 = editModal.querySelector("#부서");
+    let 직급 = editModal.querySelector("#직급");
+    let 생년월일 = editModal.querySelector("#생년월일");
+
+    const docRef = db
+      .collection("user")
+      .doc(editModal.querySelector(".modal").id);
+    const docSnapshot = await docRef.get();
+    const timestampValue = docSnapshot.get("timestamp");
+
+    let registerInfo = {
+      timestamp: timestampValue,
+      이름: 이름.value,
+      부서: 부서.value,
+      직급: 직급.value,
+      생년월일: 생년월일.value,
+      사진: imgUrl,
+    };
+
+    await db
+      .collection("user")
+      .doc(editModal.querySelector(".modal").id)
+      .set(registerInfo);
+
+    setTimeout(() => {
+      editModal.querySelector(".modal").removeAttribute("id");
+      alert("수정하시겠습니까?");
+      location.reload();
+    }, 500);
+  } catch (error) {
+    console.error("Error editing document:", error);
+  }
+}
+

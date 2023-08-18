@@ -1,5 +1,5 @@
 body {
-  padding: 50px 100px;
+  padding: 60px 100px;
   font-family: Pretendard !important;
 }
 .main-header {
@@ -104,8 +104,55 @@ body {
   border: 2px solid var(--color-outline);
   border-radius: 8px;
   box-sizing: border-box;
-  gap: 20px;
+  justify-content: space-evenly;
+  background-color: #ffffff;
 }
+
+.left {
+  transition: transform ease 2s;
+}
+
+.left:hover {
+  transform: translate(50%, 50%) scale(1.2);
+  z-index: 2;
+}
+.right {
+  transition: transform ease 2s;
+}
+
+.right:hover {
+  transform: translate(-50%, 50%) scale(1.2);
+  z-index: 2;
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.soldier:hover .edit-button {
+  display: block;
+  animation: enlarge 2s ease forwards;
+}
+
+.edit-button {
+  display: none;
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  background-color: var(--color-primary);
+  font-family: Pretendard;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  color: var(--color-textOnPrimary);
+  flex-shrink: 0;
+}
+
 .selected {
   border: 2px solid var(--color-secondary);
 }
@@ -131,9 +178,12 @@ body {
   object-fit: cover;
   box-sizing: border-box;
   border: 1px solid #f5f5f5;
+  flex-shrink: 0;
 }
 .soldier-info {
   display: flex;
+  width: 146px;
+  flex-shrink: 0;
   flex-direction: column;
   gap: 10px;
 }
@@ -161,7 +211,7 @@ body {
     background-color: var(--color-secondary);
   }
 }
-#delete-confirm{
+#delete-confirm {
   font-family: Pretendard;
 }
 
@@ -186,7 +236,7 @@ body {
 
 .modal {
   position: fixed;
-  width: 35%;
+  width: 40%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -202,13 +252,13 @@ body {
 }
 .modal-input {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 2rem;
   margin-bottom: 2rem;
 }
 .modal-input-photo {
-  width: 40%;
-  aspect-ratio: 1/1.2;
+  height: 168px;
+  aspect-ratio: 140/168;
   background-color: var(--color-outline);
   background-image: url("/public/assets/icons/cameraIcon.svg");
   background-repeat: no-repeat;
@@ -216,10 +266,26 @@ body {
   background-size: 50px;
   border-radius: 8px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .modal-input-photo img {
-  width: 167px;
+  position: absolute;
+  height: 168px;
+  aspect-ratio: 140/168;
+  object-fit: cover;
+  border-radius: 8px;
 }
+#modal-photo-button {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .modal-input-text {
   display: flex;
   flex-direction: column;
@@ -230,12 +296,12 @@ body {
   font-size: 1.1rem;
   margin-bottom: 0.7rem;
   border: none;
-  border-bottom: 1px solid #BFBFBF;
+  border-bottom: 1px solid #bfbfbf;
   padding: 4px 0;
-  &::placeholder{
+  &::placeholder {
     color: var(--color-textMuted);
   }
-  &:focus{
+  &:focus {
     border-bottom-color: var(--color-primary);
     border-bottom-width: 1.5px;
   }
@@ -246,12 +312,22 @@ body {
 .modal-button {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-between;
 }
 .modal-button button {
+  font-family: Pretendard;
+  font-size: 1rem;
+  width: calc(50% - 1rem);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  cursor: pointer;
+  padding: 15px 0;
 }
-
-/* @media 992px, 576px, */
+#confirm-modal-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-textOnPrimary);
+}
 
 @media (max-width: 1140px) {
   html {
@@ -270,6 +346,13 @@ body {
   .main-control-search {
     margin-top: 20px;
     width: 100%;
+  }
+  .soldier {
+    width: calc(50% - 10px);
+    padding: 10px 10px;
+  }
+  .soldier-info {
+    width: 127px;
   }
 }
 
@@ -295,6 +378,35 @@ body {
   .soldier-photo img {
     width: 100px;
   }
+  .soldier-info {
+    width: 110px;
+  }
+  .left {
+    transition: transform ease 2s;
+  }
+
+  .left:hover {
+    transform: translate(0%, 30%) scale(1.1);
+    z-index: 2;
+  }
+  .right {
+    transition: transform ease 2s;
+  }
+
+  .right:hover {
+    transform: translate(0%, 30%) scale(1.1);
+    z-index: 2;
+  }
+  
+  .modal-input-photo {
+    height: 120px;
+  }
+  .modal-input-photo img {
+    height: 120px;
+  }
+  .modal-input-text {
+    width: 150px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -316,7 +428,14 @@ body {
   }
   .soldier {
     padding: 10px;
-    gap: 10px;
+    gap: 5px;
+  }
+  .soldier-info {
+    width: 92px;
+  }
+  .edit-button {
+    width: 50px;
+    height: 27px;
   }
   .soldier-photo {
     width: 60px;
@@ -326,5 +445,11 @@ body {
   }
   .이름 {
     margin-bottom: 3px;
+  }
+  .modal-input-photo {
+    height: 72px;
+  }
+  .modal-input-photo img {
+    height: 72px;
   }
 }

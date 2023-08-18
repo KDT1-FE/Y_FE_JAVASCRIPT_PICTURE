@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>여단 장병 관리 체계</title>
     <link rel="stylesheet" href="./styles/font.css" />
     <link rel="stylesheet" href="./styles/general.css" />
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <header class="main-header">
-      <h1><b>석민 여단</b> 장병 관리 시스템</h1>
+      <h1><b>석민 여단</b> 장병 관리 체계</h1>
       <img src="./assets/images/hoguk.jpg" alt="" />
     </header>
-    <section class="main-control">
+    <nav class="main-control">
       <div class="main-control-btn">
-        <button title="등록 페이지로 이동">장병 신규 등록</button>
+        <button title="등록 페이지로 이동" id="register-soldier">
+          장병 신규 등록
+        </button>
         <button class="delete-off" id="delete-soldier" title="선택 직원 삭제">
           장병 삭제
         </button>
@@ -30,7 +32,7 @@
           placeholder="이름 또는 부서명으로 검색하기"
         />
       </div>
-    </section>
+    </nav>
     <main>
       <div class="soldier-container"></div>
       <div class="delete-mode-buttons hidden" id="bottom-buttons">
@@ -39,40 +41,119 @@
       </div>
     </main>
 
-    <div class="modal-background"></div>
-    <div class="modal">
-      <h1 class="modal-title">장병 신규 등록</h1>
-      <div class="modal-input">
-        <div class="modal-input-photo"></div>
-        <div class="modal-input-text">
-          <div class="modal-input-label">이름</div>
-          <input type="text" placeholder="이름을 입력해주세요">
-          <div class="modal-input-label">부서</div>
-          <input type="text" placeholder="부서를 입력해주세요">
-          <div class="modal-input-label">직급</div>
-          <input type="text" placeholder="직급을 입력해주세요">
-          <div class="modal-input-label">생년월일</div>
-          <input type="text" placeholder="yyyy/MM/dd">
+    <div class="modal-container hidden">
+      <div class="modal-background"></div>
+      <div class="modal">
+        <h1 class="modal-title">장병 신규 등록</h1>
+        <div class="modal-input">
+          <div style="display: flex; align-items: center">
+            <div class="modal-input-photo">
+              <input type="file" name="" id="modal-photo-button" />
+              <img
+                id="preview-image"
+                src=""
+                alt="사진 미리보기"
+                style="display: none"
+              />
+            </div>
+          </div>
+          <div class="modal-input-text">
+            <div class="modal-input-label">이름</div>
+            <input
+              type="text"
+              name="이름"
+              id="이름"
+              placeholder="이름을 입력해주세요"
+            />
+            <div class="modal-input-label">부서</div>
+            <input
+              type="text"
+              name="부서"
+              id="부서"
+              placeholder="부서를 입력해주세요"
+            />
+            <div class="modal-input-label">직급</div>
+            <input
+              type="text"
+              name="직급"
+              id="직급"
+              placeholder="직급을 입력해주세요"
+            />
+            <div class="modal-input-label">생년월일</div>
+            <input
+              type="text"
+              name="생년월일"
+              id="생년월일"
+              placeholder="ex)1998.07.13"
+            />
+          </div>
+        </div>
+        <div class="modal-button">
+          <button id="close-modal-button">취소</button>
+          <button id="confirm-modal-button">등록</button>
         </div>
       </div>
-      <div class="modal-button">
-        <button id="closeModalButton">취소</button>
-        <button id="confirmModalButton">등록</button>
+    </div>
+
+    <div class="modal-container hidden" id="edit-modal">
+      <div class="modal-background"></div>
+      <div class="modal">
+        <h1 class="modal-title">장병 수정</h1>
+        <div class="modal-input">
+          <div style="display: flex; align-items: center">
+            <div class="modal-input-photo">
+              <input type="file" name="" id="modal-photo-button" />
+              <img
+                id="preview-image"
+                src=""
+                alt="사진 업로드"
+              />
+            </div>
+          </div>
+          <div class="modal-input-text">
+            <div class="modal-input-label">이름</div>
+            <input
+              type="text"
+              name="이름"
+              id="이름"
+              placeholder="이름을 입력해주세요"
+            />
+            <div class="modal-input-label">부서</div>
+            <input
+              type="text"
+              name="부서"
+              id="부서"
+              placeholder="부서를 입력해주세요"
+            />
+            <div class="modal-input-label">직급</div>
+            <input
+              type="text"
+              name="직급"
+              id="직급"
+              placeholder="직급을 입력해주세요"
+            />
+            <div class="modal-input-label">생년월일</div>
+            <input
+              type="text"
+              name="생년월일"
+              id="생년월일"
+              placeholder="ex)1998.07.13"
+            />
+          </div>
+        </div>
+        <div class="modal-button">
+          <button id="close-modal-button">취소</button>
+          <button id="confirm-modal-button">등록</button>
+        </div>
       </div>
     </div>
 
     <script defer src="main.js"></script>
+    <script defer src="register.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
-
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyCRjX9gtLM1e32YZxb2G9vNu9bCdZyaQbM",
