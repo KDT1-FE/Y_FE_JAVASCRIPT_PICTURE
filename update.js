@@ -35,7 +35,6 @@ const leftSession = document.getElementById("pt_session");
 const trainer = document.getElementById("pt_trainer");
 const userImage = document.getElementsByClassName("section__enroll--image")[0];
 const profileImage = document.getElementById("image_upload").files[0];
-console.log(profileImage);
 readUserData().then((res) => {
   console.log(res);
 
@@ -196,9 +195,6 @@ ptSubmitButton.addEventListener("click", function () {
   const container = document.getElementsByClassName(
     "section__detail--pt_template"
   )[0];
-  console.log(container);
-  console.log(container.lastChild);
-  console.log(container.lastChild.childNodes);
   let ptSessionId = document.createElement("input");
   let ptDate = document.createElement("input");
   let ptSubject = document.createElement("textarea");

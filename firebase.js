@@ -109,8 +109,6 @@ function displayUserData(arr) {
 
   if (arr) {
     arr.forEach((element) => {
-      console.log(arr);
-      console.log(element);
       const userInfoFrame = document.createElement("ul");
       const userSelectBox = document.createElement("input");
       const userIndex = document.createElement("li");
@@ -194,7 +192,6 @@ function writePtData(
 function readPtData(userId) {
   return new Promise((resolve) => {
     const dbRef = ref(getDatabase());
-    // const customerNum = document.getElementById("customer_number");
     get(child(dbRef, `user/${userId}/pt/`))
       .then((snapshot) => {
         if (snapshot.exists()) {

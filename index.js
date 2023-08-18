@@ -4,16 +4,12 @@ readUserData();
 let deleteArr = [];
 document.addEventListener("click", function (e) {
   console.log(e.target);
-  console.log(e.currentTarget);
   const clickTarget = e.target;
-  console.log(clickTarget.classList);
   if (clickTarget.classList.contains("section__customer--checkbox")) {
     if (deleteArr.indexOf(clickTarget.nextSibling.innerHTML) === -1) {
       deleteArr.push(clickTarget.nextSibling.innerHTML);
-      console.log(deleteArr);
     } else {
       deleteArr.pop(clickTarget.nextSibling.innerHTML);
-      console.log(deleteArr);
     }
   }
 });

@@ -17,7 +17,6 @@ window.onload = function () {
 };
 
 const submitButton = document.getElementById("enroll_submit");
-console.log("check", userCount);
 submitButton.addEventListener("click", function (e) {
   const name = document.getElementsByClassName("section__enroll--name")[0];
   const phone = document.getElementsByClassName("section__enroll--phone")[0];
@@ -28,14 +27,6 @@ submitButton.addEventListener("click", function (e) {
 
   const profileImage = document.getElementById("image_upload").files[0];
   const pt = document.getElementsByClassName("section__enroll--is_pt")[0];
-  // const customerNum = document.getElementById("customer_number");
-  // console.log(customerNum.value.length);
-  // console.log(customerNum.value);
-  // if (customerNum.value.length === 0) {
-  //   customerNum.value = "1";
-  // } else {
-  //   customerNum.value = customerNum.value.length;
-  // }
 
   if (pt.checked) {
     try {

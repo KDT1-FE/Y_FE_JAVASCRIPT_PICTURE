@@ -15,8 +15,6 @@ const leftSession = document.getElementById("pt_session");
 const trainer = document.getElementById("pt_trainer");
 const imageFrame = document.getElementsByClassName("section__enroll--image")[0];
 readUserData().then((res) => {
-  console.log(res);
-
   userIdx.value = res.userIdx;
   userName.value = res.username;
   userPhone.value = res.phoneNumber;
@@ -34,8 +32,6 @@ readUserData().then((res) => {
   imageFrame.appendChild(userImage);
 
   readPtData(userIdx.value).then((res) => {
-    console.log(res);
-    console.log(res.length);
     const ptArr = [];
     if (res) {
       for (let element in res) {
@@ -57,7 +53,6 @@ readUserData().then((res) => {
         let ptOther = document.createElement("textarea");
 
         console.log(element);
-        // userPtIdx.value = res[userIdx.value].sessionIdx;
         ptSessionId.value = element.sessionIdx;
         ptSessionId.disabled = true;
         ptDate.value = todayString;
@@ -102,4 +97,3 @@ const updateButton = document.getElementById("go_update");
 updateButton.addEventListener("click", function (e) {
   window.location.href = `update.html?number=${userIdx.value}`;
 });
-// };
