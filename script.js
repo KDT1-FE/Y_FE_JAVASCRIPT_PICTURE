@@ -4,9 +4,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getDatabase, ref as dbRef, push } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"; 
 import { updateDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
-
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyDbIZHxlYJfqnLaXxXUpAUsPY_k6C3CvJY",
   authDomain: "js-project-b9579.firebaseapp.com",
