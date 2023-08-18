@@ -13,8 +13,11 @@ const firebaseConfig = {
     messagingSenderId: "337700426331",
     appId: "1:337700426331:web:a664094195022a9831257e",
     measurementId: "G-12SDLK0WQY"
-  };
-
+};
+  
+const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 // 파일 이미지 추가
 const fileInput = document.getElementById('file-upload');
