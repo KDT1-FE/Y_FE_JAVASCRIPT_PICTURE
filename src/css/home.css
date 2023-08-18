@@ -1,0 +1,174 @@
+@media (min-width: 1281px) {
+  .home-container {
+    padding: 0 10rem !important;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 1280px) {
+  .home-container {
+    padding: 0 2rem !important;
+  }
+}
+
+@media all and (max-width: 479px) {
+  .home-container {
+    padding: 0 2rem !important;
+  }
+
+  .action-bar {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    height: 7rem !important;
+    margin-bottom: 5rem;
+  }
+
+  .search-box {
+    width: 100% !important;
+  }
+
+  .button-box {
+    width: 100% !important;
+  }
+
+  .worker-box > li:last-child {
+    display: none;
+  }
+  .worker-box > li:nth-child(5) {
+    display: none;
+  }
+
+  .home-worker-img-box {
+    width: 100%;
+    height: 5rem !important;
+    cursor: pointer;
+  }
+}
+
+.wrap {
+  width: 100vw;
+}
+
+.home-container {
+  margin-top: 2rem;
+  padding: 0 10rem;
+}
+
+.home-main-container {
+  width: 100%;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.button-box {
+  width: 20%;
+}
+
+.button-box > button {
+  width: 100%;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--main-bg-color);
+}
+
+.button-box > button:hover {
+  opacity: 0.8;
+}
+
+.search-box {
+  width: 50%;
+  height: 100%;
+}
+
+.search-input-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 1.4px solid var(--main-border-color);
+  padding: 0 0.3rem;
+  border-radius: 5px;
+}
+
+.search-input-box > input {
+  width: 100%;
+  height: 80%;
+  border: none;
+  outline: none;
+  padding-left: 0.5rem;
+}
+
+.material-symbols-outlined {
+  color: var(--main-boder-color);
+}
+
+.workers-info-box-header {
+  width: 100%;
+  height: 3rem;
+  border-style: solid;
+  border-width: 1.5px 0 1.5px 0;
+  border-color: var(--main-boder-color);
+}
+
+.worker-box {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
+  height: 100%;
+  font-weight: 700;
+  color: #495057;
+  padding: 0 1rem;
+}
+
+.worker-box > li {
+  justify-content: center;
+  display: flex;
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.worker-box > li > input {
+  height: 1.3rem;
+  width: 1.3rem;
+  cursor: pointer;
+}
+
+.home-worker-img-box > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.1s, /* transform에만 적용 */ background-color 0.6s;
+}
+
+.home-worker-img-box > img:hover {
+  background-color: #ff9c00;
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.home-worker-img-box {
+  width: 100%;
+  height: 10rem;
+  cursor: pointer;
+}
+
+#worker {
+  border-bottom: 1px solid #e9ecef;
+}

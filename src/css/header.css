@@ -1,0 +1,32 @@
+@media all and (min-width: 480px) and (max-width: 1280px) {
+  .header {
+    padding: 0 0.5rem;
+  }
+}
+
+@media all and (max-width: 479px) {
+  .header-item-box {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 4rem;
+  padding: 0 2rem;
+  box-shadow: 0 5px 15px -5px #ced4da;
+}
+
+.header-item-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-item-box-logo img {
+  width: 14rem;
+  cursor: pointer;
+}

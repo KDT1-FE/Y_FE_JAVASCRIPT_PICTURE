@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "HakgyoansimWoojuR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "HakgyoansimWoojuR";
+  box-sizing: border-box;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: #1c69d4;
+  --main-border-color: #868e96;
+}

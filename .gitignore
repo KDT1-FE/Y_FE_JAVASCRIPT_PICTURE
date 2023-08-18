@@ -1,0 +1,9 @@
+.parcel-cache
+dist
+node_modules
+.env
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
