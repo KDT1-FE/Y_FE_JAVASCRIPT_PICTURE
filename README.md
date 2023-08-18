@@ -1,7 +1,17 @@
+<div style="text-align: center;">
+  <img src = "https://github.com/JitHoon/zero-car/assets/101972330/c7c34562-9610-4e30-aa25-d39e83078dd3" alt ="zero car" style="width: 200px; height: 200px"/>
+</div>
+
+## 서비스 개요
+Zero Car(영차!)는 운전자 보험 고객 사진 및 정보 관리 서비스입니다.
+
+## User Flow
+<div style="text-align: center;">
+  <img src = "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/7f5e564e-100e-4710-a815-5e3d6f473532" alt ="user flow" />
+</div>
 
 <details>
 <summary>야놀자 테크 캠프 JS 과제 설명</summary>
-
 # 직원 사진 관리 서비스
 
 직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
@@ -41,3 +51,4 @@
 - 사진을 편집할 수 있는 기능을 추가해 보세요.
 - LocalStorage 사용
 </details>
+
