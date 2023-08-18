@@ -3,7 +3,7 @@ import { addDoc, deleteDoc, collection, getFirestore, getDocs, updateDoc, doc, q
 import { initializeApp } from "firebase/app";
 import dotenv from "dotenv";
 
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 dotenv.config();
 
 const firebaseConfig = {

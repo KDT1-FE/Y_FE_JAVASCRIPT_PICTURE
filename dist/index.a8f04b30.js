@@ -575,13 +575,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"5AKj5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _dataJs = require("./data.js");
-var _dataJsDefault = parcelHelpers.interopDefault(_dataJs);
 var _storage = require("firebase/storage");
 var _firestore = require("firebase/firestore");
 var _app = require("firebase/app");
-const dotenv = require("6a9364a9115b3690");
-dotenv.config();
+var _dotenv = require("dotenv");
+var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
+// const dotenv = require("dotenv");
+(0, _dotenvDefault.default).config();
 const firebaseConfig = {
     apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
     authDomain: "project-js-160bd.firebaseapp.com",
@@ -726,44 +726,6 @@ renderTable().then(()=>{
     hideSkeleton();
 });
 
-},{"./data.js":"3d49z","firebase/storage":"8WX7E","firebase/firestore":"8A4BC","firebase/app":"aM3Fo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","6a9364a9115b3690":"lErsX"}],"3d49z":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = data = [
-    {
-        pictureImg: "",
-        name: "joan Shim1",
-        email: "asdfg@example.com",
-        phoneNumber: "010-1234-1231"
-    },
-    {
-        pictureImg: "",
-        name: "joan Shim2",
-        email: "asdfg@example.com",
-        phoneNumber: "010-1234-1231"
-    },
-    {
-        pictureImg: "",
-        name: "joan Shim3",
-        email: "asdfg@example.com",
-        phoneNumber: "010-1234-1231"
-    }
-]; // async function getUsers() {
- //   // document.querySelector(".loader").style.display = "block";
- //   const users = [];
- //   for (let i = 0; i < 5; i++) {
- //     const response = await fetch("https://randomuser.me/api");
- //     const randomUserData = await response.json();
- //     users.push(randomUserData.results[0]);
- //   }
- //   return users;
- // }
- // function showDatas(users) {
- //   for (let i = 0; i < users.length; i++) {
- //     console.log(users[i]);
- //   }
- // }
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fTqHN","5AKj5"], "5AKj5", "parcelRequire8d1c")
+},{"firebase/storage":"8WX7E","firebase/firestore":"8A4BC","firebase/app":"aM3Fo","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fTqHN","5AKj5"], "5AKj5", "parcelRequire8d1c")
 
 //# sourceMappingURL=index.a8f04b30.js.map
