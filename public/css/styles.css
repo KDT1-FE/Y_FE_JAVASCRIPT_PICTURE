@@ -203,7 +203,7 @@
   background-color: #ffd19a;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 390px) {
   .member-list-container,
   .member-create-container {
     padding: 5%;

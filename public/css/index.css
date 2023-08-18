@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 391px) {
   .main-image {
     cursor: pointer;
     border-radius: 8px;
@@ -37,29 +37,35 @@
   }
 }
 
-@media (max-width: 768px) {
-  .main-image {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
+@media (max-width: 390px) {
   .main-container {
-    top: 10%;
-    width: 90%;
-    margin: 5% 0%;
+    position: absolute;
+    top: 40%;
     left: 50%;
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
     transform: translate(-50%, 0);
+    animation: slide 2s ease-out;
+    text-align: center;
+    align-items: center;
+  }
+  .main-image {
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 10% 0 10% 0;
   }
 
   @keyframes slide {
     from {
-      left: -50px;
+      left: 30%;
+      transform: translate(0, 0);
       opacity: 0;
     }
     to {
       left: 50%;
       transform: translate(-50%, 0);
+      opacity: 1;
     }
   }
 }
