@@ -29,7 +29,8 @@ db.collection('employee').get().then((snapshot) => {
             <td data-label="전화번호">${doc.data().phone}</td>
             <td data-label="직책">${doc.data().position}</td>
             <td>
-                <button class="button--state-edit" data-id="${doc.id}">수정</button>
+                
+                <a href="/edit.html?id=${doc.id}" class="button--state-edit"> 수정 </a>
                 <button class="button button--state-delete2" data-id="${doc.id}">삭제</button>
             </td>
         </tr>`;
@@ -74,18 +75,11 @@ db.collection('employee').get().then((snapshot) => {
         });
     });
 
-    // 등록 버튼에 이벤트 리스너 추가
-    // let addButtons = document.querySelectorAll('.button--state-add');
-    // addButtons.forEach(function(button) {
-    //     let modal = document.querySelector('.modal');
-    //     modal.classList.remove('hidden');
-    // });
 
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    // 'send' 버튼에 이벤트 리스너 추가
+    // 'send' 버튼에 이벤트 리스너 추가 (등록)
     let sendButton = document.getElementById('send');
     if(sendButton) { // sendButton이 존재하면 이벤트 리스너를 추가
         sendButton.addEventListener('click', function() {
@@ -125,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 프로필 페이지에 데이터 출력...?
 
+// 프로필 페이지에 데이터 출력
 document.addEventListener('DOMContentLoaded', function() {
     // URL의 쿼리 스트링에서 docId를 추출
    const queryString = new URLSearchParams(window.location.search);

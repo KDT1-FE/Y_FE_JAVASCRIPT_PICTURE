@@ -1,3 +1,33 @@
+button {
+	all: unset;
+	color: white;
+	padding: 5px 25px; 
+	cursor: pointer;
+  }
+  .button--state-edit {
+	text-align: center;
+	border-style: solid;
+	border-color: #288C28;
+	background-color: white;
+	color: #288C28;
+	border-radius: 10%;
+	border-width: 2px;
+	padding : 5px 25px;
+	margin-right : 10px;
+  
+  }
+  .button--state-delete {
+	margin-top:20px;
+	background-color: #B90000;
+	text-align: center;
+	background: linear-gradient(0deg, rgba(#B90000) 0%, (#e10808) 100%);
+	border: none;
+  }
+  .button--state-delete:hover{
+	background:  #B90000;
+	background: linear-gradient(0deg, rgb(255, 30, 0) 0%, rgb(251, 93, 2) 100%);
+  }
+
 
 /* Custom checkbox */
 .custom-checkbox {
@@ -93,6 +123,11 @@ table {
 	letter-spacing: .1em;
 	text-transform: uppercase;
   }
+
+  table tr:hover {
+	background-color: #ebe9e9;
+	}
+
   
   @media screen and (max-width: 600px) {
 	.header h1 {
@@ -150,7 +185,7 @@ table {
 	  border-bottom: 0;
 	}
 
-	.button--state-add, .button--state-delete {
+	.button--state-add, .button--state-delete, .button--state-cancel {
 		padding : 3px 7px;
 	}
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>임직원 정보</title>
+  <title>임직원 관리</title>
   <link rel="stylesheet" href="css/main.css"/>
   <link rel="stylesheet" href="css/modal.css"/>
   <link rel="stylesheet" href="css/general.css"/>
@@ -25,7 +25,6 @@
 
       <!-- 임직원 등록 모달 -->
       <button class="button--state-add">임직원 등록</button>
-          <!-- <button class="modify__btn">수정</button> -->
           <div class="modal hidden">
               <div class="modal__background"></div>
               <div class="modal__content">
@@ -52,13 +51,8 @@
                       <div class="form-group">
                           <label>사진</label>
                           <div class="filebox preview-image">
-                              <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
-                          
-                              <!-- <label for="input-file">업로드</label>  -->
                               <input type="file" id="input-file" class="upload-hidden" id="image"> 
                           </div>
-                          
-                          <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
                       </div>				
                   </div>
                   <div class="modal-footer">
@@ -70,7 +64,6 @@
 
       <!-- 임직원 삭제 모달 -->
       <button class="button--state-delete">임직원 삭제</button>
-          <!-- <button class="delete__btn">삭제</button> -->
           <div class="modal hidden modal--delete">
               <div class="modal__background"></div>
               <div class="modal__content">
@@ -89,7 +82,6 @@
   </header> 
 
 <table>
-  <!-- <caption>Statement Summary</caption> -->
   <thead>
     <tr>
           <th>
@@ -108,17 +100,18 @@
   </thead>
   <tbody>
     <tr>
-          <td>
+        <!-- 모달 창에서 수정하기 -- (리팩토링 예정) -->
+          <!-- <td>
               <span class="custom-checkbox">
                   <input type="checkbox" id="checkbox1" name="options[]" value="1">
                   <label for="checkbox1"></label>
               </span>
           </td>
-    <td data-label="photo"> <img class="img" src="image/maru.jpg"></a></td>
-    <td data-label="name">박수연</td>
-    <td data-label="email">suyeon9923@naver.com</td>
-    <td data-label="phone">010-1234-5678</td>
-    <td data-label="position">사원</td>
+    <td data-label="사진"> <img class="img" src="assets/image/w7.png" alt = "프로필 사진"></a></td>
+    <td data-label="이름">박수연</td>
+    <td data-label="이메일">suyeon9923@naver.com</td>
+    <td data-label="전화번호">010-1234-5678</td>
+    <td data-label="직책">사원</td>
     <td>
       <button class="button--state-edit" data-id="${doc.id}">수정</button>
                   <div class="modal hidden modal--edit">
@@ -147,14 +140,9 @@
                           <div class="form-group">
                               <label>사진</label>
                               <div class="filebox preview-image">
-                                  <!-- <input class="upload-name" value="파일선택" disabled="disabled" > -->
                                   <img id="edit-image-preview" src="" alt="Image Preview" />
-                                  <!-- <label for="input-file">업로드</label>  -->
-                                  <!-- <input type="file" id="input-file" class="upload-hidden">  -->
                                   <input type="file" id="edit-image" class="upload-hidden">
                               </div>
-                              
-                              <!-- <button class="btn btn-danger mt-3" id="send">올리기</button> -->
                           </div>				
                       </div>
                       <div class="modal-footer">
@@ -182,16 +170,14 @@
                    </div> 
               </div>
               
-    </td>
-  </tr>
+    </td> -->
+    </tr>
     </tr>
   </tbody>
   </table>
 
-    <script src="main.js"></script>
-
-    <script src="script.js"></script>
-
-    <script src="edit.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/edit.js"></script>
 </body>
 </html> 

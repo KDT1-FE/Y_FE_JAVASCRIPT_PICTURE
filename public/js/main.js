@@ -1,5 +1,4 @@
 
-
 document.addEventListener("DOMContentLoaded", function() {
     let addButton = document.querySelector('.button--state-add');
     let deleteButton = document.querySelector('.button--state-delete');
@@ -19,11 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.classList.remove('hidden');
     });
 
-    // 삭제 모달2 보이기
-    // deleteButton2.addEventListener('click', function() {
-    //     let modal = document.querySelector('.modal--delete2');
-    //     modal.classList.remove('hidden');
-    // });
 
     deleteButtons2.forEach(function(button) {
         button.addEventListener('click', function() {
@@ -32,13 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 수정 모달 보이기
-    editButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            let modal = document.querySelector('.modal--edit');
-            modal.classList.remove('hidden');
-        });
-    });
+    // // 수정 모달 보이기
+    // editButtons.forEach(function(button) {
+    //     button.addEventListener('click', function() {
+    //         let modal = document.querySelector('.modal--edit');
+    //         modal.classList.remove('hidden');
+    //     });
+    // });
 
     // 모든 취소 버튼에 대한 이벤트 리스너
     cancelButtons.forEach(function(button) {

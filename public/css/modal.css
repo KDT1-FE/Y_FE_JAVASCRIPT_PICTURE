@@ -1,32 +1,5 @@
 
-button {
-  all: unset;
-  background-color: mediumslateblue;
-  color: white;
-  padding: 5px 25px; 
-  cursor: pointer;
-}
-.button--state-edit {
-  text-align: center;
-  border-style: solid;
-  border-color: #288C28;
-  background-color: white;
-  color: #288C28;
-  border-radius: 10%;
-  border-width: 2px;
 
-}
-.button--state-delete {
-  margin-top:20px;
-  background-color: #B90000;
-  text-align: center;
-  background: linear-gradient(0deg, rgba(#B90000) 0%, (#e10808) 100%);
-  border: none;
-}
-.button--state-delete:hover{
-  background:  #B90000;
-  background: linear-gradient(0deg, rgb(255, 30, 0) 0%, rgb(251, 93, 2) 100%);
-}
 
 .button--state-delete2 {
   border-style: solid;
@@ -205,4 +178,8 @@ padding: 20px 30px;
 .modal__content {
   width:80%;
 }
+.button--state-cancel {
+  margin-right: 10px;
+}
+
 }
