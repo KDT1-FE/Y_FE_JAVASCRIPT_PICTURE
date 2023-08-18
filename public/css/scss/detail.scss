@@ -12,6 +12,7 @@
       .user__picture {
         flex-shrink: 0;
         width: 30%;
+        max-width: 350px;
         aspect-ratio: 1/1;
         background: lightgray;
         background-size: cover;

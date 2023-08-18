@@ -42,9 +42,24 @@
   .container .employee-list a {
     grid-template-columns: 10% 30% 20% 20% 20% !important;
   }
+  .container .employee-list a .picture__box {
+    width: 80px;
+    height: 80px;
+  }
   .container .employee-list a .mail,
   .container .employee-list a .phone,
   .container .employee-list a .group {
     display: none;
+  }
+  .container .input__photo--design .photo__name {
+    display: none;
+  }
+  .container .input__photo--design .photo__btn {
+    width: 100% !important;
+  }
+  .container .upload__list > div,
+  .container .edit__list > div {
+    width: 25% !important;
+    flex: none;
   }
 }

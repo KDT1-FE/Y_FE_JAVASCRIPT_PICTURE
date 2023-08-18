@@ -49,11 +49,30 @@
       }
       a {
         grid-template-columns: 10% 30% 20% 20% 20% !important;
+        .picture__box {
+          width: 80px;
+          height: 80px;
+        }
         .mail,
         .phone,
         .group {
           display: none;
         }
+      }
+    }
+    .input__photo--design {
+      .photo__name {
+        display: none;
+      }
+      .photo__btn {
+        width: 100% !important;
+      }
+    }
+    .upload__list,
+    .edit__list {
+      > div {
+        width: 25% !important;
+        flex: none;
       }
     }
   }

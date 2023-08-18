@@ -19,6 +19,7 @@
 #edit .upload__list--photo,
 #edit .edit__list--photo {
   width: 30%;
+  max-width: 350px;
 }
 #upload .upload__top,
 #upload .edit__top,

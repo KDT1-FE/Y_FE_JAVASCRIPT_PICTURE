@@ -247,7 +247,6 @@ aside .nav__sub--active::before {
   justify-content: space-between;
   flex-shrink: 0;
   height: 50px;
-  padding: 0 1.25rem;
 }
 .content-wrap .content-box .control-box label {
   width: 52%;
