@@ -1,50 +1,89 @@
+# ☘️ 예약 관리 시스템
 
-# :camera: 직원 사진 관리 서비스
+## 📌프로젝트 개요
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+- 고객들의 예약 등록과 예약 관리를 도와주는 서비스 입니다.
+- LocalStorage와 파이어베이스를 이용해 DB 정보를 이용합니다.
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+## 📂 사이트 주소
 
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
+🔗 **배포 링크 :** https://kdt0-junghyoju-kakaoclone.netlify.app/
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+<br/>
+<br/>
 
-## [화면 예시]
-![111](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/f1afed4b-547e-4289-8e83-2f0fa188cccb)
-![222](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/72f1ea35-8965-4050-9d0b-b9f27c933f64)
+## 💿 필수 요구사항
 
+- [x] “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
+- [x] 프로필 페이지를 개발하세요.
+- [x] 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
+- [x] 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
+- [x] 사진을 등록, 수정, 삭제가 가능해야 합니다.
+- [x] 유저 플로우를 제작하여 리드미에 추가하세요.
+- [x] 애니메이션 구현
+- [x] 상대수치 사용(rem, em)
+- [x] DOM event 조작
+      <br/>
+      <br/>
 
+## 📀 추가 구현사항
 
-## [흐름]
-![333](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/44707a0e-6c5a-4d04-a6bd-58e46f02a9a9)
+- [ ] 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
+- [x] 직원을 등록, 수정, 삭제가 가능하게 해보세요.
+- [x] LocalStorage 사용
+      <br/>
+      <br/>
 
+## 💻 화면 구성
 
+|                            메인 페이지                            |                  사용자 등록(예약) 페이지                   |
+| :---------------------------------------------------------------: | :---------------------------------------------------------: |
+| <img src="./public/images/main-page.png"   style="width : 500px"> | <img src ="./public/images/page.png" style="width : 500px"> |
+
+<br/>
+
+|                      고객 정보 관리 페이지                       |                         고객 프로필 페이지                          |
+| :--------------------------------------------------------------: | :-----------------------------------------------------------------: |
+| <img src ="./public/images/info-page.png" style="width : 500px"> | <img src ="./public/images/profile-page.png" style="width : 500px"> |
+
+<br/>
+
+<br/>
+
+## 🔎 주요 기능
+
+### 🔔 사용자 등록(예약) 페이지 - 사진 등록, 수정
+
+<img width="500" alt="Search" src="./public/images/upload.gif">
+<img width="500" alt="Search" src="./public/images/highlight.gif">
+<br />
+
+### 🔔 사용자 등록(예약) 페이지 - 사진 firebase 업로드
+
+<img width="500" alt="Search" src="./public/images/fire.png">
+
+### 🔔 사용자 등록(예약) 페이지 - 사용자 정보 LocalStorage 업로드
+
+<img width="500" alt="Search" src="./public/images/local.png">
+
+### 🔔 고객 정보 관리 페이지 - 스크롤이 가능한 형태의 리스팅 페이지
+
+<img width="500" alt="Search" src="./public/images/scroll.gif">
+
+### 🔔 고객 정보 관리 페이지 - 애니메이션 구현
+
+<img width="500" alt="Search" src="./public/images/ani.gif">
+
+### 🔔 고객 프로필 페이지 - 사진 삭제
+
+<img width="500" alt="Search" src="./public/images/remove.gif">
+
+### 🔔 전체 페이지 데스크탑-모바일 반응형 페이지
+
+|                                메인 페이지                                 |                         사용자 등록(예약) 페이지                          |
+| :------------------------------------------------------------------------: | :-----------------------------------------------------------------------: |
+| <img width="300" height="500" alt="Search" src="./public/images/main.gif"> | <img width="300" height="500" alt="Search" src="./public/images/qks.gif"> |
+
+|                             고객 정보 관리 페이지                              |                            고객 프로필 페이지                            |
+| :----------------------------------------------------------------------------: | :----------------------------------------------------------------------: |
+| <img width="300" height="500" alt="Search" src="./public/images/info-qks.gif"> | <img width="300" height="500" alt="Search" src="./public/images/de.gif"> |

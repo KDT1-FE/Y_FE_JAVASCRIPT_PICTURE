@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Thin";
+  src: url("/fonts/The\ Jamsil\ 1\ Thin.ttf");
+}
+@font-face {
+  font-family: "Light";
+  src: url("/fonts/The\ Jamsil\ 2\ Light.ttf");
+}
+@font-face {
+  font-family: "Regular";
+  src: url("/fonts/The\ Jamsil\ 3\ Regular.ttf");
+}
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @keyframes */
+
+/* COMMON */
+body {
+  font-family: "IBMPlexSansKR-Regular";
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.4;
+  background-color: #f5ece9;
+}
+/* img baseline 제거 */
+img {
+  display: block;
+}
+
+/* HEADER */
+header {
+  background-color: #f4ded6;
+}
+
+/* icon 숨김 */
+header .item {
+  display: none;
+}
+
+header .logo,
+header .menu {
+  display: block;
+}
+
+header .inner {
+  max-width: 1200px;
+  min-width: 500px;
+  height: 70px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .menu ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .menu li {
+  position: relative;
+}
+
+header .menu li:first-child::before {
+  display: none;
+}
+
+header .menu li::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 15px;
+  background-color: #3d2d27;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+header .menu li a {
+  font-size: 1.1rem;
+  color: #3d2d27;
+  text-decoration: none;
+  padding: 15px 20px;
+  animation: bounce;
+}
+header .menu li a:hover {
+  /* background-color: red; */
+  font-weight: 600;
+}
+
+/* 모바일 반응형 웹, 브라우저 크기가 780이하일 때 */
+@media all and (max-width: 530px) {
+  header .inner {
+    max-width: 530px;
+    min-width: 200px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header .menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  header .menu ul {
+    flex-direction: column;
+    display: none;
+  }
+  header .menu ul.active {
+    display: flex;
+  }
+  header .menu li {
+    width: 100%;
+  }
+
+  header .menu li a:hover {
+    background-color: #3d2d27;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    color: white;
+    width: 100%;
+    display: block;
+  }
+
+  header .menu li a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  header .menu li::before {
+    display: none;
+  }
+
+  header .icon {
+    display: block;
+    padding: 20px;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+  }
+}
+
+/* 모바일 반응형 웹, 브라우저 크기가 780이하일 때 header*/
+@media all and (max-width: 530px) {
+  header .inner {
+    max-width: 530px;
+    min-width: 200px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header .menu {
+    width: 100%;
+    text-align: center;
+  }
+
+  header .menu ul {
+    flex-direction: column;
+    display: none;
+  }
+  header .menu ul.active {
+    display: flex;
+  }
+  header .menu li {
+    width: 100%;
+  }
+
+  header .menu li a:hover {
+    background-color: #3d2d27;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    color: white;
+    width: 100%;
+    display: block;
+  }
+
+  header .menu li a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  header .menu li::before {
+    display: none;
+  }
+
+  header .icon {
+    display: block;
+    padding: 20px;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+  }
+}

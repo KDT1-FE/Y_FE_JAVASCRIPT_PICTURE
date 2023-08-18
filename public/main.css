@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+}
+
+section .inner {
+  overflow: hidden;
+}
+
+section .inner .service {
+  height: calc(100vh - 70px);
+  background-image: url("./images/main_1280.jpg");
+  background-size: cover;
+  background-position: center;
+}
