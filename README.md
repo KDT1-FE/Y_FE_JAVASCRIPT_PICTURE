@@ -2,7 +2,7 @@
 
 ## DEMO 및 사이트 링크
 
-<img width="1440" alt="image" src="https://github.com/flamozzi/intro/assets/42928784/700df46e-4637-4c5b-8973-fee098dd6236">
+<img width="1440" alt="image" src="https://github.com/flamozzi/intro/assets/42928784/4666ba9e-547f-440c-80ee-fd695e4fc2e6">
 
 [제작한 임직원 관리 서비스](https://magenta-pastelito-695c0d.netlify.app/)
 
@@ -45,72 +45,119 @@ Y_FE ParkJisung(flamozzi) 임직원 관리 서비스 제작
 - 임직원 상세 모달 페이지에서 정보 변경이 일어나도 이전 홈 페이지에서도 실시간으로 정보 수정이 반영되도록 실시간 렌더링 구현
 - alert 동작을 이용한 사용자 의사결정 로직 구현
 
+### Primary Color
+
+![image](https://github.com/flamozzi/intro/assets/42928784/13adff91-efaf-42bf-8a4a-d13f22dd61f6)
+
+- 자주 쓰일 컬러셋 구성
+- Primary-500을 프라이머리 색상으로 사용하여 버튼 및 주요 로직 등 강조 표시가 필요한 곳에 사용
+- 아이템 하이라이팅 등의 조금 더 연한 색상은 주로 Primary-300 사용
+
 ## Section별 구현사항
+
+### User Flow
+
+![직원관리서비스_유저플로우](https://github.com/flamozzi/intro/assets/42928784/4a0893b5-7072-4169-ad48-55abc14df00a)
 
 ### Header Section
 
-<img width="1440" alt="image" src="https://github.com/flamozzi/intro/assets/42928784/700df46e-4637-4c5b-8973-fee098dd6236">
+<img width="1440" alt="image" src="https://github.com/flamozzi/intro/assets/42928784/4666ba9e-547f-440c-80ee-fd695e4fc2e6">
 
 - Header를 포함하여 COMMON 스타일 지정을 통해 이후 하위에 존재할 모든 섹션에 통일감 형성
 
-### Loding Animation & Highlight Fade
+### 임직원 등록 & Loding Animation & Highlight Fade
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/ba8a84d0-46ca-484a-a624-dac63d7656c9)
+![로딩_하이라이트](https://github.com/flamozzi/intro/assets/42928784/1f2b7b6a-ab17-4e04-8413-96b2fa2c4e40)
 
-- header nav-list 드롭 다운 메뉴
-- 실제 공식 사이트와 마찬가지로 Apple logo, Search, Bag icon을 제외한 나머지 Navi Item들이 hover될 경우 드롭다운 메뉴 활성화
+- 임직원 등록 버튼 통해 모달 페이지 접근 및 유저 등록 (gif 용량 한계로 인해 모달 열기 및 데이터 입력은 미리 해두었습니다.)
+- 페이지 로드, 데이터 CRUD 작업 등 로딩이 필요한 시점에 로딩 애니메이션 구현
+- 임직원 등록 혹은 정보 수정으로 인해 리스트 아이템에 업데이트가 존재할시 해당 리스트 아이템에 강조 애니메이션 적용
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/f4457065-9d6e-4499-8d24-54b5c059eac1)
+### 임직원 삭제 및 체크박스 컨트롤
 
-- hover되지 않은 default 상태의 header navi bar의 색상은 rgba(0, 0, 0, 0.8)이기 때문에 투명도를 가질 수 있음. 하지만, 각 nav list item을 통해 드롭 다운 메뉴 뿐만 아니라 header bar의 색상 또한 함께 변경하기 위해서는 css 만으로는 자식 요소가 부모 요소의 컨트롤을 할 수 없기 때문에 javascript를 사용하여 컨트롤
-- hover 활성화시 opacity를 컨트롤하여 rgba(0, 0, 0, 1) 색상으로 변경 및 mouseleave를 감지하여 원래 색상인 rgba(0, 0, 0, 0.8)로 변경 및 드롭다운 메뉴 비활성화 가능
+![임직원 삭제 및 체크박스](https://github.com/flamozzi/intro/assets/42928784/51d74b65-06f7-42ae-941e-c1bc4dcad0fd)
 
-### Youtube Video Section
+- 리스트 아이템별 체크박스 개별 선택 및 전체 선택 가능
+- 체크박스 활성 여부에 따라 임직원 삭제 버튼 활성화 여부 결정
+- 임직원 삭제시 alert 팝업을 통해 유저 결정 재확인 및 삭제 진행
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/328c0613-e93f-4d9d-b5ab-93c8d9ab4088)
+### 모달 컨트롤 및 임직원 상세 조회
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/ac708ca0-215a-4310-b7d4-66a506aabe59)
+![모달 컨트롤](https://github.com/flamozzi/intro/assets/42928784/3e646b89-f84a-4c4a-a052-2519ab6aabe5)
 
-- Youtube 영상을 Visual Section처럼 사용하기 위하여 javascript로 Youtube Iframe API를 비동기로 로드
-- 각종 js 내부의 옵션 및 css 스타일 컨트롤을 통해 자연스럽게 반복재생 되는 Youtube Section 완성
+- 임직원 등록 버튼 혹은 리스트 아이템 선택시 모달창 활성화
+- 모달 페이지 및 오버레이를 통해 애니메이션 구현
+- 각 리스트 아이템에대한 상세 프로필 페이지로 사용
 
-### Hero iPhone & Hero Macbook Section
+### 임직원 정보 수정 (변경 취소 및 변경 저장)
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/9e70f7e5-5f4a-4627-bd39-daa33864daa4)
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/3b17d612-0455-4315-8ec7-6202807004ff)
+![임직원 정보 수정](https://github.com/flamozzi/intro/assets/42928784/4da6c430-9c5f-4275-9357-97cd6b3f7a5b)
 
-- 각 제품에 대한 Hero Section
-- Hero Section 배경 이미지의 어두움의 정도에 따라 미세하게 font color를 조정하여 시인성을 높임
-- a 태그의 decoration 및 hover 옵션 조정
-- cursor pointer 옵션등을 통해 clickable한 section이라는 것을 명시
+- 임직원 상세 조회 모달 페이지를 통해 임직원 정보 수정 가능
+- 취소 및 저장 버튼을 통해 행동 확정 가능
+- 이미지 미리보기 구현을 통해 어떤 이미지로 변경할 것인지 시각적 확인 가능
+- 등록시 자동으로 애니메이션과 함께 원래 화면으로 이동
+- 정보 수정시 최근 업데이트 아이템이 리스트의 최상단으로 자동정렬 수행
 
-### Products Grid Section
+### 최상단 이동 플로팅 버튼
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/339b30df-0add-4966-86dc-2e375789f822)
+![플로팅버튼](https://github.com/flamozzi/intro/assets/42928784/931b6d23-f371-409f-97ec-c3efba21fe68)
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/0cae6823-1b34-4114-af83-2427413e1d35)
+- 화면 스크롤 높이에 따라 동적으로 나타나고 사라지는 플로팅 버튼 구현
 
-- 작은 Hero Section들을 감각적으로 2\*3의 Grid Section으로 표현
-- Grid 내부의 Gap이 커지는 등의 버그를 픽스하기 위해 css 내부에서 calc()를 사용하여 세부 사이즈 조정
-- Hero Section과 마찬가지로 배경 이미지의 어두움으 정도에 따라 다른 font color 적용 및 clickable 옵션 적용
+### 모바일과 같은 작은 화면의 반응형 대응
 
-### Apple tv + Section
+![모바일 반응형](https://github.com/flamozzi/intro/assets/42928784/4d8951ae-d34e-4bcb-8569-cf4fb482b4c5)
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/bcdeb088-bbae-456c-bad5-c13b36fff496)
+- 모바일 기기와 같이 작은 화면의 디바이스에서도 대응 가능한 반응형 설계를 구현
+- 리사이징 함수 구현을 통해 실시간으로 화면 사이즈 추적
+- 모바일 화면에서는 리스트 아이템의 사진이 과도하게 보일 수 있기 때문에 안보이게 설정 (데스크탑 크기로 넘어가면 다시 자동으로 보이게 설정)
 
-- Swiper를 사용하여 Apple tv+의 홍보 Section 완성
+## JS 구현에 신경 쓴 부분
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/d7596baf-2391-4c45-88d9-dca19f014cfd)
+### 파이어베이스 환경변수 설정
 
-- 모바일과 같은 작은 화면의 동적 대응은 현재 지원하지 않기 때문에 현재는 위와 같은 옵션을 사용
-- pagination bullet 클릭시 loop가 작동 중지되는 버그를 픽스하기 위하여 disableOnInteraction 옵션을 false로 명시
+![image](https://github.com/flamozzi/intro/assets/42928784/1d583e6f-5eed-42dc-9968-8d4711d32125)
 
-### Footer Section
+- 보안을 위해 Firbase 설정 값들은 환경변수로 만들어 사용
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/6ec0e805-1fbb-4fb5-a893-b7917690a476)
+### 리스트 아이템 하이라이팅 구현부
 
-![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/2a89f478-aaa5-437d-9a37-449c9993dd0f)
+![image](https://github.com/flamozzi/intro/assets/42928784/7e5e949a-2e50-49a8-9682-3b6163c5d6db)
 
-- Footer의 Copyright 년도 자동 업데이트를 위해 js 사용
-- Logic적으로는 header의 드롭다운 메뉴와 비슷한 방식을 채용
-- css 스타일 조정을 통해 드롭다운 메뉴와는 전혀 다른 느낌으로 보일 수 있도록 함
+- 처음에는 id 필드를 통해 리스트 하이라이팅을 구현하려고 하였으나, 관리자 한 명의 싱글 유저 지향 서비스라는 점에 착안하여 타임스탬프를 Id 대신 사용하는 로직을 만들어 봄
+- 서비스 이용자 혹은 동시 다발적인 CRUD가 일어나는 서비스에서는 당연히 id를 따로 지정해주어야 하지만, 타임스탬프는 밀리초 단위이기 때문에 싱글 유저 서비스에서는 충분히 id 대신 사용가능할 것이라는 아이디어를 실제로 구현해 봄
+
+### 검색 기능 구현부
+
+![image](https://github.com/flamozzi/intro/assets/42928784/a4424862-9914-4adc-892d-8c18d7327627)
+
+- 한 번 렌더링 받은 데이터를 통해 필터링을 진행하기 때문에 검색할때마다 과도한 서버 요청 방지 가능
+- 이름, 이메일, 연락처, 구분(직급 직무 등의..)의 문자열 값으로 검색 가능
+
+### 이미지 삭제 및 변경 구현부
+
+![image](https://github.com/flamozzi/intro/assets/42928784/d91e453f-bd37-4694-ab31-72fa6fcff9a7)
+
+- 이미지 삭제 기능을 구현하였지만 일부러 주석처리함
+- 이미지가 고유의 url을 가지고 있더라도 결국 참조하는 원본 소스는 동일한 사진을 가리키기 때문에 다른 리스트 아이템에 영향을 줌
+- 멀티 유저의 실시간 서비스의 경우 삭제기능을 주석 해제하여 사용하면 됨
+- 하지만, 싱글 유저 서비스인 본 서비스의 테스트에서 무한한 사진을 사용할 수는 없으므로 파이어베이스 스토어의 이미지 삭제 기능은 주석 처리하고 진행함
+
+### 모바일 반응형을 위한 리사이즈 구현부
+
+![image](https://github.com/flamozzi/intro/assets/42928784/7f99b898-b4fc-4094-9780-25cc75078e59)
+
+- 모바일 환경에서는 리스트 아이템 내부에 사진이 있을 경우 너무 과도한 영역을 차지하기 때문에 데스크탑 버전에서는 사진 visible, 모바일 버전에서는 invisible 하게 세팅함
+- 실시간으로 window 사이즈를 추적하여 적용되기 때문에 웹 사이트 상에서도 창 크기를 줄이면 자연스럽게 실시간으로 반영됨
+
+## Retrospective 및 리뷰 요청 사항
+
+- JS 과제이지만 CSS 애니메이션 또한 좋은 퀄리티를 구현하기 위해 노력하였습니다.
+- 위의 특히 신경 쓴 JS 구현부 이외에도 다양한 CRUD 작업 및 기능 구현에 관련된 JS 코드는 실제 파일에서 확인할 수 있습니다.
+- 동일한 코드 스타일 및 컨벤션을 유지하려고 하였으나, 과제 마감 기한까지 최대한 많은 기능 넣으려다 보니 코딩 컨벤션이 다소 흐트러졌습니다. (코드 구조 컨벤션은 리팩토링 과정에서 다시 정리해보도록 하겠습니다.)
+- BEM 방법론의 네이밍 컨벤션을 따르고자 노력하였습니다.
+- 데스크탑 및 모바일 각 화면 크기에서 그리드 내의 정렬이 깨지지 않기 위해 CSS 컨트롤에 힘썼습니다.
+- 본 서비스는 크롬 브라우저를 기준으로 개발되었습니다. 사파리와 같은 다양한 브라우저에 대해서는 정상적으로 UI가 표시되지 않을 수 있습니다.
+- 현재 리스트 아이템 삭제시에도 하이라이팅이 적용되는 버그가 있습니다. 의도하지 않은 부분인데 원인을 아직 찾지 못하였습니다.
+- 현재는 실험적으로 id 대신 타임스탬프를 id 처럼 사용해보았습니다. 물론 다중 유저의 멀티 서비스에서는 id를 사용하여야 하지만, 싱글 유저의 동시 CRUD 작업이 일어나지 않은 서비스에 대해서는 타임스탬프를 아이디처럼 사용해도 무리가 없는지 궁금합니다. (물론 가능하다면 id를 사용하겠지만, 호기심에 구현해 보았습니다.)

@@ -27,7 +27,7 @@ function highlightNewItem() {
     let staffArray = [];
     snapshot.forEach((childSnapshot) => {
       let staff = childSnapshot.val();
-      staff.id = childSnapshot.key; // key도 같이 저장합니다.
+      staff.id = childSnapshot.key;
       staffArray.push(staff);
     });
 
