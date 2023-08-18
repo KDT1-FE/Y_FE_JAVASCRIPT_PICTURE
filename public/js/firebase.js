@@ -23,7 +23,7 @@ db.collection('employee').get().then((snapshot) => {
                     <label for="checkbox${doc.id}"></label>
                 </span>
             </td>
-            <td data-label="사진"><a href="/edit.html?id=${doc.id}"><img class="img" src="${doc.data().image}" alt="Employee Photo"></td>
+            <td data-label="사진"><a href="/profile.html?id=${doc.id}"><img class="img" src="${doc.data().image}" alt="Employee Photo"></a></td>
             <td data-label="이름"><a href="/profile.html?id=${doc.id}">${doc.data().name}</a></td>
             <td data-label="이메일">${doc.data().email}</td>
             <td data-label="전화번호">${doc.data().phone}</td>

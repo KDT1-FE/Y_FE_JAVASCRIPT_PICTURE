@@ -1,4 +1,3 @@
-/* Base styles for all devices */
 .header {
     text-align: center;
     padding: 20px;
@@ -44,7 +43,7 @@
     text-transform: uppercase;
   }
   
-  /* Responsive styles for screens smaller than 600px */
+  
   @media (max-width: 600px) {
     img {
       width: 70px;

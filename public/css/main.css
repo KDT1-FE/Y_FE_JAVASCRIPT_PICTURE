@@ -82,16 +82,13 @@ button {
 }
 
 
-
-  /* 프로필 이미지 */
-  img {
+img {
     width: 90px;
     height: 90px;
 	border-radius: 50%;
 }
 
 
-/* 테이블  */
 table {
 	border: 1px solid #ccc;
 	border-collapse: collapse;
@@ -164,17 +161,11 @@ table {
 	  display: block;
 	  font-size: .8em;
 	  text-align: right;
-
-
-	  width: auto; /* 셀 너비 자동 조절 */
-	  min-width: 50px; /* 셀 최소 너비 설정 */
+	  width: auto; 
+	  min-width: 50px; 
 	}
 	
 	table td::before {
-	  /*
-	  * aria-label has no advantage, it won't be read inside a table
-	  content: attr(aria-label);
-	  */
 	  content: attr(data-label);
 	  float: left;
 	  font-weight: bold;
