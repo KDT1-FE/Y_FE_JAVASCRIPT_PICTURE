@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="직원 관리 웹 어플리케이션" />
+    <title>직원 사진 관리 서비스</title>
+    <link href="./tailwind/output.css" rel="stylesheet" />
+    <script type="module" src="./js/pages/detail/detail.js"></script>
+  </head>
+  <body class="mx-auto mt-8 max-w-6xl bg-slate-100 px-4">
+    <main>
+      <div class="relative mt-6 flex flex-row items-center justify-between">
+        <div class="text-3xl font-black">임직원 상세</div>
+        <div class="cursor-pointer text-sm underline underline-offset-4" id="user">관리자 님</div>
+        <!-- 로그아웃 창은 관리자를 클릭하면 나타남. h-0 => h-10 -->
+        <div
+          id="logout"
+          class="hover: absolute right-0 top-8 hidden h-10 w-20 translate-x-2 cursor-pointer border-2 bg-white pt-2 text-center text-xs font-medium hover:bg-slate-200 hover:text-red-500">
+          로그아웃
+        </div>
+      </div>
+
+      <div class="md:flex-row md:items-start mt-16 flex w-full flex-col items-center bg-slate-100">
+        <input
+          type="image"
+          src="https://file2.nocutnews.co.kr/newsroom/image/2016/11/09/20161109000213391575.jpg"
+          class="h-80 border-slate-300 object-fill" />
+
+        <form id="detail-form" class="md:mt-0 md:pl-10 mt-4 w-full flex-col px-4">
+          <div class="flex flex-row items-center justify-between">
+            <div class="text-xl font-bold">임직원 정보</div>
+            <button class="rounded bg-slate-500 px-4 py-2 text-white hover:bg-blue-500">정보 변경</button>
+          </div>
+
+          <div class="bar my-4 bg-slate-400"></div>
+          <div class="flex w-full flex-row justify-between leading-10">
+            <div class="ml-4 basis-1/4 font-semibold text-slate-600">이름</div>
+            <input
+              class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
+              type="text"
+              disabled
+              value="남궁종민" />
+          </div>
+
+          <div class="flex w-full flex-row justify-between leading-10">
+            <div class="ml-4 basis-1/4 font-semibold text-slate-600">이메일</div>
+            <input
+              class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
+              type="text"
+              disabled
+              value="vbghdl@naver.com" />
+          </div>
+
+          <div class="flex w-full flex-row justify-between leading-10">
+            <div class="ml-4 basis-1/4 font-semibold text-slate-600">휴대폰 번호</div>
+            <input
+              class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
+              type="text"
+              disabled
+              value="010-6428-6518" />
+          </div>
+
+          <div class="flex w-full flex-row justify-between leading-10">
+            <div class="ml-4 basis-1/4 font-semibold text-slate-600">부서</div>
+            <input
+              class="basis-2/4 border-b-2 border-slate-300 font-medium text-slate-600"
+              type="text"
+              disabled
+              value="개발부" />
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

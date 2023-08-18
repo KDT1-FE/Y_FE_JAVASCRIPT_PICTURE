@@ -8,6 +8,7 @@ import {
   collection,
   getDocs,
   doc,
+  getDoc,
   setDoc,
   deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
@@ -56,7 +57,7 @@ const signinSubmit = (auth, email, password) => {
 /* ------------------------------------ - ----------------------------------- */
 const db = getFirestore(app);
 
-const getData = async members => {
+const getAllMembers = async members => {
   const snapshot = await getDocs(collection(db, 'members'));
 
   await snapshot.forEach(doc => {
@@ -100,4 +101,4 @@ const deleteImage = async email => {
   await deleteObject(desertRef);
 };
 
-export { auth, signinSubmit, getData, addData, deleteData, uploadImage, deleteImage };
+export { auth, signinSubmit, getAllMembers, addData, deleteData, uploadImage, deleteImage };

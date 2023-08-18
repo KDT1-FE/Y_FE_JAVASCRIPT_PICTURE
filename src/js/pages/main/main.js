@@ -1,5 +1,5 @@
 import render from './render.js';
-import { getData, addData, deleteData, uploadImage, deleteImage } from '../../firebase/firebase.js';
+import { getAllMembers, addData, deleteData, uploadImage, deleteImage } from '../../firebase/firebase.js';
 
 const $form = document.getElementById('modal-form');
 const $modal = document.getElementById('modal');
@@ -80,7 +80,7 @@ $allCheckbox.addEventListener('click', e => {
 /* ------------------------------------ - ----------------------------------- */
 // main page list redering
 window.addEventListener('DOMContentLoaded', async e => {
-  await getData(state.members);
+  await getAllMembers(state.members);
 
   await render(state.members);
 });
@@ -115,4 +115,12 @@ document.getElementById('remove-button').addEventListener('click', e => {
   });
 
   render(state.members);
+});
+
+// list click 이벤트위임
+$memberList.addEventListener('click', e => {
+  const member = e.target.closest('li');
+  const email = member.querySelector('input').name;
+
+  location.href = `detail.html?${email}`;
 });
