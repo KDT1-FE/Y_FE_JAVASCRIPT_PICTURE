@@ -15,7 +15,7 @@
 
 <br>
 
-## ✨ 구현 내용
+## ✔ 구현 내용
 * 직원 리스트
 ![image](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/111065848/1983a5d2-a52a-442a-bb6f-aabf2fc44089)
 * 직원 등록
@@ -27,6 +27,12 @@
 
  <br>
 
-## ✨ 회고
+## ✨ 유저 플로우
+![유저플로우 drawio](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/111065848/b2a7480e-9084-437d-a825-81faf6657051)
+
+
+ <br>
+
+## 📌 회고
 * 파이어베이스를 처음 사용해보는데 연동하는 것이 조금 어려웠다.
 * 검색 기능을 구현하지 못해 아쉽다.
