@@ -3,6 +3,7 @@ let page = 1;
 let isLoading = false;
 let hasMore = true;
 let observer = null;
+let currentKeyword = '';
 
 const loader = document.getElementById('profile-loader');
 const profileList = document.querySelector('.profile-list');
@@ -86,7 +87,7 @@ function createProfileItem(member, index) {
 
 // 함수: ㅣ직원 삭제
 function deleteMembers(ids) {
-  fetch('http://localhost:3000/member/deleteMember', {
+  fetch('/member/deleteMember', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -118,8 +119,8 @@ function getMembers(pageNumber, keyword = '') {
   showLoader();
 
   const url = !keyword
-    ? `http://localhost:3000/member/getMembers?page=${pageNumber}&pageSize=${PAGE_SIZE}`
-    : `http://localhost:3000/member/getMembers?page=${pageNumber}&pageSize=${PAGE_SIZE}&keyword=${keyword}`;
+    ? `/member/getMembers?page=${pageNumber}&pageSize=${PAGE_SIZE}`
+    : `/member/getMembers?page=${pageNumber}&pageSize=${PAGE_SIZE}&keyword=${keyword}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -166,7 +167,7 @@ const handleIntersection = (entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting && hasMore && !isLoading) {
       page += 1;
-      getMembers(page);
+      getMembers(page, currentKeyword);
     }
   });
 };
@@ -236,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.querySelector('.profile-search__input');
   const debouncedSearch = debounce((keyword) => {
     profileList.innerHTML = ''; // 기존 프로필 리스트 지우기
+    currentKeyword = keyword;
     page = 1;
     getMembers(page, keyword, true);
   }, 1000);

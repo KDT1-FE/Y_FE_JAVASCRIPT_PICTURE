@@ -11,7 +11,7 @@ async function registerMember() {
     position: form['profile-position'].value,
   };
 
-  const response = await fetch('http://localhost:3000/member/registerMember', {
+  const response = await fetch('/member/registerMember', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,13 +37,10 @@ async function uploadProfileImage() {
   formData.append('position', form['profile-position'].value);
   formData.append('profileImage', imageInput.files[0]);
 
-  const response = await fetch(
-    'http://localhost:3000/member/uploadProfileImage',
-    {
-      method: 'POST',
-      body: formData,
-    },
-  );
+  const response = await fetch('/member/uploadProfileImage', {
+    method: 'POST',
+    body: formData,
+  });
   if (!response.ok) {
     throw new Error('프로필 이미지 업로드에 실패하였습니다.');
   }
