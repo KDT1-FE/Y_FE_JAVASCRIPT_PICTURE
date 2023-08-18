@@ -44,7 +44,6 @@ main {
     margin: 40px auto;
     padding: 0 20px;
     max-width: 1280px;
-    min-width : 800px;
     justify-content: space-between;
 }
 
@@ -146,11 +145,40 @@ main {
 }
 .list {
     display : grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     padding: 40px;
 }
 
+
+@media screen and (max-width: 500px) {
+
+    body {
+        width : 100%;
+        overflow : hidden;
+    }
+    .nav_container {
+        display: none;
+    }
+
+    .bar_container {
+        flex-wrap: wrap;
+        width : 100%;
+    }
+
+    .search_container {
+        margin-top: 20px;
+    }
+
+    .list_container {
+        padding: 0;
+
+
+    }
+    .list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 #plus_btn {
     background-color: #4D76C188;
