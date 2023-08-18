@@ -68,8 +68,7 @@ header .top .btns .btn:hover {
   background-color: var(--color-text-10);
 }
 
-header .top .btns .toggle,
-header .top .btns .search {
+header .top .btns .toggle {
   --width: 46px;
   width: var(--width);
   height: var(--width);
@@ -91,40 +90,6 @@ header .top .btns .add:hover {
   border: var(--color-highlight) solid 2px;
   background-color: var(--color-highlight);
   color: var(--color-white);
-}
-
-header .bottom {
-  margin: 3em 0;
-  height: 4em;
-  text-align: center;
-  transition: all 0.2s linear;
-}
-
-header .bottom.hide {
-  margin: 1em 0;
-  height: 0;
-  overflow: hidden;
-}
-
-header .bottom.hide .input::placeholder {
-  opacity: 0;
-}
-
-header .bottom .input {
-  color: var(--coloor-text);
-  padding: 0 1.2em;
-  background-color: transparent;
-  border: var(--color-text-30) solid 2px;
-
-  border-radius: 4px;
-  width: 50%;
-  height: 90%;
-  font-size: 18px;
-}
-
-header .bottom .input:focus {
-  outline: none;
-  border: var(--color-text) solid 2px;
 }
 
 /* CARD LIST */
