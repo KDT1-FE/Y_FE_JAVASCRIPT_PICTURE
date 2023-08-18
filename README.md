@@ -46,4 +46,8 @@
 
 ## [흐름]
 ![333](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/44707a0e-6c5a-4d04-a6bd-58e46f02a9a9)
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
