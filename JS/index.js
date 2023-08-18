@@ -1,10 +1,15 @@
 import AWS from 'aws-sdk'; 
+
 import '../CSS/index.css';
 import '../CSS/loading.css';
 import '../CSS/modal.css';
+
 import '../JS/loading.js';
 import '../JS/modal.js';
 
+// -------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------공통 함수------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
 const S3_BUCKET = 'y-fe-javascript-picture';
 
 // AWS 설정 초기화 함수
@@ -17,27 +22,19 @@ function initializeAWS() {
   }
 }
 
-// 이미지를 불러와서 페이지에 표시하는 함수
-function displayImage(imageKey) {
-  const imageUrl = `https://${S3_BUCKET}.s3.amazonaws.com/${imageKey}`;
-  const imgElement = document.createElement('img');
-  imgElement.src = imageUrl;
-  imgElement.alt = '이미지';
-  imgElement.classList.add('employee-image'); 
-  imgElement.style.maxWidth = '100px';
-  imgElement.style.maxHeight = '100px';
-  return imgElement;
-}
+// 페이지 로드 시 실행
+window.addEventListener('load', () => {
+  initializeAWS();
+  loadImagesFromLocalstorage();
+  loadEmployeeInfosFromLocalstorage();
+  registerImageTdClickHandler(); // TableRow 클릭 이벤트 핸들러 등록
 
-// 이미지 생성 후 리스트에 추가
-function displayEmployee(imageName) {
-  const employee = document.createElement('div');
-  employee.classList.add('idx-employee');
+  const submitButton = document.getElementById('md-submit-button');
+  submitButton.addEventListener('click', onFormSubmit);
 
-  const imgElement = displayImage(imageName);
-  employee.appendChild(imgElement);
-  employeeList.appendChild(employee);
-}
+  const selectAllCheckbox = document.getElementById('select-all-checkbox');
+  selectAllCheckbox.addEventListener('change', onSelectAllCheckboxChange);
+});
 
 // 정보를 localStorage에 저장하는 함수
 function saveEmployeeInfoToLocalstorage(employeeInfo) {
@@ -45,7 +42,9 @@ function saveEmployeeInfoToLocalstorage(employeeInfo) {
   savedEmployeeInfos.push(employeeInfo);
   localStorage.setItem('employeeInfos', JSON.stringify(savedEmployeeInfos));
 }
-
+// -------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------CREATE--------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
 // 이미지 업로드 및 리스트에 추가
 async function uploadImageAndAddToList(file, employeeInfo) {
   await initializeAWS();
@@ -72,31 +71,29 @@ async function uploadImageAndAddToList(file, employeeInfo) {
     console.error('업로드 실패', error);
   }
 }
+// -------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------READ----------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
+// 이미지를 불러와서 페이지에 표시하는 함수
+function displayImage(imageKey) {
+  const imageUrl = `https://${S3_BUCKET}.s3.amazonaws.com/${imageKey}`;
+  const imgElement = document.createElement('img');
+  imgElement.src = imageUrl;
+  imgElement.alt = '이미지';
+  imgElement.classList.add('employee-image'); 
+  imgElement.style.maxWidth = '100px';
+  imgElement.style.maxHeight = '100px';
+  return imgElement;
+}
 
-// 이미지 업데이트 및 리스트에 추가
-async function updateImageAndAddToList(file, employeeInfo) {
-  await initializeAWS();
+// 이미지 생성 후 리스트에 추가
+function displayEmployee(imageName) {
+  const employee = document.createElement('div');
+  employee.classList.add('idx-employee');
 
-  const myBucket = new AWS.S3({
-    params: { Bucket: S3_BUCKET },
-  });
-
-  const params = {
-    ACL: 'public-read',
-    Body: file,
-    Bucket: S3_BUCKET,
-    Key: file.name,
-  };
-
-  try {
-    const data = await myBucket.putObject(params).promise();
-
-    console.log('업데이트 완료', data);
-    saveEmployeeInfoToLocalstorage(employeeInfo);
-    
-  } catch (error) {
-    console.error('업데이트 실패', error);
-  }
+  const imgElement = displayImage(imageName);
+  employee.appendChild(imgElement);
+  employeeList.appendChild(employee);
 }
 
 // 페이지 로드 시 이미지 로드 후 표시
@@ -155,11 +152,69 @@ function displayEmployeeWithInfo(employeeInfo) {
   editCell.appendChild(editButton);
   tableRow.appendChild(editCell);
 
-
   // 이벤트 핸들러 등록
   editButton.addEventListener('click', () => onEditEmployee(employeeInfo));
-
   employeeList.appendChild(tableRow);
+}
+
+// TableRow 클릭 이벤트 핸들러 등록
+function registerImageTdClickHandler() {
+  const rows = document.querySelectorAll('tbody tr');
+
+  rows.forEach(row => {
+    // 체크박스 클릭 이벤트를 중단시킴
+    const checkboxCell = row.querySelector('.idx-employee-checkbox');
+    checkboxCell.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    // 수정 버튼 클릭 이벤트를 중단시킴
+    const editButton = row.querySelector('.idx-edit-button');
+    editButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    // 행 클릭 이벤트
+    row.addEventListener('click', () => {
+      const imageName = row.querySelector('img.employee-image').getAttribute('src').split('/').pop();
+      const name = row.querySelector('td:nth-child(3)').textContent;
+      const email = row.querySelector('td:nth-child(4)').textContent;
+      const phone = row.querySelector('td:nth-child(5)').textContent;
+      const category = row.querySelector('td:nth-child(6)').textContent;
+
+      // 프로필 페이지로 데이터 전달 및 이동
+      const profileUrl = `/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
+      window.location.href = profileUrl;
+    });
+  });
+}
+// -------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------UPDATE--------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
+// 이미지 업데이트 및 리스트에 추가
+async function updateImageAndAddToList(file, employeeInfo) {
+  await initializeAWS();
+
+  const myBucket = new AWS.S3({
+    params: { Bucket: S3_BUCKET },
+  });
+
+  const params = {
+    ACL: 'public-read',
+    Body: file,
+    Bucket: S3_BUCKET,
+    Key: file.name,
+  };
+
+  try {
+    const data = await myBucket.putObject(params).promise();
+
+    console.log('업데이트 완료', data);
+    saveEmployeeInfoToLocalstorage(employeeInfo);
+    
+  } catch (error) {
+    console.error('업데이트 실패', error);
+  }
 }
 
 // 이미지 정보를 지정한 인덱스에 삽입하는 함수
@@ -267,100 +322,9 @@ async function onFormSubmit(e) {
     }
   }
 }
-
-// TableRow 클릭 이벤트 핸들러 등록
-function registerImageTdClickHandler() {
-  const rows = document.querySelectorAll('tbody tr');
-
-  rows.forEach(row => {
-    // 체크박스 클릭 이벤트를 중단시킴
-    const checkboxCell = row.querySelector('.idx-employee-checkbox');
-    checkboxCell.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
-
-    // 수정 버튼 클릭 이벤트를 중단시킴
-    const editButton = row.querySelector('.idx-edit-button');
-    editButton.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
-
-    // 행 클릭 이벤트
-    row.addEventListener('click', () => {
-      const imageName = row.querySelector('img.employee-image').getAttribute('src').split('/').pop();
-      const name = row.querySelector('td:nth-child(3)').textContent;
-      const email = row.querySelector('td:nth-child(4)').textContent;
-      const phone = row.querySelector('td:nth-child(5)').textContent;
-      const category = row.querySelector('td:nth-child(6)').textContent;
-
-      // 프로필 페이지로 데이터 전달 및 이동
-      const profileUrl = `/profile.html?imageName=${imageName}&name=${name}&email=${email}&phone=${phone}&category=${category}`;
-      window.location.href = profileUrl;
-    });
-  });
-}
-
-// 페이지 로드 시 실행
-window.addEventListener('load', () => {
-  initializeAWS();
-  loadImagesFromLocalstorage();
-  loadEmployeeInfosFromLocalstorage();
-  registerImageTdClickHandler(); // TableRow 클릭 이벤트 핸들러 등록
-
-  const submitButton = document.getElementById('md-submit-button');
-  submitButton.addEventListener('click', onFormSubmit);
-
-  const selectAllCheckbox = document.getElementById('select-all-checkbox');
-  selectAllCheckbox.addEventListener('change', onSelectAllCheckboxChange);
-});
-
-// 전체 체크박스 선택/해제 이벤트 핸들러
-function onSelectAllCheckboxChange(event) {
-  const isChecked = event.target.checked;
-  const employeeCheckboxes = document.querySelectorAll('.idx-employee-checkbox');
-  
-  employeeCheckboxes.forEach(checkbox => {
-    checkbox.checked = isChecked;
-  });
-}
-
-// 임직원 삭제 버튼 클릭 이벤트 핸들러
-const deleteEmployeeButton = document.getElementById('deleteEmployeeBtn');
-deleteEmployeeButton.addEventListener('click', onDeleteEmployee);
-
-// 선택한 임직원 삭제 함수
-function onDeleteEmployee() {
-  const checkboxes = document.querySelectorAll('.idx-employee-checkbox');
-
-  checkboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      const employeeInfo = getEmployeeInfoFromCheckbox(checkbox);
-      if (employeeInfo) {
-        deleteEmployee(employeeInfo);
-      }
-    }
-  });
-}
-
-// 체크박스로부터 임직원 정보 추출
-function getEmployeeInfoFromCheckbox(checkbox) {
-  const employeeRow = checkbox.closest('tr'); 
-  if (employeeRow) {
-    const imgElement = employeeRow.querySelector('.employee-image'); // .employee-image 클래스를 가진 엘리먼트 찾기
-    if (imgElement) {
-      const imageName = imgElement.getAttribute('src').split('/').pop();
-      return findEmployeeInfoByImageName(imageName);
-    }
-  }
-  return null;
-}
-
-// 이미지 이름을 기반으로 임직원 정보 찾기
-function findEmployeeInfoByImageName(imageName) {
-  const savedEmployeeInfos = JSON.parse(localStorage.getItem('employeeInfos')) || [];
-  return savedEmployeeInfos.find(employeeInfo => employeeInfo.imageName === imageName);
-}
-
+// -------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------DELETE--------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------------------------
 // 임직원 삭제 함수
 function deleteEmployee(employeeInfo) {
   const imageName = employeeInfo.imageName;
@@ -411,3 +375,49 @@ function removeEmployeeFromUI(imageName) {
   }
 }
 
+// 전체 체크박스 선택/해제 이벤트 핸들러
+function onSelectAllCheckboxChange(event) {
+  const isChecked = event.target.checked;
+  const employeeCheckboxes = document.querySelectorAll('.idx-employee-checkbox');
+  
+  employeeCheckboxes.forEach(checkbox => {
+    checkbox.checked = isChecked;
+  });
+}
+
+// 임직원 삭제 버튼 클릭 이벤트 핸들러
+const deleteEmployeeButton = document.getElementById('deleteEmployeeBtn');
+deleteEmployeeButton.addEventListener('click', onDeleteEmployee);
+
+// 선택한 임직원 삭제 함수
+function onDeleteEmployee() {
+  const checkboxes = document.querySelectorAll('.idx-employee-checkbox');
+
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      const employeeInfo = getEmployeeInfoFromCheckbox(checkbox);
+      if (employeeInfo) {
+        deleteEmployee(employeeInfo);
+      }
+    }
+  });
+}
+
+// 체크박스로부터 임직원 정보 추출
+function getEmployeeInfoFromCheckbox(checkbox) {
+  const employeeRow = checkbox.closest('tr'); 
+  if (employeeRow) {
+    const imgElement = employeeRow.querySelector('.employee-image'); // .employee-image 클래스를 가진 엘리먼트 찾기
+    if (imgElement) {
+      const imageName = imgElement.getAttribute('src').split('/').pop();
+      return findEmployeeInfoByImageName(imageName);
+    }
+  }
+  return null;
+}
+
+// 이미지 이름을 기반으로 임직원 정보 찾기
+function findEmployeeInfoByImageName(imageName) {
+  const savedEmployeeInfos = JSON.parse(localStorage.getItem('employeeInfos')) || [];
+  return savedEmployeeInfos.find(employeeInfo => employeeInfo.imageName === imageName);
+}
