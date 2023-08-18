@@ -19,7 +19,7 @@
 .form-group label {
   color: #666;
 }
-.form-group .settings {
+.form-group .img-btn-wrap {
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -63,4 +63,8 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+}
+
+#delete-img-btn {
+  width: fit-content;
 }

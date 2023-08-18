@@ -8,36 +8,78 @@
     <script defer type="module" src="./js/app.js"></script>
   </head>
   <body>
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">List</a>
-      </li>
-    </ul>
-    <div class="element-box">
-      <h5 class="form-header">임직원 관리</h5>
-
-      <div class="controls-above-table">
-        <div class="btn-wrap">
-          <button id="add-profile-btn" class="btn btn-primary" href="">신규 등록</button>
-        </div>
-        <!-- <form class="form-inline">
-          <input class="form-control" placeholder="Search" type="text" />
-        </form> -->
+    <header>
+      <div class="logo">
+        <a href="index.html"><img src="/proflist-logo.png" alt="" /></a>
       </div>
+    </header>
+    <main>
+      <div class="element-box">
+        <h5 class="form-header">원어민 교사 관리</h5>
 
-      <table id="table" class="table">
-        <thead>
-          <tr>
-            <th>번호</th>
-            <th>프로필 사진</th>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>휴대폰 번호</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+        <div class="controls-above-table">
+          <div class="btn-wrap">
+            <button id="add-profile-btn" class="btn btn-primary" href="">신규 등록</button>
+          </div>
+          <!-- <form class="form-inline">
+            <input class="form-control" placeholder="Search" type="text" />
+          </form> -->
+        </div>
+
+        <table id="table" class="table">
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>프로필 사진</th>
+              <th>이름</th>
+              <th>이메일</th>
+              <th>휴대폰 번호</th>
+              <th>관리</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="skeleton-row">
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-img"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td>
+                <div class="btn-wrap">
+                  <div class="skeleton-btn"></div>
+                  <div class="skeleton-btn"></div>
+                </div>
+              </td>
+            </tr>
+            <tr class="skeleton-row">
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-img"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td>
+                <div class="btn-wrap">
+                  <div class="skeleton-btn"></div>
+                  <div class="skeleton-btn"></div>
+                </div>
+              </td>
+            </tr>
+            <tr class="skeleton-row">
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-img"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td><div class="skeleton-text"></div></td>
+              <td>
+                <div class="btn-wrap">
+                  <div class="skeleton-btn"></div>
+                  <div class="skeleton-btn"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
   </body>
 </html>

@@ -53,19 +53,37 @@ button {
   background: none;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 :root {
   color: #3e4b5b;
+  font-size: 16px;
   line-height: 1.5;
 }
 
-body {
+main {
   color: #3e4b5b;
   text-align: left;
   background: #f2f4f8;
-  padding: 2.5rem;
-  font-size: 16px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
+}
+
+header {
+  background: #fff;
+  width: 100%;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+header .logo {
+  padding: 1rem;
 }
 
 .element-box {
@@ -81,9 +99,9 @@ body {
   background-color: #171818;
   border: 2px solid #0000;
   border-radius: 4px;
+  margin-bottom: 3px;
   margin-right: .5rem;
   padding: .375rem .75rem;
-  font-size: .9rem;
 }
 
 .btn-primary {
@@ -97,39 +115,57 @@ body {
   border-color: #e65252;
 }
 
-.breadcrumb {
-  letter-spacing: .7px;
-  background-color: #0000;
-  border-bottom: 1px solid #0000000d;
-  margin: 0;
-  padding: 10px 30px 10px 0;
-  list-style: none;
-  display: flex;
-}
-
-.breadcrumb-item {
-  text-transform: uppercase;
-  margin-bottom: 0;
-  font-size: 1rem;
-  display: inline-block;
-}
-
-.breadcrumb-item + .breadcrumb-item:before {
-  color: #636c72;
-  content: "/";
-  padding-left: .5rem;
-  padding-right: .5rem;
-  display: inline-block;
-}
-
 .profile-img {
   border-radius: 50%;
-  width: 150px;
+  width: 8rem;
 }
 
 .img-wrap {
   width: 100%;
   position: relative;
+}
+
+.skeleton-row {
+  height: 183px;
+}
+
+.skeleton-row td {
+  padding: 1rem;
+}
+
+.skeleton-row td * {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38% 40%, #e5e5e5 48%) 100% 0 / 200% 100%;
+  animation: 1s infinite load;
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.skeleton-text {
+  background-color: #ddd;
+  border-radius: 5px;
+  flex: 1;
+  height: 20px;
+}
+
+.skeleton-img {
+  background-color: #ddd;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.skeleton-btn {
+  background-color: #ddd;
+  border-radius: 5px;
+  flex: 1;
+  width: 53px;
+  height: 2.5rem;
+  margin-right: 8px;
 }
 
 
@@ -197,9 +233,54 @@ body {
   padding: 1rem;
 }
 
-@media screen and (width >= 1100px) {
-  .table {
-    overflow: visible;
+@media screen and (width >= 768px) and (width <= 1199px) {
+  body {
+    font-size: 14px;
+  }
+
+  #table thead th:nth-child(4), #table tr td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (width >= 360px) and (width <= 767px) {
+  main {
+    padding: .8rem;
+    font-size: 13px;
+  }
+
+  header {
+    padding: .5rem;
+  }
+
+  header .logo img {
+    width: 100px;
+  }
+
+  .element-box {
+    padding: 1rem;
+  }
+
+  #table thead th {
+    font-size: .6rem;
+  }
+
+  #table thead th:nth-child(4), #table thead th:nth-child(5), #table tr td:nth-child(4), #table tr td:nth-child(5) {
+    display: none;
+  }
+
+  #table td {
+    padding: .5rem .3rem;
+  }
+
+  .profile-img {
+    width: 5rem;
+  }
+
+  .btn {
+    margin-right: .1rem;
+    padding: .3rem;
+    font-size: .7rem;
   }
 }
 
@@ -226,7 +307,7 @@ body {
   color: #666;
 }
 
-.form-group .settings {
+.form-group .img-btn-wrap {
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -272,6 +353,11 @@ body {
   justify-content: center;
   margin: 0 auto;
   display: flex;
+}
+
+#delete-img-btn {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 

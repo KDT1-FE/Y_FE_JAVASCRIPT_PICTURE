@@ -577,6 +577,8 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var _storage = require("firebase/storage");
 var _firestore = require("firebase/firestore");
 var _app = require("firebase/app");
+const dotenv = require("94fecce078e2c032");
+dotenv.config();
 const firebaseConfig = {
     apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
     authDomain: "project-js-160bd.firebaseapp.com",
@@ -607,7 +609,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
             emailInput.value = data.email;
             const phoneInput = document.getElementById("phone");
             phoneInput.value = data.phone;
-            // 이미지 업로드 부분
+            // 이미지 업로드
             const imageUpload = document.getElementById("image-upload");
             imageUpload.addEventListener("change", async (event)=>{
                 const file = event.target.files[0];
@@ -626,8 +628,8 @@ document.addEventListener("DOMContentLoaded", async ()=>{
                             phone: phoneInput.value
                         };
                         await (0, _firestore.updateDoc)(docRef, updatedProfileData);
+                        window.location.reload();
                         console.log("프로필 이미지 업로드 및 데이터 업데이트 완료");
-                        profileImgElement.src = downloadURL; // 화면에도 이미지 업데이트
                     } catch (error) {
                         console.error("이미지 업로드 및 데이터 업데이트 에러:", error);
                     }
@@ -646,7 +648,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
                     console.error("데이터 삭제 에러:", error);
                 }
             });
-            // 저장 버튼 클릭 시 Firestore에 데이터 업데이트 또는 새 문서 추가
+            // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
             const saveButton = document.getElementById("save-btn");
             saveButton.addEventListener("click", async (event)=>{
                 event.preventDefault();
@@ -656,16 +658,10 @@ document.addEventListener("DOMContentLoaded", async ()=>{
                     email: emailInput.value,
                     phone: phoneInput.value
                 };
-                if (!documentId) try {
-                    const newDocRef = await (0, _firestore.addDoc)((0, _firestore.collection)(db, "database"), updatedProfileData);
-                    console.log("새로운 문서 ID:", newDocRef.id);
-                } catch (error) {
-                    console.error("새로운 문서 추가 에러:", error);
-                }
-                else try {
-                    const docRef = (0, _firestore.doc)(db, "database", documentId);
+                try {
                     await (0, _firestore.updateDoc)(docRef, updatedProfileData);
-                    alert("데이터 업데이트 완료");
+                    console.log("데이터 업데이트 완료");
+                    window.location.reload();
                 } catch (error) {
                     console.error("데이터 업데이트 에러:", error);
                 }
@@ -676,6 +672,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     }
 });
 
-},{"firebase/storage":"8WX7E","firebase/firestore":"8A4BC","firebase/app":"aM3Fo"}]},["9L2rn","coHEg"], "coHEg", "parcelRequire8d1c")
+},{"firebase/storage":"8WX7E","firebase/firestore":"8A4BC","firebase/app":"aM3Fo","94fecce078e2c032":"lErsX"}]},["9L2rn","coHEg"], "coHEg", "parcelRequire8d1c")
 
 //# sourceMappingURL=profile.1abf0409.js.map

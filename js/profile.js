@@ -1,17 +1,19 @@
-import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { getStorage, deleteObject, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { addDoc, collection, getFirestore, getDoc, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
-  authDomain: "project-js-160bd.firebaseapp.com",
-  projectId: "project-js-160bd",
-  storageBucket: "project-js-160bd.appspot.com",
-  messagingSenderId: "134984714331",
-  appId: "1:134984714331:web:12311afda7f0913b5f577e",
-  measurementId: "G-7T5FSMF8Y8",
-};
+const dotenv = require("dotenv");
+dotenv.config();
 
+const firebaseConfig = {
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
+};
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const phoneInput = document.getElementById("phone");
       phoneInput.value = data.phone;
 
-      // 이미지 업로드 부분
+      // 이미지 업로드
       const imageUpload = document.getElementById("image-upload");
 
       imageUpload.addEventListener("change", async (event) => {
@@ -64,8 +66,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             };
 
             await updateDoc(docRef, updatedProfileData);
+            window.location.reload();
             console.log("프로필 이미지 업로드 및 데이터 업데이트 완료");
-            profileImgElement.src = downloadURL; // 화면에도 이미지 업데이트
           } catch (error) {
             console.error("이미지 업로드 및 데이터 업데이트 에러:", error);
           }
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
 
-      // 저장 버튼 클릭 시 Firestore에 데이터 업데이트 또는 새 문서 추가
+      // 저장 버튼 클릭 시 Firestore에 데이터 업데이트
       const saveButton = document.getElementById("save-btn");
       saveButton.addEventListener("click", async (event) => {
         event.preventDefault();
@@ -100,22 +102,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           email: emailInput.value,
           phone: phoneInput.value,
         };
-
-        if (!documentId) {
-          try {
-            const newDocRef = await addDoc(collection(db, "database"), updatedProfileData);
-            console.log("새로운 문서 ID:", newDocRef.id);
-          } catch (error) {
-            console.error("새로운 문서 추가 에러:", error);
-          }
-        } else {
-          try {
-            const docRef = doc(db, "database", documentId);
-            await updateDoc(docRef, updatedProfileData);
-            alert("데이터 업데이트 완료");
-          } catch (error) {
-            console.error("데이터 업데이트 에러:", error);
-          }
+        try {
+          await updateDoc(docRef, updatedProfileData);
+          console.log("데이터 업데이트 완료");
+          window.location.reload();
+        } catch (error) {
+          console.error("데이터 업데이트 에러:", error);
         }
       });
     } else {

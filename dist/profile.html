@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><script src="/profile.da188b18.js"></script>
+  <head><script src="/profile.3412abcc.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -8,46 +8,47 @@
     <link rel="stylesheet" href="/index.748ad148.css">
   </head>
   <body>
-    <ul class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="/index.html">List</a>
-      </li>
-      <li class="breadcrumb-item">
-        <span>profile</span>
-      </li>
-    </ul>
-    <div class="element-box profile">
-      <h5 class="form-header">임직원 상세</h5>
-      <form id="form">
-        <div class="img-wrap file-box form-group">
-          <img id="profile-img" class="profile-img" alt="Profile Image">
-          <input id="image-upload" type="file" class="">
+    <header>
+      <div class="logo">
+        <a href="/index.html"><img src="/proflist-logo.a2ac15a1.png" alt=""></a>
+      </div>
+    </header>
+<main>
+  <div class="element-box profile">
+    <h5 class="form-header">교사 상세정보</h5>
+    <form id="form">
+      <div class="img-wrap file-box form-group">
+        <img id="profile-img" class="profile-img" alt="Profile Image" onerror="this.src='/placeholder.jpg'">
+        <input id="image-upload" type="file" class="">
+        <div class="img-btn-wrap">
           <label for="image-upload" class="settings">
             <div class="btn">파일수정</div>
-            <!-- <span class="material-symbols-outlined">settings</span> -->
           </label> 
+          <div class="btn btn-danger" id="delete-img-btn">파일삭제</div>
         </div>
-        <div class="">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" class="form-control">
-          </div>
+      </div>
+      <div class="">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" class="form-control">
         </div>
-        <div class="btn-wrap">
-          <button id="save-btn" type="submit" class="btn">저장</button>
-          <button id="delete-btn" type="submit" class="btn btn-danger">직원 삭제</button>  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" class="form-control">
         </div>
-      </form>
-    </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" class="form-control">
+        </div>
+      </div>
+      <div class="btn-wrap">
+        <button id="save-btn" type="submit" class="btn">저장</button>
+        <button id="delete-btn" type="submit" class="btn btn-danger">직원 삭제</button>  
+      </div>
+    </form>
+  </div>
 
-    <script src="/profile.1abf0409.js" defer=""></script>
+  <script src="/profile.1abf0409.js" defer=""></script>
+</main>
   </body>
 </html>
