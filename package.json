@@ -1,0 +1,32 @@
+{
+  "name": "y_fe_javascript_picture",
+  "version": "1.0.0",
+  "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
+  "scripts": {
+    "dev": "parcel index.html profile.html",
+    "build": "parcel build index.html profile.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/issues"
+  },
+  "homepage": "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE#readme",
+  "devDependencies": {
+    "crypto-browserify": "^3.12.0",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.9.3",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "firebase": "^10.1.0"
+  }
+}

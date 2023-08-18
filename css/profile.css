@@ -1,0 +1,70 @@
+.form {
+  width: 100%;
+  align-items: center;
+}
+.flex {
+  display: flex;
+}
+
+.img-wrap img {
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+.form-group {
+  margin-bottom: 3rem;
+}
+
+.form-group label {
+  color: #666;
+}
+.form-group .img-btn-wrap {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #dde2ec;
+}
+.form-control:focus {
+  outline: none;
+}
+
+.img-wrap .file-box {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 50%;
+  color: #999999;
+}
+
+.file-box input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+.file-box label {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#delete-img-btn {
+  width: fit-content;
+}

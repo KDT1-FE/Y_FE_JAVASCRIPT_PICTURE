@@ -1,0 +1,365 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+input, button, select {
+  box-sizing: border-box;
+  font: inherit;
+  border: none;
+}
+
+button {
+  background: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+:root {
+  color: #3e4b5b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+main {
+  color: #3e4b5b;
+  text-align: left;
+  background: #f2f4f8;
+  width: 100%;
+  min-height: 100vh;
+  padding: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+header {
+  background: #fff;
+  width: 100%;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+header .logo {
+  padding: 1rem;
+}
+
+.element-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 4px #7e8eb11f;
+}
+
+.btn {
+  color: #fff;
+  cursor: pointer;
+  background-color: #171818;
+  border: 2px solid #0000;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  margin-right: .5rem;
+  padding: .375rem .75rem;
+}
+
+.btn-primary {
+  background-color: #0368d2;
+  border-color: #0362c6;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #e65252;
+  border-color: #e65252;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 8rem;
+}
+
+.img-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.skeleton-row {
+  height: 183px;
+}
+
+.skeleton-row td {
+  padding: 1rem;
+}
+
+.skeleton-row td * {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38% 40%, #e5e5e5 48%) 100% 0 / 200% 100%;
+  animation: 1s infinite load;
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.skeleton-text {
+  background-color: #ddd;
+  border-radius: 5px;
+  flex: 1;
+  height: 20px;
+}
+
+.skeleton-img {
+  background-color: #ddd;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.skeleton-btn {
+  background-color: #ddd;
+  border-radius: 5px;
+  flex: 1;
+  width: 53px;
+  height: 2.5rem;
+  margin-right: 8px;
+}
+
+
+
+.form-header {
+  margin-bottom: 1rem;
+  padding-top: .5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: block;
+}
+
+.controls-above-table {
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.btn-wrap {
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#table {
+  border-spacing: 2px;
+  border-color: gray;
+  width: 100%;
+  max-width: 100%;
+  display: table;
+}
+
+#table thead th {
+  text-align: left;
+  text-align: center;
+  border-top: none;
+  border-bottom: 1px solid #999;
+  padding: .75rem;
+  font-weight: 700;
+  display: table-cell;
+}
+
+#table thead:hover tr {
+  background: none;
+}
+
+#table thead th:first-child {
+  text-align: center;
+}
+
+#table tr {
+  transition: all .5s cubic-bezier(.075, .82, .165, 1);
+}
+
+#table tr:hover {
+  background: #5e82980d;
+}
+
+#table td {
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid #53658c14;
+  padding: 1rem;
+}
+
+@media screen and (width >= 768px) and (width <= 1199px) {
+  body {
+    font-size: 14px;
+  }
+
+  #table thead th:nth-child(4), #table tr td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (width >= 360px) and (width <= 767px) {
+  main {
+    padding: .8rem;
+    font-size: 13px;
+  }
+
+  header {
+    padding: .5rem;
+  }
+
+  header .logo img {
+    width: 100px;
+  }
+
+  .element-box {
+    padding: 1rem;
+  }
+
+  #table thead th {
+    font-size: .6rem;
+  }
+
+  #table thead th:nth-child(4), #table thead th:nth-child(5), #table tr td:nth-child(4), #table tr td:nth-child(5) {
+    display: none;
+  }
+
+  #table td {
+    padding: .5rem .3rem;
+  }
+
+  .profile-img {
+    width: 5rem;
+  }
+
+  .btn {
+    margin-right: .1rem;
+    padding: .3rem;
+    font-size: .7rem;
+  }
+}
+
+.form {
+  align-items: center;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.img-wrap img {
+  margin: 0 auto 20px;
+  display: flex;
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 3rem;
+}
+
+.form-group label {
+  color: #666;
+}
+
+.form-group .img-btn-wrap {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.form-control {
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #dde2ec;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  display: block;
+}
+
+.form-control:focus {
+  outline: none;
+}
+
+.img-wrap .file-box {
+  vertical-align: middle;
+  color: #999;
+  border: 1px solid #ddd;
+  width: 50%;
+  height: 40px;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.file-box input[type="file"] {
+  border: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.file-box label {
+  justify-content: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+#delete-img-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+
+
+/*# sourceMappingURL=index.748ad148.css.map */

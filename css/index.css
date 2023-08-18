@@ -1,0 +1,109 @@
+.form-header {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  display: block;
+}
+.controls-above-table {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.btn-wrap {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 2px;
+  border-color: gray;
+}
+#table thead th {
+  display: table-cell;
+  /* font-size: 0.6rem; */
+  border-top: none;
+  border-bottom: 1px solid #999;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 700;
+  text-align: center;
+}
+#table thead:hover tr {
+  background: transparent;
+}
+
+#table thead th:first-child {
+  text-align: center;
+}
+
+#table tr {
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#table tr:hover {
+  background: rgba(94, 130, 152, 0.05);
+}
+
+#table td {
+  border-top: 1px solid rgba(83, 101, 140, 0.08);
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  body {
+    font-size: 14px;
+  }
+  #table thead th:nth-child(4),
+  #table tr td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+  main {
+    font-size: 13px;
+    padding: 0.8rem;
+  }
+  header {
+    padding: 0.5rem;
+  }
+  header .logo img {
+    width: 100px;
+  }
+  .element-box {
+    padding: 1rem;
+  }
+  #table thead th {
+    font-size: 0.6rem;
+  }
+  /* #table thead th:nth-child(1), */
+  #table thead th:nth-child(4),
+  #table thead th:nth-child(5),
+  /* #table tr td:nth-child(1), */
+  #table tr td:nth-child(4),
+  #table tr td:nth-child(5) {
+    display: none;
+  }
+
+  #table td {
+    padding: 0.5rem 0.3rem;
+  }
+  .profile-img {
+    width: 5rem;
+  }
+  .btn {
+    margin-right: 0.1rem;
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+}
