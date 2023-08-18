@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>내담자등록관리</title>
+		<link rel="icon" type="image/png" href="/assets/image/logo2.png" />
+		<link rel="stylesheet" href="../assets/css/common.min.css" />
+		<link rel="stylesheet" href="../assets/css/main.min.css" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a href="/" class="navbar-brand"> <img src="/assets/image/logo2.png" alt="로고" /> <span>내담자등록관리</span></a>
+				<span id="nickname" class="ms-auto mx-3">로그인 후 이용해주세요</span>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<button type="button" id="login" class="btn btn-danger" onClick="location.href='/sub/login.html'">로그인</button>
+						<button type="button" id="logout-btn" class="btn btn-dark">로그아웃</button>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<main>
+			<div class="container login-container" id="sign-area">
+				<p class="sub-tit">회원가입</p>
+				<p>
+					<input type="text" placeholder="성함을 입력해주세요" id="name-new" class="form-control" />
+				</p>
+				<p>
+					<input type="email" placeholder="이메일주소 입력해주세요" id="email-new" class="form-control" />
+				</p>
+				<p>
+					<input type="password" placeholder="비밀번호 입력해주세요" id="pw-new" class="form-control" />
+				</p>
+				<div class="text-center">
+					<button type="submit" id="register" class="btn btn-danger">가입하기</button>
+				</div>
+			</div>
+
+			<div class="container login-container" id="login-area">
+				<p class="sub-tit">로그인</p>
+				<p>
+					<input type="email" placeholder="이메일주소 입력해주세요" id="email" class="form-control" />
+				</p>
+				<p>
+					<input type="password" placeholder="비밀번호 입력해주세요" id="pw" class="form-control" />
+				</p>
+				<div class="text-center">
+					<button type="button" id="login-btn" class="btn btn-primary">로그인</button>
+					<p class="des">아직 회원이 아니신가요? <a href="javascript:void(0)" id="sign-btn">회원가입</a></p>
+				</div>
+			</div>
+		</main>
+		<script src="/__/firebase/8.6.5/firebase-app.js"></script>
+		<script src="/__/firebase/8.6.5/firebase-auth.js"></script>
+		<script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+		<script src="/__/firebase/8.6.5/firebase-storage.js"></script>
+		<script src="../assets/js/firebase.js"></script>
+		<script src="../assets/js/login.js"></script>
+		<script src="../assets/js/loading.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+		<script>
+			const loginBtn = document.getElementById('login-btn');
+			let NickName = document.getElementById('nickname');
+			const logoutBtn = document.getElementById('logout-btn');
+			const regisBtn = document.getElementById('register');
+			const signBtn = document.getElementById('sign-btn');
+
+			// 헤더에 이용자의 닉네임 출력
+			function updateNickname(user) {
+				if (user && user.displayName) {
+					NickName.textContent = user.displayName;
+				} else {
+					NickName.textContent = '로그인 후 이용해주세요'; // 기본 문구
+				}
+			}
+
+			// 로그인
+			loginBtn.addEventListener('click', function () {
+				let email = document.getElementById('email').value;
+				let password = document.getElementById('pw').value;
+				firebase
+					.auth()
+					.signInWithEmailAndPassword(email, password)
+					.then((result) => {
+						updateNickname(result.user);
+						login.style.display = 'none';
+						logoutBtn.style.display = 'block';
+						window.location.href = '/';
+					})
+					.catch((error) => {
+						const errorCode = error.code;
+						if (errorCode === 'auth/user-not-found') {
+							// 아이디가 없는 경우
+							alert('해당 아이디가 존재하지 않습니다.');
+						} else if (errorCode === 'auth/wrong-password') {
+							// 비밀번호가 틀린 경우
+							alert('비밀번호가 올바르지 않습니다.');
+						} else {
+							// 기타 오류 처리
+							console.error('오류 발생:', error);
+						}
+					});
+			});
+
+			// 회원가입
+			regisBtn.addEventListener('click', function () {
+				let email = document.getElementById('email-new').value;
+				let password = document.getElementById('pw-new').value;
+				let name = document.getElementById('name-new').value;
+
+				// 로그인기능 소환
+				firebase
+					.auth()
+					.createUserWithEmailAndPassword(email, password)
+					.then((result) => {
+						firebase
+							.auth()
+							.signInWithEmailAndPassword(email, password)
+							.then(() => {
+								result.user.updateProfile({ displayName: name });
+								alert('회원가입이 완료되었습니다');
+								document.querySelector('#sign-area').style.display = 'none';
+								document.querySelector('#login-area').style.display = 'block';
+							})
+							.catch((error) => {
+								console.error('로그인 오류:', error);
+							});
+					})
+
+					.catch((error) => {
+						console.error('회원가입 오류:', error);
+					});
+			});
+
+			// 회원가입 버튼 클릭 시, 회원가입 영역 숨기기
+			signBtn.addEventListener('click', function () {
+				document.querySelector('#sign-area').style.display = 'block';
+				document.querySelector('#login-area').style.display = 'none';
+			});
+		</script>
+	</body>
+</html>
+
