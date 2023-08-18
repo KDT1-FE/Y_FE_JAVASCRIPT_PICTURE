@@ -74,7 +74,7 @@ function script(uid){
                   <p class="email">${doc.data().email}</p>
                   <p class="phonenumber">${doc.data().phonenumber}</p>
                   <input class="form-control mt-2" type="file" id="image">
-                  <button class="btn btn-danger mt-3" id="update">사진 업데이트</button>
+                  <button class="btn btn-danger mt-3" id="update"><span>사진 업데이트</span></button>
                 </div>
               </button>
               </div>`;
