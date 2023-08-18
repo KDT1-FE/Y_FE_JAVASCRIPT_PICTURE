@@ -636,10 +636,19 @@ textarea {
   height: 7em;
 }
 .save-button {
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: hsl(76, 100%, 87%);
+  border: 1px solid #c8c8c8;
   font-size: 1.5em;
   padding: 0.2em;
+  float: right;
+  cursor: pointer;
+}
+.close-button {
+  background-color: #fff5f5;
+  border: 1px solid #c8c8c8;
+  font-size: 1.5em;
+  padding: 0.2em;
+  margin-right: 0.5em;
   float: right;
   cursor: pointer;
 }

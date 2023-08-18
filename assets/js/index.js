@@ -138,6 +138,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
 
         alert("이미지를 추가하세요.");
+        console.log("no image");
         return;
       }
 
@@ -174,7 +175,7 @@ window.addEventListener("DOMContentLoaded", async () => {
               waterTime.value,
               note.value
             );
-            alert("저장되었습니다!");
+            // alert("저장되었습니다!");
             // Add a new row to the table
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
@@ -219,3 +220,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     plantsForm.reset();
   });
 });
+
+function close() {
+  setTimeout(function () {
+    location.reload();
+  }, 200);
+}

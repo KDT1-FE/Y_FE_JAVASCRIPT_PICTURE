@@ -19,6 +19,14 @@
       href="/assets/images/favicon.png"
     />
   </head>
+  <script>
+    function close() {
+      console.log("asdfasfd");
+      setTimeout(function () {
+        location.reload();
+      }, 1000);
+    }
+  </script>
   <body>
     <section class="overall">
       <div class="header">
@@ -251,6 +259,13 @@
 
                 <button id="btn-data-save" class="save-button">추가</button>
               </form>
+              <button
+                id="btn-close"
+                class="close-button"
+                onclick="{location.reload()}"
+              >
+                닫기
+              </button>
             </div>
           </div>
         </div>
