@@ -65,8 +65,9 @@ async function uploadImageAndAddToList(file, employeeInfo) {
 
     console.log('업로드 완료', data);
     // 수정된 이미지 정보 표시
-    displayEmployeeWithInfo(employeeInfo);
-    saveEmployeeInfoToLocalstorage(employeeInfo);
+    await displayEmployeeWithInfo(employeeInfo);
+    await saveEmployeeInfoToLocalstorage(employeeInfo);
+    await location.reload();
     
   } catch (error) {
     console.error('업로드 실패', error);
@@ -157,8 +158,6 @@ function displayEmployeeWithInfo(employeeInfo) {
   // 이벤트 핸들러 등록
   editButton.addEventListener('click', () => onEditEmployee(employeeInfo));
   employeeList.appendChild(tableRow);
-
-
 }
 
 // TableRow 클릭 이벤트 핸들러 등록
