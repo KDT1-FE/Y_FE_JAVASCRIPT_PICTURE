@@ -123,7 +123,7 @@
   justify-content: space-between;
   width: 100%;
   height: 5rem;
-  border-bottom: 1.5px solid #868e96;
+  border-bottom: 1.5px solid var(--main-border-color);
 }
 
 .detail-box-header > h2 {
@@ -147,7 +147,7 @@
   height: 70%;
   border: none;
   color: white;
-  background-color: #1c69d4;
+  background-color: var(--main-bg-color);
   border-radius: 5px;
   font-weight: 700;
   cursor: pointer;
@@ -174,7 +174,7 @@
   outline: none;
   padding: 0.5rem 0.5rem;
   width: 100%;
-  border: 1px solid #868e96;
+  border: 1px solid var(--main-border-color);
   border-radius: 7px;
 }
 
@@ -183,7 +183,7 @@
 }
 .detail-item > span {
   width: 30%;
-  color: #868e96;
+  color: var(--main-border-color);
   display: flex;
   align-items: center;
 }
@@ -202,5 +202,5 @@
 
 .info-message {
   font-size: 0.5rem;
-  color: #868e96;
+  color: var(--main-border-color);
 }

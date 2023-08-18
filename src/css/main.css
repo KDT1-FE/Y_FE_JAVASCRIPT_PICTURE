@@ -9,4 +9,12 @@
 * {
   font-family: "HakgyoansimWoojuR";
   box-sizing: border-box;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: #1c69d4;
+  --main-border-color: #868e96;
 }
