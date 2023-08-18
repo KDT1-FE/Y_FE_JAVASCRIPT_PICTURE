@@ -712,7 +712,7 @@ function adminLoginCheck(event) {
   if (adminIDInput.value !== "최지훈") {
     event.preventDefault();
     document.querySelector("#adminLoginCheck").innerHTML = "관리자 아이디가 일치하지 않습니다.";
-  } else if (adminPWInput.value !== "0000") {
+  } else if (adminPWInput.value !== "777") {
     event.preventDefault();
     document.querySelector("#adminLoginCheck").innerHTML = "관리자 비밀번호가 일치하지 않습니다.";
   } else {
