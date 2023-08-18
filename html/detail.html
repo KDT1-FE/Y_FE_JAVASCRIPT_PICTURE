@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css link -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/subNav.css">
+    <link rel="stylesheet" href="../css/detail.css">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header_contents">
+            <h2 class="header_main_text">Player Details <span class="header_detail_text">선수 상세 보기</span>
+            </h2>
+        </div>
+        <hr class="separate_line">
+        <!-- player detail Contents -->
+        <div class="player_detail_container">
+            <div class="player_detail">
+
+            </div>
+            <div class="button_wrap">
+                <button class="pregister_btn">수정하기</button>
+                <div class="open_modal hidden">
+                    <div class="bg"></div>
+                    <div class="modalBox">
+                        <div class="player_inform">
+                            <!-- 이미지, 선수팀 | 선수명, 이름, 생년월일, ID, Lane. -->
+                            <!-- TODO DB에 정보 등록하기. 추후 사용 다시 받아와 뿌려주기. -->
+                            <div>
+                                <input type="file" id="player_profile" accept="image/*" onchange="readURL(this)">
+                                <div class="preview_box">
+                                    <p class="preview_text">프로필 설정</p>
+                                    <img class="preview_image" id="preview_profile">
+                                </div>
+                            </div>
+                            <div class="input_profile">
+                                <div class="player_input_text">
+                                    <div class="input_box">
+                                        <div class="label_text">팀을 입력해주세요</div>
+                                        <input id="team" type="text" required>
+                                    </div>
+                                    <div class="input_box">
+                                        <div class="label_text">선수명 입력해주세요</div>
+                                        <input id="player_name" type="text" required>
+                                    </div>
+                                    <div class="input_box">
+                                        <div class="label_text">이름을 입력해주세요</div>
+                                        <input id="name" type="text" required>
+                                    </div>
+                                    <div class="input_box">
+                                        <div class="label_text">생년월일 입력해주세요</div>
+                                        <input id="birthday" type="text" required placeholder="yyyy-mm-dd">
+                                    </div>
+                                    <div class="input_box">
+                                        <div class="label_text">ID를 입력해주세요</div>
+                                        <input id="nickname" type="text" required>
+                                    </div>
+                                    <div class="input_box">
+                                        <div class="label_text">라인을 입력해주세요</div>
+                                        <input id="lane" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_btn_container">
+                            <button class="close_btn">취소하기</button>
+                            <button class="edit_btn">수정하기</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="remove_btn">삭제하기</button>
+            </div>
+        </div>
+    </header>
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_x41Kssns4yt8bGC_amxafV4UFGPqrvo",
+            authDomain: "lckplay-f12fa.firebaseapp.com",
+            projectId: "lckplay-f12fa",
+            storageBucket: "lckplay-f12fa.appspot.com",
+            messagingSenderId: "754005959240",
+            appId: "1:754005959240:web:1892474725ebf47d132e7d",
+            measurementId: "G-Y4D6YXDZ5N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="../js/detailProfile.js"></script>
+    <script src="../js/registerModal.js"></script>
+</body>
+
+</html>

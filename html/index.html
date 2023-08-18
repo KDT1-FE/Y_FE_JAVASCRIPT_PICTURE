@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCK Players</title>
+    <!-- google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- css link -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/subNav.css">
+    <link rel="stylesheet" href="../css/listProfile.css">
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+</head>
+
+<body>
+    <!-- 각 페이지의 header 부분 및 서브 네브바 -->
+    <header>
+        <div class="header_contents">
+            <h2 class="header_main_text">LCK Players <span class="header_detail_text">당신의 전설을 만나세요.</span>
+            </h2>
+        </div>
+    </header>
+    <div class="sub_nav">
+        <input type="text" placeholder="선수 검색하기" class="player_search">
+        <!-- 선수 등록 버튼 클릭 시 modal 창 구현 -->
+        <button class="pregister_btn">선수 등록</button>
+        <div class="open_modal hidden">
+            <div class="bg"></div>
+            <div class="modalBox">
+                <div class="player_inform">
+                    <!-- 이미지, 선수팀 | 선수명, 이름, 생년월일, ID, Lane. -->
+                    <!-- TODO DB에 정보 등록하기. 추후 사용 다시 받아와 뿌려주기. -->
+                    <div>
+                        <input type="file" id="player_profile" accept="image/*" onchange="readURL(this)">
+                        <div class="preview_box">
+                            <p class="preview_text">프로필 설정</p>
+                            <img class="preview_image" id="preview_profile">
+                        </div>
+                    </div>
+                    <div class="input_profile">
+                        <div class="player_input_text">
+                            <div class="input_box">
+                                <div class="label_text">팀을 입력해주세요</div>
+                                <input id="team" type="text" required>
+                            </div>
+                            <div class="input_box">
+                                <div class="label_text">선수명 입력해주세요</div>
+                                <input id="player_name" type="text" required>
+                            </div>
+                            <div class="input_box">
+                                <div class="label_text">이름을 입력해주세요</div>
+                                <input id="name" type="text" required>
+                            </div>
+                            <div class="input_box">
+                                <div class="label_text">생년월일 입력해주세요</div>
+                                <input id="birthday" type="text" required placeholder="yyyy-mm-dd">
+                            </div>
+                            <div class="input_box">
+                                <div class="label_text">ID를 입력해주세요</div>
+                                <input id="nickname" type="text" required>
+                            </div>
+                            <div class="input_box">
+                                <div class="label_text">라인을 입력해주세요</div>
+                                <input id="lane" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_btn_container">
+                    <button class="close_btn">취소하기</button>
+                    <!-- <button class="register_btn" onclick="uploadData()">등록하기</button> -->
+                    <button class="register_btn">등록하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="separate_line">
+    <!-- 각 페이지의 메인 컨텐츠 부분 -->
+    <section>
+        <div class="profile_container">
+        </div>
+    </section>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_x41Kssns4yt8bGC_amxafV4UFGPqrvo",
+            authDomain: "lckplay-f12fa.firebaseapp.com",
+            projectId: "lckplay-f12fa",
+            storageBucket: "lckplay-f12fa.appspot.com",
+            messagingSenderId: "754005959240",
+            appId: "1:754005959240:web:1892474725ebf47d132e7d",
+            measurementId: "G-Y4D6YXDZ5N"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="../js/registerModal.js"></script>
+    <script src="../js/upload.js"></script>
+    <script src="../js/listProfile.js"></script>
+
+</body>
+
+</html>
