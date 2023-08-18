@@ -1,7 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[context.production.environment]
-  TOML_ENV_VAR = "From netlify.toml"
-  REACT_APP_TOML_ENV_VAR = "From netlify.toml (REACT_APP_)"

@@ -1,5 +1,7 @@
+.parcel-cache
 node_modules
 dist
-.parcel-cache
+.DS_Store
+.vscode
 firebase-config.js
 .env
