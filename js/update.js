@@ -35,9 +35,10 @@ $update.addEventListener('submit', (e) => {
     );
   }
 
-  updateDoc(docRef, { name: $update.name.value });
+  updateDoc(docRef, { name: $update.name.value, appearance: $update.appearance.value, interests: $update.interests.value });
   console.log('Update successfully');
+  console.log(docSnap.data());
   setTimeout(() => {
     window.location.reload();
-  }, 1000);
+  }, 2500);
 });

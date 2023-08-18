@@ -29,8 +29,13 @@
   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
 </div>
 
-## ✨ 주요 개발 기능
+## ✨ 주요 기능
 
-## ✨ 유저 플로우
-
-<img width="606" alt="user-flow" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/c6e5c67b-7e86-4ad3-9657-81df20ffd499">
+- 캐릭터 추가
+  ![캐릭터 추가](https://github.com/lilviolie/peanuts/assets/95364951/2d9f85cc-e39a-454e-8145-3c52518bc99d)
+- 프로필 생성
+  ![프로필 생성](https://github.com/lilviolie/peanuts/assets/95364951/84f5af34-ce65-4544-b587-06236f6edd49)
+- 프로필 수정
+  ![프로필 수정](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/13dc1d75-ec23-4cff-a884-5c618b431d5a)
+- 프로필 삭제
+  ![프로필 삭제)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/0566031a-e47e-46aa-b5c0-a40e55ce11a3)
