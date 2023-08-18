@@ -1,49 +1,101 @@
+# 🙍‍♂️ 직원 관리 시스템
 
-# :camera: 직원 사진 관리 서비스
+HTML, CSS, Javascript로 만든 직원 관리 시스템
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+➡️ [직원 관리 시스템 둘러보기](https://jihongkyu.github.io/staffList)
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+# 🖥️ 프로젝트 소개
 
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
+직원 등록, 수정, 삭제가 가능한 직원 관리 시스템입니다.
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+- 목적: Vanilla JS 실력 향상을 위해 CRUD 구현
 
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+- 특이점: LocalStorage를 이용한 데이터 저장
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
+# 📆 제작 기간
 
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+### 2023년 08월 08일 ~ 2023년 08월 18일
 
+# 필수 요구사항
 
+✅“AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현
+
+✅프로필 페이지를 개발
+
+✅스크롤이 가능한 형태의 리스팅 페이지를 개발
+
+✅전체 페이지 데스크탑-모바일 반응형 페이지를 개발
+
+✅사진을 등록, 수정, 삭제가 가능
+
+✅유저 플로우를 제작하여 리드미에 추가
+
+✅CSS - 애니메이션 구현, 상대수치 사용(rem, em)
+
+✅JavaScript - DOM event 조작
+
+# 🚀 기술스택
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+
+# 📝 기능 구현
+
+### 1. 리스트 페이지
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EB%A6%AC%EC%8A%A4%ED%8A%B8%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
+
+- `table`태그로 리스트 구현
+- 리스트 목록 `hover`시 구분가능하도록 리스트 색 변경
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EA%B2%80%EC%83%89.gif)
+
+- Debounce를 활용하여 검색 기능 구현
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EB%A6%AC%EC%8A%A4%ED%8A%B8%ED%8E%98%EC%9D%B4%EC%A7%80%EB%B2%84%ED%8A%BC.gif)
+
+- 리스트 목록 클릭 시 나오는 모달창 구현
+- 모달창과 버튼: 애니메이션으로 구현
+- 상세보기 버튼 클릭 시 클릭한 직원의 상세 페이지로 이동
+- 삭제하기 클릭 시 클릭한 직원 삭제
+
+### 2. 직원 등록 페이지
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EB%93%B1%EB%A1%9D%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
+
+- 유효성 검사 코드 작성
+- 주소 API활용
+- 사진 선택 시 미리보기 구현
+- 사진 삭제 기능 구현
+- 등록 시 이미지는 AWS S3에 저장, 직원 정보는 로컬스토리지에 저장
+
+### 3. 직원 상세 페이지
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png)
+
+- 직원 사진과 정보가 담긴 프로필 페이지 구현
+
+### 4. 직원 수정 페이지
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EC%88%98%EC%A0%95%ED%8E%98%EC%9D%B4%EC%A7%80.gif)
+
+- 직원 정보, 사진 수정 기능 구현
+
+### 5. 모바일 반응형
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/%EB%AA%A8%EB%B0%94%EC%9D%BC%EB%B0%98%EC%9D%91%ED%98%95.gif)
+
+- `@media`를 사용하여 모바일 UI 구현
+
+# 🙄 User Flow
+
+![img](https://github.com/JiHongkyu/staffList/raw/main/src/assets/image/userflow.png)
+
+# ✍ 개선 사항
+
+- LocalStorage 대신 AWS나 firebase 스토리지에 정보 저장해보기
