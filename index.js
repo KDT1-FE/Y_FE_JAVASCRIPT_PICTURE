@@ -72,7 +72,7 @@ document
 
 let template = `
 <div class="profile-card">
-  <span> <img class="profile-image" src="{{profile_image}}" alt="profile image"></span>
+  <span> <img class="profile-image" src="{{profile_image}}" alt="no img"></span>
   <div class="info">
   <span>이름 : {{profile_name}}</span>
   <span>전화번호 : {{profile_phoneNum}}</span>

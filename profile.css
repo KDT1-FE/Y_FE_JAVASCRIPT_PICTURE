@@ -9,17 +9,12 @@ body {
   height: 100%;
 }
 
-.header-section {
-  display: flex;
-  flex-direction: row;
-  margin-top: 6%;
-}
-
 .service-logo {
   font-size: 2.5rem;
   margin-left: 5%;
   font-weight: 800;
   color: rgb(243, 196, 72);
+  margin-top: 5%;
 }
 
 .detail-profile {
@@ -45,7 +40,6 @@ body {
   object-fit: contain;
   overflow: hidden;
   margin-right: 1.5rem;
-  margin-top: 2rem;
 }
 
 .info {
@@ -56,6 +50,14 @@ body {
   margin-top: 2rem;
   color: rgb(243, 196, 72);
   font-size: 1.5rem;
+}
+
+.delete-btn {
+  background-color: rgb(243, 196, 72);
+  color: white;
+  border: 1px solid rgb(243, 196, 72);
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .logo {

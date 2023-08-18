@@ -18,12 +18,12 @@
 
 ## 실행 화면
 
-  <img src="/img/스크린샷 2023-08-18 오후 2.58.08.png" width=40%>
-  <img src="/img/스크린샷 2023-08-18 오후 2.59.35.png" width=40%>
+  <img src="/img/스크린샷 2023-08-18 오후 2.58.08.png" width=70%>
+  <img src="/img/스크린샷 2023-08-18 오후 2.59.35.png" width=70%>
 
 ## User Flow
 
-  <img src="/img/스크린샷 2023-08-18 오후 3.00.24.png" width=40%>
+  <img src="/img/스크린샷 2023-08-18 오후 3.00.24.png" width=70%>
   
 ## 개선 사항
 

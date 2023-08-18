@@ -41,10 +41,6 @@ a {
   border-radius: 3%;
 }
 
-details summary::marker {
-  font-size: 0;
-}
-
 #profile-container {
   margin-top: 10%;
   background-color: rgb(43, 39, 39);
