@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 검색 엔진에 의해 검색되는 단어를 지정 -->
+    <meta name="Keywords" content="페스트캠퍼스" />
+    <!-- 검색 결과에 표시되는 문자를 지정 -->
+    <meta name="Description" content="페스트캠퍼스" />
+    <!-- 문자 코드의 종류 설정 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/font.css" />
+    <link rel="stylesheet" href="./styles/aside.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/media.css" />
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/8d5fe92c5f.js" crossorigin="anonymous"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+    <!-- firebase -->
+    <script defer src="/__/firebase/10.2.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/10.2.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.2.0/firebase-auth-compat.js"></script>
+    <!-- title -->
+    <title>임직원 관리</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/icons/office.png">
+  </head>
+  <body>
+    <div class="wrap">
+      <!-- aside -->
+      <aside>
+        <section class="left_side">
+          <section class="side_top">
+            <img
+              class="side_profile"
+              id="my_img"
+              src="./assets/images/person.png"
+              alt="프로필 사진"
+            />
+            <div class="side_top_p">
+              <p class="side_top_p1">
+                <span id="name_span">yeongmin</span>
+                <span>Frontend developer</span>
+              </p>
+              <p class="side_top_p2">
+                <span id="email_span">yeongmin123@gmail.com</span>
+                <span id="phone_span">010-1234-5678</span>
+                <span id="rank_span">VIP</span>
+              </p>
+            </div>
+          </section>
+          <section class="side_bottom">
+            <section class="side_bottom_sub_section">
+              <p>
+                <i class="fa-solid fa-gear fa-lg" style="color: #232323"></i>
+                <a href="#" title="내 정보 설정" id="mypage">내 정보 설정</a>
+              </p>
+              <p>
+                <i
+                  class="fa-solid fa-arrow-right-from-bracket fa-lg"
+                  style="color: #232323"
+                ></i>
+                <a href="javascript:void(0)" title="로그아웃">로그아웃</a>
+              </p>
+            </section>
+            <div class="company">
+              <img
+                class="fastcampus"
+                src="./assets/icons/fastcampus.png"
+                alt="fastcampus"
+              />
+              <img class="companyx" src="./assets/icons/close.png" alt="x" />
+              <img
+                class="yanolja"
+                src="./assets/icons/yanolja.png"
+                alt="yanolja"
+              />
+            </div>
+          </section>
+        </section>
+      </aside>
+      <!-- mypage modal -->
+      <section class="modal" id="mypage_modal">
+        <div class="modal_content">
+          <div class="modal_wrap">
+            <section class="modal_top">
+              <h2 class="modal_main_text">내 정보 설정</h2>
+              <button class="close" id="mypage_close_button">
+                <i class="fa-solid fa-xmark fa-2xl" style="color: #232323"></i>
+              </button>
+            </section>
+            <div class="modal_container">
+              <section class="modal_input_section">
+                <form class="modal_form" action="#">
+                  <input
+                    class="modal_form_input"
+                    id="mypage_name_ID"
+                    type="text"
+                    name="name"
+                    placeholder="이름"
+                  />
+                  <input
+                    class="modal_form_input"
+                    id="mypage_email_ID"
+                    type="email"
+                    name="email"
+                    placeholder="이메일"
+                  />
+                  <input
+                    class="modal_form_input"
+                    id="mypage_phone_ID"
+                    type="tel"
+                    name="phone"
+                    placeholder="전화번호"
+                  />
+                  <input
+                    class="modal_form_input"
+                    id="mypage_rank_ID"
+                    type="text"
+                    name="rank"
+                    placeholder="구분"
+                  />
+                  <div class="camera">
+                    <span>이미지를 등록하세요</span>
+                    <div class="camera_container">
+                      <input
+                        class="camera_input"
+                        type="file"
+                        name="file"
+                        id="mypage_file_input"
+                      />
+                      <label for="mypage_file_input">
+                        <i
+                          class="fa-regular fa-image fa-2xl"
+                          style="color: #232323"
+                        ></i>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </section>
+              <section class="modal_view">
+                <div class="view_img_div">
+                  <img
+                    class="view_img"
+                    id="mypage_view_img_ID"
+                    src="./assets/images/person.png"
+                    alt="이미지 첨부 보기"
+                  />
+                </div>
+                <div class="view_text">
+                  <ul>
+                    <li>
+                      <span>이름</span>
+                      <span id="mypage_name_text"></span>
+                    </li>
+                    <li>
+                      <span>이메일</span>
+                      <span id="mypage_email_text"></span>
+                    </li>
+                    <li>
+                      <span>전화번호</span>
+                      <span id="mypage_phone_text"></span>
+                    </li>
+                    <li>
+                      <span>구분</span>
+                      <span id="mypage_rank_text"></span>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="modal_submit">
+            <button class="mypage_button" id="mypage_register">
+              내 정보 설정
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- main -->
+      <main>
+        <section class="main_top">
+          <h2 class="main_text">임직원 관리</h2>
+          <!-- <img src="./assets/icons/night_mode.png" alt="야간모드"> -->
+        </section>
+        <section class="main_nav">
+          <div class="nav_button">
+            <button class="register" id="register_button">임직원 등록</button>
+            <button class="delete" id="delete_button">임직원 삭제</button>
+          </div>
+          <form class="searchbar">
+            <input id="search_input_id" type="text" placeholder="이름 또는 이메일로 검색하기" />
+            <button id="search_button_id" class="search_button">
+              <i
+                class="fa-solid fa-magnifying-glass fa-xl"
+                style="color: #232323"
+              ></i>
+            </button>
+          </form>
+        </section>
+        <section class="modal" id="register">
+          <div class="modal_content">
+            <div class="modal_wrap">
+              <section class="modal_top">
+                <h2 class="modal_main_text">임직원 등록</h2>
+                <button class="close" id="close_button">
+                  <i
+                    class="fa-solid fa-xmark fa-2xl"
+                    style="color: #232323"
+                  ></i>
+                </button>
+              </section>
+              <div class="modal_container">
+                <section class="modal_input_section">
+                  <form class="modal_form" action="#">
+                    <input
+                      class="modal_form_input"
+                      id="name_ID"
+                      type="text"
+                      name="name"
+                      placeholder="이름"
+                    />
+                    <input
+                      class="modal_form_input"
+                      id="email_ID"
+                      type="email"
+                      name="email"
+                      placeholder="이메일"
+                    />
+                    <input
+                      class="modal_form_input"
+                      id="phone_ID"
+                      type="tel"
+                      name="phone"
+                      placeholder="전화번호"
+                    />
+                    <input
+                      class="modal_form_input"
+                      id="rank_ID"
+                      type="text"
+                      name="rank"
+                      placeholder="구분"
+                    />
+                    <div class="camera">
+                      <span>이미지를 등록하세요</span>
+                      <div class="camera_container">
+                        <input
+                          class="camera_input"
+                          type="file"
+                          name="file"
+                          id="file_input"
+                        />
+                        <label for="file_input">
+                          <i
+                            class="fa-regular fa-image fa-2xl"
+                            style="color: #232323"
+                          ></i>
+                        </label>
+                      </div>
+                    </div>
+                  </form>
+                </section>
+                <section class="modal_view">
+                  <div class="view_img_div">
+                    <img
+                      id="view_img_ID"
+                      class="view_img"
+                      src="./assets/images/person.png"
+                      alt="이미지 첨부 보기"
+                    />
+                  </div>
+                  <div class="view_text">
+                    <ul>
+                      <li>
+                        <span>이름</span>
+                        <span id="name_text"></span>
+                      </li>
+                      <li>
+                        <span>이메일</span>
+                        <span id="email_text"></span>
+                      </li>
+                      <li>
+                        <span>전화번호</span>
+                        <span id="phone_text"></span>
+                      </li>
+                      <li>
+                        <span>구분</span>
+                        <span id="rank_text"></span>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <div class="modal_submit">
+              <button class="submit_button" id="modal_register">
+                임직원 등록
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="main_list" id="main_list">
+          <div class="list_top">
+            <div class="list_wrap">
+              <div class="list_top_name">
+                <span>프로필 사진</span>
+                <span>이름</span>
+                <span>이메일</span>
+                <span>전화번호</span>
+                <span>구분</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- modal -->
+    <script src="./assets/javascript/register.js"></script>
+    <!-- delete -->
+    <script src="./assets/javascript/delete.js"></script>
+    <!-- view -->
+    <script src="./assets/javascript/view.js"></script>
+    <!-- mypage -->
+    <script src="./assets/javascript/mypage.js"></script>
+    <!-- search -->
+    <script src="./assets/javascript/search.js"></script>
+    <!-- profile -->
+    <script src="./assets/javascript/profile.js"></script>
+  </body>
+</html>
