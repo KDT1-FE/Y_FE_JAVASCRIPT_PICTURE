@@ -5,7 +5,7 @@ import { db, storage } from './firebase'
 const collection = 'members'
 
 // Firestore db 삭제하는 함수
-async function deleteDocument(collection, memberId) {
+async function removeDoc(collection, memberId) {
   try {
     const memberRef = doc(db, collection, memberId)
     await deleteDoc(memberRef)
@@ -15,9 +15,9 @@ async function deleteDocument(collection, memberId) {
 }
 
 // Firestore db 삭제하는 함수 호출
-async function deleteMemberDocument(collection, memberId) {
+async function removeMemberDoc(collection, memberId) {
   try {
-    await deleteDocument(collection, memberId)
+    await removeDoc(collection, memberId)
     console.log('Member document deleted successfully')
   } catch (error) {
     console.error('Error deleting member document:', error)
@@ -48,7 +48,7 @@ async function onClickRemoveBtn(event, memberId, imgScr) {
   event.preventDefault()
   const removeEl = event.target.closest('.remove-btn')
   if (removeEl) {
-    await deleteMemberDocument(collection, memberId)
+    await removeMemberDoc(collection, memberId)
     await removeTask(imgScr)
   }
 }

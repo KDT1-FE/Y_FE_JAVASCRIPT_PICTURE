@@ -2,21 +2,19 @@ import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { db, storage } from './firebase'
 import { Member, memberConverter } from './FormData'
 
-// 문서 아이디 불러오기
+async function SettingDoc(name, email, team, position, image) {
+  const settingRef = doc(db, 'members', 'memberId')
+  const settingData = new Member(name, email, team, position, image)
+  const firestoreData = memberConverter.toFirestore(settingData)
 
-const washingtonRef = doc(db, 'users', '0LG1ULgOH46B4KxC46K1')
-
-const cityData = new Member('Los Angeles', 'CA', 'USA')
-const cityFirestoreData = memberConverter.toFirestore(cityData)
-
-const updatedData = {
-  ...cityFirestoreData,
-  updatedAt: serverTimestamp(), // 서버 타임스탬프 추가
+  const updatedData = {
+    ...firestoreData,
+    updatedAt: serverTimestamp(), // 서버 타임스탬프 추가
+  }
+  await setDoc(settingRef, updatedData, { merge: true }) // 덮어쓰기
 }
 
-await setDoc(washingtonRef, updatedData, { merge: true }) // 덮어쓰기
-
-// 설정 버튼 이벤트
+// 설정 버튼 이벤트 분리해야함
 export function settingTooltipItem(memberId, imgScr) {
   const memberContainer = document.querySelector('.members__contents')
   memberContainer.addEventListener('click', (event) => {
@@ -28,7 +26,7 @@ async function onClickSettingBtn(event, memberId, imgScr) {
   event.preventDefault()
   const settingEl = event.target.closest('.setting-btn')
   if (settingEl) {
-    await deleteMemberDocument(collection, memberId)
+    await SettingDoc(collection, memberId)
     await removeTask(imgScr)
   }
 }

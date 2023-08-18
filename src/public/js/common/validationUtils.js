@@ -1,7 +1,3 @@
-// 유효성 검사하는 기능
-
-// formsSelector는 form 을 받아야함
-
 export function formValidation(formsSelector, callback) {
   const forms = document.querySelectorAll(formsSelector)
 

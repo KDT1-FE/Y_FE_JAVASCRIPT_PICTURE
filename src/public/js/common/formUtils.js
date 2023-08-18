@@ -1,8 +1,23 @@
-import { handlePreviewImg } from './previewimg'
+export function enableForm(inputEls, selectEl, fileEl) {
+  inputEls.forEach((el) => {
+    el.removeAttribute('readonly')
+    el.className = 'form-control'
+  })
 
-// 폼 제출 및 유효성 검사와 관련된 기능
-import { formValidation } from './validation'
+  selectEl.removeAttribute('disabled')
+  selectEl.className = 'form-select'
 
-export function formHandler() {
-  const myForm = document.getElementById('myForm')
+  fileEl.removeAttribute('disabled')
+}
+
+export function readonlyForm(inputEls, selectEl, fileEl) {
+  inputEls.forEach((el) => {
+    el.setAttribute('readonly', '')
+    el.className = 'form-control-plaintext readonly'
+  })
+
+  selectEl.setAttribute('disabled', '')
+  selectEl.className = 'form-select-plaintext'
+
+  fileEl.setAttribute('disabled', '')
 }

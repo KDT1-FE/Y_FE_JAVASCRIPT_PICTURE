@@ -4,8 +4,9 @@ import '../../js/common/removeDB'
 import '../../js/common/FormData'
 import '../../js/common/htmlListBuilder'
 import { initDownload } from '../../js/common/download'
-import { initModal } from '../../js/common/modal'
+import { initModal, closeModal } from '../../js/common/modalUtils'
 import { setupImagePreview } from '../../js/common/previewimg'
+import { enableForm, readonlyForm } from '../../js/common/formUtils'
 import { formValidation } from '../../js/common/validationUtils'
 import { uploadDB } from '../../js/common/firestoreUtils'
 import { uploadImage } from '../../js/common/storageUtils'
@@ -14,11 +15,26 @@ import './members.scss'
 
 export async function initMembers() {
   initDownload()
-  initModal()
+  initModal(resetForm)
   initUpload()
 }
 
+// 모달 창 폼 초기화
+function resetForm() {
+  const form = document.getElementById('myForm')
+  if (form) {
+    form.reset()
+  }
+}
+
 function initUpload() {
+  // 폼 상태 관리
+  const inputEls = document.querySelectorAll('.readonly')
+  const selectEl = document.querySelector('select')
+  const fileEl = document.querySelector('.input-file')
+
+  enableForm(inputEls, selectEl, fileEl)
+
   const myForm = document.getElementById('myForm')
   const imageInput = document.getElementById('image')
   const previewImage = document.getElementById('previewImage')
@@ -50,11 +66,13 @@ function initUpload() {
       const imageUrlFromStorage = await uploadImage(imageInput.files[0])
       await uploadDB(name, email, team, position, imageUrlFromStorage)
 
-      // 업로드 성공 처리
-      // 미리보기 초기화 등
+      // 업로드 완료 후 모달 창 닫기
+      closeModal()
+
+      // 폼 상태 변경
+      // readonlyForm(inputEls, selectEl, fileEl)
     } catch (error) {
       console.error('Error during upload: ', error)
-      // 업로드 실패 처리
     }
   })
 }
