@@ -26,7 +26,7 @@
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=firebase&logoColor=black">
 </div>
 
 ## ✨ 주요 기능
@@ -39,3 +39,7 @@
   ![프로필 수정](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/13dc1d75-ec23-4cff-a884-5c618b431d5a)
 - 프로필 삭제
   ![프로필 삭제)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/0566031a-e47e-46aa-b5c0-a40e55ce11a3)
+
+## ✨ 유저 플로우
+
+<img width="606" alt="유저 플로우" src="https://github.com/lilviolie/peanuts/assets/95364951/289569f4-a687-4a8a-908e-2fb84dbcf820">
