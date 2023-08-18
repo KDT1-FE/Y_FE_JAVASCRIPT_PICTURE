@@ -145,7 +145,7 @@ $(document).ready(function () {
           await Promise.all(deletePromises);
           window.location.href = 'albaSelect.html'; // 새로고침 기능
         });
-      } else if (selectedIds === undefined) {
+      } else {
         console.log(123);
         $('.no-selection-modal-container').fadeIn();
         return;
