@@ -4,7 +4,7 @@ let i = 0;
 let change = 0;
 window.addEventListener('click',()=>{
   i++;
-  switch(i%3){
+  switch(i%4){
     case 0:
       change = 0;
       break;
@@ -13,6 +13,9 @@ window.addEventListener('click',()=>{
       break;
     case 2:
       change = 100;
+      break;
+    case 3:
+      change = 300;
       break;
   }
 })
@@ -36,7 +39,7 @@ function createParticle (x, y) {
     background: bgColor(change)
   });
  
-  TweenMax.to(particle, Math.random() * 2 + 1, {
+  TweenMax.to(particle, Math.random() * 15 + 1, {
     x: x + (Math.random() - 0.5) * 200,
     y: y + (Math.random() - 0.5) * 200,
     opacity: 0,
@@ -48,7 +51,7 @@ function createParticle (x, y) {
   });
 }
 
-const throttledCreateParticle = _.throttle(createParticle,20);
+const throttledCreateParticle = _.throttle(createParticle,15);
 
 window.addEventListener('mousemove', function (e) {
   var x = e.clientX;

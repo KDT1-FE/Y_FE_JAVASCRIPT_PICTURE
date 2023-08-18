@@ -227,7 +227,8 @@ async function dbUpdate (profileId, updatedData){
     const docRef = doc(db,"profiles",profileId)
     await updateDoc(docRef,updatedData);
     alert("수정 완료!")
-    window.location.reload();
+    // window.location.reload();
+    window.location.href="/pages/moreInfo/moreInfo.html";
   }catch(error){
     console.log("오류발생",error)
   }

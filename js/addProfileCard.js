@@ -53,4 +53,21 @@ onSnapshot(q,(querySnapshot) => {
                         .replace(doc.data().email,'{{__profile_email__}}');
     itemNumber++;
   });
+  //item 개수대로 grid css 제어
+  const items = document.querySelectorAll('.item');
+  const itemLength = items.length;
+
+  items.forEach((item, index) => {
+    const startRow = index + 1;
+    const endRow = index + 3;
+  
+    const styleTag = document.createElement('style');
+    styleTag.textContent = `
+      .item:nth-child(${index + 1}) {
+        grid-row: ${startRow}/${endRow};
+      }
+    `;
+  
+    document.head.appendChild(styleTag);
+  });
 })
