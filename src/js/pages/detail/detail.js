@@ -5,6 +5,7 @@ const urlData = location.href.split('?')[1];
 const $form = document.getElementById('detail-form');
 const $editButton = document.getElementById('edit-button');
 const $editComplete = document.getElementById('edit-complete');
+const $logout = document.getElementById('logout');
 
 window.addEventListener('DOMContentLoaded', async e => {
   if (JSON.stringify(localStorage.getItem('isSignin')) === 'null') {
@@ -15,6 +16,10 @@ window.addEventListener('DOMContentLoaded', async e => {
   const receiveData = await getMember(urlData);
 
   await loadData($form, receiveData);
+});
+
+document.getElementById('user').addEventListener('click', e => {
+  $logout.classList.toggle('hidden');
 });
 
 $editButton.addEventListener('click', async e => {

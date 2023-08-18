@@ -76,8 +76,6 @@ const request = e => {
 
 /* ------------------------------ Event handler ----------------------------- */
 window.addEventListener('DOMContentLoaded', e => {
-  console.log(JSON.stringify(localStorage.getItem('isSignin')) !== 'null');
-
   if (JSON.stringify(localStorage.getItem('isSignin')) !== 'null') {
     location.replace('main.html');
   }
