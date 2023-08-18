@@ -1,18 +1,35 @@
 #moreFunc {
   width: 90vw;
-  height: auto;
+  height: 10vh;
 
-  margin: 0 auto;
+  margin: 0 auto 3rem;
 
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
-  .func {
-    margin-top: 80px;
+  #deleteDriver {
+    @include driverListFuncBtn;
+  }
+
+  #searchDriver {
+    width: 20rem;
+    height: 40px;
+
+    padding-bottom: 0.5rem;
+
+    font-size: 1.2rem;
+    text-align: center;
   }
 
   #addDriverAnc {
-    cursor: pointer;
+    @include driverListFuncBtn;
+
+    line-height: 3.5rem;
+
+    @include mobile {
+      line-height: 6rem;
+    }
   }
 }
 
@@ -28,6 +45,8 @@
   #driversListHeaders {
     border: 1px solid;
     border-radius: 5px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
@@ -52,6 +71,7 @@
   }
 
   #drivers {
+    margin-bottom: 50px;
     .driver {
       height: 9rem;
 
@@ -78,18 +98,18 @@
 
         .confirmAnc {
           text-decoration: none;
-          cursor: pointer;
+          font-weight: 700;
+
           color: $gray;
+          cursor: pointer;
         }
 
-        &:last-child {
-          text-align: center;
-        }
         .driverProfileAnc {
           text-decoration: none;
-          cursor: pointer;
+          font-weight: 700;
+
           color: $gray;
-          //color: rgba(79, 86, 101, 0.671);
+          cursor: pointer;
         }
       }
 
