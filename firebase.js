@@ -1,10 +1,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
 import { getFirestore, collection } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 import { getStorage } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
-// import { getDownloadURL, getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+
+const { APIKEY } = process.env;
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDwzo1EcXzYL-VEk3fyYiv5peHnu1JQztk',
+  apiKey: `${APIKEY}`,
   authDomain: 'member-management-a0113.firebaseapp.com',
   projectId: 'member-management-a0113',
   storageBucket: 'member-management-a0113.appspot.com',
