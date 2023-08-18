@@ -5,14 +5,34 @@ const closeIcon = document.querySelector(".close-icon");
 export let checkedArr = new Array();
 
 checkedAll();
+readURL();
 
 // 직원 등록 모달창 display
 employeeAddBtn.addEventListener("click", () => {
   modal.style.display = "block";
 });
 closeIcon.addEventListener("click", () => {
-  modal.style.display = "none";
+  closeIcon.parentNode.parentNode.style.display = "none";
 });
+
+function readURL() {
+  const fileDom = document.querySelector(".add-data__file");
+  fileDom.addEventListener("change", () => {
+    const imgBox = document.querySelector(".add-data__img");
+
+    if (fileDom.files.length) {
+      let reader = new FileReader();
+
+      reader.onload = function (e) {
+        console.log(e);
+        imgBox.src = e.target.result;
+      };
+      reader.readAsDataURL(fileDom.files[0]);
+    } else {
+      imgBox.src = "";
+    }
+  });
+}
 
 // checkedArr 배열 중복 제거
 function delDupArr() {
@@ -49,7 +69,6 @@ function checkedAll() {
         tr.style.backgroundColor = "#aaa";
         tr.style.color = "white";
       }
-      checkedArr.shift(); // 배열의 첫 번째 요소는 title
     } else {
       for (const checkbox of checkboxes) {
         // 전체 체크박스 해제

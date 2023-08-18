@@ -1,13 +1,16 @@
 .employee-table__warpper {
   width: 90vw;
-  margin: 30px auto;
+  margin: 5vh auto;
 }
 .employee-add__modal > h1,
+.employee-detail__modal > h1,
 .employee-table__warpper > h1 {
-  margin: 0.8em;
+  font-size: 2vw;
+  margin: 0.4em;
 }
 .employee-table {
   width: 100%;
+  font-size: 1.3vw;
 }
 
 .employee-table tbody > tr {
@@ -18,12 +21,15 @@
   border-bottom: 1px solid #4b4848;
 }
 
-.employee-table > tr {
+.row-data {
   width: 100vw;
   text-align: center;
+  transform: scale(1);
+  transition: transform 0.8s;
+  font-weight: 600;
 }
 
-.employee-table > tr > input[type="checkbox"] {
+.row-data > input[type="checkbox"] {
   margin-top: 20px;
 }
 
@@ -32,8 +38,9 @@
   vertical-align: middle;
 }
 
-.employee-table > tr:hover {
-  font-weight: 600;
+.row-data:hover {
+  transform: scale(1.02);
+  transition: transform 0.8s;
 }
 .employee__img {
   margin: 10px;

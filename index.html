@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/animation.css" />
     <link rel="stylesheet" href="./src/css/header.css" />
     <link rel="stylesheet" href="./src/css/table.css" />
     <link rel="stylesheet" href="./src/css/modal.css" />
@@ -24,96 +25,153 @@
     <title>직원관리</title>
   </head>
   <body>
-    <!-- 헤더 -->
-
-    <!-- <div class="select">
-        <select name="" id="">
-          <option value="관리자">관리자님</option>
-        </select>
-      </div> -->
-
-    <!-- 직원 관리 -->
-    <div class="header">
-      <div class="header__icon" onclick="location.href='index.html'">
-        <img
-          src="./src/image/free-icon-company-2761008.png"
-          alt="메인 아이콘"
-          class="main__icon"
-          loading="lazy"
-        />
-        <span>직원관리</span>
+    <!-- 시작 애니메이션 -->
+    <div class="animation">
+      <div class="loading-container">
+        <div class="loading"></div>
+        <div id="loading-text">loading</div>
       </div>
-      <div class="employee-search__wrapper">
-        <span class="material-symbols-outlined search-icon">search</span>
-        <input
-          type="text"
-          class="employee-search__input"
-          placeholder="이름 또는 이메일로 검색하기"
-        />
-      </div>
-      <div class="button__wrapper">
-        <button type="button" class="employee-add__button">직원 등록</button>
-        <button type="button" class="employee-delete__button">직원 삭제</button>
-      </div>
+      <a href="./index.html" title="employee-management.com" id="link"
+        >employee-management.com</a
+      >
     </div>
 
-    <!-- 직원 데이터 테이블 -->
-    <section class="employee-table__warpper">
-      <!-- <h1>직원테이블</h1> -->
-      <table class="employee-table">
-        <tr>
-          <th>
-            <input class="checkbox__all" type="checkbox" />
-          </th>
-          <th>프로필</th>
-          <th>이름</th>
-          <th>이메일</th>
-          <th>휴대폰번호</th>
-          <th>입사날짜</th>
-        </tr>
-      </table>
-    </section>
+    <div class="main">
+      <!-- 헤더 -->
+      <div class="header">
+        <div class="header__icon" onclick="location.href='index.html'">
+          <img
+            src="./src/image/free-icon-team-management-6103262.png"
+            alt="메인 아이콘"
+            class="main__icon"
+            loading="lazy"
+          />
+          <span>직원관리</span>
+        </div>
+        <div class="employee-search__wrapper">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input
+            type="text"
+            class="employee-search__input"
+            placeholder="이름 또는 이메일로 검색하기"
+          />
+        </div>
+        <div class="button__wrapper">
+          <button type="button" class="employee-add__button">직원 등록</button>
+          <button type="button" class="employee-delete__button">
+            직원 삭제
+          </button>
 
-    <!-- 직원 등록 모달 창 -->
-    <div class="modal__background">
-      <modal class="employee-add__modal">
-        <h1>직원 등록</h1>
-        <span class="material-symbols-outlined close-icon">close</span>
-        <form id="employee__form">
-          <input accept="image/*" type="file" />
-          <div class="add-data">
-            <label>이름</label>
-            <input
-              class="add-data__name"
-              type="text"
-              placeholder="이름을 입력하세요"
-            />
-          </div>
-          <div class="add-data">
-            <label>이메일</label>
-            <input
-              class="add-data__email"
-              type="email"
-              placeholder="이메일을 입력하세요"
-            />
-          </div>
-          <div class="add-data">
-            <label>휴대폰 번호</label>
-            <input
-              class="add-data__tel"
-              type="tel"
-              placeholder="휴대폰 번호를 입력하세요"
-            />
-          </div>
-          <div class="add-data">
-            <label>입사날짜</label>
-            <input class="add-data__date" type="date" />
-          </div>
-          <button class="submit__button" type="submit">등록</button>
-        </form>
-      </modal>
-    </div>
+        </div>
+      </div>
 
+      <!-- 직원 데이터 테이블 -->
+      <section class="employee-table__warpper">
+        <table class="employee-table">
+          <tr>
+            <th>
+              <input id="check__btn" class="checkbox__all" type="checkbox" />
+              <label for="check__btn"></label>
+            </th>
+            <th>프로필</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>휴대폰번호</th>
+            <th>입사날짜</th>
+          </tr>
+        </table>
+      </section>
+
+      <!-- 직원 등록 모달 -->
+      <div class="modal__background">
+        <modal class="employee-add__modal">
+          <h1>직원 등록</h1>
+          <span class="material-symbols-outlined close-icon">close</span>
+          <form id="employee__form">
+            <div class="add-file__wrapper">
+              <img class="add-data__img" />
+              <input class="add-data__file" accept="image/*" type="file" />
+            </div>
+            <div class="add-data">
+              <label>이름</label>
+              <input
+                class="add-data__name"
+                type="text"
+                placeholder="이름을 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>이메일</label>
+              <input
+                class="add-data__email"
+                type="email"
+                placeholder="이메일을 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>휴대폰 번호</label>
+              <input
+                class="add-data__tel"
+                type="tel"
+                placeholder="휴대폰 번호를 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>입사날짜</label>
+              <input class="add-data__date" type="date" />
+            </div>
+            <button class="submit__button" type="submit">등록</button>
+          </form>
+        </modal>
+      </div>
+
+      <!-- 직원 상세 모달 -->
+      <div class="detail-modal__background">
+        <modal class="employee-detail__modal">
+          <h1>직원 정보</h1>
+          <span class="material-symbols-outlined close__icon">close</span>
+          <form id="employee__form">
+            <div class="add-file__wrapper">
+              <img class="detail__img" />
+              <input class="update-data__file" accept="image/*" type="file" />
+            </div>
+            <div class="add-data">
+              <label>이름</label>
+              <input
+                class="detail__name"
+                type="text"
+                placeholder="이름을 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>이메일</label>
+              <input
+                class="detail__email"
+                type="email"
+                placeholder="이메일을 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>휴대폰 번호</label>
+              <input
+                class="detail__tel"
+                type="tel"
+                placeholder="휴대폰 번호를 입력하세요"
+              />
+            </div>
+            <div class="add-data">
+              <label>입사날짜</label>
+              <input class="detail__date" type="date" />
+            </div>
+            <div class="detail-button__wrapper">
+              <button class="edit__button" type="button">저장</button>
+              <button class="delete__button" type="button">삭제</button>
+            </div>
+          </form>
+        </modal>
+      </div>
+
+    <script src="./src/js/animation.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>

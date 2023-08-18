@@ -17,7 +17,7 @@
   z-index: 9;
 }
 .main__icon {
-  width: 4vw;
+  width: 3vw;
   height: auto;
   object-fit: cover;
   cursor: pointer;
@@ -61,6 +61,15 @@
   outline: none;
 }
 
+.button__wrapper {
+  display: flex;
+  align-items: center;
+}
+.employee-add__button,
+.employee-delete__button,
+.select {
+  margin-left: 10px;
+}
 .employee-add__button,
 .employee-delete__button {
   padding: 1em 2em;
@@ -70,12 +79,14 @@
   color: white;
   border: none;
   border-radius: 8px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
 .employee-add__button:hover {
   background-color: #6e6ed7;
 }
+.delete__button:hover,
 .employee-delete__button:hover {
   background-color: #e17878;
 }
