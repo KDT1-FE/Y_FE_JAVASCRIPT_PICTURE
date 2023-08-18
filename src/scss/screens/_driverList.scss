@@ -32,7 +32,7 @@
     cursor: pointer;
 
     .driversListHeader {
-      width: 9rem;
+      width: 12rem;
       height: 50px;
 
       line-height: 50px;
@@ -41,27 +41,36 @@
       color: $black;
       background-color: $white;
     }
+
+    .checkBoxHeader {
+      width: 6rem;
+    }
+
+    .largeHeader {
+      width: 15rem;
+    }
   }
 
   #drivers {
     .driver {
+      height: 130px;
+
       border-bottom: 1px solid;
 
       display: flex;
       align-items: center;
 
+      transition: 0.3s;
+
       .driverImg {
-        width: 4rem;
-        height: 4rem;
+        width: 5.5rem;
+        height: 5.5rem;
 
         border-radius: 50%;
       }
 
       .driverData {
-        width: 9rem;
-
-        margin-top: 20px;
-        margin-bottom: 10px;
+        width: 12rem;
 
         overflow: hidden;
         white-space: nowrap;
@@ -80,7 +89,48 @@
           text-decoration: none;
           cursor: pointer;
           color: $gray;
+          //color: rgba(79, 86, 101, 0.671);
         }
+      }
+
+      .checkData {
+        width: 6rem;
+
+        display: flex;
+        justify-content: flex-end;
+
+        input {
+          width: 22px;
+          height: 22px;
+
+          appearance: none;
+
+          margin-right: 1rem;
+          border: 1px solid $white;
+          border-radius: 15%;
+
+          cursor: pointer;
+
+          transition: 0.2s;
+
+          &:checked {
+            background: $gray;
+          }
+
+          @include tablet {
+            width: 17px;
+            height: 17px;
+          }
+
+          @include mobile {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+
+      .largeWidthData {
+        width: 15rem;
       }
     }
   }
