@@ -478,6 +478,8 @@ function previewImage(event) {
       const img = document.createElement("img");
       img.src = e.target.result;
       img.style.maxWidth = "100%";
+      img.style.maxHeight = "100%";
+      img.style.objectFit = "cover";
 
       imagePreviewEl.innerHTML = ""; // Clear any previous preview
       imagePreviewEl.appendChild(img);
@@ -609,7 +611,9 @@ function previewModifying(target) {
   const imagePreviewEl = document.querySelector(".profile-image");
   const img = document.createElement("img");
   img.src = listImg.src;
-  img.style.maxWidth = "100%";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
   imagePreviewEl.append(img);
 }
 
