@@ -575,12 +575,12 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"coHEg":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _storage = require("firebase/storage");
-var _firestore = require("firebase/firestore");
+var _storage = require("@firebase/storage");
+var _firestore = require("@firebase/firestore");
 var _app = require("firebase/app");
 var _dotenv = require("dotenv");
 var _dotenvDefault = parcelHelpers.interopDefault(_dotenv);
-const dotenv = require("94fecce078e2c032");
+// const dotenv = require("dotenv");
 (0, _dotenvDefault.default).config();
 const firebaseConfig = {
     apiKey: "AIzaSyB_hGpmbxOceSWC-TYDqjGyQs3mGCbuDI0",
@@ -675,6 +675,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     }
 });
 
-},{"firebase/storage":"8WX7E","firebase/firestore":"8A4BC","firebase/app":"aM3Fo","dotenv":"lErsX","94fecce078e2c032":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["9L2rn","coHEg"], "coHEg", "parcelRequire8d1c")
+},{"firebase/app":"aM3Fo","dotenv":"lErsX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@firebase/storage":"jEcdO","@firebase/firestore":"fkIBe"}]},["9L2rn","coHEg"], "coHEg", "parcelRequire8d1c")
 
 //# sourceMappingURL=profile.1abf0409.js.map
