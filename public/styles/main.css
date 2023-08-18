@@ -93,6 +93,12 @@
   border: none;
 }
 
+.main__header_log-box {
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+
 .main__search-form {
   width: 30%;
   display: flex;
@@ -225,8 +231,7 @@
   row-gap: 15px;
   border-radius: 10px;
 }
-.section__user_form input,
-.section__user_form .section__user_email_container {
+.section__user_form input {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -238,32 +243,10 @@
 .user_imgInput,
 .user_name,
 .user_phone,
-.user_password {
+.user_password,
+.user_email {
   width: 70%;
   height: 2rem;
-}
-
-.section__user_email_container {
-  width: 72%;
-}
-
-.user_email {
-  flex: 1;
-  height: 2rem;
-}
-
-.user_email_check_btn {
-  height: 2.3rem;
-  color: #e64980;
-  border: 1px solid #e64980;
-  border-radius: 5px;
-  background-color: transparent;
-}
-
-.user_email_check_btn:hover {
-  color: #fff;
-  background-color: #e64980;
-  box-sizing: border-box;
 }
 
 .section__user_division_checkbox {

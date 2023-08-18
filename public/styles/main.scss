@@ -102,6 +102,10 @@ $white: #fff;
     border: none;
   }
 }
+.main__header_log-box {
+  display: flex;
+  column-gap: 15px;
+}
 .main__search-form {
   width: 30%;
   display: flex;
@@ -232,8 +236,7 @@ $white: #fff;
   padding: 50px;
   row-gap: 15px;
   border-radius: 10px;
-  input,
-  .section__user_email_container {
+  input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -244,29 +247,10 @@ $white: #fff;
 .user_imgInput,
 .user_name,
 .user_phone,
-.user_password {
+.user_password,
+.user_email {
   width: 70%;
   height: 2rem;
-}
-.section__user_email_container {
-  width: 72%;
-}
-.user_email {
-  flex: 1;
-  height: 2rem;
-}
-.user_email_check_btn {
-  height: 2.3rem;
-  color: $pink;
-  border: 1px solid $pink;
-
-  border-radius: 5px;
-  background-color: transparent;
-}
-.user_email_check_btn:hover {
-  color: $white;
-  background-color: $pink;
-  box-sizing: border-box;
 }
 .section__user_division_checkbox {
   width: 70%;

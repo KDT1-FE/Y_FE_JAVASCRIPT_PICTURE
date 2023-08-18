@@ -99,15 +99,12 @@
           maxlength="14"
           placeholder="전화번호를 입력해주세요."
         />
-        <div class="section__user_email_container">
-          <input
-            type="text"
-            class="user_email"
-            name="email"
-            placeholder="이메일을 입력해주세요."
-          />
-          <button class="user_email_check_btn">중복확인</button>
-        </div>
+        <input
+          type="text"
+          class="user_email"
+          name="email"
+          placeholder="이메일을 입력해주세요."
+        />
         <input
           type="password"
           name="password"
@@ -120,7 +117,7 @@
               type="checkbox"
               name="division"
               value="vip"
-              class="section__user_checkbox_division"
+              class="checkbox_division_box d_vip"
             />vip
           </label>
           <label>
@@ -128,10 +125,11 @@
               type="checkbox"
               name="division"
               value="manager"
-              class="section__user_checkbox_division"
+              class="checkbox_division_box d_manager"
             />관리자
           </label>
         </div>
+      </div>
         <div class="section__user_button_container">
           <button class="section__user_add_btn" type="submit">등록</button>
           <button class="section__user_cancel_btn">취소</button>
