@@ -31,7 +31,7 @@ try {
     // 보험자 보험금 정보 띄우기
     const expectMoney = document.querySelector(".expectMoney");
     expectMoney.textContent =
-      "지급 예정 보험금: " + accident.expectMoney + "만 원";
+      "보험금 [ " + accident.expectMoney + " ] 만 원 지급하기";
   } else {
     throw "driverSnap 존재하지 않습니다.";
   }
