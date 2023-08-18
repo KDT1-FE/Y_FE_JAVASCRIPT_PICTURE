@@ -68,6 +68,7 @@ async function uploadImageAndAddToList(file, employeeInfo) {
     displayEmployeeWithInfo(employeeInfo);
     saveEmployeeInfoToLocalstorage(employeeInfo);
     
+    location.reload()
   } catch (error) {
     console.error('업로드 실패', error);
   }
