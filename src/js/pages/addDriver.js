@@ -1,5 +1,6 @@
-// common components
+// import common components
 import "../components/load.js";
+import "../components/clickBackBtn.js";
 
-// dashBoard components
+// import addDriver components
 import "../components/addDriver/addDriverData.js";
