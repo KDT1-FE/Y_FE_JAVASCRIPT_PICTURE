@@ -26,7 +26,7 @@ const initPrisonerDetailModal = () => {
     const saveNameBtn = document.getElementById('saveNameBtn');
     const saveLvBtn = document.getElementById('saveLvBtn');
     const lvOptions = document.querySelectorAll('.lvOption');
-    let currentPrisonCell = null;
+    let currentPrisonCell = null; 
 
     const openPrisonerDetailModal = (prisonCell) => {
         const prisonerName = prisonCell.querySelector('.prisonerName');
