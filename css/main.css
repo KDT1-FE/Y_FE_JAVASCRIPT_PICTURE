@@ -91,11 +91,11 @@ body {
 }
 
 @media (max-width: 1200px) {
-  .button--enroll {
+  /* .button--add {
     width: 280px;
     height: 40px;
     font-size: 20px;
-  }
+  } */
 }
 
 @media (max-width: 740px) {
@@ -106,11 +106,11 @@ body {
   .header-title {
     font-size: 22px;
   }
-  .button--enroll {
+  /* .button--add {
     width: 200px;
     height: 30px;
     font-size: 15px;
-  }
+  } */
 }
 
 @media (min-width: 1440px) {
