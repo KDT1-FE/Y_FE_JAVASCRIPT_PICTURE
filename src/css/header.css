@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 5vh;
+
+    z-index: 1;
+
+    margin: 0 auto;
+    padding: 1rem 0;
+    background-color: var(--color-space);
+    border-bottom: 0.1rem solid;
+
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 85%;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+
+    font-size: 1.3rem;
+}
+
+.header__left--logo-image {
+    width: 15rem;
+}
