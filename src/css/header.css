@@ -1,0 +1,100 @@
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  white-space: nowrap;
+}
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #4b4848;
+  z-index: 9;
+}
+.main__icon {
+  width: 3vw;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+.header__icon {
+  display: inline-flex;
+  align-items: center;
+}
+.header__icon:hover > span {
+  color: #4b4848;
+}
+.header__icon > span {
+  font-size: 2vw;
+  font-weight: 700;
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.employee-search__wrapper {
+  display: flex;
+  width: 30vw;
+  height: 5vh;
+  border: 1px solid #4b4848;
+  border-radius: 6px;
+  align-items: center;
+}
+.search-icon {
+  width: 1.2vw;
+  height: 1.2vw;
+  margin: 5px 10px auto 10px;
+}
+.employee-search__input {
+  width: 100vw;
+  margin-right: 3px;
+  border: none;
+  font-size: 1.2vw;
+  background-color: inherit;
+  overflow: hidden;
+}
+.employee-search__input:focus {
+  outline: none;
+}
+
+.button__wrapper {
+  display: flex;
+  align-items: center;
+}
+.employee-add__button,
+.employee-delete__button,
+.select {
+  margin-left: 10px;
+}
+.employee-add__button,
+.employee-delete__button {
+  padding: 1em 2em;
+  font-size: 1vw;
+  font-weight: 600;
+  background-color: #28288c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.employee-add__button:hover {
+  background-color: #6e6ed7;
+}
+.delete__button:hover,
+.employee-delete__button:hover {
+  background-color: #e17878;
+}
+
+@media screen and (max-width: 391px) {
+  .employee-search__wrapper > .search-icon {
+    display: none;
+  }
+}
