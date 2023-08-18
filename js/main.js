@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 체크된 cell 값 가져오기 
         const checkboxInputs = document.querySelectorAll('.input-checkbox');
-        const checkedUser = []; 
+        let checkedUser = []; 
 
         checkboxInputs.forEach(checkboxInput => {
             checkboxInput.addEventListener('change', () => {
@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error(`이미지 삭제 오류 - ${name}:`, error);
                     });
 
+                    checkedUser = [];
                     showToast(`삭제되었습니다!`);
                 }
             }
