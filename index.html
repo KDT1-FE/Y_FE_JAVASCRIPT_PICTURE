@@ -203,13 +203,18 @@
             <br />
             <div class="modal-form">
               <form id="plants-form">
+                <img src="/assets/images/default.png" id="printImage" /><br />
                 <label for="image">사진</label>
+
                 <input
-                  type="text"
-                  placeholder=""
-                  id="image-data"
+                  type="file"
+                  id="imageInput"
                   class="align-right"
-                /><br />
+                  accept="image/*"
+                />
+                <p id="progress"></p>
+
+                <br />
 
                 <label for="name">이름</label>
                 <input
@@ -246,7 +251,6 @@
 
                 <button id="btn-data-save" class="save-button">추가</button>
               </form>
-              <button id="closeModalBtn" class="closeModal">닫기</button>
             </div>
           </div>
         </div>

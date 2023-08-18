@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import {
   getFirestore,
   collection,
   addDoc,
@@ -26,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+const storage = getStorage(app);
 
 // CRUD CONTROL FUNCTION
 
@@ -46,3 +53,9 @@ export const getData = (id) => getDoc(doc(db, "myplants", id));
 export const updateData = (id, newInfo) =>
   updateDoc(doc(db, "myplants", id), newInfo);
 //export const editData = (id) => (doc(db, 'myplants', id))
+
+// UPLOAD FILE
+
+export const storageRef = (imageFile) => ref(storage, imageFile);
+export const uploadTask = (storageRef, imageFile) =>
+  uploadBytesResumable(storageRef, imageFile);
