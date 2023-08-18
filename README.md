@@ -1,7 +1,7 @@
 # KDT0_ChoiJaehun
 
 # 선수 정보 관리!
-[KakaoTalk_20230818_203740434](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38286505/c8f4339c-c4ea-4f14-a171-326767d497a4)
+[KakaoTalk_20230818_203740434](<img width="500" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38286505/c8f4339c-c4ea-4f14-a171-326767d497a4"/>)
 
 
 > **선수 정보 관리 서비스** <br/> **개발기간: 2023.08.08~ 2023.08.18**
