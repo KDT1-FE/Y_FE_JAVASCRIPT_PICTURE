@@ -12,7 +12,7 @@ body {
   margin: 0 auto;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-size : cover;
   background-attachment: fixed;
   background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
@@ -30,25 +30,26 @@ body {
   position: relative;
   background-color: #fff;
   border-radius: 1.5rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 main {
   display: flex;
+  height: 70%;
 }
 header {
-
   border-top-left-radius : inherit;
   border-top-right-radius : inherit; 
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   padding: 20px;
+  padding-left: 2rem;
   font-weight: 700;
   font-size: 2rem;
   /* background-color: aqua; */
-  height: 50px;
+  height: 60px;
   box-shadow: 2px 2px 4px rgba(0,0,0,.2);
-  transition: 2s ease-in-out;
+  transition: .3s ease-in-out;
 }
 a {
   text-decoration: none;
@@ -59,8 +60,25 @@ h2 {
   font-size: 45px;
   letter-spacing : -2px;
   text-shadow:2px 2px 2px rgba(0,0,0,.2);
-  /* -webkit-text-stroke: 3px lightskyblue; */
+
+  -webkit-animation:blink 0.5s ease-in-out 1s alternate;
+  -moz-animation:blink .5s ease-in-out 1s alternate;
+  animation:blink 1.5s ease-in-out 2s alternate;
 }
+@-webkit-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@-moz-keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+@keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
 img {
   display: block;
   object-fit: cover;
@@ -89,12 +107,108 @@ img {
   scale: .95;
   cursor: pointer;
 }
+.btn2 {
+  height: 40px;
+  width: 160px;
+}
 
-@media screen and (max-width: 400px) {
-  .btn {
-  transition: .7s ease-in-out;
-  scale: .9;
-  width: 90px;
-  letter-spacing : 1px;
-  }}
+
+@media all and (min-width:1024px) { 
+  .container {
+    width: 90vw;
+  }
+  header {
+    height: 70px;
+  }
+  header > h2 {
+    font-size: 50px;
+  }
+  .staff_list_container,
+  .button-bar {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .row {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .row-header {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .id_picture {
+    width: 200px;
+    height: 200px;
+    transition: all .5s;
+  }
+
+} 
+
+@media all and (max-width: 600px) {
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px !important;
+  }
+
+  .button-bar {
+    justify-content: space-evenly;
+  }
+  .area {
+    gap: 20px;
+    flex-direction: column;
+    overflow:unset;
+    transition: .5s ease-in-out;
+    }
+  .filebox,
+  .area--txt {
+    flex-wrap: wrap;
+    align-content: center !important;
+  }
+  .filebox .profile_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  .profile-msg-box > input {
+    width: 120px !important;
+    height: 30px !important;
+    font-size: 14px !important;
+  }
+  .profile-msg-box {
+    gap : 10px;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+  }
+  .staff_list,
+  .row-header {
+    font-size: 15px !important;
+  }
+  .btn2 {
+    width: 6rem;
+    height: 3rem;
+  }
+}
+
+
+@media all and (max-width: 500px) {
+
+  header {
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  header > h2 {
+    font-size: 35px;
+  }
+  .staff_list,
+  .row-header {
+    font-size: 14px !important;
+  }
+  .update_btn_area {
+    margin-top: 20px !important;
+  }
+
+}
   

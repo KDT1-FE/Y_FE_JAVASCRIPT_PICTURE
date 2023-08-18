@@ -1,26 +1,25 @@
-/* UPLOAD PAGE */
 
-.main--upload {
+.main--profile {
   justify-content: center;
 }
-.header--upload {
+.header--profile {
   justify-content: space-around;
 }
 .home_icon {
   color: steelblue;
   font-size: 40px;
   display: flex;
+  
 }
 
-
-.inner--input {
+.inner--profile {
   width: 80%;
   margin: 40px;
-  margin-top: 80px;
+  margin-top: 40px;
   height: 100%;
   box-sizing: border-box;
 }
-.input_area {
+.profile_area {
   justify-content: space-evenly;
   display: flex;
   margin: 0 20px;
@@ -37,15 +36,16 @@
   display: flex;
   flex-direction: column;
 }
-.filebox .upload_image {
-  height: 150px;
-  width: 150px;
-  padding: 10px;
-  border: 1px solid steelblue;
+.filebox .profile_image {
+  height: 300px;
+  width: 300px;
   color: rgba(70, 130, 180,.5);
   box-sizing: border-box;
   background-color: rgba(185, 203, 218, .3);
   text-align: center;
+  position: relative !important;
+  border-radius: 20px;
+  margin-right: 20px;
 }
 .filebox label {
   display: flex;
@@ -63,30 +63,61 @@
   margin-top: 10px;
   box-sizing: border-box;
 }
-.input_area--txt {
-  gap : 10px;
+.profile_area--txt {
+  gap : 20px;
   display: flex;
   flex-direction: column;
   
 }
-.input_area--txt > input {
-  width: 150px;
-  height: 30px;
+.profile-msg-box {
+  gap : 10px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-msg-box > input {
+  width: 200px;
+  height: 40px;
   outline: none;
   border: none;
   border-bottom: 1px solid steelblue;
-  font-size: 12px;
-  background-color: rgba(185, 203, 218, .3);
+  color: #333;
+  
+}
+.profile-msg-box > input:focus {
+  background-color: rgba(185, 203, 218, .2);
 }
 input::placeholder {
   color: rgba(70, 130, 180,.5);
 }
+.profile-msg-box > h3 {
+  letter-spacing : 1px;
+  font-size: 14px;
+  color: steelblue;
+}
 
-.save_btn_area {
+
+.removeimg_btn {
+  color: steelblue;
+  font-size: 30px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: rgba(0,0,0,.5);
+  transition: all ease-in-out .5s;
+}
+.removeimg_btn:hover {
+  scale: 1.2;
+}
+
+.update_btn_area {
   margin-top: 40px;
   display: flex;
   justify-content: center;
-  /* position: absolute;
-  right: 80px; */
+  gap: 20px;
 }
 

@@ -17,16 +17,20 @@
   <title>SKY Admin</title>
 </head>
 <body>
+  <div class="kinetic"></div>
 <div class="wrap">
   <div class="container"> 
     <!-- 헤더 -->
-  <header> <h2>STAFF LIST</h2> </header>
+  <header> <h2 class="flux">STAFF LIST</h2> </header>
   <main class="main--index">
     <!-- 버튼 바 -->
     <section class="button-bar">
       <a href="./upload.html">
         <button class="btn" id="add-btn">REGISTER</button>
       </a>
+      <!-- <a href="./profile.html">
+        <button class="btn" id="edit-btn">EDIT</button>
+      </a> -->
       <button class="btn" id="del-btn">DELETE</button>
     </section>
     <!-- 리스트 큰 박스 -->
@@ -44,7 +48,6 @@
 
 
 
-
       </div>
   </section>
 
@@ -59,9 +62,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
 
   <!-- JS -->
-  <script defer src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
-  <script defer src="/__/firebase/10.1.0/firebase-firestore-compat.js"></script>
-  <script defer src="/__/firebase/10.1.0/firebase-storage-compat.js"></script>
-  <script type="module" defer src="./main.js"></script>
+
+  <script type="module" src="./main.js"></script>
 </body>
 </html>  

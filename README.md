@@ -1,49 +1,75 @@
 
-# :camera: 직원 사진 관리 서비스
+# KDT0_ParkEunYeong 직원 사진 관리 서비스
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+직원들의 사진을 관리할 수 있는 사진 관리자 서비스
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
-
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
-
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
-
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
-
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
-
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+2023-08-08 ~ 2023-08-18
 
 
+## [배포 링크]
+
+
+## [used Jquery to Solve for EventLisner Error]
+
+js에서 일부 `addeventlistener`가 작동하지 않아 Jquery를 사용한  부분이 있습니다.
+
+Jquery 없이 해결은 가능했지만 아래와 같이 가독성이 떨어져 일부 사용했습니다.
+```js
+//에러 발생 코드
+const addBtn = document.querySelector('#add-btn');
+addBtn.addEventListener('click', () => {
+  window.location.href = "./upload.html"
+});
+
+//해결된 코드 (window.onload, if()사용)
+window.onload = function(){
+  const addBtn = document.querySelector('#add-btn');
+    if(addBtn) {
+  addBtn.addEventListener('click', () => {
+    window.location.href = "./upload.html"
+  })
+ }
+};
+```
+
+## [Page Info]
+- Main Page
+- Upload Page
+- Profile Page
+
+* Main Page
+  등록 된 staff의 profile row를 클릭해서 Profile Page로 이동 할 수 있습니다.
+  화면의 사이즈가 작아지면 리스트 내부에서 스크롤이 가능합니다.
+  가로 스크롤의 경우 드래그로 가능합니다.
+  `REGISTER` 버튼으로 새로운 staff를 등록할 수 있는 Upload Page로 이동합니다.
+
+* Upload Page
+ - 사진과 인적사항을 기입하고 `SAVE`버튼으로 저장 후 Main Page으로  이동합니다.
+  -이름은 최초 작성 후에 수정이 안되니 주의해주세요.
+
+ - 우측 위의 `HOME`아이콘을 눌러 Main Page로 이동합니다.
+
+* Profile Page
+  - 이미지 삭제 및 수정
+  이미지 위의 `trash can` 아이콘을 눌러 이미지를 삭제가 가능하고, `NEW IMAGE` 버튼으로 새로운 사진 업로드가 가능합니다.
+
+  - 인적사항 수정 후 프로필 저장
+  오른쪽의  인적사항 내용을 눌러 수정하고, `Update Profile` 버튼을 눌러 수정한 사항을 저장합니다.
+
+  - 프로필 삭제
+  `Delete Profile` 버튼을 눌러 프로필 전체를 삭제 합니다.
+
+
+  -우측 위의 `HOME`아이콘을 눌러 Main Page로 이동합니다.
+
+
+## [Page preview]
+
+- Main Page
+<img src="./public/assets/images/mainpage.PNG">
+- Upload Page
+<img src="./public/assets/images/uploadpage.PNG">
+- Profile Page
+<img src="./public/assets/images/profilepage.PNG">
+
+<img src="./public/assets/images/staffpagegif000.gif">
