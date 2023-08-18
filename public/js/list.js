@@ -70,7 +70,6 @@ function searchCharacters(event) {
   const listBox = document.querySelector(".member-list-box");
 
   listBox.innerHTML = "";
-  // console.log(list.innerHTML);
 
   db.collection("character")
     .get()
@@ -79,7 +78,7 @@ function searchCharacters(event) {
         listBox.innerHTML = "<div>검색하신 캐릭터는 없습니다.</div>";
         return;
       }
-      // console.log(snapshot);
+
       snapshot.forEach((doc) => {
         const charData = doc.data();
         const charName = charData.이름.toLowerCase();
@@ -104,13 +103,7 @@ function searchCharacters(event) {
     });
 }
 
-// window.onload = function () {
-//   fetch("../html/navbar.html")
-//     .then((response) => response.text())
-//     .then((data) => {
-//       document.getElementById("navbar").innerHTML = data;
-//     });
-// };
+const debouncedSearch = _.debounce(searchCharacters, 200);
 
 function checkAllBoxes(topCheckbox) {
   const checkboxes = document.querySelectorAll(
