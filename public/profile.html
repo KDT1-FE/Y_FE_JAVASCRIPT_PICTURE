@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타쉽 아티스트 관리</title>
+  <link rel="icon" href="./assets/favicon/fav1.png">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/672f0c1bae.js" crossorigin="anonymous"></script>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+  <!-- reset-css cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.css">
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 로딩 애니메이션 -->
+  <div class="loader">
+    <i class="fas fa-solid fa-spinner fa-spin-pulse"></i>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="header-container">
+      <h1>아티스트 프로필</h1>
+      <div class="account">
+        <p>관리자님</p>
+        <i class="fas fa-regular fa-chevron-down" style="color: #000000;"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main>
+    <div class="control-section">
+      <div class="profile-box">
+        <div class="profile-top">
+          <h2>아티스트 정보</h2>
+          <div class="btn-container">
+            <button id="edit-btn" class="btn orange-btn">수정</button>
+            <button id="reset-btn" class="btn white-btn">Home</button>
+          </div>
+        </div>
+        <table class="profile-info">
+          <tr>
+            <th>이미지 첨부</th>
+            <td>
+              <div class="img-change-wrap">
+                <div class="img-upload">
+                  <img id="previewImg" src="https://firebasestorage.googleapis.com/v0/b/artist-photo.appspot.com/o/image%2FNo-Image.png?alt=media&token=3dfa5a87-5480-436b-ac2b-fc81fbec36a8" alt="프로필 사진 미리보기" />
+                  <input type="file" name="image" id="profileImgInput" title="이미지를 삽입하세요" onchange="showImg(event)" />
+                </div>
+                <button id="remove-img-btn" class="btn orange-btn">사진 삭제</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>이름</th>
+            <td><input type="text" id="name" placeholder="홍길동" required /></td>
+          </tr>
+          <tr>
+            <th>휴대폰 번호</th>
+            <td><input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="010-0000-0000"
+                required /></td>
+          </tr>
+          <tr>
+            <th>나이</th>
+            <td><input type="number" id="age" placeholder="숫자만 입력하세요" required /></td>
+          </tr>
+          <tr>
+            <th>소속</th>
+            <td><input type="text" id="group" placeholder="소속 그룹을 입력하세요" required /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- 로딩 애니메이션 -->
+  <div class="loading-wrap"></div>
+  
+  <script defer src="./js/loader.js"></script>
+  <script defer src="./js/showImg.js"></script>
+  <script defer src="./js/profile.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCH73YsQufleFN2hNA6N__hZd4oJtrTfv8",
+      authDomain: "artist-photo.firebaseapp.com",
+      projectId: "artist-photo",
+      storageBucket: "artist-photo.appspot.com",
+      messagingSenderId: "689252880125",
+      appId: "1:689252880125:web:d78a7d2a7cc7f086c2b894"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+</body>
+
+</html>
