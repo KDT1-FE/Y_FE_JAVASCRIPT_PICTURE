@@ -29,7 +29,7 @@ body {
 }
 
 body.masked > *:not(main, aside) {
-  opacity: 0.3;
+  opacity: 0.2;
   pointer-events: none; /* 클릭 또는 터치 이벤트 무시 */
   user-select: none; /* 선택 불가능하게 설정 */
 }
@@ -149,7 +149,7 @@ li {
 
 .staff-box__item-img {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .staff-box__item-img img {
@@ -262,11 +262,31 @@ li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.modal-box__nav__tooglebtn {
-  margin-left: auto;
+.modal-box__nav__submitTooglebtn {
+  display: none;
 }
 
-.modal-box__nav__tooglebtn a i {
+.modal-box__nav__submitTooglebtn.active {
+  margin-left: auto;
+  display: block;
+}
+
+.modal-box__nav__submitTooglebtn a i {
+  font-size: 30px;
+  color: black;
+  padding: 10px 10px 5px 0;
+}
+
+.modal-box__nav__modifyTooglebtn {
+  display: none;
+}
+
+.modal-box__nav__modifyTooglebtn.active {
+  margin-left: auto;
+  display: block;
+}
+
+.modal-box__nav__modifyTooglebtn a i {
   font-size: 30px;
   color: black;
   padding: 10px 10px 5px 0;
@@ -288,14 +308,51 @@ li {
   border-radius: 4px;
 }
 
-.submitBtn-wrap {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: transparent;
-  display: flex;
-  height: 50px;
+.submitBtn {
+  display: none;
 }
 
-#submitButton {
+.submitBtn.active {
+  display: block;
+  width: auto;
+  height: 100px;
+}
+
+.submitButton {
+  display: none;
+}
+
+.submitButton.active {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  margin: auto;
+  background-color: #f8f9fa;
+  border: none;
+}
+
+.submitButton.active:hover {
+  transition: background-color 0.5s ease;
+  background-color: orange;
+}
+
+.modifyBtn {
+  display: none;
+}
+
+.modifyBtn.active {
+  display: block;
+  width: auto;
+  height: 100px;
+}
+
+.modifyButton {
+  display: none;
+}
+
+.modifyButton.active {
+  display: block;
   width: 100%;
   height: 101%;
   font-size: 20px;
@@ -304,7 +361,7 @@ li {
   border: none;
 }
 
-#submitButton:hover {
+.modifyButton.active:hover {
   transition: background-color 0.5s ease;
   background-color: orange;
 }
@@ -316,10 +373,13 @@ li {
   align-items: center;
   width: 100%;
   height: 100%;
+  background-color: #f8f9fa;
 }
 
-.modal-box__inputImg div {
-  background-color: #f8f9fa;
+.modal-box__inputImg img {
+  border-radius: 50%;
+  width: auto;
+  height: 100%;
 }
 
 .preview-image {
@@ -356,6 +416,34 @@ li {
 }
 
 .staff-box__delete.active i {
+  font-size: 100px;
+  color: #fff;
+  padding: 20px 6px;
+}
+
+.staff-box__item.modify {
+  box-shadow: orange 0px 4px 16px 0px;
+}
+
+.staff-box__modify {
+  display: none;
+}
+
+.staff-box__modify.active {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+
+.staff-box__modify.active:hover {
+  background-color: orange;
+  transition: background-color 0.5s ease;
+}
+
+.staff-box__modify.active i {
   font-size: 100px;
   color: #fff;
   padding: 20px 6px;

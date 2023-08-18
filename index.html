@@ -19,9 +19,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
   <!-- JavaScirpt 연결 -->
+  <script type="module" src="./js/awskey.js" defer></script>
   <script type="module" src="./js/main.js" defer></script>
   <script type="module" src="./js/employeeRegister.js" defer></script>
   <script type="module" src="./js/employeeDelete.js" defer></script>
+  <script type="module" src="./js/employeeModify.js" defer></script>
+
 
 
   <!-- aws-sdk 연결 -->
@@ -60,7 +63,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="#" class="employee-modify">
             <i class="fa-solid fa-user-gear"></i>
             직원 관리
           </a>
@@ -75,7 +78,12 @@
         <div class="modal-box">
 
           <div class="modal-box__nav">
-            <div class="modal-box__nav__tooglebtn">
+            <div class="modal-box__nav__submitTooglebtn">
+              <a href="#">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </div>
+            <div class="modal-box__nav__modifyTooglebtn">
               <a href="#">
                 <i class="fa-solid fa-xmark"></i>
               </a>
@@ -83,11 +91,12 @@
 
           </div>
           <div class="modal-box__inputImg">
-            <div></div>
+            <img src="" alt="">
           </div>
 
           <div class="modal-box__inputInfo">
             <div>
+              <input type="hidden" name="employeeNumber" id="employeeNumber">
               <div>
                 <label for="userName">이름</label>
                 <input type="text" name="userName" id="userName" placeholder="홍길동">
@@ -134,7 +143,10 @@
           </div>
 
           <div class="submitBtn">
-            <button id="submitButton">제출</button>
+            <button class="submitButton">제출</button>
+          </div>
+          <div class="modifyBtn">
+            <button class="modifyButton">수정</button>
           </div>
         </div>
       </section>
@@ -151,10 +163,13 @@
     <div class="staff-box__delete">
       <i class="fa-solid fa-trash-can"></i>
     </div>
+    <div class="staff-box__modify">
+      <i class="fa-solid fa-gear"></i>
+    </div>
   </aside>
 
   <footer>
-    푸터
+
   </footer>
 
 </body>

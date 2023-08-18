@@ -1,33 +1,25 @@
-const modalToogleBtn = document.querySelector(".modal-box__nav__tooglebtn");
-const modal = document.querySelector(".modal");
-const modalBox = document.querySelector(".modal-box");
-const submitBtn = document.getElementById("submitButton");
-const registerBtn = document.querySelector(".employee-register");
 const form = document.querySelector("form");
 const fileInput = document.querySelector('input[type="file"]');
+const submitButton = document.querySelector(".submitButton");
 
 const AWS_BUCKET_NAME = "lehihobucket";
 const AWS_OBJECT_KEY = "data.json";
 
-AWS.config.update({
-  region: "ap-northeast-2",
-  accessKeyId: "AKIAXJBGLBGEAQLEJURQ",
-  secretAccessKey: "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",
-});
-
 const s3 = new AWS.S3();
 
-// DOM interaction and utility functions
-function toggleModal() {
-  document.querySelector(".modal-box__inputImg div").textContent = "사진규격 3.5cm x 4.5cm";
-  modal.classList.toggle("active");
-  modalBox.classList.toggle("active");
+function toggleClassOnElement(element, className) {
+  element?.classList.toggle(className);
 }
 
-function resetFormAndCloseModal() {
+const toggleEmployeeActive = () => {
+  toggleClassOnElement(document.querySelector(".modal"), "active");
+  toggleClassOnElement(document.querySelector(".modal-box"), "active");
+  toggleClassOnElement(document.querySelector(".submitButton"), "active");
+  toggleClassOnElement(document.querySelector(".submitBtn"), "active");
+  toggleClassOnElement(document.querySelector(".modal-box__nav__submitTooglebtn"), "active");
   form.reset();
-  toggleModal();
-}
+  document.querySelector(".modal-box__inputImg").innerHTML = "";
+};
 
 function convertFormToJSON(formElement) {
   const formData = new FormData(formElement);
@@ -89,7 +81,7 @@ async function updateS3Object(bucketName, objectKey, newData) {
   }
 }
 
-// Event handlers
+
 async function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -109,13 +101,22 @@ async function handleFormSubmit(event) {
   }
 
   await updateS3Object(AWS_BUCKET_NAME, AWS_OBJECT_KEY, dataObject);
-  resetFormAndCloseModal();
+  addStaffToDOM(dataObject); 
+  toggleEmployeeActive();
 }
 
-// Event listeners
-registerBtn.addEventListener("click", toggleModal);
-modalToogleBtn.addEventListener("click", resetFormAndCloseModal);
-form.addEventListener("submit", handleFormSubmit);
+
+function addStaffToDOM(employeeData) {
+  const staffBox = document.querySelector(".staff-box");
+  const staffElement = createStaffTemplate(employeeData);
+  staffBox.insertAdjacentHTML("beforeend", staffElement);
+}
+
+
+document.querySelector(".modal-box__nav__submitTooglebtn").addEventListener("click", toggleEmployeeActive);
+document.querySelector(".employee-register").addEventListener("click", toggleEmployeeActive);
+submitButton.addEventListener("click", handleFormSubmit);
+
 
 function createStaffTemplate(data) {
   return `
@@ -154,5 +155,4 @@ async function loadStaffData() {
     console.error("Error loading staff data:", error);
   }
 }
-loadStaffData(); // 페이지 로드 시 함수 호출하여 데이터를 로드
-
+loadStaffData(); 

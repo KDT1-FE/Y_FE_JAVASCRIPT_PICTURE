@@ -1,5 +1,6 @@
 const AWS_BUCKET_NAME = "lehihobucket";
 const AWS_OBJECT_KEY = "data.json";
+
 const s3 = new AWS.S3();
 
 let selectedEmployeeNumbers = [];
@@ -34,16 +35,24 @@ async function deleteDataFromS3() {
     const updatedData = employeesData.filter((emp) => !selectedEmployeeNumbers.includes(String(emp.employeeNumber)));
 
     for (const employee of employeesToDelete) {
-      const imageUrl = employee.imageUrl;
-      const imageKey = new URL(imageUrl).pathname.slice(1);
-      await s3
-        .deleteObject({
-          Bucket: AWS_BUCKET_NAME,
-          Key: imageKey,
-        })
-        .promise();
+      if (employee.imageUrl) {
+
+        try {
+          const imageUrl = employee.imageUrl;
+          const imageKey = new URL(imageUrl).pathname.slice(1);
+          await s3
+            .deleteObject({
+              Bucket: AWS_BUCKET_NAME,
+              Key: imageKey,
+            })
+            .promise();
+        } catch (error) {
+          console.error("Error processing imageUrl for employee:", employee, error);
+        }
+      }
     }
 
+  
     await s3
       .putObject({
         Bucket: AWS_BUCKET_NAME,
@@ -57,21 +66,16 @@ async function deleteDataFromS3() {
   }
 }
 
-document.querySelector(".staff-box__delete").addEventListener("click", async function () {
-  document.querySelectorAll(".staff-box__item.active.select").forEach((item) => item.remove());
-  await deleteDataFromS3();
-  toggleClassOnElement(document.querySelector(".staff-box__delete"), "active");
-  toggleClassOnElement(document.querySelector("body"), "masked");
-  document.querySelectorAll(".staff-box__item").forEach((item) => {
-    item.classList.remove("active");
-    item.classList.remove("select");
-  });
-});
-
 document.querySelector(".employee-delete").addEventListener("click", function () {
   [...document.querySelectorAll(".staff-box__item")].forEach((item) => toggleClassOnElement(item, "active"));
   toggleClassOnElement(document.querySelector("body"), "masked");
   toggleClassOnElement(document.querySelector(".staff-box__delete"), "active");
 });
 
-
+document.querySelector(".staff-box__delete").addEventListener("click", async function () {
+  document.querySelectorAll(".staff-box__item.active.select").forEach((item) => item.remove());
+  await deleteDataFromS3();
+  [...document.querySelectorAll(".staff-box__item")].forEach((item) => toggleClassOnElement(item, "active"));
+  toggleClassOnElement(document.querySelector("body"), "masked");
+  toggleClassOnElement(document.querySelector(".staff-box__delete"), "active");
+});

@@ -1,9 +1,4 @@
 const toogleBtn = document.querySelector(".navbar__tooglebtn");
-const menu = document.querySelector(".navbar__menu");
-
-toogleBtn.addEventListener("click", () => {
-  menu.classList.toggle("active");
-});
 
 // 미리보기 함수
 document.getElementById("fileUpload").addEventListener("change", function (e) {
@@ -15,8 +10,7 @@ document.getElementById("fileUpload").addEventListener("change", function (e) {
     // 파일 읽기가 완료된 경우 실행되는 이벤트
     reader.onload = function (e) {
       // 미리보기 요소에 이미지를 표시
-      const previewDiv = document.querySelector(".modal-box__inputImg div");
-      previewDiv.innerHTML = `<img src="${e.target.result}" alt="Image Preview" class="preview-image">`;
+      document.querySelector(".modal-box__inputImg").innerHTML = `<img src="${e.target.result}" alt="Image Preview" class="preview-image">`;
     };
 
     // 파일을 읽기 위해 readAsDataURL 함수 사용
@@ -30,3 +24,5 @@ document.addEventListener("dragstart", function (event) {
     event.preventDefault();
   }
 });
+
+
