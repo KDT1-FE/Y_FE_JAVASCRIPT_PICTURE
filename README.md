@@ -79,7 +79,7 @@ https://villagers-list.web.app/
 
 ### 메인 페이지
 
-![](./public/assets/readme_graphics/mainPage.gif)
+![mainPage](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/102955516/fbc43961-23ac-4fb5-991f-095acb56e286)
 
 <br>
 
