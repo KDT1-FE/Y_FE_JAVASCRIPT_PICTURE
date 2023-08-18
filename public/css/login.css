@@ -1,3 +1,6 @@
+* {
+    font-family: "Harry Potter", sans-serif;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +9,7 @@ body {
     align-items: center;
     min-height: 100vh;
     display: flex;
+    
 }
 .loginBg {
     position: absolute;
@@ -15,12 +19,18 @@ body {
     height: 100%;
 }
 .login-container {
-    background-color: white;
-    border-radius: 8px;
+    background-image: url(../image/modalBox.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .login-container h2 {
     margin-bottom: 20px;
@@ -33,19 +43,27 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
+    box-sizing: border-box;
 }
-
+.login-container input::placeholder {
+    font-family: "Harry Potter", sans-serif;
+}
+.login-container input:focus::placeholder {
+    color: transparent;
+}
 .login-container button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: rgba(14, 17, 27, 0.1);
+    color: #5a2400;
+    font-weight: 700;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .login-container button:hover {
-    background-color: #0056b3;
+    background-color: rgba(14, 17, 27, 0.3);
+    font-weight: border;
+    font-size: 14px;
 }

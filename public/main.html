@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZKABAN : Despair Of Prison</title>
+    <link rel="shortcut icon" href="/favicon-16.png" sizes="16x16">
+    <link rel="shortcut icon" href="/favicon-32.png" sizes="32x32">
+    <link rel="shortcut icon" href="/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/favicon-64.png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon-128.png" sizes="128x128">
+    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <video src="/videos/mainBg-10s.mp4" autoplay muted loop alt="landscape of Azkaban"></video>
+    <nav>
+        <div class="menubar">
+            <div class="menubarTop">
+                <a href="main.html"><img class="logo" src="/icon/logo-icon.png" alt="해리포터와 아즈카반의 죄수 로고"></a>
+                <input oninput="handleInputChange()" placeholder="Looking for Prisoner?" class="searchPrisoner">
+                <div class="glowing"></div>
+            </div>
+            <div class="menubarMid">
+                <div class="HpText">
+                    <a href="/history.html"> History </a>
+                </div>
+                <div class="HpText">
+                    <a href="/roles.html"> Roles </a>
+                </div>
+            </div>
+            <div class="menubarBot">
+                <button class="imprisonBtn">IMPRISON</button>
+                <div class="modal imprison hidden">
+                    <div class="modalBg"></div>
+                    <div class="modalBox">
+                        <h1>IMPRISONMENT</h1>
+                        <p>Good job, wizard.
+                            <br>the sorcerer's society is a little bit closer to justice.
+                            <br>Please enter the information of the prisoner.
+                        </p>
+                        <form id="infoForm">                           
+                            <div class="prisonerName">
+                                <label for="prisonerName">Prisoner Name:</label>
+                                <input type="text" id="prisonerName" name="name" placeholder="Name?" required>
+                            </div>
+                            <div class="prisonerLv">
+                                <label for="prisonerLv">Prisoner Lv:</label>
+                                <select id="prisonerLv" name="prisonerLv">
+                                    <option value="Never Release">Never Release</option>
+                                    <option value="Pure Evil">Pure Evil</option>
+                                    <option value="Eye Of Goat">Eye Of Goat</option>
+                                    <option value="Rotten Cucumber">Rotten Cucumber</option>
+                                </select>
+                            </div>                            
+                            <div class="prisonerPhoto">
+                                <label for="prisonerPhoto">Prisoner Mugshot</label><br>
+                                <input type="file" id="prisonerPhoto" name="photo" accept="image/*" required>
+                            </div>
+                            <button type="submit" class="approveBtn">Approve</button>
+                            <button class="dismissBtn">Dismiss</button>
+                        </form>
+                    </div>
+
+                </div>
+                <button class="releaseBtn">RELEASE</button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">            
+            <!-- prisoner info modal -->
+            <div class=" detailModal hidden" id="detailModal">
+                <div class=" detailModalBg" id="detailModalBg"></div>
+                <div class=" detailModalBox" id="detailModalBox">
+                    <form class="detailForm" id="detailForm">
+                        <div class="mugshotArea">
+                            <img src="" alt="" class="detailMugshot">
+                            <label for="saveMugshotBtn">
+                                <div class="suedoSaveMugshotBtn">Upload</div>
+                                <input class="saveMugshotBtn" type="file" id="saveMugshotBtn" name="photo"
+                                    accept="image/*" required>
+                            </label>
+                        </div>
+                        <div>
+                            <p class="detailName">
+                                <input type="text" id="detailName" name="name" placeholder="">
+                                <button class="saveNameBtn" id="saveNameBtn">Save</button>
+                            </p>
+                            <p class="detailLv">
+                                <select id="detailLv" name="detailLv">
+                                    <option class="lvOption" value="Never Release">Never Release</option>
+                                    <option class="lvOption" value="Pure Evil">Pure Evil</option>
+                                    <option class="lvOption" value="Eye Of Goat">Eye Of Goat</option>
+                                    <option class="lvOption" value="Rotten Cucumber">Rotten Cucumber</option>
+                                </select>
+                                <button class="saveLvBtn" id="saveLvBtn">Save</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Insert PrisonCell -->
+            <div class="prison" id="responseBox">            
+            </div>
+        </div>
+    </main>
+    <script type="module" src="../components/imprisonRelease.js"></script>
+    <script type="module" src="../components/prisonerDetailModal.js"></script>
+    <script src="../components/search.js"></script>
+</body>
+
+</html>
