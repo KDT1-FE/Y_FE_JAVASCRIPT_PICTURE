@@ -1,17 +1,19 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+const dotenv = require("dotenv");
+dotenv.config();
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD9fbsD-hZaGNcRnVuoKJJ_nFagysrdm6E",
-  authDomain: "employeemanagement-9fd1f.firebaseapp.com",
-  databaseURL:
-    "https://employeemanagement-9fd1f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "employeemanagement-9fd1f",
-  storageBucket: "employeemanagement-9fd1f.appspot.com",
-  messagingSenderId: "30056874245",
-  appId: "1:30056874245:web:6206f3abd5d7ef9864376c"
+  apiKey: process.env.env_apikey,
+  authDomain: process.env.env_authdomain,
+  databaseURL: process.env.env_databaseURL,
+  projectId: process.env.env_projectId,
+  storageBucket: process.env.env_storageBucket,
+  messagingSenderId: process.env.env_messagingSenderId,
+  appId: process.env.env_appId
 };
 
 // Initialize Firebase

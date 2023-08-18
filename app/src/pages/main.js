@@ -120,11 +120,12 @@ async function Main() {
             <p class="list-anchor__name">${listArray[i].name}</p>
             <p class="list-anchor__team">${listArray[i].team}</p>
             <p class="list-anchor__position">${listArray[i].position}</p>
-          </div
+          </div>
     `;
 
     listWrapper.append(listAnchor);
   }
+
   // 검색 기능
   document.getElementById("search").addEventListener("keyup", () => {
     listDataWrapper.innerHTML = "";
@@ -149,7 +150,7 @@ async function Main() {
             <p class="list-anchor__name">${listArray[i].name}</p>
             <p class="list-anchor__team">${listArray[i].team}</p>
             <p class="list-anchor__position">${listArray[i].position}</p>
-          </div
+          </div>
     `;
       }
     }
