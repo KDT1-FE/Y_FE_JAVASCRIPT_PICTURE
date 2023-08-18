@@ -73,6 +73,7 @@ body {
   border: 2px solid #353535;
   border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
   transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+  z-index: -1;
 }
 
 .footer-wrapper {
