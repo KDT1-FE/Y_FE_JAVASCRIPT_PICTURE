@@ -1,8 +1,7 @@
 # KDT0_ChoiJaehun
 
 # 선수 정보 관리!
-[KakaoTalk_20230818_203740434](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38286505/c8f4339c-c4ea-4f14-a171-326767d497a4)
-
+![선수](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38286505/24672fbb-c6f8-4c4b-bd38-a73fa30f4618)
 
 > **선수 정보 관리 서비스** <br/> **개발기간: 2023.08.08~ 2023.08.18**
 
@@ -44,3 +43,14 @@
 1. 검색 구현
 
 2. 반응형 레이아웃
+
+<br>
+
+### 유저 플로우
+<img width="2930" alt="유저플로우" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38286505/359e82be-5901-4e2c-a547-de1ed6eb0b4d">
+
+
+
+### 느낀점
+
+공부 해야 한다. 
