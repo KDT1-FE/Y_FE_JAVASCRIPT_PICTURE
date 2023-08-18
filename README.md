@@ -6,6 +6,15 @@
 > 2023.08.07 ~ 2023.08.17
 <br/>
 
+## 배포 사이트
+<p align="center">
+  <a href="https://kdt0-eoseungjun.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/임직원%20관리%20사이트-f5?style=for-the-badge&logo=netlify&logoColor=white" alt="MySite"/>
+
+  </a>
+</p>
+<br/>
+
 ## 사용한 스택들
 ### Tool
 ![VSCode](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
