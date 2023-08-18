@@ -58,16 +58,24 @@ export function buildHTMLList(member) {
   const tooltipContent = document.createElement('span')
   tooltipContent.className = 'tooltipcontent'
 
-  // 설정 버튼
+  // 수정 버튼
+  const button = document.createElement('button')
+  button.type = 'button'
+  button.id = 'openModal-btn'
+  button.className = 'btn btn-sm btn-pink members__modal-btn update-btn tooltipitem'
+  button.setAttribute('data-bs-toggle', 'modal')
+  button.setAttribute('data-bs-target', '#editModal')
+  button.innerHTML = '<i class="fa-solid fa-gear"></i>'
+  const btnContainer = document.createElement('span')
+  btnContainer.appendChild(button)
   const updateLink = document.createElement('a')
   updateLink.href = '#/update'
   updateLink.className = 'update-link'
-  const updateIcon = document.createElement('i')
-  updateIcon.className = 'fa-solid fa-gear'
-  updateLink.appendChild(updateIcon)
+  updateLink.appendChild(btnContainer)
   const updateTooltipItem = document.createElement('div')
   updateTooltipItem.className = 'update-btn tooltipitem'
   updateTooltipItem.appendChild(updateLink)
+
   // 제거 버튼
   const removeLink = document.createElement('a')
   removeLink.href = '#/remove'

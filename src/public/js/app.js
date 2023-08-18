@@ -1,11 +1,7 @@
-import '/src/public/views/home/main.scss'
-import Home from '/src/public/views/home/Home.js'
 import Members from '/src/public/views/members/Members.js'
-import Profile from '/src/public/views/profile/Profile.js'
 
 import { initMembers } from '/src/public/views/members/members.controller.js'
 import {} from '/src/public/views/profile/profile.controller.js'
-import * as bootstrap from 'bootstrap'
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
 
@@ -26,12 +22,7 @@ const navigateTo = (url) => {
 }
 
 const router = async () => {
-  const routes = [
-    { path: '/', view: Home },
-    { path: '/members', view: Members },
-    { path: '/profile', view: Profile },
-    { path: '/profile/:id', view: Profile },
-  ]
+  const routes = [{ path: '/', view: Members }]
 
   const potentialMatches = routes.map((route) => {
     return {
@@ -55,9 +46,6 @@ const router = async () => {
 
   const path = location.pathname
   if (path === '/') {
-    // HomeApp()
-  }
-  if (path.includes('/members')) {
     initMembers()
   }
 }

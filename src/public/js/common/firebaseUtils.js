@@ -1,4 +1,4 @@
-import { doc, deleteDoc, addDoc, collection, serverTimestamp, getDocs, query, where, orderBy, onSnapshot } from 'firebase/firestore'
+import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, where, orderBy, onSnapshot } from 'firebase/firestore'
 import { getDownloadURL, uploadBytesResumable, deleteObject, ref } from 'firebase/storage'
 import { Member, memberConverter } from './FormData'
 import { db, storage } from './firebase'
@@ -20,15 +20,15 @@ export function downloadCollection(callback) {
 
       if (change.type === 'added') {
         // 추가된 데이터를 콜백 함수로 전달
-        callback('added', memberData, id) // Pass the id
+        callback('added', memberData, id)
         dataMap.set(id, memberData)
       } else if (change.type === 'modified') {
         // 수정된 데이터를 콜백 함수로 전달
-        callback('modified', memberData, id) // Pass the id
-        // ...
+        callback('modified', memberData, id)
+        dataMap.set(id, memberData)
       } else if (change.type === 'removed') {
         // 제거된 데이터를 콜백 함수로 전달
-        callback('removed', memberData, id) // Pass the id
+        callback('removed', memberData, id)
         dataMap.delete(id)
       }
     })
@@ -74,9 +74,7 @@ export async function uploadDB(name, email, team, position, image) {
 
 // 스토리지에서 제거
 export async function removeStorage(imgSrc) {
-  console.log('imgSrc: ', imgSrc)
   const storageImgRef = ref(storage, imgSrc)
-  console.log('스토리지제거 실행')
   try {
     await deleteObject(storageImgRef)
     console.log('File deleted successfully')
@@ -110,15 +108,16 @@ export async function uploadStorage(file) {
 export async function updateDB(memberId, name, email, team, position, image) {
   try {
     const docRef = doc(db, collectionName, memberId)
-    const upadateMemberData = new Member(name, email, team, position, image)
-    const firestoreData = memberConverter.toFirestore(upadateMemberData)
-
-    const memberData = {
+    // removeDB(memberId)
+    console.log('gdd', memberId)
+    const memberData = new Member(name, email, team, position, image)
+    const firestoreData = memberConverter.toFirestore(memberData)
+    const updatedData = {
       ...firestoreData,
       updatedAt: serverTimestamp(),
     }
 
-    await setDoc(docRef, memberData, { merge: true })
+    await setDoc(docRef, updatedData, { merge: true })
 
     console.log('Member updated successfully')
   } catch (error) {
@@ -126,6 +125,3 @@ export async function updateDB(memberId, name, email, team, position, image) {
     throw error
   }
 }
-
-// 스토리지 업데이트
-export async function updateStorage() {}

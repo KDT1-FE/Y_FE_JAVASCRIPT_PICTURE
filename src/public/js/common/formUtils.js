@@ -1,9 +1,8 @@
 export function enableForm(inputEls, selectEl, fileEl) {
   inputEls.forEach((el) => {
     el.removeAttribute('readonly')
-    el.className = 'form-control'
+    el.className = 'form-control readonly'
   })
-
   selectEl.removeAttribute('disabled')
   selectEl.className = 'form-select'
 

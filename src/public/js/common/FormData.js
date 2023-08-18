@@ -11,7 +11,6 @@ export class Member {
   }
 }
 
-// Firestore data converter
 export const memberConverter = {
   toFirestore: (member) => {
     return {

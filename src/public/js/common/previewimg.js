@@ -37,6 +37,7 @@ export function clearPreviewImage(previewImgEl) {
 }
 
 export function showPreviewImage(imageUrl, previewImgEl) {
+  console.log(previewImgEl)
   previewImgEl.src = imageUrl
   previewImgEl.classList.remove('hidden')
 }

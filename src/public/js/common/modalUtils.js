@@ -18,12 +18,12 @@ export function closeModal() {
   myModal.hide()
 }
 
-export function initModal(formResetCallback) {
+export function initModal(formReset) {
   const openModalButton = document.getElementById('openModal-btn')
 
   openModalButton.addEventListener('click', async () => {
     try {
-      formResetCallback()
+      formReset()
 
       // 모달 창 띄우기
       openModal()

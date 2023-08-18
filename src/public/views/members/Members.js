@@ -1,5 +1,7 @@
 import AbstractView from '../AbstractView.js'
-import modalTemplate from '../components/modalForm.hbs'
+import addTemplate from '../components/addForm.hbs'
+import editTemplate from '../components/editForm.hbs'
+
 import { compile } from 'handlebars'
 export default class extends AbstractView {
   constructor(params) {
@@ -8,12 +10,10 @@ export default class extends AbstractView {
   }
 
   async getContent() {
-    const title = 'Add member'
-    // Handlebars 템플릿 렌더링
-    const modal = modalTemplate({ title: title })
-
+    const add = addTemplate()
+    const edit = editTemplate()
     return /* HTML */ `
-      ${modal}
+      ${add} ${edit}
       <div class="members__container container">
         <div class="members__title d-flex align-items-center p-3 my-3 rounded">
           <div class="lh-1">
