@@ -131,3 +131,8 @@ $memberList.addEventListener('click', e => {
 
   location.href = `detail.html?${email}`;
 });
+
+document.getElementById('logout').addEventListener('click', e => {
+  localStorage.removeItem('isSignin');
+  location.replace('signin.html');
+});

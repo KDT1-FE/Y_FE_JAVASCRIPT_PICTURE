@@ -38,3 +38,8 @@ $editComplete.addEventListener('click', async e => {
 
   location.replace(`detail.html?${$form.email.value}`);
 });
+
+document.getElementById('logout').addEventListener('click', e => {
+  localStorage.removeItem('isSignin');
+  location.replace('signin.html');
+});
