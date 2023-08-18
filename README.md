@@ -76,3 +76,6 @@ window.onload = function(){
 <img src="./public/assets/images/profilepage.PNG">
 
 <img src="./public/assets/images/staffpagegif000.gif">
+
+## [User Flow]
+<img src="./public/assets/images/userflow.PNG">
