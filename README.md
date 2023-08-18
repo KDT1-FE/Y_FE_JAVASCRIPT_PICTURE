@@ -32,12 +32,19 @@
 ## ✨ 주요 기능
 
 - 캐릭터 추가
+
   ![캐릭터 추가](https://github.com/lilviolie/peanuts/assets/95364951/2d9f85cc-e39a-454e-8145-3c52518bc99d)
+
 - 프로필 생성
+
   ![프로필 생성](https://github.com/lilviolie/peanuts/assets/95364951/84f5af34-ce65-4544-b587-06236f6edd49)
+
 - 프로필 수정
+
   ![프로필 수정](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/13dc1d75-ec23-4cff-a884-5c618b431d5a)
+
 - 프로필 삭제
+
   ![프로필 삭제)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/0566031a-e47e-46aa-b5c0-a40e55ce11a3)
 
 ## ✨ 유저 플로우
