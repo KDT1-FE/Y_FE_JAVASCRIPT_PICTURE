@@ -124,6 +124,7 @@ btn1.addEventListener("click", async () => {
       modifybtn.style.display = "inline-block";
       savebtn.style.display = "none";
       inputImage.style.display = "none";
+      saveToLocalStorage();
 
       try {
         // 이미지를 AWS S3에 업로드하기 위해 putFile 함수 호출
@@ -150,6 +151,8 @@ btn1.addEventListener("click", async () => {
     list.appendChild(employeeDiv);
 
     employeeList.push(newEmployee);
+
+    saveToLocalStorage();
 
     // 로딩 함수
     function showLoading() {
@@ -214,6 +217,7 @@ btn1.addEventListener("click", async () => {
   } else {
     alert("모든 필드를 입력하세요.");
   }
+  console.log(employeeList);
 });
 
 btn2.addEventListener("click", () => {
@@ -237,6 +241,7 @@ btn2.addEventListener("click", () => {
       }
     }
   });
+  saveToLocalStorage();
 });
 
 // putFile 함수를 정의하고 업로드할 이미지 파일을 매개변수 file로 받는다.
@@ -340,3 +345,34 @@ searchInput.addEventListener("input", function () {
     }
   });
 });
+
+// {profileImage: {}, name: "정진주", email: "wjdwlswn23@naver.com", phone: "01012345678", category: "매니저"}
+
+// {profileImage: {}, name: "김철수", email: "rlacjftn@naver.com", phone: "01012345999", category: "신입"}
+
+// {profileImage: {}, name: "박미미", email: "mimi@gmail.com", phone: "0104272222", category: "사장님"}
+
+function displayEmployees() {
+  // loadFromLocalStorage 에서 Employees 데이터 가져오기
+  loadFromLocalStorage();
+
+  for (let i = 0; i < employeeList.length; i++) {
+    const employee = employeeList[i];
+  }
+}
+
+displayEmployees();
+
+function saveToLocalStorage() {
+  const data = JSON.stringify(employeeList);
+
+  localStorage.setItem("my_employess", data);
+}
+
+function loadFromLocalStorage() {
+  const data = localStorage.getItem("my_employees");
+
+  if (data) {
+    JSON.parse(data);
+  }
+}
