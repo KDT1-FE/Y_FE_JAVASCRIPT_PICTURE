@@ -1,0 +1,362 @@
+:root {
+  --text-color: #fff;
+  --background-color: #fff;
+  --accent-color: #fff;
+  --modal-box-width: 600px;
+}
+
+html {
+  width: 70vw;
+  height: 70vw;
+  margin: auto;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  min-width: 20rem;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 100px 5fr;
+  grid-template-rows: 100px auto 50px;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+}
+
+body.masked > *:not(main, aside) {
+  opacity: 0.3;
+  pointer-events: none; /* 클릭 또는 터치 이벤트 무시 */
+  user-select: none; /* 선택 불가능하게 설정 */
+}
+
+header {
+  grid-area: header;
+  background-color: black;
+}
+
+aside {
+  grid-area: aside;
+  background-color: wheat;
+}
+
+main {
+  grid-area: main;
+  background-color: darkgray;
+}
+
+footer {
+  grid-area: footer;
+  background-color: gray;
+}
+
+a {
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+}
+
+li {
+  white-space: nowrap;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar__logo {
+  display: flex;
+  font-size: 24px;
+  color: #fff;
+  width: 100%;
+}
+
+.navbar__logo i {
+  color: orange;
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  padding-right: 50px;
+}
+
+.navbar__menu li {
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.navbar__menu li:hover {
+  background-color: orange;
+  transition: background-color 0.5s ease;
+}
+
+.navbar__tooglebtn {
+  display: none;
+  font-size: 24px;
+  color: orange;
+  margin-left: auto;
+}
+
+.staff-box__modal {
+  transform: scale(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.staff-box {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+.staff-box__item {
+  height: 20rem;
+  width: 20rem;
+  overflow: hidden;
+  margin: 1rem;
+  border-radius: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+}
+
+.staff-box__item:hover {
+  transform: translateY(-10px);
+  transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+}
+
+.staff-box__item-id {
+  display: flex;
+  background-color: skyblue;
+}
+
+.staff-box__item-id div {
+  margin-left: auto;
+  padding: 10px 10px 5px 0;
+}
+
+.staff-box__item-img {
+  display: flex;
+  overflow: auto;
+}
+
+.staff-box__item-img img {
+  width: 180px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.staff-box__item-detail {
+  display: flex;
+  background-color: skyblue;
+}
+
+.staff-box__item-detail ul {
+  padding: 5px 0 5px 10px;
+}
+
+.staff-box__item-detail li {
+  margin-bottom: 5px;
+}
+
+/* 반응형 설계 */
+/* @media screen and (max-width: 1670px) {
+  .staff-box__item {
+    width: 25rem;
+  }
+} */
+
+@media screen and (max-width: 1148px) {
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 30px 0px;
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+
+  .navbar__menu li {
+    text-align: center;
+  }
+
+  .navbar__tooglebtn {
+    display: block;
+  }
+
+  .navbar__menu.active {
+    display: flex;
+  }
+
+  .staff-box__item {
+    width: 27rem;
+  }
+  html {
+    width: 100vw;
+  }
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.5);
+  transition: opacity 0.3s, transform 0.3s;
+  /* transform: translateY(-50%);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s; */
+}
+
+.modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  /* transform: translateY(0); */
+}
+
+.modal-box {
+  display: none;
+}
+
+.modal-box.active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--modal-box-width);
+  height: calc(4.5 / 3.5 * var(--modal-box-width));
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-box__nav {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-box__nav__tooglebtn {
+  margin-left: auto;
+}
+
+.modal-box__nav__tooglebtn a i {
+  font-size: 30px;
+  color: black;
+  padding: 10px 10px 5px 0;
+}
+
+.modal-box__inputInfo {
+  display: flex;
+  padding: 10px 0 5px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-box__inputInfo div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-box__inputInfo div input,
+.modal-box__inputInfo select {
+  border-radius: 4px;
+}
+
+.submitBtn-wrap {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  display: flex;
+  height: 50px;
+}
+
+#submitButton {
+  width: 100%;
+  height: 101%;
+  font-size: 20px;
+  margin: auto;
+  background-color: #f8f9fa;
+  border: none;
+}
+
+#submitButton:hover {
+  transition: background-color 0.5s ease;
+  background-color: orange;
+}
+
+.modal-box__inputImg {
+  display: flex;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-box__inputImg div {
+  background-color: #f8f9fa;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.staff-box__item.active {
+  box-shadow: rgba(0, 255, 0, 1) 0px 4px 16px 0px;
+}
+
+.staff-box__item.active.select {
+  box-shadow: rgba(255, 0, 0, 1) 0px 4px 16px 0px;
+}
+
+.staff-box__delete {
+  display: none;
+}
+
+.staff-box__delete.active {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 255, 0, 1);
+}
+
+.staff-box__delete.active:hover {
+  background-color: rgba(255, 0, 0, 1);
+  transition: background-color 0.5s ease;
+}
+
+.staff-box__delete.active i {
+  font-size: 100px;
+  color: #fff;
+  padding: 20px 6px;
+}
