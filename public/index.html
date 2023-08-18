@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스타쉽 아티스트 관리</title>
+  <link rel="icon" href="./assets/favicon/fav1.png">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/672f0c1bae.js" crossorigin="anonymous"></script>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+  <!-- reset-css cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.css">
+
+  <!-- css -->
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 로딩 애니메이션 -->
+  <div class="loader">
+    <i class="fas fa-solid fa-spinner fa-spin-pulse"></i>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="header-container">
+      <h1>아티스트 관리</h1>
+      <div class="account">
+        <p>관리자님</p>
+        <i class="fas fa-regular fa-chevron-down" style="color: #000000;"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main>
+    <section class="control-section flex-between">
+      <div class="btn-container">
+        <button id="register-btn" class="btn orange-btn">아티스트 등록</button>
+        <button id="remove-btn" class="btn white-btn">아티스트 삭제</button>
+      </div>
+      <div class="searchBar-container">
+        <span class="icon"><i class="fas fa-regular fa-magnifying-glass fa-lg" style="color: #070808;"></i></span>
+        <input type="search" class="search-bar" placeholder="이름 또는 이메일로 검색하기" />
+      </div>
+    </section>
+
+    <div class="table-container">
+      <table class="artist-list">
+        <thead>
+          <tr>
+            <th class="artist-list-ckb-th">선택</th>
+            <th class="artist-list-img-th">프로필 사진</th>
+            <th class="artist-list-name-th">이름</th>
+            <th class="artist-list-phone-th">휴대폰 번호</th>
+            <th class="artist-list-age-th">나이</th>
+            <th class="artist-list-group-th">그룹</th>
+            <th class="artist-list-edit-th">수정하기</th>
+          </tr>
+        </thead>
+        <tbody class="artist-list-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script defer src="./js/loader.js"></script>
+  <script defer src="./js/index.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCH73YsQufleFN2hNA6N__hZd4oJtrTfv8",
+      authDomain: "artist-photo.firebaseapp.com",
+      projectId: "artist-photo",
+      storageBucket: "artist-photo.appspot.com",
+      messagingSenderId: "689252880125",
+      appId: "1:689252880125:web:d78a7d2a7cc7f086c2b894"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+</body>
+
+</html>

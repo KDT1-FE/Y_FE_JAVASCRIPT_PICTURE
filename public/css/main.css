@@ -1,0 +1,300 @@
+body {
+  color: black;
+  font-family: 'Nanum Gothic', sans-serif;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+p {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #444444;
+}
+
+th {
+  font-weight: 600;
+}
+
+td {
+  font-size: 0.8rem;
+}
+
+th,
+td {
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.header-container p {
+  border-bottom: 1px solid #444444;
+  padding-bottom: 1px;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.account:hover {
+  cursor: pointer;
+}
+
+.account>p {
+  margin-right: 0.3rem;
+}
+
+.control-section {
+  margin: 2.5rem 0 2rem 0;
+  padding: 0 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: left;
+  flex-wrap: nowrap;
+}
+
+.btn {
+  padding: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 2px;
+  border: none;
+  transition: 1s opacity;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.btn-container>.btn:first-child {
+  margin-right: 0.3rem;
+}
+
+.orange-btn {
+  background-color: #FF6428;
+  color: white;
+}
+
+.white-btn {
+  color: dimgray;
+}
+
+.searchBar-container {
+  position: relative;
+  width: 16rem;
+  text-align: center;
+}
+
+.searchBar-container>input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.searchBar-container>span {
+  width: 1rem;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.searchBar-container>span:hover {
+  cursor: pointer;
+}
+
+.table-container {
+  padding: 0 3rem 1rem 3rem;
+}
+
+.artist-list th {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #444444;
+}
+
+.artist-list-body td {
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+}
+
+.profile-info th, td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.5rem;
+  border-bottom: 1px solid #444444;
+}
+
+.profile-box {
+  min-width: 50vw;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-top>h2 {
+  margin-right: 2rem;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.artist-list-img-td img {
+  width: 120px;
+  height: 160px;
+}
+
+/* -------------- register, profile -------------- */
+
+.img-change-wrap {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.img-upload {
+  width: 150px;
+  height: 200px;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  border: 1px solid #444444;
+  margin-right: 1rem;
+}
+
+.img-upload>img {
+  width: 150px;
+  height: 200px;
+}
+
+.img-upload>#profileImgInput {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+/* -------------- loading Animation -------------- */
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.loader i {
+  font-size: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
+  color: #FF6428;
+}
+
+
+/* -------------- mobile 규격 -------------- */
+@media screen and (max-width: 768px) {
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+
+  .header-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .control-section {
+    margin: 0.5rem 0;
+    padding: 1.5rem 1rem;
+    display: block;
+  }
+  
+  .btn-container {
+    margin-bottom: 1rem;
+  }
+
+  .searchBar-container {
+    position: relative;
+    width: 16rem;
+    text-align: center;
+  }
+  
+  .table-container {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .artist-list-name-th,
+  .artist-list-phone-th,
+  .artist-list-age-th,
+  .artist-list-group-th,
+  .artist-list-name-td,
+  .artist-list-phone-td,
+  .artist-list-age-td,
+  .artist-list-group-td {
+    display: none;
+  }
+
+}
