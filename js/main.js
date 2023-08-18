@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { firebaseConfig } from './firebase-config.js';
 
 // Firebase 설정
 var firebaseConfig = {
