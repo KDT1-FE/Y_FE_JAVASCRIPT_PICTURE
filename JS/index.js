@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
   submitButton.addEventListener('click', onFormSubmit);
 
   const selectAllCheckbox = document.getElementById('select-all-checkbox');
-  selectAllCheckbox.addEventListener('change', onSelectAllCheckboxChange);
+  selectAllCheckbox.addEventListener('click', onSelectAllCheckboxChange);
 });
 
 // 정보를 localStorage에 저장하는 함수
