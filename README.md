@@ -1,49 +1,73 @@
+# ⚽ 나만의 맨유 선수단 관리 서비스 ⚽
 
-# :camera: 직원 사진 관리 서비스
+## [배포] :  https://jinjongsufastcampus.web.app/index.html
+***
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+## [사용스택]
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black"/>
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
-
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
+***
+## [구현 사항]
+* “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.  ✅
+* 프로필 페이지를 개발하세요. ✅
+* 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요. ✅
+* 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요. ✅
+* 사진을 등록, 수정, 삭제가 가능해야 합니다. ✅
+* 유저 플로우를 제작하여 리드미에 추가하세요. ✅
 * CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
+  * 애니메이션 구현 (모든 페이지 fadein 효과 적용) ✅
+  * 상대수치 사용(rem 사용) ✅
 * JavaScript
-  * DOM event 조작
-
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
-
+  * DOM event 조작 ✅
+* 직원을 등록, 수정, 삭제가 가능하게 해보세요. ✅
+* 직원 검색 기능을 추가해 보세요 ✅
+* LocalStorage 사용 ✅
+***
 ## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+### <b>1. 메인페이지 </b>
+시작하기 버튼 hover  색상 변함 & 커지는 효과 적용
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
+![메인페이지](./img/mainPage2.png)
+### <b>2. 선수 리스트 페이지</b> 
+검색 기능 구현 & 전체 선택 및 해제 구현
 
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+![선수리스트페이지](./img/listPage.png)
+
+![검색페이지](./img/SearchPage.png)
+
+![전체선택페이지](./img/AllSelected.png)
+
+![전체선택페이지](./img/AllSelectPage.png)
+### <b>3. 선수 추가 페이지</b> 
+업로드 기능 구현 <br>
+트랜스퍼마켓 검색 버튼 구현
+
+![선수추가페이지](./img/UploadPage.png)
+
+### <b>4. 선수 프로필 페이지</b>
+선수 프로필 불러오기 <br>
+정보 변경 모달 기능 구현(LocalStorage 이용)
+
+![선수편집이미지](./img/ProfilePage.png)
+
+![선수편집이미지](./img/EditModalPage.png)
+
+### <b>5. 반응형 페이지</b>
+검색 및 선수 추가,제거,선택 버튼 위치 변경 <br>
+프로필 페이지 배치 변경 <br>
+모바일 및 태블릿 반응형 웹 구현 완료
 
 
+![모바일이미지](./img/MobilePage.png)
+
+![모바일이미지2](./img/MobilePage2.png)
+
+![아이패드이미지](./img/IpadPage.png)
+
+### <b> 6. 유저 플로우 </b>
+
+![유저플로우](./img/userFlow.drawio.png)

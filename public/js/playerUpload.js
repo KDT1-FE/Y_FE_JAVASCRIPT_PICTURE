@@ -50,7 +50,7 @@ const Upload = () =>{
                 db.collection('Player').add(saveInfo)
                 .then((result)=>{
                     alert('업로드 완료');
-                    window.location.href="PlayerList.html";
+                    window.location.href="playerList.html";
                 })
                 .catch((error)=>{
                     alert('업로드 실패');
