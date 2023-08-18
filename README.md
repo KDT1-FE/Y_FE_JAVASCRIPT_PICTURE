@@ -7,8 +7,7 @@
 
 ## 📂 사이트 주소
 
-🔗 **배포 링크 :** https://kdt0-junghyoju-kakaoclone.netlify.app/
-
+🔗 **배포 링크 :** https://cupid-32b7f.web.app/
 <br/>
 <br/>
 
