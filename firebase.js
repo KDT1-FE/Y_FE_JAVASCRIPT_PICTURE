@@ -73,7 +73,6 @@ function readUserData() {
         if (snapshot.exists()) {
           if (window.location.pathname === "/index.html") {
             displayUserData(snapshot.val());
-            return;
           }
           userCount = snapshot.val().length;
           if (
@@ -95,59 +94,71 @@ function readUserData() {
   });
 }
 
+function deleteUserData(userId) {
+  const db = getDatabase();
+  set(ref(db, "users/" + userId), null);
+  deletePtData(userId);
+
+  console.log(`user ${userId} was deleted`);
+}
+
 function displayUserData(arr) {
-  console.log(arr.length);
   const userBox = document.getElementsByClassName(
     "section__customer--template"
   )[0];
-  arr.forEach((element) => {
-    console.log(element);
-    const userInfoFrame = document.createElement("ul");
-    const userSelectBox = document.createElement("input");
-    const userIndex = document.createElement("li");
-    const userImage = document.createElement("img");
-    const userName = document.createElement("li");
-    const userphoneNumber = document.createElement("li");
-    const userDate = document.createElement("li");
-    const userPtCheck = document.createElement("li");
-    const userPtSession = document.createElement("li");
-    const userTrainer = document.createElement("li");
-    if (element.sessionNumber === "") {
-      userPtCheck.innerHTML = "X";
-    } else {
-      userPtCheck.innerHTML = "O";
-    }
-    userInfoFrame.className = "section__customer--added";
-    userSelectBox.type = "checkbox";
-    userImage.src = element.imagePath;
-    userImage.style.width = "5vw";
-    userIndex.innerHTML = element.userIdx;
-    userIndex.addEventListener("click", function (e) {
-      window.location.href = `detail.html?number=${element.userIdx}`;
-    });
-    userName.innerHTML = element.username;
-    userphoneNumber.innerHTML = element.phoneNumber;
-    userDate.innerHTML = `${element.startDate} ~ ${element.endDate}`;
-    userPtSession.innerHTML =
-      element.sessionNumber !== ""
-        ? `${element.leftSessionNumber} / ${element.sessionNumber}`
-        : "-";
-    userTrainer.innerHTML =
-      element.trainerName !== "" ? element.trainerName : "-";
 
-    userInfoFrame.append(
-      userSelectBox,
-      userIndex,
-      userImage,
-      userName,
-      userphoneNumber,
-      userDate,
-      userPtCheck,
-      userPtSession,
-      userTrainer
-    );
-    userBox.append(userInfoFrame);
-  });
+  if (arr) {
+    arr.forEach((element) => {
+      console.log(arr);
+      console.log(element);
+      const userInfoFrame = document.createElement("ul");
+      const userSelectBox = document.createElement("input");
+      const userIndex = document.createElement("li");
+      const userImage = document.createElement("img");
+      const userName = document.createElement("li");
+      const userphoneNumber = document.createElement("li");
+      const userDate = document.createElement("li");
+      const userPtCheck = document.createElement("li");
+      const userPtSession = document.createElement("li");
+      const userTrainer = document.createElement("li");
+      if (element.sessionNumber === "") {
+        userPtCheck.innerHTML = "X";
+      } else {
+        userPtCheck.innerHTML = "O";
+      }
+      userInfoFrame.className = "section__customer--added";
+      userSelectBox.type = "checkbox";
+      userSelectBox.className = "section__customer--checkbox";
+      userImage.src = element.imagePath;
+      userImage.style.width = "5vw";
+      userIndex.innerHTML = element.userIdx;
+      userIndex.addEventListener("click", function (e) {
+        window.location.href = `detail.html?number=${element.userIdx}`;
+      });
+      userName.innerHTML = element.username;
+      userphoneNumber.innerHTML = element.phoneNumber;
+      userDate.innerHTML = `${element.startDate} ~ ${element.endDate}`;
+      userPtSession.innerHTML =
+        element.sessionNumber !== ""
+          ? `${element.leftSessionNumber} / ${element.sessionNumber}`
+          : "-";
+      userTrainer.innerHTML =
+        element.trainerName !== "" ? element.trainerName : "-";
+
+      userInfoFrame.append(
+        userSelectBox,
+        userIndex,
+        userImage,
+        userName,
+        userphoneNumber,
+        userDate,
+        userPtCheck,
+        userPtSession,
+        userTrainer
+      );
+      userBox.append(userInfoFrame);
+    });
+  }
 }
 
 function writePtData(
@@ -202,6 +213,13 @@ function readPtData(userId) {
   });
 }
 
+function deletePtData(userId) {
+  const db = getDatabase();
+  set(ref(db, `user/${userId}/pt/`), null);
+
+  console.log(`user ${userId} session info was deleted`);
+}
+
 function uploadImageData(image, imageName) {
   return new Promise((resolve) => {
     const st = storageModule.getStorage();
@@ -221,6 +239,7 @@ function uploadImageData(image, imageName) {
 export {
   writeUserData,
   readUserData,
+  deleteUserData,
   uploadImageData,
   writePtData,
   readPtData,

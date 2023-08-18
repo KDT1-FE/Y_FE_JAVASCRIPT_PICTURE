@@ -70,20 +70,20 @@ readUserData().then((res) => {
       let ptSets = document.createElement("textarea");
       let ptOther = document.createElement("textarea");
 
-      userPtIdx.value = res[userIdx.value].sessionIdx;
+      userPtIdx.value = res[i].sessionIdx;
       ptSessionId.value = i;
       ptSessionId.disabled = true;
       ptDate.value = todayString;
       ptDate.disabled = true;
-      ptWorkout.value = res[userIdx.value].workout;
+      ptWorkout.value = res[i].workout;
       ptWorkout.rows = "10";
-      ptWeight.value = res[userIdx.value].weight;
+      ptWeight.value = res[i].weight;
       ptWeight.rows = "10";
-      ptReps.value = res[userIdx.value].reps;
+      ptReps.value = res[i].reps;
       ptReps.rows = "10";
-      ptSets.value = res[userIdx.value].sets;
+      ptSets.value = res[i].sets;
       ptSets.rows = "10";
-      ptOther.value = res[userIdx.value].other;
+      ptOther.value = res[i].other;
       ptOther.rows = "10";
 
       ptFrame.append(
