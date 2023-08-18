@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>로그인페이지</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="style.css" />
+
+        <style>
+            body {
+                height: 100vh;
+            }
+            h1 {
+                font-size: 3rem;
+                margin-top: 3rem;
+                text-align: center;
+            }
+            #register-form {
+                border-radius: 1rem;
+                min-height: 500px;
+                background-color: gainsboro;
+                padding: 1.5rem;
+                margin-top: 5rem !important;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            }
+            #register-form input {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            #register-form button {
+                display: flex;
+                font-size: 1.5rem;
+                padding: 0.5rem 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">동물원</a>
+                <span class="ms-auto mx-2" id="userName"></span>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="index.html"
+                                >동물소개</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">로그인</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="upload.html"
+                                >등록</a
+                            >
+                        </li>
+                    </ul>
+
+                    <form type="submit" class="d-flex" role="search">
+                        <input
+                            class="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search" />
+                        <button class="btn btn-outline-success">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-3">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="name"
+                    id="name-new" />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="email"
+                    id="email-new" />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    placeholder="pw"
+                    id="pw-new" />
+            </div>
+            <button type="submit" class="btn btn-primary" id="register">
+                가입하기
+            </button>
+        </div>
+        <div class="container mt-3">
+            <div class="mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    placeholder="email"
+                    id="email" />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    placeholder="pw"
+                    id="pw" />
+            </div>
+            <button type="submit" class="btn btn-primary" id="login">
+                로그인
+            </button>
+            <button type="submit" class="btn btn-primary" id="logout">
+                로그아웃
+            </button>
+        </div>
+        <script
+            src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+</html>

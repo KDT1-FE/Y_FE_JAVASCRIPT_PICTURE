@@ -1,0 +1,59 @@
+.navbar {
+    background-color: black !important;
+    color: white !important;
+}
+.navbar a {
+    color: white !important;
+}
+
+.product {
+    display: flex;
+    padding: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.thumbnail {
+    max-width: 20rem;
+    height: 20rem;
+    width: 100%;
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.product .name {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.product .species {
+    font-size: 20px;
+    font-weight: 600;
+}
+.product .gender {
+    font-size: 20px;
+    font-weight: 600;
+}
+.product .birth {
+    font-size: 20px;
+    font-weight: 600;
+}
+.product .date {
+    color: darkgray;
+    text-align: end;
+    font-size: 15px;
+    font-weight: 600;
+}
+.detail-pic {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+.correct {
+    margin-right: 0.1rem;
+}
+.container-flex {
+    display: flex;
+}

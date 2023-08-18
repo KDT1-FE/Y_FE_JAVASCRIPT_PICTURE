@@ -1,49 +1,53 @@
+# 동물원 동물 등록 서비스
 
-# :camera: 직원 사진 관리 서비스
+### url:[https://third-bb997.web.app/index.html](https://third-bb997.web.app/index.html)
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+동물원에서 동물들의 정보,사진 등을 등록, 수정, 삭제 할 수 있는 서비스를 만들었습니다.
+등록,수정,삭제 기능은 로그인 상태일 때 가능하도록 설정 하였습니다.
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+기술 스택:<div><img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"></div>
+
+## [페이지 소개]
+
+### 로그인 페이지
+
+-   가입 및 로그인, 로그아웃 기능이 있습니다.
+-   로그인이 성공적으로 완료되면 로그인상태일 때 navbar에 가입시 작성한 name이 로그아웃 전까지 나타납니다.
+
+-   로그인전
+    <img src="images/로그인페이지.png" width="800px" height="400px"/>
+
+-   로그인후 (navbar에 이름이 나타납니다)
+    <img src="images/로그인2.png" width="800px" height="400px"/>
+
+### 등록 페이지
+
+-   동물들의 정보 및 사진을 등록하기 버튼을 통해 등록합니다
+    <img src="images/등록 페이지.png" width="800px" height="400px"/>
+
+### 메인 페이지(동물소개)
+
+-   등록된 동물들의 이미지나 정보들을 볼 수 있습니다.
+-   수정 및 삭제버튼을 통해 수정페이지로 이동 게시물 삭제 등을 진행할 수 있습니다.
+    <img src="images/소개페이지.png" width="800px" height="400px"/>
+
+### 수정페이지
+
+-   각 동물별 정보 및 사진을 수정할 수 있는 페이지로 수정 후 수정 버튼을 클릭하면 수정된 메인페이지에 수정되어 나타납니다.
+    <img src="images/수정페이지.png" width="800px" height="400px"/>
 
 ## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+-   [x] “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
+-   [x] 프로필 페이지를 개발하세요.
+-   [x] 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
+-   [x] 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
+-   [x] 사진을 등록, 수정, 삭제가 가능해야 합니다.
+-   [x] 유저 플로우를 제작하여 리드미에 추가하세요.
+-   [] CSS 애니메이션 구현
+-   [x] CSS 상대수치 사용(rem, em)
+-   [x] JavaScript Dom Event 조작
 
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+## [User flow]
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
-
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
-
-
+<img src="images/유저플로우.png" />
