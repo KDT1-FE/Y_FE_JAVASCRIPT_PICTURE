@@ -1,6 +1,8 @@
 import db from "../../db.js";
 import { collection, getDocs } from "firebase/firestore";
 
+import changeTrBackgroundColor from "./clickCheckBox.js";
+
 const driversCollection = await getDocs(collection(db, "drivers"));
 
 try {
@@ -10,6 +12,18 @@ try {
       const driver = document.createElement("tr");
       driver.id = `${driverDoc.id}`;
       driver.classList.add("driver");
+
+      // 보험자 삭제용 체크 박스 input td 생성
+      const tdCheckBox = document.createElement("td");
+      tdCheckBox.classList.add("driverData", "checkData");
+      const checkBoxInput = document.createElement("input");
+      checkBoxInput.type = "checkbox";
+      checkBoxInput.classList.add(`${driverDoc.id}`);
+
+      checkBoxInput.addEventListener("click", changeTrBackgroundColor);
+
+      tdCheckBox.append(checkBoxInput);
+      driver.append(tdCheckBox);
 
       const driverData = driverDoc.data();
       const driverDataValues = [
@@ -33,6 +47,8 @@ try {
           img.src = driverDataValue;
           img.alt = "보험자 사진";
 
+          td.classList.add("largeWidthData");
+
           td.append(img);
         } else if (driverDataValue === false) {
           const confirmAnc = document.createElement("a");
@@ -40,6 +56,7 @@ try {
           confirmAnc.setAttribute("href", `./confirm.html?${driverDoc.id}`);
           confirmAnc.innerText = "심사하기 →";
           confirmAnc.style.color = "white";
+          td.classList.add("largeWidthData");
 
           td.append(confirmAnc);
         } else if (driverDataValue === true) {
@@ -53,7 +70,7 @@ try {
       });
 
       const td = document.createElement("td");
-      td.classList.add("driverData");
+      td.classList.add("driverData", "largeWidthData");
       const driverProfileAnc = document.createElement("a");
       driverProfileAnc.classList.add("driverProfileAnc");
       driverProfileAnc.setAttribute(
