@@ -16,7 +16,7 @@ Cookie 임직원 프로필을 등록 수정 확인 삭제가 가능한 웹 페�
 
 ### User flow
 
-<img src="./userflow.png">
+<img src="https://postfiles.pstatic.net/MjAyMzA4MThfMjEg/MDAxNjkyMzQ2MDgyMTc2.YBQ2oQFZbX4iLy9eFNAX8dldIYSOUeQMwmRyDTBL83Eg.pAGIJOudgwq3rZllFB6NTvUXT6AWe5MWf1yB5EgBHtsg.PNG.tkyoun0421/userflow.png?type=w966">
 
 ### 주요 기능
 
