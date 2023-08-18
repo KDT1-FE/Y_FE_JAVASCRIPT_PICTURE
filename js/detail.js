@@ -1,17 +1,19 @@
 // firebase 기본 설정
-import firebaseConfig from '../config.js';
+// import firebaseConfig from '../config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js';
 import { getDatabase, ref as dbRef, onValue, update } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
 import { getStorage,  ref as storageRef, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-storage.js';
 
-const apiKey = firebaseConfig.apiKey;
-const authDomain = firebaseConfig.authDomain;
-const projectId = firebaseConfig.projectId;
-const storageBucket = firebaseConfig.storageBucket;
-const messagingSenderId = firebaseConfig.messagingSenderId;
-const appId = firebaseConfig.appId;
-const measurementId = firebaseConfig.measurementId;
-const databaseURL = firebaseConfig.databaseURL;
+const firebaseConfig = {
+    apiKey: "AIzaSyDPF5UusCYbfV2vQUnMXJK6uanZzjqyuuI",
+    authDomain: "employee-management-ff85e.firebaseapp.com",
+    databaseURL: "https://employee-management-ff85e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "employee-management-ff85e",
+    storageBucket: "employee-management-ff85e.appspot.com",
+    messagingSenderId: "337700426331",
+    appId: "1:337700426331:web:a664094195022a9831257e",
+    measurementId: "G-12SDLK0WQY"
+  };
 const firebaseApp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseApp);
 const storage = getStorage(firebaseApp);
