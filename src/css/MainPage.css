@@ -1,0 +1,70 @@
+.buttonDiv {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-bottom: 1rem;
+}
+
+.create-button {
+box-sizing: border-box;
+
+width: 7rem;
+height: 2.8rem;
+
+background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 10px;
+}
+
+.employee-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.employee {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  transition: all 1s;
+}
+.employee:hover {
+  transform: scale(1.04);
+}
+
+.employee--img {
+  width: 6rem;
+  height: 6rem;
+}
+.employee--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.update-button {
+  box-sizing: border-box;
+
+  width: 4rem;
+  height: 2.8rem;
+  
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+.delete-button {
+  box-sizing: border-box;
+
+  width: 4rem;
+  height: 2.8rem;
+  
+  background: #FFFFFF;
+  border: 1px solid red;
+  color: red;
+  border-radius: 10px;
+}

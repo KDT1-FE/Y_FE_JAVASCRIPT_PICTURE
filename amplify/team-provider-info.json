@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ems-dev-121741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::817088801692:role/amplify-ems-dev-121741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::817088801692:role/amplify-ems-dev-121741-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-ems-dev-121741-deployment",
+      "UnauthRoleName": "amplify-ems-dev-121741-unauthRole",
+      "StackName": "amplify-ems-dev-121741",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:817088801692:stack/amplify-ems-dev-121741/a0c6ab00-3cac-11ee-85af-02e15adce62e",
+      "AmplifyAppId": "d4nuhen3ojb3s"
+    },
+    "categories": {
+      "api": {
+        "ems": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d4nuhen3ojb3s",
+          "type": "manual"
+        }
+      },
+      "auth": {
+        "emsa98dbd18": {}
+      },
+      "storage": {
+        "s34341a2a3": {}
+      }
+    }
+  }
+}
