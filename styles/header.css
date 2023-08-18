@@ -5,7 +5,7 @@
   height: 5rem;
   padding: 0 3rem;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: white;
   border-bottom: 1px solid lightgray;
 }
@@ -16,5 +16,14 @@
 }
 #header-title:hover {
   color: #a0d4fa;
-  transition: 0.3s;
+  animation: fadeInAndOut 1.5s infinite alternate;
+}
+
+@keyframes fadeInAndOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

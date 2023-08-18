@@ -18,11 +18,11 @@
   </head>
   <body>
     <header class="header">
-      <a id="header-title" href="/">TK MemberDB</a>
+      <a id="header-title" href="/">TK company MemberDB</a>
     </header>
     <main id="profile-main">
       <h1 class="title text-xl">
-        <span id="member-name"></span>님의 프로필 정보
+        <span id="member-name"></span>님 프로필 정보
       </h1>
       <div class="manage-bar">
         <button id="manage-bar__edit-btn" class="bg-blue">수정</button>
@@ -58,13 +58,13 @@
             </div>
             <div class="edit-form__inputBox">
               <label for="edit-name">이름</label>
-              <input id="edit-name" />
+              <input id="edit-name" autocomplete="off" />
               <label for="edit-email">이메일</label>
-              <input id="edit-email" />
+              <input id="edit-email" autocomplete="off" />
               <label for="edit-phoneNum">전화번호</label>
-              <input id="edit-phoneNum" />
+              <input id="edit-phoneNum" autocomplete="off" />
               <label for="edit-position">포지션</label>
-              <input id="edit-position" />
+              <input id="edit-position" autocomplete="off" />
               <button class="edit-form__submit bg-blue" type="submit">
                 submit
               </button>
@@ -111,6 +111,8 @@
       submit.addEventListener("click", editProfile);
 
       function openEdit() {
+        let nameInput = document.querySelector("#edit-name");
+        nameInput.value = key;
         editForm.style.display = "block";
         modal.style.visibility = "visible";
       }
