@@ -21,6 +21,9 @@ onAuthStateChanged(auth, (user) => {
             <img src="${user.photoURL}" alt="프로필 사진">
         `;
         profileInfoContainer.innerHTML = profileHTML;
+
+        // 로그인 성공 시 index.html로 리다이렉션
+        window.location.href = "index.html";
     } else {
         console.log("사용자가 로그인하지 않음");
     }
