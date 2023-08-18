@@ -81,7 +81,7 @@ header .top .btns .add {
   color: var(--coloor-text);
   border: var(--color-text) solid 2px;
   border-radius: 25px;
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 700;
   transition: background-color 0.5s;
 }
@@ -92,10 +92,32 @@ header .top .btns .add:hover {
   color: var(--color-white);
 }
 
+@media (max-width: 960px) {
+  header .top {
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+  header .top .btns {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 720px) {
+  header .top .btns {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  header .top .btns .add {
+    padding: 0 7px;
+    font-size: 14px;
+  }
+}
+
 /* CARD LIST */
 .cards {
   margin: 0 auto 100px;
-  width: 97%;
+  width: 100%;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -122,6 +144,14 @@ header .top .btns .add:hover {
   box-shadow: var(--color-text-30) 0px 14px 26px 0px;
 }
 
+@media (max-width: 1100px) {
+  .cards {
+    max-height: 75vh;
+    overflow-y: scroll;
+    justify-content: center;
+  }
+}
+
 /* CARD ITEM */
 .card .card_photo {
   --width: 160px;
@@ -130,7 +160,7 @@ header .top .btns .add:hover {
   border: var(--color-highlight) solid 0.5em;
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: -1px;
+  margin: 0 2rem -1px;
 }
 
 .card .card_photo img {
@@ -165,6 +195,17 @@ header .top .btns .add:hover {
 
 .card .card_info .info_department {
   margin-bottom: -1px;
+}
+
+@media (max-width: 720px) {
+  .card .card_photo {
+    --width: 100px;
+    margin: 0 4rem -1px;
+  }
+
+  .card .card_info {
+    font-size: 14px;
+  }
 }
 
 .card .delete {
@@ -326,10 +367,6 @@ footer .copyright {
   border-bottom: var(--color-highlight) solid 2px;
 }
 
-.modal .modal_container .info .info_txt select:focus > option:hover {
-  color: red;
-}
-
 .modal .modal_container .save {
   margin-top: 2rem;
   width: 100%;
@@ -346,4 +383,42 @@ footer .copyright {
 .modal .modal_container .save:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+@media (max-width: 960px) {
+  .modal .modal_container {
+    width: 60%;
+    height: 70%;
+  }
+  .modal .modal_container .info .info_txt * {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 720px) {
+  .modal .modal_container {
+    width: 70%;
+    height: 80%;
+  }
+
+  .modal .modal_container .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .modal .modal_container .info .info_img {
+    margin: auto;
+    height: 60%;
+    width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal .modal_container {
+    width: 90%;
+    height: 90%;
+  }
+
+  .modal .modal_container .remove {
+    top: 5%;
+  }
 }

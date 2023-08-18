@@ -42,7 +42,7 @@ export const db = getFirestore(app);
 
 // 데이터 읽어오기
 const storage = getStorage();
-// export const querySnapshot = await getDocs(collection(db, 'member'));
+export const querySnapshot = await getDocs(collection(db, 'member'));
 
 // 이미지 업로드
 export const uploadImage = (name, file, el) => {
