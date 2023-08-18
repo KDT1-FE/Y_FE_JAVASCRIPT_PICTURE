@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="main.css" rel ="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="#">View All Friends</a>
+          <a class="nav-link" href="upload.html">Add</a>
+          <a class="nav-link" href="#">Delete</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+
+  </div>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <script defer src="/__/firebase/8.6.5/firebase-app.js"></script>
+  <script defer src="/__/firebase/8.6.5/firebase-auth.js"></script>
+  <script defer src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/8.6.5/firebase-storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script type="module">
+        // Import the functions you need from the SDKs you need
+        //import { initializeApp } from "https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js";
+        //import { getAuth } from 'https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js'
+        //import { getFirestore } from 'https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js';
+      
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBLJjgAJr-CPkOMvQ5cXo_7XxRB457ClOY",
+          authDomain: "kakaojs-7b84e.firebaseapp.com",
+          projectId: "kakaojs-7b84e",
+          storageBucket: "kakaojs-7b84e.appspot.com",
+          messagingSenderId: "225584743925",
+          appId: "1:225584743925:web:7800682de75fbae054ccbc",
+          measurementId: "G-NCXB18TBVK"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        db.collection('friends').get().then((res) => {
+          res.forEach((doc) => {
+            console.log(doc.data());
+            var template = `
+            
+            <div class="product">
+              <button type="button" onclick = "script('${doc.id}');">
+                <img class="image" src="${doc.data().image}" alt="프로필 사진"/>
+                <div class="flex-grow-1 p-4">
+                  <h5 class="name">${doc.data().name}</h5>
+                  <p class="email">${doc.data().email}</p>
+                  <p class="phonenumber">${doc.data().phonenumber}</p>
+                </div>
+              </button>
+              </div>
+              `;
+            $('.container').append(template);
+          })
+        })
+      </script>
+    <script src = "script.js"></script>
+
+</body>
+</html>
