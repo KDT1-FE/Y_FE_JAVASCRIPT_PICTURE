@@ -140,3 +140,51 @@
 .delete__button {
   margin-left: 20px;
 }
+
+@media screen and (max-width: 391px) {
+  .employee-detail__modal,
+  .employee-add__modal {
+    height: 60%;
+  }
+  .employee__form {
+    width: 100%;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+  }
+  .employee-detail__modal > h1,
+  .employee-add__modal > h1 {
+    font-size: 18px;
+  }
+  .employee-detail__modal img,
+  .employee-add__modal img {
+    width: 100px;
+    height: 100px;
+  }
+  .employee-add__modal label,
+  .employee-add__modal input,
+  .employee-add__modal input::placeholder,
+  .employee-detail__modal label,
+  .employee-detail__modal input,
+  .employee-detail__modal input::placeholder {
+    font-size: 13px;
+  }
+  .employee-add__modal input .employee-detail__modal input {
+    height: 20px;
+  }
+  .update-data__file {
+    margin-left: 10px;
+  }
+  .add-data {
+    width: 120%;
+    justify-content: space-between;
+  }
+  .detail-button__wrapper > button {
+    width: 80px;
+    height: 40px;
+    font-size: 13px;
+  }
+}

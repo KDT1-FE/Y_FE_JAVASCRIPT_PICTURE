@@ -44,8 +44,8 @@
 }
 .employee__img {
   margin: 10px;
-  width: 100px;
-  height: 100px;
+  width: 7vw;
+  height: 7vw;
   object-fit: cover;
   border: 2px solid #4b4848;
   border-radius: 50%;

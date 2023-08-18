@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   display: flex;
-  width: 95vw;
+  width: 90vw;
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -47,7 +47,9 @@
   align-items: center;
 }
 .search-icon {
-  margin: auto 5px;
+  width: 1.2vw;
+  height: 1.2vw;
+  margin: 5px 10px auto 10px;
 }
 .employee-search__input {
   width: 100vw;
@@ -89,4 +91,10 @@
 .delete__button:hover,
 .employee-delete__button:hover {
   background-color: #e17878;
+}
+
+@media screen and (max-width: 391px) {
+  .employee-search__wrapper > .search-icon {
+    display: none;
+  }
 }
