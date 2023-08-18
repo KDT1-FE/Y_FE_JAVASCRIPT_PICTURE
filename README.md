@@ -54,13 +54,19 @@
 ## 💡 유저 플로우
 ![직원리스트_대표](https://github.com/ewinkite/dev_EMS/assets/139189610/8916366f-7e8b-4c54-9db8-3d65030deb18)
 
-## 💡 화면 설계
 <br/>
-단계적인 개발을 위하여 유저 플로우와 요구사항을 바탕으로 간단한 화면 설계를 진행하였습니다.<br/>
-기능별 진입점 및 구동 방식에 대한 설명은 아래의 기획서를 참고해주세요! 😁 
+<br/>
 
-![list_pc](https://github.com/ewinkite/dev_EMS/assets/139189610/d0e812d5-59d2-4c81-bfe7-1a368b8ebdcf)
-![add_pc](https://github.com/ewinkite/dev_EMS/assets/139189610/26dd8fd5-bf9b-473b-a5fe-c4494e6097f1)
+## 💡 화면 설계
+단계적인 개발을 위하여 유저 플로우와 요구사항을 바탕으로 간단한 화면 설계를 진행하였습니다.<br/>
+기능별 진입점 및 구동 방식에 대한 설명은 아래의 기획서를 참고해주세요!
+
+<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/e7cdcb01-2cd6-4d44-bcd8-92ae0ae8cc09" width="300">
+<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/92a8efe5-1479-466f-a009-3654f7004d62" width="300">
+<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/67be2446-c53a-45de-a477-d3202a4219bb" width="300">
+
+<br/>
+<br/>
 
 
 ### 요구사항 반영여부
@@ -156,9 +162,8 @@
 <br/>
 <br/>
 
-## 🔥 남아있는 과제
-<br>
-- [ ] 테이블 선택 항목 삭제 기능/ 검색 필터 기능 구현 <br>
-- [ ] 사진 편집 기능 구현 <br>
-- [ ] 무한 스크롤 기능 구현 <br>
+## 🔥 추후 고도화시 추가 기능
+- 테이블 선택 항목 삭제 기능/ 검색 필터 기능 구현 <br>
+- 사진 편집 기능 구현 <br>
+- 무한 스크롤 기능 구현 <br>
 <br>
