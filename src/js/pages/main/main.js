@@ -119,6 +119,8 @@ document.getElementById('remove-button').addEventListener('click', e => {
 
 // list click 이벤트위임
 $memberList.addEventListener('click', e => {
+  if (e.target.matches('input[type=checkbox]')) return;
+
   const member = e.target.closest('li');
   const email = member.querySelector('input').name;
 
