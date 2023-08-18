@@ -1,72 +1,80 @@
-.content-box__header {
-  display: flex;
-  justify-content: space-between;
-  .btn__edit {
-    margin-right: 20px;
-    cursor: pointer;
-  }
-}
+@import "./_mixin.scss";
 
-.user-box {
+#detail {
   display: flex;
-  padding: 0 20px;
-  .user {
-    &__picture {
+  flex-direction: column;
+  row-gap: 1rem;
+  .detail {
+    &__top {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-shrink: 0;
-      width: 20%;
-      aspect-ratio: 1/1;
-      background: lightgray;
-      margin-right: 20px;
-      > img {
-        width: 100%;
-      }
-    }
-    &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 100%;
-      &__list {
-        display: flex;
-        align-items: center;
-        border-radius: 8px;
-        overflow: hidden;
-      }
-      &__tit {
+      .user__picture {
         flex-shrink: 0;
-        font-weight: 700;
-        width: 75px;
-        padding: 8px;
-        background: rgb(46, 91, 174);
-        color: white;
-      }
-      &__content {
-        background: whitesmoke;
-        width: 100%;
-        height: 100%;
-        padding: 8px;
+        width: 30%;
+        aspect-ratio: 1/1;
+        background: lightgray;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
-  }
-}
-
-.etc-box {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 20px;
-  span {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .etc {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #999;
-    padding: 10px;
+    &__mid {
+      .user {
+        &__info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          row-gap: 2px;
+          width: 100%;
+          overflow: hidden;
+          &__list {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          &__tit {
+            @include flex(center, center);
+            flex-shrink: 0;
+            font-weight: 700;
+            width: 75px;
+            height: 100%;
+            padding: 8px;
+            background: $main-color;
+            color: white;
+          }
+          &__content {
+            @include flex($ai: center);
+            background: whitesmoke;
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            @include fontCut;
+          }
+        }
+      }
+    }
+    &__bot {
+      flex: 1;
+      padding-bottom: 1rem;
+      .etc-box {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        span {
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 8px;
+        }
+        .etc {
+          width: 100%;
+          height: 100%;
+          border: 1px solid #999;
+          padding: 10px;
+        }
+      }
+    }
   }
 }

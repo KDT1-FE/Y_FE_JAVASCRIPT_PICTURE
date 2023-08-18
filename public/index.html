@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>회원관리</title>
+    <title>직원 현황</title>
     <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,20 +12,35 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <link rel="stylesheet" href="css/popup.css" />
   </head>
   <body>
     <aside>
-      <div class="logo">LOGO</div>
+      <div class="logo-wrap">
+        <div class="logo">LOGO</div>
+        <div class="aside-closer">
+          <span class="material-symbols-outlined"> keyboard_double_arrow_left </span>
+        </div>
+      </div>
       <nav class="nav">
         <ul class="nav__main">
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+              <span class="material-symbols-outlined"> dashboard </span>
+              <span>대시보드</span>
             </div>
+            <ul class="nav__sub">
+              <li>대시보드 1</li>
+              <li>대시보드 2</li>
+              <li>대시보드 3</li>
+              <li>대시보드 4</li>
+            </ul>
+          </li>
           <li class="nav__main--active">
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> person </span>직원게시판
+              <span class="material-symbols-outlined"> person </span>
+              <span>직원게시판</span>
             </div>
             <ul class="nav__sub">
               <li class="nav__sub--active">직원 현황</li>
@@ -35,17 +50,20 @@
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> mail </span>메세지
+              <span class="icon material-symbols-outlined"> mail </span>
+              <span>메세지</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> notifications </span>알림
+              <span class="icon material-symbols-outlined"> notifications </span>
+              <span>알림</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> article </span>사내문서
+              <span class="material-symbols-outlined"> article </span>
+              <span>사내문서</span>
             </div>
           </li>
         </ul>
@@ -53,7 +71,9 @@
     </aside>
     <div class="container">
       <header class="header">
-        <div class="header__left"></div>
+        <div class="header__left">
+          <span class="icon__menu material-symbols-outlined"> menu </span>
+        </div>
         <div class="header__right">
           <div class="icon-box">
             <span class="icon material-symbols-outlined"> mail </span>
@@ -73,10 +93,12 @@
       </header>
       <div class="content-wrap">
         <section class="content-box">
-          <h3>직원 관리</h3>
+          <header class="content-box__header">
+            <h3>직원 현황</h3>
+          </header>
           <div class="control-box">
             <label>
-              <input type="search" class="control-box__search" />
+              <input type="search" class="control-box__search" placeholder="검색어를 입력하세요" />
             </label>
             <div class="control-box__btn-wrap">
               <button class="btn__upload">입력</button>
@@ -120,9 +142,7 @@
                   <input type="checkbox" data-id="${doc.id}" />
                 </div>
                 <div class="picture">
-                  <div class="picture__box">
-                    <img src="${doc.data().img}" alt="${doc.data().name}" />
-                  </div>
+                  <div class="picture__box" style="background-image: url('${doc.data().img}');"></div>
                 </div>
                 <div class="name">${doc.data().name}</div>
                 <div class="mail">${doc.data().mail}</div>
@@ -138,25 +158,29 @@
           });
         });
 
-        document.querySelector(".btn__delete").addEventListener("click", () => {
-          const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]:checked');
-          if (checkboxes.length) {
-            const confirmation = confirm("선택한 직원의 정보를 삭제하시겠습니까?");
-            if (confirmation) {
-              checkboxes.forEach(checkbox => {
-                const docId = checkbox.getAttribute('data-id');
-                db.collection('profile').doc(docId).delete().then(() => {
+      document.querySelector(".btn__delete").addEventListener("click", () => {
+        const checkboxes = document.querySelectorAll('.checkbox input[type="checkbox"]:checked');
+        if (checkboxes.length) {
+          const confirmation = confirm("선택한 직원의 정보를 삭제하시겠습니까?");
+          if (confirmation) {
+            checkboxes.forEach((checkbox) => {
+              const docId = checkbox.getAttribute("data-id");
+              db.collection("profile")
+                .doc(docId)
+                .delete()
+                .then(() => {
                   // 데이터 삭제 후 해당 리스트 항목 제거
-                  checkbox.closest('.employee-list').remove();
-                }).catch(error => {
+                  checkbox.closest(".employee-list").remove();
+                })
+                .catch((error) => {
                   console.error("Error removing document: ", error);
                 });
-              });
-            }
-          } else {
-            alert("삭제할 직원을 선택하세요.");
+            });
           }
-        });
+        } else {
+          alert("삭제할 직원을 선택하세요.");
+        }
+      });
     </script>
     <script>
       document.querySelector(".btn__upload").addEventListener("click", () => {

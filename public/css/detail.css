@@ -1,68 +1,78 @@
-.content-box__header {
+#detail {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 1rem;
 }
-.content-box__header .btn__edit {
-  margin-right: 20px;
-  cursor: pointer;
-}
-
-.user-box {
-  display: flex;
-  padding: 0 20px;
-}
-.user-box .user__picture {
+#detail .detail__top {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#detail .detail__top .user__picture {
   flex-shrink: 0;
-  width: 20%;
+  width: 30%;
   aspect-ratio: 1/1;
   background: lightgray;
-  margin-right: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.user-box .user__picture > img {
-  width: 100%;
-}
-.user-box .user__info {
+#detail .detail__mid .user__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  row-gap: 2px;
   width: 100%;
+  overflow: hidden;
 }
-.user-box .user__info__list {
+#detail .detail__mid .user__info__list {
   display: flex;
   align-items: center;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;
 }
-.user-box .user__info__tit {
+#detail .detail__mid .user__info__tit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   flex-shrink: 0;
   font-weight: 700;
   width: 75px;
+  height: 100%;
   padding: 8px;
   background: rgb(46, 91, 174);
   color: white;
 }
-.user-box .user__info__content {
+#detail .detail__mid .user__info__content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
   background: whitesmoke;
   width: 100%;
   height: 100%;
   padding: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
-.etc-box {
+#detail .detail__bot {
+  flex: 1;
+  padding-bottom: 1rem;
+}
+#detail .detail__bot .etc-box {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px;
 }
-.etc-box span {
+#detail .detail__bot .etc-box span {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
 }
-.etc-box .etc {
+#detail .detail__bot .etc-box .etc {
   width: 100%;
   height: 100%;
   border: 1px solid #999;

@@ -12,22 +12,35 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <link rel="stylesheet" href="css/detail.css" />
   </head>
   <body>
     <aside>
-      <div class="logo">
-        <a href="/index.html">LOGO</a>
+      <div class="logo-wrap">
+        <div class="logo">LOGO</div>
+        <div class="aside-closer">
+          <span class="material-symbols-outlined"> keyboard_double_arrow_left </span>
+        </div>
       </div>
       <nav class="nav">
         <ul class="nav__main">
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+              <span class="material-symbols-outlined"> dashboard </span>
+              <span>대시보드</span>
             </div>
+            <ul class="nav__sub">
+              <li>대시보드 1</li>
+              <li>대시보드 2</li>
+              <li>대시보드 3</li>
+              <li>대시보드 4</li>
+            </ul>
+          </li>
           <li class="nav__main--active">
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> person </span>직원게시판
+              <span class="material-symbols-outlined"> person </span>
+              <span>직원게시판</span>
             </div>
             <ul class="nav__sub">
               <li class="nav__sub--active">직원 현황</li>
@@ -37,17 +50,20 @@
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> mail </span>메세지
+              <span class="icon material-symbols-outlined"> mail </span>
+              <span>메세지</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> notifications </span>알림
+              <span class="icon material-symbols-outlined"> notifications </span>
+              <span>알림</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> article </span>사내문서
+              <span class="material-symbols-outlined"> article </span>
+              <span>사내문서</span>
             </div>
           </li>
         </ul>
@@ -55,7 +71,9 @@
     </aside>
     <div class="container">
       <header class="header">
-        <div class="header__left"></div>
+        <div class="header__left">
+          <span class="icon__menu material-symbols-outlined"> menu </span>
+        </div>
         <div class="header__right">
           <div class="icon-box">
             <span class="icon material-symbols-outlined"> mail </span>
@@ -74,13 +92,15 @@
         </div>
       </header>
       <div class="content-wrap">
-        <div class="content-box">
+        <div id="detail" class="content-box">
           <header class="content-box__header">
             <h3>회원 상세</h3>
             <button type="button" class="btn__edit">수정</button>
           </header>
-          <div class="user-box">
+          <div class="detail__top">
             <div class="user__picture"></div>
+          </div>
+          <div class="detail__mid">
             <div class="user__info">
               <div class="user__info__list user__name">
                 <span class="user__info__tit">이름</span>
@@ -104,14 +124,15 @@
               </div>
             </div>
           </div>
-          <div class="etc-box">
-            <span>비고</span>
-            <div class="etc"></div>
+          <div class="detail__bot">
+            <div class="etc-box">
+              <span>비고</span>
+              <div class="etc"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
 
     <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
     <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
@@ -124,21 +145,25 @@
       const storageRef = storage.ref();
       const defaultImg = storageRef.child("image/profile_none.jpg");
 
-      let docId = new URLSearchParams(window.location.search)
+      let docId = new URLSearchParams(window.location.search);
 
-      db.collection('profile').doc(docId.get('id')).get().then((res)=>{
-        document.querySelector('.user__picture').innerHTML = `<img src="${res.data().img}" alt="${res.data().name}" />`
-        document.querySelector('.user__name .user__info__content').innerHTML = res.data().name;
-        document.querySelector('.user__mail .user__info__content').innerHTML = res.data().mail;
-        document.querySelector('.user__phone .user__info__content').innerHTML = res.data().phone;
-        document.querySelector('.user__group .user__info__content').innerHTML = res.data().group;
-        document.querySelector('.user__position .user__info__content').innerHTML = res.data().position;
-        document.querySelector('.etc-box .etc').innerHTML = res.data().etc;
+      db.collection("profile")
+        .doc(docId.get("id"))
+        .get()
+        .then((res) => {
+          document.querySelector(".user__picture").style.backgroundImage = `url(${res.data().img})`;
+          document.querySelector(".user__name .user__info__content").innerHTML = res.data().name;
+          document.querySelector(".user__mail .user__info__content").innerHTML = res.data().mail;
+          document.querySelector(".user__phone .user__info__content").innerHTML = res.data().phone;
+          document.querySelector(".user__group .user__info__content").innerHTML = res.data().group;
+          document.querySelector(".user__position .user__info__content").innerHTML = res.data().position;
+          document.querySelector(".etc-box .etc").innerHTML = res.data().etc;
+        });
+
+      document.querySelector(".btn__edit").addEventListener("click", () => {
+        window.location.href = "/edit.html?id=" + docId.get("id");
       });
-
-      document.querySelector('.btn__edit').addEventListener("click",()=>{
-        window.location.href = '/edit.html?id=' + docId.get('id')
-      })
     </script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>

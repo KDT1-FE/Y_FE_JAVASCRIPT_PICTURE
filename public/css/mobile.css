@@ -1,0 +1,50 @@
+@media (max-width: 767px) {
+  body {
+    position: relative;
+  }
+  aside {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: white;
+    z-index: 1;
+    transition: left 0.5s;
+  }
+  aside .logo-wrap {
+    display: flex;
+    align-items: center;
+  }
+  aside .logo-wrap .logo {
+    margin-right: 8px;
+  }
+  aside .logo-wrap .aside-closer {
+    height: 100%;
+    display: block;
+    cursor: pointer;
+  }
+  .container .header__left .icon__menu {
+    display: block;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .container .header__right .date-box {
+    display: none;
+  }
+  .container .employee-list__header {
+    grid-template-columns: 10% 30% 20% 20% 20% !important;
+  }
+  .container .employee-list__header .mail,
+  .container .employee-list__header .phone,
+  .container .employee-list__header .group {
+    display: none;
+  }
+  .container .employee-list a {
+    grid-template-columns: 10% 30% 20% 20% 20% !important;
+  }
+  .container .employee-list a .mail,
+  .container .employee-list a .phone,
+  .container .employee-list a .group {
+    display: none;
+  }
+}

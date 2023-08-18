@@ -12,22 +12,35 @@
     <!-- 스타일 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
     <link rel="stylesheet" href="css/upload.css" />
   </head>
   <body>
     <aside>
-      <div class="logo">
-        <a href="#">LOGO</a>
+      <div class="logo-wrap">
+        <div class="logo">LOGO</div>
+        <div class="aside-closer">
+          <span class="material-symbols-outlined"> keyboard_double_arrow_left </span>
+        </div>
       </div>
       <nav class="nav">
         <ul class="nav__main">
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> dashboard </span>대시보드</li>
+              <span class="material-symbols-outlined"> dashboard </span>
+              <span>대시보드</span>
             </div>
+            <ul class="nav__sub">
+              <li>대시보드 1</li>
+              <li>대시보드 2</li>
+              <li>대시보드 3</li>
+              <li>대시보드 4</li>
+            </ul>
+          </li>
           <li class="nav__main--active">
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> person </span>직원게시판
+              <span class="material-symbols-outlined"> person </span>
+              <span>직원게시판</span>
             </div>
             <ul class="nav__sub">
               <li class="nav__sub--active">직원 현황</li>
@@ -37,17 +50,20 @@
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> mail </span>메세지
+              <span class="icon material-symbols-outlined"> mail </span>
+              <span>메세지</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="icon material-symbols-outlined"> notifications </span>알림
+              <span class="icon material-symbols-outlined"> notifications </span>
+              <span>알림</span>
             </div>
           </li>
           <li>
             <div class="nav__main__text">
-              <span class="material-symbols-outlined"> article </span>사내문서
+              <span class="material-symbols-outlined"> article </span>
+              <span>사내문서</span>
             </div>
           </li>
         </ul>
@@ -55,7 +71,9 @@
     </aside>
     <div class="container">
       <header class="header">
-        <div class="header__left"></div>
+        <div class="header__left">
+          <span class="icon__menu material-symbols-outlined"> menu </span>
+        </div>
         <div class="header__right">
           <div class="icon-box">
             <span class="icon material-symbols-outlined"> mail </span>
@@ -74,60 +92,66 @@
         </div>
       </header>
       <div class="content-wrap">
-        <div class="content-box">
-          <h3>회원 정보 수정</h3>
-          <div class="upload__contents">
-            <div class="upload__list">
-              <span>이름</span>
+        <div id="edit" class="content-box">
+          <header class="content-box__header">
+            <h3>회원 정보 수정</h3>
+            <button type="submit" class="btn__update">수정</button>
+          </header>
+          <div class="edit__top">
+            <div class="edit__list--photo">
+              <label>
+                <div class="photo-preview"></div>
+                <div class="input__photo--design">
+                  <div class="photo__name">사진을 첨부해주세요</div>
+                  <div class="photo__btn">파일 추가</div>
+                </div>
+                <input type="file" class="input__photo" onchange="updatePreview(this)" accept="image/*" />
+              </label>
+            </div>
+          </div>
+          <div class="edit__mid">
+            <div class="edit__list">
+              <div>이름</div>
               <label>
                 <input type="text" class="input__name" />
               </label>
             </div>
-            <div class="upload__list">
-              <span>메일</span>
+            <div class="edit__list">
+              <div>메일</div>
               <label>
                 <input type="text" class="input__mail" />
               </label>
             </div>
-            <div class="upload__list">
-              <span>번호</span>
+            <div class="edit__list">
+              <div>번호</div>
               <label>
-                <input type="number" class="input__phone" />
+                <input type="text" class="input__phone" />
               </label>
             </div>
-            <div class="upload__list">
-              <span>부서/팀</span>
+            <div class="edit__list">
+              <div>부서/팀</div>
               <label>
                 <input type="text" class="input__group" />
               </label>
             </div>
-            <div class="upload__list">
-              <span>직급</span>
+            <div class="edit__list">
+              <div>직급</div>
               <label>
                 <input type="text" class="input__position" />
               </label>
             </div>
-            <div class="upload__list">
-              <span>비고</span>
-              <label>
-                <input type="text" class="input__etc" />
-              </label>
-            </div>
-            <div class="upload__list">
-              <span>사진</span>
-              <label>
-                <img class="photo-preview" src="" alt="사진 미리보기" style="max-width: 100px;">
-                <input type="file" class="input__photo" onchange="updatePreview(this)"/>
-              </label>
-            </div>
           </div>
-          <div class="upload__btn-wrap">
-            <button type="submit" class="btn__update">수정</button>
+          <div class="edit__bot">
+            <div class="edit__list">
+              <div>비고</div>
+              <label>
+                <textarea class="input__etc"></textarea>
+              </label>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
 
     <script src="/__/firebase/10.1.0/firebase-app-compat.js"></script>
     <script src="/__/firebase/10.1.0/firebase-auth-compat.js"></script>
@@ -141,38 +165,47 @@
 
       let docId = new URLSearchParams(window.location.search);
 
-      db.collection('profile').doc(docId.get('id')).get().then((res)=>{
-        document.querySelector('.input__name').value = res.data().name;
-        document.querySelector('.input__mail').value = res.data().mail;
-        document.querySelector('.input__phone').value = res.data().phone;
-        document.querySelector('.input__group').value = res.data().group;
-        document.querySelector('.input__position').value = res.data().position;
-        document.querySelector('.input__etc').value = res.data().etc;
-        
-        // 사진 미리보기
-        const previewImg = document.querySelector('.photo-preview');
-        if (res.data().img) {
-            previewImg.src = res.data().img;
-        } else {
-            previewImg.alt = "이미지가 없습니다.";
-        }
-      });
+      db.collection("profile")
+        .doc(docId.get("id"))
+        .get()
+        .then((res) => {
+          document.querySelector(".input__name").value = res.data().name;
+          document.querySelector(".input__mail").value = res.data().mail;
+          document.querySelector(".input__phone").value = res.data().phone;
+          document.querySelector(".input__group").value = res.data().group;
+          document.querySelector(".input__position").value = res.data().position;
+          document.querySelector(".input__etc").value = res.data().etc;
+
+          // 사진 미리보기
+          const previewDiv = document.querySelector(".photo-preview");
+          if (res.data().img) {
+            previewDiv.style.backgroundImage = `url(${res.data().img})`;
+            previewDiv.style.backgroundSize = "cover";
+            previewDiv.style.backgroundPosition = "center";
+          } else {
+            previewDiv.style.backgroundImage = "";
+          }
+        });
+
       // 새로운 이미지가 선택되면 미리보기 갱신
       function updatePreview(input) {
-          const previewImg = document.querySelector('.photo-preview');
-          const file = input.files[0];
-          if (file) {
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                  previewImg.src = e.target.result;
-              }
-              reader.readAsDataURL(file);
-          }
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const previewDiv = document.querySelector(".photo-preview");
+            previewDiv.style.backgroundImage = `url(${e.target.result})`;
+
+            // 선택된 파일의 이름을 .photo__name 요소에 표시
+            const fileNameDiv = document.querySelector(".photo__name");
+            fileNameDiv.textContent = input.files[0].name;
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
       }
 
       document.querySelector(".btn__update").addEventListener("click", function () {
         // 1. 빈칸 확인
-        const inputs = document.querySelectorAll(".upload__list input:not([type='file'])");
+        const inputs = document.querySelectorAll(".edit__list input:not([type='file'])");
         for (let input of inputs) {
           if (input.value.trim() === "") {
             alert("빈칸을 채워주세요!");
@@ -181,52 +214,53 @@
           }
         }
 
+        let saveData = {
+          name: document.querySelector(".input__name").value,
+          mail: document.querySelector(".input__mail").value,
+          phone: document.querySelector(".input__phone").value,
+          group: document.querySelector(".input__group").value,
+          position: document.querySelector(".input__position").value,
+          etc: document.querySelector(".input__etc").value,
+        };
+
         // 2. 이미지 파일 확인
         let imageFile = document.querySelector(".input__photo").files[0];
-        if (!imageFile) {
-          alert("사진을 업로드 해주세요!");
-          return;
-        }
+        if (imageFile) {
+          // 3. 이미지 업로드
+          let imageUrl = storageRef.child("image/" + imageFile.name);
+          let imageUpload = imageUrl.put(imageFile);
 
-        // 3. 이미지 업로드
-        let imageUrl = storageRef.child("image/" + imageFile.name);
-        let imageUpload = imageUrl.put(imageFile);
-
-        imageUpload.on(
-          "state_changed",
-          null, // 변화
-          //에러
-          (error) => {
+          imageUpload.on(
+            "state_changed",
+            null, // 변화
+            //에러
+            (error) => {
               console.error("실패사유는", error);
-          },
-          // 성공
-          () => {
-            imageUpload.snapshot.ref.getDownloadURL().then((url) => {
-              let saveData = {
-                name: document.querySelector(".input__name").value,
-                mail: document.querySelector(".input__mail").value,
-                phone: Number(document.querySelector(".input__phone").value),
-                group: document.querySelector(".input__group").value,
-                position: document.querySelector(".input__position").value,
-                etc: document.querySelector(".input__etc").value,
-                img: url,
-              };
-
-              // 4. 데이터 저장
-              db.collection("profile")
-                .add(saveData)
-                .then((res) => {
-                  window.location.href = '/index.html'
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            },
+            // 성공
+            () => {
+              imageUpload.snapshot.ref.getDownloadURL().then((url) => {
+                saveData.img = url;
+                updateProfileData(saveData);
               });
             }
           );
+        } else {
+          updateProfileData(saveData);
+        }
       });
 
-      
+      function updateProfileData(data) {
+        db.collection("profile")
+          .doc(docId.get("id"))
+          .set(data, { merge: true }) // merge: true 옵션은 기존의 데이터와 새로운 데이터를 병합합니다.
+          .then(() => {
+            window.location.href = "/index.html";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     </script>
     <script src="js/scripts.js"></script>
   </body>

@@ -2,60 +2,213 @@
   box-sizing: border-box;
 }
 
-.modal {
-  display: none;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-.modal .modal-contents {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-}
-
-.popup__upload h3 {
-  font-size: 32px;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-.popup__upload__contents {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-}
-.popup__upload__list {
+#upload,
+#edit {
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
 }
-.popup__upload__list span {
-  margin-bottom: 8px;
-}
-.popup__upload__list label {
+#upload .upload__list,
+#upload .edit__list,
+#edit .upload__list,
+#edit .edit__list {
   width: 100%;
-  height: 36px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  background: whitesmoke;
-  overflow: hidden;
-  padding: 0 10px;
 }
-.popup__upload__list label input {
+#upload .upload__list--photo,
+#upload .edit__list--photo,
+#edit .upload__list--photo,
+#edit .edit__list--photo {
+  width: 30%;
+}
+#upload .upload__top,
+#upload .edit__top,
+#edit .upload__top,
+#edit .edit__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+#upload .upload__top label,
+#upload .edit__top label,
+#edit .upload__top label,
+#edit .edit__top label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+#upload .upload__top label .photo-preview,
+#upload .edit__top label .photo-preview,
+#edit .upload__top label .photo-preview,
+#edit .edit__top label .photo-preview {
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-bottom: 0.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: lightgray;
+}
+#upload .upload__top label .input__photo,
+#upload .edit__top label .input__photo,
+#edit .upload__top label .input__photo,
+#edit .edit__top label .input__photo {
+  width: 0;
+  height: 0;
+}
+#upload .upload__top label .input__photo--design,
+#upload .edit__top label .input__photo--design,
+#edit .upload__top label .input__photo--design,
+#edit .edit__top label .input__photo--design {
+  display: flex;
+  column-gap: 0.5rem;
+  width: 100%;
+  height: 1.5rem;
+}
+#upload .upload__top label .input__photo--design .photo__name, #upload .upload__top label .input__photo--design .photo__btn,
+#upload .edit__top label .input__photo--design .photo__name,
+#upload .edit__top label .input__photo--design .photo__btn,
+#edit .upload__top label .input__photo--design .photo__name,
+#edit .upload__top label .input__photo--design .photo__btn,
+#edit .edit__top label .input__photo--design .photo__name,
+#edit .edit__top label .input__photo--design .photo__btn {
+  text-align: center;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 400;
+}
+#upload .upload__top label .input__photo--design .photo__name,
+#upload .edit__top label .input__photo--design .photo__name,
+#edit .upload__top label .input__photo--design .photo__name,
+#edit .edit__top label .input__photo--design .photo__name {
+  flex: 1;
+  border: 1px solid #e3e3e3;
+  overflow: hidden;
+}
+#upload .upload__top label .input__photo--design .photo__btn,
+#upload .edit__top label .input__photo--design .photo__btn,
+#edit .upload__top label .input__photo--design .photo__btn,
+#edit .edit__top label .input__photo--design .photo__btn {
+  width: 30%;
+  background: rgb(46, 91, 174);
+  color: #fff;
+}
+#upload .upload__mid,
+#upload .edit__mid,
+#edit .upload__mid,
+#edit .edit__mid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+}
+#upload .upload__mid .upload__list,
+#upload .upload__mid .edit__list,
+#upload .edit__mid .upload__list,
+#upload .edit__mid .edit__list,
+#edit .upload__mid .upload__list,
+#edit .upload__mid .edit__list,
+#edit .edit__mid .upload__list,
+#edit .edit__mid .edit__list {
+  display: flex;
+}
+#upload .upload__mid .upload__list div,
+#upload .upload__mid .edit__list div,
+#upload .edit__mid .upload__list div,
+#upload .edit__mid .edit__list div,
+#edit .upload__mid .upload__list div,
+#edit .upload__mid .edit__list div,
+#edit .edit__mid .upload__list div,
+#edit .edit__mid .edit__list div {
+  width: 10%;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 10px;
+  background: rgb(46, 91, 174);
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+#upload .upload__mid .upload__list label,
+#upload .upload__mid .edit__list label,
+#upload .edit__mid .upload__list label,
+#upload .edit__mid .edit__list label,
+#edit .upload__mid .upload__list label,
+#edit .upload__mid .edit__list label,
+#edit .edit__mid .upload__list label,
+#edit .edit__mid .edit__list label {
+  flex: 1;
+  background: lightgray;
+}
+#upload .upload__mid .upload__list label input,
+#upload .upload__mid .edit__list label input,
+#upload .edit__mid .upload__list label input,
+#upload .edit__mid .edit__list label input,
+#edit .upload__mid .upload__list label input,
+#edit .upload__mid .edit__list label input,
+#edit .edit__mid .upload__list label input,
+#edit .edit__mid .edit__list label input {
   width: 100%;
   height: 100%;
+  padding: 0 10px;
   border: none;
-  outline: none;
   background: transparent;
+}
+#upload .upload__mid .upload__list label input:focus,
+#upload .upload__mid .edit__list label input:focus,
+#upload .edit__mid .upload__list label input:focus,
+#upload .edit__mid .edit__list label input:focus,
+#edit .upload__mid .upload__list label input:focus,
+#edit .upload__mid .edit__list label input:focus,
+#edit .edit__mid .upload__list label input:focus,
+#edit .edit__mid .edit__list label input:focus {
+  background: rgb(235, 235, 235);
+}
+#upload .upload__bot,
+#upload .edit__bot,
+#edit .upload__bot,
+#edit .edit__bot {
+  height: 100%;
+  padding-bottom: 1rem;
+}
+#upload .upload__bot .upload__list,
+#upload .upload__bot .edit__list,
+#upload .edit__bot .upload__list,
+#upload .edit__bot .edit__list,
+#edit .upload__bot .upload__list,
+#edit .upload__bot .edit__list,
+#edit .edit__bot .upload__list,
+#edit .edit__bot .edit__list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#upload .upload__bot div,
+#upload .edit__bot div,
+#edit .upload__bot div,
+#edit .edit__bot div {
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+#upload .upload__bot label,
+#upload .edit__bot label,
+#edit .upload__bot label,
+#edit .edit__bot label {
+  flex: 1;
+}
+#upload .upload__bot label textarea,
+#upload .edit__bot label textarea,
+#edit .upload__bot label textarea,
+#edit .edit__bot label textarea {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  resize: none;
+  outline: none;
 }

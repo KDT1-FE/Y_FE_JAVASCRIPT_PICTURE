@@ -1,0 +1,60 @@
+@media (max-width: 767px) {
+  body {
+    position: relative;
+  }
+  aside {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: white;
+    z-index: 1;
+    transition: left 0.5s;
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      .logo {
+        margin-right: 8px;
+      }
+      .aside-closer {
+        height: 100%;
+        display: block;
+        cursor: pointer;
+      }
+    }
+  }
+  .container {
+    .header {
+      &__left {
+        .icon__menu {
+          display: block;
+          line-height: 60px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+      &__right {
+        .date-box {
+          display: none;
+        }
+      }
+    }
+    .employee-list {
+      &__header {
+        grid-template-columns: 10% 30% 20% 20% 20% !important;
+        .mail,
+        .phone,
+        .group {
+          display: none;
+        }
+      }
+      a {
+        grid-template-columns: 10% 30% 20% 20% 20% !important;
+        .mail,
+        .phone,
+        .group {
+          display: none;
+        }
+      }
+    }
+  }
+}
