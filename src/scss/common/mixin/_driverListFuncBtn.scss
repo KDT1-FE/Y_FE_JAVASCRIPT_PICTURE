@@ -1,0 +1,18 @@
+@mixin driverListFuncBtn {
+  width: 10rem;
+  height: 3.5rem;
+
+  border-radius: 10px;
+
+  text-align: center;
+  font-weight: 700;
+
+  color: $black;
+  background-color: $transparencyWhite;
+
+  cursor: pointer;
+
+  @include mobile {
+    height: 6rem;
+  }
+}
