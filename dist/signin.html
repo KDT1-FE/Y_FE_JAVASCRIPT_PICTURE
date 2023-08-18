@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="직원 관리 웹 어플리케이션">
+    <title>직원 사진 관리 서비스</title>
+    <link href="/output.43227293.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script type="module" src="/signin.d28b8e90.js"></script>
+  </head>
+  <body class="bg-slate-100">
+    <!-- novalidate : form 자체의 유효성 검사를 하지 않고 js에서 자체적으로 작성한 유효성 검사를 실행 -->
+    <form id="signin-form" class="container absolute left-1/2 top-1/2 max-w-sm -translate-x-1/2 -translate-y-1/2 border-4 border-white bg-slate-200 px-8 py-12" novalidate="">
+      <div class="container relative text-2xl font-medium leading-10 tracking-widest text-slate-600">SIGN IN</div>
+
+      <!-- 이메일 인풋 요소 -->
+      <div class="relative mt-14">
+        <input class="peer h-12 w-full cursor-pointer bg-slate-50 pl-2 outline-none" type="email" id="signin-email" name="email" required="" autocomplete="on">
+        <label class="absolute left-1.5 top-2 cursor-pointer p-1.5 text-sm text-slate-500" id="label-email" for="signin-email">email</label>
+        <span class="bar"></span>
+
+        <!-- 이메일 형식 확인 아이콘 hidden적용
+        id: email-success / email-error 사용시 class hidden 제거 -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute right-2 top-2 hidden h-6 w-6 fill-red-600 text-white" id="email-success">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute right-2 top-2 hidden h-6 w-6 fill-green-600 text-white" id="email-error">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+
+        <!-- javascript에서 validation 한 뒤 동적 추가 -->
+        <div class="absolute left-1 top-[120] text-xs text-red-500" id="email-error-msg"></div>
+      </div>
+
+      <!-- 패스워드 인풋 요소 -->
+      <div class="relative mt-14">
+        <input class="peer h-12 w-full cursor-pointer bg-slate-50 pl-2 outline-none" type="password" id="signin-password" name="password" required="" autocomplete="on">
+        <label class="absolute left-1.5 top-2 cursor-pointer p-1.5 text-sm text-slate-500" id="label-password" for="signin-password">password</label>
+        <span class="bar"></span>
+
+        <!-- 비밀번호 최소 자릿수 판별 아이콘 hidden적용
+        id: password-success / password-error 사용시 class hidden 제거-->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute right-2 top-2 hidden h-6 w-6 fill-red-600 text-white" id="password-success">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute right-2 top-2 hidden h-6 w-6 fill-green-600 text-white" id="password-error">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+
+        <!-- javascript에서 validation 한 뒤 동적 추가 -->
+        <div class="absolute left-1 top-[120] text-xs text-red-500" id="password-error-msg"></div>
+      </div>
+
+      <!-- 이메일 / 비밀번호의 요효성 검사가 성공했을 때에만 활성화한다 -->
+      <!-- 버튼이 활성화 되면 disabled 클래스를 제거하여 스타일 변경 -->
+      <button type="submit" class="container mt-16 cursor-pointer border-2 border-slate-300 border-transparent bg-slate-600 text-base font-medium leading-12 text-white outline-none transition-all hover:text-slate-600 hover:shadow-2xl enabled:hover:bg-blue-200 disabled:bg-transparent disabled:text-slate-400" id="submit-button" name="submit" disabled="">
+        SIGN IN
+      </button>
+    </form>
+  </body>
+</html>

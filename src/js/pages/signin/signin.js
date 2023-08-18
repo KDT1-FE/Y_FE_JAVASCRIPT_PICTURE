@@ -11,7 +11,7 @@ const signinFocus = e => {
   // console.log(e.target.name);
   document
     .getElementById(`label-${e.target.name}`)
-    .classList.add('-top-1/2', 'ease-out', 'duration-200', 'font-medium');
+    .classList.add('-top-2/4', 'ease-out', 'duration-200', 'font-medium');
 };
 
 // input 유효성 검사 결과에 따라 hidden 스타일을 제거
@@ -76,8 +76,6 @@ const request = e => {
 
 /* ------------------------------ Event handler ----------------------------- */
 window.addEventListener('DOMContentLoaded', e => {
-  console.log(JSON.stringify(localStorage.getItem('isSignin')) !== 'null');
-
   if (JSON.stringify(localStorage.getItem('isSignin')) !== 'null') {
     location.replace('main.html');
   }
