@@ -55,24 +55,34 @@
 ***
 
 
-### 🧑🏻‍💻 주요 구현 사항
+### 🧑🏻‍💻 구현 사항
 
-#### 임원 등록 (이미지 포함)
->   - <`header`> , <`main`>, <`footer`> 등 시맨틱 태그 활용
->
->   - 실제 사이트와 거의 비슷한 레이아웃 구현
+<div style='display:flex;flex-direction: row;'>
+  <div>
+    <p style='font-weight:bold'>일반 사용자 임원 관리 리스트</p>
+    <img width="800" alt="스크린샷 2023-08-18 오후 11 20 21" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/922ebfd0-8159-45cb-976a-9906fd8753a3">
+  </div>
+  
+  <div>
+    <p style='font-weight:bold'>관리자 임원 관리 리스트</p>
+    <img width="800" alt="스크린샷 2023-08-18 오후 11 22 15" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/86675cb2-040b-4c55-9c53-753b3edbbc91">
+  </div>
+</div>
 
+#### 임원 등록
+<img width="800" alt="스크린샷 2023-08-18 오후 11 22 26" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/447ac63e-e22e-4d03-8793-19461d46d984">
 
-#### 임원 수정 (이미지 포함)
->   - flex를 활용하여 컨텐츠 요소들 배치 및 디자인 구현
-> 
->   - :hover를 사용하여 header 태그 및 링크 요소 디자인 구현
-
+#### 임원 수정
+<img width="800" alt="스크린샷 2023-08-18 오후 11 22 56" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/323e1479-4dab-4b2b-a72c-0854e43cc51d">
 
 #### 임원 삭제
->   - 자바스크립트 내장함수를 이용하여 클릭, hover, 전환 등 기능 구현
-> 
->   - fontawesome 라이브러리를 활용하여 아이콘 사용
+<img width="800" alt="스크린샷 2023-08-19 오전 12 19 23" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/20925eb6-f69a-4587-aefd-61b7024eac2c">
+
+#### 로그인
+<img width="800" alt="스크린샷 2023-08-18 오후 11 21 01" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/a413ae05-056a-472c-98ef-cbc8d240fc35">
+
+#### 회원가입
+<img width="800" alt="스크린샷 2023-08-18 오후 11 21 12" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/137421610/7cfd7136-6a41-468e-a858-d92f8ecfdc39">
 
 
 ***
