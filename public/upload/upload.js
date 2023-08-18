@@ -3,6 +3,7 @@ if (localStorage.getItem("user") == null) {
   document.querySelectorAll("input").forEach((el) => {
     el.addEventListener("focus", function () {
       alert("로그인 후 업로드 가능합니다!");
+      window.location.href='/login/login.html'
       this.blur();
     });
   });
@@ -54,7 +55,11 @@ document.getElementById("send").addEventListener("click", function () {
           db.collection("member")
             .add(saveData)
             .then((result) => {
-              window.location.href = "/index.html";
+              console.log(result)
+              window.location.href =
+              "/detail/detail.html?id=" + saveData.uid;
+              // "/detail/detail.html?id=" + queryString.get("id");
+              // window.location.href = "/index.html";
               console.log(result);
             })
             .catch((err) => {
@@ -65,5 +70,6 @@ document.getElementById("send").addEventListener("click", function () {
     );
   } else {
     alert("로그인 후 업로드 가능합니다!");
+    window.location.href='/login/login.html'
   }
 });

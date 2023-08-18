@@ -31,6 +31,12 @@ db.collection("member")
 
 if (localStorage.getItem("user") != null) {
   document.querySelector(".edit-btn").addEventListener("click", editBtnClick);
+  document.querySelectorAll(".delete-btn").forEach(el => {
+    el.addEventListener("click", deleteBtnClick);
+});
+
 } else {
   document.querySelector(".edit-btn").addEventListener("click", alertLogin);
+  document.querySelector(".delete-btn").addEventListener("click", alertLogin);
+
 }

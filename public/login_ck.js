@@ -8,15 +8,11 @@ if (localStorage.getItem("user") != null) {
     document.querySelector("#user-name").innerHTML = localName + "님";
     document.querySelector(".welcome__logout").classList.remove("none");
     document.querySelector(".welcome__login").classList.add("none");
-    document.querySelectorAll(".delete-btn").forEach(el => {
-        el.addEventListener("click", deleteBtnClick);
-    });
 } else {
   console.log("현재로그아웃중");
   localStorage.removeItem("user");
   document.querySelector(".welcome__logout").classList.add("none");
   document.querySelector(".welcome__login").classList.remove("none");
-  document.querySelector(".delete-btn").addEventListener("click", alertLogin);
 }
 
 
@@ -82,6 +78,7 @@ function deleteBtnClick() {
   
   function alertLogin(){
       alert('로그인이 필요합니다!')
+      window.location.href='login/login.html'
   }
 
 

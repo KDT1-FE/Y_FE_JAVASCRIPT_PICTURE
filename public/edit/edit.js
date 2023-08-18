@@ -90,3 +90,9 @@ document
         console.error("Error removing file.", error);
       });
   });
+
+// 삭제
+  document.querySelectorAll(".delete-btn").forEach(el => {
+      el.addEventListener("click", deleteBtnClick);
+  });
+

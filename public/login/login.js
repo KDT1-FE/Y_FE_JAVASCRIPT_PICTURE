@@ -44,7 +44,10 @@ loginBtn.addEventListener("click", function () {
       document.querySelector(".user-welcome").classList.remove("none");
       document.querySelector(".logout").classList.remove("none");
       document.querySelector(".login").classList.add("none");
-    });
+    }).catch(function(error) {
+      console.error("Error removing file.", error);
+      alert('로그인에 실패하였습니다. \n '+error.message)
+  });
 });
 
 //로그인, 회원가입 탭
