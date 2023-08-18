@@ -52,9 +52,8 @@ Y_FE ParkJisung(flamozzi) 임직원 관리 서비스 제작
 <img width="1440" alt="image" src="https://github.com/flamozzi/intro/assets/42928784/700df46e-4637-4c5b-8973-fee098dd6236">
 
 - Header를 포함하여 COMMON 스타일 지정을 통해 이후 하위에 존재할 모든 섹션에 통일감 형성
-- fixed 되어있는 header Nav List
-- Nav List와 같은 사이즈로 통일감을 주는 Trade In Banner Section
-- Apple 공식사이트의 경우 스크롤바를 default: none으로 가져가기 때문에 본 프로젝트에서도 스크롤바 기능은 유지하면서 눈에는 안보이게 처리함
+
+### Loding Animation & Highlight Fade
 
 ![image](https://github.com/flamozzi/Upbit-Autotrader/assets/42928784/ba8a84d0-46ca-484a-a624-dac63d7656c9)
 
