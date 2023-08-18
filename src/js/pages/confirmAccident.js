@@ -3,5 +3,5 @@ import "../components/load.js";
 import "../components/clickBackBtn";
 
 // import confirm components
-import "../components/confirm/getAccidentProfile.js";
-import "../components/confirm/clickConfirm.js";
+import "../components/confirmAccident/getAccidentProfile.js";
+import "../components/confirmAccident/clickConfirm.js";
