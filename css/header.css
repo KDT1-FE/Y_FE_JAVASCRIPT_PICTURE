@@ -1,0 +1,19 @@
+.header_contents {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5rem;
+  padding: 2rem;
+}
+
+.header_main_text {
+  font-size: 3.75rem;
+  font-weight: 700;
+}
+
+.header_detail_text {
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
