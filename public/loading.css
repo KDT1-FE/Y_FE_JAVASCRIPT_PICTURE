@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+#wrap {
+  position: relative;
+}
+
+.loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 235, 248);
+  z-index: 10;
+
+}
+
+#loading > div {
+  margin: 10px auto;
+  border: 10px solid #aeaefa;
+  border-radius: 20px;
+  background-color: rgb(252, 251, 255);
+  width: 300px;
+  max-width: 800px;
+  margin: 0px auto;
+  max-height: 80vh;
+  padding: 1rem;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 10px 10px #a4ddd2;
+  box-sizing: border-box;
+}
+
+#loading .loading_txt {
+  animation: loading 2.5s infinite step-end;
+  text-align: center;
+  color: #aeaefa;
+  display: block;
+  font-family: "DungGeunMo";
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0.5rem;
+  margin: 2rem auto;
+  text-transform: uppercase;
+}
+#loading .loading_txt .rotate {
+  display: inline-block;
+  animation-name: rotate;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  text-shadow: 3px 3px #ffeebc;
+}
+#loading .loading_txt .hi {
+  display: inline-block;
+  animation-duration: 1.5s;
+  animation-name: hi;
+  animation-iteration-count: infinite;
+  text-shadow: 3px 3px #ffeebc;
+  -webkit-text-stroke: 0.5px #fffae6;
+}
+#loading .loading_txt:first-child {
+  animation-delay: 0s;
+}
+
+#loading .loading_txt:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+#loading .loading_txt:nth-child(3) {
+  animation-delay: 0.2s;
+}
+#loading .loading_txt:nth-child(4) {
+  animation-delay: 0.3s;
+}
+#loading .loading_txt:nth-child(5) {
+  animation-delay: 0.4s;
+}
+#loading .loading_txt:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+@keyframes loading {
+  0% {
+    text-shadow: 1px 1px #fff, 2px 2px #a4ddd2, 3px 3px #a4ddd2, 4px 4px #a4ddd2,
+      5px 5px #a4ddd2, 6px 6px #a4ddd2;
+  }
+  60% {
+    text-shadow: none;
+  }
+}
+@keyframes hi {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(360deg);
+  }
+  90% {
+    transform: rotate(0deg);
+  }
+}
