@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+/* Mobile Device */
+@media (min-width: 576px) {
+  /* layout */
+  header,
+  main,
+  section {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .nav .gnb {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .gnb__welcome {
+    display: flex;
+    justify-content: flex-end;
+    width: initial;
+  }
+  .tab-wrap {
+    max-width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  /* :hover */
+  main .profile_title {
+    display: block;
+  }
+  main .profile {
+    width: 100%;
+    margin: 3rem auto;
+  }
+  main .profile_title {
+    background: #ffffde;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 3.4rem auto 1.4rem;
+  }
+
+  /* 체크박스 생기면 주석 해제 */
+  /* main .profile{ grid-template-columns: 10% 90%;} */
+  main .profile_title,
+  main .profile__dl {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+  }
+  main .profile .thumbnail {
+    width: 100%;
+    height: 130px;
+  }
+  main .profile .btn-s {
+    padding: 10px;
+  }
+  main .profile .btn-s:hover {
+    transform: translateY(0px);
+  }
+  .profile .name {
+    font-size: 1.4rem;
+  }
+
+  #detail .profile {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5%;
+  }
+  #detail .profile .col-1 {
+    width: 30%;
+  }
+  #detail .profile .col-2 {
+    width: 70%;
+  }
+
+  .custom-upload:hover {
+    background: #ffc107;
+    color: #183153;
+  }
+}
+
+/* Tablet &amp; Desktop Device */
+@media all and (min-width: 768px) {
+  header,
+  section,
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
