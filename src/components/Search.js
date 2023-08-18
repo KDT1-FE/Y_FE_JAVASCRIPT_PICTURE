@@ -53,7 +53,6 @@ export default class Search extends Component{
         championStore.state.isDeleteState = false
 
         if(Object.keys(championStore.state.deleteObj).length){
-          console.log('삭제 : ',championStore.state.deleteObj)
           for(let name in championStore.state.deleteObj){
             if(championStore.state.deleteObj[name]){
               localStorageArray = localStorageArray.filter(obj=>obj.name !== name)

@@ -32,7 +32,6 @@ export default class ChampionList extends Component{
         observer.unobserve(endEl)
       }
       if(entries[0].isIntersecting){
-        console.log('intersecting now')
         searchChampions(++championStore.state.page)
       }
     }
