@@ -78,6 +78,7 @@ body{
   .btn{
     height: 35px;
     width: 52.5px;
+    font-size: 0.5em;
   }
 }
 
@@ -108,7 +109,7 @@ body{
 .headline h2{
   font-size: 2rem;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 .headline span{
   color: var(--color-sora);
@@ -163,6 +164,7 @@ body{
 @media screen and (max-width:767px) {
   .search{
     flex-direction: column;
+    margin-bottom: 0;
   }
   .search input{
     width: 80%;
@@ -413,6 +415,17 @@ form input{
   background-color: var(--color-sora);
 }
 
+@media screen and (max-width:450px) {
+  .form-basic input{
+    height: 35px;
+    padding: 0 5px;
+  }
+  
+  form > div{
+    height: 40px;
+  }
+}
+
 .input-delete{
   height: 100%;
   width: 100%;
@@ -465,7 +478,6 @@ form input{
 }
 
 .btn-crop{
-  font-size: 14px;
   margin-top: 20px;
 }
 
