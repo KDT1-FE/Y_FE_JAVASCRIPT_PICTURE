@@ -1,6 +1,8 @@
 import signinSchema from './schema.js';
+import { auth, signinSubmit } from '../../firebase/firebase.js';
 
 const $signinForm = document.getElementById('signin-form');
+const $submit = $signinForm.submit;
 const schema = signinSchema;
 
 /* -------------------------------- Function -------------------------------- */
@@ -76,9 +78,19 @@ const request = e => {
 document.getElementById('signin-email').addEventListener('focus', e => {
   signinFocus(e);
 });
+
 document.getElementById('signin-password').addEventListener('focus', e => {
   signinFocus(e);
 });
 
 $signinForm.addEventListener('input', validate);
+
 $signinForm.addEventListener('submit', request);
+
+$submit.addEventListener('click', e => {
+  const [$email, $password] = $signinForm;
+
+  e.preventDefault();
+
+  signinSubmit(auth, $email.value, $password.value);
+});
