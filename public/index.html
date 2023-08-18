@@ -10,6 +10,7 @@
       src="https://kit.fontawesome.com/4ee7f6a3e5.js"
       crossorigin="anonymous"
     ></script>
+    <script defer type="module" src="./javascript/index.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -19,7 +20,9 @@
         alt="logo"
         src="./images/animalcrossinglogo.png"
       />
-      <h3 class="header__logo__text">동물의 숲 주민 관리</h3>
+      <a href="#">
+        <h3 class="header__logo__text">동물의 숲 주민 관리</h3>
+      </a>
     </header>
     <!-- Main -->
     <main class="main">
@@ -44,60 +47,19 @@
             />
           </form>
         </div>
-        <ul class="list__container first">
-          <li class="list__member top"><input type="checkbox" /></li>
-          <li class="list__member top">프로필 사진</li>
-          <li class="list__member top">이름</li>
-          <li class="list__member top">성별</li>
-          <li class="list__member top">생일</li>
-          <li class="list__member top">말버릇</li>
-          <li class="list__member top">취미</li>
-        </ul>
-        <ul class="list__container detail">
-          <li class="list__member"><input type="checkbox" /></li>
-          <li class="list__member">
-            <img
-              class="list__member__img"
-              src="./images/Deirdre.png"
-              alt="프로필 사진"
-            />
-          </li>
-          <li class="list__member">이름</li>
-          <li class="list__member">성별</li>
-          <li class="list__member">생일</li>
-          <li class="list__member">말버릇</li>
-          <li class="list__member">취미</li>
-        </ul>
-        <ul class="list__container detail">
-          <li class="list__member"><input type="checkbox" /></li>
-          <li class="list__member">
-            <img
-              class="list__member__img"
-              src="./images/Pate.png"
-              alt="프로필 사진"
-            />
-          </li>
-          <li class="list__member">이름</li>
-          <li class="list__member">성별</li>
-          <li class="list__member">생일</li>
-          <li class="list__member">말버릇</li>
-          <li class="list__member">취미</li>
-        </ul>
-        <ul class="list__container detail">
-          <li class="list__member"><input type="checkbox" /></li>
-          <li class="list__member">
-            <img
-              class="list__member__img"
-              src="./images/Gala.png"
-              alt="프로필 사진"
-            />
-          </li>
-          <li class="list__member">이름</li>
-          <li class="list__member">성별</li>
-          <li class="list__member">생일</li>
-          <li class="list__member">말버릇</li>
-          <li class="list__member">취미</li>
-        </ul>
+        <div class="container">
+          <ul class="list__container first">
+            <li class="list__member__check top">
+              <input type="checkbox" class="top__check" />
+            </li>
+            <li class="list__member top">이미지</li>
+            <li class="list__member top">이름</li>
+            <li class="list__member top">성별</li>
+            <li class="list__member top">생일</li>
+            <li class="list__member top">말버릇</li>
+            <li class="list__member top">취미</li>
+          </ul>
+        </div>
       </section>
     </main>
 
@@ -105,31 +67,5 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyA1KMljZ1SjEuXDKq5NUOLD3R27e7DVHBU",
-        authDomain: "js-service-b5998.firebaseapp.com",
-        projectId: "js-service-b5998",
-        storageBucket: "js-service-b5998.appspot.com",
-        messagingSenderId: "476239971933",
-        appId: "1:476239971933:web:5e5234ee4574818c0c6fb4",
-        measurementId: "G-FD1WPXWRGL",
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
-
-    <script>
-      const db = firebase.firestore();
-      const container = document.querySelector(".container");
-      db.collection("product")
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            // console.log(doc.data());
-            // container.append(template);
-            console.log(doc.data().이름);
-          });
-        });
-    </script>
   </body>
 </html>

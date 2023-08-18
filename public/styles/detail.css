@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 70px;
+  white-space: nowrap;
+  font-family: "GoryeongStrawberry";
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 1px solid transparent;
+}
+
+/* Header */
+.header {
+  font-size: 1.5rem;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__logo__img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Main */
+.main {
+  margin-top: 50px;
+}
+
+.main__header {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid gray;
+}
+
+.main__header__text {
+  font-size: 2rem;
+}
+
+.main__header__btn {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "GoryeongStrawberry";
+  transition: all 0.3s ease;
+}
+
+.main__header__btn:hover {
+  background-color: gray;
+}
+
+#main__detail {
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__container {
+  margin-top: 30px;
+}
+
+.detail__info {
+  display: flex;
+  margin-bottom: 60px;
+  font-size: 1.5rem;
+}
+
+.detail__title {
+  color: #a3cc7a;
+  width: 100px;
+}
+
+.detail__data {
+  text-align: start;
+  color: black;
+  margin-left: 100px;
+}
+
+.img__container img {
+  width: 300px;
+  height: 450px;
+}
+
+.input__data {
+  font-family: "GoryeongStrawberry";
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 10px;
+}
+
+.change__container {
+  width: 50%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.update__btn {
+  background-color: #a3cc7a;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
+  transition: all 0.3s ease;
+}
+
+.update__btn:hover {
+  background-color: #1dbf04;
+}
+
+label {
+  background-color: lightgray;
+  color: gray;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+label:hover {
+  background-color: #e2e2e2;
+}
+
+input[type="file"] {
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+@font-face {
+  font-family: "GoryeongStrawberry";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/GoryeongStrawberry.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    white-space: nowrap;
+  }
+
+  .header {
+    font-size: 1.3rem;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header__logo__img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .main__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid gray;
+  }
+
+  .main__header__text {
+    font-size: 1.2rem;
+    margin-right: 20px;
+  }
+
+  .main__header__btn {
+    padding: 8px;
+    margin-left: 20px;
+  }
+
+  #main__detail {
+    width: 100%;
+    padding: 0px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    order: 1;
+  }
+
+  .detail__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    font-size: 1.2rem;
+  }
+
+  .detail__title {
+    text-align: start;
+    color: #a3cc7a;
+    width: 70px;
+  }
+
+  .detail__data {
+    text-align: start;
+    color: black;
+    margin-left: 0px;
+  }
+
+  .img__container img {
+    order: 0;
+    border-radius: 70%;
+    background-color: #a3cc7a;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+  }
+
+  .change__container {
+    width: 100%;
+    gap: 60px;
+    display: flex;
+    justify-content: center;
+  }
+}

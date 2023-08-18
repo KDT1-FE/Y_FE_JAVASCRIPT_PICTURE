@@ -4,6 +4,7 @@
 
 body {
   margin: 0 70px;
+  font-family: "GoryeongStrawberry";
 }
 
 h1,
@@ -35,14 +36,8 @@ button:focus {
   outline: 1px solid transparent;
 }
 
-/* header,
-section {
-  margin: 0 70px;
-} */
-
 /* Header */
 .header {
-  font-family: "GoryeongStrawberry";
   font-size: 1.5rem;
   margin-top: 50px;
   display: flex;
@@ -79,8 +74,8 @@ section {
   padding: 15px;
   border-radius: 8px;
   color: white;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
   transition: all 0.3s ease;
 }
 
@@ -93,8 +88,8 @@ section {
   padding: 15px;
   border-radius: 8px;
   color: gray;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
   transition: all 0.3s ease;
 }
 
@@ -116,41 +111,40 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 40px 0;
-  position: relative;
+  padding: 40px 0;
 }
 
 .list__container.first {
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
   color: grey;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1.3rem;
 }
 
-.list__container::after {
-  position: absolute;
-  bottom: -30px;
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: gray;
+.list__container.detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
 }
 
-.list__container.first::before {
-  position: absolute;
-  top: -30px;
-  content: "";
-  width: 100%;
-  height: 2px;
-  background-color: gray;
+.list__member.top {
+  white-space: nowrap;
 }
 
-.list__container.detail::after {
-  height: 1px;
-  background-color: lightgray;
+.list__member {
+  width: 70px;
+  white-space: normal;
+}
+
+.list__member.select {
+  cursor: pointer;
+  text-align: center;
 }
 
 .list__member__img {
-  width: 80px;
+  width: 100px;
+  height: 130px;
 }
 
 @font-face {
@@ -159,4 +153,62 @@ section {
     format("woff2");
   font-weight: normal;
   font-style: normal;
+}
+
+@media screen and (max-width: 1024px) {
+  .list__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .list__container.first {
+    font-size: 1.2rem;
+  }
+
+  .list__member.top {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0px 30px;
+  }
+
+  .header {
+    justify-content: center;
+  }
+
+  .list__etc {
+    justify-content: center;
+  }
+
+  .list__search {
+    display: none;
+  }
+
+  .list__container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .list__container.first {
+    font-size: 1rem;
+  }
+
+  .list__container.detail {
+    font-size: 0.8rem;
+  }
+
+  .list__member__img {
+    width: 70px;
+    height: 100px;
+  }
+  .list__member.top {
+    white-space: nowrap;
+    padding: 10px 0px;
+  }
 }

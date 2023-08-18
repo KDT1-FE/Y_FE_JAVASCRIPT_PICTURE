@@ -3,92 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="./style.css" rel="stylesheet" />
+    <title>동숲 - Upload</title>
+    <link rel="icon" href="./images/animalcrossinglogo.png" />
+    <link href="./styles/upload.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/4ee7f6a3e5.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" defer src="./javascript/upload.js"></script>
   </head>
   <body>
-    Upload
-    <div class="container mt-3">
-      <input
-        type="text"
-        class="form-control mt-2"
-        id="title"
-        placeholder="title"
+    <!-- Header -->
+    <header class="header">
+      <img
+        class="header__logo__img"
+        alt="logo"
+        src="./images/animalcrossinglogo.png"
       />
-      <textarea class="form-control mt-2" id="content">content</textarea>
-      <input
-        type="text"
-        class="form-control mt-2"
-        id="price"
-        placeholder="price"
-      />
-      <input class="form-control mt-2" type="file" id="image" />
-      <button class="btn btn-danger mt-3" id="send">올리기</button>
-    </div>
+      <h3 class="header__logo__text">동물의 숲 주민 등록</h3>
+    </header>
+    <main class="main">
+      <div class="container">
+        <input
+          type="text"
+          class="form__control mt-2"
+          id="name"
+          placeholder="이름"
+        />
+        <input
+          type="text"
+          class="form__control mt-2"
+          id="gender"
+          placeholder="성별"
+        />
+        <input
+          type="text"
+          class="form__control mt-2"
+          id="birthday"
+          placeholder="생일"
+        />
+        <input
+          type="text"
+          class="form__control mt-2"
+          id="speech"
+          placeholder="말버릇"
+        />
+        <input
+          type="text"
+          class="form__control mt-2"
+          id="hobby"
+          placeholder="취미"
+        />
+        <div class="file__container">
+          <label for="image">사진 업로드</label>
+          <input class="form__control" type="file" id="image" />
+          <button class="form__btn" id="send">주민 등록하기</button>
+        </div>
+        <div class="img__container">
+          <img src="" />
+        </div>
+      </div>
+    </main>
 
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyA1KMljZ1SjEuXDKq5NUOLD3R27e7DVHBU",
-        authDomain: "js-service-b5998.firebaseapp.com",
-        projectId: "js-service-b5998",
-        storageBucket: "js-service-b5998.appspot.com",
-        messagingSenderId: "476239971933",
-        appId: "1:476239971933:web:5e5234ee4574818c0c6fb4",
-        measurementId: "G-FD1WPXWRGL",
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
-
-    <script>
-      const db = firebase.firestore();
-      const storage = firebase.storage();
-
-      const send = document.querySelector("#send");
-      const title = document.querySelector("#title");
-      const price = document.querySelector("#price");
-
-      send.addEventListener("click", () => {
-        const imgFile = document.querySelector("#image").files[0];
-        const storageRef = storage.ref();
-        const imgRef = storageRef.child("image/" + imgFile.name);
-        const uploadImg = imgRef.put(imgFile);
-
-        uploadImg.on(
-          "state_changed",
-          // 변화시 동작하는 함수
-          null,
-          //에러시 동작하는 함수
-          (error) => {
-            console.error("실패사유는", error);
-          },
-          // 성공시 동작하는 함수
-          () => {
-            uploadImg.snapshot.ref.getDownloadURL().then((url) => {
-              console.log("업로드된 경로는", url);
-
-              const save = {
-                이름: title.value,
-                성별: price.value,
-                이미지: url,
-              };
-              db.collection("product")
-                .add(save)
-                .then((result) => {
-                  console.log(result);
-                  // window.location.href = "./index.html";
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            });
-          }
-        );
-      });
-    </script>
   </body>
 </html>

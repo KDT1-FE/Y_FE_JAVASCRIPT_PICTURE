@@ -1,0 +1,164 @@
+body {
+  margin: 0 70px;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+button {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 1px solid transparent;
+}
+
+input {
+  outline: none;
+}
+
+input:focus {
+  border: 2px solid #1dbf04;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+/* Header */
+.header {
+  font-family: "GoryeongStrawberry";
+  font-size: 1.5rem;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__logo__img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Main */
+.main {
+  margin-top: 50px;
+}
+
+.container {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.form__control {
+  width: 600px;
+  padding: 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  font-family: "GoryeongStrawberry";
+}
+
+.file__container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.file__container label {
+  background-color: lightgray;
+  color: gray;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file__container label:hover {
+  background-color: #e2e2e2;
+}
+
+.file__container input[type="file"] {
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.form__btn {
+  background-color: #1dbf04;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 8px;
+  color: #fffafa;
+  font-size: 1.2rem;
+  font-family: "GoryeongStrawberry";
+  transition: all 0.3s ease;
+}
+
+.form__btn:hover {
+  background-color: #a3cc7a;
+}
+
+.img__container {
+  margin-bottom: 30px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+  font-family: "GoryeongStrawberry";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/GoryeongStrawberry.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0px 30px;
+  }
+
+  .form__control {
+    width: 90%;
+  }
+
+  .file__container {
+    width: 100%;
+  }
+
+  .file__container label,
+  .form__btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
