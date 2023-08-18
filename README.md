@@ -2,7 +2,7 @@
 
 - 가상회사 TK company의 직원 DB 개발
 - 개발 기간 : 2023.08.08 ~ 2023.08.18
-- [배포주소]()
+- [배포주소](https://deploy--peaceful-heliotrope-44df2b.netlify.app/)
 
 ### 주요 기능
 
