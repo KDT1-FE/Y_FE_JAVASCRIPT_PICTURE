@@ -1,0 +1,16 @@
+:root {
+  --header-backgroud-color: #efece8;
+  ---black-color: black;
+  ---pink-color: #e64980;
+  ---greend-color: #5cb36c;
+  ---darkgray-color: #414141;
+  ---gray-color: #c6c3bd;
+}
+.body {
+  display: flex;
+  width: 100%;
+  max-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f8d6af;
+}

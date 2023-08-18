@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./styles/join.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCRGQbFr6N75QKYWEc87ize36EV0nZDkjk",
+        authDomain: "member-management-bc4f1.firebaseapp.com",
+        projectId: "member-management-bc4f1",
+        storageBucket: "member-management-bc4f1.appspot.com",
+        messagingSenderId: "6436543004",
+        appId: "1:6436543004:web:c47939788df0d5b8f99dd9",
+        measurementId: "G-L4Q3J34JT6",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+    </script>
+    <script src="./join.js" defer></script>
+  </head>
+  <body>
+    <main class="main_box">
+      <img src="./images/icons/stain.png" class="background_stain" alt="" />
+      <section class="main__img_box"></section>
+      <section class="main__container">
+        <h2 class="title">join</h2>
+        <form action="" class="main__join_box">
+          <div class="input__box">
+            <input
+              name="name"
+              type="text"
+              class="name_box"
+              placeholder="이름을 입력해주세요"
+            />
+            <input
+              name="phone"
+              type="text"
+              class="phone_box"
+              placeholder="전화번호를 입력해주세요"
+            />
+            <input
+              name="email"
+              type="text"
+              class="email_box"
+              placeholder="email을 입력해주세요"
+            />
+            <input
+              name="password"
+              type="password"
+              class="password_box"
+              placeholder="비밀번호를 입력해주세요"
+            />
+            <div class="division_box">
+              <label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="vip"
+                  class="checkbox_division_box d_vip"
+                />vip
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="division"
+                  value="manager"
+                  class="checkbox_division_box d_manager"
+                />관리자
+              </label>
+            </div>
+          </div>
+          <div class="btn_box">
+            <button type="submit" class="join-btn">join</button>
+            <button type="button" class="login-btn">login</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
