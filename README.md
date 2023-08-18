@@ -82,7 +82,7 @@ schema를 통해 validation 할 시 lodash의 debounce 기능을 이용하여 in
 
 1. 로그아웃</br>
 로그아웃 버튼을 누르게 되면 localstorage 내의 signin 정보의 키값을 비우고 로그인 페이지로 강제 이동된다.
-이 때 history에는 추가되지 않으면 뒤로가기가 불가능하다.
+이 때 history에는 추가되지 않으며 뒤로가기가 불가능하다.
 
 ## USER FLOW
 
