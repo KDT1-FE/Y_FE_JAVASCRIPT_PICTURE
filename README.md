@@ -69,4 +69,3 @@
 ## [흐름]
 
 <img width="621" alt="image" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/94384392/e34748ab-f5a3-4046-9cc9-88fa8fd93524">
-
