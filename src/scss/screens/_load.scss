@@ -1,9 +1,3 @@
-@mixin fadeInAni() {
-  opacity: 0;
-
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
 #load {
   height: 100vh;
   width: 100vw;
@@ -19,14 +13,14 @@
 }
 
 #load-title {
-  font-size: 1.5rem;
+  font-size: 3rem;
 
   @include tablet {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
   }
 
   @include mobile {
-    font-size: 2.8rem;
+    font-size: 4rem;
   }
 
   @include fadeInAni();
