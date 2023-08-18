@@ -17,8 +17,8 @@
 <img width="1267" alt="2" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/2a288fcf-d622-41be-a84f-6124c4fcc3df">
 
 ### 생성 페이지(사진등록과 모든 데이터가 입력되어야 함)
-<img width="1255" alt="스크린샷 2023-08-18 182648" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/a19a5eeb-999c-4a8f-b792-c022cc4e5610">
 
+<img width="1255" alt="스크린샷 2023-08-18 182648" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/a19a5eeb-999c-4a8f-b792-c022cc4e5610">
 
 ### 생성 페이지 - 로딩스피너추가
 
@@ -46,8 +46,9 @@
 
 ### 반응형 페이지
 
-<img width="1087" alt="스크린샷 2023-08-18 182445" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/c5b2d3cc-1b22-4d00-ad10-38623d0a1a82">
+<img width="1082" alt="스크린샷 2023-08-18 224025" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/9d711e6b-e5df-483c-af6d-4d93c51512bd">
 
+<img width="1081" alt="스크린샷 2023-08-18 224007" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/55376275/33e47752-5110-495e-9801-d2c5e03fd420">
 
 ## [필수 요구사항]
 

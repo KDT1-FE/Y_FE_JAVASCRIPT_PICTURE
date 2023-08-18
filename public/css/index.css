@@ -40,11 +40,10 @@
 @media (max-width: 390px) {
   .main-container {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    width: 100%;
+    top: 10%;
+    left: 60%;
+    width: 80%;
     margin-left: 5%;
-    margin-right: 5%;
     transform: translate(-50%, 0);
     animation: slide 2s ease-out;
     text-align: center;
@@ -53,7 +52,7 @@
   .main-image {
     cursor: pointer;
     border-radius: 8px;
-    margin: 10% 0 10% 0;
+    width: 100%;
   }
 
   @keyframes slide {
