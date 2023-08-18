@@ -31,6 +31,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const storage = storageModule.getStorage(app);
 // const storageRef = storageModule.ref(storage);
+export let userCount;
 
 function writeUserData(
   userId,
@@ -40,46 +41,61 @@ function writeUserData(
   end,
   image,
   session,
+  leftSession,
   trainer
 ) {
   const db = getDatabase();
-  set(ref(db, "users/" + userId), {
-    userId: userId,
-    username: name,
-    phoneNumber: phone,
-    startDate: start,
-    endDate: end,
-    imagePath: image,
-    sessionNumber: session,
-    trainerName: trainer,
-  });
-  console.log("user data sent to database");
+  try {
+    set(ref(db, "users/" + userId), {
+      userIdx: userId,
+      username: name,
+      phoneNumber: phone,
+      startDate: start,
+      endDate: end,
+      imagePath: image,
+      sessionNumber: session,
+      leftSessionNumber: leftSession,
+      trainerName: trainer,
+    });
+    console.log("user data sent to database");
+  } catch (err) {
+    console.log(err);
+    debugger;
+  }
 }
 
 function readUserData() {
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, "users/"))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-        const customerNum = document.getElementById("customer_number");
-        if (customerNum) {
-          customerNum.value = snapshot.val().length;
+  return new Promise((resolve) => {
+    const dbRef = ref(getDatabase());
+    // const customerNum = document.getElementById("customer_number");
+    get(child(dbRef, "users/"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          if (window.location.pathname === "/index.html") {
+            displayUserData(snapshot.val());
+            return;
+          }
+          userCount = snapshot.val().length;
+          if (window.location.pathname.includes("/detail.html")) {
+            const url = new URL(window.location.href);
+            const userNum = url.searchParams.get("number");
+            console.log("dioadjsaiodjas", url);
+            console.log(userNum);
+            resolve(snapshot.val()[userNum]);
+          }
+        } else {
+          userCount = 1;
+          console.log("user data is not exist.");
         }
-        if (window.location.pathname === "/index.html") {
-          displayUserData(snapshot.val());
-        }
-      } else {
-        console.log("nothing");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
 }
 
 function displayUserData(arr) {
-  console.log(window.location.pathname);
+  console.log(arr.length);
   const userBox = document.getElementsByClassName(
     "section__customer--template"
   )[0];
@@ -100,15 +116,21 @@ function displayUserData(arr) {
     } else {
       userPtCheck.innerHTML = "O";
     }
+    userInfoFrame.className = "section__customer--added";
     userSelectBox.type = "checkbox";
-    userIndex.innerHTML = 0;
     userImage.src = element.imagePath;
     userImage.style.width = "5vw";
+    userIndex.innerHTML = element.userIdx;
+    userIndex.addEventListener("click", function (e) {
+      window.location.href = `detail.html?number=${element.userIdx}`;
+    });
     userName.innerHTML = element.username;
     userphoneNumber.innerHTML = element.phoneNumber;
     userDate.innerHTML = `${element.startDate} ~ ${element.endDate}`;
     userPtSession.innerHTML =
-      element.sessionNumber !== "" ? element.sessionNumber : "-";
+      element.sessionNumber !== ""
+        ? `${element.leftSessionNumber} / ${element.sessionNumber}`
+        : "-";
     userTrainer.innerHTML =
       element.trainerName !== "" ? element.trainerName : "-";
 
