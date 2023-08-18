@@ -43,6 +43,7 @@ submit.addEventListener('click', () => {
 });
 allCheckEl.addEventListener('change', allCheck);
 
+// 직원 등록
 function addNewPeople(name, email, phone) {
   const people = {
     id: new Date().getTime(),
@@ -75,6 +76,7 @@ function addNewPeople(name, email, phone) {
   blink();
 }
 
+// 직원 DOM 생성
 function addPeopleEl(people) {
   const itemEl = document.createElement('div');
   itemEl.classList.add('item', people.id);
@@ -123,9 +125,9 @@ function addPeopleEl(people) {
   checkbox.addEventListener('click', (event) => {
     event.stopPropagation();
   });
+  // 직원 DOM 클릭 시 프로필 페이지로 이동 및 프로필 localstorage 데이터 생성
   itemEl.addEventListener('click', (e) => {
     location.href = 'profile.html';
-    console.log(e.target.querySelector('.name').innerHTML);
     localStorage.setItem(
       'profile',
       JSON.stringify({
@@ -140,6 +142,7 @@ function addPeopleEl(people) {
   return itemEl;
 }
 
+// 직원 삭제
 function deletePeopleEl() {
   peoples.forEach((e) => {
     if (e.check === true) {
@@ -168,6 +171,7 @@ function changeHidden(item) {
   item.classList.remove('visible');
 }
 
+// 접속 시 localstorage 데이터를 DOM화
 function buildList() {
   for (let i = localStorage.length - 1; i >= 0; i--) {
     if (localStorage.key(i) === 'owner') {
@@ -183,7 +187,7 @@ function buildList() {
   }
   addHadPeoples();
 }
-
+// 접속 시 localstorage 데이터를 peopels객체에 저장 및 DOM 요소에 이미지 불러오기
 async function buildPeoples(item) {
   const people = {
     id: item.id,
@@ -202,6 +206,7 @@ async function buildPeoples(item) {
 
 buildList();
 
+// 직원 목록 전체 체크
 function allCheck(event) {
   peoples.forEach((e) => {
     e.check = event.target.checked;
@@ -212,6 +217,7 @@ function allCheck(event) {
   });
 }
 
+// 현재 직원 수 업데이트
 function addHadPeoples() {
   if (JSON.parse(localStorage.getItem('profile'))) {
     hadPeoples = localStorage.length - 2;
@@ -220,6 +226,7 @@ function addHadPeoples() {
   employees.innerHTML = `직원: ${hadPeoples}`;
 }
 
+// 직원 수 업데이트 시 반짝임 효과
 function blink() {
   employees.classList.add('blink');
   setTimeout(() => {
@@ -227,6 +234,7 @@ function blink() {
   }, 1000);
 }
 
+// 본인 데이터 DOM요소에 넣기
 function ownerProfile() {
   const name = document.querySelector('#owner-name');
   const email = document.querySelector('#owner-email');

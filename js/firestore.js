@@ -5,6 +5,7 @@ const peoplesRef = storageRef.child(
   `${JSON.parse(localStorage.getItem('owner')).name}/`
 );
 
+// firebase에 이미지 업로드 및 item에 이미지 불러오기
 async function uploadImg(name) {
   const file = document.querySelector('#file').files[0];
   const peopleRef = peoplesRef.child(name);
@@ -22,6 +23,7 @@ async function firstBuildImg(name, id) {
   }
 }
 
+// item에 이미지 불러오기
 function buildImg(name, id, type) {
   if (type === 'defalt') {
     defaltPeopleRef
@@ -48,6 +50,7 @@ function buildImg(name, id, type) {
   }
 }
 
+// firebase에 업로드 된 이미지 삭제
 function deleteImg(name, type) {
   if (type === 'defalt') {
     console.log(`${name} 삭제 완료`);

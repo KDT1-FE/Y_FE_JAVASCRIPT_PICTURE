@@ -1,3 +1,4 @@
+// SDK 초기화
 const firebaseConfig = {
   apiKey: 'AIzaSyCUTznoBN5hZJ1Pf1xWlKveKdLZiRhSeNA',
   authDomain: 'fastcampus01-20d03.firebaseapp.com',

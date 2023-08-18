@@ -8,11 +8,12 @@ const phoneEl = document.querySelector('#phone');
 const editBtn = document.querySelector('#submit');
 const returnBtn = document.querySelector('#return');
 
+// 프로필 데이터 js 객체화
 let pData = JSON.parse(localStorage.getItem('profile'));
-console.log(pData);
 const profileEl = buildProfile(people);
 mainInner.append(profileEl);
 
+// 선택한 직원의 데이터 DOM화
 function buildProfile(people) {
   const profileEl = document.createElement('div');
   profileEl.classList.add('profile', people.id);
@@ -40,6 +41,7 @@ function buildProfile(people) {
 
   buildImg(people.name, people.id, people.type);
 
+  // input 요소에 현재 직원의 데이터 세팅
   nameEl.value = pData.name;
   emailEl.value = pData.email;
   phoneEl.value = pData.phone;
@@ -48,6 +50,7 @@ function buildProfile(people) {
 
 editBtn.addEventListener('click', editProfile);
 
+// 현재 input에 있는 데이터로 직원 데이터 수정
 function editProfile() {
   if (document.querySelector('#file').files[0]) {
     deleteImg(pData.name, pData.type);
