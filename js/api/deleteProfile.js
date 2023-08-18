@@ -1,11 +1,7 @@
-import {
-  bucketName,
-  region,
-  accessKeyId,
-  secretAccessKey,
-  S3endpoint,
-} from "/js/config/aws.js";
+import { accessKeyId, secretAccessKey } from "/js/config/key.js";
 
+import { bucketName, region } from "/js/constant/aws.js";
+t;
 AWS.config.update({
   region,
   credentials: new AWS.Credentials(accessKeyId, secretAccessKey),

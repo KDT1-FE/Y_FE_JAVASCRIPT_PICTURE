@@ -1,10 +1,6 @@
-import {
-  bucketName,
-  region,
-  accessKeyId,
-  secretAccessKey,
-  S3endpoint,
-} from "/js/config/aws.js";
+import { accessKeyId, secretAccessKey } from "/js/config/key.js";
+
+import { bucketName, region, S3endpoint } from "/js/constant/aws.js";
 
 import { profileTable } from "/js/constant/home.js";
 

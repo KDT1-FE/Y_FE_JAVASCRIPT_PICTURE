@@ -1,10 +1,6 @@
-import {
-  S3endpoint,
-  bucketName,
-  region,
-  accessKeyId,
-  secretAccessKey,
-} from "../config/aws.js";
+import { accessKeyId, secretAccessKey } from "/js/config/key.js";
+
+import { bucketName, region, S3endpoint } from "/js/constant/aws.js";
 
 AWS.config.update({
   region,

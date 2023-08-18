@@ -1,9 +1,6 @@
-import {
-  bucketName,
-  region,
-  accessKeyId,
-  secretAccessKey,
-} from "/js/config/aws.js";
+import { accessKeyId, secretAccessKey } from "/js/config/key.js";
+
+import { bucketName, region } from "/js/constant/aws.js";
 
 import {
   enroll_photo,
