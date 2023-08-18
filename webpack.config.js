@@ -9,7 +9,7 @@ module.exports = {
     driverList: "./src/js/pages/driverList.js",
     addDriver: "./src/js/pages/addDriver.js",
     driverProfile: "./src/js/pages/driverProfile.js",
-    confirm: "./src/js/pages/confirm.js"
+    confirmAccident: "./src/js/pages/confirmAccident.js"
   },
   mode: "development",
   // .js.map 파일 생성
