@@ -1,4 +1,4 @@
-# **직원 관리 서비스**
+# 🏦 **직원 관리 서비스**
 
 <img width="1437" src="https://github.com/ewinkite/dev_EMS/assets/139189610/c500a43e-1bd9-48e9-9414-6584313343a8"> <br>
 
@@ -57,19 +57,16 @@
 <br/>
 <br/>
 
-## 💡 화면 설계
+## 💡 화면 설계 및 요구사항 반영 여부
 단계적인 개발을 위하여 유저 플로우와 요구사항을 바탕으로 간단한 화면 설계를 진행하였습니다.<br/>
 기능별 진입점 및 구동 방식에 대한 설명은 아래의 기획서를 참고해주세요!
 
-<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/e7cdcb01-2cd6-4d44-bcd8-92ae0ae8cc09" width="300">
-<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/92a8efe5-1479-466f-a009-3654f7004d62" width="300">
-<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/67be2446-c53a-45de-a477-d3202a4219bb" width="300">
+<br/><img src="https://github.com/ewinkite/dev_EMS/assets/139189610/e7cdcb01-2cd6-4d44-bcd8-92ae0ae8cc09" width="250">
+<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/48fea4f1-5c0a-43e0-98fa-a32d0e37d734" width="250">
+<img src="https://github.com/ewinkite/dev_EMS/assets/139189610/39fcf2b9-a39b-45f5-9095-ebbaf77714b0" width="250">
 
 <br/>
 <br/>
-
-
-### 요구사항 반영여부
 
 <div align="center">
   <table>
@@ -150,8 +147,8 @@
        * addPage와 동일하나, 최초 진입시 기존 데이터 노출
       </td>
       <td>
-       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/b7c1a807-9f00-48d4-af11-1d5135c644f6" width="220">
-          <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/eb69fb57-5438-4c5a-a5b4-75315b923dbe" width="220"> </br>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/b7c1a807-9f00-48d4-af11-1d5135c644f6" width="200">
+          <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/eb69fb57-5438-4c5a-a5b4-75315b923dbe" width="200"> </br>
        * Desktop~mobile까지 전 해상도 반응형 지원 </br>
       </td>
   </table>
