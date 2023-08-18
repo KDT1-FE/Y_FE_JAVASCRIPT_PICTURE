@@ -10,6 +10,10 @@ body {
   background-color: $custom-body-color;
 }
 
+.hidden {
+  display: none;
+}
+
 .modal-dialog {
   max-width: 700px;
 }

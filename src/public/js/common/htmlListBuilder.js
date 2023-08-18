@@ -89,8 +89,10 @@ export function buildHTMLList(member) {
   handleTooltipClick()
 
   // 제거 버튼에 이벤트 리스너 등록
-  removeTooltipItem.addEventListener('click', () => {
-    handleRemoveBtn(member.id, img.src)
+  // 해당 버튼을 누르면 요소의 정보를 넘겨줌
+  removeTooltipItem.addEventListener('click', (event) => {
+    console.log(event)
+    handleRemoveBtn(event, member.id, img.src)
   })
 
   // 설정 버튼에 이벤트 리스너 등록

@@ -37,15 +37,9 @@ async function removeTask(imgScr) {
 }
 
 // 제거 버튼 이벤트
-export function handleRemoveBtn(memberId, imgScr) {
-  const memberContainer = document.querySelector('.members__contents')
-  memberContainer.addEventListener('click', (event) => {
-    onClickRemoveBtn(event, memberId, imgScr)
-  })
-}
-
-async function onClickRemoveBtn(event, memberId, imgScr) {
+export async function handleRemoveBtn(event, memberId, imgScr) {
   event.preventDefault()
+  console.log('onClickRemoveBtn')
   const removeEl = event.target.closest('.remove-btn')
   if (removeEl) {
     await removeMemberDoc(collection, memberId)

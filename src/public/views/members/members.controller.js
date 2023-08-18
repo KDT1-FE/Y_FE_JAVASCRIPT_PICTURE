@@ -1,22 +1,22 @@
 import '../../js/common/firebase'
 import '../../js/common/tooltip'
-import '../../js/common/removeDB'
 import '../../js/common/FormData'
 import '../../js/common/htmlListBuilder'
-import { initDownload } from '../../js/common/download'
+import { removeDB, uploadDB, removeStorage, uploadStorage } from '../../js/common/firebaseUtils'
+import { dataChangeHandler } from '../../js/common/dataChangeHandler'
+// import { handleRemoveBtn } from '../../js/common/removeEventHandler'
 import { initModal, closeModal } from '../../js/common/modalUtils'
-import { setupImagePreview } from '../../js/common/previewimg'
+import { setupImagePreview, handlePreviewImg, clearPreviewImage } from '../../js/common/previewimg'
 import { enableForm, readonlyForm } from '../../js/common/formUtils'
 import { formValidation } from '../../js/common/validationUtils'
-import { uploadDB } from '../../js/common/firestoreUtils'
-import { uploadImage } from '../../js/common/storageUtils'
 
 import './members.scss'
 
 export async function initMembers() {
-  initDownload()
   initModal(resetForm)
   initUpload()
+  dataChangeHandler()
+  // handleRemoveBtn()
 }
 
 // 모달 창 폼 초기화
@@ -25,9 +25,13 @@ function resetForm() {
   if (form) {
     form.reset()
   }
+  clearPreviewImage(document.getElementById('previewImage')) // 미리보기 이미지 초기화
 }
 
+// 멤버 추가
 function initUpload() {
+  console.log('initUpload called')
+
   // 폼 상태 관리
   const inputEls = document.querySelectorAll('.readonly')
   const selectEl = document.querySelector('select')
@@ -40,16 +44,20 @@ function initUpload() {
   const previewImage = document.getElementById('previewImage')
 
   // 인풋 파일 미리보기 설정
-  setupImagePreview(imageInput, previewImage)
+  let imageUrlInfo = {}
+  setupImagePreview(imageInput, previewImage, (event) => {
+    imageUrlInfo = handlePreviewImg(event, previewImage)
+  })
 
   // 유효성 검사 설정
-  let isFormValid
+  let isFormValid = ''
   formValidation('#myForm', (isValid) => {
     isFormValid = isValid
   })
 
   myForm.addEventListener('submit', async (event) => {
     event.preventDefault()
+    console.log('myForm submit event called')
 
     if (!isFormValid) {
       console.log('유효성 검사 통과못함')
@@ -63,11 +71,16 @@ function initUpload() {
     const position = formData.get('position')
 
     try {
-      const imageUrlFromStorage = await uploadImage(imageInput.files[0])
+      const imageUrlFromStorage = await uploadStorage(imageInput.files[0])
       await uploadDB(name, email, team, position, imageUrlFromStorage)
 
       // 업로드 완료 후 모달 창 닫기
       closeModal()
+
+      // 이미지 URL 해제
+
+      console.log('imageUrlInfo:', imageUrlInfo)
+      imageUrlInfo.revokeImageUrl()
 
       // 폼 상태 변경
       // readonlyForm(inputEls, selectEl, fileEl)
