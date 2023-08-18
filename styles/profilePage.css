@@ -1,0 +1,253 @@
+#edit-profile-page {
+  margin-top: 100px;
+  display: none;
+}
+
+#edit-profile-page .container {
+  padding: 15px;
+}
+
+#edit-profile-page .create-user__left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-profile-page .create-user__left > div:first-child {
+  width: 288px;
+  height: 288px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#edit-profile-page .create-user__left > div:first-child:hover::after {
+  content: "Change";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#edit-profile-page .create-user__left--img {
+  cursor: pointer;
+}
+
+#edit-profile-page .create-user__left--img img {
+  vertical-align: bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#edit-profile-page .create-user__left--social {
+  width: 288px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#edit-profile-page .create-user__left--social img {
+  width: 15%;
+  margin: 10px 15px;
+  cursor: pointer;
+}
+
+#edit-profile-page .create-user__right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-profile-page .create-user__right--info {
+  margin-bottom: 40px;
+}
+
+#edit-profile-page .create-user__right--info > div {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#edit-profile-page .create-user__right--info label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: inline-block;
+  width: 150px;
+  margin-right: 15px;
+}
+#edit-profile-page .create-user__right--info input {
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #ffe0b2;
+  font-size: 1.1rem;
+  padding: 5px;
+  width: 200px;
+  height: 25px;
+}
+
+#edit-profile-page .create-user__right--info #user-phon::placeholder {
+  text-align: center;
+}
+
+#edit-profile-page .create-user__right--info input:focus {
+  border: 1px solid #ff9800;
+}
+
+#edit-profile-page .create-user__right--button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+#edit-profile-page .create-user__right--button div {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 10px;
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+/* 수정 */
+#profile-page {
+  margin-top: 100px;
+  /* display: none; */
+}
+
+#profile-page .container {
+  padding: 15px;
+}
+
+#profile-page .create-user__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+}
+
+#profile-page .create-user__left > div:first-child {
+  width: 288px;
+  height: 288px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#profile-page .create-user__left--img img {
+  vertical-align: bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#profile-page .create-user__left--social {
+  width: 288px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profile-page .create-user__left--social img {
+  width: 15%;
+  margin: 10px 15px;
+  cursor: pointer;
+}
+
+#profile-page .create-user__right {
+  width: 50%;
+  margin-left: 50px;
+}
+
+#profile-page .create-user__right--info {
+  margin-bottom: 40px;
+}
+
+#profile-page .create-user__right--info > div {
+  padding: 5px;
+  text-align: left;
+}
+
+#profile-page .create-user__right--info > div > div:first-child {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+#profile-page .create-user__right--info > div > div:last-child {
+  color: #808080;
+}
+
+#profile-page .create-user__right--button {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  /* padding: 0 15px; */
+}
+
+#profile-page .create-user__right--button div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 10px;
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  #profile-page .container {
+    flex-direction: column;
+  }
+  #profile-page .create-user__left {
+    width: auto;
+  }
+  #profile-page .create-user__right {
+    margin-left: 0;
+    width: auto;
+  }
+  #profile-page .create-user__right--info {
+    margin-bottom: 10px;
+  }
+  #profile-page .create-user__right--info > div > div {
+    text-align: center;
+  }
+  #profile-page .create-user__right--info > div > div:first-child {
+    font-size: 1.6rem;
+  }
+  #profile-page .create-user__right--info > div > div:last-child {
+    font-size: 1.2rem;
+  }
+
+  #edit-profile-page .container {
+    flex-direction: column;
+  }
+  #edit-profile-page .create-user__left {
+    width: auto;
+  }
+  #edit-profile-page .create-user__right {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #edit-profile-page .create-user__right--info > div {
+    flex-direction: column;
+  }
+}

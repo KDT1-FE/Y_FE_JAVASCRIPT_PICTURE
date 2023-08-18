@@ -1,0 +1,63 @@
+#create-album {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  display: none;
+}
+
+#create-album > div {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-album > div label {
+  margin-right: 10px;
+}
+
+#create-album > div > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-album > div > div:last-child > div {
+  margin: 25px 10px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 480px) {
+  #create-album > div {
+    width: 300px;
+    height: 200px;
+  }
+
+  #create-album > div > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #create-album > div label {
+    margin-bottom: 10px;
+  }
+
+  #create-album > div > div:last-child > div {
+    margin: 15px 5px;
+    margin-bottom: 0;
+  }
+}

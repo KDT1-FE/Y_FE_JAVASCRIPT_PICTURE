@@ -1,0 +1,18 @@
+{
+  "name": "pichub",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "terser": "^5.19.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
+}
