@@ -13,10 +13,7 @@ window.onload = function () {
   }
 
   readUserData();
-  // const customerNum = document.getElementById("customer_number");
   const customerNum = document.getElementById("customer_number");
-  console.log(customerNum.value.length);
-  console.log(customerNum.value);
 };
 
 const submitButton = document.getElementById("enroll_submit");
@@ -73,7 +70,6 @@ submitButton.addEventListener("click", function (e) {
       );
     } catch (err) {
       console.log(err);
-      debugger;
     }
   }
 });

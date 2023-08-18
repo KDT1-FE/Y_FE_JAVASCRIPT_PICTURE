@@ -6,24 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="enroll.css" />
+    <link rel="stylesheet" href="detail.css" />
+    <link rel="stylesheet" href="update.css" />
   </head>
   <body>
     <main>
       <section class="section__enroll">
         <nav class="section__enroll--nav">
-          <p>회원 정보 수정</p>
-          <a href="index.html"><button>수정 완료</button></a>
+          <p>회원 상세 정보</p>
+          <div>
+            <a id="update_button"><button>수정 완료</button></a>
+            <button>삭제</button>
+          </div>
         </nav>
         <article class="section__enroll--article">
           <div class="section__enroll--template">
             <ul>
               <li>
                 <span>이름</span>
-                <input type="text" placeholder="성함을 입력해주세요." />
+                <input type="text" id="user_name" />
               </li>
               <li>
                 <span>연락처</span>
-                <input type="text" placeholder="- 없이 입력해주세요." />
+                <input type="text" id="user_phone" maxlength="11" />
               </li>
               <li>
                 <span>등록 기간</span>
@@ -34,36 +39,56 @@
                 <span>PT 등록 여부</span>
                 <input type="checkbox" name="pt_check" id="pt_check" />
               </li>
-              <li class="section__enroll--pt_check">
-                <span>PT 잔여 세션</span>
-                <form action="#">
-                  <select name="" id="">
-                    <option value="1">1</option>
-                  </select>
-                </form>
-              </li>
-              <li class="section__enroll--pt_check">
-                <span>담당 트레이너</span>
-                <form action="#">
-                  <select name="" id="">
-                    <option value="홍길동">홍길동</option>
-                  </select>
-                </form>
-              </li>
+              <div class="section__enroll--pt_check">
+                <div>
+                  <span>PT 잔여 세션</span>
+                  <input type="number" id="pt_session" />
+                </div>
+                <div>
+                  <span>담당 트레이너</span>
+                  <input type="text" id="pt_trainer" />
+                </div>
+              </div>
             </ul>
           </div>
           <div class="section__enroll--image">
-            <span>사진</span>
+            <p>사진</p>
             <div class="section__enroll--image_upload">
-              <input type="file" accept="image/*" />
-              <div class="section__enroll--image_button">
-                <button>등록</button>
-                <button>삭제</button>
-              </div>
+              <input type="file" accept="image/*" id="image_upload" />
+              <div id="image_location"></div>
+              <div class="section__enroll--image_button"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section>
+        <nav class="section__detail--pt_info">
+          <p>일지</p>
+          <div>
+            <button id="pt_add">세션 추가</button>
+            <button id="pt_submit">세션 저장</button>
+          </div>
+        </nav>
+        <article>
+          <div class="section__detail--pt_list">
+            <div class="section__detail--pt_template">
+              <ul>
+                <li>세션 번호</li>
+                <li>날짜</li>
+                <li>부위</li>
+                <li>내용</li>
+                <li>중량</li>
+                <li>횟수</li>
+                <li>세트</li>
+                <li>비고</li>
+              </ul>
             </div>
           </div>
         </article>
       </section>
     </main>
+    <script src="firebase.js" type="module"></script>
+    <script src="update.js" type="module"></script>
+    <script src="image.js" type="module"></script>
   </body>
 </html>

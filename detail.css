@@ -1,3 +1,7 @@
+.section__enroll--template > ul > li, div {
+  margin-bottom: 10px;
+}
+
 .section__detail--pt_info {
   display: flex;
   justify-content: space-between;
@@ -19,8 +23,21 @@
 }
 
 .section__detail--pt_template>ul {
-  display: flex;
+  display: grid;
   list-style: none;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
   padding: 0 2rem;
+  grid-template-columns: 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr 0.1fr 0.1fr;
+}
+
+.section__detail--pt_template>ul>input {
+  text-align: center;
+}
+
+.section__detail--pt_template>ul>input,
+textarea {
+  width: 100%;
+  border: none;
 }

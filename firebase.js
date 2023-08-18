@@ -32,6 +32,7 @@ const database = getDatabase(app);
 const storage = storageModule.getStorage(app);
 // const storageRef = storageModule.ref(storage);
 export let userCount;
+export let ptCount;
 
 function writeUserData(
   userId,
@@ -60,7 +61,6 @@ function writeUserData(
     console.log("user data sent to database");
   } catch (err) {
     console.log(err);
-    debugger;
   }
 }
 
@@ -76,11 +76,12 @@ function readUserData() {
             return;
           }
           userCount = snapshot.val().length;
-          if (window.location.pathname.includes("/detail.html")) {
+          if (
+            window.location.pathname.includes("/detail.html") ||
+            window.location.pathname.includes("/update.html")
+          ) {
             const url = new URL(window.location.href);
             const userNum = url.searchParams.get("number");
-            console.log("dioadjsaiodjas", url);
-            console.log(userNum);
             resolve(snapshot.val()[userNum]);
           }
         } else {
@@ -149,16 +150,78 @@ function displayUserData(arr) {
   });
 }
 
-function uploadImageData(image, imageName) {
-  const st = storageModule.getStorage();
-  const storageRef = storageModule.ref(st, `image/${imageName}`);
-  storageModule.uploadBytes(storageRef, image).then((snapshot) => {
-    storageModule.getDownloadURL(snapshot.ref).then((url) => {
-      console.log("url: ", url);
-      image.msg = url;
+function writePtData(
+  userId,
+  sessionId,
+  date,
+  subject,
+  workout,
+  weight,
+  reps,
+  sets,
+  other
+) {
+  const db = getDatabase();
+  try {
+    console.log(sessionId, date);
+    set(ref(db, `user/${userId}/pt/` + sessionId), {
+      sessionIdx: sessionId,
+      date: date,
+      subject: subject,
+      workout: workout,
+      weight: weight,
+      reps: reps,
+      sets: sets,
+      other: other,
     });
-  });
-  console.log("image sent to storage");
+    console.log("pt session data sent to database");
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export { writeUserData, readUserData, uploadImageData };
+function readPtData(userId) {
+  return new Promise((resolve) => {
+    const dbRef = ref(getDatabase());
+    // const customerNum = document.getElementById("customer_number");
+    get(child(dbRef, `user/${userId}/pt/`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+          ptCount = snapshot.val().length;
+          resolve(snapshot.val());
+        } else {
+          ptCount = 1;
+          resolve(ptCount);
+          console.log("pt session data is not exist.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+}
+
+function uploadImageData(image, imageName) {
+  return new Promise((resolve) => {
+    const st = storageModule.getStorage();
+    const storageRef = storageModule.ref(st, `image/${imageName}`);
+    console.log(image, imageName);
+    storageModule.uploadBytes(storageRef, image).then((snapshot) => {
+      storageModule.getDownloadURL(snapshot.ref).then((url) => {
+        console.log("url: ", url);
+        image.msg = url;
+        resolve(image.msg);
+      });
+    });
+    console.log("image sent to storage");
+  });
+}
+
+export {
+  writeUserData,
+  readUserData,
+  uploadImageData,
+  writePtData,
+  readPtData,
+};

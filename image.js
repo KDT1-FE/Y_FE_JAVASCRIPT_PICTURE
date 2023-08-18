@@ -17,10 +17,17 @@ if (imageFile) {
       imageFrame.style = `width: 30vw; height: 30vh; background-size: cover`;
       imageFrame.className = "imageFrame";
       imageFrame.src = URL.createObjectURL(selectedImage);
+      const targetImage = document.getElementById("image_upload");
+      uploadImageData(targetImage.files[0], targetImage.files[0].name).then(
+        (res) => {
+          console.log(res);
+          imageFrame.src = res;
+          console.log(imageFrame);
+        }
+      );
+      console.log(imageFrame);
       document.getElementById("image_location").appendChild(imageFrame);
     };
-    const targetImage = document.getElementById("image_upload");
-    uploadImageData(targetImage.files[0], targetImage.files[0].name);
   });
 }
 
