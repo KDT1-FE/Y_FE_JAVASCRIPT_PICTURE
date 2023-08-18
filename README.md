@@ -147,8 +147,8 @@
        * addPage와 동일하나, 최초 진입시 기존 데이터 노출
       </td>
       <td>
-       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/b7c1a807-9f00-48d4-af11-1d5135c644f6" width="200">
-          <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/eb69fb57-5438-4c5a-a5b4-75315b923dbe" width="200"> </br>
+       <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/b7c1a807-9f00-48d4-af11-1d5135c644f6" width="150">
+          <img src="https://github.com/ewinkite/dev_EMS/assets/139189610/eb69fb57-5438-4c5a-a5b4-75315b923dbe" width="150"> </br>
        * Desktop~mobile까지 전 해상도 반응형 지원 </br>
       </td>
   </table>
