@@ -30,7 +30,7 @@ loginDataFormEl.addEventListener("submit", (e) => {
       .signInWithEmailAndPassword(dataObj.email, dataObj.password)
       .then(() => {
         const user = firebase.auth().currentUser;
-        console.log(user);
+
         const uid = user.uid;
         const userRef = firebase.firestore().collection("usersInfo").doc(uid);
         userRef
@@ -39,8 +39,8 @@ loginDataFormEl.addEventListener("submit", (e) => {
             if (doc.exists) {
               const user_data = JSON.stringify(doc.data());
               sessionStorage.setItem("user_data", user_data);
-              console.log(user_data);
-              console.log(sessionStorage.getItem("user_data"));
+              sessionStorage.setItem("uid", uid);
+
               window.location.href = "./index.html";
             } else {
               console.log("No such user!");
@@ -53,13 +53,13 @@ loginDataFormEl.addEventListener("submit", (e) => {
       .catch((error) => {
         switch (error.code) {
           case "auth/user-not-found" || "auth/wrong-password":
-            console.log("이메일 혹은 비밀번호가 일치하지 않습니다.");
+            alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
           case "auth/network-request-failed":
-            console.log("네트워크 연결에 실패 하였습니다.");
+            alert("네트워크 연결에 실패 하였습니다.");
           case "auth/invalid-email":
-            console.log("잘못된 이메일 형식입니다.");
+            alert("잘못된 이메일 형식입니다.");
           case "auth/internal-error":
-            console.log("잘못된 요청입니다.");
+            alert("잘못된 요청입니다.");
           default:
             alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
         }
