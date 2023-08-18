@@ -108,6 +108,45 @@ imagePreviewLabel.addEventListener("click", () => {
 });
 
 
+// 이미지 로딩 상태를 감지하고 처리하는 함수
+function handleImageLoad(image, callback) {
+  if (image.complete) {
+    callback();
+  } else {
+    image.addEventListener('load', callback);
+  }
+}
+
+// 이미지 로딩 후에 정보 엘리먼트를 추가하는 함수
+function addDogInfoAfterImageLoad(dogData) {
+  const dogInfoContainer = document.getElementById("dogInfoContainer");
+  const dogInfo = createDogInfoElement(dogData);
+  dogInfoContainer.appendChild(dogInfo);
+}
+
+// 이미지 로딩 후에 정보 엘리먼트 추가 처리
+function handleImageLoadAndAdd(dogData) {
+  const dogImage = document.createElement("img");
+  dogImage.src = dogData.imageUrl; // 이미지 URL을 가져와서 설정
+  dogImage.alt = "강아지 사진";
+  dogImage.style.borderRadius = "50%";
+
+  // 이미지 로딩 완료를 감지하고 정보 엘리먼트를 추가
+  handleImageLoad(dogImage, () => {
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "image-container";
+    imageContainer.style.width = "calc(20% - 30px)";
+
+    // 이미지 클릭 시 수정 다이얼로그 열기
+    imageContainer.addEventListener("click", () => {
+      openEditDialog(dogData); // 수정 다이얼로그 열기
+    });
+
+    imageContainer.appendChild(dogImage);
+    addDogInfoAfterImageLoad(dogData);
+  });
+}
+
 dialogRegisterDogButton.addEventListener("click", () => {
 
   //  정보 생성
@@ -126,13 +165,14 @@ dialogRegisterDogButton.addEventListener("click", () => {
   // 이미지 컨테이너 생성
   const imageContainer = document.createElement("div");
   imageContainer.className = "image-container";
+  imageContainer.style.width = "calc(20% - 30px)";
 
   //  정보 내용 생성
   const dogImage = document.createElement("img");
   dogImage.src = imagePreview.src;
   dogImage.alt = "강아지 사진";
   dogImage.style.borderRadius = "50%";
-
+  
   const dogName = document.createElement("span");
   dogName.textContent = dogNameInput.value;
 
@@ -224,6 +264,16 @@ dialogRegisterDogButton.addEventListener("click", () => {
             isChecked: checkbox.checked,
             id: docRef.id
           }});
+           // 이미지 로딩 후에 정보 엘리먼트 추가 처리
+           handleImageLoadAndAdd({
+            imageUrl: imageUrl,
+            name: dogNameInput.value,
+            breed: dogBreedInput.value,
+            birthday: dogBirthdayInput.value,
+            gender: dogGenderInput.value,
+            isChecked: checkbox.checked,
+            id: docRef.id // Firestore 문서의 ID 값
+          });
         });
       });
     })
@@ -268,9 +318,20 @@ function createDogInfoElement(dogData) {
   const dogInfo = document.createElement("div");
   dogInfo.className = "dog-info";
 
-  dogInfo.addEventListener("click", () => {
+  const imageContainer = document.createElement("div");
+  imageContainer.className = "image-container";
+  imageContainer.style.width = "calc(20% - 30px)";
+
+  // 이미지 클릭 시 수정 다이얼로그 열기
+  imageContainer.addEventListener("click", () => {
     openEditDialog(dogData); // 수정 다이얼로그 열기
   });
+
+  // dogInfo.addEventListener("click", () => {
+  //   openEditDialog(dogData); // 수정 다이얼로그 열기
+  // });
+
+
 
    // 체크박스 생성 및 추가
    const checkbox = document.createElement("input");
@@ -286,10 +347,11 @@ function createDogInfoElement(dogData) {
   dogInfo.appendChild(checkbox);
   dogCheckboxes.push({ checkbox, dogData }); // 체크박스와 데이터를 연결하여 추적
 
-  // 이미지 컨테이너 생성
-  const imageContainer = document.createElement("div");
-  imageContainer.className = "image-container";
-
+  // // 이미지 컨테이너 생성
+  // const imageContainer = document.createElement("div");
+  // imageContainer.className = "image-container";
+  // imageContainer.style.width = "calc(20% - 30px)";
+  dogInfo.appendChild(imageContainer);
 
   // 이미지
   const dogImage = document.createElement("img");
@@ -297,7 +359,7 @@ function createDogInfoElement(dogData) {
   dogImage.alt = "강아지 사진";
   dogImage.style.borderRadius = "50%";
   imageContainer.appendChild(dogImage);
-  dogInfo.appendChild(dogImage);
+  dogInfo.appendChild(imageContainer);
 
   // 이름
   const dogName = document.createElement("span");
@@ -419,9 +481,31 @@ function openEditDialog(dogData) {
 function saveEditAndClose(dogData) {
   // 업데이트 작업 수행
   updateDogDataInFirestore(dogData);
-  // 다이얼로그 닫기
-  editDialog.style.display = "none";
+
+  // 정보 업데이트 후에 다시 데이터를 가져와서 화면을 업데이트
+  const db = getFirestore(app);
+  const dogsCollection = collection(db, "dogs");
+
+  getDocs(dogsCollection)
+    .then((querySnapshot) => {
+      const dogInfoContainer = document.querySelector(".image-container");
+      dogInfoContainer.innerHTML = ""; // 기존의 정보 엘리먼트 모두 삭제
+
+      querySnapshot.forEach((doc) => {
+        const dogData = doc.data();
+        dogData.id = doc.id; // Firestore 문서의 ID 값을 dogData 객체에 추가
+        const dogInfo = createDogInfoElement(dogData);
+        dogInfoContainer.appendChild(dogInfo);
+      });
+
+      // 다이얼로그 닫기
+      editDialog.style.display = "none";
+    })
+    .catch((error) => {
+      console.error("Firestore 데이터 가져오기 실패:", error);
+    });
 }
+
 
 // 정보 업데이트 함수
 function updateDogDataInFirestore(dogData) {
