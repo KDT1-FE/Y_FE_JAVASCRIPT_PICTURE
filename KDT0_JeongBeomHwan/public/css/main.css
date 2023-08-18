@@ -1,0 +1,276 @@
+/* 
+  --color-sidebar: #2a2f4a;
+  --color-sidebar-hover: #374b6a;
+  --color-sidebar-focus: #43618f;
+  --color-blue700: #3a7bdf;
+  --color-blue500: #9dbdef;
+  --color-blue100: #fafcff;
+  --color-black: #000;
+  --color-white700: #fff;
+  --color-gray100: #f9f9fa;
+  --color-gray200: #e5e9ed;
+  --color-gray300: #c7cdd1;
+  --color-gray400: #9fa5ac;
+*/
+
+/* 
+
+  메인 영역
+
+*/
+.canvas-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+#IMGPREVIEW {
+  position: absolute;
+  width: 400px;
+  height: 550px;
+  left: 600px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  object-fit: cover;
+  z-index: 200;
+  display: none;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
+}
+
+main.main-container {
+  width: calc(100% - var(--size-sidebar));
+  overflow: hidden;
+}
+
+/* 메인 - 헤더 */
+.main-container_header {
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-gray200);
+}
+
+h1.main-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-left: 2.5em;
+  margin-top: 2em;
+}
+
+.main-toolbar {
+  height: 50px;
+  margin: 1.5em 2.5em 12px 2.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-toolbar_desc {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-toolbar_desc span:first-child {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.main-toolbar_desc span:last-child {
+  margin: 0 14px 0 6px;
+}
+
+.main-toolbar_rightcontainer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.main-toolbar_rightcontainer input[type="search"] {
+  height: 2em;
+  width: 194px;
+  border: 1px solid var(--color-gray200);
+  border-radius: 0.25em;
+  padding: 0.5em;
+  place-content: var(--color-gray400);
+  box-sizing: border-box;
+}
+
+.main-toolbar_rightcontainer input[type="search"]:hover {
+  border: 1px solid var(--color-blue500);
+}
+
+.main-toolbar_rightcontainer input::placeholder {
+  color: var(--color-gray400);
+}
+
+.main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons {
+  margin-left: 2em;
+}
+
+.main-toolbar_rightcontainer .main-toolbar_rightcontainer_buttons button:last-child {
+  margin-left: 1em;
+}
+
+.main-toolbar_filter-container {
+  margin-left: 2em;
+}
+
+.main-toolbar_filter-container span {
+  font-size: 14px;
+}
+
+.main-toolbar_filter-container select {
+  margin-left: 0.5em;
+  width: 142px;
+  height: 2em;
+  box-sizing: border-box;
+  border: 1px solid var(--color-gray200);
+  border-radius: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.main-toolbar_filter-container select:hover {
+  border: 1px solid var(--color-blue500);
+}
+
+/* 메인 - 리스트 테이블 */
+.listtable-container {
+  height: calc(100vh - 143px - var(--size-header));
+  padding-top: 22px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.listtable-tablehead {
+  background-color: var(--color-gray100);
+  height: 38px;
+  width: 1566px;
+  margin: 0 2.5em 0 2.5em;
+  display: flex;
+  align-items: center;
+}
+
+.listtable-column {
+  width: 210px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.listtable-column:first-child input {
+  margin: 0 38px 0 12px;
+}
+
+.listtable-column.e-mail {
+  width: 270px;
+}
+
+.listtable-tablerows-container {
+  height: calc(100% - 50px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 1566px;
+  margin-left: 2.5em;
+  position: relative;
+}
+
+.no-profile {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--color-gray300);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* 직원카드(EMPLOYEE-CARD) */
+.employeecard-container {
+  height: 122px;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid var(--color-gray200);
+}
+
+.employeecard-container > div:last-child {
+  width: 100%;
+  display: flex;
+}
+
+.employeecard-column {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  color: var(--color-black);
+  flex-shrink: 0;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+  overflow: hidden;
+}
+
+.employeecard-column input[type="checkbox"] {
+  margin: 0 38px 0 12px;
+}
+
+.employeecard-column .employeecard-column_profilecard {
+  width: 106px;
+  height: 106px;
+  border-radius: 0.25em;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-color: var(--color-gray100);
+}
+
+.employeecard-column.e-mail {
+  width: 270px;
+}
+
+.employeecard-container:hover {
+  background-color: var(--color-blue100);
+}
+
+.employeecard-container:last-child {
+  border-bottom: none;
+}
+
+.employeecard-column.name {
+  display: flex;
+}
+
+.employeecard-column.name .ko-name {
+  font-weight: 500;
+  margin-right: 0.25em;
+}
+
+.employeecard-column.name .en-name {
+  color: var(--color-gray400);
+}
+
+.employeecard-container .employeecard-column.icon-area span {
+  margin-right: 2em;
+
+  display: none;
+}
+.employeecard-container:hover .employeecard-column.icon-area span {
+  display: flex;
+  color: var(--color-gray400);
+}
+
+.employeecard-container:hover .employeecard-column.icon-area span:hover {
+  color: var(--color-blue500);
+  cursor: pointer;
+}
+
+.br-point {
+  display: flex;
+}
