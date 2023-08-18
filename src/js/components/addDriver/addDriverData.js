@@ -21,10 +21,18 @@ function addDriver(event) {
   try {
     // submit 이벤트의 reload 동작 방지
     event.preventDefault();
-    // 더블 클릭으로 인한 중복 업로드 방지
-    addDriverFormSubmit.setAttribute("disabled", true);
-    // Input data [driverImg, driverName, driverBirth, insuranceProduct]를 db에 등록
-    addDriverDoc(...getInputData());
+
+    const driverBirthInput = document.querySelector("#driverBirth");
+
+    // 생년월일이 7자리 숫자일 때만 데이터 등록 진행
+    if (isNaN(driverBirthInput.value)) {
+      return false;
+    } else {
+      // 더블 클릭으로 인한 중복 업로드 방지
+      addDriverFormSubmit.setAttribute("disabled", true);
+      // Input data [driverImg, driverName, driverBirth, insuranceProduct]를 db에 등록
+      addDriverDoc(...getInputData());
+    }
   } catch (err) {
     console.log(`Can not add Data: ${err}`);
   }
