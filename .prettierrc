@@ -4,10 +4,6 @@
   "semi": true,
   "singleQuote": true,
   "useTabs" : false,
-<<<<<<< HEAD
   "printWidth": 120,
-=======
-  "printWidth": 80,
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
   "bracketSpacing": true
 }

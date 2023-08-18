@@ -1,11 +1,6 @@
 @font-face {
     font-family: 'Pretendard-Regular';
-<<<<<<< HEAD
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-=======
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
-        format('woff');
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     font-weight: 400;
     font-style: normal;
 }
@@ -75,37 +70,21 @@ label {
 
     margin-top: 1rem;
     margin-bottom: 0.3rem;
-<<<<<<< HEAD
-=======
-
-    font-size: 1.4rem;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 }
 
 .btn.btn-primary {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     text-align: center;
 
     padding: 1rem 1.8rem;
-=======
-
-    padding: 1rem 1.8rem;
-    gap: 0.7rem;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 
     font-size: 1rem;
     font-family: 'Black Han Sans', sans-serif;
 
-<<<<<<< HEAD
     border: none;
     border-radius: 5rem;
-=======
-    border-radius: 5rem;
-    border: none;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     color: var(--color-main);
     background-color: var(--color-primary);
 
@@ -118,10 +97,6 @@ label {
     align-items: center;
 
     padding: 1rem 1.8rem;
-<<<<<<< HEAD
-=======
-    gap: 0.7rem;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 
     font-size: 1rem;
     font-family: 'Black Han Sans', sans-serif;

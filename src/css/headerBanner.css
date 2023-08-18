@@ -10,18 +10,14 @@
 
     gap: 1.5rem;
 
-<<<<<<< HEAD
     height: 25%;
     min-height: 400px;
 
-=======
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     padding-top: 2rem;
     padding-bottom: 1rem;
 
     position: relative;
     text-align: center;
-<<<<<<< HEAD
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -73,17 +69,4 @@
 
         line-height: 3rem;
     }
-=======
-}
-
-.header__banner--title {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.header__banner--description {
-    margin-top: 0.5rem;
-
-    font-size: 0.8rem;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 }

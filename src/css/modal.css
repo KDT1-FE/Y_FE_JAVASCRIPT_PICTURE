@@ -17,15 +17,10 @@
 .modal__wrapper {
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
     align-items: center;
 
     width: 65%;
     height: 80%;
-=======
-
-    width: 65%;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 
     position: absolute;
     top: 50%;
@@ -33,11 +28,7 @@
 
     padding: 3rem;
 
-<<<<<<< HEAD
     overflow: scroll;
-=======
-    overflow: hidden;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     border-radius: 0.9rem;
     background: var(--color-secondary);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
@@ -46,7 +37,6 @@
     animation: modal__wrapper--open 0.3s ease-in-out;
 }
 
-<<<<<<< HEAD
 @media (max-width: 600px) {
     .modal__wrapper {
         width: 90%;
@@ -65,8 +55,6 @@
     }
 }
 
-=======
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 .modal__wrapper.team {
     color: var(--color-primary);
     background: white;
@@ -110,10 +98,7 @@
 
 .modal__banner--top {
     display: flex;
-<<<<<<< HEAD
     flex-direction: column;
-=======
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     width: 90%;
 
     margin: 0 auto;
@@ -124,13 +109,9 @@
     flex-direction: column;
     justify-content: center;
 
-<<<<<<< HEAD
     margin: 0 auto;
 
     width: 60%;
-=======
-    width: 30%;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 }
 
 .modal__banner--image-container {
@@ -145,23 +126,15 @@
 .modal__banner--image-wrapper {
     display: block;
 
-<<<<<<< HEAD
     width: 100%;
     height: 80%;
-=======
-    width: 75%;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 
     margin-top: 1rem;
 
     overflow: hidden;
     position: relative;
 
-<<<<<<< HEAD
     border-radius: 2%;
-=======
-    border-radius: 50%;
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
     border: 0.1rem solid var(--color-primary);
 }
 
@@ -212,7 +185,6 @@
     margin: 0 auto;
 }
 
-<<<<<<< HEAD
 /* Assure */
 .modal__banner--form-assure {
     display: none;
@@ -252,8 +224,6 @@
     gap: 1rem;
 }
 
-=======
->>>>>>> 1fc9ce8fa663de85a56b2d440b4cc68a624aca55
 @keyframes modal__wrapper--open {
     0% {
         transform: translate(-50%, -50%) scale(0);
