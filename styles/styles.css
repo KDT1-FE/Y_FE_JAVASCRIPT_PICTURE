@@ -8,6 +8,11 @@
   padding: 10px;
   display: flex;
 }
+.nav-btn1,
+.nav-btn2 {
+  background-color: rgba(21, 79, 195, 0.904);
+  color: white;
+}
 .search-img {
   width: 30px;
   height: 30px;
@@ -37,6 +42,7 @@
   flex-wrap: wrap;
   align-items: center;
   margin: 10px;
+  border-top: 0.5px solid gray;
   border-bottom: 0.5px solid gray;
 }
 
