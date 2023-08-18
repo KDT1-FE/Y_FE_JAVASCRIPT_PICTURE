@@ -88,7 +88,7 @@ onSnapshot(q, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
     const newProfile = document.createElement("a");
     newProfile.classList.add("item");
-    newProfile.setAttribute("href", `../profile.html#item${itemNumber}`); //
+    newProfile.setAttribute("href", `./profile.html#item${itemNumber}`); //
     template = template
       .replace("{{profile_image}}", doc.data().img)
       .replace("{{profile_name}}", doc.data().name)
