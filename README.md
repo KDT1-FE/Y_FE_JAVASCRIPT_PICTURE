@@ -3,6 +3,8 @@
 
 ## 👇서비스 링크👇
 ![AZKABAN](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FutWEd%2FbtsrB6zs8w2%2FEIXj6tQQLvBzAGR0fENZOK%2Fimg.png "와 디멘터! 아즈카반 아시는구나~")<br>
+**ID : aaa <br>**
+**PW : bbb**<br>
 (전체화면은 F11키를 누르시면 됩니다.)
 <br>
 <br>
@@ -26,43 +28,64 @@
 ![유저플로우](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbrygDQ%2FbtsrB67szxI%2FqeB5qpaZushQWLxKao7Vh1%2Fimg.png)
 <details>
 <summary>로그인</summary>
+   
+정해진 ID와 PW로만 로그인 가능합니다.<br>
 
-이 부분은 토글 내용입니다.
+이후에 DB를 이용해 로그인을 구현해보겠습니다.<br>
+
+![로그인](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/da42dd5b-d6ea-4901-b6b3-d32f1ea521ea)
+
 
 </details>
 
 <details>
 <summary>검색</summary>
+   
+이름으로 검색을 할 수 있습니다.<br>
 
-이 부분은 토글 내용입니다.
+![검색](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/d7de34bc-a201-4026-8f9d-eba27e85f136)
+
 
 </details>
 
 <details>
 <summary>업데이트</summary>
 
-이 부분은 토글 내용입니다.
+외부에서 데이터를 변경하고 다시 새로고침하면 최신의 데이터로 업데이트가 가능합니다.<br>
+
+![업데이트](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/60c58075-562c-46a2-a698-df2a4d993798)
+
 
 </details>
 
 <details>
 <summary>추가</summary>
 
-이 부분은 토글 내용입니다.
+새로운 데이터를 DB와 sotrage에 저장합니다.<br>
+
+![추가](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/6a3404db-2637-4c9f-b738-042462bb4e02)
+
+
 
 </details>
 
 <details>
 <summary>변경</summary>
 
-이 부분은 토글 내용입니다.
+이름, 등급, 이미지를 변경할 수 있습니다.<br>
+
+![변경](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/0f257bb2-7f44-4f26-9664-ef2af5f93cff)
+
 
 </details>
 
 <details>
 <summary>삭제</summary>
+   
+UX적인 부분을 고려해서 삭제 시 한번 더 물어보는 단계를 추가해보겠습니다.<br>
 
-이 부분은 토글 내용입니다.
+![삭제](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/120024673/56f0a043-1c9c-4249-bd68-c2435d64cba0)
+
 
 </details>
 <br>
@@ -71,10 +94,11 @@
 ## MPA vs SPA
 - MPA는 여러개의 독립페이지로 구성된 앱을 말합니다. 멀티~
 - SPA는 하나의 단일 페이지로 구성된 앱을 말하고요. 싱글~<br>
+
 MPA는 하나의 페이지씩 불러와서 초기 로딩은 빠르지만 이후 페이지를 이동할 때 마다 렌더링하고, 쿠키나 세션으로 현재 페이지의 상태를 유지해야 합니다.<br>
 SPA는 그 반대로 처음부터 다 불러오기 때문에 초기 로딩이 느릴 수 있으나, 페이지간 이동이 빠릅니다.<br>
 이렇게 알아본 뒤 저는 MPA와 SPA도 사용해보려고 했으나,<br>
-SPA는 발만 담군 정도로 메인 화면에서 모달로 데이터의 정보변경할 때만 사용해보았습니다.<br>
+SPA는 발만 담군 정도로 메인 화면에서 모달로 CRUD만 사용해보았습니다.<br>
 MPA는 각 로그인 화면 부터 유저플로우에서 보이는 모습 그대로 각 화면을을 각기 다른 페이지로 작성해 사용했습니다.
 <br>
 <br>
@@ -148,6 +172,8 @@ AWS가 요금, 프로젝트에 적용할 수 있는 리소스 가공력? 파이�
 - 이번에는 라이브러리를 사용해보거나 번들링을 욕심내서 사용해봤어야 했는데.. 컨셉에 너무 신경을 많이썼습니다.
 - 앞으로 혼자서도 프로젝트를 완성시킬 수 있을 거 같아서 의욕이 더 생겼습니다.
 - 프로젝트를 진행하면서 무료로 풀린 레퍼런스를 많이 사용하기도 했지만, 저작권에 저촉될만한 자료도 많이 사용 했습니다...이부분에 대해서 앞으로 경각심을 가지고 반성해야겠다고 느꼈습니다.
+- 한국어폰트를 못구해서 불가피하게 영어로만 작성하게됐는데, 프로젝트하면서 고려할 점이 너무 많았습니다.
+- 그리고 만약 폰트를 지정하지 않으면 각 디바이스마다 혹은 OS마다 지원하는 폰트의 크기가 달라서 원하는 레이아웃이 깨질 수 있다는 것을 알았습니다.(android에서는 괜찮은데..IOS에서 깨집니다.)
 <br>
 
 ## 📜리팩토링 계획
@@ -155,4 +181,5 @@ AWS가 요금, 프로젝트에 적용할 수 있는 리소스 가공력? 파이�
 - [ ] 로그인 권한 적용해보기
 - [ ] 라이브러리 써보기
 - [ ] JS코드 모듈화 시도해보기
+- [ ] 유효성 검사해보기
 <br>
