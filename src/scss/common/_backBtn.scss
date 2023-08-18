@@ -8,14 +8,13 @@
   line-height: 10vh;
   text-align: end;
 
+  color: $gray;
+
   button {
     width: 90px;
     height: 30px;
 
-    border-bottom: 1px solid $white;
-
     text-align: center;
-    line-height: 30px;
 
     cursor: pointer;
   }
