@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>우리집 식물 친구 관리</title>
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicon.png"
+    />
+  </head>
+  <body>
+    <section class="overall">
+      <div class="header">
+        <div class="header__title">
+          <div class="header__title-deco">
+            <img src="/assets/images/tape.png" alt="title" />
+          </div>
+          <span>우리집 식물 친구 관리</span>
+        </div>
+        <div class="header__myinfo">
+          <div class="header__myinfo-deco">
+            <img src="/assets/images/infobg.png" alt="myinfo" />
+          </div>
+          <span><a href="#">관리자</a> 님, 환영합니다.</span>
+          <div class="header__myinfo-sub">
+            <ul>
+              <li>
+                <a href="#"
+                  ><img src="/assets/images/myinfo.png" alt="My info" />내 정보
+                  관리</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    src="/assets/images/logout.png"
+                    alt="logout"
+                  />로그아웃</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="list__util">
+          <div class="list__util-search">
+            <form class="form">
+              <label for="search">
+                <input
+                  class="input"
+                  type="text"
+                  required=""
+                  placeholder="검색할 식물명을 입력하세요."
+                  id="search"
+                />
+                <div class="fancy-bg"></div>
+                <div class="search">
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr"
+                  >
+                    <g>
+                      <path
+                        d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+                <button class="close-btn" type="reset">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </label>
+            </form>
+          </div>
+          <div class="list__util-btn">
+            <div class="mobile-sidebar">
+              <div class="mobile-btn-regi">
+                <button type="button" class="mobile-button">
+                  <span class="mobile-button__icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      class="svg"
+                    >
+                      <line y2="19" y1="5" x2="12" x1="12"></line>
+                      <line y2="12" y1="12" x2="19" x1="5"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+              <div class="mobile-btn-modi">
+                <button type="button" class="mobile-button">
+                  <span class="mobile-button__icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      class="svg"
+                    >
+                      <image href="/assets/images/edit.png" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+              <div class="mobile-btn-del">
+                <button type="button" class="mobile-button">
+                  <span class="mobile-button__icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      class="svg"
+                    >
+                      <line x1="4" y1="12" x2="18" y2="12"></line></svg
+                  ></span>
+                </button>
+              </div>
+              <div class="mobile-btn-totop">
+                <button type="button" class="mobile-button">
+                  <span class="mobile-button__icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      class="svg"
+                    >
+                      <image href="/assets/images/totop.png" /></svg
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-regi" type="button">
+            <span>+ 새 식물 추가</span>
+          </button>
+        </div>
+
+        <div class="list__content">
+          <div class="list__actual">
+            <table>
+              <tr>
+                <th>사진</th>
+                <th>이름</th>
+                <th>데려온 날짜</th>
+                <th>물주기 간격</th>
+                <th>메모</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </table>
+            <div id="plants-data-container"></div>
+          </div>
+        </div>
+        <div class="modal" id="myModal">
+          <div class="modal-content">
+            <div class="modal-title"><span>우리집 식물 정보</span></div>
+            <br />
+            <div class="modal-form">
+              <form id="plants-form">
+                <label for="image">사진</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  id="image-data"
+                  class="align-right"
+                /><br />
+
+                <label for="name">이름</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  id="name-data"
+                  class="align-right"
+                /><br />
+
+                <label for="date">데려온 날짜</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  id="date-data"
+                  class="align-right"
+                /><br />
+
+                <label for="water-time">물주기 간격</label>
+                <input
+                  type="text"
+                  placeholder=""
+                  id="water-time-data"
+                  class="align-right"
+                /><br />
+
+                <label for="note">메모</label>
+                <textarea
+                  id="note-data"
+                  rows="5"
+                  placeholder="체크할 점은 없나요? ex)그늘에 두기, 습도 유지하기"
+                  class="align-right"
+                ></textarea>
+                <div class="spacer"></div>
+
+                <button id="btn-data-save" class="save-button">추가</button>
+              </form>
+              <button id="closeModalBtn" class="closeModal">닫기</button>
+            </div>
+          </div>
+        </div>
+        <script defer src="/assets/js/index.js" type="module"></script>
+      </div>
+    </section>
+  </body>
+</html>
