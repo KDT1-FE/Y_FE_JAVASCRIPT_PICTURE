@@ -14,3 +14,7 @@
   text-decoration: none;
   color: black;
 }
+#header-title:hover {
+  color: #a0d4fa;
+  transition: 0.3s;
+}

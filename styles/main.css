@@ -1,5 +1,6 @@
 #home {
   position: relative;
+  min-height: 100vh;
 }
 
 .title {
@@ -61,12 +62,20 @@
 }
 
 .photo-input__label {
-  margin: 2rem 0;
+  margin: 1rem 0;
   text-align: center;
   padding: 0.7rem 0;
   width: 65%;
   border-radius: 0.5rem;
   cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+}
+.photo-input__label:hover {
+  color: #a0d4fa;
+  transition: all 0.3s;
 }
 
 #photo-input {
@@ -74,9 +83,10 @@
 }
 
 #preview {
-  max-width: 80%;
+  max-width: 70%;
   max-height: 60%;
   margin: 2rem;
+  border-radius: 0.5rem;
 }
 
 .enroll-form__inputBox {
@@ -95,23 +105,26 @@
 
 @media (max-width: 1200px) {
   .enroll-form {
-    height: auto;
+    height: 70%;
+    top: 10%;
   }
   .enroll-form__container {
     flex-direction: column;
     height: auto;
+    justify-content: flex-start;
   }
   .enroll-form__photoBox {
     width: 75%;
-    height: 100%;
+    height: 40%;
     margin-bottom: 2rem;
   }
   .enroll-form__inputBox {
     width: 70%;
-    height: auto;
+    height: 50%;
   }
   .enroll-form__inputBox > input {
     margin-bottom: 0.5rem;
+    height: 100%;
   }
   .enroll-form__inputBox > label {
     margin-top: 0.5rem;
@@ -130,7 +143,7 @@
 .member-info__header {
   display: table-row;
   width: 100%;
-  font-size: large;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 
@@ -148,14 +161,15 @@
   display: table-row;
   width: 100%;
   position: relative;
-  font-size: larger;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
 .member-info__main:hover {
   opacity: 0.7;
-  background-color: gainsboro;
-  font-weight: 800;
-  font-size: x-large;
+  background-color: ghostwhite;
+  font-weight: 900;
+  font-size: large;
   transition: all 0.5s;
 }
 
@@ -192,7 +206,7 @@
   transition: all 0.5s;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .member-info__main {
     display: flex;
     flex-direction: column;
@@ -209,7 +223,7 @@
     min-width: 400px;
     height: auto;
     text-align: center;
-    background-color: aliceblue;
+    background-color: azure;
     border-radius: 0.3rem;
   }
   .member-info__photo {
