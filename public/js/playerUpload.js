@@ -18,6 +18,7 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 
 const Upload = () =>{
+   
     uploadBtn.addEventListener('click',()=>{
         const playerName = nameBtn.value; 
         const playerNation = nationBtn.value;
@@ -33,9 +34,9 @@ const Upload = () =>{
           null,
           (error)=>{
             console.error('Error :', error);
-
           },
           ()=>{
+          
             uploadWork.snapshot.ref.getDownloadURL().then((url)=>{
                 console.log('upload path :', url);
 

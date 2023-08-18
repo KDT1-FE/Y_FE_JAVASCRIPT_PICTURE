@@ -2,8 +2,8 @@ const startBtn = document.querySelector('.start__button');
 
 const Start = () =>{
     startBtn.addEventListener('click',()=>{
-        window.location.href="playerList.html";
-    })
+       
+            window.location.href="playerList.html";
+});
 }
 Start();
-console.log("hi");

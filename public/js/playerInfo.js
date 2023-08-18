@@ -1,5 +1,4 @@
 const selectedPlayerData = JSON.parse(localStorage.getItem('selectedPlayer'));
-
 const viewPlayer = (selectedPlayerData) => {
    const profilePage = document.createElement("section");
    profilePage.classList.add("player__profile");
@@ -32,7 +31,7 @@ const viewPlayer = (selectedPlayerData) => {
                     </div>
                 </div>
                 <div class="save__profile">
-                    <button class="save__btn">저장</button>
+                    <button class="save__btn">확인</button>
                 </div>
             </div>
         </div>
@@ -68,27 +67,22 @@ window.onload = function(){
             console.log('click');
         }
     })
-    const updatePage = () =>{
+    const updatePage = (updatedData) =>{
         const updateName = document.querySelector('.main__title h2');
         const updateNation = document.querySelector('.sub__value h2:nth-child(1)')
         const updateAge = document.querySelector('.sub__value h2:nth-child(2)');
         const updatePosition = document.querySelector('.sub__value h2:nth-child(3)');
         const updateImage = document.querySelector('.player__image img');
 
-
-        updateName.textContent = selectedPlayerData.Name;
-        updateNation.textContent = selectedPlayerData.Nation;
-        updateAge.textContent = selectedPlayerData.Age;
-        updatePosition.textContent = selectedPlayerData.position;
+        updateName.textContent = updatedData.Name;
+        updateNation.textContent = updatedData.Nation;
+        updateAge.textContent = updatedData.Age;
+        updatePosition.textContent = updatedData.position;
         if(updateImage){
-            updateImage.src = selectedPlayerData.image;
-
-
+            updateImage.src = updatedData.image;
         }
-       
-
-   
     }
+
     const saveModal = () =>{
         const newName = document.querySelector('#new-Name').value;
         const newNation =  document.querySelector('#new-Nation').value;
@@ -96,10 +90,13 @@ window.onload = function(){
         const newPosition =  document.querySelector('#new-Position').value;
         const newImage = document.querySelector('#new-Image').files[0];
 
-        selectedPlayerData.Name = newName;
-        selectedPlayerData.Nation = newNation;
-        selectedPlayerData.Age = newAge;
-        selectedPlayerData.position = newPosition;
+       const updatedData = {
+        ...selectedPlayerData,
+        Name: newName !== "" ? newName: selectedPlayerData.Name,
+        Nation: newNation !== "" ? newNation : selectedPlayerData.Nation,
+        Age: newAge !== "" ? newAge : selectedPlayerData.Age,
+        position: newPosition !== "" ? newPosition : selectedPlayerData.position
+       }
        /* firebase 데이터 반영 */ 
        selectedPlayerId = selectedPlayerData.id;
        const db = firebase.firestore();
@@ -117,19 +114,10 @@ window.onload = function(){
          },
          ()=>{
             updateWork.snapshot.ref.getDownloadURL().then((updateUrl)=>{
-                console.log('update path :', updateUrl);
-
-                let updateInfo = {
-                    Name: newName,
-                    Nation : newNation,
-                    Age : newAge,
-                    position : newPosition,
-                    image : updateUrl,
-                   };
-                   db.collection('Player').doc(selectedPlayerId).update(updateInfo)
+                updatedData.image = updateUrl;
+                   db.collection('Player').doc(selectedPlayerId).update(updatedData)
                    .then(()=>{
-                      
-                      updatePage();
+                      updatePage(updatedData);
                       closeModal();
                       alert('선수 정보 수정이 완료됐습니다.');
                       console.log('업데이트 완료');
@@ -138,27 +126,38 @@ window.onload = function(){
                       alert('선수 정보 수정을 실패했습니다.')
                       console.error('선수 정보 수정 실패', error);
                    });
-
+                localStorage.setItem('selectedPlayer',JSON.stringify(updatedData));
             });
          }
         )
 
+       }else{
+        db.collection('Player').doc(selectedPlayerId).update(updatedData)
+             .then(()=>{
+                
+                updatePage(updatedData);
+                closeModal();
+                alert('선수 정보 수정이 완료됐습니다.');
+                console.log('업데이트 완료');
+             })
+             .catch((error)=>{
+                alert('선수 정보 수정을 실패했습니다.')
+                console.error('선수 정보 수정 실패', error);
+             });
+        
+        localStorage.setItem('selectedPlayer',JSON.stringify(updatedData));
+
        }
-   
-    //    db.collection('Player').doc(selectedPlayerId).update(updateInfo)
-    //      .then(()=>{
-            
-    //         updatePage();
-    //         closeModal();
-    //         alert('선수 정보 수정이 완료됐습니다.');
-    //         console.log('업데이트 완료');
-    //      })
-    //      .catch((error)=>{
-    //         alert('선수 정보 수정을 실패했습니다.')
-    //         console.error('선수 정보 수정 실패', error);
-    //      });
+     
+    
        }
+    const SavePage = ()=>{
+        const saveBtn = document.querySelector('.save__btn');
+        saveBtn.addEventListener('click',()=>{
+            window.location.href="playerList.html";
+           })
+    }
     saveModalBtn.addEventListener('click',saveModal)
-    console.log(updateBtn);
+    SavePage();
 };
 

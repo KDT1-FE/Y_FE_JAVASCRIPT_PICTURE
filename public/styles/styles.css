@@ -1,5 +1,4 @@
 *{
-    
     margin:0;
     padding:0;
 }
@@ -7,34 +6,69 @@
     font-size:10px;
 }
 body{
+    animation: fadein 0.5s ease-in-out;
+}
+.index__body{
     margin:0;
     padding:0;
-    width:100%;
+    height:100%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ) , url("../assets/picture/playground_2.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center;
+    animation: fadein 1s ease-in-out;
 }
 /* index.html */
 .container{
     display:flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align:center;
-    margin-top:2rem;
+    margin-top:2rem; 
+}
+.index__border{
+    margin-top:18rem;
+    border:3px solid #fff;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); 
+    
 }
 .header{
-    margin-top:10rem;
+    margin-top:5rem;
 }
 .header__maintitle{
-    font-size:1.2rem;
+    color:#fff;
+    font-size:1.4rem;
+    padding-bottom:2rem;
 }
 .header__subtitle{
-    color: #484a559d;
+    color: #d9d9d9;
     font-weight:bold;
 }
 .start__tab{
-    margin-top:2rem;
+    margin:4rem;
 }
 .start__button{
-    width:52rem;
-    height:4.2rem;
+    width:50rem;
+    height:4.8rem;
+    color:#fff;
+    font-weight:bold;
+    font-size:1.4rem;
+    background-color:hsl(0, 72%, 51%);
+    cursor:pointer;
+}
+.start__button:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .3s;
+   
 }
 /* playerList.html */ 
 .nav {
@@ -62,7 +96,9 @@ body{
     font-weight:bold;
     align-items: center;
 }
-
+.logo__icon{
+    cursor:pointer;
+}
 .logo-tab__button a{
     text-decoration: none;
     color:#fff;
@@ -75,10 +111,12 @@ body{
     margin-right:2rem;
 } 
 .logo-search__search input{
+    width:42rem;
     height:3rem;
     background-color: transparent;
     border:1px solid #fff;
     border-radius:2rem;
+    color:#fff;
 }
 .logo-search__search input::placeholder{
     padding:1rem;
@@ -176,6 +214,7 @@ body{
 .transfer__btn{
     border-radius:1rem;
     height:5rem;
+    font-size:1.2rem;
     font-weight:bold;
     color:#fff;
     background-color: #c70102;
@@ -189,7 +228,7 @@ body{
 }
 .upload__container{
     border:none;
-    width:70%;
+    width:50%;
     margin: 5rem auto;
     display:flex;
     flex-direction: column;
@@ -237,6 +276,9 @@ body{
 }
 
 /* playerInfo.html */ 
+.player__profile{
+    animation: fadein 1s ease-in-out;
+}
 .profile__container{
     width:120rem;
     margin: 5rem auto;
@@ -264,13 +306,21 @@ body{
    font-size:2rem;
 }
 .update__btn{
-    margin-right:2rem;
     width:12rem;
     height:4.2rem;
     border:none;
     border-radius: 1rem;
+    background-color:#c70102;
+    color:#fff;
     font-weight:bold;
     cursor:pointer;
+}
+.update__btn:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .3s;
+   
 }
 hr{
     margin:2rem auto;
@@ -296,8 +346,18 @@ hr{
     height:4.2rem;
     border:none;
     border-radius: 1rem;
+    background-color:#c70102;
+    color:#fff;
     font-weight:bold;
     cursor:pointer;
+}
+.save__btn:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .3s;
+   
+
 }
 /*Modal 부분 cSS */
 .update__modal {
@@ -313,13 +373,19 @@ hr{
     overflow:auto;
     background-color:rgba(0,0,0,0.4);
     display:none;
+    animation: fadein 0.5s;
+    -moz-animation: fadein 0.5s; /* Firefox */
+    -webkit-animation: fadein 0.5s; /* Safari and Chrome */
+    -o-animation: fadein 0.5s; /* Opera */
+
 }
 .modal__content{
     border:1px solid #fff;
-    background-color: #fefefe;
+    border-radius:1rem;
+    background-color: #fff;
     margin:15% auto;
     padding:2rem;
-    width:80%;
+    width:50%;
 }
 #update-player{
     display:flex;
@@ -327,6 +393,68 @@ hr{
     justify-content: center;
 }
 #update-player input{
-  
-
+    width:80%;
+    height:3rem;
+    margin:auto;
+    border-radius:1rem;
+    background-color: #fff;
+    font-weight: bold;
+    color:#000;
+    margin-top:2rem;
+    padding-left:1rem;
+}
+.save__info{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.save__btn-modal{
+    width:10rem;
+    height:4rem;
+    background-color: #c70102;
+    color:#fff;
+    text-align:center;
+    margin:auto;
+    border: none;
+    border-radius: 1rem;
+    font-weight:bold;
+}
+.save__btn-modal:hover{
+    background-color: #000000;
+    border:1px solid #000000;
+    transform: scale(1.1);
+    transition:background-color .3s;
+}
+/* CSS Animation */ 
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
