@@ -1,0 +1,98 @@
+/* left side */
+.left_side {
+    width: 280px;
+    height: 100vh;
+    background-color: #FAFAFA;
+    border-radius: 0 50px 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+ /* side_top */
+.side_top {
+    padding: 2.5rem 0 0 2.5rem;
+}
+
+.side_profile {
+    width: 80px;
+    height: 95px;
+    border-radius: 5px;
+}
+
+.side_top_p {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 15px;
+    font-family: 'Poppins-Regular';
+}
+
+.side_top_p1,
+.side_top_p2 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .side_top_p1 span:nth-child(1) {
+    font-family: "Poppins-Medium";
+    margin-top: 10px;
+    font-size: 18px;
+} */
+
+.side_top_p1 span:nth-child(2) {
+    font-family: "Poppins-Medium";
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.side_top_p2 span {
+    margin-top: 12px;
+}
+
+/* side_bottom */
+.side_bottom {
+    padding: 0 0 2.5rem 2.5rem;
+    font-size: 15px;
+    font-family: "NotoSansKR-Bold";
+}
+
+.side_bottom p {
+    margin-top: 25px;
+}
+
+.side_bottom a {
+    text-decoration: none;
+    color: #232323;
+}
+
+.side_bottom i {
+    margin-right: 12px;
+}
+
+.side_bottom_sub_section {
+    margin-bottom: 3rem;
+}
+
+.company {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.fastcampus {
+    width: 85px;
+}
+
+.companyx {
+    width: 7px;
+    height: 7px;
+}
+
+.yanolja {
+    width: 50px;
+}

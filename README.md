@@ -1,50 +1,72 @@
+<br>
 
-# :camera: 직원 사진 관리 서비스
+![logo](./public/assets/icons/readme_logo.png)
+<br>
+## 🏢 직원 관리 서비스 🏢
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
+### 🔗 프로젝트 URL 
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+- **과제 URL** : [https://yeongmins-employee-management.web.app](https://yeongmins-employee-management.web.app/?#)
 
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
+***
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+### 📌 필수 구현 사항
 
-## [화면 예시]
-![111](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/f1afed4b-547e-4289-8e83-2f0fa188cccb)
-![222](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/72f1ea35-8965-4050-9d0b-b9f27c933f64)
+- [ ] “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현
+- [ ] 스크롤이 가능한 형태의 리스팅 페이지를 개발
+- [ ] 전체 페이지 데스크탑-모바일 반응형 페이지를 개발
+- [ ] 사진을 등록, 수정, 삭제가 가능
+- [ ] 유저 플로우를 제작하여 리드미에 추가
+- [ ] css 상대수치 사용 
+- [ ] JavaScript DOM event 조작
 
+### 📌 선택 구현 사항
 
+- [ ]  직원을 등록, 수정, 삭제가 가능
+- [ ]  직원 검색 기능을 추가
+- [ ]  JS가 꼭 필요한 부분에는 간단하기 구현
 
-## [흐름]
-![333](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/96465306/44707a0e-6c5a-4d04-a6bd-58e46f02a9a9)
+***
 
+### 🗓️ 개발 기간
 
+**2023.08.08 ~ 2023.08.18**
+
+***
+
+### 🔨 사용 기술 스택
+
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  
+
+***
+
+### 🎨 구현 UI
+![logo](./public/assets/images/screenshot.png)
+
+**UI URL** : [Adobe XD](https://xd.adobe.com/view/9851eb3a-c1ea-4d8f-ba19-bdb2ebbecf17-cd02/)
+
+***
+
+### ✏️ userflow
+
+![userflow](./public/assets/images/userflow.png)
+
+***
+
+### 📝 아쉬운점 & 느낀점
+
+>   - 파이어베이스를 처음 사용했는데 연동이 너무 어려워서 DB 구현을 못했습니다.
+
+### ⌨️ 추후 구현사항
+
+>   - 파이어베이스 DB 연동
+>
+>   - 상세 프로필 구현
+>
+>   - 깔끔한 모바일 페이지 구현

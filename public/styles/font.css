@@ -1,0 +1,51 @@
+/* NotoSans Font */
+@font-face {
+    font-family: 'NotoSansKR-Black';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Black.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NotoSansKR-Bold';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NotoSansKR-Light';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Light.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NotoSansKR-Medium';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Medium.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NotoSansKR-Regular';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'NotoSansKR-Thin';
+    src: url('../assets/fonts/NotoSans/NotoSansKR-Thin.otf') format('opentype');
+}
+
+/* Poppins Font */
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url('../assets/fonts/Poppins/Poppins-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('../assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('../assets/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+}
