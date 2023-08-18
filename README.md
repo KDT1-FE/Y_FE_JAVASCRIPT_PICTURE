@@ -40,3 +40,7 @@
 - SPA 개발을 목표로 하였지만 어려워서 구현하지 못했다.
 - 로그인 기능은 시간상 구현하지 못했다.
 - 개인적으로 지금까지 배웠던 JavaScript 내용으로 구현하기 어려웠던 과제였던 것 같다. 하지만 과제를 진행하면서 DOM 조작 방법 등 배울 수 있는 것이 많은 과제였다. 추후 리팩토링 시 더욱 완성도 있게 개선해보고 싶다.
+
+### User Flow
+
+![User Flow](https://raw.githubusercontent.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/c8e0ffa5cd142586a8287195821b2fb42fbf0c72/assets/images/User%20Flow.png)
