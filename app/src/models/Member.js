@@ -26,7 +26,8 @@ class Member {
   async getMemberInfo() {
     const memberInfo = this.body;
     try {
-      const response = await MemberStorage.getMemberInfo(memberInfo);
+      const response = await MemberStorage.getMemberInfo(memberInfo.id);
+      if (!response) throw Error('존재하지 않는 직원입니다.');
       return { success: true, member: response };
     } catch (err) {
       console.log(err);
@@ -61,12 +62,54 @@ class Member {
   async deleteMember() {
     const { ids } = this.body;
     try {
+      // rds에서 url 가져오기
       const imageUrls = await MemberStorage.getProfileImageUrlsByIds(ids);
-      // rds에서 멤버 정보 삭제
+      // rds에서 직원 정보 삭제
       const deleteMemberResponse = await MemberStorage.deleteMember(ids);
       // s3에서 프로필 이미지 삭제
       await s3DeleteProfileImages(imageUrls);
       return { success: true, message: deleteMemberResponse.message };
+    } catch (err) {
+      console.log(err);
+      return { success: false, message: `${err}` };
+    }
+  }
+
+  async uploadS3andEditMember() {
+    const memberInfo = this.body;
+    console.log('uploadS3andEditMember');
+    console.log(memberInfo);
+    try {
+      // 기존 이미지 url 가져오기
+      const imageUrls = await MemberStorage.getProfileImageUrlsByIds([
+        memberInfo.id,
+      ]);
+      // 기존 s3 이미지 삭제
+      await s3DeleteProfileImages(imageUrls);
+      // 회원 정보 수정
+      const response = await MemberStorage.editMember(memberInfo);
+      return { success: true, message: response.message };
+    } catch (err) {
+      console.log(err);
+      return { success: false, message: `${err}` };
+    }
+  }
+
+  async editMember() {
+    const memberInfo = this.body;
+    console.log('editMember');
+    console.log(memberInfo);
+    try {
+      if (memberInfo.isProfileImageDeleted === 'true') {
+        // 기존 이미지 url 가져오기
+        const imageUrls = await MemberStorage.getProfileImageUrlsByIds([
+          memberInfo.id,
+        ]);
+        await s3DeleteProfileImages(imageUrls);
+      }
+      // 회원 정보 수정
+      const response = await MemberStorage.editMember(memberInfo);
+      return { success: true, message: response.message };
     } catch (err) {
       console.log(err);
       return { success: false, message: `${err}` };

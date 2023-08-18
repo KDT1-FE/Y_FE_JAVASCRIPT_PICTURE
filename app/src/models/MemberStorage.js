@@ -43,7 +43,7 @@ class MemberStorage {
       const params = [memberInfo.id, memberInfo.name, memberInfo.position];
       db.query(query, params, (err) => {
         if (err) reject(err);
-        resolve({ message: '멤버를 등록했습니다.' });
+        resolve({ message: '직원을 등록했습니다.' });
       });
     });
   }
@@ -60,7 +60,41 @@ class MemberStorage {
       ];
       db.query(query, params, (err) => {
         if (err) reject(err);
-        resolve({ message: '멤버 정보를 수정했습니다.' });
+        resolve({ message: '직원 정보를 수정했습니다.' });
+      });
+    });
+  }
+
+  static async editMember(memberInfo) {
+    return new Promise((resolve, reject) => {
+      let query = '';
+      let params = [];
+
+      // URL이 있는 경우 업데이트 해준다
+      if (memberInfo.profileImageURL) {
+        query =
+          'UPDATE members SET name = ?, position = ?, profileimageurl = ? WHERE id = ?';
+        params = [
+          memberInfo.name,
+          memberInfo.position,
+          memberInfo.profileImageURL,
+          memberInfo.id,
+        ];
+      }
+      // 삭제 플래그가 있는 경우 기존 프로필 이미지를 삭제한다.
+      else if (memberInfo.isProfileImageDeleted === 'true') {
+        query =
+          'UPDATE members SET name = ?, position = ?, profileimageurl = ? WHERE id = ?';
+        params = [memberInfo.name, memberInfo.position, null, memberInfo.id];
+      }
+      // 그외의 경우는 프로필 이미지를 업데이트 하지 않는다.
+      else {
+        query = 'UPDATE members SET name = ?, position = ? WHERE id = ?';
+        params = [memberInfo.name, memberInfo.position, memberInfo.id];
+      }
+      db.query(query, params, (err) => {
+        if (err) reject(err);
+        resolve({ message: '직원 정보를 수정했습니다.' });
       });
     });
   }
@@ -71,7 +105,7 @@ class MemberStorage {
       const params = [ids];
       db.query(query, params, (err) => {
         if (err) reject(err);
-        resolve({ message: '멤버를 삭제했습니다.' });
+        resolve({ message: '직원을 삭제했습니다.' });
       });
     });
   }
