@@ -58,9 +58,26 @@ body {
   border: 1px solid rgb(243, 196, 72);
   margin-left: 2%;
   margin-right: 2%;
+  cursor: pointer;
+}
+
+.modify-btn {
+  cursor: pointer;
 }
 
 .logo {
   width: 20%;
   margin-left: 75%;
+  margin-top: 5%;
+  cursor: pointer;
+}
+
+.logo:hover {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
 }

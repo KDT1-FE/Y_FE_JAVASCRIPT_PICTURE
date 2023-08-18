@@ -9,8 +9,6 @@ import {
   getFirestore,
   collection,
   addDoc,
-  doc,
-  getDoc,
   query,
   orderBy,
   onSnapshot,
@@ -38,6 +36,10 @@ const open = document.querySelector("#open-dialog");
 const add = document.querySelector(".add-dialog");
 const close = document.querySelector(".close-modal");
 const profileTable = document.querySelector("#profile-table");
+
+document.querySelector(".logo").addEventListener("click", () => {
+  location.reload();
+});
 
 open.addEventListener("click", () => {
   add.showModal();

@@ -2,16 +2,12 @@
 import {
   getStorage,
   ref,
-  getDownloadURL,
   uploadBytes,
   deleteObject,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import {
   getFirestore,
   collection,
-  addDoc,
-  doc,
-  getDoc,
   query,
   orderBy,
   onSnapshot,
@@ -36,6 +32,10 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const db = getFirestore(app);
 const profileDetail = document.querySelector(".detail-profile");
+
+document.querySelector(".logo").addEventListener("click", () => {
+  location.reload();
+});
 
 let template = `
 <div class="profile-card">

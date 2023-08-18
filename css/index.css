@@ -85,4 +85,15 @@ a {
   width: 20%;
   margin-left: 75%;
   margin-top: 5%;
+  cursor: pointer;
+}
+
+.logo:hover {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
 }
