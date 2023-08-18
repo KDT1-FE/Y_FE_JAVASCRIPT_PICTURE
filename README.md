@@ -20,3 +20,5 @@
 
 - 웹펙사용법
 - 컴포넌트형 웹 구성 방법
+- IntersectionObserverApi 사용법
+- 데이터 전송, 받아오기 하는 방법
