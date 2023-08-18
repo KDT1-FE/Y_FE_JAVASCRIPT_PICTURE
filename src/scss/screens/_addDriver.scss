@@ -2,7 +2,7 @@
   width: 50rem;
   max-width: 500px;
 
-  margin: auto;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -11,12 +11,19 @@
   font-size: 15px;
   color: $white;
 
+  h2 {
+    margin: 5rem 0;
+
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
   label {
     display: flex;
     flex-direction: column;
 
     &:first-child {
-      margin-top: 200px;
+      margin-top: 25px;
     }
   }
 
