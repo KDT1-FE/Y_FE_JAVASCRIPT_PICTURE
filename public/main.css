@@ -2,6 +2,7 @@
 
 body {
   font-size: 14px;
+  background:#fffefd;
 }
 * {
   font-family: "NanumSquareNeo";
@@ -69,7 +70,7 @@ main .profile_title {
   width: 100%;
   background: #183153;
   color: #fff;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 15px;
   position: relative;
   text-align: right;
 }
@@ -77,6 +78,11 @@ main .profile_title {
 .gnb__welcome button {
   position: relative;
   left: 0px;
+  border-radius: 3px;
+  border: solid #333;background:#eee;
+  margin-left: 10px;
+}
+
 }
 .gnb li a {
   font-weight: 800;

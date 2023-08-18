@@ -19,6 +19,7 @@
     width: initial;
   }
   .tab-wrap {
+    margin-top: 3rem;
     max-width: 500px;
     position: absolute;
     left: 50%;
@@ -39,7 +40,6 @@
     margin: 3rem auto;
   }
   main .profile_title {
-    background: #ffffde;
     padding: 10px;
     box-sizing: border-box;
     margin: 3.4rem auto 1.4rem;
