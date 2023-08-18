@@ -31,7 +31,7 @@
 
 ### USER-FLOW
 
-<img src="assets/img/readMe/userFlow.png" width="700">
+<img src="https://turkey-mm-bucket.s3.ap-northeast-2.amazonaws.com/userFlow.png" width="700">
 
 ### 요구사항
 
