@@ -92,11 +92,15 @@ function submitBtnClick() {
                     const fileExtension = file.type.split('/').pop();
                     const filename = Date.now().toString() + '.' + fileExtension;
                     const imageRef = ref(storageRef, 'profile_images/' + filename);
-
+        
                     uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
                         getDownloadURL(imageRef).then(url => {
                             profile = url;
                             updateInfo(profile, name, email, phoneNumber);
+                            console.log(infoList);
+                            localStorage.setItem('infoList', JSON.stringify(infoList));
+                            history.back();
+                            console.log("success!");
                         }).catch(error => {
                             console.error('Error getting download URL: ', error);
                         });
@@ -106,57 +110,49 @@ function submitBtnClick() {
                 };
                 reader.readAsDataURL(file);
             }
-
-            // 기존 항목 삭제 및 업데이트된 항목 추가
-            infoList.splice(itemIndex, 1);
-            const updatedInfo = new Info(false, profile, name, email, phoneNumber, true);
-            infoList.splice(itemIndex, 0, updatedInfo);
         } else {
             // Case 3: selectedItem이 없고 사진이 선택된 경우
-            
-           // Case 3: selectedItem이 없고 사진이 선택된 경우
-if (input.files[0]) {
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const imageBase64 = e.target.result;
-        const storageRef = ref(storage, 'profile_images');
-        const fileExtension = file.type.split('/').pop();
-        const filename = Date.now().toString() + '.' + fileExtension;
-        const imageRef = ref(storageRef, 'profile_images/' + filename);
+            if (input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageBase64 = e.target.result;
+                    const storageRef = ref(storage, 'profile_images');
+                    const fileExtension = file.type.split('/').pop();
+                    const filename = Date.now().toString() + '.' + fileExtension;
+                    const imageRef = ref(storageRef, 'profile_images/' + filename);
 
-        uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
-            getDownloadURL(imageRef).then(url => {
-                profile = url;
-                addNewInfo(profile, name, email, phoneNumber); // Add new info after upload is complete
-                console.log(infoList); // Check if the new info is added
-                localStorage.setItem('infoList', JSON.stringify(infoList)); // Save to local storage
-                history.back(); // Go back to the previous page
+                    uploadString(imageRef, imageBase64, 'data_url').then(snapshot => {
+                        getDownloadURL(imageRef).then(url => {
+                            profile = url;
+                            addNewInfo(profile, name, email, phoneNumber);
+                            console.log(infoList);
+                            localStorage.setItem('infoList', JSON.stringify(infoList));
+                            history.back();
+                            console.log("success!");
+                        }).catch(error => {
+                            console.error('Error getting download URL: ', error);
+                        });
+                    }).catch(error => {
+                        console.error('Error uploading image: ', error);
+                    });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Case 4: selectedItem이 없고 사진도 선택되지 않은 경우
+                profile = " "; // " " 값 대체
+                addNewInfo(profile, name, email, phoneNumber);
+                console.log(infoList);
+                localStorage.setItem('infoList', JSON.stringify(infoList));
+                history.back();
                 console.log("success!");
-            }).catch(error => {
-                console.error('Error getting download URL: ', error);
-            });
-        }).catch(error => {
-            console.error('Error uploading image: ', error);
-        });
-    };
-    reader.readAsDataURL(file);
-} else {
-    // Case 4: selectedItem이 없고 사진도 선택되지 않은 경우
-    profile = " "; // " " 값 대체
-    addNewInfo(profile, name, email, phoneNumber);
-    console.log(infoList); // Check if the new info is added
-    localStorage.setItem('infoList', JSON.stringify(infoList)); // Save to local storage
-    history.back(); // Go back to the previous page
-    console.log("success!");
-}
-
+            }
         }
-        
     } else {
         alert("값을 입력해주세요");
     }
 }
+
 
 function addNewInfo(profile, name, email, phoneNumber) {
     const newInfo = new Info(false, profile, name, email, phoneNumber, true);
@@ -165,6 +161,7 @@ function addNewInfo(profile, name, email, phoneNumber) {
 
 function updateInfo(profile, name, email, phoneNumber) {
     const updatedInfo = new Info(false, profile, name, email, phoneNumber, true);
+    console.log(updatedInfo);
     infoList.splice(itemIndex, 1, updatedInfo);
 }
 
@@ -174,7 +171,7 @@ submitBtn.addEventListener("click", () => {
     setTimeout(() => {
         submitBtnClick();
         
-    }, 3000);
+    }, 1500);
 });
 
 backBtn.addEventListener("click", () => {
@@ -183,6 +180,5 @@ backBtn.addEventListener("click", () => {
 
 function showLoadingBar() {
     background.style.display = "block";
-    loadingBar.style.display = "block";
 }
 

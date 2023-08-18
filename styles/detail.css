@@ -1,3 +1,7 @@
+body {
+    background: #ebecf0;
+    margin: 0;
+}
 .container {
     position: relative;
     max-width: 1280px;
@@ -5,58 +9,60 @@
     display: flex;
     flex-direction: column;
     justify-items: stretch;
+    
 }
 .logo {
     max-width: 1280px;
     color: #4D76C1;
-    padding-left: 20px;
     font-size: 3.5em;
     font-family: 'Pacifico', cursive;
-    padding: 0 20px;
-    margin: 0;
+    margin :20px 40px 0;
     cursor : pointer;
+    position: relative;
+
 
 }
 
 
 .detail_container {
-    max-width: 1200px;
-    border-radius: 30px;
+    border-radius: 10px;
     margin: 40px auto;
-    box-shadow: 5px 5px 5px rgb(77, 118, 193, 0.2);
+    background: #ebecf0;
+    padding: 20px 40px;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
 }
 .btn_container {
     margin: 40px 0;
     position: relative;
+    max-width: 1000px;
+    display: flex;
+    justify-content: end;
+    padding: 0 80px;
 
 }
 
 .edit_btn {
-    
-    width: 100px;
-    height: 30px;
-    color: #fff;
-    border-radius: 5px;
-    padding: auto 10px;
-    font-family: 'Lato', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    font-style: normal;
-    text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
-    text-decoration: none;
-    background: transparent;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    display: inline-block;
-    box-shadow: inset 0px 1px 0px rgba(255,255,255,1),0px 1px 3px rgba(0,0,0,0.3);
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
     outline: none;
-    border: 1px solid #ba6;
-    backface-visibility: hidden;
-    border-color: #7c7c7c;
-    background: linear-gradient(180deg,#e6e6e6 0%,rgba(0, 0, 0, 0.25) 49%, rgba(38, 38, 38, 0.6) 51%,rgba(0, 0, 0, 0.25) 100%); 
-}
+    font-size: 13px;
+    font-weight: bold;
+    padding: 15px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
 
+}
+.edit_btn:active {
+    box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+}
 .title_container {
     display: flex;
     justify-content: space-between;
@@ -119,7 +125,8 @@
 }
 .name, .email, .phoneNum {
     font-size: 1em;
-    
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .8px;
     font-weight: 300;
     margin: auto 30px;
     width: fit-content;
@@ -130,9 +137,10 @@
 
 .detail_info > p{
     font-size: 1em;
-    font-family: 'Lato', sans-serif;
     font-weight: 600;
     width:100px;
+    letter-spacing: 1px;
+    font-family: 'Roboto Condensed', sans-serif;
 
 }
 

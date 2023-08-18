@@ -1,10 +1,28 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
+import { getStorage, ref, deleteObject} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js';
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBO_nQ-frTFItkeS6UlWGnYjxuxsFgxwSU",
+    authDomain: "kdt0-js-project.firebaseapp.com",
+    projectId: "kdt0-js-project",
+    storageBucket: "kdt0-js-project.appspot.com",
+    messagingSenderId: "623556572356",
+    appId: "1:623556572356:web:284b641a1703fc9e6ec591",
+    measurementId: "G-CXEL9J682Z"
+};
+
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+
 const list = document.querySelector(".list");
 const deleteBtn = document.querySelector(".ex_delete_btn");
 const dialog = document.querySelector("#dialog");
 const yesBtn = document.querySelector("#yesBtn");
 const noBtn = document.querySelector("#noBtn");
 const plusBtn = document.querySelector("#plus_btn");
-
+const searchBtn = document.querySelector(".search_icon");
+const searchInput = document.querySelector(".search_input");
 let infos = [];
 
 class Info {
@@ -61,7 +79,7 @@ function createInfoElement(info) {
         profileEl.src = info.profileImgUrl;
     }
     else {
-        profileEl.src = "assets/user_white.png";
+        profileEl.src = "assets/user.png";
     }
     
 
@@ -147,13 +165,18 @@ function showDetail(index) {
 }
 
 const totalcheckBox = document.querySelector(".ex_select_all_btn");
+
 totalcheckBox.addEventListener("click", () => {
     const checkBoxes = document.querySelectorAll("#check_btn");
     
     checkBoxes.forEach(checkbox => {
-        checkbox.checked = true;
+        checkbox.checked = !checkbox.checked; // Toggle the checked state
     });
+
+    // Toggle the class name
+    totalcheckBox.classList.toggle("ex_selected_all_btn_clicked");
 });
+;
 
 
 
@@ -201,11 +224,30 @@ function checkboxItemdelete() {
 
 function deleteItem(index) {
     if (index >= 0 && index < infos.length) {
+        const imagePath = infos[index].profileImgUrl;
+        
+        // 이미지를 먼저 Firebase Storage에서 삭제
+        deleteImageFromStorage(imagePath);
         infos.splice(index, 1);
         updateLocalStorage();
         updateList();
     }
 }
+
+function deleteImageFromStorage(filePath) {
+    const storageRef = ref(storage, filePath);
+    
+    deleteObject(storageRef)
+        .then(() => {
+            console.log("이미지가 성공적으로 삭제되었습니다.");
+        })
+        .catch((error) => {
+            console.error("이미지 삭제 중 오류 발생:", error);
+        });
+}
+
+
+
 function updateLocalStorage() {
     localStorage.setItem("infoList", JSON.stringify(infos));
 }
@@ -214,7 +256,7 @@ function updateList() {
     while (list.firstChild) {
         list.removeChild(list.firstChild);
         if (list.firstChild === plusBtn) {
-            plusBtn.remove(); // plus_btn을 명시적으로 제거하지 않아도 됨
+            plusBtn.remove(); 
         }
     }
     displayUsers(); // 변경된 정보로 리스트 업데이트
@@ -222,3 +264,39 @@ function updateList() {
         list.appendChild(plusBtn);
     }
 }
+
+searchBtn.addEventListener("click", () => {
+    const searchText = searchInput.value.toLowerCase().trim(); // 검색어를 소문자로 변환하여 공백 제거
+
+    // 검색어가 비어있으면 모든 아이템 표시
+    if (!searchText) {
+        showAllItems();
+        return;
+    }
+
+    // 검색어를 포함하는 아이템 필터링
+    filteredItems(searchText);
+
+    searchInput.value = "";
+});
+
+function showAllItems() {
+    const itemEls = list.querySelectorAll(".list_item");
+    itemEls.forEach(itemEl => {
+        itemEl.style.display = "block"; // 모든 아이템 표시
+    });
+}
+
+function filteredItems(searchText) {
+    const itemEls = list.querySelectorAll(".list_item");
+    itemEls.forEach(itemEl => {
+        const nameEl = itemEl.querySelector(".name");
+        const name = nameEl.textContent.toLowerCase();
+        if (name.includes(searchText)) {
+            itemEl.style.display = "block"; // 검색어가 포함되면 보이기
+        } else {
+            itemEl.style.display = "none"; // 검색어가 포함되지 않으면 숨기기
+        }
+    });
+}
+

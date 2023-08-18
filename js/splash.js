@@ -1,4 +1,5 @@
-setTimeout(function() {
-    // 페이지 이동
-    window.location.href = "main.html";
-}, 3000); // 1초 후에 페이지 이동
+const startBtn = document.querySelector("#start_btn");
+
+startBtn.addEventListener("click",()=> {
+    window.location.href = 'main.html';
+})

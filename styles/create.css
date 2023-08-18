@@ -194,56 +194,42 @@ button {
     margin: 0;
     top: 0;
     display: none;
+    
 }
 
-.loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    display: none;
-}
-.loading span {
-    position: relative;
-    top: 6px;
-    display: inline-block;
-    animation: bounce .3s ease infinite alternate;
-    font-family: 'Pacifico', cursive;
-    font-size: 30px;
-    color: #4D76C1;
-    text-shadow: 0 1px 0 #CCC,
-                0 2px 0 #CCC,
-                0 3px 0 #CCC,
-                0 4px 0 #CCC,
-                0 5px 0 #CCC,
-                0 6px 0 transparent,
-                0 7px 0 transparent,
-                0 8px 0 transparent,
-                0 9px 0 transparent,
-                0 10px 10px rgba(0, 0, 0, .4);
+h1 {
+  min-width:11px;
+  white-space: nowrap;
+  margin: 0;
+  position: fixed;
+  color: transparent;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Pacifico', cursive;
 }
 
-.loading span:nth-child(2) { animation-delay: .1s; }
-.oading span:nth-child(3) { animation-delay: .2s; }
-.loading span:nth-child(4) { animation-delay: .3s; }
-.loading span:nth-child(5) { animation-delay: .4s; }
-.loading span:nth-child(6) { animation-delay: .5s; }
-.loading span:nth-child(7) { animation-delay: .6s; }
-.loading span:nth-child(8) { animation-delay: .7s; }
+h1::before {
+  content: "Saving...";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #4D76C1;
+  overflow: hidden;
+  border-right: 1px solid #4D76C1;
+  animation: typing 5s steps(31) infinite;
+}
 
-@keyframes bounce {
-    100% {
-    top: -6px;
-    text-shadow: 0 1px 0 #CCC,
-                    0 2px 0 #CCC,
-                    0 3px 0 #CCC,
-                    0 4px 0 #CCC,
-                    0 5px 0 #CCC,
-                    0 6px 0 #CCC,
-                    0 7px 0 #CCC,
-                    0 8px 0 #CCC,
-                    0 9px 0 #CCC,
-                    0 50px 25px rgba(0, 0, 0, .2);
-    }
+@keyframes typing{
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }

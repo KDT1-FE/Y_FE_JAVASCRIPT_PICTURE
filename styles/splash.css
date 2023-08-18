@@ -1,11 +1,12 @@
 html, body {
     width: 100%;  
     height: 100%;
-    background: #white;
     -webkit-font-smoothing: antialiased;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 h1 {
@@ -13,6 +14,7 @@ h1 {
 }
 
 h1 span {
+    padding-top: 20px;
     position: relative;
     top: 20px;
     display: inline-block;
@@ -54,4 +56,76 @@ h1 span:nth-child(8) { animation-delay: .7s; }
                     0 9px 0 #CCC,
                     0 50px 25px rgba(0, 0, 0, .2);
     }
+}
+#start_btn {
+    min-width: 150px;
+    max-width: 350px;
+    display: block;
+    padding: .7em 8em;
+    border: none;
+    background: none;
+    color: inherit;
+    position: relative;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 2px;
+    margin-top: 200px;
+    -moz-osx-font-smoothing: grayscale;
+    border-radius: 50px;
+    background: #4D76C1;
+    color: #fff;
+    padding: .5em .1em;
+    -webkit-transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#start_btn::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    background: inherit;
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0.4;
+    -webkit-transform: scale3d(0.8, 0.5, 1);
+    transform: scale3d(0.8, 0.5, 1);
+}
+#start_btn:hover {
+    -webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+    transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
+    color: #ECEFF1;
+    background-color: #3f51b5;
+    -webkit-animation: anim-moema-1 0.3s forwards;
+    animation: anim-moema-1 0.3s forwards;
+}
+
+#start_btn:hover::before {
+    -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
+    animation: anim-moema-2 0.3s 0.3s forwards;
+}
+
+@-webkit-keyframes anim-moema-1 {
+  60% {
+    -webkit-transform: scale3d(0.8, 0.8, 1);
+    transform: scale3d(0.8, 0.8, 1);
+  }
+  85% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@-webkit-keyframes anim-moema-2 {
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }
