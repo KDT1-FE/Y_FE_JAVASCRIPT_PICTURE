@@ -23,6 +23,10 @@
   .detail-box-header > h2 {
     font-size: 1.3rem !important;
   }
+
+  .worker-detail-box-left {
+    width: 100% !important;
+  }
 }
 
 @media all and (max-width: 767px) {

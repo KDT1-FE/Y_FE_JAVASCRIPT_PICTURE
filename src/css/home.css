@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 @media (min-width: 1281px) {
   .home-container {
     padding: 0 10rem !important;
