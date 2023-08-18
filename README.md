@@ -1,5 +1,8 @@
 
-# :camera: 직원 사진 관리 서비스
+<details>
+<summary>야놀자 테크 캠프 JS 과제 설명</summary>
+
+# 직원 사진 관리 서비스
 
 직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
 
@@ -17,7 +20,7 @@
 10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
 
 ## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
+-  “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
 - 프로필 페이지를 개발하세요.
 - 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
 - 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
@@ -37,13 +40,4 @@
 - infinity scroll 기능을 추가해 보세요.
 - 사진을 편집할 수 있는 기능을 추가해 보세요.
 - LocalStorage 사용
-
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
-
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
-
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
-
-
+</details>
