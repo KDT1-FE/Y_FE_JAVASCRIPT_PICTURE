@@ -29,13 +29,13 @@
 
 #### [선택 요구 사항]
 
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
+- [ ] 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
+- [ ] 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
 - [x] 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+- [ ] 직원 검색 기능을 추가해 보세요.
+- [ ] infinity scroll 기능을 추가해 보세요.
+- [ ] 사진을 편집할 수 있는 기능을 추가해 보세요.
+- [ ] LocalStorage 사용
   <BR>
   <BR>
 
@@ -56,8 +56,7 @@
 - ### CRUD
   | CREATE                                                                                                                                                       | READ                                                                                                                                                       |
   | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | <img src="public/assets/readme/등록.png" alt = "직원 등록" style="width:60%; margin: auto"></img><br><br>메인페이지의 등록 버튼 클릭 후 모달창에서 정보 등록 | ![메인](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/92326949/280ec00d-d979-44dc-a61f-4c6de8b2769e)<br><br><br><br><br><br><br>직원 정보 조회 |
-  |
+  | <img src="public/assets/readme/등록.png" alt = "직원 등록" style="width:60%; margin: auto"></img><br><br>메인페이지의 등록 버튼 클릭 후 모달창에서 정보 등록 | ![메인](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/92326949/280ec00d-d979-44dc-a61f-4c6de8b2769e)<br><br><br><br><br><br>직원 정보 조회 |
   | **UPDATE** | **DELETE** |
   | ![수정](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/92326949/f5c46398-6302-443f-bf2e-e2a55568f631) <br>메인페이지 수정 버튼 클릭 후 수정| ![삭제](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/92326949/2a7b8751-246c-466c-934a-69090a786e5c)<br>수정 페이지의 삭제 버튼 클릭시 확인 경고창 생성 후 삭제|
 
@@ -78,10 +77,12 @@
 <br>
 
 ## [흐름]
-
 <br>
+
 #### 유저플로우
-![유저플로우](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/92326949/fec05578-f23d-44ee-b6f4-128f433744ed)
+
+![유저플로우](https://github.com/suyeonnnnnnn/Wavve-Clone/assets/92326949/171dba0b-1f4f-4f13-8540-47388601e033)
+
 
 ## [개선사항]
 
