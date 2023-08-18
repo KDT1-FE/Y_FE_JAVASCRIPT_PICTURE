@@ -157,39 +157,36 @@ document.addEventListener('DOMContentLoaded', () => {
         // 체크된 user 삭제
         const deleteButton = document.getElementById('delete-button');
 
-        deleteButton.addEventListener('click', () => {
+        deleteButton.addEventListener('click', async () => {
             console.log(checkedUser);
- 
+
             for (const userId of checkedUser) {
                 const user = data[userId];
 
                 if (user) {
-                    // database 삭제
-                    const databaseRef = dbRef(database, `users/${userId}`);
+                    try {
+                        // database 삭제
+                        const databaseRef = dbRef(database, `users/${userId}`);
+                        const name = user.name;
 
-                    console.log( `users/${userId}`);
-                    
-                    remove(databaseRef).then(() => {
+                        await remove(databaseRef);
                         console.log(`user 삭제 성공 - ${name}`);
-                    }).catch(error => {
-                        console.error(`user 삭제 오류 - ${name}:`, error);
-                    });
 
-                    // storage 이미지 삭제
-                    const name = user.name;
-                    const imageRef = storageRef(storage, `images/${name}-profile`);
-                    
-                    deleteObject(imageRef).then(() => {
+                        // storage 이미지 삭제
+                        const imageRef = storageRef(storage, `images/${name}-profile`);
+                        
+                        await deleteObject(imageRef);
                         console.log(`이미지 삭제 성공 - ${name}`);
-                    }).catch(error => {
-                        console.error(`이미지 삭제 오류 - ${name}:`, error);
-                    });
 
-                    checkedUser = [];
-                    showToast(`삭제되었습니다!`);
+                        checkedUser = [];
+                        showToast(`삭제되었습니다!`);
+                    } catch (error) {
+                        console.log(`[ERROR]: ${error}`);
+                    }
                 }
             }
         });
+
 
         // 클릭한 유저 상세 페이지로
         const tableRows = document.querySelectorAll('.body-tr');

@@ -93,48 +93,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // 사진 수정 완료
-        imageUpdateDoneButton.addEventListener('click', () => {
-            console.log(user.name);
+        imageUpdateDoneButton.addEventListener('click', async () => {
+            try {
+                console.log(user.name);
             
-            const imageRef = storageRef(storage, `images/${user.name}-profile`);
-            const userRef = dbRef(database, `users/${userId}`);
+                const imageRef = storageRef(storage, `images/${user.name}-profile`);
+                const userRef = dbRef(database, `users/${userId}`);
+                    
+                showLoadingAnimation();
+
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
                 
-            showLoadingAnimation();
+                await uploadBytes(imageRef, blob);
 
-            fetch(imageUrl)
-            .then(response => response.blob())
-            .then(blob => {
-                uploadBytes(imageRef, blob).then(() => {
-                    getDownloadURL(imageRef).then((photoUrl) => {
-                        const userData =  {
-                            "photo": photoUrl
-                        }
+                const photoUrl = await getDownloadURL(imageRef);
+                const userData = {
+                    "photo": photoUrl
+                };
+                
+                await update(userRef, userData);
 
-                        update(userRef, userData).then(() => {
-                            console.log(`유저 업데이트 성공 ID ${userRef.key}`);
-                            showToast(`사진이 변경되었습니다!`);
-                            hideLoadingAnimation(); 
-                        }).catch((error) => {
-                            console.error('유저 업데이트 오류: ', error);
-                            hideLoadingAnimation(); 
-                        });
-    
-                    }).catch((error) => {
-                        console.error('이미지 url 오류', error);
-                        hideLoadingAnimation(); 
-                    });
-                }).catch((error) => {
-                    console.error('이미지 업로드 오류:', error);
-                    hideLoadingAnimation(); 
-                });
-            })
-            .catch((error) => {
-                console.error('이미지 다운로드 오류:', error);
-                hideLoadingAnimation(); 
-            });
-
-            imageUpdateDoneButton.style.display = 'none';
-            imageUpdateButton.style.display = 'block';
+                console.log(`유저 업데이트 성공 ID ${userRef.key}`);
+                showToast(`사진이 변경되었습니다!`);
+            } catch (error) {
+                console.error('[ERROR]:', error);
+            } finally {
+                hideLoadingAnimation();
+                imageUpdateDoneButton.style.display = 'none';
+                imageUpdateButton.style.display = 'block';
+            }
         });
 
         hideLoadingAnimation();

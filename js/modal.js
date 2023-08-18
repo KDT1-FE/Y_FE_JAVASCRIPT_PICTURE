@@ -77,7 +77,7 @@ function hideLoadingAnimation() {
 //  입력한 값 등록
 const registerButton = document.querySelector('.register-button');
 
-registerButton.addEventListener('click', () => {
+registerButton.addEventListener('click', async () => {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const department = document.getElementById('department').value;
@@ -87,45 +87,36 @@ registerButton.addEventListener('click', () => {
 
     showLoadingAnimation();
 
-    fetch(imageUrl)
-        .then(response => response.blob())
-        .then(blob => {
-            uploadBytes(imageRef, blob).then(() => {
-                getDownloadURL(imageRef).then((photoUrl) => {
-                    const userData = {
-                        "name": name,
-                        "email": email,
-                        "department": department,
-                        "photo": photoUrl 
-                    };
+    try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
 
-                    const usersRef = dbRef(database, 'users');
-                    const newUserRef = push(usersRef);
-                
-                    set(newUserRef, userData).then(() => {
-                        console.log(`유저 등록 성공 ID ${newUserRef.key}`);
-                        hideLoadingAnimation();
-                        showToast(`등록되었습니다!`);
-                        setTimeout(() => {
-                            resetInputsAndCloseModal();
-                        }, 2000);
-                    }).catch((error) => {
-                        console.error('유저 등록 오류: ', error);
-                        hideLoadingAnimation();
-                    });
-                }).catch((error) => {
-                    console.error('이미지 url 오류', error);
-                    hideLoadingAnimation();
-                });
-            }).catch((error) => {
-                console.error('이미지 업로드 오류:', error);
-                hideLoadingAnimation();
-            });
-        })
-        .catch((error) => {
-            console.error('이미지 다운로드 오류:', error);
-            hideLoadingAnimation();
-        });
+        await uploadBytes(imageRef, blob);
+        
+        const photoUrl = await getDownloadURL(imageRef);
+
+        const userData = {
+            "name": name,
+            "email": email,
+            "department": department,
+            "photo": photoUrl 
+        };
+
+        const usersRef = dbRef(database, 'users');
+        const newUserRef = push(usersRef);
+
+        await set(newUserRef, userData);
+
+        console.log(`유저 등록 성공 ID ${newUserRef.key}`);
+        hideLoadingAnimation();
+        showToast(`등록되었습니다!`);
+        setTimeout(() => {
+            resetInputsAndCloseModal();
+        }, 2000);
+    } catch (error) {
+        console.error('[ERROR]:', error);
+        hideLoadingAnimation();
+    } 
 });
 
 
