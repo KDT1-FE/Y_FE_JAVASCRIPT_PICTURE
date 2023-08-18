@@ -66,8 +66,10 @@ function hideUtilBtns() {
 }
 
 function uploadData() {
-    // 버튼 중복 클릭 방지
-    btnSubmitEl.disabled = 'true';
+    const file = inputFileEl.files[0];
+    const storageRef = storage.ref();
+    const savePath = storageRef.child('image/' + new Date().getTime());
+    const upload = savePath.put(file);
 
     // 사진이 변경되지 않았을 때
     if (queryString && !inputFileEl.value) {
@@ -81,10 +83,6 @@ function uploadData() {
     }
     // 사진이 변경 되었을 때
     if (queryString && inputFileEl.value) {
-        const file = inputFileEl.files[0];
-        const storageRef = storage.ref();
-        const savePath = storageRef.child('image/' + new Date().getTime());
-        const upload = savePath.put(file);
         upload.on(
             'state_changed',
             null,
@@ -105,11 +103,6 @@ function uploadData() {
             }
         );
     } else {
-        const file = inputFileEl.files[0];
-        const storageRef = storage.ref();
-        const savePath = storageRef.child('image/' + new Date().getTime());
-        const upload = savePath.put(file);
-
         upload.on(
             'state_changed',
             null,
@@ -226,6 +219,7 @@ function getDataFromFirestore() {
 }
 
 function updateProfile(item, deleteImage) {
+    btnSubmitEl.disabled = 'true';
     const documentRef = docRef.doc(docId);
     documentRef
         .update(item)

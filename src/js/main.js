@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 searchInputEl.addEventListener('change', async () => {
     try {
         let searchValue = searchInputEl.value;
-        const docRef = db.collection('profile');
         const nameQuery = docRef.where('name', '==', `${searchValue}`);
+        const docRef = db.collection('profile');
         const rankQuery = docRef.where('rank', '==', `${searchValue}`);
         loadingEl.classList.remove('hide');
         itemWrapEl.innerHTML = '';
