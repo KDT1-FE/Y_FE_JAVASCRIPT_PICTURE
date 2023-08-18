@@ -56,7 +56,11 @@ function menuClose() {
     const nav = document.querySelector('.nav');
     nav.classList.add('mobile');
   }
-  if (BrowserWidth >= 1400) menuWrap.parentElement.classList.remove('close');
+  if (BrowserWidth >= 1400) {
+    const nav = document.querySelector('.nav');
+    nav.style.display = 'block';
+    menuWrap.parentElement.classList.remove('close');
+  }
 }
 menuClose();
 
