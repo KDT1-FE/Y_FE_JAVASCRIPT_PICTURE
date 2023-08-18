@@ -1,3 +1,4 @@
+/* -------------------------- for dev configuration ------------------------- */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
 
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js';
@@ -20,6 +21,16 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+
+/* --------------------------- for parcel bundler --------------------------- */
+// import { initializeApp } from 'firebase/app';
+
+// import { getAnalytics } from 'firebase/analytics';
+
+// import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+// import { getFirestore, collection, getDocs, doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+
+// import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCy7QYDgKpkn-0eH42AmxAki6u4DH1oGZ0',
@@ -67,6 +78,13 @@ const getAllMembers = async members => {
   });
 };
 
+const getMember = async email => {
+  const docRef = await doc(db, 'members', email);
+  const docSnap = await getDoc(docRef);
+
+  return await docSnap.data();
+};
+
 const addData = async (person, email, contact, division, profileUrl) => {
   await setDoc(doc(db, 'members', email), {
     person: person,
@@ -101,4 +119,4 @@ const deleteImage = async email => {
   await deleteObject(desertRef);
 };
 
-export { auth, signinSubmit, getAllMembers, addData, deleteData, uploadImage, deleteImage };
+export { auth, signinSubmit, getAllMembers, getMember, addData, deleteData, uploadImage, deleteImage };
