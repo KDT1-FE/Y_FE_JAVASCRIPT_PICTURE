@@ -1,49 +1,87 @@
+# 직원관리 웹사이트
 
-# :camera: 직원 사진 관리 서비스
+<div align="center">
+<img width="800" alt="image" src="https://velog.velcdn.com/images/kyudeveloper/post/50e09210-02e8-4ac6-b2bf-291a5542a268/image.png">
+  
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
 
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-## [과제 수행 및 제출 방법]
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
 
-## [필수 요구사항]
-- “AWS S3 / Firebase 같은 서비스”를 이용하여 사진을 관리할 수 있는 페이지를 구현하세요.
-- 프로필 페이지를 개발하세요.
-- 스크롤이 가능한 형태의 리스팅 페이지를 개발하세요.
-- 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
-- 사진을 등록, 수정, 삭제가 가능해야 합니다.
-- 유저 플로우를 제작하여 리드미에 추가하세요.
-* CSS
-  * 애니메이션 구현
-  * 상대수치 사용(rem, em)
-* JavaScript
-  * DOM event 조작
 
-## [선택 요구사항]
-- 사진 관리 페이지와 관련된 기타 기능도 고려해 보세요.
-- 페이지가 보여지기 전에 로딩 애니메이션이 보이도록 만들어보세요.
-- 직원을 등록, 수정, 삭제가 가능하게 해보세요.
-- 직원 검색 기능을 추가해 보세요.
-- infinity scroll 기능을 추가해 보세요.
-- 사진을 편집할 수 있는 기능을 추가해 보세요.
-- LocalStorage 사용
+</div>
 
-## [화면 예시]
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+# 개발현황 직원관리웹사이트 ver 0.1
+> **참여인원 : 1명(개인) ** <br/> **개발기간: 2023.08.7 ~ 2023.08.14 **
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
 
-## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+## 배포 주소
 
+> **개발 버전** : https://kyungkyubae.github.io/employeeManagement/ <br>
+
+
+## 개발자 소개
+
+
+
+|      배경규       |                                                                                                               
+| :------------------------------------------------------------------------------: |
+|   <img width="160px" src="https://velog.velcdn.com/images/kyudeveloper/post/ffb11860-dcea-4b08-a2a2-bb7b22287998/image.png" />    |
+|   [@kyu](https://github.com/kyungkyubae)   |
+
+
+## 프로젝트 소개
+
+JS , CSS , HTML 그리고 firebase를 통해 데이터를 DB에 저장하고 관리하여 직원리스트,직원등록,직원삭제,직원수정,검색기능 구현 등을 하는 페이지입니다.
+
+
+
+
+
+
+---
+
+## Stacks 🐈
+
+
+### Development
+<div>
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-			badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black">
+</div>
+
+
+
+
+
+
+---
+## 주요 기능 📦 
+
+### ⭐️ 직원 등록
+- 직원 등록 버튼 -> 직원 등록 페이지 -> 직원 정보 입력 -> 직원 정보 DB 저장
+
+### ⭐️ 직원 삭제
+- 직원 선택 ( 체크박스 다중선택 가능 ) -> 직원 삭제 버튼 -> 직원 정보 DB 삭제
+
+### ⭐️ 직원 상세정보
+- 리스트에서 상세정보 확인 할 직원 선택 -> localstorage에 직원 ID 값 저장 -> 상세 페이지 이동 -> 직원 상세 정보
+
+### ⭐️ 직원 정보 수정
+- 리스트에서 상세정보 확인 할 직원 선택 -> localstorage에 직원 ID 값 저장 -> 상세 페이지 이동 -> 직원 상세 정보  
+->직원 수정 -> 직원 수정 페이지 이동 -> 수정 정보 입력 -> 직원 정보 DB 수정
+
+### ⭐️ 직원 리스트
+- 메인 페이지 -> DB에서 직원 정보 읽기 -> 리스트로 렌더링  
+
+### ⭐️ 직원 검색
+- 검색어 입력 -> 직원 리스트에서 검색어 필터링 -> 필터링 된 리스트 렌더링
+
+### ⭐️ 총직원수 
+- DB에 저장된 총직원 수 읽기 -> 메인페이지 및 직원관리 페이지에 렌더링
+
+---
+
+## 유저 플로우
+![](https://velog.velcdn.com/images/kyudeveloper/post/c57163b9-dc81-41ba-862a-3f0ed52c5d9c/image.png)
 

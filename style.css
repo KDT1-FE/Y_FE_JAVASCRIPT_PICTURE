@@ -93,6 +93,8 @@ body {
 .employees{
     max-width: 1200px;
     margin: auto;
+    height: 100%;
+
 }
 
 .employees__title {
@@ -144,6 +146,8 @@ body {
 .employees__table {
     width: 100%;
     border-collapse: collapse;
+    height: 50%;
+    overflow: scroll;
     
     
     
