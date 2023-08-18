@@ -1,0 +1,9 @@
+@import url("./reset.css");
+@import url("./Header.css");
+@import url("./MainPage.css");
+@import url("./CreateUpdatePage.css");
+
+.app {
+  max-width: 1100px;
+  margin: auto;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "employee-management-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack && webpack-dev-server --mode development",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wowba/employee-management-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wowba/employee-management-project/issues"
+  },
+  "homepage": "https://github.com/wowba/employee-management-project#readme",
+  "dependencies": {
+    "@aws-amplify/cli-extensibility-helper": "^3.0.14",
+    "aws-amplify": "^5.3.8",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

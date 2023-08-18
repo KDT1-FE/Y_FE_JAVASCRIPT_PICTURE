@@ -1,0 +1,50 @@
+.create-update-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 15rem 0 0;
+}
+
+.input-row input {
+  margin-left: 1rem;
+}
+
+.input-row:nth-child(4) {
+  flex-direction: column;
+  gap: 0;
+}
+
+.preview {
+  width: 20rem;
+  height: 20rem;
+}
+
+.submit-button {
+  box-sizing: border-box;
+
+  width: 7rem;
+  height: 2.8rem;
+  
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 10px;
+
+  margin-right: 2rem
+}
+
+.cancel-button {
+  box-sizing: border-box;
+
+  width: 7rem;
+  height: 2.8rem;
+  
+  background: #FFFFFF;
+  border: 1px solid red;
+  color: red;
+  border-radius: 10px;
+}
