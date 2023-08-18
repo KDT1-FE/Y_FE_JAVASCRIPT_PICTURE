@@ -104,17 +104,15 @@ readUserData().then((res) => {
 });
 
 updateButton.addEventListener("click", function (e) {
-  console.log(profileImage);
-  console.log(imageFrame);
-  // let msg = "";
-  // if (profileImage && profileImage.msg) {
-  //   console.log("changed image");
-  //   msg = profileImage.msg;
-  // } else {
-  //   console.log(profileImage);
-  //   console.log("not changed");
-  //   msg = imageFrame.src;
-  // }
+  let changedImage = document.getElementsByClassName("imageFrame")[0];
+  let msg = "";
+
+  if (changedImage) {
+    msg = changedImage.src;
+  } else {
+    msg = imageFrame.src;
+  }
+  console.log(msg);
 
   if (isPt.checked) {
     writeUserData(
@@ -123,7 +121,7 @@ updateButton.addEventListener("click", function (e) {
       userPhone.value,
       startDate.value,
       endDate.value,
-      imageFrame.src,
+      msg,
       leftSession.value,
       leftSession.value,
       trainer.value
@@ -135,7 +133,7 @@ updateButton.addEventListener("click", function (e) {
       userPhone.value,
       startDate.value,
       endDate.value,
-      imageFrame.src,
+      msg,
       "",
       "",
       ""
