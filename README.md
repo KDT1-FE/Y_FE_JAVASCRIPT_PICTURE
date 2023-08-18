@@ -60,4 +60,4 @@ https://cms-solution-86408.web.app/login.html
 
 ## [유저 플로우]
 
-![유저 플로우](https://discord.com/channels/831698591290490940/863422580537819197/1142094361358774352)
+![유저 플로우](https://github.com/gkdus2217/CMS/blob/main/assets/image/userflow.png?raw=true)
