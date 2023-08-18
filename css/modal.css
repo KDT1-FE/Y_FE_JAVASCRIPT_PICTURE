@@ -1,6 +1,4 @@
 .modal__add-profile{
-  width:30rem;
-  height:37rem;
   margin:auto;
   padding: 30px 40px;
   position:relative;
@@ -14,13 +12,16 @@
 }
 .btn__close{
   position:absolute;
-  right:40px;
-  padding:2px 4px 2px 5px;
+  right:5%;
+  padding:0px 5px;
   border:none;
-  border-radius: 20%;
-  background-color: rgb(234, 234, 234);
+  border-radius: 30%;
   font-weight: 700;
   cursor: pointer;
+  transition:background-color 0.2s;
+}
+.btn__close:hover{
+  background-color:rgb(173, 255, 80);
 }
 dialog .preview{
   width:12rem;
@@ -52,32 +53,27 @@ label:hover{
   padding:20px 10px 10px 10px;
   box-shadow: 5px 5px 20px lightgray;
 }
-.input-profile-grid{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-}
-.input-profile-grid div:nth-child(5){
-  grid-column:1/3;
-}
+
 .input-profile span{
   display: block;
   margin-left:1rem;
 }
 .input-profile input{
+  border:1px solid black;
+  border-radius: 10px;
+  padding: 0px 5px;
   display: block;
-  margin:0.5rem auto;
 }
 .input-profile-grid div:last-child input{
-  width:93%
+  width:100%
 }
 .btn__upload{
   display: block;
   padding:0.4rem;
-  margin:10px auto 0px;
   width:5rem;
+  margin:1rem auto;
   background-color: rgb(173, 255, 80);
   border-radius: 10px;
-  border:none;
   font-weight: 900;
   cursor:pointer;
   transition: background-color 0.5s, color 0.3s;
@@ -85,4 +81,15 @@ label:hover{
 .btn__upload:hover{
   color: rgb(173, 255, 80);
   background-color: black;
+}
+
+@media (min-width:666px){
+  .input-profile-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 3px;
+  }
+  .input-profile-grid div:nth-child(5){
+    grid-column:1/3;
+  }
 }

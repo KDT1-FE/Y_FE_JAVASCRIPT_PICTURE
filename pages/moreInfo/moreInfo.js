@@ -74,7 +74,7 @@ onSnapshot(q,(querySnapshot) => {
     deleteEvent(deleteBtn, doc);
     newProfile.prepend(deleteBtn);
 
-    //수정 버튼 생성
+    //상단 수정 버튼
     const modifyBtn = document.createElement("button");
     modifyBtn.classList.add("detail-button")
     modifyBtn.textContent = "✏️ 편집";
@@ -82,7 +82,7 @@ onSnapshot(q,(querySnapshot) => {
       const textContainer = newProfile.querySelector(".detail-text-container");
       const subtitleSpans = textContainer.querySelectorAll(".subtitle");
     
-      //이미지 수정 버튼 생성
+      //하단 이미지 수정 버튼 생성
       const imgModifyBtn = document.createElement("input");
       imgModifyBtn.type = "file";
       imgModifyBtn.accept="image/*";
@@ -115,7 +115,7 @@ onSnapshot(q,(querySnapshot) => {
         }
       });
 
-      //이미지 삭제 버튼 생성 및 동작
+      //하단 이미지 삭제 버튼 생성 및 동작
       const imgDeleteBtn = document.createElement("button");
       imgDeleteBtn.innerText = "Delete Image";
       imgDeleteBtn.setAttribute("id","btn__img-delete");

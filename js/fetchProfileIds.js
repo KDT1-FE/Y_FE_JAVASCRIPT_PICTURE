@@ -3,7 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getFirestore, collection, getDocs} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 //profile collection 내에서 문서들 id 가져오기
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
   authDomain: "photo-management-service.firebaseapp.com",
