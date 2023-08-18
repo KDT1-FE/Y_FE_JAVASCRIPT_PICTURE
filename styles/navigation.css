@@ -21,9 +21,6 @@
 }
 
 .navbar-anchor-wrapper{
-    display: flex;
-    justify-content: space-between;
-    width: 11rem;
     font-size: 1rem;
 }
 
