@@ -3,5 +3,4 @@ setTimeout(() => {
     if (loadingOverlay) {
       loadingOverlay.style.display = 'none';
     }
-
-  }, 1000); 
+}, 1000); 

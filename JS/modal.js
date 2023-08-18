@@ -3,12 +3,12 @@ const closeModalButton = document.querySelector(".md-close-modal-button");
 const createModal = document.querySelector(".md-create-modal");
 
 function showModal() {
-    createModal.style.display = "block";
-  }
-  
-  function hideModal() {
-    createModal.style.display = "none";   
-  }
+  createModal.style.display = "block";
+}
+
+function hideModal() {
+  createModal.style.display = "none";   
+}
 
 showModalDiv.addEventListener("click", showModal);
 closeModalButton.addEventListener("click", hideModal);

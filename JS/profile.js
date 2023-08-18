@@ -1,4 +1,5 @@
 import '../CSS/profile.css';
+
 // URL 매개변수 파싱 함수
 function parseUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -11,7 +12,9 @@ function parseUrlParameters() {
     };
     return data;
 }
+
 const S3_BUCKET = 'y-fe-javascript-picture';
+
 // 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
     const profileData = parseUrlParameters();
