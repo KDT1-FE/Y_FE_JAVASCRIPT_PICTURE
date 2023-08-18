@@ -17,7 +17,7 @@ module.exports = {
   // 번들링 js 파일이 저장될 경로와 이름 지정
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "assets", "js"),
+    path: path.resolve(__dirname, "public", "js"),
     clean: true
   },
   watch: true,

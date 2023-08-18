@@ -1,4 +1,5 @@
 const load = document.querySelector("#load");
+load.style.height = document.documentElement.clientHeight;
 
 window.addEventListener("load", fadeOut);
 
