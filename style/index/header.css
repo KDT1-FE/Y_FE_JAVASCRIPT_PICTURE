@@ -43,3 +43,8 @@ header {
     font-size: 14px; /* 텍스트 크기 조절 */
     padding: 10px; /* 텍스트와 입력 상자의 경계 사이의 여백 조절 */
 }
+
+.main-header-text2 {
+    text-decoration: none;
+    color: black;
+}
