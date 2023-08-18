@@ -1,0 +1,115 @@
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  justify-content: center;
+  align-items: center;
+
+  width: 80vw;
+  height: 50vh;
+  max-width: 850px;
+  max-height: 800px;
+
+  margin: auto;
+  padding: 20px;
+}
+
+.profile__image {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: solid 5px black;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.profile__contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+
+  font-size: 20px;
+}
+
+.profile__button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button--modify {
+  margin-right: 5px;
+}
+
+.button {
+  width: 50px;
+  height: 30px;
+
+  border-radius: 20%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.info {
+  margin: 10px 0;
+  font-size: 30px;
+}
+
+.delete-field {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+  .info {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .profile-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+
+    width: 80vw;
+    min-width: 300px;
+    min-height: 500px;
+  }
+  .profile__image {
+    min-width: 260px;
+    min-height: 260px;
+  }
+  .profile__contents {
+    min-width: 260px;
+    min-height: 260px;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    margin: 10px 0 0 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .info {
+    font-size: 25px;
+  }
+}

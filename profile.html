@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/components/profile.css" />
+  </head>
+  <body>
+    <header class="header-wrapper">
+      <img src="./assets/images/peanuts-logo.png" alt="PEANUTS" class="header-image" />
+    </header>
+    <main class="profile-container sketchy">
+      <div class="profile__image"></div>
+      <div class="profile__contents">
+        <div class="profile__button">
+          <button class="button--modify button">수정</button>
+          <button class="button--delete button">삭제</button>
+        </div>
+        <div class="profile__info peanuts">
+          <div class="info__name info"></div>
+          <div class="info__appearance info"></div>
+          <div class="info__interests info"></div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="modal--background">
+      <div class="modal--window sketchy">
+        <form action="" class="update"></form>
+      </div>
+    </aside>
+    <footer class="footer-wrapper">
+      <div class="footer-image"></div>
+    </footer>
+
+    <script type="module" src="./js/profile.js"></script>
+    <script type="module" src="./js/update.js"></script>
+  </body>
+</html>

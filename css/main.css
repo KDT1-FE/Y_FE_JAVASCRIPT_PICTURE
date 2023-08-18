@@ -1,0 +1,101 @@
+@import './components/modal.css';
+
+@font-face {
+  font-family: 'PEANUTS';
+  src: url(../assets/fonts/peanuts.woff2) format('woff2'), url(..//assets/fonts/peanuts.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'ACCchildren';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112-2@1.0/ACCchildrenheartOTF-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'PEANUTS', 'ACCchildren', sans-serif;
+}
+
+html {
+  font-size: 1vw;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  background-color: #f4df4f;
+}
+
+.peanuts {
+  font-family: 'PEANUTS', 'ACCchildren', sans-serif;
+}
+
+.header-wrapper {
+  width: 80vw;
+  height: 25vh;
+  margin: auto;
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sketchy {
+  position: relative;
+
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+
+  background: #fff;
+}
+
+.sketchy::before {
+  content: '';
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+  border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+  z-index: -1;
+}
+
+.footer-wrapper {
+  width: 100vw;
+  height: 20vh;
+  margin-top: 50px;
+}
+
+.footer-image {
+  width: 100%;
+  height: 100%;
+
+  background-image: url(../assets/images/footer-image.png);
+  background-size: contain;
+}
+
+@media (max-width: 1200px) {
+  .button--enroll {
+    width: 280px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .button--enroll {
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+  }
+}

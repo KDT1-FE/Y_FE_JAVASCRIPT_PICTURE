@@ -1,0 +1,41 @@
+.character-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 80%;
+  margin: 20px auto;
+}
+
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.character {
+  width: 260px;
+  height: 280px;
+  margin: 40px;
+}
+
+.character__thumbnail {
+  width: 260px;
+  height: 260px;
+}
+
+.character__name {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.button--add {
+  width: 350px;
+  height: 50px;
+  font-size: 25px;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
