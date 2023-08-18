@@ -1,0 +1,70 @@
+/* image box CSS */
+.profile_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 23rem;
+  gap: 1rem;
+}
+
+/* js요소로 만들어준 Container */
+.player_profileContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: 23rem;
+  height: 23rem;
+  border: 1px solid #d5d3da;
+  border-radius: 10px;
+
+  margin-top: 2rem;
+  transition: all 3s;
+}
+
+/* Image CSS */
+.player_profilePhoto {
+  display: block;
+  object-fit: cover;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 3s;
+  backface-visibility: hidden;
+}
+
+.player_profileContainer:hover {
+  mix-blend-mode: color-dodge;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  width: 100%;
+  height: auto;
+  text-align: center;
+
+  transition: 0.5s ease;
+  opacity: 0;
+  transform: translate(0%, -450%);
+  cursor: pointer;
+}
+
+.player_profileContainer:hover .overlay {
+  opacity: 1;
+}
+
+.player_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #d5d3da;
+  mix-blend-mode: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
