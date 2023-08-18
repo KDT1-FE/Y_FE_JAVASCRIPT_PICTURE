@@ -215,7 +215,7 @@ async function onEditEmployee(employeeInfo) {
 
     // 새로운 위치에 추가
     await insertEmployeeInfoAtIndex(updatedEmployeeInfo, currentIndex);
-
+    location.reload()
 
   } catch (error) {
     console.error('Failed to update employee info', error);

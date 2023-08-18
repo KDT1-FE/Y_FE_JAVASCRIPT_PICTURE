@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailElement = document.getElementById('pf-email');
     const phoneElement = document.getElementById('pf-phone');
     const categoryElement = document.getElementById('pf-category');
-    const profileImageElement = document.getElementById('profileImage');
+    const profileImageElement = document.getElementById('pf-profileImage');
 
     // 데이터 화면에 표시
     nameElement.textContent = profileData.name;

@@ -1,4 +1,3 @@
-// 모달
 const showModalDiv = document.getElementById("addEmployeeBtn");
 const closeModalButton = document.querySelector(".md-close-modal-button");
 const createModal = document.querySelector(".md-create-modal");
