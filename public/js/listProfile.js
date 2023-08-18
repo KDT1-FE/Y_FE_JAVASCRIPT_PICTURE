@@ -28,7 +28,7 @@ async function displayProfile() {
 }
 
 function redirectToDetail(id) {
-  window.location.href = `./detail.html?id=${id}`;
+  window.location.href = `./html/detail.html?id=${id}`;
 }
 
 // 페이지 완전 로드시, 함수 호출하여 초기 선수 목록 자동 표시.

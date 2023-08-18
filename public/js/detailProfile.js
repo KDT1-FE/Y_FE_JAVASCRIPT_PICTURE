@@ -67,7 +67,7 @@ editHandle.addEventListener("click", () => {
     })
     .then(() => {
       alert("변경 완료");
-      window.location.href = `./detail.html?id=${id}`;
+      window.location.href = `../html/detail.html?id=${id}`;
     })
     .catch((err) => {
       console.log(err);
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .delete()
       .then(() => {
         alert("수정 완료");
-        window.location.href = "/html/index.html";
+        window.location.href = "../index.html";
       })
       .catch((err) => {
         console.log(err);

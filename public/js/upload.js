@@ -38,7 +38,7 @@ registerBtn.addEventListener("click", () => {
     })
     .then((res) => {
       alert("등록 완료 했습니다.");
-      window.location.href = "/html/index.html";
+      window.location.href = "../index.html";
       console.log(res);
     })
     .catch((err) => {
