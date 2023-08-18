@@ -15,7 +15,23 @@ body {
     flex-direction: row;
     overflow: hidden;
 }
-
+.mainBg{
+    position: absolute;
+    background-image: url(../image/historyBg.png);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+video {
+    position: absolute;
+    z-index: -2;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 
 /****** Nav ******/
 /* nav {
@@ -40,6 +56,7 @@ nav .menubarTop {
 }
 nav .menubarTop .logo {
     width: 80%;
+    margin: 10px;
     cursor: url(../icon/cursor50-brown-pointer.png),pointer;
 }
 nav .menubarMid {
@@ -71,75 +88,38 @@ nav .menubarBot {
     display: flex;
     flex-direction: row;
 }
+@media (max-width: 380px) {
+    nav .menubar {
+      min-width: 150px;
+    }
+}
 
 /******Main******/
 main .container{
-    width: 80vw;
-    height: 100vh;
-}
-main .container video{
-    position: absolute;
-    z-index: -1;
-    object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
 }
 main .historyBox {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    padding: 10px;
-    background-image: url(../image/historyBg.png);
-    background-size: contain; 
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 80%;
+    box-sizing: border-box;
 }
 main .historyBox ul {
     list-style: none;
-    padding: 66px;
-    text-align: center; 
-    width: 30em;
-    min-width: 300px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-inline-start: 0;
 }
-main .historyBox li {
-    padding: 10px;
-}
-main .historyBox p {
-    margin-block-start: 8px;
-    margin-block-end: 8px;
-}
-@media (min-width: 751px) and (max-width: 860px) {
-    main .historyBox ul {
-        padding: 70px;
-    }
-    main .historyBox li {
-        padding: 2px;
-        margin: 0;        
-    }
-    main p{
-        margin-block-start: 3px;
-        margin-block-end: 3px;
-    }
-}
-@media (max-width: 750px) {
-    main .historyBox {
-        height: 100%;
-        width: 80%;
-    }
-    main .historyBox ul {
-        font-size: 0.6em;
-        min-width: 240px;
-        margin: 0;
-        padding: 35px;
-    }
-    main .historyBox li {
-        padding: 0;
-        margin: 0;        
-    }
-    main p{
-        margin-block-start: 3px;
-        margin-block-end: 3px;
+@media (max-width: 765px) {
+    main p {
+        font-size: 12px;
+        margin-block-end: 0;
+        margin-block-start: 5px;
     }
 }
 
