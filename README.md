@@ -30,3 +30,7 @@
 </div>
 
 ## ✨ 주요 개발 기능
+
+## ✨ 유저 플로우
+
+<img width="606" alt="user-flow" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/95364951/c6e5c67b-7e86-4ad3-9657-81df20ffd499">
