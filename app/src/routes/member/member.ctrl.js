@@ -5,7 +5,7 @@ const view = {
     res.render('member/memberList');
   },
   newMember: (req, res) => {
-    res.render('member/newMember');
+    res.render('member/registerMember');
   },
 };
 

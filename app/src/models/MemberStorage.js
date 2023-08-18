@@ -12,8 +12,8 @@ class MemberStorage {
     const params = [];
 
     if (keyword) {
-      query += ' WHERE id LIKE ? OR name LIKE ? OR email LIKE ?';
-      params.push(`%${keyword}%`, `%${keyword}%`, `%${keyword}%`);
+      query += ' WHERE id LIKE ? OR name LIKE ?';
+      params.push(`%${keyword}%`, `%${keyword}%`);
     }
 
     query += ' LIMIT ? OFFSET ?';
@@ -39,8 +39,7 @@ class MemberStorage {
 
   static async registerMember(memberInfo) {
     return new Promise((resolve, reject) => {
-      const query =
-        'INSERT INTO members(id, name, email, position) VALUES(?, ?, ?)';
+      const query = 'INSERT INTO members(id, name, position) VALUES(?, ?, ?)';
       const params = [memberInfo.id, memberInfo.name, memberInfo.position];
       db.query(query, params, (err) => {
         if (err) reject(err);
