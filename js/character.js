@@ -3,13 +3,12 @@ import { colRef, getDocs } from '../firebase.js';
 getDocs(colRef)
   .then((snapshot) => {
     snapshot.docs.forEach((doc) => {
-      // console.log(doc.data());
       const $character = document.createElement('a');
       $character.href = `/profile.html?id=${doc.id}`;
-      $character.classList.add('character');
+      $character.classList.add('character', 'sketchy');
 
       const $character__thumbnail = document.createElement('div');
-      $character__thumbnail.classList.add('character__thumbnail', 'sketchy');
+      $character__thumbnail.classList.add('character__thumbnail', 'handy');
       $character__thumbnail.style.backgroundImage = `url(${doc.data().image})`;
       $character__thumbnail.style.backgroundSize = 'cover';
       $character__thumbnail.style.backgroundRepeat = 'no-repeat';
