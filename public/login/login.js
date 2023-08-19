@@ -22,7 +22,6 @@ joinBtn.addEventListener("click", function () {
         .then(() => {
           window.location.reload(true);
           alert("회원가입이 완료되었습니다.:)");
-
           // console.log(result);
           // console.log(result.user);
           result.user.updateProfile({ displayName: joinName });
@@ -41,12 +40,9 @@ loginBtn.addEventListener("click", function () {
     .then((result) => {
       alert("로그인 완료!");
       window.location.href = "/index.html";
-      document.querySelector(".user-welcome").classList.remove("none");
-      document.querySelector(".logout").classList.remove("none");
-      document.querySelector(".login").classList.add("none");
     }).catch(function(error) {
       console.error("Error removing file.", error);
-      // alert('로그인에 실패하였습니다. \n '+error.message)
+      alert('로그인에 실패하였습니다. \n '+error.message)
   });
 });
 
