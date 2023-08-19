@@ -24265,7 +24265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/esm/index.esm.js");
 
 
-// web app's Firebase configuration
+// Firebase web app 구성(configuration)
 const firebaseConfig = {
   apiKey: "AIzaSyDzNDsZIB_wG7T_c7MmyNjIIjs3pXSqH6M",
   authDomain: "zero-car.firebaseapp.com",

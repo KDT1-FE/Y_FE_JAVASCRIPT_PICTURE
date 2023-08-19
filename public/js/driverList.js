@@ -24265,7 +24265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/esm/index.esm.js");
 
 
-// web app's Firebase configuration
+// Firebase web app 구성(configuration)
 const firebaseConfig = {
   apiKey: "AIzaSyDzNDsZIB_wG7T_c7MmyNjIIjs3pXSqH6M",
   authDomain: "zero-car.firebaseapp.com",
@@ -24305,15 +24305,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ changeTrBackgroundColor)
 /* harmony export */ });
+// 보험자 리스트 페이지에서
+// 체크 박스가 눌린 리스트의 배경 색상을 변경하는 Component
 function changeTrBackgroundColor(event) {
   const checkBox = event.target;
+
+  // 선택 요소를 잘 할당받았을 때만 배경 색상 변경
   if (checkBox) {
     const driverID = checkBox.className;
-    const tr = document.querySelector(`#${driverID}`);
+    const driverTrow = document.getElementById(`${driverID}`);
     if (checkBox.checked) {
-      tr.style.backgroundColor = "rgba(79, 86, 101, 0.671)";
+      driverTrow.style.backgroundColor = "rgba(79, 86, 101, 0.671)";
     } else {
-      tr.style.backgroundColor = "transparent";
+      driverTrow.style.backgroundColor = "transparent";
     }
   }
 }
