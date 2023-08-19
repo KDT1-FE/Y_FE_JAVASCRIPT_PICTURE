@@ -1,4 +1,5 @@
-import { createData, updateData } from '../firebase/data.js';
+import { createData, updateData, setData } from '../firebase/data.js';
+import { cardList } from '../main.js';
 
 export default class SaveButton {
   constructor(type, id) {
@@ -13,12 +14,16 @@ export default class SaveButton {
 
     // 새로 생성
     if (this.type === 'create') {
-      this.el.addEventListener('click', () => {
+      this.el.addEventListener('click', async () => {
         const msg = checkInfo();
         const newInfo = setInfo();
         if (msg === '성공') {
           alert(`${newInfo.name}을(를) 새로운 멤버로 등록했어요!`);
           createData(newInfo);
+
+          const newData = await setNewData();
+          cardList.update(newData);
+
           closeModal();
         } else {
           alert(msg);
@@ -28,12 +33,17 @@ export default class SaveButton {
 
     // 업데이트
     if (this.type === 'update') {
-      this.el.addEventListener('click', () => {
+      this.el.addEventListener('click', async () => {
         const msg = checkInfo();
         const newInfo = setInfo();
+
         if (msg === '성공') {
           alert(`${newInfo.name}의 정보를 성공적으로 변경하였어요.`);
           updateData(this.id, newInfo);
+
+          const newData = await setNewData();
+          cardList.update(newData);
+
           closeModal();
         } else {
           alert(msg);
@@ -93,4 +103,12 @@ const setInfo = () => {
 const closeModal = () => {
   const modal = document.querySelector('.modal');
   modal.remove();
+};
+
+const setNewData = async () => {
+  const newData = [];
+  await setData().then((res) => {
+    res.forEach((el) => newData.push(el));
+  });
+  return newData;
 };

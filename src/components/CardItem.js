@@ -1,5 +1,7 @@
 import Modal from './Modal.js';
-import { deleteData } from '../firebase/data.js';
+import { deleteData, setData } from '../firebase/data.js';
+import CardList from './CardList.js';
+import { cardList } from '../main.js';
 
 export default class CardItem {
   constructor(info = {}) {
@@ -46,13 +48,23 @@ export default class CardItem {
             close
         </span>`;
 
-    deleteBtnEl.addEventListener('click', (e) => {
+    deleteBtnEl.addEventListener('click', async (e) => {
       e.stopPropagation();
       if (confirm(`${name}을 정말 삭제하시겠어요?`)) {
         deleteData(this.id);
+        const newData = await setNewData();
+        cardList.update(newData);
       }
     });
 
     this.el.append(deleteBtnEl);
   }
 }
+
+const setNewData = async () => {
+  const newData = [];
+  await setData().then((res) => {
+    res.forEach((el) => newData.push(el));
+  });
+  return newData;
+};

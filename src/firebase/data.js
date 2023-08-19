@@ -8,6 +8,7 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
+  query,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 import {
   getStorage,
@@ -42,7 +43,15 @@ export const db = getFirestore(app);
 
 // 데이터 읽어오기
 const storage = getStorage();
-export const querySnapshot = await getDocs(collection(db, 'member'));
+
+export const setData = async () => {
+  const data = [];
+  const querySnapshot = await getDocs(collection(db, 'member'));
+  querySnapshot.forEach((el) => {
+    data.push({ data: el.data(), id: el.id });
+  });
+  return data;
+};
 
 // 이미지 업로드
 export const uploadImage = (name, file, el) => {

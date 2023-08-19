@@ -1,25 +1,11 @@
-import {
-  query,
-  collection,
-  onSnapshot,
-} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
-import { db } from '../firebase/data.js';
 import CardItem from './CardItem.js';
 import Empty from './Empty.js';
 
 export default class CardList {
-  constructor() {
+  constructor(data) {
     this.el = document.createElement('ul');
-    this.data = [];
+    this.data = data;
     this.render();
-
-    onSnapshot(query(collection(db, 'member')), (snapshot) => {
-      this.data = [];
-      snapshot.forEach((element) => {
-        this.data.push({ data: element.data(), id: element.id });
-      });
-      this.render();
-    });
   }
 
   render() {
@@ -30,5 +16,10 @@ export default class CardList {
     } else {
       this.el.append(...this.data.map((item) => new CardItem(item).el));
     }
+  }
+
+  update(data) {
+    this.data = data;
+    this.render();
   }
 }
