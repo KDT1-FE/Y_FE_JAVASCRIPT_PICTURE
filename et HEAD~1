@@ -1,0 +1,113 @@
+[33mcommit 4808e2bd550a4a6092a626020846f74c45adb156[m[33m ([m[1;36mHEAD -> [m[1;32mKDT0_YunJiYoung[m[33m)[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 18 19:36:47 2023 +0900
+
+    Feat: Add loading page
+
+[33mcommit 7237b5be8b68fa40f023fcaf80bf1540e7c0f6a4[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 18 15:12:21 2023 +0900
+
+    Docs:Add firebase.js
+
+[33mcommit 5931373c1aa1cb86d695c47c20abed21223c3529[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 18 14:40:25 2023 +0900
+
+    Feat: Preview, login check
+
+[33mcommit 90d83226271c8f20ce973ee81f21599e09b15253[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Sat Aug 12 17:43:58 2023 +0900
+
+    Feat: DB delete
+
+[33mcommit 1aeb1d30bfce690babb9755d822b4638fc65cbbd[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Sat Aug 12 16:36:34 2023 +0900
+
+    Docs: Change field name
+
+[33mcommit cc9c04f599ecb16b401c3d52cdbb927c2afcc5f9[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Sat Aug 12 16:26:42 2023 +0900
+
+    Feat: Add edit page
+
+[33mcommit 8150a30b0800b613a744fb5a4b0fb1d295b6d445[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 11 19:33:01 2023 +0900
+
+    Feat: Add DB_uid, DB_username
+
+[33mcommit 6113e2a8fd2d51f6721e727529d95f9b5185e8c6[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 11 19:31:25 2023 +0900
+
+    fix: Modify detail path(href)
+
+[33mcommit ad58f9320fc118adb96fd2ef86793144abcd30a6[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 11 19:14:28 2023 +0900
+
+    Feat: Add upload permission
+
+[33mcommit 6ab7483b6516b430e260b8ec9631a847c3fdba17[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Fri Aug 11 18:27:35 2023 +0900
+
+    Feat: Add onAuthStateChanged
+
+[33mcommit 5a28ac19734d92df7bb00dd7187299d1e2cbf24f[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Thu Aug 10 17:59:55 2023 +0900
+
+    Design: Modify layout(index,upload)
+
+[33mcommit d831dfd48b61845e469442557bae59e763bd243a[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Thu Aug 10 17:57:06 2023 +0900
+
+    Fix: Delete form tag
+
+[33mcommit ec35453339b3b3b491cb4821a7ff4e8173391296[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Thu Aug 10 17:50:31 2023 +0900
+
+    Feat: Add detail page
+
+[33mcommit a491878cb971f6c21454b2017a2304a82fe25f62[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Thu Aug 10 13:09:29 2023 +0900
+
+    Correct: close section tag
+
+[33mcommit 3b85946efe04a52a1f85b739e29bae75e66b0628[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Thu Aug 10 12:58:30 2023 +0900
+
+    Feat: Add upload & login
+
+[33mcommit 2798c60d88b48254cefa3088b0b560c085c7f608[m
+Author: developer-jyyun <developer.jyyun@gmail.com>
+Date:   Wed Aug 9 22:26:46 2023 +0900
+
+    Feat: Add index
+
+[33mcommit 6eb0917c558a06852aef719ab8bb7cbd5067629d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: DT - Career <96465306+DT-Career@users.noreply.github.com>
+Date:   Tue Aug 8 17:31:50 2023 +0900
+
+    Update README.md
+
+[33mcommit 61a894eb885fd617a3218008af46cd415871e1b1[m
+Author: John Ahn <smileajw1004@gmail.com>
+Date:   Tue Aug 8 12:23:57 2023 +0900
+
+    Update README.md
+
+[33mcommit acc67141cdce095352aa4dc28e0e6e1dbd64cdf8[m
+Author: John Ahn <smileajw1004@gmail.com>
+Date:   Tue Aug 8 12:12:26 2023 +0900
+
+    Initial commit

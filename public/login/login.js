@@ -46,7 +46,7 @@ loginBtn.addEventListener("click", function () {
       document.querySelector(".login").classList.add("none");
     }).catch(function(error) {
       console.error("Error removing file.", error);
-      alert('로그인에 실패하였습니다. \n '+error.message)
+      // alert('로그인에 실패하였습니다. \n '+error.message)
   });
 });
 
