@@ -9,7 +9,7 @@ window.onload = function () {
     
     },1200);
 
-    console.log(loading)
+    // console.log(loading) 
 }
     
 

@@ -59,10 +59,7 @@ db.collection("member")
         if (entry.intersectionRatio > 0) {
           entry.target.classList.add("active");
         }
-        // 아니면 active 클래스 제거
-        else {
-          entry.target.classList.remove("active");
-        }
+    
       });
     });
 
