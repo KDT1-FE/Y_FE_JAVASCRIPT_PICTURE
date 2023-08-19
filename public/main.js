@@ -14,7 +14,6 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const storage = firebase.storage();
-const randomNum = Math.round(Math.random() * 9999);
 
 //url query string에 있던 자료를 object로 변환
 const queryString = new URLSearchParams(window.location.search);

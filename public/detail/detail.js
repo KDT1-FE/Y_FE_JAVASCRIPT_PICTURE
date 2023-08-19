@@ -4,12 +4,10 @@ db.collection("member")
   .then((result) => {
     console.log(result.data());
 
-    var templateDetail = `
+    const templateDetail = `
         <dl class="profile">       
             <div class="col-1">            
-                <dt class="thumbnail" style="background-image: url(${
-                  result.data().img
-                })"></dt>  
+                <dt class="thumbnail" style="background-image: url(${result.data().img})"></dt>  
             </div>
             <div class="col-2">            
                 <dt class="name"><b>이름 :</b> ${result.data().name}</dt>
@@ -18,9 +16,7 @@ db.collection("member")
                 <dd><b>내선번호</b> : ${result.data().ext}</dd>
                 <dd><b>연락처</b> : ${result.data().phone}</dd>
                 <dd><b>이메일</b> : ${result.data().email}</dd>
-                <dd><b>기타</b> : ${
-                  result.data().memo
-                }</dd>                                  
+                <dd><b>기타</b> : ${result.data().memo}</dd>                                  
             </div>
         </dl>                
         `;

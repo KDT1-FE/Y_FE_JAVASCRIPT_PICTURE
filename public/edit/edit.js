@@ -29,6 +29,7 @@ db.collection("member")
     editBtn.addEventListener("click", function () {
       const editImg = document.querySelector("#image").files[0];
       const imgName = document.querySelector("#image").files.name;
+      const randomNum = Math.round(Math.random() * 9999);
       const storageRef = storage.ref();
       const editImgPath = storageRef.child("image/" + randomNum + imgName);
       const updateImg = editImgPath.put(editImg);

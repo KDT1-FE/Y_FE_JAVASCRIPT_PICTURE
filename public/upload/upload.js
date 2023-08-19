@@ -56,10 +56,9 @@ document.getElementById("send").addEventListener("click", function () {
             .add(saveData)
             .then((result) => {
               console.log(result)
-              window.location.href =
-              "/detail/detail.html?id=" + saveData.uid;
-              // "/detail/detail.html?id=" + queryString.get("id");
-              // window.location.href = "/index.html";
+              // window.location.href =
+              // "/detail/detail.html?id=" + saveData.uid;
+              window.location.href = "/index.html";
               console.log(result);
             })
             .catch((err) => {
