@@ -84,13 +84,15 @@ const setInfo = () => {
   let infoTxt = document.querySelectorAll('.info_txt > *');
   infoTxt.forEach((input) => {
     if (input.name === 'phone') {
-      if (input.value.length == 11) {
+      if (/^01\d{9}$/.test(input.value)) {
         newInfo[input.name] =
           input.value.substring(0, 3) +
           '-' +
           input.value.substring(3, 7) +
           '-' +
           input.value.substring(7);
+      } else if (/^01\d{1}-\d{4}-\d{4}$/.test(input.value)) {
+        newInfo[input.name] = input.value;
       }
     } else {
       newInfo[input.name] = input.value;
