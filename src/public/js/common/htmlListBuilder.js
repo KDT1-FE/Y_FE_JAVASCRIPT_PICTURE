@@ -62,7 +62,7 @@ export function buildHTMLList(member) {
   const button = document.createElement('button')
   button.type = 'button'
   button.id = 'openModal-btn'
-  button.className = 'btn btn-sm btn-pink members__modal-btn update-btn tooltipitem'
+  button.className = 'btn btn-sm update-btn tooltipitem'
   button.setAttribute('data-bs-toggle', 'modal')
   button.setAttribute('data-bs-target', '#editModal')
   button.innerHTML = '<i class="fa-solid fa-gear"></i>'

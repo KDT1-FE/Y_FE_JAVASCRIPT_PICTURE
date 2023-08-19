@@ -9,10 +9,12 @@ import { dataChangeHandler } from '../../js/common/dataChangeHandler'
 import { handleBtn, handleRemoveAction } from '../../js/common/btnEventHandler'
 import { initModal, closeModal } from '../../js/common/modalUtils'
 import { setupImagePreview, handlePreviewImg, clearPreviewImage } from '../../js/common/previewimg'
+import { formValidation } from '../../js/common/validationUtils'
 import { enableForm, readonlyForm } from '../../js/common/formUtils'
 import { initDetail } from '../../js/common/detail'
 
 import './members.scss'
+import './form.scss'
 
 export async function initMembers() {
   initModal(resetForm)
@@ -45,16 +47,27 @@ function initUpload() {
     imageUrlInfo = handlePreviewImg(event, previewImage) // 사진 등록
   })
 
-  const uploadBtn = document.querySelector('.up-btn')
+  // 유효성 검사 설정
+  let isFormValid = ''
+  formValidation('#myForm', (isValid) => {
+    isFormValid = isValid
+  })
 
-  uploadBtn.addEventListener('click', async (event) => {
+  myForm.addEventListener('submit', async (event) => {
     event.preventDefault()
+
+    if (!isFormValid) {
+      console.log('유효성 검사 통과못함')
+      return
+    }
 
     try {
       await uploadMember(myForm, imageInput, imageUrlInfo)
-
       // 제출 후 모달 닫기
       closeModal()
+      location.reload()
+      location.replace(location.href)
+      location.href = location.href
     } catch (error) {
       console.error('Error during form submission: ', error)
     }
@@ -96,15 +109,29 @@ function initUpdate() {
 
     console.log(imgSrc)
 
-    const updateBtn = document.querySelector('.cg-btn')
-    updateBtn.addEventListener('click', async (event) => {
+    // const updateBtn = document.querySelector('.cg-btn')
+    editForm.addEventListener('submit', async (event) => {
       event.preventDefault()
+
+      // 유효성 검사 설정
+      let isFormValid = ''
+      formValidation('#myForm', (isValid) => {
+        isFormValid = isValid
+      })
+
+      if (!isFormValid) {
+        console.log('유효성 검사 통과못함')
+        return
+      }
 
       try {
         await updateMember(memberId, imgSrc, imageInput)
 
         // 제출 후 모달 닫기
         closeModal()
+        location.reload()
+        location.replace(location.href)
+        location.href = location.href
       } catch (error) {
         console.error('Error during form submission: ', error)
       }

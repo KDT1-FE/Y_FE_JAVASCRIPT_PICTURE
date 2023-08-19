@@ -47,7 +47,7 @@
   }
 
   &__image {
-    flex: 0 0 0%;
+    flex-grow: 0 !important;
     padding: 0;
 
     &__wrap {
@@ -72,7 +72,7 @@
   }
 
   &__info {
-    flex: 1 0 0%;
+    flex-grow: 2 !important;
 
     &__wrap {
       display: flex;
@@ -92,7 +92,7 @@
   }
 
   &__position {
-    flex: 0 1 0%;
+    flex: 0 1 0% !important;
 
     &__txt {
       font-size: 0.9rem;

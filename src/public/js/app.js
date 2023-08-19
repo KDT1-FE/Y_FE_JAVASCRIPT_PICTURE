@@ -1,7 +1,5 @@
 import Members from '/src/public/views/members/Members.js'
-
 import { initMembers } from '/src/public/views/members/members.controller.js'
-import {} from '/src/public/views/profile/profile.controller.js'
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
 

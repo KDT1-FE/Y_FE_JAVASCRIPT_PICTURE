@@ -10,7 +10,6 @@ export async function updateMember(memberId, imgSrc, imageInput) {
 
   // 업데이트 로직 구현
   try {
-    await removeStorage(imgSrc)
     const imageUrlFromStorage = await uploadStorage(imageInput.files[0])
     await updateDB(memberId, nameData, emailData, teamData, positionData, imageUrlFromStorage)
 
