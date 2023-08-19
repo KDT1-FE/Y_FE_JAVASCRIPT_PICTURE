@@ -35,7 +35,7 @@ PW: 123456
 - 로딩페이지 구현
 
 ## [흐름]
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+![userflow](https://firebasestorage.googleapis.com/v0/b/javascript-picture.appspot.com/o/image%2Fuserflow.JPG?alt=media&token=1164b946-69e6-411b-ad31-93facf55cbab)
 
 
 ## [필요한 작업]
