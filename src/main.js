@@ -10,9 +10,9 @@ const initData = [];
 await setData().then((res) => {
   res.forEach((el) => initData.push(el));
 });
+export const cardList = new CardList(initData);
 
 const header = new Header().el;
-export const cardList = new CardList(initData);
 const body = cardList.el;
 const footer = new Footer().el;
 
