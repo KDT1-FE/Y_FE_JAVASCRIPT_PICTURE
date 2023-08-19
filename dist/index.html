@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    
+    <script defer type="module" src="bundle.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <div class="staff-managing-page" id="/main">
+
+        <header>
+            <h1>직원 관리</h1>
+        </header>
+
+        <div class="btn-line">
+            <a href="#/addstaff" class="add-btn" id="add-btn">임직원 등록</a>
+        </div>
+
+
+        <div class="staff-list" id="staff-list">
+
+            <div class="list-head">
+                
+                <div class="list-category">
+                    <div>프로필 사진</div>
+                    <div>이름</div>
+                    <div>이메일</div>
+                    <div>휴대폰 번호</div>
+                    <div>구분</div>
+                    <div>비고</div>
+                </div>
+                
+            </div>
+
+            <div class="list">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="input-page" id="/addstaff">
+        <div class="title">
+            <h1>임직원 등록하기</h1>
+        </div>
+        <div class="input-form">
+            <div class="preview"></div>
+            <form id="add-page" class="add-page">
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                    <label for="name">이름:</label>
+                    <input type="text" class="name" size="15" required>
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+                    <label for="email">e-mail:</label>
+                    <input type="text" class="email" size="25" required>
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        phone_iphone
+                    </span>
+                    <label for="number">휴대폰 번호:</label>
+                    <input type="text" class="number" size="20" required >
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        badge
+                    </span>
+                    <label for="position">직책:</label>
+                    <input type="option" class="position" size="10" required>
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        image
+                    </span>
+                    <label for="image">사진:</label>
+                    <input 
+                        type="file" 
+                        class="image" 
+                        accept="image/png, image/jpeg" required>
+                </div>
+                <div class="add-page-btn">
+                    <button id="submit" id="submit" class="submit-btn">등록하기</button>
+                    <a href="#/main" class="back-btn">리스트로 가기</a>
+                </div>     
+            </form>
+        </div>
+
+    </div> 
+
+
+
+    
+    <div class="edit-page" id="/editpage">
+        <div class="title">
+            <h1>직원 정보 수정하기</h1>
+        </div>
+        <div class="input-form">
+            <div class="preview"></div>
+            <form id="edit-form" class="edit-form">
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                    <label for="name">이름:</label>
+                    <input type="text" id="edit-name" class="name" size="15" >
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+                    <label for="email">e-mail:</label>
+                    <input type="email" id="edit-email" class="email" size="25" >
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        phone_iphone
+                    </span>
+                    <label for="number">휴대폰 번호:</label>
+                    <input type="text" id="edit-number" class="number" size="20" >
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        badge
+                    </span>
+                    <label for="position">직책:</label>
+                    <input type="option" id="edit-position" class="position" size="10" >
+                </div>
+                <div class="input-box">
+                    <span class="material-symbols-outlined">
+                        image
+                    </span>
+                    <label for="image">사진:</label>
+                    <input 
+                        type="file" 
+                        class="image" id="edit-image"
+                        accept="image/png, image/jpeg">
+                </div>
+                <div class="add-page-btn">
+                    <button id="edit-submit" class="submit-btn">수정하기</button>
+                    <a href="#/main" class="back-btn">리스트로 가기</a>
+                </div>     
+            </form>
+        </div>
+
+    </div> 
+
+
+
+    <div class="detail-profile" id="/detailprofile">
+        <div class="title">
+            <h1>직원 프로필</h1>
+        </div>
+
+        <div class="staff-profile">
+            <div class="profile-image">
+                <img class="detail-image" alt="">
+            </div>
+            <div class="profile-info">
+                <div class="detail-box">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                    <div class="profile-name">
+                    </div>
+                </div>
+                <div class="detail-box">
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+                    <div class="profile-email">
+                    </div>
+                </div>
+                <div class="detail-box">
+                    <span class="material-symbols-outlined">
+                        phone_iphone
+                    </span>
+                    <div class="profile-number">
+                    </div>
+                </div>
+                <div class="detail-box">
+                    <span class="material-symbols-outlined">
+                        badge
+                    </span>
+                    <div class="profile-position">
+                    </div>
+                </div>
+                <div class="add-page-btn">
+                    <a href="#/main" class="back-btn">리스트로 가기</a>
+                    <a href="#/editpage" class="back-btn">수정하기</a>
+                </div>
+            </div>
+        </div>
+   
+
+    </div>
+
+
+</body>
+</html>
