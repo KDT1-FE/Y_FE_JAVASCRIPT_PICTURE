@@ -1,14 +1,17 @@
+// 보험자 리스트 페이지에서
+// 체크 박스가 눌린 리스트의 배경 색상을 변경하는 Component
 export default function changeTrBackgroundColor(event) {
   const checkBox = event.target;
 
+  // 선택 요소를 잘 할당받았을 때만 배경 색상 변경
   if (checkBox) {
     const driverID = checkBox.className;
-    const tr = document.getElementById(`${driverID}`);
+    const driverTrow = document.getElementById(`${driverID}`);
 
     if (checkBox.checked) {
-      tr.style.backgroundColor = "rgba(79, 86, 101, 0.671)";
+      driverTrow.style.backgroundColor = "rgba(79, 86, 101, 0.671)";
     } else {
-      tr.style.backgroundColor = "transparent";
+      driverTrow.style.backgroundColor = "transparent";
     }
   }
 }
