@@ -1,4 +1,5 @@
-// db에 보험자 데이터 등록
+// addDriver 페이지에서
+// db에 보험자 데이터 등록하는 모듈
 import db from "../../firebase/db.js";
 import { collection, addDoc } from "firebase/firestore";
 
