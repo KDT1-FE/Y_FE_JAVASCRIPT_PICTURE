@@ -35,12 +35,8 @@ export default async function addDriverDoc(img, name, birth, product) {
     if (driverId) {
       const redirectUrl = "./driverList.html";
       addDriverImg(driverId, img, redirectUrl);
-    } else {
-      // 오류 처리 로직
-      return;
-    }
+    } else throw "404 페이지로";
   } catch (err) {
-    // 오류 처리 로직
-    // console.log(`Can not add Data: ${err}`);
+    console.log(err);
   }
 }
