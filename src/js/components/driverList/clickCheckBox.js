@@ -3,7 +3,7 @@
 export default function changeTrBackgroundColor(event) {
   const checkBox = event.target;
 
-  // 선택 요소를 잘 할당받았을 때만 배경 색상 변경
+  // 선택 checkBox 요소를 잘 할당받았을 때만 배경 색상 변경
   if (checkBox) {
     const driverID = checkBox.className;
     const driverTrow = document.getElementById(`${driverID}`);
@@ -11,7 +11,7 @@ export default function changeTrBackgroundColor(event) {
     if (checkBox.checked) {
       driverTrow.style.backgroundColor = "rgba(79, 86, 101, 0.671)";
     } else {
-      driverTrow.style.backgroundColor = "transparent";
+      driverTrow.style.removeProperty("background-color");
     }
   }
 }
