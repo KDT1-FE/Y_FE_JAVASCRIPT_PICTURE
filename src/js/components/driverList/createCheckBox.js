@@ -8,7 +8,7 @@ export default function createCheckBox(driverID, driverTr) {
 
   const checkBoxInput = document.createElement("input");
   checkBoxInput.type = "checkbox";
-  checkBoxInput.classList.add(`${driverID.id}`);
+  checkBoxInput.classList.add(`${driverID}`);
 
   // 체크 박스 선택 시 배경 색상이 바뀌는 클릭 이벤트 추가
   checkBoxInput.addEventListener("click", changeTrBackgroundColor);
