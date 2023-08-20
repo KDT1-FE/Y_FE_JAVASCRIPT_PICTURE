@@ -14,23 +14,25 @@ module.exports = {
   mode: "production",
   // .js.map 파일 생성
   devtool: "source-map",
-  // 번들링 js 파일이 저장될 경로와 이름 지정
+  // 번들링 js 파일이 저장될 경로와 이름
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "public", "js"),
     clean: true
   },
+  // 변경 사항 라이브로 반영
   watch: true,
   plugins: [
-    // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
+    // 컴파일된 CSS 파일 저장될 경로와 이름
     new MiniCssExtractPlugin({ filename: "../css/style.css" }),
+    // API key 보안용 .env 사용
     new Dotenv({
       systemvars: true
     })
   ],
   module: {
     rules: [
-      // js 번들링
+      // bable을 활용한 js 번들링
       {
         test: /\.js$/,
         use: {
@@ -41,15 +43,12 @@ module.exports = {
           }
         }
       },
-      // scss 컴파일 및 번들링
+      // scss 컴파일
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         exclude: /node_modules/
       }
     ]
-  },
-  experiments: {
-    topLevelAwait: true
   }
 };
