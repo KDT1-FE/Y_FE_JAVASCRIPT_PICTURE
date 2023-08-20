@@ -1,14 +1,12 @@
-const load = document.querySelector("#load");
-load.style.height = document.documentElement.clientHeight;
+const loadPage = document.getElementById("load");
 
-window.addEventListener("load", fadeOut);
+window.addEventListener("load", fadeOutLoadPage);
 
-function fadeOut() {
+// DOM, CSSOM 및 데이터 등 모두 load 후 2초 뒤로딩 페이지 fadeout
+function fadeOutLoadPage() {
   try {
     setTimeout(() => {
-      if (!load.getAttribute("class", "fadeOut")) {
-        load.style.animation = "fadeOut .6s ease-in-out forwards";
-      }
+      loadPage.style.animation = "fadeOut .6s ease-in-out forwards";
     }, 2000);
   } catch (error) {
     // 재접속 요청 화면
