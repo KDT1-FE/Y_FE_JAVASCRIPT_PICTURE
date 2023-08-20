@@ -1,100 +1,47 @@
+// 보험자 리스트 페이지에
+// firebase의 보험자 Collection를 불러와 table Body 요소들을 생성하는 Component
 import db from "../../firebase/db.js";
 import { collection, getDocs } from "firebase/firestore";
 
-import changeTrBackgroundColor from "./clickCheckBox.js";
-
-const driversCollection = await getDocs(collection(db, "drivers"));
+import createCheckBox from "./createCheckBox.js";
+import createDriverDataTr from "./createDriverDataTr.js";
+import createDriverProfileAnc from "./createDriverProfileAnc.js";
 
 try {
+  // firebase의 보험자 Collection 불러오기
+  const driversCollection = await getDocs(collection(db, "drivers"));
+
+  // Collection을 잘 불러왔을 때만 driverDoc create
   if (driversCollection) {
     driversCollection.forEach(driverDoc => {
-      const drivers = document.querySelector("#drivers");
-      const driver = document.createElement("tr");
-      driver.id = `${driverDoc.id}`;
-      driver.classList.add("driver");
+      const driverID = driverDoc.id;
 
-      // 보험자 삭제용 체크 박스 input td 생성
-      const tdCheckBox = document.createElement("td");
-      tdCheckBox.classList.add("driverData", "checkData");
-      const checkBoxInput = document.createElement("input");
-      checkBoxInput.type = "checkbox";
-      checkBoxInput.classList.add(`${driverDoc.id}`);
+      const driversTbody = document.getElementById("drivers");
 
-      checkBoxInput.addEventListener("click", changeTrBackgroundColor);
+      const driverTr = document.createElement("tr");
+      driverTr.id = `${driverID}`;
+      driverTr.classList.add("driver");
 
-      tdCheckBox.append(checkBoxInput);
-      driver.append(tdCheckBox);
+      // Document ID와 driverTr 요소를 잘 할당 했을 때만 요소 creat
+      if (driverID && driverTr) {
+        // 요소 1. 보험자 삭제용 체크 박스 input td create
+        createCheckBox(driverID, driverTr);
 
-      const driverData = driverDoc.data();
-      const driverDataValues = [
-        driverData.imgUrl,
-        driverData.name,
-        driverData.birth,
-        driverData.product,
-        driverData.subsPeriod,
-        driverData.confirm
-      ];
+        // 요소 2~7. 보험자 사진, 이름, 생년월일, 가입 상품, 가입 기간, 심사 여부 td 요소 create
+        createDriverDataTr(driverDoc, driverTr);
 
-      driverDataValues.forEach(driverDataValue => {
-        const td = document.createElement("td");
-        td.classList.add("driverData");
+        // 요소 8. driverProfile Anchor td 요소 create
+        createDriverProfileAnc(driverID, driverTr);
+      } else {
+        throw "404 페이지로";
+      }
 
-        // 보험자 사진 element 생성
-        if (driverDataValue === driverDataValues[0]) {
-          td.setAttribute("align", "center");
-
-          const img = document.createElement("img");
-          img.classList.add("driverImg");
-          img.src = driverDataValue;
-          img.alt = "보험자 사진";
-
-          td.classList.add("largeWidthData");
-
-          td.append(img);
-        }
-        // 보험자 심사 여부 element 생성
-        else if (driverDataValue === false) {
-          const confirmAnc = document.createElement("a");
-          confirmAnc.classList.add("confirmAnc");
-          confirmAnc.setAttribute(
-            "href",
-            `./confirmAccident.html?${driverDoc.id}`
-          );
-          confirmAnc.innerText = "심사하기 →";
-          confirmAnc.style.color = "white";
-          td.classList.add("largeWidthData");
-
-          td.append(confirmAnc);
-        } else if (driverDataValue === driverDataValues[4]) {
-          td.innerText = driverDataValue + " 개월";
-        } else if (driverDataValue === true) {
-          td.innerText = "심사 완료";
-          td.style.color = "orange";
-          td.classList.add("largeWidthData");
-        } else {
-          td.innerText = driverDataValue;
-        }
-
-        driver.append(td);
-      });
-
-      const td = document.createElement("td");
-      td.classList.add("driverData", "largeWidthData");
-      const driverProfileAnc = document.createElement("a");
-      driverProfileAnc.classList.add("driverProfileAnc");
-      driverProfileAnc.setAttribute(
-        "href",
-        `./driverProfile.html?${driverDoc.id}`
-      );
-      driverProfileAnc.innerText = "프로필 →";
-      td.append(driverProfileAnc);
-      driver.append(td);
-      drivers.append(driver);
+      driversTbody.append(driverTr);
     });
   } else {
-    throw "driversCollection이 존재하지 않습니다.";
+    throw "404 페이지로";
   }
 } catch (err) {
   // 에러 처리 로직
-  console.log(`읽기 실패! : ${err}`);
+  console.log("404 페이지로");
 }
