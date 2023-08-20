@@ -25,7 +25,7 @@
 
    - node.js 에서는 CommonJS 문법인 require을 사용하며, webpack은 node.js 환경에서 구동되므로 외부 모듈을 불러올 때 require을 사용해야 합니다.
 
-3. 해결
+3. Solved
 
    ```js
    // webpack.config.js
