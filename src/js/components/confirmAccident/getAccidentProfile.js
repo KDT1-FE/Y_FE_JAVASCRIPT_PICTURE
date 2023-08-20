@@ -1,4 +1,4 @@
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { doc, getDoc } from "firebase/firestore";
 
 // 보험자 firestore ID

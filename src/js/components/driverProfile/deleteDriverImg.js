@@ -1,4 +1,4 @@
-import storage from "../../storage.js";
+import storage from "../../firebase/storage.js";
 import { ref, deleteObject } from "firebase/storage";
 
 export default function deleteDriverImg(imgUrl) {

@@ -1,5 +1,5 @@
 // db에 보험자 데이터 등록
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { collection, addDoc } from "firebase/firestore";
 
 // Input 요소 data 가져오는 모듈

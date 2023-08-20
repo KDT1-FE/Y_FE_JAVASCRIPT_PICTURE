@@ -1,5 +1,5 @@
 // storage에 보험자 이미지 등록
-import storage from "../../storage.js";
+import storage from "../../firebase/storage.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // 동일한 id를 가진 firestore doc에 보험자 이미지 url 업데이트

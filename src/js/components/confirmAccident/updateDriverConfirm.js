@@ -1,5 +1,5 @@
 // db에 보험자 이미지 url 업데이트
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { doc, updateDoc } from "firebase/firestore";
 
 // db에 보험금 지급 여부 업데이트

@@ -1,4 +1,4 @@
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { doc, updateDoc } from "firebase/firestore";
 
 // db에 보험자 이름 업데이트

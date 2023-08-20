@@ -1,4 +1,4 @@
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { doc, getDoc } from "firebase/firestore";
 
 const driverId = document.location.href.split("?")[1];
