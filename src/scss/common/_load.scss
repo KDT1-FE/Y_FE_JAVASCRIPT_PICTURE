@@ -1,0 +1,46 @@
+#load {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $brandColor;
+
+  #load-logo {
+    width: 10rem;
+    height: 10rem;
+
+    margin-bottom: 2rem;
+
+    @include fadeInAni();
+
+    @include tablet {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    @include mobile {
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+
+  #load-title {
+    font-size: 2.5rem;
+
+    @include tablet {
+      font-size: 3.5rem;
+    }
+
+    @include mobile {
+      font-size: 4rem;
+    }
+
+    @include fadeInAni();
+  }
+}
