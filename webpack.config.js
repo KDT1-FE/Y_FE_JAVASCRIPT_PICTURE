@@ -11,6 +11,7 @@ module.exports = {
     driverProfile: "./src/js/driverProfile.js",
     confirmAccident: "./src/js/confirmAccident.js"
   },
+  // 배포 시, 최종 번들링 파일 용량 개선
   mode: "production",
   // .js.map 파일 생성
   devtool: "source-map",
@@ -50,5 +51,12 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
+  },
+  // 번들링 후 asset 및 entrypoint size가 300 KiB 이상 일 때 경고 문구 날리기
+  // default 244 kiB
+  performance: {
+    hints: false,
+    maxEntrypointSize: 300000,
+    maxAssetSize: 300000
   }
 };
