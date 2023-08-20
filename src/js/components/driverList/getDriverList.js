@@ -32,16 +32,12 @@ try {
 
         // 요소 8. driverProfile Anchor td 요소 create
         createDriverProfileAnc(driverID, driverTr);
-      } else {
-        throw "404 페이지로";
-      }
+      } else throw "404 페이지로";
 
       driversTbody.append(driverTr);
     });
-  } else {
-    throw "404 페이지로";
-  }
+  } else throw "404 페이지로";
 } catch (err) {
   // 에러 처리 로직
-  console.log("404 페이지로");
+  console.log(err);
 }
