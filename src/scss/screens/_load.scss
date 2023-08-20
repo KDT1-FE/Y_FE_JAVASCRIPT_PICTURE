@@ -2,26 +2,45 @@
   width: 100vw;
   height: 100vh;
 
-  // display: none 애니메이션 적용을 위한 속성
-  position: absolute;
+  position: fixed;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   background-color: $brandColor;
-}
 
-#load-title {
-  font-size: 3rem;
+  #load-logo {
+    width: 10rem;
+    height: 10rem;
 
-  @include tablet {
-    font-size: 3.5rem;
+    margin-bottom: 2rem;
+
+    @include fadeInAni();
+
+    @include tablet {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    @include mobile {
+      width: 20rem;
+      height: 20rem;
+    }
   }
 
-  @include mobile {
-    font-size: 4rem;
-  }
+  #load-title {
+    font-size: 3rem;
 
-  @include fadeInAni();
+    @include tablet {
+      font-size: 3.5rem;
+    }
+
+    @include mobile {
+      font-size: 4rem;
+    }
+
+    @include fadeInAni();
+  }
 }
