@@ -1,4 +1,4 @@
-import db from "../../db.js";
+import db from "../../firebase/db.js";
 import { collection, getDocs } from "firebase/firestore";
 
 import changeTrBackgroundColor from "./clickCheckBox.js";
@@ -65,6 +65,8 @@ try {
           td.classList.add("largeWidthData");
 
           td.append(confirmAnc);
+        } else if (driverDataValue === driverDataValues[4]) {
+          td.innerText = driverDataValue + " 개월";
         } else if (driverDataValue === true) {
           td.innerText = "심사 완료";
           td.style.color = "orange";
