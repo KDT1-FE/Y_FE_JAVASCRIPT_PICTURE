@@ -4,8 +4,7 @@ body {
   background-color: $brandColor;
 
   color: $white;
-  font-family: sans-serif, Roboto, BlinkMacSystemFont, -apple-system,
-    "Open Sans";
+  font-family: "IBM Plex Sans KR", sans-serif, -apple-system;
 
   &::-webkit-scrollbar {
     display: none;

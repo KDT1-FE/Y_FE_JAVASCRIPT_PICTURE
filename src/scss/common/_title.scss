@@ -4,8 +4,11 @@
 
   padding: 2rem 0 0;
 
-  font-size: 2.2rem;
-  font-weight: 700;
+  font: {
+    size: 2.2rem;
+    family: "Black Han Sans", sans-serif;
+  }
+
   text-align: center;
   line-height: 15rem;
 
@@ -21,6 +24,7 @@
     height: 10rem;
 
     padding: 20rem 0 0;
+
     font-size: 3.5rem;
   }
 }

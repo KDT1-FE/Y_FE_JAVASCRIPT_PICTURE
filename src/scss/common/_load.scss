@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: center;
 
+  font-family: "Black Han Sans", sans-serif;
+
   background-color: $brandColor;
 
   #load-logo {
@@ -42,5 +44,9 @@
     }
 
     @include fadeInAni();
+
+    span {
+      color: $alert;
+    }
   }
 }
