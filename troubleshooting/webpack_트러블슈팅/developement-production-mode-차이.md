@@ -1,5 +1,5 @@
 [webpack mode 설정 (공식 문서)
-](https://velog.io/@lsx2003/import%EC%99%80-require%EC%9D%98-%EC%B0%A8%EC%9D%B4)
+](https://yamoo9.gitbook.io/webpack/webpack/config-webpack-dev-environment/webpack-mode)
 
 1. Trouble
 
