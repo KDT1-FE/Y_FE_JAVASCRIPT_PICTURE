@@ -32,12 +32,8 @@ function getAndCreateDriverData(event) {
       // Input data [driverImg, driverName, driverBirth, insuranceProduct]를 db에 등록
       addDriverDoc(...getInputData());
     } else {
-      const notNumberAlert = document.createElement("p");
-      notNumberAlert.className = "notNumberAlert";
-      notNumberAlert.textContent = "생년월일은 숫자로만 입력해 주세요.";
-      notNumberAlert.style = "text-align: center; color: $alert;";
-
-      addDriverForm.append(notNumberAlert);
+      const submitAlert = document.querySelector(".submitAlert");
+      submitAlert.textContent = "생년월일은 숫자로만 입력해 주세요.";
     }
   } catch (err) {
     console.log(err);

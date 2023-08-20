@@ -17,21 +17,17 @@ export default function addDriverImg(id, img, redirectUrl) {
       // 'driverImgs' storage에 이미지 등록
       const uploadTask = uploadBytesResumable(driverImgsRef, img);
 
+      // 이미지 업로드 현황 보여주기
+      const submitAlert = document.querySelector(".submitAlert");
+
       // 업로드 상황(progress, paused, running)에 맞는 동작 구현
       uploadTask.on(
         "state_changed",
         snapshot => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-          }
+          submitAlert.textContent =
+            "Upload is " + Math.floor(progress) + "% done";
         },
         err => {
           console.log(err);
