@@ -39,6 +39,15 @@
 
     &[type="submit"] {
       padding: 20px 0px;
+
+      transition: 0.3s;
+
+      &:hover {
+        border-radius: 10px;
+
+        color: $white;
+        background-color: $black;
+      }
     }
   }
 
