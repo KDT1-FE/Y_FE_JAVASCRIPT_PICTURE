@@ -5,7 +5,6 @@ export function handleTooltipClick() {
 }
 
 function onClickTooltip(event) {
-  console.log('툴팁 이벤트 발생')
   const tooltip = event.target.closest('.tooltips')
   if (tooltip) {
     const ellipsisIcon = tooltip.querySelector('.fa-solid')

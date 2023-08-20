@@ -5,7 +5,6 @@ export function setupImagePreview(imageInput, previewImage) {
 }
 
 export function handlePreviewImg(event, previewImgEl) {
-  console.log('handlePreviewImg called')
   const selectedFile = event.target.files[0]
   try {
     if (!selectedFile) {
@@ -15,7 +14,6 @@ export function handlePreviewImg(event, previewImgEl) {
     const imageUrl = URL.createObjectURL(selectedFile)
     showPreviewImage(imageUrl, previewImgEl)
 
-    // 이미지 URL 및 해제 함수 반환
     const imageUrlInfo = {
       imageUrl,
       revokeImageUrl: () => {
@@ -23,7 +21,6 @@ export function handlePreviewImg(event, previewImgEl) {
       },
     }
 
-    console.log(imageUrlInfo)
     return imageUrlInfo
   } catch (error) {
     console.error('Error during handlePreviewImg: ', error)
@@ -37,7 +34,6 @@ export function clearPreviewImage(previewImgEl) {
 }
 
 export function showPreviewImage(imageUrl, previewImgEl) {
-  console.log(previewImgEl)
   previewImgEl.src = imageUrl
   previewImgEl.classList.remove('hidden')
 }

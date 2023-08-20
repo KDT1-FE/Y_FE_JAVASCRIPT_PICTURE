@@ -3,7 +3,7 @@ import { handleTooltipClick } from './tooltip'
 
 export function buildHTMLList(member) {
   const membersRow = document.createElement('div')
-  membersRow.className = 'members__row row'
+  membersRow.className = 'members__row row lazy-load'
   membersRow.setAttribute('data-id', member.id)
 
   // 이미지 요소 생성
@@ -50,7 +50,7 @@ export function buildHTMLList(member) {
 
   // 이클립스 요소 생성 & 툴팁
   const membersColEllipsis = document.createElement('div')
-  membersColEllipsis.className = 'members__ellipsis col-1'
+  membersColEllipsis.className = 'members__ellipsis ms-auto'
   const tooltipSpan = document.createElement('span')
   tooltipSpan.className = 'members__ellipsis-btn tooltips'
   const ellipsisIcon = document.createElement('i')
@@ -95,13 +95,21 @@ export function buildHTMLList(member) {
   // 이클립스&툴팁 버튼 이벤트 리스너 등록
   handleTooltipClick()
 
+  // 감싸는 요소
+  const membersColWrap = document.createElement('div')
+  membersColWrap.className = 'members__item__wrap col'
+  const membersSpacer = document.createElement('div')
+  membersSpacer.className = 'members__spacer col '
+  membersColWrap.appendChild(membersColPosition)
+  membersColWrap.appendChild(membersColTeam)
+  membersColWrap.appendChild(membersSpacer)
+  membersColWrap.appendChild(membersColEllipsis)
+
   // 생성한 요소들을 구조에 추가
   membersRow.appendChild(membersCol)
   membersCol.appendChild(membersColImg)
   membersRow.appendChild(membersColInfo)
-  membersRow.appendChild(membersColPosition)
-  membersRow.appendChild(membersColTeam)
-  membersRow.appendChild(membersColEllipsis)
+  membersRow.appendChild(membersColWrap)
 
   return membersRow
 }

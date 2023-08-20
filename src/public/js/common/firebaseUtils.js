@@ -2,48 +2,55 @@ import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, whe
 import { getDownloadURL, uploadBytesResumable, deleteObject, ref } from 'firebase/storage'
 import { Member, memberConverter } from './FormData'
 import { db, storage } from './firebase'
+import { buildHTMLList } from './htmlListBuilder.js'
+import { lazyLoad } from './lazy-load'
 
 const collectionName = 'members'
 
-export function downloadCollection(callback) {
-  const q = query(collection(db, collectionName), orderBy('createdAt'))
-  console.log('데이터다운로드')
-
+// 다운로드
+export function downloadCollection() {
+  const collectionQuery = query(collection(db, collectionName), orderBy('createdAt'))
+  const membersContainer = document.querySelector('.members__contents')
   const dataMap = new Map()
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    querySnapshot.docChanges().forEach((change) => {
-      const doc = change.doc
-      const id = doc.id
 
-      const memberData = memberConverter.fromFirestore(doc, {})
-      memberData.id = id
+  const handleMemberChange = (change) => {
+    const doc = change.doc
+    const id = doc.id
+    const memberData = memberConverter.fromFirestore(doc, {})
+    memberData.id = id
+    let oldMemerRow = membersContainer.querySelector(`[data-id="${id}"]`)
 
-      if (change.type === 'added') {
-        // 추가된 데이터를 콜백 함수로 전달
-        callback('added', memberData, id)
-        dataMap.set(id, memberData)
-      } else if (change.type === 'modified') {
-        // 수정된 데이터를 콜백 함수로 전달
-        callback('modified', memberData, id)
-        dataMap.set(id, memberData)
-      } else if (change.type === 'removed') {
-        // 제거된 데이터를 콜백 함수로 전달
-        callback('removed', memberData, id)
-        dataMap.delete(id)
+    if (change.type === 'added' || change.type === 'modified') {
+      const memberRow = buildHTMLList(memberData)
+      memberRow.setAttribute('data-id', id)
+
+      if (oldMemerRow) {
+        // 기존 요소가 존재하는 경우 제거하고 새로운 요소를 추가
+        membersContainer.replaceChild(memberRow, oldMemerRow)
+      } else {
+        // 기존 요소가 없는 경우 그냥 추가
+        membersContainer.appendChild(memberRow)
       }
-    })
+      dataMap.set(id, memberData)
+    } else if (change.type === 'removed') {
+      if (oldMemerRow) {
+        membersContainer.removeChild(oldMemerRow)
+      }
+      dataMap.delete(id)
+    }
+    lazyLoad()
+  }
+  const unsubscribe = onSnapshot(collectionQuery, (querySnapshot) => {
+    querySnapshot.docChanges().forEach(handleMemberChange)
   })
-
   return unsubscribe
 }
 
 // DB 제거
 export async function removeDB(memberId) {
   try {
-    console.log('db제거 실행')
     const memberRef = doc(db, collectionName, memberId)
     await deleteDoc(memberRef)
-    console.log('Member document deleted successfully')
   } catch (error) {
     console.error('Error deleting member document:', error)
   }
@@ -51,8 +58,6 @@ export async function removeDB(memberId) {
 
 // DB 업로드
 export async function uploadDB(name, email, team, position, image) {
-  let isSubmit = false
-
   try {
     const collectionRef = collection(db, collectionName)
     const newMemberData = new Member(name, email, team, position, image)
@@ -63,9 +68,6 @@ export async function uploadDB(name, email, team, position, image) {
     }
 
     await addDoc(collectionRef, memberData, { converter: memberConverter })
-
-    console.log('New member added successfully')
-    return (isSubmit = true)
   } catch (error) {
     console.error('Error adding member: ', error)
     throw error
@@ -77,7 +79,6 @@ export async function removeStorage(imgSrc) {
   const storageImgRef = ref(storage, imgSrc)
   try {
     await deleteObject(storageImgRef)
-    console.log('File deleted successfully')
   } catch (error) {
     console.error('Error deleting file:', error)
   }
@@ -85,8 +86,6 @@ export async function removeStorage(imgSrc) {
 
 // 스토리지에 업로드
 export async function uploadStorage(file) {
-  console.log(file)
-
   const fileName = file.name
   const id = Date.now() / fileName.length
 
@@ -108,8 +107,6 @@ export async function uploadStorage(file) {
 export async function updateDB(memberId, name, email, team, position, image) {
   try {
     const docRef = doc(db, collectionName, memberId)
-    // removeDB(memberId)
-    console.log('gdd', memberId)
     const memberData = new Member(name, email, team, position, image)
     const firestoreData = memberConverter.toFirestore(memberData)
     const updatedData = {
@@ -118,8 +115,6 @@ export async function updateDB(memberId, name, email, team, position, image) {
     }
 
     await setDoc(docRef, updatedData, { merge: true })
-
-    console.log('Member updated successfully')
   } catch (error) {
     console.error('Error updating member: ', error)
     throw error

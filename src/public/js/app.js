@@ -1,5 +1,9 @@
 import Members from '/src/public/views/members/Members.js'
+import Teams from '/src/public/views/teams/Teams.js'
+import Home from '/src/public/views/home/Home.js'
+import { initHome } from '/src/public/views/home/home.controller.js'
 import { initMembers } from '/src/public/views/members/members.controller.js'
+import { initTeams } from '/src/public/views/teams/teams.controller.js'
 
 const pathToRegex = (path) => new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$')
 
@@ -20,7 +24,11 @@ const navigateTo = (url) => {
 }
 
 const router = async () => {
-  const routes = [{ path: '/', view: Members }]
+  const routes = [
+    { path: '/', view: Home },
+    { path: '/members', view: Members },
+    { path: '/teams', view: Teams },
+  ]
 
   const potentialMatches = routes.map((route) => {
     return {
@@ -31,7 +39,6 @@ const router = async () => {
 
   let match = potentialMatches.find((potentialMatch) => potentialMatch.result !== null)
 
-  // route에 정의된 곳으로 이동하지 않는다면 기본값으로 되돌린다.
   if (!match) {
     match = {
       route: routes[0],
@@ -42,10 +49,19 @@ const router = async () => {
   const view = await new match.route.view(getParams(match))
   document.querySelector('#app').innerHTML = await view.getHtml()
 
+  // const path = location.pathname
+  // if (path === '/') {
+  //   initMembers()
+  // } else if (path === '/members') {
+  //   initMembers()
+  // } else if (path === '/teams') {
+  //   initTeams()
+  // }
+
   const path = location.pathname
-  if (path === '/') {
-    initMembers()
-  }
+  if (path === '/') initHome()
+  if (path.includes('/members')) initMembers()
+  if (path.includes('/teams')) initTeams()
 }
 
 window.addEventListener('popstate', router)

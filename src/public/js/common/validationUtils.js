@@ -9,7 +9,7 @@ export function formValidation(formsSelector, callback) {
         event.stopPropagation()
         isValid = false
       }
-      console.log('검사진행완료!')
+
       form.classList.add('was-validated')
       callback(isValid)
     })

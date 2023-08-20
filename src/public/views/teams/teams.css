@@ -1,0 +1,42 @@
+.teams__container {
+  padding: 3rem 1.5rem;
+}
+.teams__contents {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  align-items: stretch;
+}
+.teams__card {
+  border-radius: 2rem;
+  height: 100%;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  overflow: hidden;
+  color: #fff;
+}
+.teams__card__content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  padding: 3rem;
+  height: 100%;
+}
+.teams__card__title {
+  color: #fff;
+  line-height: 1;
+  font-weight: 700;
+  padding: 3rem 1.5rem;
+  font-size: calc(1.375rem + 1.5vw);
+}
+.teams__card__list {
+  margin-top: auto;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+.teams__card__list__item {
+  align-items: center;
+  display: flex;
+}
+.teams__card__list__item.profile {
+  display: flex;
+}/*# sourceMappingURL=teams.css.map */

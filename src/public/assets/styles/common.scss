@@ -1,10 +1,13 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 
+ol,
+ul {
+  list-style: none;
+}
+
 $custom-body-color: rgb(241, 242, 243);
 $primary-color: #fc4892;
 $secondary-color: rgb(254, 236, 243);
-$auto-size-1: 13rem;
-$auto-size-2: 10rem;
 
 body {
   background-color: $custom-body-color;
@@ -38,17 +41,6 @@ body {
   }
 }
 
-// @media (min-width: 1400px) {
-//   .container-xxl,
-//   .container-xl,
-//   .container-lg,
-//   .container-md,
-//   .container-sm,
-//   .container {
-//     max-width: 960px;
-//   }
-// }
-
 @media (min-width: 1200px) {
   .container-xxl,
   .container-xl,
@@ -61,7 +53,7 @@ body {
 }
 @media (min-width: 768px) {
   .updateform-img {
-    max-width: $auto-size-2;
-    max-height: $auto-size-2;
+    max-width: 10rem;
+    max-height: 10rem;
   }
 }

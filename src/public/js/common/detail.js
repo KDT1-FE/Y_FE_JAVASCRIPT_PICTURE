@@ -26,8 +26,6 @@ function handleUpdateAction(updateEl) {
   }
 
   updateFormFields(memberInfo)
-  console.log(imgUrl)
-  console.log(previewImage)
   showPreviewImage(imgUrl, previewImage)
 }
 

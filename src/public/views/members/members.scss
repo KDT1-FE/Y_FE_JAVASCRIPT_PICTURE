@@ -1,10 +1,33 @@
-@import 'src/public/assets/styles/common.scss';
+@import '/src/public/assets/styles/common.scss';
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@media (min-width: 960px) {
+  .members__spacer {
+    flex: 0 !important;
+  }
+}
 
 .members {
   &__container {
+    padding: 3rem 1.5rem;
   }
-  &__title {
-    justify-content: space-between;
+
+  &__wrap {
+    padding: 1.5rem 0;
   }
 
   &__contents {
@@ -91,6 +114,17 @@
     }
   }
 
+  &__item__wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 1rem 0;
+  }
+
+  &__spacer {
+    flex: 1;
+  }
+
   &__position {
     flex: 0 1 0% !important;
 
@@ -103,8 +137,6 @@
     }
   }
   &__team {
-    flex: 0 1 auto;
-
     &__txt {
       font-size: 0.9rem;
       color: #fc4892;
