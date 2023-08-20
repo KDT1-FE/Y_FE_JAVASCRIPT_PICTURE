@@ -7,12 +7,12 @@
 // import common
 @import "./common/_variables.scss";
 @import "./common/_htmlTag.scss";
+@import "./common/_load.scss";
 @import "./common/_title.scss";
 @import "./common/_inputFile.scss";
 @import "./common/_backBtn.scss";
 
 // import screens
-@import "./screens/_load.scss";
 @import "./screens/_adminLogin.scss";
 @import "./screens/_driverList.scss";
 @import "./screens/_addDriver.scss";
