@@ -1,3 +1,5 @@
+// 회원가입 페이지에서
+// 아디이와 비빌번호 일치여부를 확인하는 Component
 const adminLoginForm = document.getElementById("adminLoginForm");
 const adminIDInput = document.getElementById("adminIDInput");
 const adminPWInput = document.getElementById("adminPWInput");
