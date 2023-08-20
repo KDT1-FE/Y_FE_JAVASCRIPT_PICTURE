@@ -10,6 +10,13 @@
 
   #deleteDriver {
     @include driverListFuncBtn;
+
+    transition: 0.3s;
+
+    &:hover {
+      color: $white;
+      background-color: $black;
+    }
   }
 
   #searchDriver {
@@ -29,6 +36,13 @@
 
     @include mobile {
       line-height: 6rem;
+    }
+
+    transition: 0.3s;
+
+    &:hover {
+      color: $white;
+      background-color: $black;
     }
   }
 }
@@ -72,6 +86,7 @@
 
   #drivers {
     margin-bottom: 50px;
+
     .driver {
       height: 9rem;
 
@@ -81,6 +96,10 @@
       align-items: center;
 
       transition: 0.3s;
+
+      &:hover {
+        background-color: $black;
+      }
 
       .driverImg {
         width: 5.5rem;
@@ -100,7 +119,6 @@
           text-decoration: none;
           font-weight: 700;
 
-          color: $gray;
           cursor: pointer;
         }
 
@@ -110,6 +128,10 @@
 
           color: $gray;
           cursor: pointer;
+
+          &:hover {
+            color: $alert;
+          }
         }
       }
 
