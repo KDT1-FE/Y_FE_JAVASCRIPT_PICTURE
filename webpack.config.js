@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  // 번들링 위치, scss의 경우 index.js 파일에 import
+  // 가 페이지 별 번들링 파일 명시, scss 컴파일 파일의 경우 index.js 파일에 import
   entry: {
     index: "./src/js/index.js",
     driverList: "./src/js/driverList.js",
@@ -11,7 +11,7 @@ module.exports = {
     driverProfile: "./src/js/driverProfile.js",
     confirmAccident: "./src/js/confirmAccident.js"
   },
-  mode: "development",
+  mode: "production",
   // .js.map 파일 생성
   devtool: "source-map",
   // 번들링 js 파일이 저장될 경로와 이름 지정
