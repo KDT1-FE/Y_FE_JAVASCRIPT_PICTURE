@@ -1,5 +1,3 @@
-import "regenerator-runtime/runtime.js";
-
 // common components
 import "./components/load.js";
 
