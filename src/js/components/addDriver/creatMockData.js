@@ -1,20 +1,25 @@
-// 목업 데이터 생성하기
+// addDriver 페이지에서
+// db에 보험자 데이터 등록하기 전 목업 데이터 생성하는 모듈
 export default function createMockData(product) {
-  // 보험료 납부 기간 (0~120개월)
-  const subsPeriod = Math.floor(Math.random() * 120);
-  // 상품 별 월 보험료
-  const productPrice = checkProductPrice(product);
-  // 보험료 납부 금액  = 보험료 납부 기간 * 상품 별 월 보험료
-  const paymentAmount = Math.floor(subsPeriod * productPrice);
-  // 예상 보험금 금액  = 보험료 납부 금액 * 3
-  const expectMoney = Math.floor(paymentAmount * 3);
-  // 사고 날짜
-  const accidentDate = createAccidentDate();
-  // 사고 사진
-  const accidentImg =
-    "https://firebasestorage.googleapis.com/v0/b/zero-car.appspot.com/o/accidentImgs%2F%E1%84%8E%E1%85%A1%E1%84%85%E1%85%A3%E1%86%BC%20%E1%84%89%E1%85%A1%E1%84%80%E1%85%A9%20%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB.jpeg?alt=media&token=6d3cec2a-77b9-40c4-8559-c914a0414f25";
+  if (product) {
+    // 보험료 납부 기간 (0~120개월)
+    const subsPeriod = Math.floor(Math.random() * 120);
+    // 상품 별 월 보험료
+    const productPrice = checkProductPrice(product);
+    // 보험료 납부 금액  = 보험료 납부 기간 * 상품 별 월 보험료
+    const paymentAmount = Math.floor(subsPeriod * productPrice);
+    // 예상 보험금 금액  = 보험료 납부 금액 * 3
+    const expectMoney = Math.floor(paymentAmount * 3);
+    // 사고 날짜
+    const accidentDate = createAccidentDate();
+    // 사고 사진
+    const accidentImg =
+      "https://firebasestorage.googleapis.com/v0/b/zero-car.appspot.com/o/accidentImgs%2F%E1%84%8E%E1%85%A1%E1%84%85%E1%85%A3%E1%86%BC%20%E1%84%89%E1%85%A1%E1%84%80%E1%85%A9%20%E1%84%89%E1%85%A1%E1%84%8C%E1%85%B5%E1%86%AB.jpeg?alt=media&token=6d3cec2a-77b9-40c4-8559-c914a0414f25";
 
-  return [subsPeriod, paymentAmount, expectMoney, accidentDate, accidentImg];
+    return [subsPeriod, paymentAmount, expectMoney, accidentDate, accidentImg];
+  } else {
+    console.log("404 페이지로");
+  }
 }
 
 // 상품 별 월 보험료 확인

@@ -1,3 +1,4 @@
+// addDriver 페이지에서
 // storage에 보험자 이미지 등록
 import storage from "../../firebase/storage.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -9,7 +10,7 @@ import updateDriverImg from "./updateDriverImg";
 // db에 보험자 이미지 url 업데이트
 export default function addDriverImg(id, img, redirectUrl) {
   try {
-    if (img) {
+    if (id && img && redirectUrl) {
       // 원본 storage 폴더를 가리키는 포인터 사용 (메모리 부담 감소 및 재사용 가능)
       const driverImgsRef = ref(storage, `driverImgs/${img.name}`);
 
@@ -32,14 +33,16 @@ export default function addDriverImg(id, img, redirectUrl) {
               break;
           }
         },
-        error => {
-          console.log(`Can not add Data: ${err}`);
+        err => {
+          console.log(err);
         },
         // 업로드 완료 후
         // 동일한 id를 가진 firestore doc에 보험자 이미지 url 업데이트
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            updateDriverImg(id, downloadURL);
+            if (downloadURL) {
+              updateDriverImg(id, downloadURL);
+            } else throw "404 페이지로";
 
             // 업로드 완료 후 보험자 리스트 페이지로 이동
             setTimeout(() => {
@@ -48,13 +51,8 @@ export default function addDriverImg(id, img, redirectUrl) {
           });
         }
       );
-    } else {
-      setTimeout(() => {
-        location.href = redirectUrl;
-      }, 1000);
-    }
+    } else throw "404 페이지로";
   } catch (err) {
-    // 오류 처리 로직
-    // console.log(`Can not add Data: ${err}`);
+    console.log(err);
   }
 }
