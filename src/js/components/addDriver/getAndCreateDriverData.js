@@ -1,5 +1,10 @@
+// driverList 페이지에서
+// 보험자 추가 버튼을 눌렸을 때 Data를 Create하는 Component
+
 // Input 요소 data 가져오는 모듈
 import getInputData from "./getInputData.js";
+// firebase에 driver doc을 추가하는 모듈
+import addDriverDoc from "./addDriverDoc.js";
 
 // 보험자 추가 버튼 클릭 시 addDriverData 콜백 함수 실행
 const addDriverForm = document.getElementById("addDriver");
@@ -23,10 +28,16 @@ function getAndCreateDriverData(event) {
         "input[type='submit']"
       );
       addDriverFormSubmit.setAttribute("disabled", true);
+
       // Input data [driverImg, driverName, driverBirth, insuranceProduct]를 db에 등록
       addDriverDoc(...getInputData());
     } else {
-      throw "404 페이지로";
+      const notNumberAlert = document.createElement("p");
+      notNumberAlert.className = "notNumberAlert";
+      notNumberAlert.textContent = "생년월일은 숫자로만 입력해 주세요.";
+      notNumberAlert.style = "text-align: center; color: $alert;";
+
+      addDriverForm.append(notNumberAlert);
     }
   } catch (err) {
     console.log(err);
