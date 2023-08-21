@@ -179,6 +179,9 @@ header {
   font-weight: bold;
   font-size: 1rem;
   line-height: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 main .profile .tel::before {
