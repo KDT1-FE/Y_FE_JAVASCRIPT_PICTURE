@@ -9,6 +9,7 @@ import ViewMember from '../components/ViewMember.js';
 import { getInvolvedData } from '../dispatch/index.js';
 import { getData } from '../dispatch/index.js';
 import { uniqBy } from 'lodash';
+import Confetti from '../components/Confetti.js';
 
 export default class About extends Component {
     render() {
@@ -40,6 +41,7 @@ export default class About extends Component {
             const newArr = [...Involve.state.valleyList];
             Involve.state.valleyList = uniqBy(newArr, 'id');
             inputEl.append(...Involve.state.valleyList.map((valley) => new ViewMember(valley).el));
+            this.el.append(new Confetti().el);
         };
 
         if (history.state.id !== undefined) {

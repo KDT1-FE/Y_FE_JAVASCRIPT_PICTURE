@@ -1,5 +1,7 @@
 const path = require('path');
 var _ = require('lodash');
+const confetti = require('canvas-confetti');
+const MyPromise = require('some-promise-library');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -56,3 +58,5 @@ module.exports = {
         new LodashModuleReplacementPlugin(),
     ],
 };
+
+confetti.Promise = MyPromise;
