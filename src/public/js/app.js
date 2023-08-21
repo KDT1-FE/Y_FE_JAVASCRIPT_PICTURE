@@ -49,15 +49,6 @@ const router = async () => {
   const view = await new match.route.view(getParams(match))
   document.querySelector('#app').innerHTML = await view.getHtml()
 
-  // const path = location.pathname
-  // if (path === '/') {
-  //   initMembers()
-  // } else if (path === '/members') {
-  //   initMembers()
-  // } else if (path === '/teams') {
-  //   initTeams()
-  // }
-
   const path = location.pathname
   if (path === '/') initHome()
   if (path.includes('/members')) initMembers()
