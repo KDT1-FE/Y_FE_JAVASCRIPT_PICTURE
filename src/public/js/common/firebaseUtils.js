@@ -1,7 +1,7 @@
 import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, where, orderBy, onSnapshot } from 'firebase/firestore'
 import { getDownloadURL, uploadBytesResumable, deleteObject, ref } from 'firebase/storage'
 import { Member, memberConverter } from './FormData'
-import { db, storage } from '../../../../env'
+import { db, storage } from './firebase'
 import { buildHTMLList } from './membersList.js'
 import { lazyLoad } from './lazy-load'
 
