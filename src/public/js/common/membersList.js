@@ -98,11 +98,8 @@ export function buildHTMLList(member) {
   // 감싸는 요소
   const membersColWrap = document.createElement('div')
   membersColWrap.className = 'members__item__wrap col'
-  const membersSpacer = document.createElement('div')
-  membersSpacer.className = 'members__spacer col '
   membersColWrap.appendChild(membersColPosition)
   membersColWrap.appendChild(membersColTeam)
-  membersColWrap.appendChild(membersSpacer)
   membersColWrap.appendChild(membersColEllipsis)
 
   // 생성한 요소들을 구조에 추가

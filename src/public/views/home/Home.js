@@ -1,4 +1,8 @@
 import AbstractView from '../AbstractView.js'
+import jumbotronTemplate from '../components/jumbotron.hbs'
+import member1 from '../../asset/member1.png'
+import member2 from '../../asset/member2.png'
+import member3 from '../../asset/member3.png'
 
 export default class extends AbstractView {
   constructor(params) {
@@ -7,7 +11,17 @@ export default class extends AbstractView {
   }
 
   async getContent() {
+    const data = {
+      member1: member1,
+      member2: member2,
+      member3: member3,
+    }
+
+    const jumbotron = jumbotronTemplate(data)
+
     return /* HTML */ `
+      ${jumbotron}
+
       <div class="members__container container">
         <h2 class="members__title pb-2 border-bottom">Members</h2>
         <div class="members__wrap">

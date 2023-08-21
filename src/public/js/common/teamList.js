@@ -1,6 +1,6 @@
 export function createTeamCard(team) {
   const card = document.createElement('div')
-  const randomImageURL = `https://source.unsplash.com/collection/11649432/600x500${Math.random()}`
+  const randomImageURL = `https://source.unsplash.com/collection/11649432/${Math.random()}`
   card.className = 'teams__col col'
   card.innerHTML = `
   <div class="teams__card card lazy-load">

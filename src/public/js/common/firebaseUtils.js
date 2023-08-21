@@ -2,7 +2,7 @@ import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, whe
 import { getDownloadURL, uploadBytesResumable, deleteObject, ref } from 'firebase/storage'
 import { Member, memberConverter } from './FormData'
 import { db, storage } from './firebase'
-import { buildHTMLList } from './htmlListBuilder.js'
+import { buildHTMLList } from './membersList.js'
 import { lazyLoad } from './lazy-load'
 
 const collectionName = 'members'

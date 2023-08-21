@@ -13,7 +13,10 @@ export async function updateMember(memberId, imgSrc, imageInput) {
     if (newImg) {
       imgUrlFromStorage = await uploadStorage(newImg)
       removeStorage(imgSrc)
+    } else {
+      imgUrlFromStorage = imgSrc
     }
+
     await updateDB(memberId, nameData, emailData, teamData, positionData, imgUrlFromStorage)
   } catch (error) {
     console.error('Error during update: ', error)

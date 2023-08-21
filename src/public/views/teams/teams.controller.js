@@ -1,5 +1,5 @@
 import { db } from '../../js/common/firebase'
-import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, where, orderBy, onSnapshot } from 'firebase/firestore'
+import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore'
 import { addTeamToHTML, createTeamCard } from '../../js/common/teamList'
 
 import { lazyLoad } from '../../js/common/lazy-load'
@@ -8,7 +8,6 @@ import * as bootstrap from 'bootstrap'
 import './teams.scss'
 
 export function initTeams() {
-  // 사용자를 팀 이름으로 정렬하는 함수
   const sortByTeam = (members) => {
     members.sort((a, b) => {
       return a.team.localeCompare(b.team)
@@ -16,7 +15,6 @@ export function initTeams() {
     return members
   }
 
-  // 모든 팀 목록을 가져오는 함수
   const getAllTeams = () => {
     return new Promise((resolve, reject) => {
       try {
@@ -37,7 +35,6 @@ export function initTeams() {
     })
   }
 
-  // 특정 팀의 사용자를 가져오는 함수
   const getUsersByTeam = (teamName) => {
     return new Promise((resolve, reject) => {
       try {
@@ -63,18 +60,13 @@ export function initTeams() {
       for (const teamName of teamNames) {
         const members = await getUsersByTeam(teamName)
         const sortedMembers = sortByTeam(members)
-        console.log(`${teamName} 사용자 (팀별 정렬):`, sortedMembers)
-
-        // 팀 데이터 객체 생성
         const teamData = {
           teamName: teamName,
           members: sortedMembers,
         }
 
-        // 팀 데이터를 사용하여 팀 카드 생성
         const teamCard = createTeamCard(teamData)
 
-        // 팀 카드를 DOM에 추가
         addTeamToHTML(teamCard)
         lazyLoad()
       }
@@ -83,6 +75,5 @@ export function initTeams() {
     }
   }
 
-  // 메인 함수 실행
   main()
 }

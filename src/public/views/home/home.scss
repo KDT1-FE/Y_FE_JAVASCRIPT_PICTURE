@@ -1,2 +1,82 @@
 @import '/src/public/views/members/members.scss';
 @import '/src/public/views/teams/teams.scss';
+
+@media (min-width: 960px) {
+  .jumbotron__wrap {
+    min-width: 1140px;
+  }
+}
+
+.header__container {
+  background: rgb(147, 255, 255, 0.8117647059);
+}
+
+.jumbotron {
+  &__container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(147, 255, 255, 0.8117647059), rgba(83, 158, 245, 0));
+  }
+
+  &__wrap {
+    padding: 3rem;
+    &__txtbox {
+      padding: 2rem;
+      z-index: 3;
+      &__title {
+        font-size: calc(1.475rem + 2.7vw);
+        font-weight: 600;
+      }
+      &__desc {
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+    }
+
+    &__imgbox {
+      position: relative;
+      padding: 3rem;
+
+      &__item1,
+      &__item2,
+      &__item3 {
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 50%;
+        max-width: 200px;
+        max-height: 200px;
+        width: 14vw;
+        height: 14vw;
+        min-width: 80px;
+        min-height: 80px;
+
+        & img {
+          width: 125%;
+          object-fit: cover;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &__item1 {
+        top: 15%;
+        right: 3%;
+      }
+
+      &__item2 {
+        top: 10%;
+        left: 10%;
+      }
+
+      &__item3 {
+        left: 30%;
+        bottom: 1.25rem;
+      }
+    }
+  }
+}

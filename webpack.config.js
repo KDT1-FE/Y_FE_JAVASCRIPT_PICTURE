@@ -18,7 +18,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
     publicPath: '/',
     clean: true,
-    assetModuleFilename: '[name][ext]',
+    assetModuleFilename: 'asset/[name][ext]',
   },
   devtool: 'source-map',
   devServer: {
@@ -46,7 +46,7 @@ module.exports = {
       // 웹폰트 로더
       // {
       //   test: /\.(woff|woff2|eot|ttf|otf)$/i,
-      //   type: "asset/resource",
+      //   type: "assets/resource",
       //   generator: {
       //     filename: "src/fonts/[name].[hash:8].[ext]",
       //   },

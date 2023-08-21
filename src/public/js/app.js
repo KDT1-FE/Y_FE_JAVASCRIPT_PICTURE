@@ -27,6 +27,7 @@ const router = async () => {
   const routes = [
     { path: '/', view: Home },
     { path: '/members', view: Members },
+    { path: '/members/:id', view: Members },
     { path: '/teams', view: Teams },
   ]
 
@@ -50,20 +51,21 @@ const router = async () => {
   document.querySelector('#app').innerHTML = await view.getHtml()
 
   const path = location.pathname
-  if (path === '/') initHome()
+  if (path === '/') await initHome()
   if (path.includes('/members')) initMembers()
   if (path.includes('/teams')) initTeams()
 }
 
 window.addEventListener('popstate', router)
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.addEventListener('click', (e) => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault()
-      navigateTo(e.target.href)
+window.onload = () => {
+  router()
+  document.querySelector('#app').addEventListener('click', (e) => {
+    if (e.target.classList.contains('members__row')) {
+      const memberId = e.target.getAttribute('data-id')
+      const newUrl = `/members/${memberId}`
+      console.log(newUrl)
+      navigateTo(newUrl)
     }
   })
-
-  router()
-})
+}

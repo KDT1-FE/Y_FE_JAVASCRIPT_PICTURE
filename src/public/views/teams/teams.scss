@@ -1,4 +1,4 @@
-@import '/src/public/assets/styles/common.scss';
+@import '/src/public/asset/styles/common.scss';
 
 @keyframes fade-in {
   from {
@@ -45,7 +45,9 @@
       margin: 0;
       z-index: 0;
       object-fit: cover;
-      filter: grayscale(1);
+      filter: grayscale(20%) contrast(90%);
+      -webkit-filter: grayscale(20%) contrast(90%);
+      -moz-filter: grayscale(20%) contrast(90%);
       transition: filter 200ms ease, transform 250ms linear;
     }
 
@@ -81,7 +83,7 @@
     }
     &:hover img,
     &:focus img {
-      filter: grayscale(0);
+      filter: grayscale(0) contrast(1);
       transform: scale(1.05) rotate(1deg);
     }
 
