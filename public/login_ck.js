@@ -1,11 +1,15 @@
 
 
-if (localStorage.getItem("user") != null) {
+if (localStorage.getItem('user') != null) {
     console.log("현재로그인중");
     //로컬스토리지에서 유저정보 가져오기
     const localDataUser = localStorage.getItem("user");
     const localName = JSON.parse(localDataUser).displayName;
-    document.querySelector("#user-name").innerHTML = localName + "님";
+    if(localName==null){
+      document.querySelector("#user-name").innerHTML = "회원님";
+    }else{
+      document.querySelector("#user-name").innerHTML = localName + "님";
+    }
     document.querySelector(".welcome__logout").classList.remove("none");
     document.querySelector(".welcome__login").classList.add("none");
 } else {
@@ -19,7 +23,7 @@ if (localStorage.getItem("user") != null) {
 //로그인 상태 확인. 로그인,로그아웃,새로고침 등 유저 인증상태 변경시마다 실행됨
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log(user);
+    // console.log(user);
     console.log(user.displayName + "로그인 완료");
     document.querySelector(".welcome__logout").classList.remove("none");
     document.querySelector(".welcome__login").classList.add("none");

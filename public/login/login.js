@@ -13,7 +13,7 @@ joinBtn.addEventListener("click", function () {
     .then((result) => {
       const userInfo = {
         name: joinName,
-        email: joinEmail,
+        email: joinEmail
       };
 
       db.collection("user")
@@ -40,6 +40,7 @@ loginBtn.addEventListener("click", function () {
     .then((result) => {
       alert("로그인 완료!");
       window.location.href = "/index.html";
+      // console.log(displayName)
     }).catch(function(error) {
       console.error("Error removing file.", error);
       alert('로그인에 실패하였습니다. \n '+error.message)
