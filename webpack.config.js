@@ -79,6 +79,8 @@ module.exports = {
       chunkFilename: '[id].[contenthash].css',
     }),
     new NodePolyfillPlugin(),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
 }

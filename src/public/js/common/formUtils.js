@@ -12,7 +12,6 @@ export function enableForm(inputEls, selectEl, fileEl) {
 export function readonlyForm(inputEls, selectEl, fileEl) {
   inputEls.forEach((el) => {
     el.setAttribute('readonly', '')
-    console.log(selectEl)
     el.className = 'form-control-plaintext forms'
   })
 
