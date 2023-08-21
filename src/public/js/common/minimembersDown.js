@@ -1,4 +1,4 @@
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore'
+import { collection, query, orderBy, onSnapshot, limit } from 'firebase/firestore'
 import { memberConverter } from './FormData'
 import { db } from './firebase'
 import { miniMemberList } from './minimembersList'
@@ -7,7 +7,7 @@ import { lazyLoad } from './lazy-load'
 const collectionName = 'members'
 
 export function miniDownloadCollection() {
-  const collectionQuery = query(collection(db, collectionName), orderBy('createdAt'))
+  const collectionQuery = query(collection(db, collectionName), orderBy('name'), limit(6))
   const membersContainer = document.querySelector('.members__contents')
   const dataMap = new Map()
 
@@ -23,10 +23,8 @@ export function miniDownloadCollection() {
       memberRow.setAttribute('data-id', id)
 
       if (oldMemerRow) {
-        // 기존 요소가 존재하는 경우 제거하고 새로운 요소를 추가
         membersContainer.replaceChild(memberRow, oldMemerRow)
       } else {
-        // 기존 요소가 없는 경우 그냥 추가
         membersContainer.appendChild(memberRow)
       }
       dataMap.set(id, memberData)

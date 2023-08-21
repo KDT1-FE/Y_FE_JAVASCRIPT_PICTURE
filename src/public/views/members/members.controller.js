@@ -2,21 +2,22 @@ import { uploadMember } from '../../js/common/upload'
 import { updateMember } from '../../js/common/update'
 import { downloadCollection } from '../../js/common/firebaseUtils'
 import { handleBtn, handleRemoveAction } from '../../js/common/btnEventHandler'
-import { initModal, closeModal } from '../../js/common/modalUtils'
+import { initModal, closeModal, beforeCloseModal } from '../../js/common/modalUtils'
 import { setupImagePreview, handlePreviewImg, clearPreviewImage } from '../../js/common/previewimg'
 import { formValidation } from '../../js/common/validationUtils'
 import { enableForm, readonlyForm } from '../../js/common/formUtils'
 import { initDetail } from '../../js/common/detail'
+import { removeDB, removeStorage } from '../../js/common/firebaseUtils'
 
 import * as bootstrap from 'bootstrap'
 import './members.scss'
 import './form.scss'
 
-export function initMembers() {
+export async function initMembers() {
   initModal(resetForm)
-  downloadCollection()
+  await downloadCollection()
   handleBtn(handleRemoveAction)
-  initUpdate()
+  detailForm()
   initUpload()
 }
 
@@ -33,8 +34,12 @@ function resetForm() {
 
 // 업로드 초기화
 function initUpload() {
-  initDetail()
-  const myForm = document.getElementById('addForm')
+  const addForm = document.getElementById('addForm')
+  const inputEls = addForm.querySelectorAll('.forms.add')
+  const selectEl = addForm.querySelector('.form-select.add')
+  const fileEl = addForm.querySelector('.input-file.add')
+  enableForm(inputEls, selectEl, fileEl)
+
   const imageInput = document.getElementById('image')
   const previewImage = document.getElementById('add-preview')
 
@@ -50,7 +55,7 @@ function initUpload() {
     isFormValid = isValid
   })
 
-  myForm.addEventListener('submit', async (event) => {
+  addForm.addEventListener('submit', async (event) => {
     event.preventDefault()
 
     if (!isFormValid) {
@@ -58,10 +63,8 @@ function initUpload() {
     }
 
     try {
-      await uploadMember(myForm, imageInput)
-
-      closeModal()
-      lazyLoad()
+      await uploadMember(addForm, imageInput)
+      closeModal(addForm)
 
       if (imageUrlInfo) {
         imageUrlInfo.revokeImageUrl()
@@ -72,58 +75,94 @@ function initUpload() {
   })
 }
 
-function initUpdate() {
-  // 폼 상태 관리 -> 수정 가능
-  const inputEls = document.querySelectorAll('.forms')
-  const selectEl = document.querySelector('select')
-  const fileEl = document.querySelector('.input-file')
-  enableForm(inputEls, selectEl, fileEl)
+function toggleButtons(showRmBtn, showCgBtn, showSaveCgBtn, labelTitle) {
+  const rmBtn = document.querySelector('.rm-btn')
+  const cgBtn = document.querySelector('.cg-btn')
+  const saveCgBtn = document.querySelector('.svcg-btn')
+  const label = document.getElementById('editModalLabel')
 
-  const editForm = document.getElementById('editForm')
-  const imageInput = document.getElementById('image')
-  const previewImage = document.getElementById('edit-preview')
+  rmBtn.style.display = showRmBtn ? 'block' : 'none'
+  cgBtn.style.display = showCgBtn ? 'block' : 'none'
+  saveCgBtn.style.display = showSaveCgBtn ? 'block' : 'none'
+  label.innerText = labelTitle ? 'Profile Card' : 'Edit Member'
+}
 
-  // 미리보기 초기화
-  let imageUrlInfo = {}
-  setupImagePreview(imageInput, previewImage, (event) => {
-    imageUrlInfo = handlePreviewImg(event, previewImage)
-  })
+function detailForm() {
+  initDetail()
+
+  let memberForUpdate = ''
+  let memberId = ''
+  let imgSrc = ''
 
   const memberContainer = document.querySelector('.members__contents')
   memberContainer.addEventListener('click', (event) => {
     event.preventDefault()
     const updateEl = event.target.closest('.update-btn')
     if (updateEl) {
-      handleUpdateAction(updateEl)
+      memberForUpdate = updateEl.closest('.members__row')
+      memberId = memberForUpdate.getAttribute('data-id')
+      imgSrc = memberForUpdate.querySelector('.members-img').src
     }
   })
 
-  const handleUpdateAction = (updateEl) => {
-    const memberForUpdate = updateEl.closest('.members__row')
-    const memberId = memberForUpdate.getAttribute('data-id')
-    const imgSrc = memberForUpdate.querySelector('.members-img').src
+  const editForm = document.getElementById('editForm')
+  const inputEls = editForm.querySelectorAll('.forms.edit')
+  const selectEl = editForm.querySelector('.form-select.edit')
+  const fileEl = editForm.querySelector('.input-file.edit')
+  readonlyForm(inputEls, selectEl, fileEl)
 
-    // 유효성 검사 설정
-    let isFormValid = ''
-    formValidation('#editForm', (isValid) => {
-      isFormValid = isValid
-    })
+  toggleButtons(true, true, false, true)
 
-    editForm.addEventListener('submit', async (event) => {
-      event.preventDefault()
+  editForm.addEventListener('click', (event) => {
+    if (event.target.closest('.cg-btn')) {
+      initUpdate(inputEls, selectEl, fileEl, memberId, imgSrc)
+      enableForm(inputEls, selectEl, fileEl)
+      toggleButtons(false, false, true, false)
+    }
+    if (event.target.closest('.rm-btn')) {
+      removeDB(memberId)
+        .then(() => removeStorage(imgSrc))
+        .then(() => {
+          closeModal(editForm)
+        })
+        .catch((error) => console.error('Error during removal:', error))
+    }
+  })
+}
 
-      if (!isFormValid) {
-        return
-      }
+function initUpdate(inputEls, selectEl, fileEl, memberId, imgSrc) {
+  const id = memberId
+  const src = imgSrc
+  console.log(id)
 
-      try {
-        await updateMember(memberId, imgSrc, imageInput)
-        location.reload()
-        location.replace(location.href)
-        location.href = location.href
-      } catch (error) {
-        console.error('Error during form submission: ', error)
-      }
-    })
-  }
+  const editForm = document.getElementById('editForm')
+  const imageInput = document.getElementById('image')
+  const previewImage = document.getElementById('edit-preview')
+
+  setupImagePreview(imageInput, previewImage, (event) => {
+    handlePreviewImg(event, previewImage)
+  })
+
+  let isFormValid = ''
+  formValidation('#editForm', (isValid) => {
+    isFormValid = isValid
+  })
+
+  editForm.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    if (!isFormValid) {
+      return
+    }
+
+    try {
+      await updateMember(id, src, imageInput)
+      location.reload()
+      location.replace(location.href)
+      location.href = location.href
+    } catch (error) {
+      console.error('Error during form submission: ', error)
+    }
+  })
+  beforeCloseModal(inputEls, selectEl, fileEl)
 }

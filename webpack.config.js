@@ -43,15 +43,6 @@ module.exports = {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
       },
-      // 웹폰트 로더
-      // {
-      //   test: /\.(woff|woff2|eot|ttf|otf)$/i,
-      //   type: "assets/resource",
-      //   generator: {
-      //     filename: "src/fonts/[name].[hash:8].[ext]",
-      //   },
-      // },
-      // SASS 로더
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -80,6 +71,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
+      favicon: 'src/favicon.ico',
       chunks: ['index'],
     }),
     new MiniCssExtractPlugin({

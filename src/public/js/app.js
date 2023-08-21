@@ -64,7 +64,6 @@ window.onload = () => {
     if (e.target.classList.contains('members__row')) {
       const memberId = e.target.getAttribute('data-id')
       const newUrl = `/members/${memberId}`
-      console.log(newUrl)
       navigateTo(newUrl)
     }
   })

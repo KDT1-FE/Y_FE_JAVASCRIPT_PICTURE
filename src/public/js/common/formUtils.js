@@ -1,10 +1,10 @@
 export function enableForm(inputEls, selectEl, fileEl) {
   inputEls.forEach((el) => {
     el.removeAttribute('readonly')
-    el.className = 'form-control readonly'
+    el.className = 'form-control forms'
   })
   selectEl.removeAttribute('disabled')
-  selectEl.className = 'form-select'
+  selectEl.className = 'form-select forms'
 
   fileEl.removeAttribute('disabled')
 }
@@ -12,11 +12,12 @@ export function enableForm(inputEls, selectEl, fileEl) {
 export function readonlyForm(inputEls, selectEl, fileEl) {
   inputEls.forEach((el) => {
     el.setAttribute('readonly', '')
-    el.className = 'form-control-plaintext readonly'
+    console.log(selectEl)
+    el.className = 'form-control-plaintext forms'
   })
 
   selectEl.setAttribute('disabled', '')
-  selectEl.className = 'form-select-plaintext'
+  selectEl.className = 'form-select-plaintext forms'
 
   fileEl.setAttribute('disabled', '')
 }

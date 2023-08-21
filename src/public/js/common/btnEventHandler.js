@@ -1,6 +1,6 @@
 import { removeDB, removeStorage } from './firebaseUtils'
 
-export function handleBtn(handleRemoveAction, handleUpdateAction) {
+export function handleBtn(handleRemoveAction) {
   const memberContainer = document.querySelector('.members__contents')
   memberContainer.addEventListener('click', (event) => {
     event.preventDefault()

@@ -9,13 +9,13 @@ import './home.scss'
 export async function initHome() {
   await miniDownloadCollection()
   initTeams()
+  const headerContainer = document.querySelector('.header__container')
+  headerContainer.style.setProperty('--import-bg-color', 'rgb(147, 255, 255, 0.8117647059)')
 
-  // 각 이미지 요소를 선택합니다.
   const item1 = document.querySelector('.jumbotron__wrap__imgbox__item1')
   const item2 = document.querySelector('.jumbotron__wrap__imgbox__item2')
   const item3 = document.querySelector('.jumbotron__wrap__imgbox__item3')
 
-  // GSAP 애니메이션을 설정합니다.
   gsap.from(item1, { y: 100, opacity: 0, duration: 1, delay: 0 })
   gsap.from(item2, { y: 100, opacity: 0, duration: 1, delay: 0.5 })
   gsap.from(item3, { y: 100, opacity: 0, duration: 1, delay: 1 })
