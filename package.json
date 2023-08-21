@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "aws-sdk": "^2.1440.0",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "netlify-cli": "^16.1.0"
   }
 }

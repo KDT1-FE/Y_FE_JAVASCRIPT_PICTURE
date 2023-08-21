@@ -1,6 +1,7 @@
-const AWS = require("aws-sdk");
+import AWS from "../node_modules/aws-sdk";
+import { config as dotenvConfig } from "../node_modules/dotenv";
 
-require("dotenv").config();
+dotenvConfig();
 
 AWS.config.update({
   region: process.env.region,
