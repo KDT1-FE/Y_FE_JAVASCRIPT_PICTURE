@@ -123,6 +123,41 @@ Zero Car(영차!)는 운전자 보험 고객 사진 및 정보 관리를 CRUD �
 ## [ Development ]
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![SCSS](https://img.shields.io/badge/SASS-cc6699.svg?&style=for-the-badge&logo=Sass&logoColor=white)![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
 
+## [파일 구조]
+```shell
+public   # 배포용 컴파일 및 번들링 완료 파일
+ ├─ css
+ └─ js
+src
+ ├─ imgs
+ ├─ js
+ │   ├─ components         # 페이지 별 component js 모음
+ │   ├─ firebase           # firebase 기본 세팅 js 모음
+ │   └─ ...페이지 별 js 파일  # 페이지 별로 필요한 omponents 안 모듈들을 Import
+ └─ scss
+     ├─ animation      # 애니메이션 모음
+     ├─ common         # 공통적으로 사용되는 style 모음
+     ├─ screens        # 페이지 별로 scss 파일을 분리
+     └─ styles.scss    # style을 한 파일에서 컴파일 하기 위해 앞선 폴더들 Import 
+     └─ templates      # 각 페이지 별 html 모음
+proubleshooting    # 각 기술 별 트러블 슈팅 기록 모음
+     ├─ index.md
+     ├─ js 트러블 슈팅
+     ├─ scss 트러블 슈팅
+     ├─  ... 각 기술 별 트러블 슈팅 기록들
+     └─ webpack 트러블 슈팅
+
+README.md
+.gitignore
+.prettierrc
+.prettierignore
+package-lock.json
+package.json
+webpack.config.js
+index.html
+favicon.ico
+```
+
 ## [ User Flow ]
 <div style="text-align: center;">
   <img src = "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/7f5e564e-100e-4710-a815-5e3d6f473532" alt ="user flow" />
