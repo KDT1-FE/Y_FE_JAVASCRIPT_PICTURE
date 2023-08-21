@@ -1,9 +1,3 @@
-AWS.config.update({
-  region: "ap-northeast-2",
-  accessKeyId: "AKIAXJBGLBGEBFV3GL63",
-  secretAccessKey: "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",
-});
-
 const toogleBtn = document.querySelector(".navbar__tooglebtn");
 
 // 미리보기 함수
