@@ -6,7 +6,7 @@ if (localStorage.getItem('user') != null) {
     const localDataUser = localStorage.getItem("user");
     const localName = JSON.parse(localDataUser).displayName;
     if(localName==null){
-      document.querySelector("#user-name").innerHTML = "회원님";
+      document.querySelector("#user-name").innerHTML = "";
     }else{
       document.querySelector("#user-name").innerHTML = localName + "님";
     }
