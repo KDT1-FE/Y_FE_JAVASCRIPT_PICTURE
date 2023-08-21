@@ -26,7 +26,7 @@
   }
 
   &__card {
-    border-radius: 2rem;
+    border-radius: 2rem !important;
     height: 100%;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     overflow: hidden;
@@ -57,6 +57,34 @@
       height: 100%;
     }
 
+    &__title,
+    &__list {
+      transform: translateY(2ex);
+    }
+
+    &:hover :is(h3, ul),
+    &:focus :is(h3, ul) {
+      transform: none;
+    }
+
+    &:hover::after,
+    &:focus::after,
+    &:hover::before,
+    &:focus::before {
+      opacity: 0.7;
+    }
+
+    &:hover &__content &__list,
+    &:focus &__content &__title {
+      opacity: 1;
+      transition-delay: 200ms;
+    }
+    &:hover img,
+    &:focus img {
+      filter: grayscale(0);
+      transform: scale(1.05) rotate(1deg);
+    }
+
     &__title {
       color: #fff;
       line-height: 1;
@@ -65,6 +93,7 @@
       margin-bottom: 1.5rem;
       margin-top: 3rem;
       font-size: calc(1.375rem + 1.5vw);
+      transition: 300ms transform ease;
     }
 
     &__list {
@@ -75,6 +104,8 @@
       padding-left: 0;
       margin-bottom: 1rem;
       overflow: hidden;
+      opacity: 0;
+      transition: 300ms opacity linear, 300ms transform ease-in-out;
     }
 
     &__position {
@@ -95,12 +126,6 @@
 
     &__profile {
       display: flex;
-
-      &__img {
-      }
     }
   }
-}
-
-.teams__card {
 }
