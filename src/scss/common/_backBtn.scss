@@ -4,9 +4,9 @@
 
   margin: 0 auto;
 
-  font-size: 17px;
-  line-height: 10vh;
-  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   color: $gray;
 
@@ -14,7 +14,7 @@
     width: 90px;
     height: 30px;
 
-    text-align: center;
+    text-align: right;
 
     cursor: pointer;
   }
