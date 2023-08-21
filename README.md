@@ -20,19 +20,19 @@ Zero Car(영차!)는 운전자 보험 고객 사진 및 정보 관리를 CRUD �
 
 <div align="center">
 
-Create
+### Create
 ![create](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/ebecacb8-22f5-4b99-9127-11f93949de6b)
 
-Read, Update
+### Read, Update
 ![read-update](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/70ff918c-e8f8-43ab-b07c-2354bbc74348)
 
-Read, Delete
+### Read, Delete
 ![Read-Delete](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/e659149b-b474-4192-89d0-7df3247249b2)
 
-반응형  화면
+### 반응형  화면
 ![반응형](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/688200c9-8bca-4b9a-b80a-11c58cead1a0)
 
-심사 화면
+### 심사 화면
 ![심사 화면](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/a4d5e282-5a23-40bb-b503-9dc0ead81ccc)
 </div>
 
@@ -142,7 +142,7 @@ Read, Delete
 ## [ Development ]
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![SCSS](https://img.shields.io/badge/SASS-cc6699.svg?&style=for-the-badge&logo=Sass&logoColor=white)![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
 
-## [파일 구조]
+## [ 파일 구조 ]
 ```shell
 public   # 배포용 컴파일 및 번들링 완료 파일
  ├─ css
