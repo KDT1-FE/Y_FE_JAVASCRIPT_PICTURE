@@ -184,6 +184,10 @@ header {
   text-overflow: ellipsis;
 }
 
+#detail .profile .name{
+  white-space: initial;
+}
+
 main .profile .tel::before {
   content: "📞";
   display: inline-block;
