@@ -1,3 +1,11 @@
+require("dotenv").config();
+
+AWS.config.update({
+  region: process.env.region,
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey,
+});
+
 const toogleBtn = document.querySelector(".navbar__tooglebtn");
 
 // 미리보기 함수
