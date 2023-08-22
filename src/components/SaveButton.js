@@ -1,5 +1,5 @@
-import { createData, updateData, setData } from '../firebase/data.js';
-import { cardList } from '../main.js';
+import { createData, updateData } from '../firebase/data.js';
+import { category } from '../main.js';
 
 export default class SaveButton {
   constructor(type, id) {
@@ -21,8 +21,7 @@ export default class SaveButton {
           alert(`${newInfo.name}을(를) 새로운 멤버로 등록했어요!`);
           createData(newInfo);
 
-          const newData = await setNewData();
-          cardList.update(newData);
+          category.update();
 
           closeModal();
         } else {
@@ -41,8 +40,7 @@ export default class SaveButton {
           alert(`${newInfo.name}의 정보를 성공적으로 변경하였어요.`);
           updateData(this.id, newInfo);
 
-          const newData = await setNewData();
-          cardList.update(newData);
+          category.update();
 
           closeModal();
         } else {
@@ -105,12 +103,4 @@ const setInfo = () => {
 const closeModal = () => {
   const modal = document.querySelector('.modal');
   modal.remove();
-};
-
-const setNewData = async () => {
-  const newData = [];
-  await setData().then((res) => {
-    res.forEach((el) => newData.push(el));
-  });
-  return newData;
 };

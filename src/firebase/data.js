@@ -9,6 +9,7 @@ import {
   updateDoc,
   deleteDoc,
   query,
+  where,
 } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
 import {
   getStorage,
@@ -47,6 +48,20 @@ const storage = getStorage();
 export const setData = async () => {
   const data = [];
   const querySnapshot = await getDocs(collection(db, 'member'));
+  querySnapshot.forEach((el) => {
+    data.push({ data: el.data(), id: el.id });
+  });
+  return data;
+};
+
+// 데이터 카테고리별로 읽어오기
+export const filteredData = async (category) => {
+  const data = [];
+  const q = query(
+    collection(db, 'member'),
+    where('department', '==', category)
+  );
+  const querySnapshot = await getDocs(q);
   querySnapshot.forEach((el) => {
     data.push({ data: el.data(), id: el.id });
   });

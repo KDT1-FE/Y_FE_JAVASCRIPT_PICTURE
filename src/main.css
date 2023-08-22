@@ -15,6 +15,7 @@
 :root {
   --color-black: #1a1a1a;
   --color-white: #fff;
+  --color-white-80: rgba(255, 255, 255, 0.8);
   --color-white-50: rgba(255, 255, 255, 0.5);
 
   --color-highlight: #eb4c78;
@@ -103,6 +104,10 @@ header .top .btns .add:hover {
 }
 
 @media (max-width: 720px) {
+  header .top .title {
+    font-size: 24px;
+  }
+
   header .top .btns {
     width: 100%;
     justify-content: space-between;
@@ -111,6 +116,87 @@ header .top .btns .add:hover {
   header .top .btns .add {
     padding: 0 7px;
     font-size: 14px;
+  }
+}
+
+/* CATEGORY */
+.category {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.category .btn {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--color-text);
+  margin-right: 1rem;
+}
+
+.category .btn.active::after {
+  content: '';
+  display: block;
+  border: solid var(--color-highlight) 2px;
+}
+
+.category .btn:hover {
+  cursor: pointer;
+}
+
+.category .dropdown {
+  font-size: 20px;
+}
+
+.category .dropdown .selected {
+  background-color: var(--color-white-50);
+  padding: 0.1rem 1rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category .dropdown .selected:hover {
+  cursor: pointer;
+}
+
+.category .dropdown .options.hide {
+  display: none;
+}
+
+.category .dropdown .options {
+  padding: 0;
+  position: absolute;
+  display: block;
+  text-align: center;
+  line-height: 1.7;
+  background-color: var(--color-white-80);
+  z-index: 9;
+}
+
+.category .dropdown .options li {
+  display: block;
+  padding: 0.5rem 1rem;
+  width: 5em;
+  color: var(--color-black);
+  border-bottom: solid var(--color-text-10) 2px;
+}
+
+.category .dropdown .options li:hover {
+  color: var(--color-highlight);
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .category {
+    padding: 1rem 2rem;
+  }
+
+  .category .btn,
+  .category .dropdown {
+    font-size: 16px;
   }
 }
 

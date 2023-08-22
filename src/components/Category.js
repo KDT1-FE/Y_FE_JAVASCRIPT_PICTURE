@@ -1,24 +1,74 @@
+import { filteredData, setData } from '../firebase/data.js';
+import { cardList } from '../main.js';
+
 export default class Category {
-  constructor(category) {
+  constructor(category = 'ALL') {
     this.el = document.createElement('div');
     this.category = category;
     this.render();
   }
 
   render() {
-    const allBtnEl = document.createElement('button');
-    allBtnEl.classList.add('btn', 'all');
-    allBtnEl.innerText = 'ALL';
-    const feBtnEl = document.createElement('button');
-    feBtnEl.classList.add('btn', 'fe');
-    feBtnEl.innerText = 'FE';
-    const beBtnEl = document.createElement('button');
-    beBtnEl.classList.add('btn', 'be');
-    beBtnEl.innerText = 'BE';
-    const pmBtnEl = document.createElement('button');
-    pmBtnEl.classList.add('btn', 'pm');
-    pmBtnEl.innerText = 'PM';
+    this.el.classList.add('category');
 
-    this.el.append(allBtnEl, feBtnEl, beBtnEl, pmBtnEl);
+    const categoryBtnEl = document.createElement('button');
+    categoryBtnEl.classList.add('btn', 'active');
+    categoryBtnEl.innerText = this.category;
+
+    const dropDownEl = document.createElement('div');
+    dropDownEl.classList.add('dropdown');
+    const selectedEl = document.createElement('div');
+    selectedEl.classList.add('selected');
+    selectedEl.innerHTML = `
+    ${this.category} 
+    <span class="material-symbols-outlined">
+    arrow_drop_down
+    </span>`;
+    const optionsEl = document.createElement('ul');
+    optionsEl.classList.add('options', 'hide');
+    optionsEl.innerHTML = `
+    <li>ALL</li>
+    <li>FE</li>
+    <li>BE</li>
+    <li>PM</li>
+    `;
+
+    // event
+    selectedEl.addEventListener('click', () => {
+      optionsEl.classList.toggle('hide');
+    });
+
+    optionsEl.addEventListener('click', (e) => {
+      const selected = e.target.innerText;
+      this.update(selected);
+    });
+
+    categoryBtnEl.addEventListener('click', async () => {});
+
+    //append
+    dropDownEl.append(selectedEl, optionsEl);
+    this.el.append(categoryBtnEl, dropDownEl);
+  }
+
+  async update(category = this.category) {
+    const data = await filteredList(category);
+    cardList.update(data);
+    this.category = category;
+    this.el.innerHTML = '';
+    this.render();
   }
 }
+
+const filteredList = async (department) => {
+  const data = [];
+  if (department === 'ALL') {
+    await setData().then((res) => {
+      res.forEach((el) => data.push(el));
+    });
+  } else {
+    await filteredData(department).then((res) => {
+      res.forEach((el) => data.push(el));
+    });
+  }
+  return data;
+};
