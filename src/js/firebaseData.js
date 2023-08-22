@@ -9,6 +9,7 @@ const closeIcon = document.querySelector(".close__icon");
 readEmployee();
 createEmployee();
 deleteEmployee();
+searchEmployee();
 
 closeIcon.addEventListener("click", () => {
   detailModal.style.display = "none";
@@ -68,7 +69,9 @@ function createEmployee() {
 
 // 직원 데이터 read
 function readEmployee() {
+  resetEmployee();
   db.collection("직원")
+    .orderBy("이름", "asc")
     .get()
     .then((result) => {
       result.forEach((doc) => {
@@ -81,7 +84,7 @@ function readEmployee() {
           date: doc.data().입사날짜,
         };
 
-        createEmployeeElemnet(employee);
+        createEmployeeElement(employee);
       });
     })
     .catch((err) => {
@@ -90,7 +93,7 @@ function readEmployee() {
 }
 
 // 직원테이블 엘리먼트 생성
-function createEmployeeElemnet(employee) {
+function createEmployeeElement(employee) {
   const tr = document.createElement("tr");
 
   const inputTd = document.createElement("td");
@@ -124,6 +127,59 @@ function createEmployeeElemnet(employee) {
 
   img.addEventListener("click", () => {
     setModal(employee);
+  });
+}
+
+// 검색 전 직원 row 삭제
+function resetEmployee() {
+  const rows = document.querySelectorAll(".row-data");
+  rows.forEach((row) => {
+    row.remove();
+  });
+}
+
+// 검색 데이터 read
+function searchData(search, field) {
+  db.collection("직원")
+    .where(field, ">=", search)
+    .where(field, "<=", search + "\uf8ff")
+    .get()
+    .then((result) => {
+      resetEmployee();
+      result.forEach((doc) => {
+        const employee = {
+          id: doc.id,
+          img: doc.data().이미지,
+          name: doc.data().이름,
+          email: doc.data().이메일,
+          tel: doc.data().전화번호,
+          date: doc.data().입사날짜,
+        };
+
+        createEmployeeElement(employee);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// 직원 검색
+function searchEmployee() {
+  const searchInput = document.querySelector(".employee-search__input");
+
+  searchInput.addEventListener("input", async (e) => {
+    let searchString = e.target.value;
+    if (searchString === "") {
+      readEmployee();
+      return;
+    } else if (/[a-zA-Z]/.test(searchString)) {
+      // searchString이 영어일 때
+      searchData(searchString, "이메일");
+    } else if (/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(searchString)) {
+      // searchString이 한글일 때
+      searchData(searchString, "이름");
+    }
   });
 }
 
