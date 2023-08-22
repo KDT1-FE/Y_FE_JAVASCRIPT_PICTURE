@@ -9,9 +9,8 @@ const firebaseConfig = {
     storageBucket: "azkaban-bef73.appspot.com",
     messagingSenderId: "61881098784",
     appId: "1:61881098784:web:97038c5ce63f0d2ab95245"
-  };
+};
 
-// Initialize the Firebase app
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -26,7 +25,7 @@ const initPrisonerDetailModal = () => {
     const saveNameBtn = document.getElementById('saveNameBtn');
     const saveLvBtn = document.getElementById('saveLvBtn');
     const lvOptions = document.querySelectorAll('.lvOption');
-    let currentPrisonCell = null; 
+    let currentPrisonCell = null;
 
     const openPrisonerDetailModal = (prisonCell) => {
         const prisonerName = prisonCell.querySelector('.prisonerName');
@@ -45,14 +44,14 @@ const initPrisonerDetailModal = () => {
             }
         });
 
-        saveNameBtn.removeEventListener('click', saveNameClickHandler); 
-        saveNameBtn.addEventListener('click', saveNameClickHandler); 
+        saveNameBtn.removeEventListener('click', saveNameClickHandler);
+        saveNameBtn.addEventListener('click', saveNameClickHandler);
 
-        saveLvBtn.removeEventListener('click', saveLvClickHandler); 
-        saveLvBtn.addEventListener('click', saveLvClickHandler); 
+        saveLvBtn.removeEventListener('click', saveLvClickHandler);
+        saveLvBtn.addEventListener('click', saveLvClickHandler);
 
-        saveMugshotBtn.removeEventListener('change', saveMugshotChangeHandler); 
-        saveMugshotBtn.addEventListener('change', saveMugshotChangeHandler); 
+        saveMugshotBtn.removeEventListener('change', saveMugshotChangeHandler);
+        saveMugshotBtn.addEventListener('change', saveMugshotChangeHandler);
 
         currentPrisonCell = prisonCell;
     };
@@ -62,20 +61,18 @@ const initPrisonerDetailModal = () => {
         const name = detailName.value;
         const prisonerId = currentPrisonCell.getAttribute('dataId');
 
-        // Use setDoc to create or overwrite a document
         const prisonerDocRef = doc(db, "prisoner", prisonerId);
         const prisonerData = {
             name: name
         };
 
         try {
-            await setDoc(prisonerDocRef, prisonerData, { merge: true }); // Use merge option to merge new data with existing document
+            await setDoc(prisonerDocRef, prisonerData, { merge: true });
             console.log("Name updated in Firestore: ", name);
         } catch (error) {
             console.error("Error updating name in Firestore: ", error);
         }
 
-        // Update the displayed prisoner name in the UI
         const prisonerName = currentPrisonCell.querySelector('.prisonerName');
         prisonerName.textContent = name;
 
@@ -89,14 +86,13 @@ const initPrisonerDetailModal = () => {
         const detailLv = document.getElementById('detailLv');
         const prisonerId = currentPrisonCell.getAttribute('dataId');
 
-        // Update the Firestore document's prisonerLv field using setDoc
         const prisonerDocRef = doc(db, "prisoner", prisonerId);
         const prisonerData = {
             prisonerLv: detailLv.value
         };
 
         try {
-            await setDoc(prisonerDocRef, prisonerData, { merge: true }); // Use merge option to merge new data with existing document
+            await setDoc(prisonerDocRef, prisonerData, { merge: true });
             console.log("prisonerLv updated in Firestore");
         } catch (error) {
             console.error("Error updating prisonerLv in Firestore: ", error);
@@ -111,7 +107,6 @@ const initPrisonerDetailModal = () => {
         const newDetailMugshot = saveMugshotBtn.files[0];
         const prisonerId = currentPrisonCell.getAttribute('dataId');
 
-        // Get the old mugshot image URL from storage and attempt to delete it
         const oldImageUrl = currentPrisonCell.style.backgroundImage.slice(5, -2);
         const oldImageFileName = oldImageUrl.split('/').pop().split('?')[0];
 
@@ -125,17 +120,15 @@ const initPrisonerDetailModal = () => {
             }
         }
 
-        // Upload the new mugshot image to storage    
         const storageRef = ref(storage, `mugshot/${currentPrisonCell.id}_${Date.now()}`);
         try {
             await uploadBytes(storageRef, newDetailMugshot);
             console.log("New image uploaded to storage");
         } catch (error) {
             console.error("Error uploading new image to storage: ", error);
-            return; // if there's an error uploading, we don't want to proceed.
+            return;
         }
 
-        // Get the download URL of the new uploaded image
         try {
             const imageUrl = await getDownloadURL(storageRef);
             const prisonerDocRef = doc(db, "prisoner", prisonerId);
@@ -151,10 +144,6 @@ const initPrisonerDetailModal = () => {
             console.error("Error updating imageURL in Firestore: ", error);
         }
     };
-
-
-
-
 
 
     const resetDetailModal = () => {
