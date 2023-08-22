@@ -30,7 +30,7 @@ https://velvety-puppy-c1029b.netlify.app/
 
 ## 화면 예시
 ### 메인 페이지
-[메인 화면](./assets/images/enroll%20info.JPG)
+![메인 화면](./assets/images/enroll%20info.JPG)
 - 회원 전체 정보 열람이 가능한 메인 페이지입니다.
 - 좌측 상단의 등록 버튼을 통해 회원 신규 등록이 가능하고, 체크박스로 회원을 선택한 후 삭제할 수 있습니다.
 - 회원 목록 영역 내에서 회원 번호를 선택해, 해당 회원의 프로필 페이지로 이동할 수 있습니다.
