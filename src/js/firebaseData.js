@@ -75,13 +75,15 @@ function readEmployee() {
     .get()
     .then((result) => {
       result.forEach((doc) => {
+        const { 이미지, 이름, 이메일, 전화번호, 입사날짜 } = doc.data();
+
         const employee = {
           id: doc.id,
-          img: doc.data().이미지,
-          name: doc.data().이름,
-          email: doc.data().이메일,
-          tel: doc.data().전화번호,
-          date: doc.data().입사날짜,
+          img: 이미지,
+          name: 이름,
+          email: 이메일,
+          tel: 전화번호,
+          date: 입사날짜,
         };
 
         createEmployeeElement(employee);
@@ -110,13 +112,13 @@ function createEmployeeElement(employee) {
   imgTd.append(img);
 
   const name = document.createElement("td");
-  name.innerHTML = employee.name;
+  name.innerText = employee.name;
   const tel = document.createElement("td");
-  tel.innerHTML = employee.tel;
+  tel.innerText = employee.tel;
   const email = document.createElement("td");
-  email.innerHTML = employee.email;
+  email.innerText = employee.email;
   const dateTime = document.createElement("td");
-  dateTime.innerHTML = employee.date;
+  dateTime.innerText = employee.date;
 
   tr.className = "row-data";
   tr.append(inputTd, imgTd, name, email, tel, dateTime);
@@ -147,13 +149,15 @@ function searchData(search, field) {
     .then((result) => {
       resetEmployee();
       result.forEach((doc) => {
+        const { 이미지, 이름, 이메일, 전화번호, 입사날짜 } = doc.data();
+
         const employee = {
           id: doc.id,
-          img: doc.data().이미지,
-          name: doc.data().이름,
-          email: doc.data().이메일,
-          tel: doc.data().전화번호,
-          date: doc.data().입사날짜,
+          img: 이미지,
+          name: 이름,
+          email: 이메일,
+          tel: 전화번호,
+          date: 입사날짜,
         };
 
         createEmployeeElement(employee);

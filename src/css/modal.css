@@ -1,6 +1,5 @@
 .modal__background,
-.detail-modal__background,
-.update-modal__background {
+.detail-modal__background {
   display: none;
   position: fixed;
   top: 0;
@@ -12,20 +11,24 @@
 }
 
 .employee-detail__modal,
-.employee-add__modal,
-.employee-update__modal {
-  width: 70vw;
-  height: 90vh;
+.employee-add__modal {
+  width: 800px;
+  height: 650px;
   position: absolute;
-  left: 15vw;
-  top: 3vh;
+  left: 360px;
+  top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 10px;
   z-index: 99;
+}
+.employee-add__modal > h1,
+.employee-detail__modal > h1 {
+  font-size: 35px;
+  margin: 0.4em;
 }
 .close-icon,
 .close__icon {
@@ -37,8 +40,8 @@
 }
 .employee-add__modal > form,
 .employee-detail__modal > form {
-  width: 50vw;
-  margin-top: 1vh;
+  width: 100%;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,55 +52,57 @@
 .add-file__wrapper {
   flex-direction: column;
 }
-.add-data__file {
-  margin: 2vh auto;
+.add-data__file,
+.update-data__file {
+  margin: 20px auto;
 }
 
-.add-data__img {
-  width: 15vw;
-  height: 15vw;
+.add-data__img,
+.detail__img {
+  width: 230px;
+  height: 230px;
   object-fit: cover;
   background-color: #ececec;
 }
 
 .add-file__wrapper,
 .employee-add__modal > form > input,
-.add-data,
-.detail-data {
-  width: 30vw;
+.add-data {
+  width: 450px;
   display: flex;
   flex: 1 1 auto;
   margin: 5px;
   justify-content: space-between;
   align-items: center;
 }
-.employee-add__modal > form > input {
-  margin: 4vh auto 3vh auto;
+.employee-add__modal > form > input,
+.employee-detail__modal > form > input {
+  margin: 40px auto 30px auto;
 }
 .add-data > label {
-  font-size: 1.5vw;
   margin-right: 10px;
   font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4b4848;
 }
-.add-data > input,
-.detail-data > p {
+.add-data > input {
   width: 50%;
   height: 4vh;
-  font-size: 15px;
 }
 
 .employee-add__modal button,
 .edit__button,
 .delete__button {
-  width: 20vw;
-  height: 6vh;
+  width: 300px;
+  height: 45px;
   margin-top: 30px;
   background-color: #28288c;
   border-radius: 8px;
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 1.2vw;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 6px 6px rgba(0, 0, 0, 0.5);
 }
@@ -106,11 +111,6 @@
   background-color: #6e6ed7;
 }
 
-/* 직원 상세 모달 */
-.detail__img {
-  width: 15vw;
-  margin: 0 auto 30px auto;
-}
 .employee-add__modal input::placeholder,
 .employee-add__modal input,
 .employee-detail__modal input::placeholder,
@@ -119,50 +119,42 @@
   font-weight: 600;
   font-size: 16px;
 }
-.add-data > label {
-  font-size: 18px;
-  font-weight: 500;
-  color: #4b4848;
-}
-.detail-data > p {
-  font-size: 1.5vw;
-  font-weight: 700;
-}
+
 .detail-button__wrapper {
   display: flex;
 }
 .edit__button,
 .delete__button {
-  width: 15vw;
+  width: 210px;
   margin-top: 30px;
   font-size: 15px;
 }
 .delete__button {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 @media screen and (max-width: 391px) {
   .employee-detail__modal,
   .employee-add__modal {
-    height: 60%;
+    box-sizing: border-box;
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 50px;
+    left: 20px;
   }
-  .employee__form {
-    width: 100%;
-    margin-top: 1vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-  }
+
   .employee-detail__modal > h1,
   .employee-add__modal > h1 {
-    font-size: 18px;
+    font-size: 20px;
+  }
+  .employee__form {
+    width: 90%;
   }
   .employee-detail__modal img,
   .employee-add__modal img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   .employee-add__modal label,
   .employee-add__modal input,
@@ -170,21 +162,25 @@
   .employee-detail__modal label,
   .employee-detail__modal input,
   .employee-detail__modal input::placeholder {
-    font-size: 13px;
+    width: 100%;
+    font-size: 14px;
   }
-  .employee-add__modal input .employee-detail__modal input {
+  .employee-add__modal input,
+  .employee-detail__modal input {
     height: 20px;
   }
+  .add-data__file,
   .update-data__file {
-    margin-left: 10px;
+    margin-left: 130px;
   }
   .add-data {
-    width: 120%;
+    width: 90%;
     justify-content: space-between;
   }
   .detail-button__wrapper > button {
     width: 80px;
     height: 40px;
+    margin-top: 20%;
     font-size: 13px;
   }
 }

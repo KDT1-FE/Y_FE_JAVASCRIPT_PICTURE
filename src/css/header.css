@@ -6,60 +6,62 @@
   position: sticky;
   top: 0;
   display: flex;
-  width: 90vw;
+  width: 95%;
   margin: 0 auto;
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #4b4848;
   z-index: 9;
 }
-.main__icon {
-  width: 3vw;
-  height: auto;
-  object-fit: cover;
-  cursor: pointer;
-}
+
 .header__icon {
   display: inline-flex;
   align-items: center;
 }
-.header__icon:hover > span {
-  color: #4b4848;
+.main__icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: cover;
+  cursor: pointer;
 }
 .header__icon > span {
-  font-size: 2vw;
+  font-size: 28px;
   font-weight: 700;
   margin-left: 5px;
   text-decoration: none;
   color: black;
   cursor: pointer;
 }
+.header__icon:hover > span {
+  color: #4b4848;
+}
 
 .employee-search__wrapper {
   display: flex;
-  width: 30vw;
-  height: 5vh;
-  border: 1px solid #4b4848;
+  width: 33%;
+  height: 35px;
+  border: 2px solid #4b4848;
   border-radius: 6px;
   align-items: center;
 }
 .search-icon {
-  width: 1.2vw;
-  height: 1.2vw;
-  margin: 5px 10px auto 10px;
+  width: 15px;
+  height: 15px;
+  margin: 5px 10px auto 5px;
 }
 .employee-search__input {
-  width: 100vw;
+  width: 100%;
   margin-right: 3px;
   border: none;
-  font-size: 1.2vw;
+  font-size: 18px;
   background-color: inherit;
   overflow: hidden;
 }
 .employee-search__input:focus {
+  font-weight: 500;
   outline: none;
 }
 
@@ -68,14 +70,13 @@
   align-items: center;
 }
 .employee-add__button,
-.employee-delete__button,
-.select {
-  margin-left: 10px;
+.employee-delete__button {
+  margin-left: 15px;
 }
 .employee-add__button,
 .employee-delete__button {
-  padding: 1em 2em;
-  font-size: 1vw;
+  padding: 0.8rem 1.6rem;
+  font-size: 16px;
   font-weight: 600;
   background-color: #28288c;
   color: white;
@@ -94,7 +95,34 @@
 }
 
 @media screen and (max-width: 391px) {
+  .header {
+    padding-bottom: 55px;
+  }
+  .main__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .header__icon > span {
+    font-size: 18px;
+  }
+  .employee-search__wrapper {
+    position: absolute;
+    top: 70px;
+    width: 95%;
+    height: 30px;
+    margin: 5px 0 5px 10px;
+  }
   .employee-search__wrapper > .search-icon {
-    display: none;
+    width: 2rem;
+    height: 2rem;
+  }
+  .employee-search__input {
+    font-size: 14px;
+  }
+  .employee-add__button,
+  .employee-delete__button {
+    font-size: 12px;
+    margin-left: 0;
+    margin-right: 15px;
   }
 }

@@ -1,20 +1,15 @@
 .employee-table__warpper {
-  width: 90vw;
-  margin: 5vh auto;
+  width: 93%;
+  margin: 30px auto;
 }
-.employee-add__modal > h1,
-.employee-detail__modal > h1,
-.employee-table__warpper > h1 {
-  font-size: 2vw;
-  margin: 0.4em;
-}
+
 .employee-table {
   width: 100%;
-  font-size: 1.3vw;
+  font-size: 18px;
 }
 
 .employee-table tbody > tr {
-  height: 5vh;
+  height: 35px;
   font-weight: 600;
   margin-top: 3px;
   border-top: 1px solid #4b4848;
@@ -22,7 +17,7 @@
 }
 
 .row-data {
-  width: 100vw;
+  width: 100%;
   text-align: center;
   transform: scale(1);
   transition: transform 0.8s;
@@ -44,8 +39,8 @@
 }
 .employee__img {
   margin: 10px;
-  width: 7vw;
-  height: 7vw;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border: 2px solid #4b4848;
   border-radius: 50%;
@@ -57,4 +52,24 @@
 .employee__img:hover {
   transform: scale(1.1);
   transition: transform 0.8s;
+}
+
+@media screen and (max-width: 391px) {
+  .employee-table__warpper {
+    width: 95%;
+  }
+  .employee-table {
+    width: 100%;
+    font-size: 14px;
+  }
+  .employee-table th:nth-of-type(4),
+  .employee-table th:nth-of-type(5),
+  .employee-table td:nth-of-type(4),
+  .employee-table td:nth-of-type(5) {
+    display: none;
+  }
+  .employee__img {
+    width: 80px;
+    height: 80px;
+  }
 }
