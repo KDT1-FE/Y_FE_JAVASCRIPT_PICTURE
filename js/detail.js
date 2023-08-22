@@ -42,7 +42,7 @@ window.onload = async () => {
 // input 파일이 바뀌면 firebase Storage에 저장하고 화면에 표시
 changeProfile(userID);
 
-const modifyBtn = document.querySelector('.modify');
+const modifyBtn = document.querySelector('.modify-btn');
 const imgRemoveBtn = document.querySelector('.img-remove-btn');
 
 // 수정관련 버튼 토글 함수
