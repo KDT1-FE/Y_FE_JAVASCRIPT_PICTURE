@@ -1,4 +1,4 @@
-import { filteredData, setData } from '../firebase/data.js';
+import { filteredData, searchData, setData } from '../firebase/data.js';
 import { cardList } from '../main.js';
 
 export default class Category {
@@ -12,7 +12,7 @@ export default class Category {
     this.el.classList.add('category');
 
     const categoryBtnEl = document.createElement('button');
-    categoryBtnEl.classList.add('btn', 'active');
+    categoryBtnEl.classList.add('btn', 'category_btn', 'active');
     categoryBtnEl.innerText = this.category;
 
     const dropDownEl = document.createElement('div');
@@ -33,6 +33,10 @@ export default class Category {
     <li>PM</li>
     `;
 
+    const searchBtnEl = document.createElement('button');
+    searchBtnEl.classList.add('btn', 'search_btn');
+    searchBtnEl.innerText = '검색결과';
+
     // event
     selectedEl.addEventListener('click', () => {
       optionsEl.classList.toggle('hide');
@@ -43,11 +47,26 @@ export default class Category {
       this.update(selected);
     });
 
-    categoryBtnEl.addEventListener('click', async () => {});
+    categoryBtnEl.addEventListener('click', (e) => {
+      const selected = e.target.innerText;
+      this.update(selected);
+      searchBtnEl.classList.remove('active');
+      categoryBtnEl.classList.add('active');
+      dropDownEl.classList.remove('hide');
+    });
+
+    searchBtnEl.addEventListener('click', async () => {
+      categoryBtnEl.classList.remove('active');
+      searchBtnEl.classList.add('active');
+      dropDownEl.classList.add('hide');
+      const keyword = localStorage.getItem('search-keyword');
+      const rememberData = await searchData(keyword);
+      cardList.update(rememberData);
+    });
 
     //append
     dropDownEl.append(selectedEl, optionsEl);
-    this.el.append(categoryBtnEl, dropDownEl);
+    this.el.append(categoryBtnEl, searchBtnEl, dropDownEl);
   }
 
   async update(category = this.category) {
@@ -72,3 +91,5 @@ const filteredList = async (department) => {
   }
   return data;
 };
+
+const selectCategory = () => {};

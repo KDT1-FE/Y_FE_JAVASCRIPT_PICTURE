@@ -1,4 +1,6 @@
 import Modal from './Modal.js';
+import { cardList, category } from '../main.js';
+import { searchData } from '../firebase/data.js';
 
 export default class Header {
   constructor() {
@@ -20,15 +22,25 @@ export default class Header {
     toggleModeBtnEl.classList.add('btn', 'toggle', 'material-symbols-outlined');
     toggleModeBtnEl.innerText = `${this.isDark ? 'dark_mode' : 'light_mode'} `;
 
+    const searchBtnEl = document.createElement('button');
+    searchBtnEl.classList.add('btn', 'search', 'material-symbols-outlined');
+    searchBtnEl.innerText = 'search';
+
     const addBtnEl = document.createElement('button');
     addBtnEl.classList.add('btn', 'add');
-    addBtnEl.innerText = '새로운 멤버 추가';
+    addBtnEl.innerText = '새 멤버 추가';
 
-    btnsEl.append(toggleModeBtnEl, addBtnEl);
+    btnsEl.append(toggleModeBtnEl, searchBtnEl, addBtnEl);
 
     const topEl = document.createElement('div');
     topEl.classList.add('top');
     topEl.append(titleEl, btnsEl);
+
+    const bottomEl = document.createElement('form');
+    bottomEl.classList.add('bottom', 'hide');
+    const searchInputEl = document.createElement('input');
+    searchInputEl.placeholder = '이름으로 검색해주세요.';
+    bottomEl.append(searchInputEl);
 
     // Event
     toggleModeBtnEl.addEventListener('click', () => {
@@ -42,12 +54,35 @@ export default class Header {
       this.render();
     });
 
+    searchBtnEl.addEventListener('click', () => {
+      bottomEl.classList.toggle('hide');
+    });
+
     addBtnEl.addEventListener('click', () => {
       const body = document.querySelector('body');
       const modal = new Modal({}, 'create');
       body.append(modal.el);
     });
 
-    this.el.append(topEl);
+    bottomEl.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const keyword = searchInputEl.value.trim();
+
+      if (keyword === '') {
+        alert('검색어를 입력해주세요!');
+        return;
+      }
+      // cardList 업데이트
+      const searched = await searchData(keyword);
+      localStorage.setItem('search-keyword', keyword);
+      searchInputEl.value = '';
+      cardList.update(searched);
+
+      // 카테고리 이동
+      const category = document.querySelector('.category .search_btn');
+      category.click();
+    });
+
+    this.el.append(topEl, bottomEl);
   }
 }

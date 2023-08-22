@@ -54,12 +54,27 @@ export const setData = async () => {
   return data;
 };
 
-// 데이터 카테고리별로 읽어오기
-export const filteredData = async (category) => {
+// 데이터 부서별로 가져오기
+export const filteredData = async (department) => {
   const data = [];
   const q = query(
     collection(db, 'member'),
-    where('department', '==', category)
+    where('department', '==', department)
+  );
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((el) => {
+    data.push({ data: el.data(), id: el.id });
+  });
+  return data;
+};
+
+// 데이터 검색
+export const searchData = async (keyword) => {
+  const data = [];
+  const q = query(
+    collection(db, 'member'),
+    where('name', '>=', keyword),
+    where('name', '<=', keyword + '\uf8ff')
   );
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((el) => {

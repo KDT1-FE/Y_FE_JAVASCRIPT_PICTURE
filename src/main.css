@@ -14,6 +14,7 @@
 
 :root {
   --color-black: #1a1a1a;
+  --color-black-50: rgba(26, 26, 26, 0.5);
   --color-white: #fff;
   --color-white-80: rgba(255, 255, 255, 0.8);
   --color-white-50: rgba(255, 255, 255, 0.5);
@@ -39,7 +40,7 @@ ul {
 /* HEADER */
 header {
   box-sizing: border-box;
-  padding: 0 1.8em;
+  padding: 1em 1.8em;
 }
 
 header .top {
@@ -49,6 +50,7 @@ header .top {
 }
 
 header .top .title {
+  margin: 0;
   color: var(--color-highlight);
 }
 
@@ -56,6 +58,7 @@ header .top .btns {
   gap: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 header .top .btns .btn {
@@ -69,7 +72,8 @@ header .top .btns .btn:hover {
   background-color: var(--color-text-10);
 }
 
-header .top .btns .toggle {
+header .top .btns .toggle,
+header .top .btns .search {
   --width: 46px;
   width: var(--width);
   height: var(--width);
@@ -93,10 +97,37 @@ header .top .btns .add:hover {
   color: var(--color-white);
 }
 
+header .bottom {
+  margin: 1em 0;
+  height: 4em;
+  text-align: center;
+  transition: height 0.2s linear;
+}
+
+header .bottom.hide {
+  height: 0;
+  overflow: hidden;
+}
+
+header .bottom input {
+  color: var(--color-text);
+  padding: 0 1.2em;
+  background-color: transparent;
+  border: var(--color-text-30) solid 2px;
+  border-radius: 4px;
+  width: 50%;
+  height: 90%;
+  font-size: 18px;
+}
+
+header .bottom input:focus {
+  outline: none;
+  border: var(--color-text) solid 2px;
+}
+
 @media (max-width: 960px) {
-  header .top {
-    flex-direction: column;
-    margin-bottom: 2rem;
+  header .top .title {
+    font-size: 24px;
   }
   header .top .btns {
     align-self: flex-end;
@@ -104,18 +135,41 @@ header .top .btns .add:hover {
 }
 
 @media (max-width: 720px) {
-  header .top .title {
-    font-size: 24px;
-  }
-
-  header .top .btns {
+  header .top {
     width: 100%;
     justify-content: space-between;
   }
 
+  header .top .title {
+    font-size: 20px;
+  }
+
+  header .top .btns {
+    gap: 3px;
+  }
+
   header .top .btns .add {
-    padding: 0 7px;
+    font-size: 10px;
+    border: var(--color-text) solid 1px;
+  }
+
+  header .top .btns .toggle,
+  header .top .btns .search {
+    --width: 24px;
+    font-size: 16px;
+  }
+
+  header .bottom {
+    height: 3em;
+  }
+
+  header .bottom input {
     font-size: 14px;
+    border: var(--color-text-30) solid 1px;
+  }
+
+  header .bottom input:focus {
+    border: var(--color-text) solid 1px;
   }
 }
 
@@ -128,17 +182,36 @@ header .top .btns .add:hover {
 }
 
 .category .btn {
+  opacity: 0.7;
   background-color: transparent;
   border: none;
   font-size: 20px;
   color: var(--color-text);
-  margin-right: 1rem;
+  padding-right: 1rem;
+  overflow: hidden;
 }
 
-.category .btn.active::after {
+.category .btn::after {
   content: '';
   display: block;
   border: solid var(--color-highlight) 2px;
+  transition: transform 0.2s ease-in;
+}
+
+.category .btn.category_btn::after {
+  transform: translateX(200%);
+}
+
+.category .btn.search_btn::after {
+  transform: translateX(-200%);
+}
+
+.category .btn.active {
+  opacity: 1;
+}
+
+.category .btn.active::after {
+  transform: translateX(0);
 }
 
 .category .btn:hover {
@@ -147,6 +220,10 @@ header .top .btns .add:hover {
 
 .category .dropdown {
   font-size: 20px;
+}
+
+.category .dropdown.hide {
+  display: none;
 }
 
 .category .dropdown .selected {
