@@ -1,6 +1,10 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from './firebase';
-import { changeProfile, removeProfile, preventEnter } from './util';
+import {
+  doc,
+  getDoc,
+  setDoc,
+} from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js';
+import { db } from './firebase.js';
+import { changeProfile, removeProfile, preventEnter } from './util.js';
 
 const url = new URL(window.location);
 const urlParams = url.searchParams;

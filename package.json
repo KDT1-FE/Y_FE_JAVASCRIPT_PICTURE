@@ -1,7 +1,4 @@
 {
-  "dependencies": {
-    "firebase": "^10.2.0"
-  },
   "type": "module",
   "name": "photo-manager",
   "description": "",
@@ -15,5 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.2.0"
+  }
 }

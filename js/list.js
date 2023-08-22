@@ -6,9 +6,9 @@ import {
   query,
   where,
   or,
-} from 'firebase/firestore';
-import { db } from './firebase';
-import { phoneType } from './util';
+} from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js';
+import { db } from './firebase.js';
+import { phoneType } from './util.js';
 
 // 직원 목록 DOM에 추가해주는 함수
 const inquireListFunc = (querySnapshotArray) => {

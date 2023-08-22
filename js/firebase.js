@@ -1,27 +1,7 @@
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
-// import { getStorage } from "firebase/storage";
-
-// require("dotenv").config();
-
-// const firebaseConfig = {
-//   apiKey: process.env.apiKey,
-//   authDomain: process.env.authDomain,
-//   projectId: process.env.projectId,
-//   storageBucket: process.env.storageBucket,
-//   messagingSenderId: process.env.messagingSenderId,
-//   appId: process.env.appId,
-// };
-
-// const app = initializeApp(firebaseConfig);
-
-// export const db = getFirestore(app);
-// export const storage = getStorage(app);
-
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js';
+import { getStorage } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-storage.js';
 // import { getAnalytics } from 'firebase/analytics';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

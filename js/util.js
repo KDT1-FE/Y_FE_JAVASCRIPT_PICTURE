@@ -1,15 +1,16 @@
-import { doc, writeBatch } from 'firebase/firestore';
+import {
+  doc,
+  writeBatch,
+} from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js';
 import {
   getStorage,
   ref,
   uploadBytes,
   getDownloadURL,
   deleteObject,
-} from 'firebase/storage';
-import { db } from './firebase';
-import { storage } from './firebase';
-
-const storage = getStorage();
+} from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-storage.js';
+import { db } from './firebase.js';
+import { storage } from './firebase.js';
 
 export const phoneType = (num) => {
   return `${num.slice(0, 3)}-${num.slice(3, 7)}-${num.slice(7, 11)}`;
