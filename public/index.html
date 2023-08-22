@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>직원 관리 시스템</title>
+
+  <!-- css 연결 -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- fontawesome 연결 -->
+  <script src="https://kit.fontawesome.com/dfa81b65bd.js" crossorigin="anonymous"></script>
+
+  <!-- Google font 연결 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+  <!-- JavaScirpt 연결 -->
+  <script type="module" src="./js/main.js" defer></script>
+  <script type="module" src="./js/register.js" defer></script>
+  <script type="module" src="./js/delete.js" defer></script>
+  <script type="module" src="./js/modify.js" defer></script>
+
+
+
+</head>
+
+<body masked>
+  <header>
+    <nav class="navbar">
+      <div class="navbar__logo">
+        <i class="fa-solid fa-users-rectangle"></i>
+        <a href="">직원 관리 시스템</a>
+        <a href="" class="navbar__tooglebtn">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </div>
+
+      <ul class="navbar__menu">
+        <li>
+          <a href="#" class="employee-register">
+            <i class="fa-solid fa-user-pen"></i>
+            직원 등록
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-user-check"></i>
+            직원 검색
+          </a>
+        </li>
+        <li>
+          <a href="#" class="employee-delete">
+            <i class="fa-solid fa-user-xmark"></i>
+            직원 삭제
+          </a>
+        </li>
+        <li>
+          <a href="#" class="employee-modify">
+            <i class="fa-solid fa-user-gear"></i>
+            직원 관리
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <form>
+      <section class="modal">
+        <div class="modal-box">
+
+          <div class="modal-box__nav">
+            <div class="modal-box__nav__submitTooglebtn">
+              <a href="#">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </div>
+            <div class="modal-box__nav__modifyTooglebtn">
+              <a href="#">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </div>
+
+          </div>
+          <div class="modal-box__inputImg">
+            <img src="" alt="">
+          </div>
+
+          <div class="modal-box__inputInfo">
+            <div>
+              <div>
+                <label for="userName">이름</label>
+                <input type="text" name="userName" id="userName" placeholder="홍길동">
+              </div>
+
+              <div>
+                <label for="extensionNumber">사번</label>
+                <input name="employeeNumber" id="employeeNumber">
+              </div>
+
+              <div>
+                <label for="dept">부서</label>
+                <select name="dept" id="dept">
+                  <option value="인사">인사</option>
+                  <option value="마케팅">마케팅</option>
+                  <option value="영업">영업</option>
+                  <option value="재무">재무</option>
+                  <option value="회계">회계</option>
+                  <option value="IT">IT</option>
+                  <option value="법무">법무</option>
+                  <option value="디자인 ">디자인</option>
+                </select>
+
+                <label for="position">직급</label>
+                <select name="position" id="position">
+                  <option value="인턴">인턴</option>
+                  <option value="사원">사원</option>
+                  <option value="주임">주임</option>
+                  <option value="대리">대리</option>
+                  <option value="과장">과장</option>
+                  <option value="차장">차장</option>
+                  <option value="부장">부장</option>
+                  <option value="상무">상무</option>
+                  <option value="대표이사">대표이사</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="userNumber">내선번호</label>
+                <input type="tel" name="userNumber" id="userNumber" placeholder="000-000-0000">
+              </div>
+
+              <div>
+                <label for="file">프로필사진</label>
+                <input type="file" id="image" />
+              </div>
+
+            </div>
+          </div>
+
+          <div class="submitBtn">
+            <button class="submitButton">제출</button>
+          </div>
+          <div class="modifyBtn">
+            <button class="modifyButton">수정</button>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <section class="staff-box">
+    </section>
+
+
+
+  </main>
+
+  <aside>
+    <div class="staff-box__delete">
+      <i class="fa-solid fa-trash-can"></i>
+    </div>
+    <div class="staff-box__modify">
+      <i class="fa-solid fa-gear"></i>
+    </div>
+  </aside>
+
+  <footer>
+
+  </footer>
+
+
+
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyA2jawA4p__oKcwDI-VORSiSAR2jrkLRj0",
+      authDomain: "admin-acaf2.firebaseapp.com",
+      projectId: "admin-acaf2",
+      storageBucket: "admin-acaf2.appspot.com",
+      messagingSenderId: "921409621140",
+      appId: "1:921409621140:web:c65083312dd06f11f23881",
+      measurementId: "G-KHSR9048GC"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+</body>
+
+</html>
