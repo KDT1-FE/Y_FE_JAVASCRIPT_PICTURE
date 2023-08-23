@@ -33,7 +33,7 @@ db.collection('profile')
     docRef.delete()
 }
 // 직원 추가페이지 이동
-document.querySelector('.btn__add').addEventListener('click',()=>{window.location.href = '/employee_add.html'})
+document.querySelector('.btn__add').addEventListener('click',()=>{window.location.href = './employee_add.html'})
 
 // 직원 삭제
 function getCheckEmployeeId (){
@@ -52,7 +52,7 @@ document.querySelector('.btn__del').addEventListener('click',()=>{
     if (userConfirmed) {
         checkIds.forEach(checkId=>{
             deleteFirestore('profile',checkId)
-            setTimeout(()=>window.location.href = "/index.html",500)
+            setTimeout(()=>window.location.href = "./index.html",500)
             
         })
     } else {
@@ -77,7 +77,7 @@ table.addEventListener('click',(e)=>{
   if(e.target.value === undefined){
     let selectEmployee = e.target.parentNode.querySelector('.employeeId')
   localStorage.setItem('selectEmployee',selectEmployee.innerHTML);
-  setTimeout(()=>window.location.href = "/employee_detail.html",500)
+  setTimeout(()=>window.location.href = "./employee_detail.html",500)
   }
   
 });

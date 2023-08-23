@@ -63,7 +63,7 @@ document.querySelector('#myForm').addEventListener("submit",async (e)=>{
     addFirestore('profile',newEmployeeId.toString(),{employeeId:newEmployeeId,name,email,phonenum:phoneNum,position})
     addFirestorage(file,newEmployeeId);
     console.log('생성하였습니다');
-    setTimeout(()=>window.location.href = "/index.html",500)
+    setTimeout(()=>window.location.href = "./index.html",500)
 });
 
 document.querySelector('.btn__cancel').addEventListener('click',()=>{

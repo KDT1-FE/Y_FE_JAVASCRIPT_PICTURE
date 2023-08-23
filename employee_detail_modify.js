@@ -76,7 +76,7 @@ document.querySelector('#myForm').addEventListener('submit',async (e)=>{
     }
 
 
-    setTimeout(()=>{window.location.href="/employee_detail.html"},500)
+    setTimeout(()=>{window.location.href="./employee_detail.html"},500)
 
 
     }
