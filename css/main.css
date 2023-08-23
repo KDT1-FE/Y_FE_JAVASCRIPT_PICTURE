@@ -171,31 +171,27 @@ li {
   margin-bottom: 5px;
 }
 
-/* 반응형 설계 */
-/* @media screen and (max-width: 1670px) {
-  .staff-box__item {
-    width: 25rem;
-  }
-} */
-
 @media screen and (max-width: 1148px) {
-  .navbar {
+  /* .navbar {
     height: auto;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
     padding: 30px 0px;
+    background-color: black;
   }
 
   .navbar__menu {
     display: none;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     margin: auto;
   }
 
   .navbar__menu li {
     text-align: center;
+    width: 100%;
   }
 
   .navbar__tooglebtn {
@@ -204,7 +200,7 @@ li {
 
   .navbar__menu.active {
     display: flex;
-  }
+  } */
 
   .staff-box__item {
     width: 27rem;
