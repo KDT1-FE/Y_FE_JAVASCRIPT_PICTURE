@@ -34,12 +34,12 @@ Firebase
 * 사진 편집 기능
 
 ## User Flow
-![유저플로우](https://github.com/YongYong21/javascript/assets/90038848/bcb05e69-37d2-4c35-a238-560b807c4ff9)
+![유저플로우](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/90038848/67d36386-51e5-45fe-ad88-6a1e60df1f55)
 
 ## 화면
-<img width="964" alt="1" src="https://github.com/YongYong21/javascript/assets/90038848/e262d008-9e46-48c1-9c38-915a99b12416">
-<img width="959" alt="2" src="https://github.com/YongYong21/javascript/assets/90038848/5966af7f-ccf8-4f09-b1bf-ecedc679e2d2">
-<img width="969" alt="3" src="https://github.com/YongYong21/javascript/assets/90038848/7fa6c9dd-ae7f-44c4-87d7-9bd15a0cb31a">
+<img width="964" alt="1" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/90038848/fa103287-c392-4710-967b-e52f7ed115a6">
+<img width="959" alt="2" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/90038848/3dc0a60d-dff9-4201-9fef-d263fb37bdbb">
+<img width="969" alt="3" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/90038848/1f3bd10e-5c9b-4bac-84a6-1de02dfeeec2">
 
 
 ## 유의사항
