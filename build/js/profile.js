@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, getDocs, updateDoc, collection, doc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject, listAll } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+
 const headertitle = document.querySelector('.headertitle');
 const infochange = document.querySelector('.infochange');
 const deletemodal = document.getElementById('modaldelete');
@@ -82,19 +83,18 @@ async function loadFirebaseData() {
   const imagesCollection = collection(db, 'images');
   try {
     const querySnapshot = await getDocs(imagesCollection);
-    setTimeout(() => {
-      querySnapshot.forEach((docs) => {
-        const data = docs.data();
-        const item = {
-          id: data.id,
-          image: data.imageUrl,
-          name: data.name,
-          group: data.group,
-          complete: false
-        };
-        profiles.push(item);
-      });
-    }, 1000);
+    querySnapshot.forEach((docs) => {
+      const data = docs.data();
+      const item = {
+        id: data.id,
+        image: data.imageUrl,
+        name: data.name,
+        group: data.group,
+        complete: false
+      };
+      profiles.push(item);
+    });
+
   } catch (error) {
     console.error('Error loading Firebase data:', error);
     // 오류 처리
