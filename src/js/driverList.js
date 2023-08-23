@@ -1,8 +1,8 @@
-// import common components
-import "./components/load.js";
+// import common controllers
+import "./controllers/load.js";
 
-// import driverList components
-import "./components/driverList/getDriverList.js";
-import "./components/driverList/clickDeleteDriver.js";
-import "./components/driverList/searchDriver.js";
-import "./components/driverList/clickAddDriver.js";
+// import driverList controllers
+import "./controllers/driverList/getDriverList.js";
+import "./controllers/driverList/clickDeleteDriver.js";
+import "./controllers/driverList/searchDriver.js";
+import "./controllers/driverList/clickAddDriver.js";

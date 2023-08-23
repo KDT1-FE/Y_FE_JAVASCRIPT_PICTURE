@@ -151,9 +151,9 @@ public   # 배포용 컴파일 및 번들링 완료 파일
 src
  ├─ imgs
  ├─ js
- │   ├─ components         # 페이지 별 component js 모음
+ │   ├─ controllers         # 페이지 별 controller js 모음
  │   ├─ firebase           # firebase 기본 세팅 js 모음
- │   └─ ...페이지 별 js 파일  # 페이지 별로 필요한 omponents 안 모듈들을 Import
+ │   └─ ...페이지 별 js 파일  # 페이지 별로 필요한 controllers 안 모듈들을 Import
  └─ scss
      ├─ animation      # 애니메이션 모음
      ├─ common         # 공통적으로 사용되는 style 모음

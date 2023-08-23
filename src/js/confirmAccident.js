@@ -1,7 +1,7 @@
-// import common components
-import "./components/load.js";
-import "./components/clickBackBtn";
+// import common controllers
+import "./controllers/load.js";
+import "./controllers/clickBackBtn";
 
-// import confirm components
-import "./components/confirmAccident/getAccidentProfile.js";
-import "./components/confirmAccident/clickConfirm.js";
+// import confirm controllers
+import "./controllers/confirmAccident/getAccidentProfile.js";
+import "./controllers/confirmAccident/clickConfirm.js";

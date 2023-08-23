@@ -1,7 +1,7 @@
-// import common components
-import "./components/load.js";
-import "./components/clickBackBtn.js";
+// import common controllers
+import "./controllers/load.js";
+import "./controllers/clickBackBtn.js";
 
-// import addDriver components
-import "./components/addDriver/getAndCreateDriverData.js";
-import "./components/addDriver/previewDriverImg.js";
+// import addDriver controllers
+import "./controllers/addDriver/getAndCreateDriverData.js";
+import "./controllers/addDriver/previewDriverImg.js";

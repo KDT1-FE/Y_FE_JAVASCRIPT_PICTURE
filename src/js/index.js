@@ -1,8 +1,8 @@
-// common components
-import "./components/load.js";
+// common controllers
+import "./controllers/load.js";
 
-// login components
-import "./components/login/adminLogin.js";
+// login controllers
+import "./controllers/login/adminLogin.js";
 
 // style
 import "../scss/styles.scss";
