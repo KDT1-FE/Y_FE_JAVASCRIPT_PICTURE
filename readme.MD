@@ -1,5 +1,7 @@
 # 직원 관리 시스템
 
+배포주소 :https://frolicking-meerkat-ab332e.netlify.app/
+
 ## 직원등록
 
 ![직원등록](https://im.ezgif.com/tmp/ezgif-1-bca4cdb3cd.gif)
