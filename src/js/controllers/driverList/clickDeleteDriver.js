@@ -25,11 +25,12 @@ function checkDeleteDriver() {
             // db에서 보험자 삭제하기
             deleteDriver(driverId);
 
-            const driverImg = deleteDriverTr.querySelector(".driverImg");
+            const driverImg =
+              deleteDriverTr.getElementsByClassName("driverImg");
 
+            // storage의 이미지 삭제하기
             if (driverImg) {
               const driverImgUrl = driverImg.currentSrc;
-              // storage에서 이미지 삭제하기
               deleteDriverImg(driverImgUrl);
             } else throw "404 페이지로";
           } else throw "404 페이지로";
