@@ -1,0 +1,130 @@
+html {
+  margin: 0
+}
+
+body {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  padding: 2rem 0;
+  width: 100%;
+  display: block;
+}
+
+.headertitle {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: default;
+}
+
+.check {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.checkuser {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  padding: 0 1rem 0;
+  cursor: default;
+}
+
+.checklogin {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 19px;
+  color: black;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid black;
+  background-color: transparent;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+}
+
+.checklogin:hover {
+  cursor: pointer;
+  background-color: black;
+  color: #fff;
+}
+
+
+@media ( max-width: 1023px ) {
+  .headertitle {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: default;
+  }
+  .checkuser {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    padding: 0 1rem 0;
+    cursor: default;
+  }
+  
+  .checklogin {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+}
+@media ( max-width: 767px ) {
+  .headertitle {
+    font-size: .8rem;
+    display: flex;
+    justify-content: space-evenly;
+    cursor: default;
+  }
+  .checkuser {
+    font-size: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    padding: 0 1rem 0;
+    cursor: default;
+  }
+  
+  .checklogin {
+    font-size: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+}
