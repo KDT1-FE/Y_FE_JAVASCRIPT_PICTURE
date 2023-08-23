@@ -5,6 +5,9 @@
 import getInputData from "./getInputData.js";
 // firebase에 driver doc을 추가하는 모듈
 import addDriverDoc from "./addDriverDoc.js";
+// 사진 미리보기
+import previewDriverImg from "./previewDriverImg.js";
+previewDriverImg("driverImg", "driverImgShow");
 
 // 보험자 추가 버튼 클릭 시 addDriverData 콜백 함수 실행
 const addDriverForm = document.getElementById("addDriver");

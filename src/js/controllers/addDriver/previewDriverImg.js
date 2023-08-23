@@ -1,13 +1,15 @@
-const driverImgInput = document.getElementById("driverImg");
-const driverImgShowPreview = document.getElementById("driverImgShow");
+export default function previewDriverImg(imgInput, previewImg) {
+  const driverImgInput = document.getElementById(imgInput);
+  const driverImgShowPreview = document.getElementById(previewImg);
 
-driverImgInput.addEventListener("change", () => {
-  const driverImg = driverImgInput.files[0];
-  const fileReader = new FileReader();
+  driverImgInput.addEventListener("change", () => {
+    const driverImg = driverImgInput.files[0];
+    const fileReader = new FileReader();
 
-  fileReader.onload = ({ target }) => {
-    driverImgShowPreview.src = target.result;
-  };
+    fileReader.onload = ({ target }) => {
+      driverImgShowPreview.src = target.result;
+    };
 
-  fileReader.readAsDataURL(driverImg);
-});
+    fileReader.readAsDataURL(driverImg);
+  });
+}
