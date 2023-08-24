@@ -60,12 +60,17 @@ export default class UpdateAndDeleteModal extends Component {
                             <input class="modal__banner--form-additional" type="text"  value="${Store.state.additional}" />
                         </div>
                     </div>
-                    
                 </div>
+                <button class="fix__modal--close">X</button>
             </div>
         `;
         this.el.classList.add('fix__modal');
         const _id = history.state.id;
+
+        const closeBtn = this.el.querySelector('.fix__modal--close');
+        closeBtn.addEventListener('click', () => {
+            this.el.classList.remove('active');
+        });
 
         const inputEls = this.el.querySelectorAll('input');
         const updateBtn = this.el.querySelector('.updateBtn');
