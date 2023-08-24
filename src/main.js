@@ -10,6 +10,7 @@ import './css/detailBanner.css';
 import './css/fixModal.css';
 import './css/moveUp.css';
 import './css/firstpage.css';
+import './css/notFound.css';
 
 const root = document.getElementById('root');
 
