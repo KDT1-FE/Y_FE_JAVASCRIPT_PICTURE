@@ -29,7 +29,7 @@ const uploadImage = async (props) => {
 
 const setData = async () => {
     const date = new Date();
-    const dateId = Store.state.nickname + date.getTime().toString();
+    const dateId = 'valleyId' + date.getTime().toString();
 
     await uploadImage(dateId);
 
