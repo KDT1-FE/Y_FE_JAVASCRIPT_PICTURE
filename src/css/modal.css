@@ -41,8 +41,6 @@
     .modal__wrapper {
         width: 90%;
         height: 70%;
-
-        overflow: hidden;
     }
 }
 
@@ -50,8 +48,6 @@
     .modal__wrapper {
         width: 90%;
         height: 55%;
-
-        overflow: hidden;
     }
 }
 
