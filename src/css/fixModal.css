@@ -120,6 +120,14 @@
     gap: 1rem;
 }
 
+.fix__modal--close {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+
+    cursor: pointer;
+}
+
 .update-submit {
     display: none;
     width: 100%;
