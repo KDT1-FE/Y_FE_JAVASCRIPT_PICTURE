@@ -123,8 +123,8 @@ async function Edit() {
   }
 
   // 프리뷰 구현
-  document.querySelector("#edit-myimg").addEventListener("change", async () => {
-    const file = document.querySelector("#edit-myimg").files[0];
+  document.querySelector("#image").addEventListener("change", async () => {
+    const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
     const uploadTask = await uploadBytes(storageRef, file);
