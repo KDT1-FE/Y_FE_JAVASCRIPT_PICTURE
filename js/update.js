@@ -2,13 +2,12 @@ import { ref, storage, uploadBytesResumable, getDownloadURL, addDoc, colRef } fr
 import { db, doc, getDoc, updateDoc, deleteObject } from '../firebase.js';
 import { docRef, docSnap } from './profile.js';
 
-console.log(docSnap.data());
-
 const $update = document.querySelector('.update');
 $update.addEventListener('submit', (e) => {
   e.preventDefault();
 
   let $file = document.querySelector('.update--image').files[0];
+
   if ($file) {
     const desertRef = ref(storage, `characters/${docSnap.data().filename}`);
     deleteObject(desertRef).then(() => {
@@ -30,15 +29,16 @@ $update.addEventListener('submit', (e) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
           updateDoc(docRef, { image: downloadURL, filename: $filename });
+          updateDoc(docRef, {
+            name: $update.name.value,
+            appearance: $update.appearance.value,
+            interests: $update.interests.value,
+          }).then(() => {
+            console.log('Update successfully');
+            window.location.reload();
+          });
         });
       }
     );
   }
-
-  updateDoc(docRef, { name: $update.name.value, appearance: $update.appearance.value, interests: $update.interests.value });
-  console.log('Update successfully');
-  console.log(docSnap.data());
-  setTimeout(() => {
-    window.location.reload();
-  }, 2500);
 });
