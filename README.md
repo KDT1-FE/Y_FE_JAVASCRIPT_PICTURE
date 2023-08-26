@@ -151,6 +151,7 @@ Zero Car 프로젝트를 진행하면서 겪었던 trouble을 해결한 기록�
 public   # 배포용 컴파일 및 번들링 완료 파일
  ├─ css
  └─ js
+
 src
  ├─ imgs
  ├─ js
@@ -163,6 +164,7 @@ src
      ├─ screens        # 페이지 별로 scss 파일을 분리
      └─ styles.scss    # style을 한 파일에서 컴파일 하기 위해 앞선 폴더들 Import 
      └─ templates      # 각 페이지 별 html 모음
+
 proubleshooting    # 각 기술 별 트러블 슈팅 기록 모음
      ├─ index.md
      ├─ js 트러블 슈팅
@@ -251,7 +253,7 @@ SPA는 웹 에플리케이션에 필요한 모든 정적 리소스를 최초 접
 
 > 1. 프로젝트에 webpack, babel, env, firebase, css 전처리 로더 세팅하기
 
-  프로젝트 환경에 필요한 다양한 외부 모둘을과 개발 플랫폼들을 하나씩 세팅하는 것은 쉬운 일이지만, 모든 개발 환경을 동시에 사용하기 위해 또 추가적인 설정이 필요하다는 점이 굉장히 어려웠다. 예를들어 firebase와 webpack을 함께 사용하기 위해서 필요한 명령어나 과정이 따로 있거나, babel, env 설치에서 끝나는 것이 아니라 webpack에 추가 설정을 해주어야 한다는 점이 어려웠다.
+  프로젝트 환경에 필요한 다양한 외부 모듈과 개발 플랫폼들을 동시에 세팅하고 사용하는 것에 어려움을 겪었다. 예를들어 firebase와 webpack을 함께 사용하기 위해서 필요한 명령어나 과정이 따로 있거나, babel, env 설치에서 끝나는 것이 아니라 webpack에 추가 설정을 해주어야 한다는 점이 어려웠다.
 
   하지만 공식 문서를 잘 살펴보면 다 방법이 있고 해결할 수 있었다. 프로젝트 초반부터 이 부분에 대해 어려움을 겪어서 troubleshooting 파일 최상단에 "firebase webpack babel sass 개발환경 세팅.md" 파일에 내용을 정리해 두었다.
 
