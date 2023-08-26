@@ -34,21 +34,23 @@ export default function addDriverImg(id, img, redirectUrl) {
         },
         // 업로드 완료 후
         // 동일한 id를 가진 firestore doc에 보험자 이미지 url 업데이트
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            if (downloadURL) {
-              updateDriverImg(id, downloadURL);
-            } else throw "404 페이지로";
-
-            // 업로드 완료 후 보험자 리스트 페이지로 이동
-            setTimeout(() => {
-              location.href = redirectUrl;
-            }, 1000);
-          });
-        }
+        completeUpload(uploadTask, id, redirectUrl)
       );
     } else throw "404 페이지로";
   } catch (err) {
     console.log(err);
   }
+}
+
+function completeUpload(uploadTask, id, redirectUrl) {
+  getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+    if (downloadURL) {
+      updateDriverImg(id, downloadURL);
+    } else throw "404 페이지로";
+
+    // 업로드 완료 후 보험자 리스트 페이지로 이동
+    setTimeout(() => {
+      location.href = redirectUrl;
+    }, 1000);
+  });
 }
