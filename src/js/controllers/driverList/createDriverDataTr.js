@@ -2,6 +2,7 @@
 // 보험자 collection의 각 document field들을 td 요소로 creat하는 Component
 export default function createDriverDataTr(driverDoc, driver) {
   const driverData = driverDoc.data();
+  const driverId = driverDoc.id;
 
   // 보험자 사진, 이름, 생년월일, 가입 상품, 가입 기간, 심사 여부 data 불러오기
   const driverImg = driverData.imgUrl;
@@ -27,34 +28,11 @@ export default function createDriverDataTr(driverDoc, driver) {
 
     switch (driverDataValue) {
       case driverImg:
-        const img = document.createElement("img");
-        img.classList.add("driverImg");
-        img.src = driverDataValue;
-        img.alt = "보험자 사진";
-
-        td.setAttribute("align", "center");
-        td.classList.add("largeWidthData");
-        td.append(img);
+        createDriverImg(driverImg, td);
         break;
 
       case driverConfirm:
-        if (driverDataValue) {
-          td.innerText = "심사 완료";
-          td.style.color = "orange";
-          td.classList.add("largeWidthData");
-        } else {
-          const confirmAnc = document.createElement("a");
-          confirmAnc.classList.add("confirmAnc");
-          confirmAnc.setAttribute(
-            "href",
-            `./confirmAccident.html?${driverDoc.id}`
-          );
-          confirmAnc.innerText = "심사하기 →";
-          confirmAnc.style.color = "white";
-
-          td.classList.add("largeWidthData");
-          td.append(confirmAnc);
-        }
+        createConfirmText(driverConfirm, driverId, td);
         break;
 
       case driverSubsPeriod:
@@ -68,4 +46,33 @@ export default function createDriverDataTr(driverDoc, driver) {
 
     driver.append(td);
   });
+}
+
+function createDriverImg(driverImg, td) {
+  const img = document.createElement("img");
+  img.classList.add("driverImg");
+  img.src = driverImg;
+  img.alt = "보험자 사진";
+
+  td.setAttribute("align", "center");
+  td.classList.add("largeWidthData");
+
+  td.append(img);
+}
+
+function createConfirmText(driverConfirm, driverId, td) {
+  if (driverConfirm) {
+    td.innerText = "심사 완료";
+    td.style.color = "orange";
+    td.classList.add("largeWidthData");
+  } else {
+    const confirmAnc = document.createElement("a");
+    confirmAnc.classList.add("confirmAnc");
+    confirmAnc.setAttribute("href", `./confirmAccident.html?${driverId}`);
+    confirmAnc.innerText = "심사하기 →";
+    confirmAnc.style.color = "white";
+
+    td.classList.add("largeWidthData");
+    td.append(confirmAnc);
+  }
 }
