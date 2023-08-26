@@ -5,20 +5,13 @@ export default function createDriverDataTr(driverDoc, driver) {
   const driverId = driverDoc.id;
 
   // 보험자 사진, 이름, 생년월일, 가입 상품, 가입 기간, 심사 여부 data 불러오기
-  const driverImg = driverData.imgUrl;
-  const driverName = driverData.name;
-  const driverBirth = driverData.birth;
-  const driverProduct = driverData.product;
-  const driverSubsPeriod = driverData.subsPeriod;
-  const driverConfirm = driverData.confirm;
-
   const driverDataValues = [
-    driverImg,
-    driverName,
-    driverBirth,
-    driverProduct,
-    driverSubsPeriod,
-    driverConfirm
+    driverData.imgUrl,
+    driverData.name,
+    driverData.birth,
+    driverData.product,
+    driverData.subsPeriod,
+    driverData.confirm
   ];
 
   // 각 데이터를 원하는 형태로 creat
@@ -27,15 +20,15 @@ export default function createDriverDataTr(driverDoc, driver) {
     td.classList.add("driverData");
 
     switch (driverDataValue) {
-      case driverImg:
-        createDriverImg(driverImg, td);
+      case driverData.imgUrl:
+        createDriverImg(driverDataValue, td);
         break;
 
-      case driverConfirm:
-        createConfirmText(driverConfirm, driverId, td);
+      case driverData.confirm:
+        createConfirmText(driverDataValue, driverId, td);
         break;
 
-      case driverSubsPeriod:
+      case driverData.subsPeriod:
         td.innerText = driverDataValue + " 개월";
         break;
 
