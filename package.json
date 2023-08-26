@@ -21,6 +21,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "dayjs": "^1.11.9",
     "firebase": "^10.1.0",
     "regenerator-runtime": "^0.14.0"
   }
