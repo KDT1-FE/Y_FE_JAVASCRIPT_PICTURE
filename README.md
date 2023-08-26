@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/badge/Zero Car (영차!)-navy?style=for-the-badge&logoColor=white" alt="zero car"/>
   </a>
   <a href="https://github.com/JitHoon/zero-car">
-    <img src="https://img.shields.io/badge/배포 Refository-212125?style=for-the-badge&logoColor=white" alt="배포 레포"/>
+    <img src="https://img.shields.io/badge/배포 repository-212125?style=for-the-badge&logoColor=white" alt="배포 레포"/>
   </a>
   <p align="center">임시 아이디 : 최지훈, 임시 비밀번호 : 777</p>
   <p align="end">개발자: 최지훈(Jit Hoon)</p>
@@ -17,6 +17,9 @@
 
 ## [ Zero Car (영차!) 개요 ]
 Zero Car(영차!)는 운전자 보험 고객 사진 및 정보 관리를 CRUD 할 수 있는 서비스입니다.
+
+## [ ✨ Main Point : troubleshooting 기록]
+Zero Car 프로젝트를 진행하면서 겪었던 trouble을 해결한 기록을 troubleshooting 파일에 기록해두었습니다.
 
 <div align="center">
 
@@ -242,6 +245,46 @@ SPA는 웹 에플리케이션에 필요한 모든 정적 리소스를 최초 접
 <div style="text-align: center;">
   <img src = "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/7f5e564e-100e-4710-a815-5e3d6f473532" alt ="user flow" />
 </div>
+
+
+## [ 어려웠던 점과 배운점 ]
+
+> 1. 프로젝트에 webpack, babel, env, firebase, css 전처리 로더 세팅하기
+
+  프로젝트 환경에 필요한 다양한 외부 모둘을과 개발 플랫폼들을 하나씩 세팅하는 것은 쉬운 일이지만, 모든 개발 환경을 동시에 사용하기 위해 또 추가적인 설정이 필요하다는 점이 굉장히 어려웠다. 예를들어 firebase와 webpack을 함께 사용하기 위해서 필요한 명령어나 과정이 따로 있거나, babel, env 설치에서 끝나는 것이 아니라 webpack에 추가 설정을 해주어야 한다는 점이 어려웠다.
+
+  하지만 공식 문서를 잘 살펴보면 다 방법이 있고 해결할 수 있었다. 프로젝트 초반부터 이 부분에 대해 어려움을 겪어서 troubleshooting 파일 최상단에 "firebase webpack babel sass 개발환경 세팅.md" 파일에 내용을 정리해 두었다.
+
+> 2. SASS(SCSS)의 이점 살리기
+
+  프로젝트에 필요한 디자인과 스타일링이 늘어나면서 중복 되는 CSS 코드가 많아 SASS(SCSS)를 적극적으로 사용해보았다. 특히 mixin을 사용하여 반응형에 대한 반복되는 코드 작업 시간을 줄일 수 있어서 좋았다.
+
+  하지만 아직 SCSS에서 사용할 수 있는 효율적인 문법을 전부 다 알고있지 않아서 해당 프로젝트에서 SCSS의 이점을 극대화하지 못했다는 생각이 들었다. Refactoring 과정에서 이 부분을 더 공부하고 보완해 나갈 생각이다.
+
+> 3. 파일을 활용한 코드 관리 최적화
+
+  프로젝트에 필요한 기능들이 많아지면서, 각 기능 별로 파일을 분리하는데 어려움을 겪었다. 
+  
+  예를들어 보험자 정보를 업데이트하는 기능 안에 input data 가져오는 기능, mock data 생성 후 가져오는 기능, image를 storage에 따로 저장하고 이미지 url을 가져오는 기능 등 다양한 기능들이 포함되어있어서 각각의 기능들을 어떤 기준으로 분리해야하고 어느 파일에 함께 보관해야하는지 어려움을 겪었다.
+
+  내가 선택한 방식은, MPA인 만큼 각 기능들을 페이지 파일 별로 분리하여 구분하였다. 또한 페이지 별로 메인 파일을 만들어 주요 파일을 import하여 이 페이지에서의 주요 동작은 무엇인지 쉽게 파악할 수 있도록 만들었다.
+  
+```shell
+src
+ └─ js
+    ├─ controllers         # 페이지 별 controller js 모음
+    │       └─ profile
+    │             ├─ getProfile.js 
+    │             └─ editProfile.js
+    └─ getProfile.js
+```
+```js
+// getProfile.js
+import "./controllers/profile/getProfile.js"
+import "./controllers/profile/editProfile.js"
+```
+
+
 
 <details>
 <summary>야놀자 테크 캠프 JS 과제 설명</summary>
