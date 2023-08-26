@@ -7,7 +7,7 @@ export default function previewDriverImg(imgInput, previewImg) {
     const fileReader = new FileReader();
 
     fileReader.onload = ({ target }) => {
-      driverImgShowPreview.src = target.result;
+      driverImgShowPreview.setAttribute("src", `${target.result}`);
     };
 
     fileReader.readAsDataURL(driverImg);
