@@ -3,7 +3,6 @@ const detailWrap = document.getElementById('detail-wrap');
 let detailView = '';
 const updateBtn = document.getElementById('update-btn');
 const completeBtn = document.getElementById('complete-btn');
-const chatBtn = document.getElementById('chat-btn');
 
 showLoadingImage();
 
@@ -26,8 +25,6 @@ db.collection('person')
   <p class="lists">특이사항 : ${result.data().memo}</p>
 </div>
     `;
-    // console.log(result);
-    // console.log(result.data());
     detailWrap.innerHTML = detailView;
     hideLoadingImage();
   });
@@ -47,13 +44,13 @@ updateBtn.addEventListener('click', function () {
     .get()
     .then((result) => {
       if (currentUser.uid === result.data().uid) {
+
         // 성별 값 가져오기
         const genderValue = result.data().gender;
         let femaleChecked = 'checked';
         let maleChecked = 'checked';
 
         // 성별 라디오 버튼 체크하기
-
         if (genderValue === '남') {
           maleChecked = 'checked';
           femaleChecked = '';
@@ -123,70 +120,57 @@ updateBtn.addEventListener('click', function () {
 
         const imageInput = document.getElementById('image');
         const imagePreview = document.getElementById('image-preview');
-        const previewWrap = document.querySelector('.preview-wrap');
-        const deleteBtn = document.querySelector('delete-btn');
 
-        // 이미지 미리보기
-        imageInput.addEventListener('change', function (event) {
+        imageInput.addEventListener('change', async function (event) {
           const selectedImage = event.target.files[0];
-
-          if (selectedImage) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-              imagePreview.src = e.target.result;
-
-              const storageRef = firebase.storage().ref();
-              const imageRef = storageRef.child('image/' + selectedImage.name);
-
-              imageRef
-                .put(selectedImage)
-                .then(() => {
-                  console.log('Image uploaded successfully');
-
-                  // 업로드한 이미지의 URL을 받아옴
-                  imageRef
-                    .getDownloadURL()
-                    .then((imageUrl) => {
-                      // imageUrl을 사용하여 Firebase Firestore에 업데이트
-                      const newData = {
-                        // ... 기타 필드 데이터 ...
-                        image: imageUrl, // 업로드한 이미지의 URL
-                      };
-
-                      db.collection('person')
-                        .doc(personId.get('id'))
-                        .update(newData)
-                        .then(() => {
-                          console.log('Firestore updated with image URL');
-                        })
-                        .catch((error) => {
-                          console.error('Error updating Firestore:', error);
-                        });
-                    })
-                    .catch((error) => {
-                      console.error('Error getting image URL:', error);
-                    });
-                })
-                .catch((error) => {
-                  console.error('Error uploading image:', error);
-                });
-            };
-
-            reader.readAsDataURL(selectedImage);
-          } else {
+        
+          if (!selectedImage) {
             imagePreview.src = '';
+            return;
+          }
+          // firebase에 이미지 등록하고 url 가져오는 함수 후에 
+          // data 업데이트 하는 함수로 인자를 전달
+          try {
+            const imageUrl = await uploadImage(selectedImage);
+            imagePreview.src = imageUrl;
+            await updateFirestoreImage(imageUrl);
+          } catch (error) {
+            console.error('Error:', error);
+          }
+
+          // firebase에 등록
+          async function uploadImage(imageFile) {
+            const storageRef = firebase.storage().ref();
+            const imageRef = storageRef.child('image/' + imageFile.name);
+          
+            try {
+              await imageRef.put(imageFile);
+              const imageUrl = await imageRef.getDownloadURL();
+              return imageUrl;
+            } catch (error) {
+              throw new Error('Error uploading image: ' + error.message);
+            }
+          }
+          
+          // 현재 이미지 url을 포함하도록 data 업데이트
+          async function updateFirestoreImage(imageUrl) {
+            const newData = {
+              image: imageUrl,
+              // ... 기타 필드 데이터 ...
+            };
+          
+            try {
+              await db.collection('person').doc(personId.get('id')).update(newData);
+            } catch (error) {
+              throw new Error('Error updating Firestore: ' + error.message);
+            }
           }
         });
-      } else {
-        alert('작성자만 수정 가능합니다');
-      }
+
+      } 
       hideLoadingImage();
     })
-    .catch((error) => {
-      console.error('Error getting document:', error);
-      hideLoadingImage();
-    });
+
 });
 
 // 수정 완료하기
@@ -224,7 +208,6 @@ completeBtn.addEventListener('click', function () {
         .doc(personId.get('id'))
         .update(updatedData)
         .then(() => {
-          console.log('DATA updated');
           detailView = `
 
           <div class="detail-inner">

@@ -4,7 +4,12 @@ const deleteBtn = document.getElementById('delete-btn');
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
 const resetBtn = document.getElementById('reset-btn');
-const auth = firebase.auth();
+const counselingTypes = {
+  상담중: { className: 'btn-primary' },
+  치료중: { className: 'btn-danger' },
+  종결: { className: 'btn-warning' }
+};
+
 
 showLoadingImage();
 
@@ -15,16 +20,18 @@ const render = function () {
     .then((result) => {
       let profileList = '';
       result.forEach((doc) => {
-        let btnClass = '';
 
         // 상담종류에 따라 버튼 색상 달라짐
-        if (doc.data().sort === '상담중') {
-          btnClass = 'btn-primary';
-        } else if (doc.data().sort === '치료중') {
-          btnClass = 'btn-danger';
-        } else if (doc.data().sort === '종결') {
-          btnClass = 'btn-warning';
-        }
+        // if (doc.data().sort === '상담중') {
+        //   btnClass = 'btn-primary';
+        // } else if (doc.data().sort === '치료중') {
+        //   btnClass = 'btn-danger';
+        // } else if (doc.data().sort === '종결') {
+        //   btnClass = 'btn-warning';
+        // }
+
+        const counselingType = counselingTypes[doc.data().sort];
+        const btnClass = counselingType ? counselingType.className : '';
 
         profileList += `
    <a href="./sub/sub.html?id=${doc.id}" class="list-item card">
@@ -59,10 +66,10 @@ const createList = function () {
 
 // 프로필 삭제하기
 const deleteList = function () {
+  const auth = firebase.auth();
   let deleteList = [];
 
   const checkboxes = document.querySelectorAll('input[name="selection"]:checked');
-  console.log(checkboxes);
 
   checkboxes.forEach((checkbox) => {
     const checkedParent = checkbox.closest('a');
@@ -70,7 +77,7 @@ const deleteList = function () {
     deleteList.push(docIdToDelete);
   });
 
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = auth.currentUser;
   if (!currentUser) {
     alert('로그인 후에 사용 가능합니다');
     window.location.href = '/sub/login.html';
@@ -82,6 +89,9 @@ const deleteList = function () {
       const deletableDocs = docs.filter((doc) => doc.data().uid === currentUser.uid);
       if (deletableDocs.length !== deleteList.length) {
         alert('작성자만 삭제할 수 있습니다');
+        return;
+      } else if (deleteList.length == 0) {
+        alert('삭제할 프로필이 없습니다')
         return;
       }
 
@@ -121,15 +131,10 @@ function searchList() {
         profileList = '<p class="text-center w-100">검색 결과가 없습니다.</p>';
       } else {
         result.forEach((doc) => {
-          let btnClass = '';
 
-          if (doc.data().sort === '상담중') {
-            btnClass = 'btn-primary';
-          } else if (doc.data().sort === '치료중') {
-            btnClass = 'btn-danger';
-          } else if (doc.data().sort === '종결') {
-            btnClass = 'btn-warning';
-          }
+          const counselingType = counselingTypes[doc.data().sort];
+          const btnClass = counselingType ? counselingType.className : '';
+
 
           profileList += `
         <a href="./sub/sub.html?id=${doc.id}" class="list-item card">
@@ -158,11 +163,13 @@ function searchList() {
 resetBtn.addEventListener('click', function () {
   location.reload();
 });
+
 searchInput.addEventListener('keypress', function (event) {
   if (event.key === 'Enter') {
     searchList();
   }
 });
+
 searchBtn.addEventListener('click', searchList);
 createBtn.addEventListener('click', createList);
 deleteBtn.addEventListener('click', deleteList);
@@ -202,13 +209,11 @@ function sortFiltering() {
       if (checkbox.checked) {
         // 체크될 때의 동작
         checkedList.push(checkbox.value);
-        console.log(checkedList);
 
         // 추가 작업을 여기에 작성
       } else {
         // 체크 해제될 때의 동작
         checkedList = checkedList.filter((item) => item !== checkbox.value);
-        console.log(checkedList);
 
         // 추가 작업을 여기에 작성
       }
@@ -228,15 +233,9 @@ function filteredRender(selectedSorts) {
   query.get().then((result) => {
     let profileList = '';
     result.forEach((doc) => {
-      let btnClass = '';
 
-      if (doc.data().sort === '상담중') {
-        btnClass = 'btn-primary';
-      } else if (doc.data().sort === '치료중') {
-        btnClass = 'btn-danger';
-      } else if (doc.data().sort === '종결') {
-        btnClass = 'btn-warning';
-      }
+      const counselingType = counselingTypes[doc.data().sort];
+      const btnClass = counselingType ? counselingType.className : '';
 
       profileList += `
           <a href="./sub/sub.html?id=${doc.id}" class="list-item card">

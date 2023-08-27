@@ -33,14 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('user')) {
     let user = JSON.parse(localStorage.getItem('user'));
     NickName.textContent = user.displayName;
-    console.log(user.displayName);
   }
   
   // 사용자의 인증 상태가 변화가 생기면 동작함
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log(user.uid);
-      console.log(user.displayName);
       localStorage.setItem('user', JSON.stringify(user));
       updateNickname(user); // 인증 상태 변화 시 닉네임 업데이트
       login.style.display = 'none';

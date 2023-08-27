@@ -56,7 +56,6 @@ auth.onAuthStateChanged((user) => {
         // 성공시 동작하는 함수
         () => {
           storageUpload.snapshot.ref.getDownloadURL().then((url) => {
-            console.log('업로드된 경로는', url);
             imageUrl = url;
             // 입력한 값 등록하기
             let nameValue = document.getElementById('name').value;
@@ -85,7 +84,6 @@ auth.onAuthStateChanged((user) => {
                 currentUser: displayName,
               })
               .then((result) => {
-                console.log(result);
                 alert('등록 완료되었습니다');
                 window.location.href = '../index.html';
                 // 성공 후에 실행할 코드

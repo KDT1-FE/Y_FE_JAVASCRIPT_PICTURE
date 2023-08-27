@@ -1,7 +1,7 @@
 function showLoadingImage() {
-  document.querySelector('.loading-container').style.display = 'flex';
+  document.querySelector('.loading-container').classList.add('visible');
 }
 
 function hideLoadingImage() {
-  document.querySelector('.loading-container').style.display = 'none';
+  document.querySelector('.loading-container').classList.remove('visible');
 }

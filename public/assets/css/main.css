@@ -122,7 +122,6 @@ main {
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  background: rgb(23, 154, 212);
   background: linear-gradient(126deg, rgb(23, 154, 212) 0%, rgb(30, 199, 198) 100%);
 }
 
@@ -297,6 +296,10 @@ main {
   align-items: center;
   height: 100vh;
   background-color: #d1dae3;
+  display: none;
+}
+.loading-container.visible {
+  display: flex;
 }
 
 .loading-container img {
