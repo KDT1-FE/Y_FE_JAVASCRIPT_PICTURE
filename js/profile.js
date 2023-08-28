@@ -22,12 +22,6 @@ const $modalBackground = document.querySelector('.modal--background');
 const $modify = document.querySelector('.button--modify');
 const $delete = document.querySelector('.button--delete');
 
-window.addEventListener('scroll', () => {
-  const $scrollY = window.scrollY;
-  console.log($scrollY);
-  $modalBackground.style.top = `${$scrollY}px`;
-});
-
 $modify.addEventListener('click', () => {
   $modalBackground.classList.toggle('show');
   document.querySelector('.update').innerHTML = `

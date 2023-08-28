@@ -5,12 +5,6 @@ const $upload = document.querySelector('.upload');
 const $enroll = document.querySelector('.button--enroll');
 const $cancel = document.querySelector('.button--cancel');
 
-window.addEventListener('scroll', () => {
-  const $scrollY = window.scrollY;
-  console.log($scrollY);
-  $modalBackground.style.top = `${$scrollY}px`;
-});
-
 $add.addEventListener('click', () => {
   $modalBackground.classList.toggle('show');
 
