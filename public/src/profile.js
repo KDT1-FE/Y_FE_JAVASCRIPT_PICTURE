@@ -133,15 +133,17 @@ editBtn.addEventListener("click", async () => {
     //업데이트된 정보를 저장할 객체 생성
     const updatedData = {};
 
-    inputElements.forEach((input) => {
+    for (let i = 0; i < inputElements.length; i++) {
+      const input = inputElements[i];
       const field = input.id;
       const value = input.value.trim();
+
       if (value === "") {
         isInputValid = false;
-        return;
+        break;
       }
       updatedData[field] = input.value;
-    });
+    }
 
     if (!isInputValid) {
       alert("모든 정보를 채워주세요!");
