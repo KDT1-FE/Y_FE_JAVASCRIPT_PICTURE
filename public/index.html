@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div id="loading"></div>
+    <main>
+      <section class="section__customer--management">
+        <nav class="section__customer--nav">
+          <div class="section__customer--button">
+            <a href="enroll.html"><button>등록</button></a>
+            <button id="delete_customer_button">삭제</button>
+          </div>
+        </nav>
+        <br />
+        <article>
+          <div class="section__customer--list">
+            <div class="section__customer--template" id="customer-add">
+              <ul>
+                <input type="checkbox" name="" id="" disabled />
+                <li>번호</li>
+                <li>사진</li>
+                <li>이름</li>
+                <li>연락처</li>
+                <li>회원권 기간</li>
+                <li>PT 등록 여부</li>
+                <li>남은 세션</li>
+                <li>담당 트레이너</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./js/index.js" type="module"></script>
+    <script src="./js/firebase.js" type="module"></script>
+    <script src="./js/image.js" type="module"></script>
+  </body>
+</html>

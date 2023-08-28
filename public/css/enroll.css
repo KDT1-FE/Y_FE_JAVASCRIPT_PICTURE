@@ -1,0 +1,43 @@
+.section__enroll--nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.section__enroll--article {
+  display: grid;
+  width: 100%;  
+  padding: 0 2rem;
+}
+
+@media (max-width: 480px) {
+  .section__enroll--article {
+    grid-template-rows: repeat(2, 0.3fr);
+    padding: 0;
+    justify-items: center;
+  }
+}
+
+@media (min-width: 481px) {
+  .section__enroll--article {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.section__enroll--template > ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section__enroll--image_upload {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__enroll--image_button {
+  display: flex;
+}

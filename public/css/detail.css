@@ -1,0 +1,56 @@
+.section__enroll--template > ul > li, div {
+  margin-bottom: 10px;
+}
+
+.section__detail--pt_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.section__detail--pt_list {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  width: 100%;
+  height: 100%;
+}
+
+.section__detail--pt_template {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__detail--pt_template>ul {
+  display: grid;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+@media (max-width: 480px) {
+  .section__detail--pt_template>ul {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 481px) {
+  .section__detail--pt_template>ul {
+    grid-template-columns: 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  }
+}
+
+.section__detail--pt_template>ul>input {
+  text-align: center;
+}
+
+.section__detail--pt_template>ul>input,
+textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+}
