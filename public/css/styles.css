@@ -4,7 +4,7 @@ body {
   background-image: url("../assets/graphics/backgroundImage.jpg");
 }
 
-.header-logo {
+.top-logo {
   width: 100%;
   max-width: 25rem;
   height: auto;
