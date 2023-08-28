@@ -21,13 +21,6 @@
     />
   </head>
   <script>
-    function close() {
-      console.log("asdfasfd");
-      setTimeout(function () {
-        location.reload();
-      }, 1000);
-    }
-
     // mobile To-Top button
     function getTotop() {
       document.body.scrollTop = 0; // For Safari,
@@ -78,7 +71,7 @@
                   type="text"
                   required=""
                   placeholder="검색할 식물명을 입력하세요."
-                  id="search"
+                  id="searchBar"
                 />
                 <div class="fancy-bg"></div>
                 <div class="search">
@@ -204,6 +197,7 @@
             </div>
           </div>
         </div>
+
         <script defer src="/assets/js/index.js" type="module"></script>
       </div>
     </section>

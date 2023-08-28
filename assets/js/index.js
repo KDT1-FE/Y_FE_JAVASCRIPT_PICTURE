@@ -27,6 +27,28 @@ const progress = document.getElementById("progress");
 let editStatus = false;
 let id = ""; //db ID for elements
 
+function searchPlant() {
+  // Declare variables
+  let input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchBar");
+  filter = input.value.toUpperCase();
+  table = document.querySelector(".list__actual table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those that don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1]; // Index 1 corresponds to the "이름" column
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      console.log("Works well");
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 // Open modal when "추가" button is clicked
 const openModalButton = document.querySelector(".btn-regi");
 openModalButton.addEventListener("click", () => {
@@ -65,7 +87,7 @@ window.addEventListener("DOMContentLoaded", async () => {
                     <table>
                         <tr>
                             <td><img src="${plantData.image}" class="plant-image"></td>
-                            <td>${plantData.name}</td>
+                            <td id="plant-name">${plantData.name}</td>
                             <td>${plantData.date}</td>
                             <td>${plantData.waterTime}</td>
                             <td>${plantData.note}</td>
@@ -180,7 +202,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
       <td><img src="${image}" class="plant-image"></td>
-      <td>${name.value}</td>
+      <td id="plant-name">${name.value}</td>
       <td>${date.value}</td>
       <td>${waterTime.value}</td>
       <td>${note.value}</td>
@@ -205,7 +227,7 @@ window.addEventListener("DOMContentLoaded", async () => {
             if (editedRow) {
               editedRow.innerHTML = `
       <td><img src="${image}" class="plant-image"></td>
-      <td>${name.value}</td>
+      <td id="plant-name">${name.value}</td>
       <td>${date.value}</td>
       <td>${waterTime.value}</td>
       <td>${note.value}</td>
