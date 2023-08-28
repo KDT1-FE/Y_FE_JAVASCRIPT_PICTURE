@@ -19,7 +19,11 @@ import {
   ref,
   uploadBytes,
 } from 'firebase/storage';
-import { RESPONSE_LENGTH } from '../constants/api';
+import {
+  MEMBER_COLLECTION,
+  RESPONSE_LENGTH,
+  SEARCH_KEYWORD,
+} from '../constants/api';
 
 export const memberStore = new Store({
   members: [],
@@ -30,7 +34,7 @@ export const memberStore = new Store({
 let response = '';
 export const getMembersData = async () => {
   memberStore.state.search = false;
-  const firstQuery = query(collection(db, 'list'), limit(7));
+  const firstQuery = query(collection(db, MEMBER_COLLECTION), limit(7));
   response = await getDocs(firstQuery);
   memberStore.state.members = [...convertResponseToArray(response)];
 };
@@ -41,7 +45,7 @@ export const getNextMembersData = async () => {
   const isResponseData = response.docs.length !== 0;
   if (isResponseData) {
     const nextQuery = query(
-      collection(db, 'list'),
+      collection(db, MEMBER_COLLECTION),
       startAfter(lastVisible),
       limit(RESPONSE_LENGTH)
     );
@@ -59,7 +63,7 @@ export const getNextMembersData = async () => {
 };
 
 export const getMemberDetail = async (id) => {
-  const docRef = doc(db, 'list', `${id}`);
+  const docRef = doc(db, MEMBER_COLLECTION, `${id}`);
   const response = await getDoc(docRef);
   if (response.data() === undefined) {
     return null;
@@ -78,7 +82,7 @@ export const uploadImage = async (fileData, refId) => {
 };
 
 export const uploadData = (data) => {
-  addDoc(collection(db, 'list'), {
+  addDoc(collection(db, MEMBER_COLLECTION), {
     name: data.name,
     email: data.email,
     photoUrl: data.photoUrl,
@@ -86,20 +90,20 @@ export const uploadData = (data) => {
 };
 
 export const setData = (data, id) => {
-  setDoc(doc(db, 'list', id), data);
+  setDoc(doc(db, MEMBER_COLLECTION, id), data);
 };
 
 export const deleteData = (id, photoUrl) => {
   const desertRef = ref(storage, photoUrl);
   deleteObject(desertRef);
-  deleteDoc(doc(db, 'list', id));
+  deleteDoc(doc(db, MEMBER_COLLECTION, id));
 };
 
-export const searchData = async (keyword) => {
+export const searchData = async (keywordValue) => {
   memberStore.state.search = true;
   const searchQuery = query(
-    collection(db, 'list'),
-    where('name', '==', keyword)
+    collection(db, MEMBER_COLLECTION),
+    where(SEARCH_KEYWORD, '==', keywordValue)
   );
   const response = await getDocs(searchQuery);
   memberStore.state.members = [...convertResponseToArray(response)];
