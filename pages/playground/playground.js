@@ -70,10 +70,12 @@ interactionBox.addEventListener(
   "touchmove",
   function (e) {
     //현재 터치 위치
-    let x = e.touches[0].clientX;
-    let y = e.touches[0].clientY;
-    e.preventDefault();
-    throttledCreateParticle(x, y);
+    for (let i = 0; i < e.touches.length; i++) {
+      let x = e.touches[i].clientX;
+      let y = e.touches[i].clientY;
+      e.preventDefault();
+      throttledCreateParticle(x, y);
+    }
   },
   { passive: true }
 );

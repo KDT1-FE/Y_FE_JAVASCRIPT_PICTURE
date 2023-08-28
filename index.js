@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
 import {
@@ -26,18 +25,27 @@ import {
 import { showPreview } from "./js/showPreview.js";
 import * as addModal from "./js/addModal.js";
 import * as addProfileCard from "./js/addProfileCard.js";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 export { imgFileInput };
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSbuttonenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: FIREBASE_MEASUREMENT_ID,
+  // apiKey: process.env.FIREBASE_API_KEY,
+  // authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  // projectId: process.env.FIREBASE_PROJECT_ID,
+  // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  // messagingSbuttonenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  // appId: process.env.FIREBASE_APP_ID,
+  // measurementId: FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
+  authDomain: "photo-management-service.firebaseapp.com",
+  projectId: "photo-management-service",
+  storageBucket: "photo-management-service.appspot.com",
+  messagingSbuttonenderId: "110781159358",
+  appId: "1:110781159358:web:e9b8fbdc3e60c979178bef",
+  measurementId: "G-E657JQPN7T",
 };
 
 // Initialize Firebase
@@ -47,14 +55,14 @@ const storage = getStorage(app);
 const db = getFirestore(app);
 
 //선택 이미지 preview 띄우기
-const imgFileInput = document.querySelector("#avatar");
+const imgFileInput = document.getElementById("avatar");
 imgFileInput.addEventListener("change", showPreview);
 
 //저장 버튼 : 텍스트&이미지url -> db 업로드 && 이미지 -> storage 업로드
 document
   .querySelector(".btn__upload")
   .addEventListener("click", async function () {
-    let profileContent = {
+    const profileContent = {
       name: document.querySelector(".profile__name").value,
       position: document.querySelector(".profile__position").value,
       github: document.querySelector(".profile__github").value,
@@ -83,7 +91,7 @@ document
         };
         Object.assign(profileContent, toSave);
         await addDoc(collection(db, "profiles"), profileContent);
-        window.location.href = "/index.html";
+        window.location.href = "/";
         console.log("Document successfully written!");
       } catch {
         (error) => {
