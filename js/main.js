@@ -1,3 +1,5 @@
+import { showToast, showLoadingAnimation, hideLoadingAnimation } from './utils.js';
+
 // 검색 
 const searchButton = document.querySelector('.search-button');
 const searchInput = document.querySelector('.search-input');
@@ -59,33 +61,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseApp);
 const storage = getStorage(firebaseApp);
-
-
-// toast message
-const toast = document.querySelector('.toast-wrap');
-
-function showToast(message) {
-    const toastMessage = document.querySelector('.toast-message');
-    toastMessage.textContent = message;
-
-    toast.style.display = 'block';
-    setTimeout(() => {
-        toast.style.display = 'none';
-    }, 2000); 
-}
-
-
-// 로딩 애니메이션
-const loadingAnimation = document.querySelector('.loading-animation');
-
-function showLoadingAnimation() {
-    loadingAnimation.style.display = 'block';
-}
-
-function hideLoadingAnimation() {
-    loadingAnimation.style.display = 'none';
-}
-
 
 // user Data 가져오기
 document.addEventListener('DOMContentLoaded', () => {

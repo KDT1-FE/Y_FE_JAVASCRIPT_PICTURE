@@ -1,3 +1,5 @@
+import { showToast, showLoadingAnimation, hideLoadingAnimation } from './utils.js';
+
 // firebase 기본 설정
 // import firebaseConfig from '../config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js';
@@ -38,19 +40,6 @@ fileInput.addEventListener('change', (event) => {
 });
 
 
-// toast message
-const toast = document.querySelector('.toast-wrap');
-
-function showToast(message) {
-    const toastMessage = document.querySelector('.toast-message');
-    toastMessage.textContent = message;
-
-    toast.style.display = 'block';
-    setTimeout(() => {
-        toast.style.display = 'none';
-    }, 2000); 
-}
-
 // 등록 후 input 초기화 및 모달 닫기
 function resetInputsAndCloseModal() {
     document.getElementById('name').value = ''; 
@@ -61,18 +50,6 @@ function resetInputsAndCloseModal() {
     profileImage.style.border = 'none';
     modalWrap.style.display = 'none';
     window.parent.postMessage('modalClosed', '*');
-}
-
-
-// 로딩 애니메이션
-const loadingAnimation = document.querySelector('.loading-animation');
-
-function showLoadingAnimation() {
-    loadingAnimation.style.display = 'block';
-}
-
-function hideLoadingAnimation() {
-    loadingAnimation.style.display = 'none';
 }
 
 
