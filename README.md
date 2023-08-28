@@ -143,50 +143,8 @@ Zero Car 프로젝트를 진행하면서 겪었던 trouble을 해결한 기록�
     - 대표적으로 webpack은 require(구문법)을 지원하지만 import(ES6)는 지원하지 않는다.
 </details>
 
-## [ Development ]
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![SCSS](https://img.shields.io/badge/SASS-cc6699.svg?&style=for-the-badge&logo=Sass&logoColor=white)![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
-
-## [ 파일 구조 ]
-```shell
-public   # 배포용 컴파일 및 번들링 완료 파일
- ├─ css
- └─ js
-
-src
- ├─ imgs
- ├─ js
- │   ├─ controllers         # 페이지 별 controller js 모음
- │   ├─ firebase           # firebase 기본 세팅 js 모음
- │   └─ ...페이지 별 js 파일  # 페이지 별로 필요한 controllers 안 모듈들을 Import
- └─ scss
-     ├─ animation      # 애니메이션 모음
-     ├─ common         # 공통적으로 사용되는 style 모음
-     ├─ screens        # 페이지 별로 scss 파일을 분리
-     └─ styles.scss    # style을 한 파일에서 컴파일 하기 위해 앞선 폴더들 Import 
-     └─ templates      # 각 페이지 별 html 모음
-
-proubleshooting    # 각 기술 별 트러블 슈팅 기록 모음
-     ├─ index.md
-     ├─ js 트러블 슈팅
-     ├─ scss 트러블 슈팅
-     ├─  ... 각 기술 별 트러블 슈팅 기록들
-     └─ webpack 트러블 슈팅
-
-README.md
-.gitignore
-.prettierrc
-.prettierignore
-package-lock.json
-package.json
-webpack.config.js
-index.html
-favicon.ico
-```
-
-> SPA와 MPA 두 웹 패러다임을 비교해 보면서 내가 MPA로 구현한 이유에 대해서 적어보았다.
-
 <details>
-<summary>내가 SPA가 아닌, MPA로 구현한 이유</summary>
+<summary>나는 왜 SPA가 아닌, MPA로 구현했는가?</summary>
 
 ### 결론
 1. Zero Car 프로젝트에는 즉각적인 반응을 필요로 하는 기능이 없다.
@@ -243,11 +201,13 @@ SPA는 웹 에플리케이션에 필요한 모든 정적 리소스를 최초 접
 - 개발자는 모든 페이지가 안전한지 확인 해야하는데 페이지가 많아서 지속적으로 유지보수 하a는 것이 어려움
 </details>
 
+## [ Development ]
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![SCSS](https://img.shields.io/badge/SASS-cc6699.svg?&style=for-the-badge&logo=Sass&logoColor=white)![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
+
 ## [ User Flow ]
 <div style="text-align: center;">
   <img src = "https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/101972330/7f5e564e-100e-4710-a815-5e3d6f473532" alt ="user flow" />
 </div>
-
 
 ## [ 어려웠던 점과 배운점 ]
 
@@ -269,25 +229,8 @@ SPA는 웹 에플리케이션에 필요한 모든 정적 리소스를 최초 접
   
   예를들어 보험자 정보를 업데이트하는 기능 안에 input data 가져오는 기능, mock data 생성 후 가져오는 기능, image를 storage에 따로 저장하고 이미지 url을 가져오는 기능 등 다양한 기능들이 포함되어있어서 각각의 기능들을 어떤 기준으로 분리해야하고 어느 파일에 함께 보관해야하는지 어려움을 겪었다.
 
-  내가 선택한 방식은, MPA인 만큼 각 기능들을 페이지 파일 별로 분리하여 구분하였다. 또한 페이지 별로 메인 파일을 만들어 주요 파일을 import하여 이 페이지에서의 주요 동작은 무엇인지 쉽게 파악할 수 있도록 만들었다.
+  내가 선택한 방식은, troubleshooting/fe clean code.md 에서 확인 가능하다.
   
-```shell
-src
- └─ js
-    ├─ controllers         # 페이지 별 controller js 모음
-    │       └─ profile
-    │             ├─ getProfile.js 
-    │             └─ editProfile.js
-    └─ getProfile.js
-```
-```js
-// getProfile.js
-import "./controllers/profile/getProfile.js"
-import "./controllers/profile/editProfile.js"
-```
-
-
-
 <details>
 <summary>야놀자 테크 캠프 JS 과제 설명</summary>
 
