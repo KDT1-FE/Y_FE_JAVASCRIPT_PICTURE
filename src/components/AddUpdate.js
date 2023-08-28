@@ -32,11 +32,11 @@ export default class AddUpdate extends Component {
             </div>
         </div>
         `;
-        const bottomEl = this.el.querySelector('.update-submit__bottom');
-        bottomEl.prepend(AddUpdateAssureEl);
+        const bottomPlace = this.el.querySelector('.update-submit__bottom');
+        bottomPlace.prepend(AddUpdateAssureEl);
 
-        const cancelBtn = this.el.querySelector('.update-submit__cancel');
-        cancelBtn.addEventListener('click', () => {
+        const cancelButton = this.el.querySelector('.update-submit__cancel');
+        cancelButton.addEventListener('click', () => {
             this.el.classList.remove('active');
         });
     }

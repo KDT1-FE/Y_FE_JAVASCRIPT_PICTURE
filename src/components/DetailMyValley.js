@@ -59,12 +59,12 @@ export default class DetailMyValley extends Component {
             window.open(Store.state.address);
         });
 
-        // const updateBtnEl = this.el.querySelector('.update-btn');
-        // updateBtnEl.addEventListener('click', () => {
+        // const updateButton = this.el.querySelector('.update-btn');
+        // updateButton.addEventListener('click', () => {
         //     this.el.append(updateAndDeleteModalEl);
         // });
-        const updateBtnEl = this.el.querySelector('.update-btn');
-        updateBtnEl.addEventListener('click', () => {
+        const updateButton = this.el.querySelector('.update-btn');
+        updateButton.addEventListener('click', () => {
             updateAndDeleteModalEl.classList.add('active');
             this.el.append(updateAndDeleteModalEl);
         });

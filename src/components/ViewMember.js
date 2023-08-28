@@ -27,8 +27,8 @@ export default class ViewMember extends Component {
             </div>
         `;
         this.el.classList.add('view__banner--item-container');
-        const imageEl = this.el.querySelector('.view__banner--image-container');
-        imageEl.style.backgroundImage = `url(${url})`;
+        const imageElement = this.el.querySelector('.view__banner--image-container');
+        imageElement.style.backgroundImage = `url(${url})`;
 
         this.el.addEventListener('click', () => {
             location.href = `/#/about?id=${id}`;

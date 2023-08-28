@@ -39,7 +39,7 @@ export default class View extends Component {
             printValley();
         }
 
-        const searchBtn = this.el.querySelector('.view__banner--search-btn');
+        const searchButton = this.el.querySelector('.view__banner--search-btn');
         const searchInput = this.el.querySelector('.view__banner--search');
 
         const searchValley = async () => {
@@ -58,7 +58,7 @@ export default class View extends Component {
             );
         };
 
-        searchBtn.addEventListener('click', () => {
+        searchButton.addEventListener('click', () => {
             searchValley();
         });
 

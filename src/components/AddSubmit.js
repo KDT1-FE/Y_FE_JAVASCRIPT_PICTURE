@@ -14,11 +14,11 @@ export default class AddSubmit extends Component {
                 <button class="add-submit__cancel">취소</button>
             </div>
         `;
-        const bottomEl = this.el.querySelector('.add-submit__bottom');
-        bottomEl.prepend(AddSubmitAssureEl);
+        const bottomPlace = this.el.querySelector('.add-submit__bottom');
+        bottomPlace.prepend(AddSubmitAssureEl);
 
-        const cancelBtn = this.el.querySelector('.add-submit__cancel');
-        cancelBtn.addEventListener('click', () => {
+        const cancelButton = this.el.querySelector('.add-submit__cancel');
+        cancelButton.addEventListener('click', () => {
             submitState.state.submit = false;
         });
     }

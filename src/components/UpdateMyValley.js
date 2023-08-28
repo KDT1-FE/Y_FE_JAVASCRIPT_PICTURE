@@ -35,7 +35,7 @@ export default class UpdateAndDeleteModal extends Component {
                             </div>
                             <div class="fix__modal--buttons">
                                 <button class="updateBtn">수정</button>
-                                <button class="deleteBtn">삭제</button>
+                                <button class="deleteButton">삭제</button>
                             </div>
                         </div>
                         <div class="fix__modal--right">
@@ -65,19 +65,18 @@ export default class UpdateAndDeleteModal extends Component {
             </div>
         `;
         this.el.classList.add('fix__modal');
-        const _id = history.state.id;
 
-        const closeBtn = this.el.querySelector('.fix__modal--close');
-        closeBtn.addEventListener('click', () => {
+        const closeButton = this.el.querySelector('.fix__modal--close');
+        closeButton.addEventListener('click', () => {
             this.el.classList.remove('active');
         });
 
-        const inputEls = this.el.querySelectorAll('input');
+        const inputValueElements = this.el.querySelectorAll('input');
         const updateBtn = this.el.querySelector('.updateBtn');
-        const assureEl = this.el.querySelector('.fix__modal--wrapper');
+        const assureButtonAdd = this.el.querySelector('.fix__modal--wrapper');
 
         updateBtn.addEventListener('click', () => {
-            inputEls.forEach((inputEl) => {
+            inputValueElements.forEach((inputEl) => {
                 // inputEl의 className을 가져옵니다.
                 const inputClassName = inputEl.className.replace('modal__banner--form-', '');
                 const inputValue = inputEl.value;
@@ -89,17 +88,17 @@ export default class UpdateAndDeleteModal extends Component {
             const state = 'update';
 
             // 확인 버튼을 불러옵니다.
-            const AddUpdateEl = new AddUpdate(state).el;
-            AddUpdateEl.classList.add('active');
-            assureEl.append(AddUpdateEl);
+            const AddUpdateElement = new AddUpdate(state).el;
+            AddUpdateElement.classList.add('active');
+            assureButtonAdd.append(AddUpdateElement);
         });
 
-        const deleteBtn = this.el.querySelector('.deleteBtn');
-        deleteBtn.addEventListener('click', () => {
-            inputEls.forEach((inputEl) => {
+        const deleteButton = this.el.querySelector('.deleteButton');
+        deleteButton.addEventListener('click', () => {
+            inputValueElements.forEach((inputValueElement) => {
                 // inputEl의 className을 가져옵니다.
-                const inputClassName = inputEl.className.replace('modal__banner--form-', '');
-                const inputValue = inputEl.value;
+                const inputClassName = inputValueElement.className.replace('modal__banner--form-', '');
+                const inputValue = inputValueElement.value;
 
                 // inputValue를 Store에 등록합니다.
                 Store.state[inputClassName] = inputValue;
@@ -108,9 +107,9 @@ export default class UpdateAndDeleteModal extends Component {
             const state = 'delete';
 
             // 확인 버튼을 불러옵니다.
-            const AddUpdateEl = new AddUpdate(state).el;
-            AddUpdateEl.classList.add('active');
-            assureEl.append(AddUpdateEl);
+            const AddUpdateElement = new AddUpdate(state).el;
+            AddUpdateElement.classList.add('active');
+            assureButtonAdd.append(AddUpdateElement);
         });
 
         this.el.querySelector('.fix__modal--top-image').append(imageEl);

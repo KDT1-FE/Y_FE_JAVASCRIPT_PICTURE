@@ -9,12 +9,12 @@ export default class Message extends Component {
         });
     }
     render() {
-        const placeHorderImageEl = Store.state.url;
-        const imageEl = Store.state.src || placeHorderImageEl;
+        const placeHorderimageElement = Store.state.url;
+        const imageElement = Store.state.src || placeHorderimageElement;
 
         this.el.innerHTML = /*html*/ `
         <a href="javascript:void(0)" class="fix-modal__banner--image-wrapper">
-            <img class="fix-modal__banner--image" src="${imageEl}" alt= "이미지파일이 없습니다"/>
+            <img class="fix-modal__banner--image" src="${imageElement}" alt= "이미지파일이 없습니다"/>
         </a>
         `;
         this.el.className = 'fix-modal__banner--image-container';

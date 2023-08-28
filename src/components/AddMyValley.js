@@ -11,17 +11,17 @@ export default class AddMember extends Component {
     constructor() {
         super();
         submitState.subscribe('submit', () => {
-            const addSubmitEl = this.el.querySelector('.modal__banner--form-assure');
+            const addSubmitElement = this.el.querySelector('.modal__banner--form-assure');
             if (!submitState.state.submit) {
-                addSubmitEl.classList.remove('active');
-                addSubmitEl.innerHTML = '';
+                addSubmitElement.classList.remove('active');
+                addSubmitElement.innerHTML = '';
             }
         });
     }
 
     render() {
-        const addSubmitEl = new AddSubmit().el;
-        const imageEl = new myValleyStoreImage().el;
+        const addSubmitElement = new AddSubmit().el;
+        const imageContainer = new myValleyStoreImage().el;
         this.el.innerHTML = /*html*/ `
         <div class="modal__wrapper">
             <div class="modal__header">
@@ -78,21 +78,21 @@ export default class AddMember extends Component {
         this.el.className = 'modal__container';
 
         // 해당 컴포넌트에 사진을 보여주는 부분을 추가합니다.
-        this.el.querySelector('.modal__banner--left').prepend(imageEl);
+        this.el.querySelector('.modal__banner--left').prepend(imageContainer);
 
         // 필요한 element들을 가져옵니다.
-        const inputEls = this.el.querySelectorAll('input');
-        const submitBtn = this.el.querySelector('.modal__banner--form-submit');
+        const inputValueElements = this.el.querySelectorAll('input');
+        const submitButton = this.el.querySelector('.modal__banner--form-submit');
         const imageInput = this.el.querySelector('.modal__banner--form-image');
         const addSubmit = this.el.querySelector('.modal__banner--form-assure');
-        const closeBtn = this.el.querySelector('.modal__close');
+        const closeButton = this.el.querySelector('.modal__close');
 
         // Store에 정보를 등록합니다.
-        submitBtn.addEventListener('click', () => {
-            inputEls.forEach((inputEl) => {
+        submitButton.addEventListener('click', () => {
+            inputValueElements.forEach((inputValueElement) => {
                 // inputEl의 className을 가져옵니다.
-                const inputClassName = inputEl.className.replace('modal__banner--form-', '');
-                const inputValue = inputEl.value;
+                const inputClassName = inputValueElement.className.replace('modal__banner--form-', '');
+                const inputValue = inputValueElement.value;
 
                 // inputValue를 Store에 등록합니다.
                 myValleyStore.state[inputClassName] = inputValue;
@@ -100,7 +100,7 @@ export default class AddMember extends Component {
 
             // 확인 버튼을 불러옵니다.
             addSubmit.classList.add('active');
-            addSubmit.append(addSubmitEl);
+            addSubmit.append(addSubmitElement);
         });
 
         // 사진을 등록합니다.
@@ -119,7 +119,7 @@ export default class AddMember extends Component {
         });
 
         // 모달을 닫습니다.
-        closeBtn.addEventListener('click', () => {
+        closeButton.addEventListener('click', () => {
             this.el.classList.remove('modal__active');
         });
     }
