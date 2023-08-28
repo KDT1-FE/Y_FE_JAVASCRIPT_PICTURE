@@ -63,6 +63,7 @@ export default class Edit extends Component {
       const data = {
         name: formData.get('name') || member.name,
         email: formData.get('email') || member.email,
+        photoUrl: photoUrl,
       };
 
       setData(data, member.id);
