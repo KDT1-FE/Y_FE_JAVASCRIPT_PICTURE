@@ -3,7 +3,13 @@ import { db } from './firebase';
 import { changeAvatar, preventEnter, removeAvatar } from './util';
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
-changeAvatar();
+const imageInputEl = document.getElementById('profilePic');
+imageInputEl.addEventListener('change', () =>
+  changeAvatar({
+    edit: false,
+    coustomerId,
+  })
+);
 
 // 완료 버튼 누르면 firestore에 회원 정보 저장
 const registForm = document.querySelector('.regist-form');
@@ -24,7 +30,11 @@ registForm.addEventListener('submit', async event => {
 });
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
-removeAvatar();
+imgRemoveBtn.addEventListener('click', e => {
+  e.preventDefault();
+  removeAvatar();
+});
 
 // input 태그에서 엔터 눌러도 submit 막기
-preventEnter();
+const textInputs = document.querySelectorAll('.regist-text-input');
+preventEnter(textInputs);

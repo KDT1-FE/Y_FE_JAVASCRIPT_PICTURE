@@ -38,7 +38,13 @@ window.onload = async () => {
 };
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
-changeAvatar(coustomerId);
+const imageInputEl = document.getElementById('profilePic');
+imageInputEl.addEventListener('change', () =>
+  changeAvatar({
+    edit: true,
+    coustomerId,
+  })
+);
 
 const modifyBtn = document.querySelector('.modify');
 const imgRemoveBtn = document.querySelector('.img-remove-btn');
@@ -73,7 +79,10 @@ document.querySelector('.cancel-btn').addEventListener('click', e => {
 });
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
-removeAvatar();
+imgRemoveBtn.addEventListener('click', e => {
+  e.preventDefault();
+  removeAvatar();
+});
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
 document.querySelector('.submit-btn').addEventListener('click', async e => {
@@ -89,4 +98,5 @@ document.querySelector('.submit-btn').addEventListener('click', async e => {
 });
 
 // input 태그에서 엔터 눌러도 submit 막기
-preventEnter();
+const textInputs = document.querySelectorAll('.regist-text-input');
+preventEnter(textInputs);
