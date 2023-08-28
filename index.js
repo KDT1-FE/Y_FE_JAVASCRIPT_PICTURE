@@ -70,17 +70,42 @@ document
       introduce: document.querySelector(".profile__introduce").value,
       date: Timestamp.fromDate(new Date()),
     };
-    console.log(!profileContent.email.includes(".com"));
     if (
       !(
         profileContent.name &&
         profileContent.position &&
-        !profileContent.github.includes("github.com/") &&
-        !profileContent.email.includes(".com") &&
+        profileContent.github.includes("github.com/") &&
+        profileContent.email.includes(".com") &&
         imgFileInput &&
         imgFileInput.files.length > 0
       )
     ) {
+      const githubInput = document.querySelector(".profile__github");
+      const emailInput = document.querySelector(".profile__email");
+      const modalLabel = document.querySelector(".image label");
+      const modalInputs = document.querySelectorAll(
+        ".input-profile-grid input"
+      );
+      if (imgFileInput.files.length <= 0) {
+        modalLabel.style.backgroundColor = "#ff692480";
+      } else if (!profileContent.github.includes("github.com/")) {
+        githubInput.value = "";
+        githubInput.style.backgroundColor = "#ff692480";
+        githubInput.focus();
+      } else if (!profileContent.email.includes(".com")) {
+        githubInput.style.backgroundColor = "white";
+        emailInput.value = "";
+        emailInput.style.backgroundColor = "#ff692480";
+        emailInput.focus();
+      } else {
+        emailInput.style.backgroundColor = "white";
+        modalInputs.forEach((item) => {
+          if (item.value <= 0) {
+            item.style.backgroundColor = "#ff692480";
+          }
+        });
+      }
+    } else {
       try {
         const imgFile = imgFileInput.files[0];
         const storageRef = ref(
@@ -100,12 +125,6 @@ document
         (error) => {
           console.error("Error writing document: ", error);
         };
-      }
-    } else {
-      if (imgFileInput.files.length <= 0) {
-        alert("이미지를 선택해주세요!");
-      } else {
-        alert("텍스트를 입력해주세요!");
       }
     }
   });

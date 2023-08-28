@@ -65,7 +65,7 @@ label:hover{
   display: block;
 }
 .input-profile-grid div:last-child input{
-  width:100%
+  width:100%;
 }
 .btn__upload{
   display: block;
