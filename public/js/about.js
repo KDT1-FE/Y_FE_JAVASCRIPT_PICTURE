@@ -18,7 +18,7 @@ function fetchCharacterDetails(id) {
       if (doc.exists) {
         displayCharacterDetails(doc.data());
       } else {
-        console.error(error);
+        console.log("error 발생");
       }
     })
     .catch((error) => {
@@ -26,18 +26,18 @@ function fetchCharacterDetails(id) {
     });
 }
 
+const charImage = document.getElementById("charImage");
+const charName = document.getElementById("charName");
+const charBirth = document.getElementById("charBirth");
+const charCountry = document.getElementById("charCountry");
+const charCreator = document.getElementById("charCreator");
+
 function displayCharacterDetails(character) {
-  document.getElementById("charImage").src = character.사진;
-  document.getElementById("charName").textContent = `${character.이름}`;
-  document.getElementById(
-    "charBirth"
-  ).textContent = `생년월일: ${character.생년월일}`;
-  document.getElementById(
-    "charCountry"
-  ).textContent = `국적: ${character.국적}`;
-  document.getElementById(
-    "charCreator"
-  ).textContent = `제작: ${character.제작}`;
+  charImage.src = character.사진;
+  charName.textContent = `${character.이름}`;
+  charBirth.textContent = `생년월일: ${character.생년월일}`;
+  charCountry.textContent = `국적: ${character.국적}`;
+  charCreator.textContent = `제작: ${character.제작}`;
 }
 
 document.querySelector(".edit-button").addEventListener("click", () => {

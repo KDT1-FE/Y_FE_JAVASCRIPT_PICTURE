@@ -6,9 +6,11 @@ const country = document.querySelector(".member-country");
 const birth = document.querySelector(".member-birth");
 const creator = document.querySelector(".member-creator");
 const createButton = document.querySelector(".create-button");
+const loadingElement = document.querySelector(".loading");
+const memberImage = document.querySelector(".member-image");
 
 createButton.addEventListener("click", () => {
-  const file = document.querySelector(".member-image").files[0];
+  const file = memberImage.files[0];
   const storageRef = storage.ref();
   const imgPath = storageRef.child("image/" + file.name);
 
@@ -23,7 +25,7 @@ createButton.addEventListener("click", () => {
     return;
   }
 
-  document.querySelector(".loading").style.display = "block";
+  loadingElement.style.display = "block";
 
   imgPath
     .put(file)
@@ -49,7 +51,7 @@ createButton.addEventListener("click", () => {
       console.log(err);
     })
     .finally(() => {
-      document.querySelector(".loading").style.display = "none";
+      loadingElement.style.display = "none";
     });
 });
 

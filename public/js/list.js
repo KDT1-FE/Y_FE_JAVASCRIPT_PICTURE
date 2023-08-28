@@ -48,18 +48,18 @@ function deleteCharacters() {
   }
   const userConfirmed = confirm("선택한 캐릭터를 삭제하시겠습니까?");
   if (userConfirmed) {
-    checkboxes.forEach((checkbox) => {
+    const deletePromises = Array.from(checkboxes).map((checkbox) => {
       const charID = checkbox.getAttribute("data-id");
-      db.collection("character")
-        .doc(charID)
-        .delete()
-        .then(() => {
-          displayCharacters();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      return db.collection("character").doc(charID).delete();
     });
+
+    Promise.all(deletePromises)
+      .then(() => {
+        displayCharacters();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 
