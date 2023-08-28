@@ -21,6 +21,14 @@ inputFileEl.addEventListener('change', showPreviewImg);
 btnCancelEl.addEventListener('click', moveToMainPage);
 btnModifyEl.addEventListener('click', removeAttribute);
 
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        getDataFromFirestore();
+    } catch (error) {
+        console.error('문서를 가져오는 도중 오류가 발생했습니다', error);
+    }
+});
+
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         uploadData();
@@ -33,6 +41,10 @@ formEl.addEventListener('submit', (e) => {
 
 inputFileEl.addEventListener('click', () => {
     return (imageUrl = imgEl.src);
+});
+
+btnDeleteEl.addEventListener('click', () => {
+    deleteProfileWithImage(imgEl.src);
 });
 
 if (queryString) {
@@ -81,6 +93,7 @@ function uploadData() {
         };
         updateProfile(item);
     }
+
     // 사진이 변경 되었을 때
     if (queryString && inputFileEl.value) {
         upload.on(
@@ -103,6 +116,7 @@ function uploadData() {
             }
         );
     } else {
+        // 새 프로필 등록
         upload.on(
             'state_changed',
             null,
@@ -132,51 +146,12 @@ function showPreviewImg(e) {
     if (file) {
         const reader = new FileReader();
 
-        reader.onload = (event) => {
-            imgEl.setAttribute('src', event.target.result);
+        reader.onload = (e) => {
+            imgEl.setAttribute('src', e.target.result);
         };
         reader.readAsDataURL(file);
     }
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        getDataFromFirestore();
-    } catch (error) {
-        console.error('문서를 가져오는 도중 오류가 발생했습니다', error);
-    }
-});
-
-btnDeleteEl.addEventListener('click', () => {
-    const documentRef = docRef.doc(docId);
-
-    deleteImageFromStorage(imgEl.src)
-        .then(() => {
-            return docRef.get();
-        })
-        .then((res) => {
-            let foundDocId = null;
-            res.forEach((doc) => {
-                if (doc.data().id === Number(queryString)) {
-                    foundDocId = doc.id;
-                }
-            });
-
-            if (foundDocId) {
-                docId = foundDocId;
-                return documentRef.delete();
-            } else {
-                throw new Error('문서를 찾을 수 없습니다');
-            }
-        })
-        .then(() => {
-            alert('프로필 삭제가 완료되었습니다');
-            moveToMainPage();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-});
 
 function deleteImageFromStorage(imageUrl) {
     const imageRef = storage.refFromURL(imageUrl);
@@ -245,4 +220,25 @@ function submitProfileToFirestore(item) {
         .catch((error) => {
             console.log(error);
         });
+}
+
+async function deleteProfileWithImage(imgUrl) {
+    try {
+        await deleteImageFromStorage(imgUrl);
+
+        const getData = await docRef.get();
+        const foundDoc = getData.docs.find(
+            (doc) => doc.data().id === Number(queryString)
+        );
+
+        if (foundDoc) {
+            await foundDoc.ref.delete();
+            alert('프로필 삭제가 완료되었습니다');
+            moveToMainPage();
+        } else {
+            console.error('문서를 찾을 수 없습니다');
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
