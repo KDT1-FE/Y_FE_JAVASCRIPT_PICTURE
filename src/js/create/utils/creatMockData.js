@@ -1,8 +1,6 @@
-// addDriver 페이지에서
-// db에 보험자 데이터 등록하기 전 목업 데이터 생성하는 모듈
 import dayjs from "dayjs";
 
-export default function createMockData(product) {
+export function createMockData(product) {
   if (product) {
     const 보험료_납부_기간 = Math.floor(Math.random() * 120);
     const 상품_별_월_보험료 = checkProductPrice(product);
@@ -24,7 +22,7 @@ export default function createMockData(product) {
   }
 }
 
-// 상품 별 월 보험료 확인
+// 상품별 월 보험료
 function checkProductPrice(product) {
   switch (product) {
     case "현대해상 운전자 보험":

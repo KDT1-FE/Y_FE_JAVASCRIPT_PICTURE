@@ -1,29 +1,18 @@
-// addDriver 페이지에서
-// storage에 보험자 이미지 등록
-import storage from "../../firebase/storage.js";
+import storage from "../../shared/firebase/storage.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { updateDriverImg } from "./updateDriverImg.js";
 
-// 동일한 id를 가진 firestore doc에 보험자 이미지 url 업데이트
-import updateDriverImg from "./updateDriverImg";
-
-// storage에 보험자 이미지 등록 후
-// db에 보험자 이미지 url 업데이트
-export default function addDriverImg(id, img, redirectUrl) {
+export function createDriverImg(id, img, redirectUrl) {
   try {
     if (id && img && redirectUrl) {
-      // 원본 storage 폴더를 가리키는 포인터 사용 (메모리 부담 감소 및 재사용 가능)
       const driverImgsRef = ref(storage, `driverImgs/${img.name}`);
-
-      // 'driverImgs' storage에 이미지 등록
       const uploadTask = uploadBytesResumable(driverImgsRef, img);
 
-      // 이미지 업로드 현황 보여주기
-      const submitAlert = document.querySelector(".submitAlert");
-
-      // 업로드 상황(progress, paused, running)에 맞는 동작 구현
+      // 업로드 상황에 맞는 동작 구현
       uploadTask.on(
         "state_changed",
         snapshot => {
+          const submitAlert = document.querySelector(".submitAlert");
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           submitAlert.textContent =
@@ -33,7 +22,7 @@ export default function addDriverImg(id, img, redirectUrl) {
           console.log(err);
         },
         // 업로드 완료 후
-        // 동일한 id를 가진 firestore doc에 보험자 이미지 url 업데이트
+        // 원하는 Doc id에 imgUrl 데이터 등록
         () => {
           completeUpload(uploadTask, id, redirectUrl);
         }
@@ -49,7 +38,7 @@ function completeUpload(uploadTask, id, redirectUrl) {
     if (downloadURL) {
       updateDriverImg(id, downloadURL);
 
-      // 업로드 완료 후 보험자 리스트 페이지로 이동
+      // 업로드 완료 후 보험자 main 페이지로 이동
       setTimeout(() => {
         location.href = redirectUrl;
       }, 1000);
