@@ -20,7 +20,7 @@ export const getUrlParam = () => {
   return value;
 };
 
-export const navigate = (url) => {
+export const navigate = (url = '/') => {
   window.history.pushState(null, null, `/#${url}`);
   routeRender();
 };
