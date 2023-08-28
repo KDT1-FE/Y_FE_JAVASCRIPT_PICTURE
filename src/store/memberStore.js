@@ -115,7 +115,7 @@ export const searchData = async (keywordValue) => {
 const convertResponseToArray = (response) => {
   const responseArray = [];
   response.forEach((doc) => {
-    let memberData = doc.data();
+    const memberData = doc.data();
     responseArray.push({
       name: memberData.name,
       photoUrl: memberData.photoUrl,
