@@ -76,13 +76,23 @@ function submitBtnClick() {
     let email = emailInput.value;
     let phoneNumber = phoneNumberInput.value;
 
+   
+
     if (name && email && phoneNumber) {
         if (selectedItem) {
+            
             // Case 1: selectedItem가 있고 사진도 변경되지 않은 경우
             if (!input.files[0]) {
+                console.log("1");
                 // 기존 사진 URL 유지
                 profile = selectedItem.profileImgUrl;
+                updateInfo(profile, name, email, phoneNumber);
+                console.log(infoList);
+                localStorage.setItem('infoList', JSON.stringify(infoList));
+                history.back();
+                console.log("success!");
             } else {
+                console.log("2");
                 // 기존 사진 대신 새로운 사진 업로드
                 const file = input.files[0];
                 const reader = new FileReader();
@@ -113,6 +123,7 @@ function submitBtnClick() {
         } else {
             // Case 3: selectedItem이 없고 사진이 선택된 경우
             if (input.files[0]) {
+                console.log("3");
                 const file = input.files[0];
                 const reader = new FileReader();
                 reader.onload = (e) => {
@@ -140,6 +151,7 @@ function submitBtnClick() {
                 reader.readAsDataURL(file);
             } else {
                 // Case 4: selectedItem이 없고 사진도 선택되지 않은 경우
+                console.log("4");
                 profile = " "; // " " 값 대체
                 addNewInfo(profile, name, email, phoneNumber);
                 console.log(infoList);
@@ -167,11 +179,13 @@ function updateInfo(profile, name, email, phoneNumber) {
 
 submitBtn.addEventListener("click", () => {
     
-    showLoadingBar();
-    setTimeout(() => {
-        submitBtnClick();
+    //showLoadingBar();
+    console.log("submitBtn Clicked")
+    submitBtnClick();
         
-    }, 1500);
+    /*setTimeout(() => {
+        
+    }, 1500);*/
 });
 
 backBtn.addEventListener("click", () => {
