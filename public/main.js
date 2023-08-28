@@ -178,7 +178,7 @@ window.addEventListener("scroll", () => {
   if (!loading) {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-    if (scrollTop + clientHeight >= scrollHeight) {
+    if (scrollTop + clientHeight >= scrollHeight - 50) {
       fetchNextBatchWithDelay();
     }
   }
