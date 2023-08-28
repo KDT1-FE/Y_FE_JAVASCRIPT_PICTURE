@@ -1,0 +1,557 @@
+main {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 3rem;
+}
+
+.headertitle {
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  padding: 1.5rem 0;
+  cursor: default;
+
+}
+
+.infomaintitle {
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding-bottom: 3rem;
+}
+
+.infocontainer{
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+}
+
+.infosubtitle,
+.infochange {
+  font-size: 1.4rem;
+}
+
+.infochange {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 19px;
+  color: black;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid black;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+}
+
+.infochange:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.infolist {
+  width: 100%;
+}
+
+.infoimage {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.infoimage img {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+
+.infolist {
+  height: auto;
+  width: 80%;
+  cursor: default;
+}
+
+.infoname,
+.infogroup {
+  padding: 1em 0;
+  font-size: 1.3rem;
+  display: flex;
+}
+
+.listtitle {
+  width: 30%;
+}
+
+.name,
+.group {
+  padding-bottom: 1em;
+  width: 70%;
+  border-bottom: 1px solid gray;
+}
+
+
+.modal-open {
+  pointer-events: none;
+}
+
+
+#insertmodal .modal-window {
+  display: none;
+  background: rgba(69, 139, 197, 0.70);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  z-index: 1;
+  filter: none;
+  pointer-events: auto;
+}
+
+#insertmodal .title {
+  margin: auto;
+  display: inline;
+  text-shadow: 1px 1px 2px gray;
+  color: white;
+  cursor: default;
+}
+
+#insertmodal .title h2 {
+  display: inline;
+}
+
+#insertmodal .content {
+  width: 90%;
+  display: block;
+  margin-top: 20px;
+  padding: 0px 10px;
+  text-shadow: 1px 1px 2px gray;
+  color: black;
+}
+
+#insertmodal .buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1rem;
+}
+
+#insertmodal .buttons > button {
+  cursor: pointer;
+  border-radius: 16px;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.upload-button {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media ( max-width: 1023px ) {
+  main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+  }
+  
+  .headertitle {
+    cursor: pointer;
+  }
+  
+  .info {
+    display: flex;
+    padding: 1.5rem 0;
+    cursor: default;
+  
+  }
+  
+  .infomaintitle {
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 3rem;
+  }
+  
+  .infocontainer{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+  }
+  
+  .infosubtitle,
+  .infochange {
+    font-size: 1.4rem;
+  }
+  
+  .infochange {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+  
+  .infochange:hover {
+    background-color: black;
+    color: #fff;
+  }
+  
+  .infolist {
+    width: 100%;
+  }
+  
+  .infoimage {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .infoimage img {
+    max-width: 100%;
+    max-height: 500px;
+  }
+  
+  
+  .infolist {
+    height: auto;
+    width: 80%;
+    cursor: default;
+  }
+  
+  .infoname,
+  .infogroup {
+    padding: 1em 0;
+    font-size: 1.3rem;
+    display: flex;
+  }
+  
+  .listtitle {
+    width: 30%;
+  }
+  
+  .name,
+  .group {
+    padding-bottom: 1em;
+    width: 70%;
+    border-bottom: 1px solid gray;
+  }
+  
+  
+  .modal-open {
+    pointer-events: none;
+  }
+  
+  
+  #insertmodal .modal-window {
+    display: none;
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    z-index: 1;
+    filter: none;
+    pointer-events: auto;
+  }
+  
+  #insertmodal .title {
+    margin: auto;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    cursor: default;
+  }
+  
+  #insertmodal .title h2 {
+    display: inline;
+  }
+  
+  #insertmodal .content {
+    width: 90%;
+    display: block;
+    margin-top: 20px;
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+  }
+  
+  #insertmodal .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+  
+  #insertmodal .buttons > button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-size: 1rem;
+  }
+  
+  .upload-button {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+@media ( max-width: 767px ) {
+  main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+  }
+  
+  .headertitle {
+    cursor: pointer;
+  }
+  
+  .info {
+    display: flex;
+    padding: 1.5rem 0;
+    cursor: default;
+  
+  }
+  
+  .infomaintitle {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 3rem;
+  }
+  
+  .infocontainer{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+  }
+  
+  .infosubtitle,
+  .infochange {
+    font-size: .6rem;
+  }
+  
+  .infochange {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+  
+  .infochange:hover {
+    background-color: black;
+    color: #fff;
+  }
+  
+  .infolist {
+    width: 100%;
+  }
+  
+  .infoimage {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .infoimage img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  
+  .infolist {
+    height: auto;
+    width: 80%;
+    cursor: default;
+  }
+  
+  .infoname,
+  .infogroup {
+    padding: 1em 0;
+    font-size: .4rem;
+    display: flex;
+  }
+  
+  .listtitle {
+    width: 30%;
+  }
+  
+  .name,
+  .group {
+    padding-bottom: 1em;
+    width: 70%;
+    border-bottom: 1px solid gray;
+  }
+  
+  
+  .modal-open {
+    pointer-events: none;
+  }
+  
+  
+  #insertmodal .modal-window {
+    display: none;
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  #insertmodal .title {
+    margin: auto;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    cursor: default;
+  }
+  
+  #insertmodal .title h2 {
+    display: inline;
+  }
+  
+  #insertmodal .content {
+    width: 90%;
+    display: block;
+    margin-top: 20px;
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+  }
+  
+  #insertmodal .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+  
+  #insertmodal .buttons > button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-size: 1rem;
+  }
+  
+}
+@media ( max-width: 767px ) {
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
+  .button {
+    font-size: .5rem;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 19px;
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+
+  #insertmodal .modal-window {
+    display: none;
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  #insertmodal .title {
+    margin: auto;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    cursor: default;
+    font-size: .7em;
+  }
+  
+  #insertmodal .title h2 {
+    display: inline;
+  }
+  
+  #insertmodal .content {
+    width: 90%;
+    font-size: .7em;
+    display: block;
+    margin-top: 20px;
+    padding: 0px 5px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+  }
+  
+  #insertmodal .buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: .7rem;
+  }
+  
+  #insertmodal .buttons > button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    font-size: .7rem;
+  }
+
+}
