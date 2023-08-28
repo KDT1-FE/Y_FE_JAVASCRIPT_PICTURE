@@ -17,7 +17,9 @@ export default class AddMember extends Component {
             }
         });
         this.addElement();
-        this.setEventListener();
+        this.setSubmitEventListener();
+        this.setImageEventListener();
+        this.setCloseEventListener();
     }
 
     render() {
@@ -82,12 +84,10 @@ export default class AddMember extends Component {
         this.el.querySelector('.modal__banner--left').prepend(imageContainer);
     }
 
-    setEventListener() {
+    setSubmitEventListener() {
+        const addSubmit = this.el.querySelector('.modal__banner--form-assure');
         const inputValueElements = this.el.querySelectorAll('input');
         const submitButton = this.el.querySelector('.modal__banner--form-submit');
-        const imageInput = this.el.querySelector('.modal__banner--form-image');
-        const addSubmit = this.el.querySelector('.modal__banner--form-assure');
-        const closeButton = this.el.querySelector('.modal__close');
 
         const addSubmitElement = new AddSubmit().el;
 
@@ -105,6 +105,10 @@ export default class AddMember extends Component {
             addSubmit.classList.add('active');
             addSubmit.append(addSubmitElement);
         });
+    }
+
+    setImageEventListener() {
+        const imageInput = this.el.querySelector('.modal__banner--form-image');
 
         // 사진을 등록합니다.
         imageInput.addEventListener('change', (event) => {
@@ -120,8 +124,13 @@ export default class AddMember extends Component {
                 reader.readAsDataURL(file);
             }
         });
+    }
 
+    setCloseEventListener() {
         // 모달을 닫습니다.
+
+        const closeButton = this.el.querySelector('.modal__close');
+
         closeButton.addEventListener('click', () => {
             this.el.classList.remove('modal__active');
         });
