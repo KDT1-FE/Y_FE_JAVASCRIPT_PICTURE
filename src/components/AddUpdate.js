@@ -14,6 +14,8 @@ export default class AddUpdate extends Component {
             stateValue = '업데이트';
         } else if (state === 'delete') {
             stateValue = '삭제';
+        } else {
+            this.el.classList.remove('active');
         }
 
         const AddUpdateAssureEl = new AddUpdateAssure(state).el;
