@@ -10,7 +10,9 @@
 
 
 ## 📸 사이트 
-<img alt="Static Badge" src="https://img.shields.io/badge/-%EC%A7%81%EC%9B%90%20%EA%B4%80%EB%A6%AC%20%EB%8D%B0%EB%AA%A8%20%EC%82%AC%EC%9D%B4%ED%8A%B8-%230E54B6?style=for-the-badge&link=https%3A%2F%2Felegant-dusk-116a43.netlify.app%2F">
+<a href="https://elegant-dusk-116a43.netlify.app/" target="_blank">
+  <img alt="Static Badge" src="https://img.shields.io/badge/-%EC%A7%81%EC%9B%90%20%EA%B4%80%EB%A6%AC%20%EB%8D%B0%EB%AA%A8%20%EC%82%AC%EC%9D%B4%ED%8A%B8-%230E54B6?style=for-the-badge&link=https%3A%2F%2Felegant-dusk-116a43.netlify.app%2F">
+</a>
 <br><br>  
 
 
