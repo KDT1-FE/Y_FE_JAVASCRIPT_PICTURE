@@ -590,6 +590,10 @@ textarea {
   float: right;
   cursor: pointer;
 }
+.save-button:hover {
+  transform: translateX(0.1em) translateY(0.1em);
+  background-color: hsl(76, 100%, 80%);
+}
 .close-button {
   background-color: #fff5f5;
   border: 1px solid #c8c8c8;
@@ -598,6 +602,10 @@ textarea {
   margin-right: 0.5em;
   float: right;
   cursor: pointer;
+}
+.close-button:hover {
+  transform: translateX(0.1em) translateY(0.1em);
+  background-color: #ffe0e0;
 }
 /* Styles for the button */
 .button {

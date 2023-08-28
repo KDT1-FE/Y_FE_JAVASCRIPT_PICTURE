@@ -57,8 +57,15 @@ openModalButton.addEventListener("click", () => {
   editStatus = false;
   id = "";
   plantsForm["btn-data-save"].innerText = "추가";
+
   // Open the modal
   document.getElementById("myModal").style.display = "block";
+});
+
+// Close modal when "닫기" button is clicked
+const closeModalButton = document.querySelector(".close-button");
+closeModalButton.addEventListener("click", () => {
+  document.getElementById("myModal").style.display = "none";
 });
 
 //LIST
@@ -135,7 +142,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       const waterTime = plantsForm["water-time-data"];
       const note = plantsForm["note-data"];
 
-      // Validate inputs
+      // Validation process for inputs
       const validateInputs = [
         { name: "이름", element: name },
         { name: "날짜", element: date },
@@ -161,8 +168,6 @@ window.addEventListener("DOMContentLoaded", async () => {
             note: note.value,
           });
           editStatus = false;
-          plantsForm["btn-data-save"].innerText = "저장";
-          plantsForm.reset();
 
           return;
         }
@@ -205,6 +210,7 @@ window.addEventListener("DOMContentLoaded", async () => {
               note.value
             );
             alert("저장되었습니다!");
+            document.getElementById("myModal").style.display = "none";
             // Add a new row to the table
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
@@ -248,9 +254,3 @@ window.addEventListener("DOMContentLoaded", async () => {
     plantsForm.reset();
   });
 });
-
-function close() {
-  setTimeout(function () {
-    location.reload();
-  }, 200);
-}
