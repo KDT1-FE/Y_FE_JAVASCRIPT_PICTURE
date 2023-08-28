@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%
+}
+
+.section__customer--management {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__customer--nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.section__customer--search {
+  display: flex;
+}
+
+.section__customer--list {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  width: 100%;
+  height: 100%;
+}
+
+.section__customer--template {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__customer--template>ul {
+  /* display: grid; */
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+  justify-items: center;
+}
+
+@media (min-width: 300px) {
+  .section__customer--template>ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .section__customer--template>ul {
+    display: grid;
+    grid-template-columns: 0.1fr 0.1fr 0.2fr 0.2fr 0.15fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  }
+}
+
+.section__customer--template>ul:nth-child(n+2)>li:nth-child(2) {
+  cursor: pointer;
+}
