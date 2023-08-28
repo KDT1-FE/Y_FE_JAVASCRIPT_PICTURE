@@ -1,13 +1,13 @@
 const checklogin=document.querySelector('.checklogin');
 const checkuser=document.querySelector('.checkuser');
 let nums=sessionStorage.getItem("nums");
-var link='login.html';
+const link='login.html';
 const loading = document.querySelector('.spin-container');
-var nonvisible = getComputedStyle(document.querySelector('.spin-container')).display;
-var down = getComputedStyle(document.querySelector('.spin-container')).zIndex;
-var visible = "flex";
+const nonvisible = getComputedStyle(document.querySelector('.spin-container')).display;
+const down = getComputedStyle(document.querySelector('.spin-container')).zIndex;
+const visible = "flex";
 loading.style.display=nonvisible;
-var up = 2;
+const up = 2;
 loading.style.zIndex=down;
 
 function hreflink(){
@@ -23,30 +23,38 @@ else{
   checklogin.innerHTML="로그인";
 }
 
+class changeLoading{
+  constructor(loadingEl) {
+    this.loadingEl = loadingEl
+  }
+
+  changeDisplay(display, zIndex) {
+    this.loadingEl.style.display = display;
+    this.loadingEl.style.zIndex = zIndex;
+  }
+
+}
+
 checklogin.addEventListener('click',()=>{
+  let change = new changeLoading(loading)
   if(checklogin.innerHTML==="로그인"){
-    loading.style.display = visible;
-    loading.style.zIndex = up;
+    change.changeDisplay(visible, up)
     setTimeout(() => {
-      loading.style.display = "none";
-      loading.style.zIndex = 0;
+      change.changeDisplay("none",0)
     }, 1000);
     setTimeout(() => {
       hreflink();
     }, 2000);
   }
   else{
-    loading.style.display = visible;
-    loading.style.zIndex = up;
+    change.changeDisplay(visible, up)
     setTimeout(() => {
-      loading.style.display = "none";
-      loading.style.zIndex = 0;
+      change.changeDisplay("none",0)
       checkuser.innerHTML="게스트";
       checklogin.innerHTML="로그인";
     }, 1000);
     setTimeout(() => {
-      loading.style.display = visible;
-      loading.style.zIndex = up;
+      change.changeDisplay(visible, up)
     }, 2000);
     setTimeout(() => {
       hreflink();

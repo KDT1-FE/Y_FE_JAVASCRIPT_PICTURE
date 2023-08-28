@@ -156,7 +156,6 @@ async function changeInfo() {
     const storage = getStorage();
     const storageRef = ref(storage, 'images');
     const listitems = await listAll(storageRef);
-    console.log(listitems);
     const numericId = parseInt(queryid, 10);
     // 리스트 내 중복 사진은 수정 불가
     for(const item of listitems.items){
