@@ -1,20 +1,20 @@
-import deleteDriverImg from "../driverProfile/deleteDriverImg.js";
-import addDriverImg from "../addDriver/addDriverImg.js";
-import updateDriverName from "./updateDriverName.js";
+import { deleteDriverImg } from "../../shared/firebase/delete/deleteDriverImg.js";
+import { createDriverImg } from "../../shared/firebase/create/createDriverImg.js";
+import { updateDriverName } from "./updateDriverName.js";
 
-export default function postEditDriver() {
+export function postEditDriver() {
   const postEditDriverBtn = document.getElementById("postEditDriverBtn");
   // 더블 클릭으로 인한 중복 수정 방지
   postEditDriverBtn.setAttribute("disabled", true);
 
   // 보험자 id, 새로운 보험자 이미지, redirection url 가져오기
   const driverId = document.location.href.split("?")[1];
-  const newDriverImgInput = document.getElementById("newDriverImgInput");
-  const newDriverImg = newDriverImgInput.files[0];
-  const redirectUrl = `./driverProfile.html?${driverId}`;
+  const driverImgInput = document.getElementById("driverImgInput");
+  const newDriverImg = driverImgInput.files[0];
+  const redirectUrl = `./profile.html?${driverId}`;
 
   // storage에 새로운 보험자 이미지 등록 및 업데이트
-  addDriverImg(driverId, newDriverImg, redirectUrl);
+  createDriverImg(driverId, newDriverImg, redirectUrl);
 
   // 기존 보험자 이미지 가져오기
   const driverImg = document.getElementById("driverImg");

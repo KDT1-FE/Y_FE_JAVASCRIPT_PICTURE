@@ -1,7 +1,7 @@
-import updateDriverImg from "../addDriver/updateDriverImg.js";
+import { updateDriverImg } from "../../shared/firebase/update/updateDriverImg.js";
 
 // 기존 이미지 일반 사진으로 변경
-export default function setBasicImg() {
+export function setBasicImg() {
   const driverImg = document.getElementById("driverImg");
   const oldDriverImg = driverImg.src;
   const basicUserImgUrl =

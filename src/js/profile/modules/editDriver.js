@@ -1,19 +1,11 @@
-import setBasicImg from "./setBasicImg.js";
-import postEditDriver from "./postEditDriver.js";
-// 사진 미리보기
-import previewDriverImg from "../addDriver/previewDriverImg";
+import { setBasicImg } from "../utils/setBasicImg.js";
+import { postEditDriver } from "./postEditDriver.js";
+import { previewImg } from "../../shared/previewImg.js";
 
-const editDriverBtn = document.getElementById("editDriverBtn");
-
-editDriverBtn.addEventListener("click", editDriver);
-
-function editDriver() {
-  // main 컨테이너에 새로 생성한 요소 추가
+export function editDriver() {
   const driverProfile = document.getElementById("driverProfile");
 
-  // 보험자 이름 input readonly 제거
   const driverNameInput = document.querySelector("#driverName input");
-
   driverNameInput.removeAttribute("readonly");
   driverNameInput.setAttribute(
     "style",
@@ -22,14 +14,18 @@ function editDriver() {
 
   // 새로운 이미지 file Input 생성
   const newImgInput = document.createElement("input");
-  newImgInput.id = "newDriverImgInput";
+  newImgInput.id = "driverImgInput";
   newImgInput.setAttribute("type", "file");
   newImgInput.setAttribute("accept", "image/jpg, image/png, image/gif");
   newImgInput.setAttribute("required", "");
 
   driverProfile.prepend(newImgInput);
-  // 사진 미리보기
-  previewDriverImg("newDriverImgInput", "driverImg");
+
+  // 사진 미리보기 이벤트
+  const driverImgInput = document.getElementById("driverImgInput");
+  driverImgInput
+    ? driverImgInput.addEventListener("change", previewImg)
+    : console.log("404 페이지로");
 
   // 새로운 이미지 삭제 button 생성
   const setBasicImgBtn = document.createElement("button");
