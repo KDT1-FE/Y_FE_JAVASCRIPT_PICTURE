@@ -63,7 +63,6 @@ export default class Cropper extends Component{
         })
       canvas.toBlob(
         (blob)=>{
-          console.log(`${name}Blob is `,blob)
           cropperStore.state[`${name}Blob`] = blob
         }
       )
