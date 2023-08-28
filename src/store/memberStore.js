@@ -62,7 +62,7 @@ export const getMemberDetail = async (id) => {
   const response = await getDoc(docRef);
   if (response.data() === undefined) {
     return null;
-  } // 해당 id의 데이터가 존재하지 않을 때
+  }
   return {
     ...response.data(),
     id: response.id,
