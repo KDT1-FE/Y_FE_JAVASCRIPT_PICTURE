@@ -9,6 +9,11 @@ import {
   uploadBytes,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
+import {
+  appReset,
+  renderDetailDOM,
+  renderDetailDOMById
+} from "../utils/function.js";
 
 async function Edit() {
   const path = window.location.pathname.replace("/edit/", "");
@@ -17,60 +22,77 @@ async function Edit() {
   const docSnap = await getDoc(docRef);
   var imageURL;
 
-  const divApp = document.getElementById("app");
-  divApp.innerHTML = "";
+  const divApp = appReset("app");
 
-  const editContainer = document.createElement("div");
-  editContainer.setAttribute("class", "edit-container");
-  divApp.append(editContainer);
+  const editContainer = renderDetailDOM("div", "edit-container", divApp);
 
-  const editTitleContainer = document.createElement("div");
-  editTitleContainer.setAttribute("class", "edit-title-container");
-  editContainer.append(editTitleContainer);
+  const editTitleContainer = renderDetailDOM(
+    "div",
+    "edit-title-container",
+    editContainer
+  );
 
-  const editContentContainer = document.createElement("div");
-  editContentContainer.setAttribute("class", "edit-content-container");
-  editContainer.append(editContentContainer);
+  const editContentContainer = renderDetailDOM(
+    "div",
+    "edit-content-container",
+    editContainer
+  );
 
   // edit 타이틀 및 텍스트 생성
-  const editTitleContainerTitle = document.createElement("h2");
-  editTitleContainerTitle.setAttribute("class", "edit-title__title");
-  editTitleContainerTitle.innerHTML = `대한민국 선수 관리 DB`;
-  editTitleContainer.append(editTitleContainerTitle);
+  const editTitleContainerTitle = renderDetailDOM(
+    "h2",
+    "edit-title__title",
+    editTitleContainer,
+    "대한민국 선수 관리 DB"
+  );
 
-  const editTitleContainerText = document.createElement("p");
-  editTitleContainerText.setAttribute("class", "edit-title__p");
-  editTitleContainer.append(editTitleContainerText);
+  const editTitleContainerText = renderDetailDOM(
+    "p",
+    "edit-title__p",
+    editTitleContainer
+  );
 
   // edit 페이지 - content
-  const editContentWrapper = document.createElement("div");
-  editContentWrapper.setAttribute("class", "edit-content-wrapper");
-  editContentContainer.append(editContentWrapper);
+  const editContentWrapper = renderDetailDOM(
+    "div",
+    "edit-content-wrapper",
+    editContentContainer
+  );
 
   // edit 페이지 - content - title
-  const editContentTitleWrapper = document.createElement("div");
-  editContentTitleWrapper.setAttribute("class", "edit-content-title-wrapper");
-  editContentWrapper.append(editContentTitleWrapper);
+  const editContentTitleWrapper = renderDetailDOM(
+    "div",
+    "edit-content-title-wrapper",
+    editContentWrapper
+  );
 
-  const editTitle = document.createElement("h3");
-  editTitle.setAttribute("class", "edit-content-title_title");
-  editTitle.innerHTML = "선수 등록";
-  editContentTitleWrapper.append(editTitle);
+  const editTitle = renderDetailDOM(
+    "h3",
+    "edit-content-title__title",
+    editContentTitleWrapper,
+    "선수 등록"
+  );
 
-  const editBtnWrapper = document.createElement("div");
-  editBtnWrapper.setAttribute("class", "edit-content-btn-wrapper");
-  editContentTitleWrapper.append(editBtnWrapper);
+  const editBtnWrapper = renderDetailDOM(
+    "div",
+    "edit-content-btn-wrapper",
+    editContentTitleWrapper
+  );
 
-  const editEditBtn = document.createElement("a");
-  editEditBtn.setAttribute("id", "edit");
+  const editEditBtn = renderDetailDOMById(
+    "a",
+    "edit",
+    editBtnWrapper,
+    "수정완료"
+  );
   editEditBtn.href = `/edit/${path}`;
-  editEditBtn.innerHTML = `수정완료`;
-  editBtnWrapper.append(editEditBtn);
 
   //edit 페이지 - content - input
-  const editContentInputwrapper = document.createElement("div");
-  editContentInputwrapper.setAttribute("class", "edit-content-input-wrapper");
-  editContentWrapper.append(editContentInputwrapper);
+  const editContentInputwrapper = renderDetailDOM(
+    "div",
+    "edit-content-input-wrapper",
+    editContentWrapper
+  );
 
   editContentInputwrapper.innerHTML = `
       <div>
@@ -101,9 +123,11 @@ async function Edit() {
   } 선수 데이터 수정 페이지입니다.`;
 
   // edit 페이지 - img
-  const editContentImageWrapper = document.createElement("div");
-  editContentImageWrapper.setAttribute("class", "edit-content-image-wrapper");
-  editContentContainer.append(editContentImageWrapper);
+  const editContentImageWrapper = renderDetailDOM(
+    "div",
+    "edit-content-image-wrapper",
+    editContentContainer
+  );
 
   editContentImageWrapper.innerHTML = `
   <img id = "edit-myimg"src="${docSnap.data().image}"/>

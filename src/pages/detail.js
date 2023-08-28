@@ -9,76 +9,95 @@ import {
   deleteObject
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
+import {
+  appReset,
+  renderDetailDOM,
+  renderDetailDOMById
+} from "../utils/function.js";
+
 async function Detail() {
   const path = window.location.pathname.replace("/detail/", "");
   const docRef = await doc(firestore, "employee", path);
   const docSnap = await getDoc(docRef);
 
-  const divApp = document.getElementById("app");
-  divApp.innerHTML = "";
+  const divApp = appReset("app");
 
-  const detailContainer = document.createElement("div");
-  detailContainer.setAttribute("class", "detail-container");
-  divApp.append(detailContainer);
+  const detailContainer = renderDetailDOM("div", "detail-container", divApp);
 
-  const detailTitleContainer = document.createElement("div");
-  detailTitleContainer.setAttribute("class", "detail-title-container");
-  detailContainer.append(detailTitleContainer);
+  const detailTitleContainer = renderDetailDOM(
+    "div",
+    "detail-title-container",
+    detailContainer
+  );
 
-  const detailContentContainer = document.createElement("div");
-  detailContentContainer.setAttribute("class", "detail-content-container");
-  detailContainer.append(detailContentContainer);
+  const detailContentContainer = renderDetailDOM(
+    "div",
+    "detail-content-container",
+    detailContainer
+  );
 
   // detail 타이틀 및 텍스트 생성
-  const detailTitleContainerTitle = document.createElement("h2");
-  detailTitleContainerTitle.setAttribute("class", "detail-title__title");
-  detailTitleContainerTitle.innerHTML = `대한민국 선수 관리 DB`;
-  detailTitleContainer.append(detailTitleContainerTitle);
+  const detailTitleContainerTitle = renderDetailDOM(
+    "h2",
+    "detail-title__title",
+    detailTitleContainer,
+    `대한민국 선수 관리 DB`
+  );
 
-  const detailTitleContainerText = document.createElement("p");
-  detailTitleContainerText.setAttribute("class", "detail-title__p");
-  detailTitleContainer.append(detailTitleContainerText);
+  const detailTitleContainerText = renderDetailDOM(
+    "p",
+    "detail-title__p",
+    detailTitleContainer
+  );
 
   // detail 페이지 - content
-  const detailContentWrapper = document.createElement("div");
-  detailContentWrapper.setAttribute("class", "detail-content-wrapper");
-  detailContentContainer.append(detailContentWrapper);
+  const detailContentWrapper = renderDetailDOM(
+    "div",
+    "detail-content-wrapper",
+    detailContentContainer
+  );
 
   // detail 페이지 - content - title
-  const detailContentTitleWrapper = document.createElement("div");
-  detailContentTitleWrapper.setAttribute(
-    "class",
-    "detail-content-title-wrapper"
+  const detailContentTitleWrapper = renderDetailDOM(
+    "div",
+    "detail-content-title-wrapper",
+    detailContentWrapper
   );
-  detailContentWrapper.append(detailContentTitleWrapper);
 
-  const detailTitle = document.createElement("h3");
-  detailTitle.setAttribute("class", "detail-content-title_title");
-  detailTitle.innerHTML = "선수 등록";
-  detailContentTitleWrapper.append(detailTitle);
+  const detailTitle = renderDetailDOM(
+    "h3",
+    "detail-content-title_title",
+    detailContentTitleWrapper,
+    "선수 등록"
+  );
 
-  const detailBtnWrapper = document.createElement("div");
-  detailBtnWrapper.setAttribute("class", "detail-content-btn-wrapper");
-  detailContentTitleWrapper.append(detailBtnWrapper);
+  const detailBtnWrapper = renderDetailDOM(
+    "div",
+    "detail-content-btn-wrapper",
+    detailContentTitleWrapper
+  );
 
-  const detailEditBtn = document.createElement("a");
-  detailEditBtn.setAttribute("id", "edit");
+  const detailEditBtn = renderDetailDOMById(
+    "a",
+    "edit",
+    detailBtnWrapper,
+    "수정하기"
+  );
   detailEditBtn.href = `/edit/${path}`;
-  detailEditBtn.innerHTML = `수정하기`;
-  detailBtnWrapper.append(detailEditBtn);
 
-  const detailDeletBtn = document.createElement("button");
-  detailDeletBtn.setAttribute("id", "detail-delete");
-  detailDeletBtn.innerHTML = "삭제하기";
-  detailBtnWrapper.append(detailDeletBtn);
+  const detailDeleteBtn = renderDetailDOMById(
+    "button",
+    "detail-delete",
+    detailBtnWrapper,
+    "삭제하기"
+  );
 
   //detail 페이지 - content - input
-  const detailContentInputwrapper = document.createElement("div");
-  detailContentInputwrapper.setAttribute(
-    "class",
-    "detail-content-input-wrapper"
+  const detailContentInputwrapper = renderDetailDOM(
+    "div",
+    "detail-content-input-wrapper",
+    detailContentWrapper
   );
-  detailContentWrapper.append(detailContentInputwrapper);
 
   detailContentInputwrapper.innerHTML = `
       <div>
@@ -110,12 +129,11 @@ async function Detail() {
   } 선수 상세 페이지입니다.`;
 
   // detail 페이지 - img
-  const detailContentImageWrapper = document.createElement("div");
-  detailContentImageWrapper.setAttribute(
-    "class",
-    "detail-content-image-wrapper"
+  const detailContentImageWrapper = renderDetailDOM(
+    "div",
+    "detail-content-image-wrapper",
+    detailContentContainer
   );
-  detailContentContainer.append(detailContentImageWrapper);
 
   detailContentImageWrapper.innerHTML = `
   <img id = "detail-myimg"src="${docSnap.data().image}"/>

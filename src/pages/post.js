@@ -7,61 +7,79 @@ import {
   ref,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
-
+import {
+  appReset,
+  renderDetailDOM,
+  renderDetailDOMById
+} from "../utils/function.js";
 async function Post() {
   let imageURL = "";
 
-  const divApp = document.getElementById("app");
-  divApp.innerHTML = "";
+  const divApp = appReset("app");
 
-  const postContainer = document.createElement("div");
-  postContainer.setAttribute("class", "post-container");
-  divApp.append(postContainer);
+  const postContainer = renderDetailDOM("div", "post-container", divApp);
 
-  const postTitleContainer = document.createElement("div");
-  postTitleContainer.setAttribute("class", "post-title-container");
-  postContainer.append(postTitleContainer);
+  const postTitleContainer = renderDetailDOM(
+    "div",
+    "post-title-container",
+    postContainer
+  );
 
-  const postContentContainer = document.createElement("div");
-  postContentContainer.setAttribute("class", "post-content-container");
-  postContainer.append(postContentContainer);
+  const postContentContainer = renderDetailDOM(
+    "div",
+    "post-content-container",
+    postContainer
+  );
 
   // post 타이틀 및 텍스트 생성
-  const postTitleContainerTitle = document.createElement("h2");
-  postTitleContainerTitle.setAttribute("class", "post-title__title");
-  postTitleContainerTitle.innerHTML = `대한민국 선수 관리 DB`;
-  postTitleContainer.append(postTitleContainerTitle);
+  const postTitleContainerTitle = renderDetailDOM(
+    "h2",
+    "post-title__title",
+    postTitleContainer,
+    "대한민국 선수 관리 DB"
+  );
 
-  const postTitleContainerText = document.createElement("p");
-  postTitleContainerText.setAttribute("class", "post-title__p");
-  postTitleContainerText.innerHTML = `대한민국 선수 등록 페이지입니다.`;
-  postTitleContainer.append(postTitleContainerText);
+  const postTitleContainerText = renderDetailDOM(
+    "p",
+    "post-title__p",
+    postTitleContainer,
+    "대한민국 선수 등록 페이지입니다."
+  );
 
   // post 페이지 - content
-  const postContentWrapper = document.createElement("div");
-  postContentWrapper.setAttribute("class", "post-content-wrapper");
-  postContentContainer.append(postContentWrapper);
+  const postContentWrapper = renderDetailDOM(
+    "div",
+    "post-content-wrapper",
+    postContentContainer
+  );
 
   // post 페이지 - content - title
-  const postContentTitlewrapper = document.createElement("div");
-  postContentTitlewrapper.setAttribute("class", "post-content-title-wrapper");
-  postContentWrapper.append(postContentTitlewrapper);
+  const postContentTitlewrapper = renderDetailDOM(
+    "div",
+    "post-content-title-wrapper",
+    postContentWrapper
+  );
 
-  const postTitle = document.createElement("h3");
-  postTitle.setAttribute("class", "post-content-title_title");
-  postTitle.innerHTML = "선수 등록";
-  postContentTitlewrapper.append(postTitle);
+  const postTitle = renderDetailDOM(
+    "h3",
+    "post-content-title_title",
+    postContentTitlewrapper,
+    "선수 등록"
+  );
 
-  const postBtn = document.createElement("button");
-  postBtn.setAttribute("id", "post");
-  postBtn.innerHTML = `등록하기`;
-  postContentTitlewrapper.append(postBtn);
+  const postBtn = renderDetailDOMById(
+    "button",
+    "post",
+    postContentTitlewrapper,
+    "등록하기"
+  );
 
   //post 페이지 - content - input
-  const postContentInputwrapper = document.createElement("div");
-  postContentInputwrapper.setAttribute("class", "post-content-input-wrapper");
-  postContentWrapper.append(postContentInputwrapper);
-
+  const postContentInputwrapper = renderDetailDOM(
+    "div",
+    "post-content-input-wrapper",
+    postContentWrapper
+  );
   postContentInputwrapper.innerHTML = `
       <div>
       <span>이름</span>
@@ -87,10 +105,11 @@ async function Post() {
   `;
 
   // post 페이지 - img
-  const postContentImageWrapper = document.createElement("div");
-  postContentImageWrapper.setAttribute("class", "post-content-image-wrapper");
-  postContentContainer.append(postContentImageWrapper);
-
+  const postContentImageWrapper = renderDetailDOM(
+    "div",
+    "post-content-image-wrapper",
+    postContentContainer
+  );
   postContentImageWrapper.innerHTML = `
   <img id="myimg" src="https://firebasestorage.googleapis.com/v0/b/employeemanagement-9fd1f.appspot.com/o/images%2Fprofile.jpeg?alt=media&token=34d49c1a-07fd-41e7-bb1e-34348d18c23d"/>
   `;
