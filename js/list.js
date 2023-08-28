@@ -87,17 +87,26 @@ const removeCheck = (e) => {
     });
   }
 };
+
+async function deleteDocuments() {
+  try {
+    const deletePromises = deleteList.map((id) =>
+      deleteDoc(doc(db, 'users', id))
+    );
+    await Promise.all(deletePromises);
+    alert('삭제되었습니다.');
+    location.reload();
+  } catch (error) {
+    console.error('Error deleting documents:', error);
+  }
+}
+
 // 버튼을 클릭 시 삭제
 const deleteBtn = document.querySelector('.delete-btn');
 deleteBtn.addEventListener('click', async (e) => {
   if (deleteList.length > 0) {
     if (window.confirm('삭제하시겠습니까?')) {
-      deleteList.forEach(async (id) => {
-        await deleteDoc(doc(db, 'users', id)).then(() => {
-          alert('삭제되었습니다.');
-          location.reload();
-        });
-      });
+      await deleteDocuments();
     } else {
       alert('취소되었습니다.');
     }

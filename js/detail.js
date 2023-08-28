@@ -16,15 +16,15 @@ const nameInput = document.getElementById('nameInput');
 const emailInput = document.getElementById('emailInput');
 const phoneInput = document.getElementById('phoneInput');
 
-// 페이지 로드 시 직원 정보 표시
-window.onload = async () => {
-  // 직원 정보 조회
-  const docRef = doc(db, 'users', userID);
-  await getDoc(docRef).then((docSnap) => {
+async function fetchDataAndDisplay(docRef) {
+  try {
+    const docSnap = await getDoc(docRef);
+
     // 스켈레톤 레이아웃 삭제
     document.querySelectorAll('.skeleton').forEach((skeleton) => {
       skeleton.classList.remove('skeleton');
     });
+
     // 값이 존재하면 직원 정보 표시
     if (docSnap.exists()) {
       profileImg.src = docSnap.data().profile;
@@ -36,7 +36,15 @@ window.onload = async () => {
       alert('존재하지 않는 직원입니다.');
       location.href = '/';
     }
-  });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+// 페이지 로드 시 직원 정보 표시
+window.onload = async () => {
+  const docRef = doc(db, 'users', userID);
+  await fetchDataAndDisplay(docRef);
 };
 
 // input 파일이 바뀌면 firebase Storage에 저장하고 화면에 표시
