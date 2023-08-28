@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, navigate } from '../core/router';
 import { getMemberDetail, setData, uploadImage } from '../store/memberStore';
-import { existEmail, validateEmail } from '../utils/validate';
+import { existEmail, existFile, validateEmail } from '../utils/validate';
 
 export default class Edit extends Component {
   async render() {
@@ -56,7 +56,7 @@ export default class Edit extends Component {
       )
         return;
 
-      if (formData.get('file').name !== '') {
+      if (existFile(formData.get('file'), false)) {
         photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
       }
 
