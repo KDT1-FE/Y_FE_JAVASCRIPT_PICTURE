@@ -192,6 +192,8 @@ export default class Dialog extends Component{
       // 입력받은 input 태그들의 값으로 obj을 변경시킴
       function changeInformation(){
         return new Promise((resolve,reject)=>{
+          console.log('changeInformation 시작')
+
           if(obj.name !== nameEl.value){
             obj.name = nameEl.value
             history.state.name = obj.name
@@ -215,11 +217,13 @@ export default class Dialog extends Component{
           if(cropperStore.state.thumbnailBlob){
             let temp = storeImageAndGetURL(cropperStore.state.thumbnailBlob)
             promises.push(temp)
+            console.log('thumbnailBlob',temp )
             thumbChange = true
             }
           if(cropperStore.state.imageBlob){
             let temp = storeImageAndGetURL(cropperStore.state.imageBlob)
             promises.push(temp)
+            console.log('imageBlob',temp )
             imageChange = true
             }
 
@@ -236,7 +240,9 @@ export default class Dialog extends Component{
             if(imageChange){
               promises[0]              
               .then(url=>{
+                console.log(url)
                 obj.image = url
+                console.log('image', obj.image)
                 resolve()
               })
               .catch(error=>{
@@ -247,7 +253,9 @@ export default class Dialog extends Component{
             if(thumbChange){
               promises[0]           
                 .then(url=>{
+                  console.log(url)
                   obj.thumbnail = url
+                  console.log('thumbnail', obj.thumbnail)
                   resolve()
                 })
                 .catch(error=>{
@@ -258,6 +266,8 @@ export default class Dialog extends Component{
             }else{
               resolve()
             }
+
+            console.log('changeInformation 종료')
             })
         }
     })
@@ -270,13 +280,17 @@ export default class Dialog extends Component{
         const imageRef = ref(storage, `newImage/${filename}.${blob.type.split('/')[1]}`)
       
         uploadBytes(imageRef, blob).then(snapshot => {
+          console.log('Image uploaded:', snapshot.metadata.fullPath);
+      
           // 이미지 업로드가 완료되면 이미지 URL을 받아옴
           getDownloadURL(snapshot.ref).then(downloadURL => {
+            console.log('이미지 URL 반환')
             resolve(downloadURL)
           })
         }).catch(error => {
           reject('storeImageAndGetURL :', error)
         });  
+        console.log('URL 가져오기 종료')
       }
       )
     }

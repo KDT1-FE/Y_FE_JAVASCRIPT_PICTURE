@@ -121,11 +121,13 @@ export default class Dialog extends Component{
     // 썸네일 사진을 사용자로부터 입력 받을 경우 file 형태로 store에 저장
     formThumbEl.addEventListener('input',event=>{
       cropperStore.state.thumbnailFile = event.target.files[0]
+      console.log('cropperStore.state.thumbFile', cropperStore.state.thumbFile )
     })
 
     // 배경 사진을 사용자로부터 입력 받을 경우 file 형태로 store에 저장
     formImageEl.addEventListener('input',event=>{
       cropperStore.state.imageFile = event.target.files[0]
+      console.log('cropperStore.state.imageFile', cropperStore.state.imageFile )
     })
     
     // 제출 했을 경우 다음고 같은 순서로 실행된다
@@ -145,6 +147,7 @@ export default class Dialog extends Component{
           store.state.loading = true
           addInformation()
           .then(()=>{
+            console.log('localStorage에 저장')
             localStorageArray.push(obj)
             localStorageArray.sort(
               (a,b)=>{
@@ -156,6 +159,7 @@ export default class Dialog extends Component{
               }
               )
             localStorage.setItem('champ', JSON.stringify({char : localStorageArray}))
+            console.log('localStorage에 저장 완료',localStorage.getItem('champ'))
             store.state.loading = false
             cropperStore.state.thumbnailBlob = ''
             cropperStore.state.imageBlob = ''
@@ -193,6 +197,7 @@ export default class Dialog extends Component{
     // 입력받은 input 태그들의 값으로 obj을 추가함
       function addInformation(){
         return new Promise((resolve,reject)=>{
+          console.log('addInformation 시작')
           obj.name = event.target.querySelector('.form-name').value
           obj.nickname = event.target.querySelector('.form-nickname').value
           if(regionFormEl.value !== "국가 / 지역"){
@@ -211,11 +216,13 @@ export default class Dialog extends Component{
           if(cropperStore.state.thumbnailBlob){
             let temp = storeImageAndGetURL(cropperStore.state.thumbnailBlob)
             promises.push(temp)
+            console.log('thumbnailBlob',temp )
             thumbChange = true
             }
           if(cropperStore.state.imageBlob){
             let temp = storeImageAndGetURL(cropperStore.state.imageBlob)
             promises.push(temp)
+            console.log('imageBlob',temp )
             imageChange = true
             }
 
@@ -225,14 +232,16 @@ export default class Dialog extends Component{
               obj.image = values[1]
               resolve()
             }).catch(error=>{
-              console.log(error)
+              console.log('StoreImageAndGetURL :',error)
               reject()
             })
           }else if(promises.length===1){
             if(imageChange){
               promises[0]              
               .then(url=>{
+                console.log(url)
                 obj.image = url
+                console.log('image', obj.image)
                 resolve()
               })
               .catch(error=>{
@@ -243,7 +252,9 @@ export default class Dialog extends Component{
             if(thumbChange){
               promises[0]           
                 .then(url=>{
+                  console.log(url)
                   obj.thumbnail = url
+                  console.log('thumbnail', obj.thumbnail)
                   resolve()
                 })
                 .catch(error=>{
@@ -254,6 +265,7 @@ export default class Dialog extends Component{
             }else{
               resolve()
             }
+            console.log('addInformation 종료')
             })
         }
     })
@@ -261,19 +273,24 @@ export default class Dialog extends Component{
     // blob을 받아, 링크를 리턴
     function storeImageAndGetURL(blob){
       return new Promise((resolve,reject)=>{
+        console.log('URL가져오기')
         // 이미지 파일을 Blob으로 변환
 
         const filename = Date.now();
         const imageRef = ref(storage, `newImage/${filename}.${blob.type.split('/')[1]}`)
       
         uploadBytes(imageRef, blob).then(snapshot => {
+          console.log('Image uploaded:', snapshot.metadata.fullPath);
+      
           // 이미지 업로드가 완료되면 이미지 URL을 받아옴
           getDownloadURL(snapshot.ref).then(downloadURL => {
+            console.log('이미지 URL 반환')
             resolve(downloadURL)
           })
         }).catch(error => {
           reject('storeImageAndGetURL :', error)
         });  
+        console.log('URL 가져오기 종료')
       }
       )
     }
