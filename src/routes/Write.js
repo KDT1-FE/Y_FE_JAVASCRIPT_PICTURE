@@ -33,7 +33,7 @@ export default class Write extends Component {
 
       const formData = new FormData(event.currentTarget);
 
-      if (!existFile(formData.get('file'))) return;
+      if (!existFile(formData.get('file'), true)) return;
       if (!validateEmail(formData.get('email'))) return;
 
       const photoUrl = await getImageUrl(formData.get('file'));

@@ -8,9 +8,11 @@ export const validateEmail = (email) => {
   return true;
 };
 
-export const existFile = (file) => {
+export const existFile = (file, isAlert) => {
   if (file.name === '') {
-    alert('이미지를 첨부해주세요');
+    if (isAlert) {
+      alert('이미지를 첨부해주세요!');
+    }
     return false;
   }
   return true;
