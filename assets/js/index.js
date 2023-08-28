@@ -61,19 +61,6 @@ openModalButton.addEventListener("click", () => {
   document.getElementById("myModal").style.display = "block";
 });
 
-// Function to open modal and pre-fill with data
-function openEditModal(data) {
-  plantsForm["name-data"].value = data.name;
-  plantsForm["date-data"].value = data.date;
-  plantsForm["water-time-data"].value = data.waterTime;
-  plantsForm["note-data"].value = data.note;
-  editStatus = true;
-  id = data.id;
-  plantsForm["btn-data-save"].innerText = "수정";
-  // Open the modal
-  document.getElementById("myModal").style.display = "block";
-}
-
 //LIST
 window.addEventListener("DOMContentLoaded", async () => {
   //GET DATA
@@ -118,19 +105,23 @@ window.addEventListener("DOMContentLoaded", async () => {
         const doc = await getData(dataset.id);
         const data = { id: doc.id, ...doc.data() };
         openEditModal(data);
-        //bring  values from db
-        //plantsForm["printImage"].value = data.image;
-        const imgSrc = document.getElementById("printImage");
-        imgSrc.src = data.image;
-        plantsForm["name-data"].value = data.name;
-        plantsForm["date-data"].value = data.date;
-        plantsForm["water-time-data"].value = data.waterTime;
-        plantsForm["note-data"].value = data.note;
-        editStatus = true;
-        id = doc.id;
-        plantsForm["btn-data-save"].innerText = "수정";
       });
     });
+
+    // Function to open modal and pre-fill with data
+    function openEditModal(data) {
+      const imgSrc = document.getElementById("printImage");
+      imgSrc.src = data.image;
+      plantsForm["name-data"].value = data.name;
+      plantsForm["date-data"].value = data.date;
+      plantsForm["water-time-data"].value = data.waterTime;
+      plantsForm["note-data"].value = data.note;
+      editStatus = true;
+      id = data.id;
+      plantsForm["btn-data-save"].innerText = "수정";
+      // Open the modal
+      document.getElementById("myModal").style.display = "block";
+    }
 
     // SAVE
     plantsForm.addEventListener("submit", async (e) => {
@@ -140,6 +131,20 @@ window.addEventListener("DOMContentLoaded", async () => {
       const date = plantsForm["date-data"];
       const waterTime = plantsForm["water-time-data"];
       const note = plantsForm["note-data"];
+
+      // Validate inputs
+      const validateInputs = [
+        { name: "이름", element: name },
+        { name: "날짜", element: date },
+      ];
+
+      // Loop through the fields and perform validation
+      for (const name of validateInputs) {
+        if (!name.element.value) {
+          alert(`${name.name}은(는) 필수 입력 항목입니다.`);
+          return;
+        }
+      }
 
       //IMAGE SAVING
       const imageFile = imageInput.files[0];
@@ -158,7 +163,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
           return;
         }
-
         alert("이미지를 추가하세요.");
         console.log("no image");
         return;
@@ -197,7 +201,7 @@ window.addEventListener("DOMContentLoaded", async () => {
               waterTime.value,
               note.value
             );
-            // alert("저장되었습니다!");
+            alert("저장되었습니다!");
             // Add a new row to the table
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
@@ -211,7 +215,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     `;
             table.appendChild(newRow);
           } else {
-            console.log("수정되었습니다!");
             updateData(id, {
               image: image,
               name: name.value,
