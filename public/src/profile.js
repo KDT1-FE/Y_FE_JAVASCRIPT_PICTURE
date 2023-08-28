@@ -179,13 +179,16 @@ function inputValid(inputElements) {
 const editBtn = document.querySelector(".edit-btn");
 let file;
 let imgChanged = false;
+//버튼 관련 flag
+let isEditMode = false;
 
 editBtn.addEventListener("click", async () => {
   //이미지 관련 요소
   const imageUploadInput = document.querySelector(".image-upload");
 
-  if (editBtn.textContent === "정보 수정") {
+  if (!isEditMode) {
     //button text content가 수정완료일 때 => 수정모드
+    isEditMode = true;
     editBtn.textContent = "수정 완료";
     imageUploadInput.style.display = "block";
 
@@ -201,7 +204,7 @@ editBtn.addEventListener("click", async () => {
     imageUploadInput.addEventListener("change", async (event) => {
       previewImage(event);
     });
-  } else if (editBtn.textContent === "수정 완료") {
+  } else {
     const profileContainer = document.querySelector(".villager-info");
     //profileContainer 내부의 모든 input 엘리먼트 선택
     const inputElements = profileContainer.querySelectorAll("input");
@@ -212,6 +215,7 @@ editBtn.addEventListener("click", async () => {
       return;
     }
 
+    isEditMode = false;
     editBtn.textContent = "정보 수정";
     imageUploadInput.style.display = "none";
 
