@@ -1,5 +1,5 @@
 export function getInputData() {
-  const driverImgInput = document.getElementById("driverImg");
+  const driverImgInput = document.getElementById("driverImgInput");
   const driverNameInput = document.getElementById("driverName");
   const driverBirthInput = document.getElementById("driverBirth");
   const insuranceProductInput = document.getElementById("insuranceProduct");

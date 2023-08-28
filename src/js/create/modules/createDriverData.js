@@ -2,7 +2,7 @@ import { getInputData } from "../utils/getInputData.js";
 import { createDriverDoc } from "./createDriverDoc.js";
 
 // db에 보험자 데이터 등록
-export function CreateDriverData(event) {
+export function createDriverData(event) {
   try {
     // submit 이벤트의 reload 동작 방지
     event.preventDefault();

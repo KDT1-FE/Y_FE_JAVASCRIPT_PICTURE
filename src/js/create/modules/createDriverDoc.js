@@ -2,7 +2,7 @@ import db from "../../shared/firebase/db.js";
 import { collection, addDoc } from "firebase/firestore";
 
 import { createMockData } from "../utils/creatMockData.js";
-import { createDriverImg } from "./createDriverImg.js";
+import { createDriverImg } from "../../shared/firebase/create/createDriverImg.js";
 
 export async function createDriverDoc(img, name, birth, product) {
   try {
