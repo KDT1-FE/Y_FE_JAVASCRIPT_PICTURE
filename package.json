@@ -1,6 +1,6 @@
 {
   "name": "zero-car",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "zero-car with webpack, babel, firebase, github.io",
   "main": "index.js",
   "scripts": {
