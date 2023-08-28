@@ -1,5 +1,5 @@
-import deleteDriver from "../../shared/firebase/delete/deleteDriver.js";
-import deleteDriverImg from "../../shared/firebase/delete/deleteDriverImg.js";
+import { deleteDriver } from "../../shared/firebase/delete/deleteDriver.js";
+import { deleteDriverImg } from "../../shared/firebase/delete/deleteDriverImg.js";
 
 export function checkAndDeleteDriver() {
   try {
