@@ -1,9 +1,22 @@
 // 스크롤하면 헤더에 그림자 추가
-window.addEventListener('scroll', function () {
+const throttle = (callback, delayTime) => {
+  let timerId;
+
+  return () => {
+    if (timerId) return;
+
+    timerId = setTimeout(() => {
+      callback();
+      timerId = null;
+    }, delayTime);
+  };
+};
+
+const throttleCallback = () => {
   const headerContainer = document.querySelector('.header-container');
-  if (window.scrollY !== 0) {
-    headerContainer.classList.add('shadow');
-  } else {
-    headerContainer.classList.remove('shadow');
-  }
-});
+  window.scrollY
+    ? headerContainer.classList.add('shadow')
+    : headerContainer.classList.remove('shadow');
+};
+
+window.addEventListener('scroll', throttle(throttleCallback, 300));
