@@ -450,6 +450,25 @@ function dataCheckAddFirebase(dataObj) {
       });
 }
 
+function deleteUserData(e, userData) {
+  e.stopPropagation();
+
+  if (!confirm("해당 사용자를 삭제하시겠습니까?")) {
+    return;
+  }
+
+  const docId = userData.getAttribute("data-doc-id");
+  db.collection("usersInfo")
+    .doc(docId)
+    .delete()
+    .then(() => {
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+}
+
 loadEl.style.display = "block";
 db.collection("usersInfo")
   .orderBy("date", "desc")
@@ -553,22 +572,7 @@ db.collection("usersInfo")
         const deleteBtn = userData.querySelector(".user-list-btn-delete");
 
         deleteBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-
-          if (!confirm("해당 사용자를 삭제하시겠습니까?")) {
-            return;
-          }
-
-          const docId = userData.getAttribute("data-doc-id");
-          db.collection("usersInfo")
-            .doc(docId)
-            .delete()
-            .then(() => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              console.error("Error removing document: ", error);
-            });
+          deleteUserData(e, userData);
         });
       }
     });
