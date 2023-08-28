@@ -165,10 +165,9 @@ textarea {
 
 .header {
   background-image: url(/assets/images/bg_top.png);
-  width: 800px;
+  max-width: 70vw;
   height: 253px;
   object-fit: cover;
-  border-radius: 50px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
