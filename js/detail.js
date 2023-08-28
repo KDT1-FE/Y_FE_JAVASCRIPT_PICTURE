@@ -17,24 +17,23 @@ const gradeInput = document.getElementById('gradeInput');
 window.onload = async () => {
   // 고객 정보 조회
   const docRef = doc(db, 'customers', coustomerId);
-  await getDoc(docRef).then(docSnap => {
-    // 스켈레톤 레이아웃 삭제
-    document.querySelectorAll('.skeleton').forEach(skeleton => {
-      skeleton.classList.remove('skeleton');
-    });
-    // 값이 존재하면 고객 정보 표시
-    if (docSnap.exists()) {
-      avatarImg.src = docSnap.data().avatar;
-      imgTextInput.value = docSnap.data().avatar;
-      nameInput.value = docSnap.data().name;
-      emailInput.value = docSnap.data().email;
-      phoneInput.value = docSnap.data().phone;
-      gradeInput.value = docSnap.data().grade;
-    } else {
-      alert('존재하지 않는 고객입니다.');
-      location.href = '/';
-    }
+  const docSnap = await getDoc(docRef);
+  // 스켈레톤 레이아웃 삭제
+  document.querySelectorAll('.skeleton').forEach(skeleton => {
+    skeleton.classList.remove('skeleton');
   });
+  // 값이 존재하면 고객 정보 표시
+  if (docSnap.exists()) {
+    avatarImg.src = docSnap.data().avatar;
+    imgTextInput.value = docSnap.data().avatar;
+    nameInput.value = docSnap.data().name;
+    emailInput.value = docSnap.data().email;
+    phoneInput.value = docSnap.data().phone;
+    gradeInput.value = docSnap.data().grade;
+  } else {
+    alert('존재하지 않는 고객입니다.');
+    location.href = '/';
+  }
 };
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
@@ -90,9 +89,8 @@ document.querySelector('.submit-btn').addEventListener('click', async e => {
     email: emailInput.value,
     phone: phoneInput.value,
     grade: gradeInput.value,
-  }).then(() => {
-    location.href = '/';
   });
+  location.href = '/';
 });
 
 // input 태그에서 엔터 눌러도 submit 막기

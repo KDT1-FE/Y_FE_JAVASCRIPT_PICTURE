@@ -70,9 +70,8 @@ const inquireListFunc = querySnapshotArray => {
 
 // 고객 전체 목록 가져오기 함수
 const getAllCustomers = async () => {
-  await getDocs(collection(db, 'customers')).then(customers => {
-    inquireListFunc(customers);
-  });
+  const customers = await getDocs(collection(db, 'customers'));
+  inquireListFunc(customers);
 };
 
 // 페이지 로드시 전체 목록 뿌려주기
@@ -98,10 +97,9 @@ deleteBtn.addEventListener('click', async e => {
   if (deleteList.length > 0) {
     if (window.confirm('삭제하시겠습니까?')) {
       deleteList.forEach(async id => {
-        await deleteDoc(doc(db, 'customers', id)).then(() => {
-          alert('삭제되었습니다.');
-          location.reload();
-        });
+        await deleteDoc(doc(db, 'customers', id));
+        alert('삭제되었습니다.');
+        location.reload();
       });
     } else {
       alert('취소되었습니다.');
