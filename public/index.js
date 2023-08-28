@@ -17,15 +17,15 @@ img_inputEl.addEventListener("change", (e) => {
 
 firebaseAddUser.addEventListener("click", async (e) => {
   e.preventDefault();
-  let img_file = document.querySelector(".user_imgInput").files[0];
+  const img_file = document.querySelector(".user_imgInput").files[0];
   if (!img_file) {
     const response = await fetch("./images/user/user.png");
     const blob = await response.blob();
     img_file = new File([blob], "user.png", { type: "image/png" });
   }
-  let storageRef = storage.ref();
-  let img_path = storageRef.child("/image" + img_file?.name);
-  let img_upload = img_path.put(img_file);
+  const storageRef = storage.ref();
+  const img_path = storageRef.child("/image" + img_file?.name);
+  const img_upload = img_path.put(img_file);
 
   img_upload.on(
     "state_changed",
