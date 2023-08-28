@@ -17,7 +17,7 @@ export class HomeMemberItem extends Component {
         <input type="checkbox" class="memberChkbox" />
       </div>
       <div class="col-span-2 md:col-span-3 aspect-square">
-        <a href=/#/detail?id=${member.id}>
+        <a href="/#/detail?id=${member.id}">
           <img src=${
             member.fileUrl !== ""
               ? member.fileUrl
@@ -28,7 +28,7 @@ export class HomeMemberItem extends Component {
       <div class="col-span-2 md:col-span-2">
         ${member.fullName}
       </div>
-      <div class="hidden md:block col-span-2 md:col-span-2">
+      <div class="hidden md:block col-span-2 md:col-span-2 break-all">
         ${member.email}
       </div>
       <div class="hidden md:block col-span-2 md:col-span-2">

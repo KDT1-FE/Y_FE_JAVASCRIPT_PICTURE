@@ -33,7 +33,6 @@ export default class ImageEditor extends Component {
         dataUrl,
         memberStore.state.file.name,
       );
-      console.log(memberStore.state.file);
       imageEditorModal.close();
     });
     this.el.className = "h-[800px] relative";

@@ -1,4 +1,4 @@
-import { db, storage } from "./firebase";
+import { db } from "./firebase";
 import {
   collection,
   addDoc,
@@ -16,9 +16,9 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import { ref, deleteObject } from "firebase/storage";
 import Member from "../js/member";
 import store from "../store/memberlist";
+import { deleteImage } from "./firebase-storage";
 
 export async function addMember(member) {
   // Add a new document with a generated id.
@@ -172,9 +172,8 @@ export async function deleteMember(id) {
     if (!docSn.exists()) return;
     let newData = docSn.data();
     const { fileName } = newData;
-    const desertRef = ref(storage, fileName);
     await deleteDoc(doc(db, "Members", id));
-    await deleteObject(desertRef);
+    await deleteImage(fileName);
   } catch (error) {
     if (error instanceof Error) console.error(error.message);
   } finally {

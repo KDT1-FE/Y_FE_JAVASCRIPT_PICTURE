@@ -1,5 +1,10 @@
 import { storage } from "./firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  deleteObject,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 export async function uploadImage(file) {
   const lastIndex = file.name.lastIndexOf(".");
   const fileName = file.name.substring(0, lastIndex);
@@ -14,4 +19,8 @@ export async function uploadImage(file) {
     (downloadUrl) => downloadUrl,
   );
   return [location, fullFileName];
+}
+export async function deleteImage(fileName) {
+  const desertRef = ref(storage, fileName);
+  await deleteObject(desertRef);
 }

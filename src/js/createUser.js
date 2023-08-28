@@ -1,4 +1,4 @@
-import { uploadImage } from "../libraries/firebase-storage";
+import { deleteImage, uploadImage } from "../libraries/firebase-storage";
 import { fileValidation } from "./validate";
 import Member from "./member";
 import { createThumb } from "./thumbnail";
@@ -65,8 +65,11 @@ function createUser(element) {
           if (form.gender.value) updateData.gender = form.gender.value;
           if (form.email.value) updateData.email = form.email.value;
           if (form.phone.value) updateData.phone = form.phone.value;
-          // 파일이 변경되었으면 업로드
+          // 파일이 변경되었으면 기존 파일 삭제 후 업로드
           if (memberStore.state.file !== undefined) {
+            // 기존 파일 삭제
+            await deleteImage(memberStore.state.memberDetail.fileName);
+            // 새 파일 업로드
             const [imgUrl, fullFileName] = await uploadImage(
               memberStore.state.file,
             );
