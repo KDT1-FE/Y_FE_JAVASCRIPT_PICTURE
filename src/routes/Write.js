@@ -1,9 +1,9 @@
 import Header from '../components/Header';
-import { EMAIL_REGEX } from '../constants/regex';
 import { Component } from '../core/component';
 import { navigate } from '../core/router';
 import { uploadData, uploadImage } from '../store/memberStore';
 import { v4 as uuidv4 } from 'uuid';
+import { existFile, validateEmail } from '../utils/validate';
 
 export default class Write extends Component {
   render() {
@@ -23,22 +23,6 @@ export default class Write extends Component {
     </form>
         `;
     this.componentRoot.prepend(new Header().componentRoot);
-
-    const validateEmail = (email) => {
-      if (!EMAIL_REGEX.test(email)) {
-        alert('이메일 형식을 지켜주세요!');
-        return false;
-      }
-      return true;
-    };
-
-    const existFile = (file) => {
-      if (file.name === '') {
-        alert('이미지를 첨부해주세요');
-        return false;
-      }
-      return true;
-    };
 
     const getImageUrl = async (fileData) => {
       return await uploadImage(fileData, uuidv4());

@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, navigate } from '../core/router';
 import { getMemberDetail, setData, uploadImage } from '../store/memberStore';
+import { existEmail, validateEmail } from '../utils/validate';
 
 export default class Edit extends Component {
   async render() {
@@ -49,12 +50,11 @@ export default class Edit extends Component {
 
       const formData = new FormData(event.currentTarget);
 
-      const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-
-      if (!formData.get('email') && !emailRegex.test(formData.get('email'))) {
-        alert('이메일 형식을 지켜주세요');
+      if (
+        existEmail(formData.get('email')) &&
+        validateEmail(formData.get('email'))
+      )
         return;
-      }
 
       if (formData.get('file').name !== '') {
         photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
