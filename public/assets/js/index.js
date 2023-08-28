@@ -84,31 +84,35 @@ const deleteList = function () {
     return;
   }
 
+  if (deleteList.length == 0) {
+    alert('삭제할 프로필이 없습니다')
+    return;
+  }
+
   Promise.all(deleteList.map((docId) => db.collection('person').doc(docId).get()))
     .then((docs) => {
       const deletableDocs = docs.filter((doc) => doc.data().uid === currentUser.uid);
-      if (deletableDocs.length !== deleteList.length) {
+      if (currentUser.uid == 'jusBruEPBGcrT4YlxuBR3wuquYo2' || deletableDocs.length == deleteList.length) {
+
+        const confirmed = window.confirm('정말로 삭제하시겠습니까?');
+
+        if (confirmed) {
+          Promise.all(deleteList.map((docId) => db.collection('person').doc(docId).delete()))
+            .then(() => {
+              alert('삭제되었습니다');
+              render();
+            })
+            .catch((error) => {
+              console.error('Error deleting document: ', error);
+            });
+        } else {
+          // 취소를 선택한 경우
+          console.log('삭제 작업이 취소되었습니다.');
+        }
+
+      }  else {
         alert('작성자만 삭제할 수 있습니다');
         return;
-      } else if (deleteList.length == 0) {
-        alert('삭제할 프로필이 없습니다')
-        return;
-      }
-
-      const confirmed = window.confirm('정말로 삭제하시겠습니까?');
-
-      if (confirmed) {
-        Promise.all(deleteList.map((docId) => db.collection('person').doc(docId).delete()))
-          .then(() => {
-            alert('삭제되었습니다');
-            render();
-          })
-          .catch((error) => {
-            console.error('Error deleting document: ', error);
-          });
-      } else {
-        // 취소를 선택한 경우
-        console.log('삭제 작업이 취소되었습니다.');
       }
     })
     .catch((error) => {
@@ -121,16 +125,16 @@ function searchList() {
   const inputValue = searchInput.value;
 
   db.collection('person')
-    .where('name', '>=', inputValue)
-    .where('name', '<=', inputValue + '\uf8ff')
+    // .where('name', '>=', inputValue)
+    // .where('name', '<=', inputValue + '\uf8ff')
     .get()
     .then((result) => {
       let profileList = '';
-
+      const filteredResults = result.docs.filter(doc => doc.data().name.includes(inputValue));
       if (result.empty) {
         profileList = '<p class="text-center w-100">검색 결과가 없습니다.</p>';
       } else {
-        result.forEach((doc) => {
+        filteredResults.forEach((doc) => {
 
           const counselingType = counselingTypes[doc.data().sort];
           const btnClass = counselingType ? counselingType.className : '';

@@ -3,6 +3,7 @@ const detailWrap = document.getElementById('detail-wrap');
 let detailView = '';
 const updateBtn = document.getElementById('update-btn');
 const completeBtn = document.getElementById('complete-btn');
+const auth = firebase.auth();
 
 showLoadingImage();
 
@@ -30,21 +31,19 @@ db.collection('person')
   });
 
 // 프로필 정보 수정하기
-updateBtn.addEventListener('click', function () {
-  const currentUser = firebase.auth().currentUser;
-
-  if (!currentUser) {
+auth.onAuthStateChanged((user) => {
+  updateBtn.addEventListener('click', function () {
+  const currentUser = auth.currentUser;
+  if(!user){
     alert('로그인 후에 사용 가능합니다');
     window.location.href = './login.html';
     return;
-  }
-
-  db.collection('person')
+  } else {
+    db.collection('person')
     .doc(personId.get('id'))
     .get()
     .then((result) => {
-      if (currentUser.uid === result.data().uid) {
-
+      if (user.uid == 'jusBruEPBGcrT4YlxuBR3wuquYo2' || result.data().uid == currentUser.uid){
         // 성별 값 가져오기
         const genderValue = result.data().gender;
         let femaleChecked = 'checked';
@@ -59,7 +58,7 @@ updateBtn.addEventListener('click', function () {
           femaleChecked = 'checked';
         }
 
-        // 성별 값 가져오기
+        // 종류 값 가져오기
         const sortValue = result.data().sort;
         let selected1 = '';
         let selected2 = '';
@@ -166,10 +165,14 @@ updateBtn.addEventListener('click', function () {
             }
           }
         });
-
-      } 
+      } else{
+        alert('작성자만 수정 가능합니다');
+        return;
+      }
       hideLoadingImage();
     })
+  } 
+});
 
 });
 
