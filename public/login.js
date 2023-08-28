@@ -38,8 +38,8 @@ loginDataFormEl.addEventListener("submit", (e) => {
           .then((doc) => {
             if (doc.exists) {
               const user_data = JSON.stringify(doc.data());
-              sessionStorage.setItem("user_data", user_data);
-              sessionStorage.setItem("uid", uid);
+              localStorage.setItem("user_data", user_data);
+              localStorage.setItem("uid", uid);
 
               window.location.href = "./index.html";
             } else {

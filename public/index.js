@@ -52,12 +52,12 @@ firebaseAddUser.addEventListener("click", async (e) => {
 });
 
 function getUserInfoData() {
-  const userData = JSON.parse(sessionStorage.getItem("user_data"));
-  const sessionData = JSON.parse(sessionStorage.getItem("user_data"));
+  const userData = JSON.parse(localStorage.getItem("user_data"));
+  const localData = JSON.parse(localStorage.getItem("user_data"));
   if (userData !== null) {
     const headerEl = document.querySelector(".main__header");
     const logBox = document.createElement("div");
-    if (sessionData.division === "vip") {
+    if (localData.division === "vip") {
       logBox.setAttribute("class", "main__header_log-box");
       logBox.innerHTML = `<a class="user_data_name">${userData.name}</a><a class="user_data_logout">로그아웃</a>`;
       headerEl.appendChild(logBox);
@@ -65,7 +65,7 @@ function getUserInfoData() {
       btnsEl.style.display = "none";
       const logoutBtn = document.querySelector(".user_data_logout");
       logoutBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("user_data");
+        localStorage.removeItem("user_data");
         window.location.href = "login.html";
       });
     } else {
@@ -74,13 +74,13 @@ function getUserInfoData() {
       headerEl.appendChild(logBox);
       const logoutBtn = document.querySelector(".user_data_logout");
       logoutBtn.addEventListener("click", () => {
-        sessionStorage.removeItem("user_data");
+        localStorage.removeItem("user_data");
         window.location.href = "login.html";
       });
     }
     const user_info = document.querySelector(".user_data_name");
     user_info.addEventListener("click", () => {
-      const doc_id = sessionStorage.getItem("uid");
+      const doc_id = localStorage.getItem("uid");
       const userEditFormEl = document.querySelector(".section__user-add-box");
       userEditFormEl.style.display = "block";
       userEditFormEl.innerHTML = "";
@@ -108,13 +108,13 @@ window.addEventListener("load", getUserInfoData);
 //
 //
 //
-function createListBox(doc_data, doc_id, sessionData) {
+function createListBox(doc_data, doc_id, localData) {
   let userData = document.createElement("div");
   userData.classList.add("user-list-box");
   userData.setAttribute("data-doc-id", doc_id);
   const { image, name, email, phone, division } = doc_data;
 
-  if (sessionData === null || sessionData.division === "vip") {
+  if (localData === null || localData.division === "vip") {
     userData.innerHTML = `
     <input type="checkbox" name="docId" class="doc-id" value="${doc_id}" />
     ${
@@ -191,12 +191,12 @@ function managerPageBox(doc_data) {
 
   return userForm;
 }
-function detailPageBox(doc_data, sessionData) {
+function detailPageBox(doc_data, localData) {
   const { image, name, email, phone, password, division } = doc_data;
   const userForm = document.createElement("form");
   userForm.setAttribute("class", "section__user_form");
   userForm.setAttribute("id", "section__user_form");
-  if (sessionData === null || sessionData.division === "vip") {
+  if (localData === null || localData.division === "vip") {
     userForm.innerHTML = `
       <div class="section__user_img_container">
         <input style="display: none" name="image" type="file" class="user_imgInput" />
@@ -457,10 +457,10 @@ db.collection("usersInfo")
   .get()
   .then((res) => {
     loadEl.style.display = "none";
-    let sessionData = JSON.parse(sessionStorage.getItem("user_data"));
+    let localData = JSON.parse(localStorage.getItem("user_data"));
     res.forEach((doc) => {
       const usersListBox = document.querySelector(".users-list-box");
-      const userData = createListBox(doc.data(), doc.id, sessionData);
+      const userData = createListBox(doc.data(), doc.id, localData);
       usersListBox.append(userData);
 
       userData.addEventListener("click", () => {
@@ -472,7 +472,7 @@ db.collection("usersInfo")
           .get()
           .then((doc) => {
             if (doc.exists) {
-              const userForm = detailPageBox(doc.data(), sessionData);
+              const userForm = detailPageBox(doc.data(), localData);
               userEditFormEl.append(userForm);
               userForm
                 .querySelector(".user-list-img")
@@ -550,7 +550,7 @@ db.collection("usersInfo")
           });
       });
 
-      if (sessionData !== null && sessionData.division === "manager") {
+      if (localData !== null && localData.division === "manager") {
         const deleteBtn = userData.querySelector(".user-list-btn-delete");
 
         deleteBtn.addEventListener("click", (e) => {
