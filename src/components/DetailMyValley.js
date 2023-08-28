@@ -9,10 +9,11 @@ export default class DetailMyValley extends Component {
 
         Store.subscribe('url', () => {
             this.render();
+            this.storeElement();
+            this.setEventListener();
         });
     }
     render() {
-        const updateAndDeleteModalEl = new UpdateAndDeleteModal().el;
         this.el.innerHTML = /*html*/ `
         <div class="about__banner--left">
             <div class="about__banner--left-container">
@@ -38,7 +39,8 @@ export default class DetailMyValley extends Component {
         </div>
         `;
         this.el.classList.add('about__banner--item');
-
+    }
+    storeElement() {
         const nameEl = this.el.querySelector('.about__banner--title-name');
         nameEl.textContent = Store.state.name;
 
@@ -58,11 +60,11 @@ export default class DetailMyValley extends Component {
         addressEl.addEventListener('click', () => {
             window.open(Store.state.address);
         });
+    }
 
-        // const updateButton = this.el.querySelector('.update-btn');
-        // updateButton.addEventListener('click', () => {
-        //     this.el.append(updateAndDeleteModalEl);
-        // });
+    setEventListener() {
+        const updateAndDeleteModalEl = new UpdateAndDeleteModal().el;
+
         const updateButton = this.el.querySelector('.update-btn');
         updateButton.addEventListener('click', () => {
             updateAndDeleteModalEl.classList.add('active');

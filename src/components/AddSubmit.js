@@ -3,8 +3,12 @@ import submitState from '../store/submitState';
 import AddSubmitAssure from './AddSubmitAssure';
 
 export default class AddSubmit extends Component {
+    constructor() {
+        super();
+        this.addElement();
+        this.setEventListener();
+    }
     render() {
-        const AddSubmitAssureEl = new AddSubmitAssure().el;
         this.el.classList.add('add-submit');
         this.el.innerHTML = /* html */ `
             <div class="add-submit__top">
@@ -14,9 +18,14 @@ export default class AddSubmit extends Component {
                 <button class="add-submit__cancel">취소</button>
             </div>
         `;
+    }
+    addElement() {
+        const AddSubmitAssureEl = new AddSubmitAssure().el;
         const bottomPlace = this.el.querySelector('.add-submit__bottom');
         bottomPlace.prepend(AddSubmitAssureEl);
+    }
 
+    setEventListener() {
         const cancelButton = this.el.querySelector('.add-submit__cancel');
         cancelButton.addEventListener('click', () => {
             submitState.state.submit = false;

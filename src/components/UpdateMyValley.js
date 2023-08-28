@@ -12,10 +12,13 @@ export default class UpdateAndDeleteModal extends Component {
         modalState.subscribe('submit', () => {
             this.el.classList.remove('active');
         });
+        this.setCloseEventListener();
+        this.setUpdateEventListener();
+        this.setDeleteEventListener();
+        this.setImageEventListener();
     }
 
     render() {
-        const imageEl = new myValleyStoreImage().el;
         this.el.innerHTML = /*html*/ `
             <div class="fix__modal--container">
                 <div class="fix__modal--wrapper">
@@ -65,12 +68,15 @@ export default class UpdateAndDeleteModal extends Component {
             </div>
         `;
         this.el.classList.add('fix__modal');
-
+    }
+    setCloseEventListener() {
         const closeButton = this.el.querySelector('.fix__modal--close');
         closeButton.addEventListener('click', () => {
             this.el.classList.remove('active');
         });
+    }
 
+    setUpdateEventListener() {
         const inputValueElements = this.el.querySelectorAll('input');
         const updateBtn = this.el.querySelector('.updateBtn');
         const assureButtonAdd = this.el.querySelector('.fix__modal--wrapper');
@@ -92,8 +98,12 @@ export default class UpdateAndDeleteModal extends Component {
             AddUpdateElement.classList.add('active');
             assureButtonAdd.append(AddUpdateElement);
         });
+    }
 
+    setDeleteEventListener() {
+        const inputValueElements = this.el.querySelectorAll('input');
         const deleteButton = this.el.querySelector('.deleteButton');
+        const assureButtonAdd = this.el.querySelector('.fix__modal--wrapper');
         deleteButton.addEventListener('click', () => {
             inputValueElements.forEach((inputValueElement) => {
                 // inputEl의 className을 가져옵니다.
@@ -111,8 +121,11 @@ export default class UpdateAndDeleteModal extends Component {
             AddUpdateElement.classList.add('active');
             assureButtonAdd.append(AddUpdateElement);
         });
+    }
+    setImageEventListener() {
+        const imageViewElement = new myValleyStoreImage().el;
 
-        this.el.querySelector('.fix__modal--top-image').append(imageEl);
+        this.el.querySelector('.fix__modal--top-image').append(imageViewElement);
         const imageInput = this.el.querySelector('.modal__banner--form-image');
         imageInput.addEventListener('change', (event) => {
             const file = event.target.files[0];

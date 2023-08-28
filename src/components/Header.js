@@ -20,16 +20,9 @@ class Header extends Component {
                     <a href="#/">HOME</a>
                     <a href="#/about">ABOUT!</a>
                 </div>
-                <div class="header__right--toggle-button">
-                    <button class="btn btn-primary" id="toggleButton"></button>
-                </div>
             </div>
         </div>
         `;
-
-        const toggleButton = this.el.querySelector('#toggleButton');
-        toggleButton.textContent = '🏠';
-        toggleButton.className = 'btn btn-primary';
     }
 }
 

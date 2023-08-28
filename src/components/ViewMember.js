@@ -6,9 +6,9 @@ export default class ViewMember extends Component {
             props,
             tagName: 'a',
         });
+        this.setEventListener();
     }
     render() {
-        const { id } = this.props;
         const { data } = this.props;
         const { nickname, name, address, city, province, additional, url } = data;
         this.el.innerHTML = /*html*/ `
@@ -29,6 +29,10 @@ export default class ViewMember extends Component {
         this.el.classList.add('view__banner--item-container');
         const imageElement = this.el.querySelector('.view__banner--image-container');
         imageElement.style.backgroundImage = `url(${url})`;
+    }
+
+    setEventListener() {
+        const { id } = this.props;
 
         this.el.addEventListener('click', () => {
             location.href = `/#/about?id=${id}`;

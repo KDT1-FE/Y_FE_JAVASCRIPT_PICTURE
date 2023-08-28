@@ -9,6 +9,8 @@ import ViewMember from './ViewMember';
 export default class View extends Component {
     constructor() {
         super();
+        this.setPrintListener();
+        this.setSearchListener();
     }
     render() {
         this.el.innerHTML = /*html*/ `
@@ -24,49 +26,52 @@ export default class View extends Component {
                 <div class="view__banner--wrapper"></div>
         `;
         this.el.classList.add('view__banner--container');
-
-        const printValley = async () => {
-            await getCollection();
-            this.el.querySelector('.view__banner--wrapper').append(
-                // store에 있는 데이터는 배열이므로 map을 사용하여 각각의 데이터를 ViewMember에 넘겨준다.
-                ...valleyList.state.valleyList.map((valley) => {
+    }
+    searchValley = async (searchInput) => {
+        this.el.querySelector('.view__banner--wrapper').innerHTML = '';
+        await getCollection();
+        this.el.querySelector('.view__banner--wrapper').append(
+            ...valleyList.state.valleyList
+                .filter((valley) => {
+                    if (Object.values(Object.values(valley.data)).join('').includes(searchInput.value)) {
+                        return valley;
+                    }
+                })
+                .map((valley) => {
                     return new ViewMember(valley).el;
                 })
-            );
-        };
+        );
+    };
 
-        if (!searchState.state.searched) {
-            printValley();
-        }
-
+    setSearchListener() {
         const searchButton = this.el.querySelector('.view__banner--search-btn');
         const searchInput = this.el.querySelector('.view__banner--search');
 
-        const searchValley = async () => {
-            this.el.querySelector('.view__banner--wrapper').innerHTML = '';
-            await getCollection();
-            this.el.querySelector('.view__banner--wrapper').append(
-                ...valleyList.state.valleyList
-                    .filter((valley) => {
-                        if (Object.values(Object.values(valley.data)).join('').includes(searchInput.value)) {
-                            return valley;
-                        }
-                    })
-                    .map((valley) => {
-                        return new ViewMember(valley).el;
-                    })
-            );
-        };
-
         searchButton.addEventListener('click', () => {
-            searchValley();
+            this.searchValley(searchInput);
         });
 
         searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                searchValley();
+                this.searchValley(searchInput);
             }
         });
+    }
+
+    printValley = async () => {
+        await getCollection();
+        this.el.querySelector('.view__banner--wrapper').append(
+            // store에 있는 데이터는 배열이므로 map을 사용하여 각각의 데이터를 ViewMember에 넘겨준다.
+            ...valleyList.state.valleyList.map((valley) => {
+                return new ViewMember(valley).el;
+            })
+        );
+    };
+
+    setPrintListener() {
+        if (!searchState.state.searched) {
+            this.printValley();
+        }
     }
 }

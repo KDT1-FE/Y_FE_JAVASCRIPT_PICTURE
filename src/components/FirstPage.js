@@ -1,6 +1,13 @@
+import { set } from 'lodash';
 import { Component } from '../core';
 
 export default class Firstpage extends Component {
+    constructor() {
+        super();
+        this.setLiItems();
+        this.setIntersectionObserverObject();
+        this.setEventListener();
+    }
     render() {
         this.el.innerHTML = /*html*/ `
         <div class="first__page--wrapper">
@@ -17,8 +24,8 @@ export default class Firstpage extends Component {
         </div>
     `;
         this.el.classList.add('first__page');
-
-        //intersection observer
+    }
+    setLiItems() {
         const targeter = this.el.querySelector('.first__page--list');
         const targeterSpace = this.el.querySelector('#next_add');
 
@@ -95,7 +102,12 @@ export default class Firstpage extends Component {
                 targeter.insertBefore(newLiItem, targeterSpace.nextSibling);
             });
         })();
+    }
 
+    setIntersectionObserverObject() {
+        //intersection observer
+
+        const targeter = this.el.querySelector('.first__page--list');
         const target = this.el.querySelectorAll('.first__page--list-item');
 
         function createObserver(threshold) {
@@ -143,7 +155,9 @@ export default class Firstpage extends Component {
 
         // 초기화
         updateObserver();
+    }
 
+    setEventListener() {
         // enter button
         const enterButton = this.el.querySelector('.enter__button');
         enterButton.addEventListener('click', () => {

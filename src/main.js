@@ -25,7 +25,6 @@ if (isFirstVisit) {
     // 첫 번째 방문 기록
     localStorage.setItem('isFirstVisit', 'false');
 } else {
-    alert(process.env.API_KEY);
     // 이미 방문한 경우에는 App을 보여줌
     const app = new App().el;
     root.append(app);
