@@ -6,7 +6,7 @@ import { getMemberDetail } from '../store/memberStore';
 
 export default class Detail extends Component {
   async render() {
-    this.el.innerHTML = `
+    this.componentRoot.innerHTML = `
     <main class="detail">
     <div class='photo-detail skeleton'></div>
     <section class='information-container'>
@@ -20,12 +20,12 @@ export default class Detail extends Component {
       </p>
       </section>
       </main>`;
-    this.el.prepend(new Header().el);
+    this.componentRoot.prepend(new Header().componentRoot);
     const member = await getMemberDetail(getUrlParam());
     if (!member) {
       return navigate('/#/not-found');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
-    this.el.innerHTML = `
+    this.componentRoot.innerHTML = `
     <main class="detail">
       <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
       <section class='information-container'>
@@ -44,8 +44,8 @@ export default class Detail extends Component {
       </section>
     </main>
       `;
-    this.el.prepend(new Header().el);
-    const navigateEditButton = this.el.querySelector('button');
+    this.componentRoot.prepend(new Header().componentRoot);
+    const navigateEditButton = this.componentRoot.querySelector('button');
     navigateEditButton.addEventListener('click', () =>
       navigate(`/#/edit?id=${member.id}`)
     );

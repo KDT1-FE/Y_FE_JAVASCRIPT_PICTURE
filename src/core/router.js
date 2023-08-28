@@ -10,7 +10,7 @@ export function routeRender() {
     return new RegExp(route.path + '/?$').test(hash);
   });
   routerView.innerHTML = '';
-  routerView.append(new currentRoute.component().el);
+  routerView.append(new currentRoute.component().componentRoot);
   window.scrollTo(0, 0);
 }
 

@@ -8,9 +8,9 @@ export default class Member extends Component {
   render() {
     const { member } = this.props;
 
-    this.el.setAttribute('href', `/#/detail?id=${member.id}`);
-    this.el.classList.add('member');
-    this.el.innerHTML =
+    this.componentRoot.setAttribute('href', `/#/detail?id=${member.id}`);
+    this.componentRoot.classList.add('member');
+    this.componentRoot.innerHTML =
       /* html */
       `
       <div class="row-member">  <div class='checkbox-container'>
@@ -21,7 +21,7 @@ export default class Member extends Component {
     <p class="email-title">${member.email}</p></div>
     `;
 
-    const checkBox = this.el.querySelector('.checkbox');
+    const checkBox = this.componentRoot.querySelector('.checkbox');
     checkBox.addEventListener('change', (event) => {
       if (event.currentTarget.checked) {
         memberStore.state.deleteMembers.push({

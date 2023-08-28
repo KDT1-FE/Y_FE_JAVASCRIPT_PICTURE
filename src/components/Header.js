@@ -6,10 +6,11 @@ export default class Header extends Component {
     super({ tagName: 'header' });
   }
   render() {
-    this.el.classList.add('header');
-    this.el.innerHTML = '  <div class="title">직원 관리 시스템</div>';
+    this.componentRoot.classList.add('header');
+    this.componentRoot.innerHTML =
+      '  <div class="title">직원 관리 시스템</div>';
 
-    const title = this.el.querySelector('.title');
+    const title = this.componentRoot.querySelector('.title');
     title.addEventListener('click', () => navigate());
   }
 }

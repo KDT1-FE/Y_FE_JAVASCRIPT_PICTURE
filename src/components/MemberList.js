@@ -10,16 +10,18 @@ export default class MemberList extends Component {
     });
   }
   render() {
-    this.el.classList.add('table');
-    this.el.innerHTML = `<div class="row">  <div class='checkbox-container'>
+    this.componentRoot.classList.add('table');
+    this.componentRoot.innerHTML = `<div class="row">  <div class='checkbox-container'>
         <input class='checkbox' type='checkbox' disabled></input>
       </div>
       <p class='photo-title'>PHOTO</p>
       <p class="name-title">NAME</p>
       <p class="email-title">EMAIL</p></div>`;
 
-    this.el.append(
-      ...memberStore.state.members.map((member) => new Member({ member }).el)
+    this.componentRoot.append(
+      ...memberStore.state.members.map(
+        (member) => new Member({ member }).componentRoot
+      )
     );
 
     const observer = new IntersectionObserver((entries) => {
@@ -29,6 +31,6 @@ export default class MemberList extends Component {
         }
       });
     });
-    observer.observe(this.el.lastChild);
+    observer.observe(this.componentRoot.lastChild);
   }
 }

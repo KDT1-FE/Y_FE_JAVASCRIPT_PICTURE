@@ -9,7 +9,7 @@ export default class Edit extends Component {
     if (!member) {
       return navigate('/#/not-found');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
-    this.el.innerHTML = `
+    this.componentRoot.innerHTML = `
   <form class="detail">
     <label for="file" class="photo-edit" style="background-image: url(https://api.iconify.design/mdi-light/image.svg?color=%23a0aec0)"></label> 
     <input type="file" name="file" id="file" accept=".jpg, .png" class="file-input"/>
@@ -29,12 +29,12 @@ export default class Edit extends Component {
     </section>
   </form> 
     `;
-    this.el.prepend(new Header().el);
+    this.componentRoot.prepend(new Header().componentRoot);
 
     let photoUrl = member.photoUrl;
 
     const previewImage = async (event) => {
-      const photoEdit = this.el.querySelector('.photo-edit');
+      const photoEdit = this.componentRoot.querySelector('.photo-edit');
       let reader = new FileReader();
       reader.onload = (event) => {
         photoEdit.style.backgroundImage = `url(${event.currentTarget.result})`;
@@ -75,8 +75,8 @@ export default class Edit extends Component {
       navigate();
     };
 
-    const imageFile = this.el.querySelector('.file-input');
-    const form = this.el.querySelector('.detail');
+    const imageFile = this.componentRoot.querySelector('.file-input');
+    const form = this.componentRoot.querySelector('.detail');
 
     imageFile.addEventListener('change', previewImage);
     form.addEventListener('submit', handleSubmit);

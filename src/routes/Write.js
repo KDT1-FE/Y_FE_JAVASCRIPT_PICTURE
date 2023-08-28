@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default class Write extends Component {
   render() {
-    this.el.innerHTML = `
+    this.componentRoot.innerHTML = `
     <section class="write-title">
     직원을 등록해주세요
     </section>
@@ -21,7 +21,7 @@ export default class Write extends Component {
     <button class="add-member" type="submit">등록</button>
     </form>
         `;
-    this.el.prepend(new Header().el);
+    this.componentRoot.prepend(new Header().componentRoot);
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -52,13 +52,13 @@ export default class Write extends Component {
       navigate();
     };
 
-    const imageFile = this.el.querySelector('.file-input');
-    const writeImage = this.el.querySelector('.write-image');
+    const imageFile = this.componentRoot.querySelector('.file-input');
+    const writeImage = this.componentRoot.querySelector('.write-image');
 
     imageFile.addEventListener('change', () => {
       writeImage.value = imageFile.value;
     });
-    const form = this.el.querySelector('.write-container');
+    const form = this.componentRoot.querySelector('.write-container');
     form.addEventListener('submit', handleSubmit);
   }
 }
