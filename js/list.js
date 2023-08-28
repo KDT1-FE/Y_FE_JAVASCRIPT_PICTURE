@@ -13,8 +13,8 @@ import { phoneType } from './util';
 // 고객 목록 DOM에 추가해주는 함수
 const inquireListFunc = querySnapshotArray => {
   // 목록에서 이전 결과(고객 목록) 삭제
-  document.querySelectorAll('.list-box').forEach(i => {
-    i.remove();
+  document.querySelectorAll('.list-box').forEach(item => {
+    item.remove();
   });
   // 새로운 목록 삽입
   querySnapshotArray.forEach(doc => {
@@ -27,8 +27,8 @@ const inquireListFunc = querySnapshotArray => {
     checkTag.className = 'delete-checkbox';
     checkTag.value = doc.id;
     checkTag.onclick = removeCheck;
-    deleteList.forEach(i => {
-      if (i === doc.id) {
+    deleteList.forEach(item => {
+      if (item === doc.id) {
         checkTag.checked = true;
       }
     });
@@ -86,8 +86,8 @@ const removeCheck = e => {
       deleteList.push(e.target.value);
     }
   } else {
-    deleteList = deleteList.filter(i => {
-      i !== e.target.value;
+    deleteList = deleteList.filter(item => {
+      item !== e.target.value;
     });
   }
 };

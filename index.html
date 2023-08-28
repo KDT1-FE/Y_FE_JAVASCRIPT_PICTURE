@@ -53,9 +53,9 @@
         skeletonBox.appendChild(skeletonInput);
 
         const skeletonArr = ['img', 'grade', 'name', 'email', 'phone'];
-        skeletonArr.map(i => {
+        skeletonArr.map(className => {
           const skeletonDiv = document.createElement('div');
-          skeletonDiv.className = `skeleton-${i} skeleton`;
+          skeletonDiv.className = `skeleton-${className} skeleton`;
           skeletonBox.appendChild(skeletonDiv);
         });
 

@@ -45,12 +45,8 @@ const imgRemoveBtn = document.querySelector('.img-remove-btn');
 // 수정관련 버튼 토글 함수
 const toggleModifyBtn = () => {
   // input 태그 입력 가능/불가능
-  document.querySelectorAll('.modify-input').forEach(i => {
-    if (i.disabled) {
-      i.disabled = false;
-    } else {
-      i.disabled = true;
-    }
+  document.querySelectorAll('.modify-input').forEach(input => {
+    input.disabled ? (input.disabled = false) : (input.disabled = true);
   });
   // '정보 수정' 버튼 숨기기/보여주기 토글
   modifyBtn.classList.toggle('hidden');
@@ -60,8 +56,8 @@ const toggleModifyBtn = () => {
     imgRemoveBtn.classList.toggle('hidden');
   }
   // '취소하기','수정하기' 버튼 숨기기/보여주기 토글
-  document.querySelectorAll('.modifying').forEach(i => {
-    i.classList.toggle('hidden');
+  document.querySelectorAll('.modifying').forEach(el => {
+    el.classList.toggle('hidden');
   });
 };
 
