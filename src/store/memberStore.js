@@ -37,8 +37,8 @@ export const getMembersData = async () => {
 export const getNextMembersData = async () => {
   memberStore.state.loading = true;
   const lastVisible = response.docs[response.docs.length - 1];
-  if (response.docs.length !== 0) {
-    // 가져올 데이터가 있을 때만
+  const isResponseData = response.docs.length !== 0;
+  if (isResponseData) {
     const nextQuery = query(
       collection(db, 'list'),
       startAfter(lastVisible),
@@ -50,10 +50,11 @@ export const getNextMembersData = async () => {
       ...convertResponseToArray(response),
     ];
     memberStore.state.loading = false;
-  } else {
-    const loading = document.querySelector('.the-loader');
-    loading.classList.add('hide');
-  } // 더 이상 가져올 데이터가 없을 때 , 마지막 데이터일 때 loading 애니메이션을 삭제
+    return;
+  }
+
+  const loading = document.querySelector('.the-loader');
+  loading.classList.add('hide');
 };
 
 export const getMemberDetail = async (id) => {
