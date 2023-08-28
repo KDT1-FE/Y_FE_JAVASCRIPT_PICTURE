@@ -95,4 +95,5 @@ password : 1234
 <br>
 
 ## :ok_person: User Flow
-![user flows](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/fb0f2e8b-d689-44f7-a7d9-af412e35cd85)
+![제목 없는 다이어그램](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/37584686/17f5c5fa-8a94-4350-9eef-034e6cca12b8)
+
