@@ -10,7 +10,7 @@
   width: 47%;
   padding: 0.9375rem;
 
-  border: 1px solid #dedede;
+  border: 1px solid var(--color-gray);
   border-radius: 10px;
 
   display: flex;
@@ -26,7 +26,7 @@
   overflow: hidden;
   margin: 0 auto;
 
-  border: 1px solid #dedede;
+  border: 1px solid var(--color-gray);
   border-radius: 100%;
 
   display: flex;
@@ -40,10 +40,10 @@
 .customer-grade {
   padding: 0.375rem 0.5rem;
 
-  background-color: #f2f2f2;
+  background-color: var(--color-light-gray);
   border-radius: 5px;
 
-  color: #808084;
+  color: var(--color-darkgray);
 }
 
 .customer-name {

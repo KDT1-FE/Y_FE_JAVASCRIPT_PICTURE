@@ -6,7 +6,7 @@
   padding: 0.9375rem 1.5rem;
 
   z-index: 100;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 
   transition: 0.3s;
 }
@@ -37,12 +37,12 @@
 }
 
 .regist {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .regist:hover {
-  background-color: #292929;
+  background-color: var(--color-black-hover);
 }
 
 @media only screen and (min-width: 1025px) {
