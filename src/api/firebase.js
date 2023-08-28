@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import dotenv from 'dotenv';
-import { getFirestore } from 'firebase/firestore'; // 파이어 스토어 사용시
-import { getStorage } from 'firebase/storage'; // 스토리지 사용시
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 dotenv.config();
 

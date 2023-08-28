@@ -5,7 +5,7 @@ import { getMemberDetail, setData, uploadImage } from '../store/memberStore';
 
 export default class Edit extends Component {
   async render() {
-    const member = await getMemberDetail(getUrlParam()); //id를 가지고 수정할 member의 상세 데이터를 가져옴
+    const member = await getMemberDetail(getUrlParam());
     if (!member) {
       return navigate('/#/not-found');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
@@ -29,9 +29,9 @@ export default class Edit extends Component {
     </section>
   </form> 
     `;
-    this.el.prepend(new Header().el); // 공통 헤더 추가
+    this.el.prepend(new Header().el);
 
-    let photoUrl = member.photoUrl; // 현재 member의 photo url
+    let photoUrl = member.photoUrl;
 
     const previewImage = async (event) => {
       const photoEdit = this.el.querySelector('.photo-edit');
@@ -41,9 +41,8 @@ export default class Edit extends Component {
       };
       reader.readAsDataURL(event.currentTarget.files[0]);
 
-      photoEdit.style.backgroundImage = `url(${photoUrl})`; // 미리보기
+      photoEdit.style.backgroundImage = `url(${photoUrl})`;
     };
-    // 미리보기 함수
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -58,11 +57,11 @@ export default class Edit extends Component {
       ) {
         alert('이메일 형식을 지켜주세요');
         return;
-      } // 이메일 변경시 이메일 유효성 검사
+      }
 
       if (formData.get('file').name !== '') {
         photoUrl = await uploadImage(formData.get('file'), member.photoUrl);
-      } // 사진 변경 시 uploadImage 함수 실행
+      }
 
       const data = {
         name: formData.get('name') === '' ? member.name : formData.get('name'),
@@ -75,7 +74,6 @@ export default class Edit extends Component {
 
       navigate();
     };
-    // 제출 함수
 
     const imageFile = this.el.querySelector('.file-input');
     const form = this.el.querySelector('.detail');
