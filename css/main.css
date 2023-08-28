@@ -6,7 +6,8 @@
 }
 @font-face {
   font-family: 'ACCchildren';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112-2@1.0/ACCchildrenheartOTF-Regular.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112-2@1.0/ACCchildrenheartOTF-Regular.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }

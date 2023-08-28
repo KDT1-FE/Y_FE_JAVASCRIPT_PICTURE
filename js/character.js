@@ -4,7 +4,7 @@ getDocs(colRef)
   .then((snapshot) => {
     snapshot.docs.forEach((doc) => {
       const $character = document.createElement('a');
-      $character.href = `/profile.html?id=${doc.id}`;
+      $character.setAttribute('href', `/profile.html?id=${doc.id}`);
       $character.classList.add('character', 'sketchy');
 
       const $character__thumbnail = document.createElement('div');
