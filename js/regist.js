@@ -30,6 +30,7 @@ registForm.addEventListener('submit', async event => {
 });
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
+const imgRemoveBtn = document.querySelector('.img-remove-btn');
 imgRemoveBtn.addEventListener('click', e => {
   e.preventDefault();
   removeAvatar();
