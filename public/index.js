@@ -54,13 +54,13 @@ firebaseAddUser.addEventListener("click", async (e) => {
 function getUserInfoData() {
   const userData = JSON.parse(localStorage.getItem("user_data"));
   const localData = JSON.parse(localStorage.getItem("user_data"));
+  const headerEl = document.querySelector(".main__header");
+  const logBox = document.createElement("div");
+  logBox.setAttribute("class", "main__header_log-box");
+  logBox.innerHTML = `<a class="user_data_name">${userData.name}</a><a class="user_data_logout">로그아웃</a>`;
+  headerEl.appendChild(logBox);
   if (userData !== null) {
-    const headerEl = document.querySelector(".main__header");
-    const logBox = document.createElement("div");
     if (localData.division === "vip") {
-      logBox.setAttribute("class", "main__header_log-box");
-      logBox.innerHTML = `<a class="user_data_name">${userData.name}</a><a class="user_data_logout">로그아웃</a>`;
-      headerEl.appendChild(logBox);
       const btnsEl = document.querySelector(".main__btn-box-sub");
       btnsEl.style.display = "none";
       const logoutBtn = document.querySelector(".user_data_logout");
@@ -69,9 +69,6 @@ function getUserInfoData() {
         window.location.href = "login.html";
       });
     } else {
-      logBox.setAttribute("class", "main__header_log-box");
-      logBox.innerHTML = `<a class="user_data_name">${userData.name}</a><a class="user_data_logout">로그아웃</a>`;
-      headerEl.appendChild(logBox);
       const logoutBtn = document.querySelector(".user_data_logout");
       logoutBtn.addEventListener("click", () => {
         localStorage.removeItem("user_data");
