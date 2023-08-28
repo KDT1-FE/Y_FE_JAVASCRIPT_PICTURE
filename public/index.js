@@ -4,6 +4,8 @@ const img_inputEl = document.querySelector(".user_imgInput");
 const firebaseAddUser = document.querySelector(".section__user_add_btn");
 const userAddForm = document.querySelector("#user-add-btn");
 
+const LOCALSTORAGE_DIVISION_VIP = "vip";
+
 userAddForm.addEventListener("click", async () => {
   const userEditFormEl = document.querySelector(".section__user-add-box");
   userEditFormEl.style.display = "block";
@@ -60,7 +62,7 @@ function getUserInfoData() {
   logBox.innerHTML = `<a class="user_data_name">${userData.name}</a><a class="user_data_logout">로그아웃</a>`;
   headerEl.appendChild(logBox);
   if (userData !== null) {
-    if (localData.division === "vip") {
+    if (localData.division === LOCALSTORAGE_DIVISION_VIP) {
       const btnsEl = document.querySelector(".main__btn-box-sub");
       btnsEl.style.display = "none";
       const logoutBtn = document.querySelector(".user_data_logout");
@@ -111,7 +113,7 @@ function createListBox(doc_data, doc_id, localData) {
   userData.setAttribute("data-doc-id", doc_id);
   const { image, name, email, phone, division } = doc_data;
 
-  if (localData === null || localData.division === "vip") {
+  if (localData === null || localData.division === LOCALSTORAGE_DIVISION_VIP) {
     userData.innerHTML = `
     <input type="checkbox" name="docId" class="doc-id" value="${doc_id}" />
     ${
@@ -193,7 +195,7 @@ function detailPageBox(doc_data, localData) {
   const userForm = document.createElement("form");
   userForm.setAttribute("class", "section__user_form");
   userForm.setAttribute("id", "section__user_form");
-  if (localData === null || localData.division === "vip") {
+  if (localData === null || localData.division === LOCALSTORAGE_DIVISION_VIP) {
     userForm.innerHTML = `
       <div class="section__user_img_container">
         <input style="display: none" name="image" type="file" class="user_imgInput" />
@@ -209,7 +211,7 @@ function detailPageBox(doc_data, localData) {
       <input type="password" name="password" class="user_password" value="${password}" placeholder="비밀번호를 입력해주세요."/>
       <div class="section__user_division_checkbox">
       ${
-        division === "vip"
+        division === LOCALSTORAGE_DIVISION_VIP
           ? `<label>
             <input
               type="checkbox"
@@ -297,7 +299,7 @@ function detailPageBox(doc_data, localData) {
       />
       <div class="section__user_division_checkbox">
       ${
-        division === "vip"
+        division === LOCALSTORAGE_DIVISION_VIP
           ? `<label>
         <input
           type="checkbox"
