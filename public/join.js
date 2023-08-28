@@ -21,7 +21,7 @@ user_checkboxsEl.forEach((checkbox) => {
     }
   };
 });
-joinBtnEl.addEventListener("click", joinUserInfo);
+
 joinFormEl.addEventListener("submit", joinUserInfo);
 function joinUserInfo(e) {
   e.preventDefault();
