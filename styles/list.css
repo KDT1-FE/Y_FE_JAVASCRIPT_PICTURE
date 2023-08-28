@@ -6,7 +6,7 @@
   margin-bottom: 4.375rem;
 }
 
-.list-box {
+.list-wrapper {
   width: 47%;
   padding: 0.9375rem;
 
@@ -19,7 +19,7 @@
   gap: 0.625rem;
 }
 
-.avatar-box {
+.avatar-wrapper {
   width: 8.125rem;
   height: 8.125rem;
 
@@ -52,19 +52,19 @@
 }
 
 @media only screen and (max-width: 348px) {
-  .list-box {
+  .list-wrapper {
     width: 100%;
   }
 }
 
 @media only screen and (min-width: 769px) {
-  .list-box {
+  .list-wrapper {
     width: 30%;
   }
 }
 
 @media only screen and (min-width: 1000px) {
-  .list-box {
+  .list-wrapper {
     width: 23%;
   }
 }

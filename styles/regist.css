@@ -17,7 +17,7 @@
   margin-bottom: 0.625rem;
 }
 
-#avatarBox,
+#avatarWrapper,
 .regist-text-input {
   border: 1px solid var(--color-gray);
   border-radius: 5px;
@@ -34,7 +34,7 @@
   left: 0;
 }
 
-.input-box {
+.input-wrapper {
   display: flex;
   flex-direction: column;
 
@@ -42,7 +42,7 @@
   margin-bottom: 1.875rem;
 }
 
-#avatarBox {
+#avatarWrapper {
   position: relative;
   overflow: hidden;
 
@@ -135,7 +135,7 @@
     flex-direction: row;
   }
 
-  .input-box {
+  .input-wrapper {
     margin-bottom: 0;
   }
 }

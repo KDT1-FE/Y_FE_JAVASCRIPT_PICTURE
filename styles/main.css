@@ -1,4 +1,4 @@
-.main-title-box {
+.main-title-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -44,7 +44,7 @@
 }
 
 @media only screen and (min-width: 769px) {
-  .main-title-box {
+  .main-title-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

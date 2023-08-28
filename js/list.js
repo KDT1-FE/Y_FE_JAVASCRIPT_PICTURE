@@ -19,14 +19,14 @@ const createListItem = (key, data) => {
 // 고객 목록 DOM에 추가해주는 함수
 const inquireListFunc = querySnapshotArray => {
   // 목록에서 이전 결과(고객 목록) 삭제
-  document.querySelectorAll('.list-box').forEach(item => {
+  document.querySelectorAll('.list-wrapper').forEach(item => {
     item.remove();
   });
   // 새로운 목록 삽입
   querySnapshotArray.forEach(doc => {
-    const boxTag = document.createElement('a');
-    boxTag.href = `detail.html?id=${doc.id}`;
-    boxTag.className = `list-box`;
+    const wrapperTag = document.createElement('a');
+    wrapperTag.href = `detail.html?id=${doc.id}`;
+    wrapperTag.className = `list-wrapper`;
 
     const checkTag = document.createElement('input');
     checkTag.type = 'checkbox';
@@ -39,27 +39,27 @@ const inquireListFunc = querySnapshotArray => {
       }
     });
 
-    const avatarBox = document.createElement('div');
-    avatarBox.className = 'avatar-box';
+    const avatarWrapper = document.createElement('div');
+    avatarWrapper.className = 'avatar-wrapper';
     const avatarImg = document.createElement('img');
     avatarImg.className = 'avatar-img';
     avatarImg.src = doc.data().avatar;
-    avatarBox.appendChild(avatarImg);
+    avatarWrapper.appendChild(avatarImg);
 
     const customerGrade = createListItem('grade', doc.data().grade);
     const customerName = createListItem('name', doc.data().name);
     const customerEmail = createListItem('email', doc.data().email);
     const customerPhone = createListItem('phone', doc.data().phone);
 
-    boxTag.appendChild(checkTag);
-    boxTag.appendChild(avatarBox);
-    boxTag.appendChild(customerGrade);
-    boxTag.appendChild(customerName);
-    boxTag.appendChild(customerEmail);
-    boxTag.appendChild(customerPhone);
+    wrapperTag.appendChild(checkTag);
+    wrapperTag.appendChild(avatarWrapper);
+    wrapperTag.appendChild(customerGrade);
+    wrapperTag.appendChild(customerName);
+    wrapperTag.appendChild(customerEmail);
+    wrapperTag.appendChild(customerPhone);
 
     const listContainer = document.querySelector('.list-container');
-    listContainer.appendChild(boxTag);
+    listContainer.appendChild(wrapperTag);
   });
 };
 
