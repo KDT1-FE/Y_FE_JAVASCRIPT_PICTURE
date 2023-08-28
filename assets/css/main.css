@@ -403,7 +403,8 @@ textarea {
 .btn-regi:hover {
   background-color: #c9e441;
   border: 1px solid #c7d69e;
-  transition: 0.3s;
+  transition: background-color 0.3s;
+  transform: translateX(0.1em) translateY(0.1em);
 }
 
 /* 수정 버튼 */
@@ -419,6 +420,7 @@ textarea {
 .btn-edit:hover {
   background: #fbcb0b;
   border: 1px solid #fbcb0b;
+  transform: translateX(0.1em) translateY(0.1em);
 }
 
 /* 삭제 버튼 */
@@ -434,6 +436,7 @@ textarea {
 .btn-delete:hover {
   background-color: #ff8888;
   border: 1px solid #ff8888;
+  transform: translateX(0.1em) translateY(0.1em);
 }
 
 .list__content {
@@ -449,11 +452,12 @@ textarea {
   border: 1px dashed #c8c8c8;
   border-radius: 20px;
   margin-top: 2em;
+  margin-bottom: 1.5em;
   width: 800px;
   height: auto;
   position: relative;
   z-index: 0;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .list__actual table {
@@ -472,7 +476,7 @@ textarea {
 
 .list__actual th,
 .list__actual td {
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.5em 0;
   border-bottom: solid 1px #e2e2e2;
   text-align: center;
   vertical-align: middle;
@@ -509,6 +513,7 @@ textarea {
   width: 6rem;
   height: 6rem;
   border-radius: 15px;
+  border: 1px solid #e1e1e1;
 }
 
 #printImage {
