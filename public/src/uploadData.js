@@ -2,30 +2,35 @@ const fileInput = document.getElementById("fileInput");
 const villagerImg = document.getElementById("villager-img");
 const addButton = document.querySelector(".add-btn");
 
-addButton.addEventListener("click", async () => {
-  const name = document.querySelector(".villager-info-name").value;
-  const engName = document.querySelector(".villager-info-engName").value;
-  const sex = document.querySelector(".villager-info-sex").value;
-  const birthday = document.querySelector(".villager-info-birthday").value;
-  const personality = document.querySelector(
-    ".villager-info-personality"
-  ).value;
-  const favoriteColor = document.querySelector(
-    ".villager-info-favoriteColor"
-  ).value;
-  const speechHabit = document.querySelector(
-    ".villager-info-speechHabit"
-  ).value;
+//데이터 가져오는 함수
+function gatherVillageInfo(fields) {
+  const values = {};
 
-  if (
-    !name ||
-    !engName ||
-    !sex ||
-    !birthday ||
-    !personality ||
-    !favoriteColor ||
-    !speechHabit
-  ) {
+  for (const field of fields) {
+    const value = document.querySelector(`.villager-info-${field}`).value;
+
+    if (!value) {
+      return null;
+    }
+    values[field] = value;
+  }
+  return values;
+}
+
+addButton.addEventListener("click", async () => {
+  const fields = [
+    "name",
+    "engName",
+    "sex",
+    "birthday",
+    "personality",
+    "favoriteColor",
+    "speechHabit",
+  ];
+
+  const values = gatherVillageInfo(fields);
+
+  if (values === null) {
     alert("모든 정보를 입력해주세요!");
     return;
   }
@@ -46,14 +51,14 @@ addButton.addEventListener("click", async () => {
 
   const db = firebase.firestore();
   //데이터 id를 최초 engName으로 설정 (engName을 사용자가 바꾼다고 해도 id값은 바뀌지 않음)
-  await db.collection("villager").doc(engName).set({
-    name,
-    engName,
-    sex,
-    birthday,
-    personality,
-    favoriteColor,
-    speechHabit,
+  await db.collection("villager").doc(values.engName).set({
+    name: values.name,
+    engName: values.engName,
+    sex: values.sex,
+    birthday: values.birthday,
+    personality: values.personality,
+    favoriteColor: values.favoriteColor,
+    speechHabit: values.speechHabit,
     imageUrl,
   });
 
