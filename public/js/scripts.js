@@ -2,11 +2,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const dateBox = document.querySelector(".date-box");
   if (dateBox) {
     const currentDate = new Date();
-    // 날짜 YYYY-MM-DD
-    const formattedDate = currentDate.toISOString().slice(0, 10);
+
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${year}-${month}-${day}`;
     dateBox.querySelector(".date").textContent = formattedDate;
-    // 시간 HH:MM
-    const formattedTime = currentDate.toTimeString().slice(0, 5);
+
+    const hours = String(currentDate.getHours()).padStart(2, "0");
+    const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+    const formattedTime = `${hours}:${minutes}`;
     dateBox.querySelector(".time").textContent = formattedTime;
   }
 });
@@ -51,17 +56,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const asideCloser = document.querySelector(".aside-closer");
 
   asideOpner.addEventListener("click", function () {
-    console.log("click");
-    aside.style.left = "0%";
+    aside.style.transform = "translateX(0)";
   });
 
   asideCloser.addEventListener("click", function () {
-    aside.style.left = "-100%";
+    aside.style.transform = "translateX(-100%)";
   });
 
   document.body.addEventListener("click", function (event) {
     if (!aside.contains(event.target) && event.target !== asideOpner) {
-      aside.style.left = "-100%";
+      aside.style.transform = "translateX(-100%)";
     }
   });
 });

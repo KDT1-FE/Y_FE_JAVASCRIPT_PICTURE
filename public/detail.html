@@ -145,7 +145,7 @@
       const storageRef = storage.ref();
       const defaultImg = storageRef.child("image/profile_none.jpg");
 
-      let docId = new URLSearchParams(window.location.search);
+      const docId = new URLSearchParams(window.location.search);
 
       db.collection("profile")
         .doc(docId.get("id"))

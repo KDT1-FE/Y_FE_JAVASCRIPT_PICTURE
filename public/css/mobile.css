@@ -5,7 +5,8 @@
   aside {
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
+    transform: translateX(-100%);
     background: white;
     z-index: 1;
     transition: left 0.5s;

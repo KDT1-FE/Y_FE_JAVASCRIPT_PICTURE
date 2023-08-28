@@ -154,7 +154,7 @@
               </a>
             </div>
           `;
-            document.querySelector(".employee-list__wrap").innerHTML += profileList;
+            document.querySelector(".employee-list__wrap").insertAdjacentHTML("beforeend", profileList);
           });
         });
 
@@ -164,7 +164,7 @@
           const confirmation = confirm("선택한 직원의 정보를 삭제하시겠습니까?");
           if (confirmation) {
             checkboxes.forEach((checkbox) => {
-              const docId = checkbox.getAttribute("data-id");
+              const docId = checkbox.dataset.id;
               db.collection("profile")
                 .doc(docId)
                 .delete()

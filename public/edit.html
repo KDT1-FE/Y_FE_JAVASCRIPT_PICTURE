@@ -163,7 +163,7 @@
       const storage = firebase.storage();
       const storageRef = storage.ref();
 
-      let docId = new URLSearchParams(window.location.search);
+      const docId = new URLSearchParams(window.location.search);
 
       db.collection("profile")
         .doc(docId.get("id"))
@@ -189,18 +189,20 @@
 
       // 새로운 이미지가 선택되면 미리보기 갱신
       function updatePreview(input) {
-        if (input.files && input.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            const previewDiv = document.querySelector(".photo-preview");
-            previewDiv.style.backgroundImage = `url(${e.target.result})`;
+        if (!input.files || !input.files[0]) {
+          return;
+        } //early exit 패턴 적용
 
-            // 선택된 파일의 이름을 .photo__name 요소에 표시
-            const fileNameDiv = document.querySelector(".photo__name");
-            fileNameDiv.textContent = input.files[0].name;
-          };
-          reader.readAsDataURL(input.files[0]);
-        }
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const previewDiv = document.querySelector(".photo-preview");
+          previewDiv.style.backgroundImage = `url(${e.target.result})`;
+
+          // 선택된 파일의 이름을 .photo__name 요소에 표시
+          const fileNameDiv = document.querySelector(".photo__name");
+          fileNameDiv.textContent = input.files[0].name;
+        };
+        reader.readAsDataURL(input.files[0]);
       }
 
       document.querySelector(".btn__update").addEventListener("click", function () {
