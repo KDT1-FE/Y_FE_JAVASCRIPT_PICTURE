@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import { EMAIL_REGEX } from '../constants/regex';
 import { Component } from '../core/component';
 import { navigate } from '../core/router';
 import { uploadData, uploadImage } from '../store/memberStore';
@@ -23,23 +24,35 @@ export default class Write extends Component {
         `;
     this.componentRoot.prepend(new Header().componentRoot);
 
+    const validateEmail = (email) => {
+      if (!EMAIL_REGEX.test(email)) {
+        alert('이메일 형식을 지켜주세요!');
+        return false;
+      }
+      return true;
+    };
+
+    const existFile = (file) => {
+      if (file.name === '') {
+        alert('이미지를 첨부해주세요');
+        return false;
+      }
+      return true;
+    };
+
+    const getImageUrl = async (fileData) => {
+      return await uploadImage(fileData, uuidv4());
+    };
+
     const handleSubmit = async (event) => {
       event.preventDefault();
 
       const formData = new FormData(event.currentTarget);
-      if (formData.get('file').name === '') {
-        alert('이미지를 첨부해주세요');
-        return;
-      }
 
-      const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-      if (!emailRegex.test(formData.get('email'))) {
-        alert('이메일 형식을 지켜주세요');
-        return;
-      }
+      if (!existFile(formData.get('file'))) return;
+      if (!validateEmail(formData.get('email'))) return;
 
-      const fileData = formData.get('file');
-      const photoUrl = await uploadImage(fileData, uuidv4());
+      const photoUrl = await getImageUrl(formData.get('file'));
 
       const data = {
         name: formData.get('name'),
