@@ -4,11 +4,7 @@ import { changeAvatar, preventEnter, removeAvatar } from './util';
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 const imageInputEl = document.getElementById('profilePic');
-imageInputEl.addEventListener('change', () =>
-  changeAvatar({
-    edit: false,
-  })
-);
+imageInputEl.addEventListener('change', () => changeAvatar());
 
 // 완료 버튼 누르면 firestore에 회원 정보 저장
 const registForm = document.querySelector('.regist-form');

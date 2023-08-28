@@ -5,7 +5,6 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage';
-import { db } from './firebase';
 import { storage } from './firebase';
 
 export const phoneType = num => {
@@ -21,12 +20,10 @@ export const deleteData = photoUrl => {
 const imgRemoveBtn = document.querySelector('.img-remove-btn');
 const imgTextInput = document.getElementById('imgTextInput');
 const avatarImg = document.getElementById('avatarImg');
+export let preAvatarImg = '';
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
-export const changeAvatar = ({ edit, coustomerId }) => {
-  if (imgTextInput.value) {
-    deleteData(imgTextInput.value);
-  }
+export const changeAvatar = coustomerId => {
   const file = document.getElementById('profilePic').files[0];
   const storageRef = ref(storage, 'avatar/' + Math.random() + file.name);
   // storage에 사진 저장
@@ -34,6 +31,7 @@ export const changeAvatar = ({ edit, coustomerId }) => {
     // storage에 저장된 사진 url 가져오기
     getDownloadURL(storageRef).then(async url => {
       // 프로필 이미지 url input에 저장
+      preAvatarImg = imgTextInput.value;
       imgTextInput.value = url;
 
       // 프로필 이미지 변경
@@ -41,21 +39,12 @@ export const changeAvatar = ({ edit, coustomerId }) => {
 
       // 프로필 이미지 삭제 버튼 표시
       imgRemoveBtn.classList.remove('hidden');
-
-      // 정보 수정일 경우에는 firestore에서 바로 수정
-      if (edit) {
-        const batch = writeBatch(db);
-        const IdRef = doc(db, 'customers', coustomerId);
-        batch.update(IdRef, { avatar: imgTextInput.value });
-        await batch.commit();
-      }
     });
   });
 };
 
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
 export const removeAvatar = () => {
-  deleteData(imgTextInput.value);
   if (imgTextInput.value) {
     imgTextInput.value = '';
     avatarImg.src = '';

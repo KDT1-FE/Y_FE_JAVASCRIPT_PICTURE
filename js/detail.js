@@ -1,6 +1,12 @@
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './firebase';
-import { changeAvatar, preventEnter, removeAvatar } from './util';
+import {
+  changeAvatar,
+  deleteData,
+  preAvatarImg,
+  preventEnter,
+  removeAvatar,
+} from './util';
 
 const url = new URL(window.location);
 const urlParams = url.searchParams;
@@ -39,12 +45,7 @@ window.onload = async () => {
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 const imageInputEl = document.getElementById('profilePic');
-imageInputEl.addEventListener('change', () =>
-  changeAvatar({
-    edit: true,
-    coustomerId,
-  })
-);
+imageInputEl.addEventListener('change', () => changeAvatar(coustomerId));
 
 const modifyBtn = document.querySelector('.modify');
 const imgRemoveBtn = document.querySelector('.img-remove-btn');
@@ -71,13 +72,6 @@ const toggleModifyBtn = () => {
 // '수정하기' 버튼 클릭 시 정보 수정할 수 있도록 변경
 modifyBtn.addEventListener('click', toggleModifyBtn);
 
-// 수정 '취소하기' 버튼 클릭 시 정보 수정할 수 없도록 변경
-document.querySelector('.cancel-btn').addEventListener('click', e => {
-  e.preventDefault();
-  toggleModifyBtn();
-  imgRemoveBtn.classList.add('hidden');
-});
-
 // 프로필 이미지 삭제 기능 ('삭제하기' 버튼)
 imgRemoveBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -86,6 +80,9 @@ imgRemoveBtn.addEventListener('click', e => {
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
 document.querySelector('.submit-btn').addEventListener('click', async e => {
+  if (preAvatarImg) {
+    deleteData(preAvatarImg);
+  }
   e.preventDefault();
   await setDoc(doc(db, 'customers', coustomerId), {
     avatar: imgTextInput.value,
