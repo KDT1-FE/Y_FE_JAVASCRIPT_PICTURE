@@ -9,11 +9,26 @@ let visibleVillagers = 4;
 const loadMoreThreshold = 2;
 let loadingMore = false;
 
+//데이터 가져오는 함수
+const getData = (doc) => {
+  const { name, sex, birthday, personality, favoriteColor, imageUrl } =
+    doc.data();
+
+  return {
+    name,
+    sex,
+    birthday,
+    personality,
+    favoriteColor,
+    imageUrl,
+  };
+};
+
 //주민 리스트 생성
 const makeVillagerList = (data) => {
   data.forEach((doc) => {
     const { name, sex, birthday, personality, favoriteColor, imageUrl } =
-      doc.data();
+      getData(doc);
 
     const villagerContainer = document.createElement("div");
     villagerContainer.classList.add("villager");
