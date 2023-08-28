@@ -38,8 +38,6 @@
 }
 .search::placeholder {
   color: var(--gray-400, #a0aec0);
-  /* font-size: 1rem;
-  font-weight: 400; */
 }
 .button-home {
   display: flex;
