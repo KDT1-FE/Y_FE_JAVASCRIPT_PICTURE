@@ -9,9 +9,6 @@ import myValleyStoreImage from './AddMyValleyImage.js';
 
 export default class AddMember extends Component {
     constructor() {
-        super({
-            tagName: 'div',
-        });
         submitState.subscribe('submit', () => {
             const addSubmitEl = this.el.querySelector('.modal__banner--form-assure');
             if (!submitState.state.submit) {
