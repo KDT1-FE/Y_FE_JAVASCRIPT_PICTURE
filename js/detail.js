@@ -23,13 +23,14 @@ window.onload = async () => {
     skeleton.classList.remove('skeleton');
   });
   // 값이 존재하면 고객 정보 표시
+  const { avatar, name, email, phone, grade } = docSnap.data();
   if (docSnap.exists()) {
-    avatarImg.src = docSnap.data().avatar;
-    imgTextInput.value = docSnap.data().avatar;
-    nameInput.value = docSnap.data().name;
-    emailInput.value = docSnap.data().email;
-    phoneInput.value = docSnap.data().phone;
-    gradeInput.value = docSnap.data().grade;
+    avatarImg.src = avatar;
+    imgTextInput.value = avatar;
+    nameInput.value = name;
+    emailInput.value = email;
+    phoneInput.value = phone;
+    gradeInput.value = grade;
   } else {
     alert('존재하지 않는 고객입니다.');
     location.href = '/';
