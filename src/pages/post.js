@@ -5,6 +5,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import {
   ref,
+  uploadBytes,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 import {
@@ -115,13 +116,25 @@ async function Post() {
   `;
 
   // 이미지 프리뷰
-  document.querySelector("#image").addEventListener("change", async () => {
+  const image = document.querySelector("#myimg");
+  const input = document.querySelector("#image");
+  const handleFile = files => {
+    const blobUrl = URL.createObjectURL(files[0]);
+    image.src = blobUrl;
+    image.onload = () => {
+      URL.revokeObjectURL(blobUrl);
+    };
+  };
+  input.addEventListener("change", e => handleFile(e.target.files));
+
+  // 데이터 삽입
+  document.querySelector("#post").addEventListener("click", async () => {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
     await uploadBytes(storageRef, file);
 
-    await getDownloadURL(storageRef)
+    getDownloadURL(storageRef)
       .then(url => {
         document.querySelector("#myimg").src = url;
         imageURL = url;
@@ -129,10 +142,7 @@ async function Post() {
       .catch(err => {
         console.log(err);
       });
-  });
 
-  // 데이터 삽입
-  document.querySelector("#post").addEventListener("click", async () => {
     const inputValue = {
       image: imageURL,
       name: document.querySelector("#name").value.toUpperCase(),

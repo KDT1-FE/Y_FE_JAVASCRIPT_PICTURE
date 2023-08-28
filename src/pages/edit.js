@@ -160,26 +160,28 @@ async function Edit() {
       });
   });
 
+  function getValue(id) {
+    return document.querySelector(id).value;
+  }
+
   // 데이터 수정
   document.getElementById("edit").addEventListener("click", e => {
     // 이미지 수정 시 imageURL 변경
     if (!imageURL) imageURL = data.image;
-
+    nameValue = getValue("#name");
+    positionValue = getValue("#position");
+    teamValue = getValue("#team");
     // 빈 칸 확인
-    if (
-      document.querySelector("#name").value.toUpperCase() == "" ||
-      document.querySelector("#position").value.toUpperCase() == "" ||
-      document.querySelector("#team").value.toUpperCase() == ""
-    ) {
+    if (nameValue === "" || positionValue === "" || teamValue === "") {
       alert("빈 칸 없이 똑바로 입력해주세요 !");
     } else {
       // 확인 알림
       if (confirm("정말 이렇게 수정합니다?")) {
         setDoc(doc(firestore, "employee", path), {
           image: imageURL,
-          name: document.querySelector("#name").value.toUpperCase(),
-          position: document.querySelector("#position").value.toUpperCase(),
-          team: document.querySelector("#team").value.toUpperCase()
+          name: nameValue,
+          position: positionValue,
+          team: teamValue
         })
           .then(() => {
             window.location.href = "/";
