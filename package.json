@@ -1,0 +1,25 @@
+{
+    "name": "001_kdt0_js_photo_board",
+    "version": "1.0.0",
+    "description": "패스트캠퍼스 X 야놀자 프론트엔드 부트캠프 5기 Javascript 과제 프로젝트입니다.",
+    "scripts": {
+        "dev": "parcel ./index.html",
+        "build": "parcel build ./index.html",
+        "vercel": "vercel dev"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/preset-flow": "^7.22.5",
+        "@parcel/transformer-sass": "^2.9.3",
+        "cssnano": "^4.1.11",
+        "parcel": "^2.9.3",
+        "process": "^0.11.10",
+        "sass": "^1.64.2",
+        "vercel": "^31.4.0"
+    },
+    "dependencies": {
+        "config": "^3.3.9",
+        "firebase": "^10.1.0"
+    }
+}
