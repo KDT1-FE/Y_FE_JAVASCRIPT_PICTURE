@@ -68,7 +68,6 @@ function createProfileElement(item) {
   }
 
 
-  //Events
   checkboxEl.addEventListener('change',()=>{
       item.complete = checkboxEl.checked
       if(item.complete){
@@ -109,7 +108,6 @@ async function loadFirebaseData() {
         complete: false
       };
 
-      // Check if an item with the same image URL already exists in profiles
       const existingItem = profiles.find(existing => existing.image === item.image);
 
       if (!existingItem) {
@@ -117,9 +115,6 @@ async function loadFirebaseData() {
       }
     });
 
-    // Clear existing items in the list
-
-    // Create HTML elements for each profile item and append them to the list
     profiles.forEach((item) => {
       const { itemEl } = createProfileElement(item);
       list.append(itemEl);
