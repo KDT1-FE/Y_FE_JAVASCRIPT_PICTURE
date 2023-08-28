@@ -1,12 +1,12 @@
 import { db } from './firebase';
+import { showLoading, hideLoading } from './loading';
+
 const itemWrapEl = document.querySelector('.item-wrap');
 const searchInputEl = document.querySelector('.search-input');
-const loadingEl = document.querySelector('.loading');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const docRef = db.collection('profile');
-        const loadingEl = document.querySelector('.loading');
         await docRef
             .orderBy('name')
             .get()
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     makeProfileItem(doc);
                 });
             });
-        loadingEl.classList.add('hide');
+        hideLoading();
     } catch (error) {
         console.error('문서를 가져오는 도중 오류가 발생했습니다', error);
     }
@@ -27,8 +27,9 @@ searchInputEl.addEventListener('change', async () => {
         const docRef = db.collection('profile');
         const nameQuery = docRef.where('name', '==', `${searchValue}`);
         const rankQuery = docRef.where('rank', '==', `${searchValue}`);
-        loadingEl.classList.remove('hide');
         itemWrapEl.innerHTML = '';
+
+        showLoading();
 
         let hasResult = false;
 
@@ -55,7 +56,7 @@ searchInputEl.addEventListener('change', async () => {
         }
 
         if (!hasResult) {
-            loadingEl.classList.add('hide');
+            hideLoading();
             alert('검색 결과가 존재하지않습니다!');
             itemWrapEl.textContent = `검색 결과가 존재하지 않습니다!`;
             return;
@@ -86,5 +87,5 @@ function makeProfileItem(doc) {
 
     a.innerHTML = template;
     a.setAttribute('href', `./upload.html?id=${doc.data().id}`);
-    loadingEl.classList.add('hide');
+    hideLoading();
 }

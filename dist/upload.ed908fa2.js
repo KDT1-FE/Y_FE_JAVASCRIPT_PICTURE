@@ -623,8 +623,10 @@ function hideUtilBtns() {
     btnDeleteEl.style.display = "none";
 }
 function uploadData() {
-    // 버튼 중복 클릭 방지
-    btnSubmitEl.disabled = "true";
+    const file = inputFileEl.files[0];
+    const storageRef = (0, _firebase.storage).ref();
+    const savePath = storageRef.child("image/" + new Date().getTime());
+    const upload = savePath.put(file);
     // 사진이 변경되지 않았을 때
     if (queryString && !inputFileEl.value) {
         const item = {
@@ -636,46 +638,35 @@ function uploadData() {
         updateProfile(item);
     }
     // 사진이 변경 되었을 때
-    if (queryString && inputFileEl.value) {
-        const file = inputFileEl.files[0];
-        const storageRef = (0, _firebase.storage).ref();
-        const savePath = storageRef.child("image/" + new Date().getTime());
-        const upload = savePath.put(file);
-        upload.on("state_changed", null, (error)=>{
-            console.error("실패 사유는", error);
-        }, ()=>{
-            upload.snapshot.ref.getDownloadURL().then((url)=>{
-                const item = {
-                    rank: inputRankEl.value,
-                    name: inputNameEl.value,
-                    photo: url,
-                    email: inputEmailEl.value,
-                    self: inputSelfEl.value
-                };
-                updateProfile(item, deleteImageFromStorage(imageUrl));
-            });
+    if (queryString && inputFileEl.value) upload.on("state_changed", null, (error)=>{
+        console.error("실패 사유는", error);
+    }, ()=>{
+        upload.snapshot.ref.getDownloadURL().then((url)=>{
+            const item = {
+                rank: inputRankEl.value,
+                name: inputNameEl.value,
+                photo: url,
+                email: inputEmailEl.value,
+                self: inputSelfEl.value
+            };
+            updateProfile(item, deleteImageFromStorage(imageUrl));
         });
-    } else {
-        const file = inputFileEl.files[0];
-        const storageRef = (0, _firebase.storage).ref();
-        const savePath = storageRef.child("image/" + new Date().getTime());
-        const upload = savePath.put(file);
-        upload.on("state_changed", null, (error)=>{
-            console.error("실패 사유는", error);
-        }, ()=>{
-            upload.snapshot.ref.getDownloadURL().then((url)=>{
-                const item = {
-                    id: new Date().getTime(),
-                    rank: inputRankEl.value,
-                    name: inputNameEl.value,
-                    photo: url,
-                    email: inputEmailEl.value,
-                    self: inputSelfEl.value
-                };
-                submitProfileToFirestore(item);
-            });
+    });
+    else upload.on("state_changed", null, (error)=>{
+        console.error("실패 사유는", error);
+    }, ()=>{
+        upload.snapshot.ref.getDownloadURL().then((url)=>{
+            const item = {
+                id: new Date().getTime(),
+                rank: inputRankEl.value,
+                name: inputNameEl.value,
+                photo: url,
+                email: inputEmailEl.value,
+                self: inputSelfEl.value
+            };
+            submitProfileToFirestore(item);
         });
-    }
+    });
 }
 function showPreviewImg(e) {
     const file = e.target.files[0];
@@ -750,6 +741,7 @@ function getDataFromFirestore() {
     });
 }
 function updateProfile(item, deleteImage) {
+    btnSubmitEl.disabled = "true";
     const documentRef = docRef.doc(docId);
     documentRef.update(item).then(()=>{
         alert("프로필이 변경되었습니다!");

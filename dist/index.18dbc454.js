@@ -575,19 +575,18 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"1SICI":[function(require,module,exports) {
 var _firebase = require("./firebase");
+var _loading = require("./loading");
 const itemWrapEl = document.querySelector(".item-wrap");
 const searchInputEl = document.querySelector(".search-input");
-const loadingEl = document.querySelector(".loading");
 document.addEventListener("DOMContentLoaded", async ()=>{
     try {
         const docRef = (0, _firebase.db).collection("profile");
-        const loadingEl = document.querySelector(".loading");
         await docRef.orderBy("name").get().then((res)=>{
             res.forEach((doc)=>{
                 makeProfileItem(doc);
             });
         });
-        loadingEl.classList.add("hide");
+        (0, _loading.hideLoading)();
     } catch (error) {
         console.error("문서를 가져오는 도중 오류가 발생했습니다", error);
     }
@@ -598,8 +597,8 @@ searchInputEl.addEventListener("change", async ()=>{
         const docRef = (0, _firebase.db).collection("profile");
         const nameQuery = docRef.where("name", "==", `${searchValue}`);
         const rankQuery = docRef.where("rank", "==", `${searchValue}`);
-        loadingEl.classList.remove("hide");
         itemWrapEl.innerHTML = "";
+        (0, _loading.showLoading)();
         let hasResult = false;
         if (!searchValue) await docRef.get().then((res)=>{
             res.forEach((doc)=>{
@@ -622,7 +621,7 @@ searchInputEl.addEventListener("change", async ()=>{
             });
         }
         if (!hasResult) {
-            loadingEl.classList.add("hide");
+            (0, _loading.hideLoading)();
             alert("검색 결과가 존재하지않습니다!");
             itemWrapEl.textContent = `검색 결과가 존재하지 않습니다!`;
             return;
@@ -650,10 +649,10 @@ function makeProfileItem(doc) {
     itemWrapEl.append(div);
     a.innerHTML = template;
     a.setAttribute("href", `./upload.html?id=${doc.data().id}`);
-    loadingEl.classList.add("hide");
+    (0, _loading.hideLoading)();
 }
 
-},{"./firebase":"5VmhM"}],"5VmhM":[function(require,module,exports) {
+},{"./firebase":"5VmhM","./loading":"2THKT"}],"5VmhM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "db", ()=>db);
@@ -700,6 +699,19 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["gEwwu","1SICI"], "1SICI", "parcelRequire7141")
+},{}],"2THKT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "showLoading", ()=>showLoading);
+parcelHelpers.export(exports, "hideLoading", ()=>hideLoading);
+const loadingEl = document.querySelector(".loading");
+function showLoading() {
+    loadingEl.classList.remove("hide");
+}
+function hideLoading() {
+    loadingEl.classList.add("hide");
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gEwwu","1SICI"], "1SICI", "parcelRequire7141")
 
 //# sourceMappingURL=index.18dbc454.js.map
