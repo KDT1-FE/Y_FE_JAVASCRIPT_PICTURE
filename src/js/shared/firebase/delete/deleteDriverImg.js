@@ -2,7 +2,7 @@
 import storage from "../storage.js";
 import { ref, deleteObject } from "firebase/storage";
 
-export default function deleteDriverImg(imgUrl) {
+export function deleteDriverImg(imgUrl) {
   const basicImg =
     "https://firebasestorage.googleapis.com/v0/b/zero-car.appspot.com/o/basicImgs%2Fbasic%20user.png?alt=media&token=aaa54234-fadc-401e-875d-d7a892fd27b7";
 

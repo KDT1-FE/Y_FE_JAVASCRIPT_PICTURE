@@ -1,5 +1,5 @@
 export function previewImg() {
-  const driverImgShowPreview = document.getElementById("driverImgShow");
+  const driverImgShowPreview = document.getElementById("driverImg");
   const driverImg = driverImgInput.files[0];
   const fileReader = new FileReader();
 
