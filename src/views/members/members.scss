@@ -1,0 +1,239 @@
+@import '/src/asset/styles/common.scss';
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@media (min-width: 960px) {
+  .members__spacer {
+    flex: 0 !important;
+  }
+}
+
+.members {
+  &__container {
+    padding: 3rem 1.5rem;
+  }
+
+  &__wrap {
+    padding: 1.5rem 0;
+  }
+
+  &__contents {
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 2px 0px rgb(0 0 0 / 3%), inset 0 2px 4px 0 rgb(255 255 255);
+    background: linear-gradient(179deg, rgb(242, 242, 243) -50%, rgb(255, 255, 255) 100%);
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--bs-heading-color);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  &__modal-btn {
+    margin: 0.5rem;
+  }
+
+  &-hr {
+    color: var(--bs-border-color);
+    opacity: 1;
+    margin: 0;
+  }
+
+  &__row {
+    --bs-text-opacity: 1;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    margin: 0;
+    padding-top: 1rem;
+    border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+
+  &__image {
+    flex-grow: 0 !important;
+    padding: 0;
+
+    &__wrap {
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 125%;
+        height: auto;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &__info {
+    flex-grow: 2 !important;
+
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      line-height: 1.4;
+    }
+
+    &__name {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    &__email {
+      font-size: 0.8rem;
+      color: #c1c1c2;
+    }
+  }
+
+  &__item__wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 1rem 0;
+  }
+
+  &__spacer {
+    flex: 1;
+  }
+
+  &__position {
+    flex: 0 1 0% !important;
+
+    &__txt {
+      font-size: 0.9rem;
+      color: #fc4892;
+      padding: 3px 13px;
+      background: rgb(254 236 243);
+      border-radius: 1rem;
+    }
+  }
+  &__team {
+    &__txt {
+      font-size: 0.9rem;
+      color: #fc4892;
+      padding: 3px 13px;
+      background: rgb(254 236 243);
+      border-radius: 1rem;
+
+      i {
+        font-size: 0.75rem;
+      }
+    }
+  }
+  &__ellipsis {
+    color: #c1c1c2;
+
+    &-btn {
+      color: #c1c1c2;
+    }
+  }
+}
+
+// tooltip
+.tooltips {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.5rem;
+  cursor: pointer;
+
+  .tooltipcontent {
+    visibility: hidden;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  &.clicked .tooltipcontent {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  &:not(.clicked) .tooltipcontent {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .tooltipcontent .tooltipitem {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  &.clicked .tooltipcontent .tooltipitem {
+    background-color: #f0f0f0;
+    transition: visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+
+    &:nth-child(1) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+    }
+
+    &:nth-child(2) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.4s;
+    }
+  }
+
+  .tooltipcontent .tooltipitem i {
+    color: #c1c1c2;
+  }
+}

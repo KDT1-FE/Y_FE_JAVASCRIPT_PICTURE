@@ -1,0 +1,65 @@
+<div class='modal myModal fade' id='editModal' tabindex='-1' aria-labelledby='editModalLabel' aria-hidden='true' style='display: none; opacity: 1;'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-title'>
+        <h1 class='fw-bold mb-0 fs-2' id='editModalLabel'>Edit Members</h1>
+        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+      </div>
+      <!-- 폼 수정 -->
+      <div class='modal-body'>
+        <form class='myForm needs-validation' novalidate='' id='editForm'>
+          <div class='myForm__row row' data-id=''>
+            <div class='myForm__col-l col-md-4 col-lg-4 order-md-first'>
+              <div class='myForm__image'>
+                <label for='image' class='form-img'>
+                  <img id='edit-preview' class='preview-img hidden' alt='Preview' />
+                </label>
+                <input type='file' class='input-file edit' id='image' accept='image/*' style='display: none' />
+              </div>
+            </div>
+            <div class='myForm__col-r col-md-7 col-lg-8'>
+              <div class='myForm__row__wrap row'>
+                <div class='col'>
+                  <label for='name' class='form-label'>Name</label>
+                  <input type='text' class='form-control-plaintext forms edit' id='name' name='name' placeholder='Name' required='' />
+                  <div class='invalid-feedback'>이름을 입력해주세요.</div>
+                </div>
+
+                <div class='col-12'>
+                  <label for='email' class='form-label'>Email</label>
+                  <input type='email' class='form-control-plaintext forms edit' id='email' name='email' placeholder='you@example.com' required='' />
+                  <div class='invalid-feedback'>이메일을 입력해주세요.</div>
+                </div>
+
+                <div class='col-md'>
+                  <label for='Team' class='form-label'>Team</label>
+                  <input type='text' class='form-control-plaintext forms edit' id='team' name='team' placeholder='Team' required='' />
+                  <div class='invalid-feedback'>팀 이름을 입력해주세요.</div>
+                </div>
+
+                <div class='col-md'>
+                  <label for='Position' class='form-label'>Position </label>
+                  <select class='form-select edit' id='position' name='position' form='editForm' required=''>
+                    <option selected disabled value=''>Choose...</option>
+                    <option value='FE'>FE</option>
+                    <option value='BE'>BE</option>
+                    <option value='UIUX'>UIUX</option>
+                    <option value='PM'>PM</option>
+                  </select>
+                  <div class='invalid-feedback'>포지션을 선택해주세요.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class='my-4' />
+
+          <div class='myForm__btnbox'>
+            <button type='button' class='btn btn-outline-danger rm-btn'>Remove</button>
+            <button type='button' class='btn btn-outline-primary cg-btn'>Change</button>
+            <button type='submit' class='btn btn-primary svcg-btn'>Save Change</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
