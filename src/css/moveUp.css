@@ -1,0 +1,58 @@
+.move-up__container {
+    width: 4%;
+
+    position: fixed;
+    right: 1%;
+    bottom: 5%;
+
+    z-index: 1;
+
+    padding: 1rem;
+    box-sizing: border-box;
+
+    animation: floatingAnimation 2s infinite ease-in-out;
+
+    border-radius: 1rem;
+    background-color: var(--color-space);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 1s ease-in-out;
+}
+
+.move-up__container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 880px) {
+    .move-up__container {
+        display: none;
+    }
+}
+
+@keyframes floatingAnimation {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1rem);
+    }
+}
+
+.move-up__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.move-up__button--image {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
