@@ -19,6 +19,7 @@ async function Detail() {
   const path = window.location.pathname.replace("/detail/", "");
   const docRef = await doc(firestore, "employee", path);
   const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
 
   const divApp = appReset("app");
 
@@ -102,21 +103,15 @@ async function Detail() {
   detailContentInputwrapper.innerHTML = `
       <div>
       <span>이름</span>
-      <input type="text" name="name" id="name" value="${
-        docSnap.data().name
-      }" disabled/>
+      <input type="text" name="name" id="name" value="${data.name}" disabled/>
       </div>
       <div>
       <span>팀명</span>
-      <input type="text" name="team" id="team" value="${
-        docSnap.data().team
-      }" disabled/>
+      <input type="text" name="team" id="team" value="${data.team}" disabled/>
             </div>
       <div>
       <span>포지션</span>
-      <input type="text" name="team" id="position" value="${
-        docSnap.data().position
-      }" disabled/>
+      <input type="text" name="team" id="position" value="${data.position}" disabled/>
       </div>
       <div>
       <span>사진</span>
@@ -136,14 +131,14 @@ async function Detail() {
   );
 
   detailContentImageWrapper.innerHTML = `
-  <img id = "detail-myimg"src="${docSnap.data().image}"/>
+  <img id = "detail-myimg"src="${data.image}"/>
   `;
 
   document
     .querySelector("#detail-delete")
     .addEventListener("click", async () => {
       if (confirm("정말 이 선수를 삭제하시려는 겁니까?.. ㅠ")) {
-        const storageRef = ref(storage, docSnap.data().image);
+        const storageRef = ref(storage, data.image);
         await deleteObject(storageRef);
         await deleteDoc(docRef)
           .then(() => {

@@ -20,6 +20,7 @@ async function Edit() {
 
   const docRef = await doc(firestore, "employee", path);
   const docSnap = await getDoc(docRef);
+  const data = docSnap.data();
   var imageURL;
 
   const divApp = appReset("app");
@@ -130,14 +131,14 @@ async function Edit() {
   );
 
   editContentImageWrapper.innerHTML = `
-  <img id = "edit-myimg"src="${docSnap.data().image}"/>
+  <img id = "edit-myimg"src="${data.image}"/>
   `;
 
   // option selected 설정
   const positionId = document.getElementById("position");
 
   for (let i = 0; i < positionId.options.length; i++) {
-    if (positionId.options[i].value == docSnap.data().position) {
+    if (positionId.options[i].value == data.position) {
       positionId.options[i].selected = true;
     }
   }
@@ -162,7 +163,7 @@ async function Edit() {
   // 데이터 수정
   document.getElementById("edit").addEventListener("click", e => {
     // 이미지 수정 시 imageURL 변경
-    if (!imageURL) imageURL = docSnap.data().image;
+    if (!imageURL) imageURL = data.image;
 
     // 빈 칸 확인
     if (
