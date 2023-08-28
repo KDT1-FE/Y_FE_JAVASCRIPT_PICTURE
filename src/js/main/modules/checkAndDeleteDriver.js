@@ -1,15 +1,7 @@
-// 보험자 리스트 페이지에
-// 선택 삭제 버튼을 누르면 보험자 이미지와 데이터를 삭제하는 Component
-import deleteDriverImg from "../driverProfile/deleteDriverImg.js";
-import deleteDriver from "./deleteDriver.js";
+import deleteDriver from "../../shared/firebase/delete/deleteDriver.js";
+import deleteDriverImg from "../../shared/firebase/delete/deleteDriverImg.js";
 
-const deleteDriverBtn = document.getElementById("deleteDriver");
-
-deleteDriverBtn
-  ? deleteDriverBtn.addEventListener("click", checkDeleteDriver)
-  : console.log("404 페이지로");
-
-function checkDeleteDriver() {
+export function checkAndDeleteDriver() {
   try {
     const checkBoxes = document.querySelectorAll("input[type='checkBox']");
 

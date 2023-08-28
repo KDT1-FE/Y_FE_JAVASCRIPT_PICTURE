@@ -1,9 +1,7 @@
-// 보험자 리스트 페이지에서
-// driverProfile Anchor tr 요소를 creat하는 Component
-export default function createDriverProfileAnc(driverID, driverTr) {
+export function createProfileAnc(driverTr, driverID) {
   const driverProfileAnc = document.createElement("a");
   driverProfileAnc.classList.add("driverProfileAnc");
-  driverProfileAnc.setAttribute("href", `./driverProfile.html?${driverID}`);
+  driverProfileAnc.setAttribute("href", `./profile.html?${driverID}`);
   driverProfileAnc.innerText = "프로필 →";
 
   const td = document.createElement("td");

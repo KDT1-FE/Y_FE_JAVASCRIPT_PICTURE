@@ -1,6 +1,4 @@
-// 보험자 리스트 페이지에서
-// 보험자 collection의 각 document field들을 td 요소로 creat하는 Component
-export default function createDriverDataTr(driverDoc, driver) {
+export function createTrData(driverTr, driverDoc) {
   const driverData = driverDoc.data();
   const driverId = driverDoc.id;
 
@@ -37,7 +35,7 @@ export default function createDriverDataTr(driverDoc, driver) {
         break;
     }
 
-    driver.append(td);
+    driverTr.append(td);
   });
 }
 
@@ -61,7 +59,7 @@ function createConfirmText(driverConfirm, driverId, td) {
   } else {
     const confirmAnc = document.createElement("a");
     confirmAnc.classList.add("confirmAnc");
-    confirmAnc.setAttribute("href", `./confirmAccident.html?${driverId}`);
+    confirmAnc.setAttribute("href", `./confirm.html?${driverId}`);
     confirmAnc.innerText = "심사하기 →";
     confirmAnc.style.color = "white";
 

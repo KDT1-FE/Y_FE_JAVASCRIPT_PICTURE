@@ -1,10 +1,4 @@
-// 보험자 리스트 페이지에서
-//table tbody의 tr 데이터 중 driverName을 검섹하는 Component
-
-// HTML document를 전부 읽고 DOM 트리를 완성하는 즉시 searchDriver 콜백함수 호출
-document.addEventListener("DOMContentLoaded", searchDriver);
-
-function searchDriver() {
+export function searchDriver() {
   try {
     const searchDriverInput = document.getElementById("searchDriver");
     const driversTbody = document.getElementById("drivers");

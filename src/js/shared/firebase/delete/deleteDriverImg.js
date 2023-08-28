@@ -1,5 +1,5 @@
 // storage에 있는 보험자 이미지를 삭제하는 Component
-import storage from "../../firebase/storage.js";
+import storage from "../storage.js";
 import { ref, deleteObject } from "firebase/storage";
 
 export default function deleteDriverImg(imgUrl) {

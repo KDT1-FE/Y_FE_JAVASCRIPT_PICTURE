@@ -1,8 +1,6 @@
-// 보험자 리스트 페이지에서
-// 체크 박스 input td 요소를 creat하는 Component
-import changeTrBackgroundColor from "./clickCheckBox.js";
+import { changeTrBackgroundColor } from "./changeTrBackgroundColor.js";
 
-export default function createCheckBox(driverID, driverTr) {
+export function createCheckBox(driverTr, driverID) {
   const tdCheckBox = document.createElement("td");
   tdCheckBox.classList.add("driverData", "checkData");
 
