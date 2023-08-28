@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 body{
   background:#1a1b2e url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;

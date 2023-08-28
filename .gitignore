@@ -1,3 +1,2 @@
-node_modules,
-기타시도.txt
+dist/,
 node_modules

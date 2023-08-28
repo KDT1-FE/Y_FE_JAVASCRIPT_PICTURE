@@ -83,7 +83,7 @@ label:hover{
   background-color: black;
 }
 
-@media (min-width:666px){
+@media (min-width:640px){
   .input-profile-grid{
     display: grid;
     grid-template-columns: repeat(2,1fr);
