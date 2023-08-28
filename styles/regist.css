@@ -26,15 +26,18 @@
 #profilePic {
   width: 21.875rem;
   height: 21.875rem;
+  padding: 0.625rem;
+
   z-index: 10;
+
   position: absolute;
   left: 0;
-  padding: 0.625rem;
 }
 
 .input-box {
   display: flex;
   flex-direction: column;
+
   width: 100%;
   margin-bottom: 1.875rem;
 }
@@ -42,10 +45,13 @@
 #avatarBox {
   position: relative;
   overflow: hidden;
+
   width: 21.875rem;
   height: 21.875rem;
+
   display: flex;
   justify-content: center;
+
   border-radius: 5px;
 }
 
@@ -101,10 +107,13 @@
 .submit-btn,
 .cancel-btn {
   width: 100%;
+  height: 2.8125rem;
+
   background-color: #000000;
+
   border: none;
   border-radius: 5px;
-  height: 2.8125rem;
+
   color: #ffffff;
   font-size: 1.125rem;
 }

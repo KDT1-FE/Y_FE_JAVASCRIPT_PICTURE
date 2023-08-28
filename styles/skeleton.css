@@ -24,14 +24,17 @@
 
 .skeleton-img {
   margin: 0 auto;
+
   width: 8.125rem;
   height: 8.125rem;
+
   border-radius: 100%;
 }
 
 .skeleton-grade {
   width: 3.125rem;
   height: 1.6875rem;
+
   border-radius: 5px;
 }
 
