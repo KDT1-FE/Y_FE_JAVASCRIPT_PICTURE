@@ -31,6 +31,7 @@ textarea {
     max-width: 100vw;
     position: relative;
     margin: 0 auto;
+    z-index: 0;
   }
   .header__title-deco img {
     width: 90vw;
@@ -54,18 +55,39 @@ textarea {
     position: absolute;
     width: 60vw;
     top: 9rem;
-    right: 9rem;
-    z-index: -1;
+    right: 6rem;
+  }
+  .list__util-search {
+    position: absolute;
+    top: -3em;
+    left: 0;
+    width: 0.5em;
+  }
+
+  .btn-regi {
+    position: absolute;
+    top: -3em;
+    right: 0;
   }
 
   .mobile-sidebar {
     display: block;
+  }
+
+  .mobile-btn-totop {
+    display: block;
     position: fixed;
-    bottom: 1rem;
-    right: 0.5rem;
-    padding: 0.2em;
-    background-color: #fff;
+    bottom: 0rem;
+    right: 0rem;
     z-index: 999;
+  }
+  .mobile-button {
+    border: 0px;
+  }
+
+  .mobile-button img {
+    width: 3em;
+    height: auto;
   }
 
   .list__actual {
@@ -76,6 +98,68 @@ textarea {
     max-width: 100vw;
     height: 100vh;
     z-index: 0;
+  }
+
+  .list__actual th:nth-child(4),
+  .list__actual th:nth-child(5),
+  .list__actual td:nth-child(4),
+  .list__actual td:nth-child(5) {
+    display: none;
+  }
+
+  /* Adjust the remaining columns' widths */
+  .list__actual th,
+  .list__actual td {
+    width: calc(
+      (100% - 2 * 4%) / 4
+    ); /* Assuming there are 4 columns remaining */
+  }
+
+  /* Styles for modal container */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    max-width: 70vw;
+    justify-content: space-between;
+  }
+
+  /* Styles for modal content */
+  .modal-content {
+    background-color: #f7efd2;
+    background-image: url("/assets/images/register_bg.png");
+    background-repeat: no-repeat;
+    border-radius: 8px;
+  }
+
+  .modal-content span {
+    background-color: rgba(255, 229, 116, 0.8);
+    font-size: 2.1em;
+    font-weight: 500;
+    font-style: italic;
+    writing-mode: vertical-rl;
+    padding: 0.2em;
+  }
+
+  .modal-form {
+    text-align: right;
+    padding: 1em;
+  }
+
+  .modal-form label {
+    line-height: 0.8em;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .modal-form input,
+  .modal-form textarea {
+    border: 1px solid #c8c8c8;
+    width: 9em;
+    font-size: 0.7em;
+  }
+  .modal-form textarea {
+    font-size: 0.9em;
   }
 }
 
@@ -352,144 +436,6 @@ textarea {
   border: 1px solid #ff8888;
 }
 
-/* 모바일용 사이드바 추가 버튼 */
-.mobile-sidebar .mobile-btn-regi .mobile-button {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-sidebar .mobile-btn-regi .mobile-button .mobile-button__icon {
-  position: absolute;
-  transform: translateX(0);
-  height: 100%;
-  width: 20px;
-  background-color: #bfd60c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-sidebar .mobile-btn-regi .mobile-button .svg {
-  width: 20px;
-  stroke: #fff;
-}
-
-.mobile-sidebar .mobile-btn-regi .mobile-button:hover .mobile-button__icon {
-  width: 20px;
-  transform: translateX(0);
-}
-
-.mobile-sidebar .mobile-btn-regi .mobile-button:active .mobile-button__icon {
-  background-color: #89b806;
-}
-
-/* 모바일용 사이드바 수정 버튼 */
-.mobile-sidebar .mobile-btn-modi .mobile-button {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-sidebar .mobile-btn-modi .mobile-button .mobile-button__icon {
-  position: absolute;
-  transform: translateX(0);
-  height: 100%;
-  width: 20px;
-  background-color: #edd77d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-sidebar .mobile-btn-modi .mobile-button:hover .mobile-button__icon {
-  width: 20px;
-  transform: translateX(0);
-}
-
-.mobile-sidebar .mobile-btn-modi .mobile-button:active .mobile-button__icon {
-  background-color: #fbcb0b;
-}
-
-/* 모바일용 사이드바 삭제 버튼 */
-.mobile-sidebar .mobile-btn-del .mobile-button {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-sidebar .mobile-btn-del .mobile-button .mobile-button__icon {
-  position: absolute;
-  transform: translateX(0);
-  height: 100%;
-  width: 20px;
-  background-color: #ff8585;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-sidebar .mobile-btn-del .mobile-button .svg {
-  width: 20px;
-  stroke: #fff;
-}
-
-.mobile-sidebar .mobile-btn-del .mobile-button:hover .mobile-button__icon {
-  width: 20px;
-  transform: translateX(0);
-}
-
-.mobile-sidebar .mobile-btn-del .mobile-button:active .mobile-button__icon {
-  background-color: #ff6060;
-}
-
-/* 모바일용 사이드바 TOP 버튼 */
-.mobile-sidebar .mobile-btn-totop .mobile-button {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-sidebar .mobile-btn-totop .mobile-button .mobile-button__icon {
-  position: absolute;
-  transform: translateX(0);
-  height: 100%;
-  width: 20px;
-  background-color: #bdbdbd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-sidebar .mobile-btn-totop .mobile-button:hover .mobile-button__icon {
-  width: 20px;
-  transform: translateX(0);
-}
-
-.mobile-sidebar .mobile-btn-totop .mobile-button:active .mobile-button__icon {
-  background-color: #6d6d6d;
-}
-
 .list__content {
   max-width: 100%;
   min-height: 440px;
@@ -575,8 +521,7 @@ textarea {
 .modal {
   display: none;
   position: fixed;
-  top: 30%;
-  left: 30%;
+  margin: 0 0 10em 0;
   width: auto;
   height: auto;
   justify-content: center;

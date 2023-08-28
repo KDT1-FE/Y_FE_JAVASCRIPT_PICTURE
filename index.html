@@ -27,6 +27,12 @@
         location.reload();
       }, 1000);
     }
+
+    // mobile To-Top button
+    function getTotop() {
+      document.body.scrollTop = 0; // For Safari,
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
   </script>
   <body>
     <section class="overall">
@@ -105,83 +111,11 @@
               </label>
             </form>
           </div>
-          <div class="list__util-btn">
-            <div class="mobile-sidebar">
-              <div class="mobile-btn-regi">
-                <button type="button" class="mobile-button">
-                  <span class="mobile-button__icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke="currentColor"
-                      fill="none"
-                      class="svg"
-                    >
-                      <line y2="19" y1="5" x2="12" x1="12"></line>
-                      <line y2="12" y1="12" x2="19" x1="5"></line>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-              <div class="mobile-btn-modi">
-                <button type="button" class="mobile-button">
-                  <span class="mobile-button__icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke="currentColor"
-                      fill="none"
-                      class="svg"
-                    >
-                      <image href="/assets/images/edit.png" />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-              <div class="mobile-btn-del">
-                <button type="button" class="mobile-button">
-                  <span class="mobile-button__icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke="currentColor"
-                      fill="none"
-                      class="svg"
-                    >
-                      <line x1="4" y1="12" x2="18" y2="12"></line></svg
-                  ></span>
-                </button>
-              </div>
-              <div class="mobile-btn-totop">
-                <button type="button" class="mobile-button">
-                  <span class="mobile-button__icon"
-                    ><svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke="currentColor"
-                      fill="none"
-                      class="svg"
-                    >
-                      <image href="/assets/images/totop.png" /></svg
-                  ></span>
-                </button>
-              </div>
+          <div class="mobile-sidebar">
+            <div class="mobile-btn-totop">
+              <button type="button" class="mobile-button" onclick="getTotop()">
+                <img src="/assets/images/totop.png" alt="to top" />
+              </button>
             </div>
           </div>
 
