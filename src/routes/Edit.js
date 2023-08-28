@@ -51,10 +51,7 @@ export default class Edit extends Component {
 
       const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 
-      if (
-        formData.get('email') !== '' &&
-        !emailRegex.test(formData.get('email'))
-      ) {
+      if (!formData.get('email') && !emailRegex.test(formData.get('email'))) {
         alert('이메일 형식을 지켜주세요');
         return;
       }
@@ -64,10 +61,8 @@ export default class Edit extends Component {
       }
 
       const data = {
-        name: formData.get('name') === '' ? member.name : formData.get('name'),
-        email:
-          formData.get('email') === '' ? member.email : formData.get('email'),
-        photoUrl: photoUrl,
+        name: formData.get('name') || member.name,
+        email: formData.get('email') || member.email,
       };
 
       setData(data, member.id);
