@@ -9,6 +9,7 @@ import {
 } from 'firebase/firestore';
 import { db } from './firebase';
 import defaultAvatar from '../assets/images/default-avatar.png';
+import { phoneType } from './util';
 
 const createListItem = (key, data) => {
   const customerItem = document.createElement('span');
@@ -55,7 +56,7 @@ const inquireListFunc = querySnapshotArray => {
     const customerGrade = createListItem('grade', doc.data().grade);
     const customerName = createListItem('name', doc.data().name);
     const customerEmail = createListItem('email', doc.data().email);
-    const customerPhone = createListItem('phone', doc.data().phone);
+    const customerPhone = createListItem('phone', phoneType(doc.data().phone));
 
     wrapperTag.appendChild(checkTag);
     wrapperTag.appendChild(avatarWrapper);
