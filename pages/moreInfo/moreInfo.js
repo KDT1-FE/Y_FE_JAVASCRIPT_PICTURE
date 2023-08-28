@@ -56,7 +56,7 @@ let template = `
 const q = query(collection(db, "profiles"), orderBy("date"));
 let itemNumber = 0;
 let clickCount = 0;
-
+let loaded = false;
 onSnapshot(q, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
     //console.log('시작:',doc.data())
@@ -211,26 +211,25 @@ onSnapshot(q, (querySnapshot) => {
     newProfile.prepend(modifyBtn);
 
     // 해시값 변화 감지
-    window.addEventListener("hashchange", handleHashChange);
-    // 초기 로딩 시 해시값에 따른 초기 상태 설정
-
-    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange());
   });
 });
+// window.addEventListener("load", function () {
+//   console.log("로드완료");
+// window.addEventListener("hashchange", handleHashChange());
+// });
 
 function handleHashChange() {
+  console.log("함수안으로 들어옴!");
   const hash = location.hash;
   const itemId = hash.substring(1);
+  console.log(hash);
   const targetItem = document.getElementById(itemId);
-  window.addEventListener("load", () => {
-    console.log("A");
-    if (targetItem) {
-      targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-  // if (targetItem) {
-  //   targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
-  // }
+  console.log(targetItem);
+  if (targetItem) {
+    console.log("if문안으로 들어옴!");
+    targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 function deleteDocument(documentId) {

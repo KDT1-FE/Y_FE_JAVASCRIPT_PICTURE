@@ -70,13 +70,16 @@ document
       introduce: document.querySelector(".profile__introduce").value,
       date: Timestamp.fromDate(new Date()),
     };
+    console.log(!profileContent.email.includes(".com"));
     if (
-      profileContent.name &&
-      profileContent.position &&
-      profileContent.github &&
-      profileContent.email &&
-      imgFileInput &&
-      imgFileInput.files.length > 0
+      !(
+        profileContent.name &&
+        profileContent.position &&
+        !profileContent.github.includes("github.com/") &&
+        !profileContent.email.includes(".com") &&
+        imgFileInput &&
+        imgFileInput.files.length > 0
+      )
     ) {
       try {
         const imgFile = imgFileInput.files[0];
@@ -89,8 +92,8 @@ document
         const toSave = {
           image: url,
         };
-        Object.assign(profileContent, toSave);
-        await addDoc(collection(db, "profiles"), profileContent);
+        const profileContentWithUrl = Object.assign({}, profileContent, toSave);
+        await addDoc(collection(db, "profiles"), profileContentWithUrl);
         window.location.href = "/";
         console.log("Document successfully written!");
       } catch {
