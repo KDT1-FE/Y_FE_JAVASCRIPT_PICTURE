@@ -1,25 +1,25 @@
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "./firebase";
-import { changeAvatar, preventEnter, removeAvatar } from "./util";
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from './firebase';
+import { changeAvatar, preventEnter, removeAvatar } from './util';
 
 // input 파일이 바뀌면 파이어베이스 Storage에 저장하고 화면에 표시
 changeAvatar();
 
 // 완료 버튼 누르면 firestore에 회원 정보 저장
-const registForm = document.querySelector(".regist-form");
-registForm.addEventListener("submit", async (event) => {
+const registForm = document.querySelector('.regist-form');
+registForm.addEventListener('submit', async event => {
   event.preventDefault();
   try {
-    await addDoc(collection(db, "customers"), {
+    await addDoc(collection(db, 'customers'), {
       avatar: registForm.elements[2].value,
       name: registForm.elements[3].value,
       email: registForm.elements[4].value,
       phone: registForm.elements[5].value,
       grade: registForm.elements[6].value,
     });
-    location.href = "/";
+    location.href = '/';
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error('Error adding document: ', e);
   }
 });
 

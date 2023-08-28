@@ -45,21 +45,21 @@
     <script>
       // 스켈레톤 삽입
       new Array(8).fill(1).map(() => {
-        const skeletonBox = document.createElement("div");
-        skeletonBox.className = "list-box";
+        const skeletonBox = document.createElement('div');
+        skeletonBox.className = 'list-box';
 
-        const skeletonInput = document.createElement("input");
-        skeletonInput.type = "checkbox";
+        const skeletonInput = document.createElement('input');
+        skeletonInput.type = 'checkbox';
         skeletonBox.appendChild(skeletonInput);
 
-        const skeletonArr = ["img", "grade", "name", "email", "phone"];
-        skeletonArr.map((i) => {
-          const skeletonDiv = document.createElement("div");
+        const skeletonArr = ['img', 'grade', 'name', 'email', 'phone'];
+        skeletonArr.map(i => {
+          const skeletonDiv = document.createElement('div');
           skeletonDiv.className = `skeleton-${i} skeleton`;
           skeletonBox.appendChild(skeletonDiv);
         });
 
-        document.querySelector(".list-container").appendChild(skeletonBox);
+        document.querySelector('.list-container').appendChild(skeletonBox);
       });
     </script>
     <script type="module" src="./js/list.js"></script>
