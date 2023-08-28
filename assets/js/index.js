@@ -94,7 +94,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     //select the specific button for DELETE
     btnsDelete.forEach((btn) => {
       btn.addEventListener("click", ({ target: { dataset } }) => {
-        deleteData(dataset.id);
+        const confirmed = confirm("정말 삭제하시겠어요?");
+        if (confirmed) {
+          deleteData(dataset.id);
+        }
       });
     });
 
