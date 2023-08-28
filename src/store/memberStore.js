@@ -19,6 +19,7 @@ import {
   ref,
   uploadBytes,
 } from 'firebase/storage';
+import { RESPONSE_LENGTH } from '../constants/api';
 
 export const memberStore = new Store({
   members: [],
@@ -42,7 +43,7 @@ export const getNextMembersData = async () => {
     const nextQuery = query(
       collection(db, 'list'),
       startAfter(lastVisible),
-      limit(7)
+      limit(RESPONSE_LENGTH)
     );
     response = await getDocs(nextQuery);
     memberStore.state.members = [
