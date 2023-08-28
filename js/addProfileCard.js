@@ -1,5 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc, doc, getDoc, getDocs, orderBy, query, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  where,
+  onSnapshot,
+} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -9,13 +20,13 @@ const firebaseConfig = {
   storageBucket: "photo-management-service.appspot.com",
   messagingSbuttonenderId: "110781159358",
   appId: "1:110781159358:web:e9b8fbdc3e60c979178bef",
-  measurementId: "G-E657JQPN7T"
+  measurementId: "G-E657JQPN7T",
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //profile카드 추가하기 관련 선언
-const profileContainer = document.querySelector('.profile-container');
+const profileContainer = document.querySelector(".profile-container");
 let template = `
     <div class="profile-card">
       <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
@@ -31,43 +42,48 @@ let template = `
     </div>
 `;
 //profile카드 추가하기
-const q = query(collection(db,"profiles"),orderBy("date"))
+const profileCollection = query(collection(db, "profiles"), orderBy("date"));
 let itemNumber = 0;
-onSnapshot(q,(querySnapshot) => {
+onSnapshot(profileCollection, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
     //console.log('시작:',doc.data())
-    const newProfile = document.createElement("a")
-    newProfile.classList.add('item');
-    newProfile.setAttribute("href", `../pages/moreInfo/moreInfo.html#item${itemNumber}`); //
-    template = template.replace('{{__profile_image__}}',doc.data().image)
-                        .replace('{{__profile_name__}}', doc.data().name)
-                        .replace('{{__profile_position__}}',doc.data().position)
-                        .replace('{{__profile_github__}}',doc.data().github)
-                        .replace('{{__profile_email__}}',doc.data().email);
-    newProfile.innerHTML=template;
+    const newProfile = document.createElement("a");
+    newProfile.classList.add("item");
+    newProfile.setAttribute(
+      "href",
+      `../pages/moreInfo/moreInfo.html#item${itemNumber}`
+    ); //
+    template = template
+      .replace("{{__profile_image__}}", doc.data().image)
+      .replace("{{__profile_name__}}", doc.data().name)
+      .replace("{{__profile_position__}}", doc.data().position)
+      .replace("{{__profile_github__}}", doc.data().github)
+      .replace("{{__profile_email__}}", doc.data().email);
+    newProfile.innerHTML = template;
     profileContainer.append(newProfile);
-    template = template.replace(doc.data().image,'{{__profile_image__}}')
-                        .replace( doc.data().name, '{{__profile_name__}}')
-                        .replace(doc.data().position,'{{__profile_position__}}')
-                        .replace(doc.data().github,'{{__profile_github__}}')
-                        .replace(doc.data().email,'{{__profile_email__}}');
+    template = template
+      .replace(doc.data().image, "{{__profile_image__}}")
+      .replace(doc.data().name, "{{__profile_name__}}")
+      .replace(doc.data().position, "{{__profile_position__}}")
+      .replace(doc.data().github, "{{__profile_github__}}")
+      .replace(doc.data().email, "{{__profile_email__}}");
     itemNumber++;
   });
   //item 개수대로 grid css 제어
-  const items = document.querySelectorAll('.item');
+  const items = document.querySelectorAll(".item");
   const itemLength = items.length;
 
   items.forEach((item, index) => {
     const startRow = index + 1;
     const endRow = index + 3;
-  
-    const styleTag = document.createElement('style');
+
+    const styleTag = document.createElement("style");
     styleTag.textContent = `
       .item:nth-child(${index + 1}) {
         grid-row: ${startRow}/${endRow};
       }
     `;
-  
+
     document.head.appendChild(styleTag);
   });
-})
+});

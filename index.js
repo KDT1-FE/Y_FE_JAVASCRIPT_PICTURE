@@ -28,7 +28,7 @@ import * as addProfileCard from "./js/addProfileCard.js";
 // import dotenv from "dotenv";
 // dotenv.config();
 
-export { imgFileInput };
+export { imgFileInput, firebaseConfig, app, storage, db };
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -50,7 +50,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const storage = getStorage(app);
 const db = getFirestore(app);
 
@@ -62,6 +61,7 @@ imgFileInput.addEventListener("change", showPreview);
 document
   .querySelector(".btn__upload")
   .addEventListener("click", async function () {
+    URL.revokeObjectURL(document.querySelector(".preview").src);
     const profileContent = {
       name: document.querySelector(".profile__name").value,
       position: document.querySelector(".profile__position").value,

@@ -19,6 +19,7 @@ import {
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
+// import { firebaseConfig, app, db, storage } from "../../index.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBXVgQW2Xq5fE1SvaVVutpTgX_6ZaotQhQ",
   authDomain: "photo-management-service.firebaseapp.com",
@@ -29,7 +30,6 @@ const firebaseConfig = {
   measurementId: "G-E657JQPN7T",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -213,6 +213,7 @@ onSnapshot(q, (querySnapshot) => {
     // 해시값 변화 감지
     window.addEventListener("hashchange", handleHashChange);
     // 초기 로딩 시 해시값에 따른 초기 상태 설정
+
     handleHashChange();
   });
 });
@@ -221,9 +222,15 @@ function handleHashChange() {
   const hash = location.hash;
   const itemId = hash.substring(1);
   const targetItem = document.getElementById(itemId);
-  if (targetItem) {
-    targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  window.addEventListener("load", () => {
+    console.log("A");
+    if (targetItem) {
+      targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+  // if (targetItem) {
+  //   targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
+  // }
 }
 
 function deleteDocument(documentId) {
