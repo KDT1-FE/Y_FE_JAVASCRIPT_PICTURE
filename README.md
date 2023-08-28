@@ -26,3 +26,5 @@
 
 ### ❌ 리팩토링
 ![사진](https://firebasestorage.googleapis.com/v0/b/fcjsspa.appspot.com/o/2023-08-24%2018%2037%2014.png?alt=media&token=a1c171e1-7e17-4989-9908-24234e47effd) 
+
+1. 발생한 문제
