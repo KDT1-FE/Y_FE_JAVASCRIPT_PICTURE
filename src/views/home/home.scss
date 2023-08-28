@@ -11,6 +11,10 @@
   background-color: var(--import-bg-color);
 }
 
+.members__row {
+  cursor: pointer;
+}
+
 .jumbotron {
   &__container {
     display: flex;

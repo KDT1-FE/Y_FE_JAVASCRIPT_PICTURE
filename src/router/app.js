@@ -33,12 +33,12 @@ const router = async () => {
 
   const potentialMatches = routes.map((route) => {
     return {
-      route: route,
+      route,
       result: location.pathname.match(pathToRegex(route.path)),
     }
   })
 
-  let match = potentialMatches.find((potentialMatch) => potentialMatch.result !== null)
+  let match = potentialMatches.find((potentialMatch) => potentialMatch.result != null)
 
   if (!match) {
     match = {
@@ -48,7 +48,7 @@ const router = async () => {
   }
 
   const view = await new match.route.view(getParams(match))
-  document.querySelector('#app').innerHTML = await view.getHtml()
+  document.getElementById('app').innerHTML = await view.getHtml()
 
   const path = location.pathname
   if (path === '/') await initHome()
@@ -58,13 +58,15 @@ const router = async () => {
 
 window.addEventListener('popstate', router)
 
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
   router()
-  document.querySelector('#app').addEventListener('click', (e) => {
-    if (e.target.classList.contains('members__row')) {
-      const memberId = e.target.getAttribute('data-id')
-      const newUrl = `/members/${memberId}`
-      navigateTo(newUrl)
+  document.getElementById('app').addEventListener('click', (e) => {
+    if (!e.target.classList.contains('members__row')) {
+      return
     }
+    const memberEl = e.target
+    const memberId = memberEl.dataset.id
+    const newUrl = `/members/${memberId}`
+    navigateTo(newUrl)
   })
-}
+})

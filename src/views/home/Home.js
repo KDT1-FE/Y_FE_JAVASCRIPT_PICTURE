@@ -7,7 +7,7 @@ import member3 from '../../asset/member3.png'
 export default class extends AbstractView {
   constructor(params) {
     super(params)
-    this.setTitle('Home')
+    this.setTitle('Project Management Tool')
   }
 
   async getContent() {
