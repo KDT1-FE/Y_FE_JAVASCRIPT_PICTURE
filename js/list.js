@@ -8,6 +8,7 @@ import {
   or,
 } from 'firebase/firestore';
 import { db } from './firebase';
+import defaultAvatar from '../assets/images/default-avatar.png';
 
 const createListItem = (key, data) => {
   const customerItem = document.createElement('span');
@@ -44,6 +45,11 @@ const inquireListFunc = querySnapshotArray => {
     const avatarImg = document.createElement('img');
     avatarImg.className = 'avatar-img';
     avatarImg.src = doc.data().avatar;
+    avatarImg.onerror = function () {
+      this.onerror = null;
+      this.src = defaultAvatar;
+    };
+
     avatarWrapper.appendChild(avatarImg);
 
     const customerGrade = createListItem('grade', doc.data().grade);
