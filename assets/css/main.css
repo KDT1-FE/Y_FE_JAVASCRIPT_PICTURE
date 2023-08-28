@@ -24,25 +24,25 @@ textarea {
   }
 
   input {
-    font-size: 0.9em;
+    font-size: 1.2em;
   }
 
   .header {
-    max-width: 100vw;
     position: relative;
     margin: 0 auto;
     z-index: 0;
   }
-  .header__title-deco img {
-    width: 90vw;
-  }
+
   .header__title span {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
+    white-space: nowrap;
   }
 
   .header__myinfo {
-    top: -7.5em;
-    right: -4em;
+    position: absolute;
+    top: -7rem;
+    right: -3rem;
+    z-index: 1;
   }
   .header__myinfo span,
   .header__myinfo a,
@@ -54,20 +54,31 @@ textarea {
   .header__myinfo-deco img {
     position: absolute;
     width: 60vw;
-    top: 9rem;
-    right: 6rem;
+    top: 6rem;
+    right: 3rem;
   }
   .list__util-search {
     position: absolute;
     top: -3em;
     left: 0;
-    width: 0.5em;
+    width: 0.7em;
+    z-index: 2;
+  }
+  .list__util-search input {
+    font-size: 0.95em;
   }
 
   .btn-regi {
     position: absolute;
     top: -3em;
     right: 0;
+  }
+  .btn-edit {
+    color: #000;
+  }
+
+  .btn-delete {
+    color: #000;
   }
 
   .mobile-sidebar {
@@ -98,6 +109,8 @@ textarea {
     max-width: 100vw;
     height: 100vh;
     z-index: 0;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
   }
 
   .list__actual th:nth-child(4),
@@ -165,7 +178,7 @@ textarea {
 
 .header {
   background-image: url(/assets/images/bg_top.png);
-  max-width: 70vw;
+  max-width: 100%;
   height: 253px;
   object-fit: cover;
   margin: 0 auto;
