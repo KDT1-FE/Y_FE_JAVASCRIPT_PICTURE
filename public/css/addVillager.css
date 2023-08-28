@@ -10,52 +10,55 @@ body {
   width: 100%;
   max-width: 20rem;
   height: auto;
+
   margin-top: 2rem;
 }
 
 .profile-wrap {
   width: 70%;
   height: 44rem;
+
   background-color: rgba(252, 241, 224, 0.8);
+
   margin: 1rem auto;
+
   border-radius: 3rem;
   border: none;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
 .header-text {
   color: var(--darkest-green);
+
   margin-top: 3rem;
 }
 
 .profile-main {
-  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  width: 80%;
+
   padding: 1rem 0;
-  align-items: flex-start;
+  margin: 0 auto;
+
+  width: 80%;
 }
 
 .profile-left {
-  display: flex;
-  flex-direction: column;
   padding: 2rem 3rem;
-  text-align: center;
-  align-items: center;
 }
 
 .villager-img {
   width: 18rem;
   max-height: 25rem;
+
   cursor: pointer;
 }
 
 .villager-img:hover {
   opacity: 0.8;
+
   transition: 0.4s;
 }
 
@@ -64,17 +67,15 @@ body {
 }
 
 .profile-right {
-  padding: 0 2rem 2rem 2rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  padding: 0 2rem;
 }
 
 .profile-ul {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
+
   margin-top: 2rem;
 }
 
@@ -83,35 +84,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   width: 100%;
+
   margin: 1rem;
 }
 
 .villager-info-li {
   margin: 1rem;
-  text-align: center;
+  margin-right: 2rem;
+
   font-size: 1.2rem;
   font-weight: 800;
-  margin-right: 2rem;
 }
 
 .villager-info-input-li {
   margin: 0.6rem;
+
   width: 100%;
 }
 
 .villager-info-input {
   width: 100%;
   height: 1.9rem;
+
   border: none;
   border-bottom: solid 1px var(--middle-green);
+
   background-color: #00ff0000;
+
   font-size: 1rem;
 }
 
 .villager-info-input:focus {
   outline: none;
+
   border-bottom: solid 3.5px var(--middle-green);
+
   transition: 0.3s;
 }
 
@@ -119,19 +128,26 @@ body {
   width: 100%;
   max-width: 10rem;
   height: 4rem;
+
   border-radius: 1rem;
   border-style: none;
-  font-size: 1.5rem;
-  background-color: var(--bright-green);
+
   color: var(--darkest-green);
+  font-size: 1.5rem;
   font-weight: 600;
+
+  background-color: var(--bright-green);
+
   cursor: pointer;
-  margin: 1rem auto 2rem auto;
+
+  margin: 2rem auto;
 }
 
 .add-btn:hover {
   background-color: var(--middle-green);
+
   color: var(--bright-green);
+
   transition: 0.4s;
 }
 
@@ -161,15 +177,19 @@ body {
 
   .villager-info-li {
     margin: 1.1rem;
+    margin-right: 2rem;
+
     text-align: center;
+
     font-size: 1rem;
     font-weight: 800;
-    margin-right: 2rem;
   }
 
   .add-btn {
     max-width: 8rem;
+
     bottom: 1rem;
+
     font-size: 1.3rem;
   }
 }

@@ -9,17 +9,22 @@ body {
 .header-logo {
   width: 20rem;
   height: 8rem;
+
   margin-top: 2rem;
 }
 
 .profile-wrap {
   width: 70%;
   height: 45rem;
+
   background-color: rgba(252, 241, 224, 0.8);
+
   margin: 0 auto;
   margin-top: 1rem;
+
   border-radius: 3rem;
   border: none;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,29 +35,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 8rem;
 }
 
 .profile-main {
   margin: 0 auto;
+
   display: flex;
   flex-direction: row;
-  width: 80%;
-  align-items: center;
   justify-content: space-between;
+
+  width: 80%;
 }
 
 .profile-left {
-  margin: 0 3rem 1rem 3rem;
+  margin: 0 3rem;
 }
 
 .loading {
   width: 50px;
   height: 50px;
+
   border: 5px solid rgba(255, 255, 255, 0.3);
   border-top: 5px solid var(--bright-green);
   border-radius: 50%;
+
   animation: spin 1s linear infinite;
+
   margin: 0 auto;
   margin-left: 5rem;
 }
@@ -75,7 +85,7 @@ body {
 }
 
 .profile-right {
-  margin: 0 5rem 2rem 5rem;
+  margin: 0 5rem 1rem;
 }
 
 .profile-info-h2 {
@@ -85,12 +95,15 @@ body {
 
 .profile-info-hr {
   border: solid 0.15rem var(--darkest-green);
+
   margin: 2rem 0;
+
   width: 25rem;
 }
 
 .profile-info-ul {
   display: flex;
+
   padding: 0;
   margin: 0;
 }
@@ -99,6 +112,7 @@ body {
 .villager-info {
   padding: 0;
   margin: 0;
+
   display: flex;
   flex-direction: column;
   align-items: first baseline;
@@ -108,39 +122,42 @@ body {
   margin-right: 5rem;
 }
 
-.villager-info-name,
-.villager-info-engName,
-.villager-info-birthday,
-.villager-info-sex,
-.villager-info-personality,
-.villager-info-favoriteColor,
-.villager-info-speechHabit {
+.villager-info {
   margin: 0.85rem 0;
+
   font-size: 1.2rem;
 }
 
 .profile-info-li {
   font-weight: bold;
   font-size: 1.3rem;
+
   margin: 0.8rem;
 }
 
 .edit-btn {
   width: 10rem;
   height: 4rem;
+
   border-radius: 1rem;
   border-style: none;
-  font-size: 1.5rem;
-  background-color: var(--bright-green);
+
   color: var(--darkest-green);
+  font-size: 1.5rem;
   font-weight: 600;
+
+  background-color: var(--bright-green);
+
   cursor: pointer;
+
   margin-bottom: 2rem;
 }
 
 .edit-btn:hover {
   background-color: var(--middle-green);
+
   color: var(--bright-green);
+
   transition: 0.4s;
 }
 
@@ -158,6 +175,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+
     padding: 2rem;
   }
 
@@ -172,9 +190,12 @@ body {
 
   .profile-info-li {
     margin: 0.9rem;
+
     text-align: center;
+
     font-size: 1.1rem;
     font-weight: 800;
+
     margin-right: 2rem;
   }
 
@@ -186,12 +207,14 @@ body {
   .villager-info-favoriteColor,
   .villager-info-speechHabit {
     font-size: 1.1rem;
+
     margin: 0.9rem 0;
   }
 
   .edit-btn {
     width: 8rem;
     height: 3.5rem;
+
     font-size: 1.2rem;
   }
 }
