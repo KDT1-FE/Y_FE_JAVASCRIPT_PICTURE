@@ -5,7 +5,7 @@ import { handleBtn, handleRemoveAction } from './btnEventHandler'
 import { initModal, closeModal, beforeCloseModal } from '/src/utils/modalUtils'
 import { setupImagePreview, handlePreviewImg, clearPreviewImage } from '/src/utils/previewimg'
 import { formValidation } from '/src/utils/validationUtils'
-import { enableForm, readonlyForm } from '/src/utils/formUtils'
+import { enableForm, disableForm } from '/src/utils/formUtils'
 import { initDetail } from './detail'
 import { removeDB, removeStorage } from '/src/utils/firebaseUtils'
 
@@ -67,7 +67,7 @@ function initUpload() {
       closeModal(addForm)
 
       if (imageUrlInfo) {
-        imageUrlInfo.revokeImageUrl()
+        imageUrlInfo.revokeImageUrl
       }
     } catch (error) {
       console.error('Error during form submission: ', error)
@@ -109,7 +109,7 @@ function detailForm() {
   const inputEls = editForm.querySelectorAll('.forms.edit')
   const selectEl = editForm.querySelector('.form-select.edit')
   const fileEl = editForm.querySelector('.input-file.edit')
-  readonlyForm(inputEls, selectEl, fileEl)
+  disableForm(inputEls, selectEl, fileEl)
 
   toggleButtons(true, true, false, true)
 

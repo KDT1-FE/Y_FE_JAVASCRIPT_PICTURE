@@ -2,7 +2,7 @@ import headerTemplate from './components/header.hbs'
 import footerTemplate from './components/footer.hbs'
 
 export default class {
-  constructor(params, template) {
+  constructor(params) {
     this.params = params
   }
   /**

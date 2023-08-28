@@ -16,8 +16,8 @@ export function initTeams() {
   const getAllTeams = () => {
     return new Promise((resolve, reject) => {
       try {
-        const q = query(collection(db, 'members'))
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const queryCollection = query(collection(db, 'members'))
+        const unsubscribe = onSnapshot(queryCollection, (querySnapshot) => {
           const teamNames = new Set()
           querySnapshot.forEach((doc) => {
             teamNames.add(doc.data().team)
@@ -36,12 +36,9 @@ export function initTeams() {
   const getUsersByTeam = (teamName) => {
     return new Promise((resolve, reject) => {
       try {
-        const q = query(collection(db, 'members'), where('team', '==', teamName), orderBy('name'))
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-          const members = []
-          querySnapshot.forEach((doc) => {
-            members.push(doc.data())
-          })
+        const queryCollection = query(collection(db, 'members'), where('team', '==', teamName), orderBy('name'))
+        const unsubscribe = onSnapshot(queryCollection, (querySnapshot) => {
+          const members = querySnapshot.docs.map((doc) => doc.data())
           resolve(members)
         })
       } catch (error) {
@@ -51,7 +48,6 @@ export function initTeams() {
     })
   }
 
-  // 메인 함수: 모든 팀 목록 가져오기 및 사용자 정렬
   const main = async () => {
     try {
       const teamNames = await getAllTeams()

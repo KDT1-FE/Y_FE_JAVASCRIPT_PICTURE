@@ -1,6 +1,6 @@
 import { handleTooltipClick } from './tooltip'
 
-export function buildHTMLList(member) {
+export function buildMemberList(member) {
   const membersRow = document.createElement('div')
   membersRow.className = 'members__row row lazy-load'
   membersRow.setAttribute('data-id', member.id)
@@ -28,8 +28,7 @@ export function buildHTMLList(member) {
   emailSpan.className = 'members__info__email'
   emailSpan.textContent = member.email // 이메일 설정
   membersColInfo.appendChild(infoSpan)
-  infoSpan.appendChild(nameSpan)
-  infoSpan.appendChild(emailSpan)
+  infoSpan.append(nameSpan, emailSpan)
 
   // 포지션 요소 생성
   const membersColPosition = document.createElement('div')

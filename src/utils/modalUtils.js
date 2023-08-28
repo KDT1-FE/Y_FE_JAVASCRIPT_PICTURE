@@ -1,5 +1,5 @@
 import * as bootstrap from 'bootstrap'
-import { enableForm, readonlyForm } from './formUtils'
+import { enableForm, disableForm } from './formUtils'
 
 let myModal
 
@@ -21,7 +21,7 @@ export function beforeCloseModal(inputEls, selectEl, fileEl) {
   const myModal = new bootstrap.Modal(document.getElementById('editModal'))
 
   myModal._element.addEventListener('hide.bs.modal', function (event) {
-    readonlyForm(inputEls, selectEl, fileEl)
+    disableForm(inputEls, selectEl, fileEl)
   })
 }
 

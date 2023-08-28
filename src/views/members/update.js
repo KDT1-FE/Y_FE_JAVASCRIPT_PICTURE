@@ -2,10 +2,14 @@ import { updateDB, uploadStorage, removeStorage } from '/src/utils/firebaseUtils
 
 export async function updateMember(memberId, imgSrc, imageInput) {
   const formData = new FormData(editForm)
-  const nameData = formData.get('name').trim()
-  const emailData = formData.get('email').trim()
-  const teamData = formData.get('team').trim()
-  const positionData = formData.get('position')
+
+  const memberData = {
+    id: memberId,
+    name: formData.get('name').trim(),
+    email: formData.get('email').trim(),
+    team: formData.get('team').trim(),
+    position: formData.get('position'),
+  }
 
   try {
     const newImg = imageInput.files[0]
@@ -16,8 +20,8 @@ export async function updateMember(memberId, imgSrc, imageInput) {
     } else {
       imgUrlFromStorage = imgSrc
     }
-
-    await updateDB(memberId, nameData, emailData, teamData, positionData, imgUrlFromStorage)
+    memberData.image = imgUrlFromStorage
+    await updateDB(memberData)
   } catch (error) {
     console.error('Error during update: ', error)
   }

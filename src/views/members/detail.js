@@ -1,4 +1,4 @@
-import { showPreviewImage } from '../../utils/previewimg'
+import { showPreviewImage } from '/src/utils/previewimg'
 
 export function initDetail() {
   const memberContainer = document.querySelector('.members__contents')
@@ -31,8 +31,11 @@ function handleUpdateAction(updateEl) {
 
 function updateFormFields(memberInfo) {
   const form = document.getElementById('editForm')
-  form.elements['name'].value = memberInfo.name
-  form.elements['email'].value = memberInfo.email
-  form.elements['position'].value = memberInfo.position
-  form.elements['team'].value = memberInfo.team
+  for (const fieldName in memberInfo) {
+    if (Object.hasOwnProperty.call(memberInfo, fieldName)) {
+      if (form.elements[fieldName]) {
+        form.elements[fieldName].value = memberInfo[fieldName]
+      }
+    }
+  }
 }

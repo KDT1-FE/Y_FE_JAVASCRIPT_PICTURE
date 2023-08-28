@@ -2,14 +2,17 @@ import { doc, deleteDoc, addDoc, setDoc, collection, serverTimestamp, query, whe
 import { getDownloadURL, uploadBytesResumable, deleteObject, ref } from 'firebase/storage'
 import { Member, memberConverter } from './FormData'
 import { db, storage } from '/src/api/firebase'
-import { buildHTMLList } from '../views/members/membersList.js'
+import { buildMemberList } from '../views/members/membersList.js'
 import { lazyLoad } from './lazyLoadUtils'
+import crypto from 'crypto'
 
-const collectionName = 'members'
+const COLLECTION_NAME = 'members'
+
+// TODO: Map 이용해서 중복요소 생성 방지하기
 
 // 다운로드
 export function downloadCollection() {
-  const collectionQuery = query(collection(db, collectionName), orderBy('createdAt'))
+  const collectionQuery = query(collection(db, COLLECTION_NAME), orderBy('createdAt'))
   const membersContainer = document.querySelector('.members__contents')
   const dataMap = new Map()
 
@@ -17,11 +20,10 @@ export function downloadCollection() {
     const doc = change.doc
     const id = doc.id
     const memberData = memberConverter.fromFirestore(doc, {})
-    memberData.id = id
-    let oldMemerRow = membersContainer.querySelector(`[data-id="${id}"]`)
+    const oldMemerRow = membersContainer.querySelector(`[data-id="${id}"]`)
 
     if (change.type === 'added' || change.type === 'modified') {
-      const memberRow = buildHTMLList(memberData)
+      const memberRow = buildMemberList(memberData)
       memberRow.setAttribute('data-id', id)
 
       if (oldMemerRow) {
@@ -47,7 +49,7 @@ export function downloadCollection() {
 // DB 제거
 export async function removeDB(memberId) {
   try {
-    const memberRef = doc(db, collectionName, memberId)
+    const memberRef = doc(db, COLLECTION_NAME, memberId)
     await deleteDoc(memberRef)
   } catch (error) {
     console.error('Error deleting member document:', error)
@@ -55,10 +57,10 @@ export async function removeDB(memberId) {
 }
 
 // DB 업로드
-export async function uploadDB(name, email, team, position, image) {
+export async function uploadDB({ name, email, team, position, image }) {
   try {
-    const collectionRef = collection(db, collectionName)
-    const newMemberData = new Member(name, email, team, position, image)
+    const collectionRef = collection(db, COLLECTION_NAME)
+    const newMemberData = new Member({ name, email, team, position, image })
 
     const memberData = {
       ...newMemberData,
@@ -85,10 +87,10 @@ export async function removeStorage(imgSrc) {
 // 스토리지에 업로드
 export async function uploadStorage(file) {
   const fileName = file.name
-  const id = Date.now() / fileName.length
+  const uniqueId = crypto.createHash('sha256').update(fileName).digest('base64') + '_' + Date.now()
 
   try {
-    const storageRef = ref(storage, `images/${fileName}_${id}`)
+    const storageRef = ref(storage, `images/${fileName}_${uniqueId}`)
     const uploadImg = uploadBytesResumable(storageRef, file)
 
     const snapshot = await uploadImg
@@ -102,13 +104,13 @@ export async function uploadStorage(file) {
 }
 
 // db 업데이트
-export async function updateDB(memberId, name, email, team, position, image) {
+export async function updateDB({ id, name, email, team, position, image }) {
   try {
-    const docRef = doc(db, collectionName, memberId)
-    const memberData = new Member(name, email, team, position, image)
-    const firestoreData = memberConverter.toFirestore(memberData)
+    const docRef = doc(db, COLLECTION_NAME, id)
+    const memberData = new Member({ name, email, team, position, image })
+    // const firestoreData = memberConverter.toFirestore(memberData)
     const updatedData = {
-      ...firestoreData,
+      ...memberData,
       updatedAt: serverTimestamp(),
     }
 

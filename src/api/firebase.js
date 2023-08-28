@@ -1,4 +1,6 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
+
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
@@ -12,8 +14,6 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 }
 
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-const storage = getStorage(app)
-
-export { app, db, storage }
+export const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
+export const storage = getStorage(app)
