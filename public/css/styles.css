@@ -6,18 +6,23 @@ body {
 
 .header-logo {
   width: 100%;
-  height: auto;
-  padding: 2rem 0;
   max-width: 25rem;
+  height: auto;
+
+  padding: 2rem 0;
 }
 
 .main {
   width: 90%;
-  background-color: #fcf1e0;
-  border-radius: 3rem;
-  display: inline-block;
   height: auto;
-  margin: 3rem 5rem 4rem 5rem;
+
+  background-color: #fcf1e0;
+
+  border-radius: 3rem;
+
+  display: inline-block;
+
+  margin: 3rem 5rem 4rem;
 }
 
 .main-wrap {
@@ -30,6 +35,7 @@ body {
 
 .main-top-text {
   margin-bottom: 2.5rem;
+
   color: var(--middle-green);
   font-size: 3rem;
 }
@@ -37,19 +43,25 @@ body {
 .add-button {
   width: 100%;
   height: 4rem;
+
   border-radius: 1rem;
   border-style: none;
-  font-size: 1.3rem;
-  background-color: var(--bright-green);
+
   color: var(--darkest-green);
+  font-size: 1.3rem;
   font-weight: 600;
+
+  background-color: var(--bright-green);
+
   cursor: pointer;
 }
 
 .add-button:hover,
 .delete-button:hover {
   background-color: var(--middle-green);
+
   color: var(--bright-green);
+
   transition: 0.4s;
 }
 
@@ -63,7 +75,9 @@ body {
 
 .main-middle-hr {
   border: solid 0.15rem var(--darkest-green);
+
   flex-grow: 1;
+
   margin: 0 1rem;
 }
 
@@ -75,21 +89,25 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
   padding: 0;
   margin: 1rem 0;
 }
 
 .villagers-info-li {
   float: left;
+
   font-size: 1.3rem;
   font-weight: 600;
+
   margin: 0 1rem;
 }
 
 .noVillager-message {
-  text-align: center;
-  margin: 4rem;
   color: var(--middle-green);
+  text-align: center;
+
+  margin: 4rem;
   margin-top: 6rem;
 }
 
@@ -101,19 +119,27 @@ body {
 .villager {
   width: 100%;
   height: 20%;
+
   margin: 0 auto;
+
   border-radius: 3rem;
   border-style: none;
+
   background-color: #fdf6e8;
+
   cursor: pointer;
+
   color: var(--bright-green);
+
   transition: background-color 0.4s, transform 1.9s;
   transform-origin: center;
 }
 
 .villager:hover {
   transition: 0.4s;
+
   background-color: #ebedae;
+
   transform: scale(0.98);
 }
 
@@ -132,26 +158,34 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 3rem 0 0 0;
+
+  margin-top: 3rem;
 }
 
 .villager-info-li {
   float: left;
+
   font-size: 1.4rem;
   font-weight: 600;
+
   margin-top: 3rem;
 }
 
 .delete-button {
   width: 7rem;
   height: 3rem;
+
   border-radius: 1rem;
   border-style: none;
-  font-size: 1rem;
-  background-color: var(--bright-green);
+
   color: var(--darkest-green);
   font-weight: 600;
+  font-size: 1rem;
+
+  background-color: var(--bright-green);
+
   cursor: pointer;
+
   margin-right: 4.5rem;
   margin-bottom: 2rem;
 }
@@ -173,12 +207,14 @@ body {
   .delete-button {
     width: 100%;
     max-width: 7rem;
+
     margin-right: 2rem;
   }
 
   .add-button {
     width: 100%;
     max-width: 12rem;
+
     font-size: 1rem;
   }
 
@@ -193,11 +229,13 @@ body {
   .villagers-info-ul {
     flex-direction: column;
     align-items: flex-start;
+
     margin: 1rem;
   }
 
   .noVillager-message {
     font-size: 1.2rem;
+
     margin: 1rem;
   }
 
@@ -207,16 +245,18 @@ body {
 
   .villager {
     height: 15%;
+
     margin: 0.5rem auto;
   }
 
   .villager .villager-info-ul {
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 1.5rem;
   }
 
   .delete-villager {
