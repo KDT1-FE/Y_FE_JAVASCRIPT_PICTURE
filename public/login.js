@@ -54,14 +54,19 @@ loginDataFormEl.addEventListener("submit", (e) => {
         switch (error.code) {
           case "auth/user-not-found" || "auth/wrong-password":
             alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
+            break;
           case "auth/network-request-failed":
             alert("네트워크 연결에 실패 하였습니다.");
+            break;
           case "auth/invalid-email":
             alert("잘못된 이메일 형식입니다.");
+            break;
           case "auth/internal-error":
             alert("잘못된 요청입니다.");
+            break;
           default:
             alert("이메일 혹은 비밀번호가 일치하지 않습니다.");
+            break;
         }
       });
   }
