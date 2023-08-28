@@ -28,16 +28,15 @@ export const memberStore = new Store({
 
 let response = '';
 export const getMembersData = async () => {
-  memberStore.state.search = false; // 검색 결과 멤버 렌더링이 아닌 모든 멤버 렌더링
+  memberStore.state.search = false;
   const firstQuery = query(collection(db, 'list'), limit(7));
   response = await getDocs(firstQuery);
-  memberStore.state.members = [...handleData(response)];
+  memberStore.state.members = [...convertResponseToArray(response)];
 };
 
 export const getNextMembersData = async () => {
-  memberStore.state.loading = true; //lading
+  memberStore.state.loading = true;
   const lastVisible = response.docs[response.docs.length - 1];
-  // 앞서 기억해둔 문서값으로 새로운 쿼리 요청
   if (response.docs.length !== 0) {
     // 가져올 데이터가 있을 때만
     const nextQuery = query(
@@ -48,7 +47,7 @@ export const getNextMembersData = async () => {
     response = await getDocs(nextQuery);
     memberStore.state.members = [
       ...memberStore.state.members,
-      ...handleData(response),
+      ...convertResponseToArray(response),
     ];
     memberStore.state.loading = false;
   } else {
@@ -92,23 +91,23 @@ export const deleteData = (id, photoUrl) => {
   const desertRef = ref(storage, photoUrl);
   deleteObject(desertRef);
   deleteDoc(doc(db, 'list', id));
-}; // deleteDoc은 promise를 반환 fulfilled 되기까지 Promise 기다림
+};
 
 export const searchData = async (keyword) => {
-  memberStore.state.search = true; // 검색 결과 멤버 렌더링
+  memberStore.state.search = true;
   const searchQuery = query(
-    collection(db, 'list'), // 포스트 컬렉션
+    collection(db, 'list'),
     where('name', '==', keyword)
   );
   const response = await getDocs(searchQuery);
-  memberStore.state.members = [...handleData(response)];
+  memberStore.state.members = [...convertResponseToArray(response)];
 
   const loading = document.querySelector('.the-loader');
   loading.classList.add('hide');
 };
 
-const handleData = (response) => {
-  let responseArray = [];
+const convertResponseToArray = (response) => {
+  const responseArray = [];
   response.forEach((doc) => {
     let memberData = doc.data();
     responseArray.push({
@@ -119,4 +118,4 @@ const handleData = (response) => {
     });
   });
   return responseArray;
-}; // 응답 결과들을 배열로 처리해주는 함수
+};
