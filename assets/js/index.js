@@ -53,6 +53,7 @@ function searchPlant() {
 const openModalButton = document.querySelector(".btn-regi");
 openModalButton.addEventListener("click", () => {
   // Clear form data and reset edit status
+  document.getElementById("printImage").src = "/assets/images/default.png";
   plantsForm.reset();
   editStatus = false;
   id = "";
@@ -66,6 +67,7 @@ openModalButton.addEventListener("click", () => {
 const closeModalButton = document.querySelector(".close-button");
 closeModalButton.addEventListener("click", () => {
   document.getElementById("myModal").style.display = "none";
+  plantsForm.reset();
 });
 
 //LIST
