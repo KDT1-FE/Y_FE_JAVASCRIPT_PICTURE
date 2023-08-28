@@ -1,5 +1,6 @@
 const checklogin=document.querySelector('.checklogin');
 const checkuser=document.querySelector('.checkuser');
+const headertitle = document.querySelector('.headertitle');
 let nums=sessionStorage.getItem("nums");
 const link='login.html';
 const loading = document.querySelector('.spin-container');
@@ -12,6 +13,10 @@ loading.style.zIndex=down;
 
 function hreflink(){
   location.href=link;
+}
+
+function indexlink(){
+  location.href = 'index.html'
 }
 
 if(nums!==null) {
@@ -63,4 +68,8 @@ checklogin.addEventListener('click',()=>{
   }
   })
 
+
+headertitle.addEventListener('click',()=>{
+  indexlink()
+})
 export const innerHTML = checklogin.innerHTML;

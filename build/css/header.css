@@ -20,7 +20,7 @@ header {
   font-size: 2rem;
   display: flex;
   justify-content: space-evenly;
-  cursor: default;
+  cursor: pointer;
 }
 
 .check {
@@ -67,7 +67,7 @@ header {
     font-size: 2rem;
     display: flex;
     justify-content: space-evenly;
-    cursor: default;
+    cursor: pointer;
   }
   .checkuser {
     font-size: 1rem;
@@ -100,7 +100,7 @@ header {
     font-size: .8rem;
     display: flex;
     justify-content: space-evenly;
-    cursor: default;
+    cursor: pointer;
   }
   .checkuser {
     font-size: .5rem;

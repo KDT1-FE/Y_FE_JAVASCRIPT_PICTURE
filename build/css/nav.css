@@ -6,7 +6,8 @@ main {
 
 nav {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  
 }
 
 .button {
@@ -93,6 +94,27 @@ nav {
   cursor: pointer;
 }
 
+
+.search{
+  height: 100%;
+  position: relative;
+}
+
+.searchbox{
+  font-size: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.search span {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+}
+
 @media ( max-width: 1023px ) {
   main {
     padding-left: 3rem;
@@ -161,6 +183,26 @@ nav {
     border-radius: 16px;
     border: 1px solid black;
     font-size: 1rem;
+  }
+
+  .search{
+    height: 100%;
+    position: relative;
+  }
+  
+  .searchbox{
+    font-size: 1rem;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  
+  .search span {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
   }
   
 }
@@ -236,6 +278,26 @@ nav {
     font-size: .7rem;
   }
 
+  .search{
+    height: 100%;
+    position: relative;
+  }
+  
+  .searchbox{
+    font-size: .3rem;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  
+  .search span {
+    font-size: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+  }
 
   
 }

@@ -18,7 +18,9 @@
   <script defer type="module" src="./js/nav.js"></script>
   <script defer type="module" src="./js/section.js"></script>
   <script defer type="module" src="./js/firebase.js"></script>
+  <script defer src="./js/search.js"></script>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/a/ae/Ive_logo_%28Black%29.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <div class="spin-container">
@@ -36,6 +38,10 @@
   <main>
     <nav>
       <div class="modal" id="insertmodal">
+        <div class="button_container">
+          <button class="button" id="insert">정보 등록</button>
+          <button class="button" id="delete">정보 삭제</button>
+        </div>
         <div class="modal-window">
           <div class="title">
               <h2>정보 등록</h2>
@@ -52,9 +58,12 @@
           </div>
       </div>
       </div>
-      <div class="button_container">
-        <button class="button" id="insert">정보 등록</button>
-        <button class="button" id="delete">정보 삭제</button>
+      
+      <div class="search">
+        <input type="text" class="searchbox" placeholder="최애를 검색해보세요!">
+        <span class="material-symbols-outlined">
+            search
+        </span>
       </div>
     </nav>
     <section>
