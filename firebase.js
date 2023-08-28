@@ -3,14 +3,18 @@ import { getFirestore, collection } from 'https://www.gstatic.com/firebasejs/10.
 import { getStorage } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
 
 const { APIKEY } = process.env;
+const { AUTHDOMAIN } = process.env;
+const { STORAGEBUCKET } = process.env;
+const { MESSAGINGSENDERID } = process.env;
+const { APPID } = process.env;
 
 const firebaseConfig = {
   apiKey: `${APIKEY}`,
-  authDomain: 'member-management-a0113.firebaseapp.com',
+  authDomain: `${AUTHDOMAIN}`,
   projectId: 'member-management-a0113',
-  storageBucket: 'member-management-a0113.appspot.com',
-  messagingSenderId: '945069285797',
-  appId: '1:945069285797:web:a1a985ee443e896ba5c84c',
+  storageBucket: `${STORAGEBUCKET}`,
+  messagingSenderId: `${MESSAGINGSENDERID}`,
+  appId: `${APPID}`,
 };
 
 initializeApp(firebaseConfig);
@@ -20,5 +24,17 @@ export const colRef = collection(db, 'characters');
 
 export const storage = getStorage();
 
-export { getDocs, getDoc, addDoc, deleteDoc, doc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
-export { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
+export {
+  getDocs,
+  getDoc,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+export {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+} from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js';
