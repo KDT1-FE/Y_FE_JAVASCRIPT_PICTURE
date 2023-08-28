@@ -27,7 +27,7 @@ export default class AddMember extends Component {
         <div class="modal__wrapper">
             <div class="modal__header">
                 <p>계곡 사진과 정보를 입력하세요</p>
-                <button class="modal__close">X</button>
+                <button type="button" class="modal__close">X</button>
             </div>
             <div class="modal__content">
                 <div class="modal__banner--form">

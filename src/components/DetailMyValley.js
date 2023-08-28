@@ -32,8 +32,8 @@ export default class DetailMyValley extends Component {
                 </div>
                 <div class="about__banner--additional"></div>
                 <div class="about__banner--address">
-                    <button class="about__banner--address-button btn btn-primary">지도보기</button>
-                    <button class="update-btn btn btn-secondary">정보수정하기</button>
+                    <button type="button" class="about__banner--address-button btn btn-primary">지도보기</button>
+                    <button type="button" class="update-btn btn btn-secondary">정보수정하기</button>
                 </div>
             </div>
         </div>

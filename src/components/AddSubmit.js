@@ -15,7 +15,7 @@ export default class AddSubmit extends Component {
                 <h1>데이터를 저장하시겠습니까?</h1>
             </div>
             <div class="add-submit__bottom">
-                <button class="add-submit__cancel">취소</button>
+                <button type="button" class="add-submit__cancel">취소</button>
             </div>
         `;
     }

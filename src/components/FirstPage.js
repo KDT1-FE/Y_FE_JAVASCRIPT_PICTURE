@@ -18,7 +18,7 @@ export default class Firstpage extends Component {
             <ul class="first__page--list">
                 <li id="next_add" class="fist-space space">아래로 스크롤 해보세요</li>
                 <li class="last-space space">
-                    <button class="enter__button">ENTER</button>
+                    <button type="button" class="enter__button">ENTER</button>
                 </li>           
             </ul>
         </div>

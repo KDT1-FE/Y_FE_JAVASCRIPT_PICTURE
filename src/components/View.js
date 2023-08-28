@@ -20,7 +20,7 @@ export default class View extends Component {
                     </div>
                     <div class="view__banner--search-container">
                         <input class="view__banner--search" type="text" placeholder="검색어를 입력하세요"/>
-                        <button class="view__banner--search-btn">Search</button>
+                        <button type="button" class="view__banner--search-btn">Search</button>
                     </div>
                 </div>
                 <div class="view__banner--wrapper"></div>

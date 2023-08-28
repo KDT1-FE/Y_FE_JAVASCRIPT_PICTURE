@@ -37,8 +37,8 @@ export default class UpdateAndDeleteModal extends Component {
                                 />
                             </div>
                             <div class="fix__modal--buttons">
-                                <button class="updateBtn">수정</button>
-                                <button class="deleteButton">삭제</button>
+                                <button type="button" class="updateBtn">수정</button>
+                                <button type="button" class="deleteButton">삭제</button>
                             </div>
                         </div>
                         <div class="fix__modal--right">
@@ -64,7 +64,7 @@ export default class UpdateAndDeleteModal extends Component {
                         </div>
                     </div>
                 </div>
-                <button class="fix__modal--close">X</button>
+                <button type="button" class="fix__modal--close">X</button>
             </div>
         `;
         this.el.classList.add('fix__modal');
