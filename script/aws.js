@@ -1,10 +1,12 @@
-import AWSKeys from './key.js';
+// import AWSKeys from './key.js';
+const { ACCESS_KEY_ID, SECRET_ACCESS_KEY } = process.env; 
+
 function onFileUpload(e) {
     const S3_BUCKET = 'employee-management-picture';
 
     const AWS_CONFIG = {
-        accessKeyId: AWSKeys.NETLIFY_S3_ACCESS_KEY_ID,
-        secretAccessKey: AWSKeys.NETLIFY_S3_SECRET_ACCESS_KEY,
+        accessKeyId: ACCESS_KEY_ID,
+        secretAccessKey: SECRET_ACCESS_KEY,
         region: 'ap-northeast-2'
     };
 

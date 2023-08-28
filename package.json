@@ -1,0 +1,17 @@
+{
+  "name": "y_fe_javascript_picture",
+  "description": "카페 직원들의 정보를 관리하는 서비스입니다.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "build": "parcel build ./index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "parcel": "^2.9.3"
+  },
+}
