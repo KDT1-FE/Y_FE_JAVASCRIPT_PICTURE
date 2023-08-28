@@ -27,7 +27,7 @@ body {
 }
 
 .header-text {
-  color: #3f5d4d;
+  color: var(--darkest-green);
   margin-top: 3rem;
 }
 
@@ -104,14 +104,14 @@ body {
   width: 100%;
   height: 1.9rem;
   border: none;
-  border-bottom: solid 1px #547a66;
+  border-bottom: solid 1px var(--middle-green);
   background-color: #00ff0000;
   font-size: 1rem;
 }
 
 .villager-info-input:focus {
   outline: none;
-  border-bottom: solid 3.5px #547a66;
+  border-bottom: solid 3.5px var(--middle-green);
   transition: 0.3s;
 }
 
@@ -122,16 +122,16 @@ body {
   border-radius: 1rem;
   border-style: none;
   font-size: 1.5rem;
-  background-color: #71b38f;
-  color: #3f5d4d;
+  background-color: var(--bright-green);
+  color: var(--darkest-green);
   font-weight: 600;
   cursor: pointer;
   margin: 1rem auto 2rem auto;
 }
 
 .add-btn:hover {
-  background-color: #547a66;
-  color: #71b38f;
+  background-color: var(--middle-green);
+  color: var(--bright-green);
   transition: 0.4s;
 }
 

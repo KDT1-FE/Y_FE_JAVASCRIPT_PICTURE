@@ -30,7 +30,7 @@ body {
 
 .main-top-text {
   margin-bottom: 2.5rem;
-  color: #456252;
+  color: var(--middle-green);
   font-size: 3rem;
 }
 
@@ -40,16 +40,16 @@ body {
   border-radius: 1rem;
   border-style: none;
   font-size: 1.3rem;
-  background-color: #71b38f;
-  color: #3f5d4d;
+  background-color: var(--bright-green);
+  color: var(--darkest-green);
   font-weight: 600;
   cursor: pointer;
 }
 
 .add-button:hover,
 .delete-button:hover {
-  background-color: #547a66;
-  color: #71b38f;
+  background-color: var(--middle-green);
+  color: var(--bright-green);
   transition: 0.4s;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 .main-middle-hr {
-  border: solid 0.15rem #3f5d4d;
+  border: solid 0.15rem var(--darkest-green);
   flex-grow: 1;
   margin: 0 1rem;
 }
@@ -89,7 +89,7 @@ body {
 .noVillager-message {
   text-align: center;
   margin: 4rem;
-  color: #547865;
+  color: var(--middle-green);
   margin-top: 6rem;
 }
 
@@ -106,7 +106,7 @@ body {
   border-style: none;
   background-color: #fdf6e8;
   cursor: pointer;
-  color: #71b38f;
+  color: var(--bright-green);
   transition: background-color 0.4s, transform 1.9s;
   transform-origin: center;
 }
@@ -148,8 +148,8 @@ body {
   border-radius: 1rem;
   border-style: none;
   font-size: 1rem;
-  background-color: #71b38f;
-  color: #3f5d4d;
+  background-color: var(--bright-green);
+  color: var(--darkest-green);
   font-weight: 600;
   cursor: pointer;
   margin-right: 4.5rem;

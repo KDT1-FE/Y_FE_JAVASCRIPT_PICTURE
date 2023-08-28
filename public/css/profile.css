@@ -50,7 +50,7 @@ body {
   width: 50px;
   height: 50px;
   border: 5px solid rgba(255, 255, 255, 0.3);
-  border-top: 5px solid #71b38f;
+  border-top: 5px solid var(--bright-green);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto;
@@ -80,11 +80,11 @@ body {
 
 .profile-info-h2 {
   font-size: 1.8rem;
-  color: #3f5d4d;
+  color: var(--darkest-green);
 }
 
 .profile-info-hr {
-  border: solid 0.15rem #3f5d4d;
+  border: solid 0.15rem var(--darkest-green);
   margin: 2rem 0;
   width: 25rem;
 }
@@ -131,16 +131,16 @@ body {
   border-radius: 1rem;
   border-style: none;
   font-size: 1.5rem;
-  background-color: #71b38f;
-  color: #3f5d4d;
+  background-color: var(--bright-green);
+  color: var(--darkest-green);
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 2rem;
 }
 
 .edit-btn:hover {
-  background-color: #547a66;
-  color: #71b38f;
+  background-color: var(--middle-green);
+  color: var(--bright-green);
   transition: 0.4s;
 }
 
