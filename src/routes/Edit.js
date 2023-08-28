@@ -8,7 +8,7 @@ export default class Edit extends Component {
   async render() {
     const member = await getMemberDetail(getUrlParam());
     if (!member) {
-      return navigate('/#/not-found');
+      return navigate('/not-found');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
     this.componentRoot.innerHTML = `
   <form class="detail">

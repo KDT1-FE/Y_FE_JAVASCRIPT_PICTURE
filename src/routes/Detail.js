@@ -23,7 +23,7 @@ export default class Detail extends Component {
     this.componentRoot.prepend(new Header().componentRoot);
     const member = await getMemberDetail(getUrlParam());
     if (!member) {
-      return navigate('/#/not-found');
+      return navigate('/not-found');
     } // 해당 아이디를 가진 멤버가 존재하지 않을 때
     this.componentRoot.innerHTML = `
     <main class="detail">
@@ -47,7 +47,7 @@ export default class Detail extends Component {
     this.componentRoot.prepend(new Header().componentRoot);
     const navigateEditButton = this.componentRoot.querySelector('button');
     navigateEditButton.addEventListener('click', () =>
-      navigate(`/#/edit?id=${member.id}`)
+      navigate(`/edit?id=${member.id}`)
     );
   }
 }

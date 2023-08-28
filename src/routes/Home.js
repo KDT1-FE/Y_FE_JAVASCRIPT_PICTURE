@@ -34,7 +34,7 @@ export default class Home extends Component {
      */
 
     const addButton = this.componentRoot.querySelector('#navigate-write');
-    addButton.addEventListener('click', () => navigate('/#/write'));
+    addButton.addEventListener('click', () => navigate('/write'));
 
     const deleteMembers = async () => {
       await Promise.all(
