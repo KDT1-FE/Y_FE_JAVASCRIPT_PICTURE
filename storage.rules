@@ -1,0 +1,10 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /image/{allPaths=**} {
+      allow read: if true;  // 모든 사용자에게 읽기 권한을 부여
+      allow write: if true; // 모든 사용자에게 쓰기 권한을 거부
+    }
+  }
+}
