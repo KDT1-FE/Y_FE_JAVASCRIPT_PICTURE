@@ -231,8 +231,9 @@ function deleteDocument(documentId) {
 
   deleteDoc(documentRef)
     .then(() => {
-      alert("삭제 완료!");
+      // alert("삭제 완료!");
       window.location.reload();
+      // localStorage.removeItem("toastMessage");
     })
     .catch((error) => {
       console.error("삭제 중 오류 발생", error);
@@ -241,9 +242,12 @@ function deleteDocument(documentId) {
 
 function deleteEvent(target, doc) {
   target.addEventListener("click", () => {
-    deleteDocument(doc.id);
-    let imageRef = ref(storage, ref(doc.data().image));
-    deleteObject(imageRef);
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      deleteDocument(doc.id);
+      let imageRef = ref(storage, ref(doc.data().image));
+      localStorage.setItem("toastMessage", "삭제되었습니다!");
+      deleteObject(imageRef);
+    }
   });
 }
 
