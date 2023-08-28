@@ -52,23 +52,35 @@ imageInputEl.addEventListener('change', () => changeAvatar(coustomerId));
 const modifyBtn = document.querySelector('.modify');
 const imgRemoveBtn = document.querySelector('.img-remove-btn');
 
-// 수정관련 버튼 토글 함수
-const toggleModifyBtn = () => {
-  // input 태그 입력 가능/불가능
+// input 태그 입력 가능/불가능
+const inputDisabledToggle = () => {
   document.querySelectorAll('.modify-input').forEach(input => {
     input.disabled ? (input.disabled = false) : (input.disabled = true);
   });
-  // '정보 수정' 버튼 숨기기/보여주기 토글
+};
+// '정보 수정' 버튼 숨기기/보여주기 토글
+const modifyBtnShowToggle = () => {
   modifyBtn.classList.toggle('hidden');
-  // 만약 사진 url 값이 있다면 이미지 '삭제하기' 버튼 숨기기/보여주기 토글
+};
+// 만약 사진 url 값이 있다면 이미지 '삭제하기' 버튼 숨기기/보여주기 토글
+const deleteBtnShowToggle = () => {
   if (imgTextInput.value) {
     document.querySelector('.avatar-label').classList.toggle('hidden');
     imgRemoveBtn.classList.toggle('hidden');
   }
-  // '취소하기','수정하기' 버튼 숨기기/보여주기 토글
+};
+// '수정하기' 버튼 숨기기/보여주기 토글
+const submitBtnShowToggle = () => {
   document.querySelectorAll('.modifying').forEach(el => {
     el.classList.toggle('hidden');
   });
+};
+// 수정관련 버튼 토글 함수
+const toggleModifyBtn = () => {
+  inputDisabledToggle();
+  modifyBtnShowToggle();
+  deleteBtnShowToggle();
+  submitBtnShowToggle();
 };
 
 // '수정하기' 버튼 클릭 시 정보 수정할 수 있도록 변경
