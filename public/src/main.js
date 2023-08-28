@@ -22,12 +22,8 @@ const loadMoreVillagers = () => {
         querySnapshot.forEach((doc) => {
           const data = doc.data();
 
-          const name = data.name;
-          const sex = data.sex;
-          const birthday = data.birthday;
-          const personality = data.personality;
-          const favoriteColor = data.favoriteColor;
-          const imageUrl = data.imageUrl;
+          const { name, sex, birthday, personality, favoriteColor, imageUrl } =
+            data;
 
           //div 새로 만들기
           const villagerContainer = document.createElement("div");
@@ -117,12 +113,8 @@ collectionRef
       querySnapshot.forEach((doc) => {
         const data = doc.data();
 
-        const name = data.name;
-        const sex = data.sex;
-        const birthday = data.birthday;
-        const personality = data.personality;
-        const favoriteColor = data.favoriteColor;
-        const imageUrl = data.imageUrl;
+        const { name, sex, birthday, personality, favoriteColor, imageUrl } =
+          data;
 
         // div 새로 만들기
         const villagerContainer = document.createElement("div");

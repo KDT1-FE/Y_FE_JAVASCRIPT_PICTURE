@@ -11,14 +11,16 @@ villagerDocRef.get().then((doc) => {
   if (doc.exists) {
     const data = doc.data();
 
-    const name = data.name;
-    const engName = data.engName;
-    const sex = data.sex;
-    const birthday = data.birthday;
-    const personality = data.personality;
-    const favoriteColor = data.favoriteColor;
-    const speechHabit = data.speechHabit;
-    const imageUrl = data.imageUrl;
+    const {
+      name,
+      engName,
+      sex,
+      birthday,
+      personality,
+      favoriteColor,
+      speechHabit,
+      imageUrl,
+    } = data;
 
     //ul 새로 만들기
     const profileContainer = document.createElement("ul");
