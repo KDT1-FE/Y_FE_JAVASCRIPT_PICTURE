@@ -10,14 +10,12 @@ loginButton.addEventListener("click", () => {
   } else if (password === "") {
     // 비밀번호 오류 메세지 1 (입력된 값이 없을때)
     errorMessage.textContent = "비밀번호를 입력해주세요!";
-    errorMessage.style.display = "block";
     setTimeout(()=>{
       errorMessage.textContent = "";
     }, 3000)
   } else {
     // 비밀번호 오류 메세지 2 (비밀번호가 틀렸을때)
     errorMessage.textContent = "비밀번호를 다시 확인해주세요!";
-    errorMessage.style.display = "block";
     setTimeout(()=>{
       errorMessage.textContent = "";
     }, 3000)

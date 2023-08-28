@@ -1,12 +1,7 @@
 // ---------------------------------------------------------------------------------
 // Firebase SDK
-import { firebaseConfig } from './firebaseConfig.js';
-
-// Firebase 초기화
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-const storage = firebase.storage();
+import { initializeFirebase } from './firebaseSDK.js';
+const { db, storage } = initializeFirebase();
 
 $(document).ready(function () {
   const urlParams = new URLSearchParams(window.location.search);
@@ -33,7 +28,7 @@ $(document).ready(function () {
       .catch((error) => {
         console.log('Error getting document:', error);
       });
-      
+
     // 수정 버튼 클릭 시 데이터 수정
     $('#sendButton').click(function () {
       const updatedData = {
@@ -46,6 +41,20 @@ $(document).ready(function () {
 
       // 이미지 업로드 처리
       const selectedImage = $('#photoInput')[0].files[0];
+
+      // 데이터 업로드 함수
+      const dataUpload = () => {
+        docRef
+          .update(updatedData)
+          .then(() => {
+            console.log('문서 업데이트 완료');
+            window.location.href = '/albaSelect.html';
+          })
+          .catch((error) => {
+            console.error('오류 발생:', error);
+          });
+      };
+
       if (selectedImage) {
         const storageRef = storage.ref(`images/${selectedImage.name}`);
         storageRef
@@ -56,32 +65,14 @@ $(document).ready(function () {
           .then((downloadURL) => {
             // 업로드된 이미지 URL을 데이터와 함께 업데이트
             updatedData.이미지 = downloadURL;
-            // 데이터 업데이트
-            docRef
-              .update(updatedData)
-              .then(() => {
-                console.log('문서 업데이트 완료');
-                window.location.href = '/albaSelect.html';
-              })
-              .catch((error) => {
-                console.error('오류 발생:', error);
-              });
+            dataUpload();
           })
           .catch((error) => {
             console.error('이미지 업로드 오류:', error);
           });
       } else {
         // 이미지가 선택되지 않은 경우 데이터만 업데이트
-        docRef
-          .update(updatedData)
-          .then(() => {
-            window.location.href = '/albaSelect.html';
-            console.log('문서 업데이트 완료');
-          })
-          .catch((error) => {
-            alert('등록실패!');
-            console.log(err);
-          });
+        dataUpload();
       }
     });
 

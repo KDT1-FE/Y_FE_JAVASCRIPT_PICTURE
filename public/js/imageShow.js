@@ -1,17 +1,18 @@
-// 이미지 등록 시 미리보기 기능
-function handleImageChange(event) {
-  const imagePreview = document.getElementById("imagePreview");
-  const selectedImage = event.target.files[0];
+const photoInput = document.getElementById('photoInput');
+photoInput.addEventListener('change', (event) => handleImageChange(event));
 
+// 이미지 등록 시 미리보기 기능
+const handleImageChange = (event) => {
+  const imagePreview = document.getElementById('imagePreview');
+  const selectedImage = event.target.files[0];
+  let imageURL = '../assets/pictures/no-image.png';
+  
   if (selectedImage) {
     // 이미지 등록 시
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      imagePreview.setAttribute("src", e.target.result); // 등록한 파일로 이미지변경
+    imageURL = URL.createObjectURL(selectedImage);
+    imagePreview.src = imageURL; // 등록한 파일로 미리보기 주소변경
+    imagePreview.onload = () => {
+      URL.revokeObjectURL(imageURL); // 이미지가 로드되면 URL 해제
     };
-    reader.readAsDataURL(selectedImage);
-  } else {
-    // 이미지 등록이 안된 상태는 기본 이미지 출력
-    imagePreview.setAttribute("src", "../assets/pictures/no-image.png");
-  }
-}
+  } 
+};

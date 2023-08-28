@@ -1,15 +1,11 @@
 // Firebase SDK
-import { firebaseConfig } from './firebaseConfig.js';
+import { initializeFirebase } from './firebaseSDK.js';
+const { db, storage } = initializeFirebase();
 
-// Firebase 초기화
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-const storage = firebase.storage();
 
 $('#sendButton').click(function () {
   const imagePreview = document.getElementById('imagePreview');
-  const imageUrl = imagePreview.getAttribute('src');
+  const imageUrl = imagePreview.src;
   // 이미지파일 유효성 검사
   if (imageUrl === '../assets/pictures/no-image.png') {
     alert('이미지를 선택해주세요.');
@@ -28,10 +24,10 @@ $('#sendButton').click(function () {
   }
 
   // 이미지 파일 선택
-  var file = document.querySelector('#photoInput').files[0];
-  var storageRef = storage.ref();
-  var 저장할경로 = storageRef.child('image/' + file.name + $('#name'));
-  var 업로드작업 = 저장할경로.put(file);
+  let file = document.querySelector('#photoInput').files[0];
+  let storageRef = storage.ref();``
+  let 저장할경로 = storageRef.child(`image/${file.name}${$('#name')}`);
+  let 업로드작업 = 저장할경로.put(file);
 
   // 이미지 업로드 기능
   업로드작업.on(
@@ -77,7 +73,7 @@ $('#sendButton').click(function () {
 // '이전으로' 버튼 기능
 const backButton = document.querySelector('.back-button');
 backButton.addEventListener('click', () => {
-  window.history.go(-1);
+  window.history.back();
 });
 
 // ------------------------------------------------------------------------

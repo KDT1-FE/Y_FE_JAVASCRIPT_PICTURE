@@ -83,12 +83,13 @@ body {
 }
 
 .password-check .error-message {
+  display: block;
   color: #d9534f;
   font-size: 1.2rem;
   font-weight: 500;
-  display: none;
   margin-top: 1rem;
 }
+
 
 @keyframes fadeInUp {
   to {

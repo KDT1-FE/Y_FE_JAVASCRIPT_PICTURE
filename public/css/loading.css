@@ -1,5 +1,9 @@
+:root {
+  --display: flex;
+}
+
 .loading-screen {
-  display: flex;
+  display: var(--display);
   position: fixed;
   justify-content: center;
   align-items: center;

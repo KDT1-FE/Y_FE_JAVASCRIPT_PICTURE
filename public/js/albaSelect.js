@@ -1,23 +1,6 @@
-// '알바생 등록하기' 버튼 기능
-const registerButton = document.querySelector('.alba-register-button');
-registerButton.addEventListener('click', () => {
-  window.location.href = './albaRegister.html';
-});
-
-// '이전 페이지로' 버튼 기능
-const backButton = document.querySelector('.back-button');
-backButton.addEventListener('click', () => {
-  window.location.href = './myAlba.html';
-});
-
-/* ----------------------------------------------------------------------------------- */
 // Firebase SDK
-import { firebaseConfig } from './firebaseConfig.js';
-
-// Firebase 초기화
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
+import { initializeFirebase } from './firebaseSDK.js';
+const { db } = initializeFirebase();
 
 // 알바생 데이터 받아옴
 db.collection('albainfo')
@@ -57,30 +40,32 @@ $(document).on('click', '.edit-button', function () {
     .where('연락처', '==', phoneNum)
     .get()
     .then((querySnapshot) => {
-      if (!querySnapshot.empty) {
-        const doc = querySnapshot.docs[0];
-        const data = doc.data();
-        // 모달창에 데이터 채우기
-        $('.modal-left-container img').attr('src', data.이미지);
-        $('.modal-right-container p:eq(0)').text(`${data.이름}`);
-        $('.modal-right-container p:eq(1)').text(`${data.직급}`);
-        $('.modal-right-container p:eq(2)').text(`${data.연락처}`);
-        $('.modal-right-container p:eq(3)').text(`${data.근무시간}`);
-        // 모달창 띄우기
-        $('.modal-container').fadeIn();
-
-        // 모달창 버튼 클릭 이벤트 리스너 등록
-        $('.update-button').on('click', function () {
-          // 정보수정 이동
-          const id = doc.id;
-          window.location.href = `albaUpdate.html?idvalue=${id}`;
-          $('.modal-container').fadeOut();
-        });
-        $('.close-button').on('click', function () {
-          // 모달창 닫기
-          $('.modal-container').fadeOut();
-        });
+      if (querySnapshot.empty) {
+        // 데이터가 없을경우 리턴.
+        return;
       }
+      const doc = querySnapshot.docs[0];
+      const data = doc.data();
+      // 모달창에 데이터 채우기
+      document.querySelector('.modal-left-container img').src = data.이미지;
+      document.querySelectorAll('.modal-right-container p')[0].textContent = data.이름;
+      document.querySelectorAll('.modal-right-container p')[1].textContent = data.직급;
+      document.querySelectorAll('.modal-right-container p')[2].textContent = data.연락처;
+      document.querySelectorAll('.modal-right-container p')[3].textContent = data.근무시간;
+      // 모달창 띄우기
+      $('.modal-container').fadeIn();
+
+      // 모달창 버튼 클릭 이벤트 리스너 등록
+      $('.update-button').on('click', function () {
+        // 정보수정 이동
+        const id = doc.id;
+        window.location.href = `albaUpdate.html?idvalue=${id}`;
+        $('.modal-container').fadeOut();입
+      });
+      $('.close-button').on('click', function () {
+        // 모달창 닫기
+        $('.modal-container').fadeOut();
+      });
     })
     .catch((error) => {
       console.error('Error getting document:', error);
@@ -120,7 +105,8 @@ $(document).ready(function () {
         console.log(123);
         $('.confirm-modal-container').fadeIn();
         // 삭제하기 버튼 클릭 이벤트 리스너 등록
-        $('.confirm-button').on('click', async function () {
+        const confirmButton = document.querySelector('.confirm-button');
+        confirmButton.addEventListener('click', async function () {
           // 선택한 알바생 데이터 삭제 처리
           const deletePromises = selectedIds.map(async (id) => {
             // Firestore에서 해당 데이터 가져오기
@@ -133,7 +119,7 @@ $(document).ready(function () {
 
             // Firestore DB에서 데이터 삭제
             await docRef.delete();
-            
+
             // Storage에서 이미지 삭제
             if (imageUrl) {
               const storageRef = storage.refFromURL(imageUrl);
@@ -153,6 +139,23 @@ $(document).ready(function () {
     });
   });
 });
+
+/* ----------------------------------------------------------------------------------- */
+
+// '알바생 등록하기' 버튼 기능
+const registerButton = document.querySelector('.alba-register-button');
+registerButton.addEventListener('click', () => {
+  window.location.href = './albaRegister.html';
+});
+
+// '이전 페이지로' 버튼 기능
+const backButton = document.querySelector('.back-button');
+backButton.addEventListener('click', () => {
+  window.location.href = './myAlba.html';
+});
+
+/* ----------------------------------------------------------------------------------- */
+
 // 모달창 닫기
 $('.cancel-button').on('click', async function () {
   $('.confirm-modal-container').fadeOut();

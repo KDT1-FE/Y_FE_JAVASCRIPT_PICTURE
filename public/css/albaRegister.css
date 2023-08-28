@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 0 15px; /* 가로 간격 조절 */
+  padding: 0 15px;
 }
 
 .alba-register h2 {
@@ -89,7 +89,7 @@ body {
 }
 
 .wave-group .input {
-  font-size: 16px;
+  font-size: 1.1rem;
   font-family: "Noto Sans KR";
   font-weight: 400;
   padding: 10px 10px 10px 5px;
