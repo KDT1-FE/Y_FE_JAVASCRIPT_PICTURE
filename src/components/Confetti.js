@@ -3,39 +3,39 @@ import confetti from 'canvas-confetti';
 
 export default class Confetti extends Component {
     render() {
-        const myCanvas = document.querySelector('canvas');
         this.el.innerHTML = /*html*/ `
-            <canvas id="my-canvas"></canvas>
-        `;
+            <canvas></canvas>
+            `;
         this.el.style.position = 'fixed';
         this.el.style.height = '0px';
-        const myConfetti = confetti.create(myCanvas, {
+
+        const confettiCanvas = document.querySelector('canvas');
+        const confettiEffectedCanvas = confetti.create(confettiCanvas, {
             resize: true,
             useWorker: true,
         });
 
-        const button = this.el.querySelector('.confetti__button');
-        const end = Date.now() + 3 * 1000;
+        const confettiEndTime = Date.now() + 3 * 1000;
 
-        const colors = ['#bb0000', '#000000'];
+        const confettiColors = ['#bb0000', '#000000'];
 
         (function frame() {
-            myConfetti({
+            confettiEffectedCanvas({
                 particleCount: 2,
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: colors,
+                colors: confettiColors,
             });
-            myConfetti({
+            confettiEffectedCanvas({
                 particleCount: 2,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: colors,
+                colors: confettiColors,
             });
 
-            if (Date.now() < end) {
+            if (Date.now() < confettiEndTime) {
                 requestAnimationFrame(frame);
             }
         })();
