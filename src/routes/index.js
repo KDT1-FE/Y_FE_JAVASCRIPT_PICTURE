@@ -1,4 +1,4 @@
-import { createRouter } from '../core/index.js';
+import { createRouter } from '../core/router.js';
 import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
