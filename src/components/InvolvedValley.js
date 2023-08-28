@@ -1,5 +1,4 @@
 import { Component } from '../core';
-import Store from '../store/involvedValley.js';
 
 export default class InvolvedValley extends Component {
     render() {
@@ -9,7 +8,6 @@ export default class InvolvedValley extends Component {
             </div>
         `;
 
-        console.log(Store.state.valleyList);
         this.el.style.backgroundColor = 'red';
         this.el.style.width = '100%';
         this.el.style.height = '100%';

@@ -91,7 +91,6 @@ export default class Firstpage extends Component {
                 const newLiItem = document.createElement('li');
                 newLiItem.classList.add('first__page--list-item');
                 const iconNumber = Math.floor(index % 10);
-                console.log(iconNumber);
                 newLiItem.innerText = `${iconList[iconNumber]}` + item;
                 targeter.insertBefore(newLiItem, targeterSpace.nextSibling);
             });

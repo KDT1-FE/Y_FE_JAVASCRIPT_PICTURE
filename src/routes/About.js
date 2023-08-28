@@ -28,8 +28,6 @@ export default class About extends Component {
             await getInvolvedData(_id, 'nickname', Store.state.nickname);
             await getInvolvedData(_id, 'province', Store.state.province);
             await getInvolvedData(_id, 'city', Store.state.city);
-
-            console.log('hello');
         };
 
         const inputEl = this.el.querySelector('.view__banner--wrapper');

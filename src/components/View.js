@@ -11,8 +11,6 @@ export default class View extends Component {
         super();
     }
     render() {
-        console.log('ViewMember');
-
         this.el.innerHTML = /*html*/ `
                 <div class="view__banner--top">
                     <div class="view__banner--description">
