@@ -1,10 +1,25 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
+const container = document.querySelector(".soldier-container");
 
 let soldierDB = [];
 
-const paintSoldierElement = () => {
-  soldierDB.forEach((soldier, index) => {
+const paintSoldierElement = (dataArray) => {
+  container.innerHTML = "";
+
+  if (dataArray.length === 0) {
+    const noResultsMessage = document.createElement("p");
+    noResultsMessage.classList.add("no-results");
+    noResultsMessage.innerText = "검색 결과가 없습니다.";
+    noResultsMessage.style.width = "100%";
+    noResultsMessage.style.fontSize = "2rem";
+    noResultsMessage.style.color = "var(--color-primary)";
+    noResultsMessage.style.textAlign = "center";
+    container.appendChild(noResultsMessage);
+    return;
+  }
+
+  dataArray.forEach((soldier, index) => {
     const soldierDiv = document.createElement("div");
     soldierDiv.classList.add("soldier");
     soldierDiv.id = index;
@@ -97,21 +112,121 @@ const paintSoldierElement = () => {
   });
 };
 
-async function fetchDataAndPaint() {
+// 무한 스크롤을 통한 Data fetching
+
+const batchSize = 10; // 한 번에 가져올 데이터 개수
+let lastVisibleDoc = null; // 마지막으로 보인 문서
+let loading = false; // 데이터를 불러오는 중인지 여부
+
+// 로딩 요소를 생성하여 화면에 추가
+const loadingElement = document.createElement("div");
+loadingElement.classList.add("loading");
+
+// 원을 추가하는 요소 생성
+const circleElement = document.createElement("img");
+circleElement.classList.add("circle");
+circleElement.src = "./assets/images/hoguk.jpg";
+
+// 텍스트 노드 생성
+const textNode = document.createTextNode("로딩 중...");
+
+// 로딩 요소 안에 원과 텍스트 노드 추가
+loadingElement.appendChild(textNode);
+loadingElement.appendChild(circleElement);
+
+// 로딩 요소를 body에 추가
+document.body.appendChild(loadingElement);
+
+async function fetchNextBatchWithDelay() {
+  if (loading) return; // 이미 데이터를 불러오는 중인 경우 중복 요청 방지
+  loading = true;
+
+  loadingElement.style.display = "flex"; // 로딩 요소 표시
+
+  await new Promise((resolve) => setTimeout(resolve, 300));
+
   try {
-    const snapshot = await db.collection("user").orderBy("timestamp").get();
-    snapshot.forEach((doc) => {
-      soldierDB.push(doc.data());
-    });
-    paintSoldierElement();
+    let query = db.collection("user").orderBy("timestamp").limit(batchSize);
+
+    if (lastVisibleDoc) {
+      query = query.startAfter(lastVisibleDoc);
+    }
+
+    const snapshot = await query.get();
+
+    if (!snapshot.empty) {
+      snapshot.forEach((doc) => {
+        soldierDB.push(doc.data());
+      });
+
+      lastVisibleDoc = snapshot.docs[snapshot.docs.length - 1];
+      paintSoldierElement(soldierDB);
+    }
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Fetching Error:", error);
   }
+
+  loadingElement.style.display = "none";
+  loading = false;
 }
 
-fetchDataAndPaint();
+// 처음 데이터 가져오기
+fetchNextBatchWithDelay();
 
-const container = document.querySelector(".soldier-container");
+// 스크롤 이벤트 감지
+window.addEventListener("scroll", () => {
+  if (!loading) {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      fetchNextBatchWithDelay();
+    }
+  }
+});
+
+let searchResults = [];
+const searchInput = document.querySelector("#search-soldier");
+
+async function fetchSearchResults(searchText) {
+  const searchKeywords = searchText.split();
+  const uniqueResults = new Set(); // 중복을 제거하기 위한 Set
+
+  for (const keyword of searchKeywords) {
+    try {
+      const snapshot = await db
+        .collection("user")
+        .where("이름", ">=", keyword)
+        .orderBy("이름")
+        .startAt(keyword)
+        .endAt(keyword + "\uf8ff")
+        .get();
+
+      snapshot.forEach((doc) => {
+        uniqueResults.add(doc.data()); // 중복을 제거한 결과 추가
+      });
+    } catch (error) {
+      console.error("Fetching Error: ", error);
+    }
+  }
+
+  searchResults = Array.from(uniqueResults); // Set을 배열로 변환
+  paintSoldierElement(searchResults); // 검색 결과 표시 함수 호출
+}
+
+searchInput.addEventListener("input", async (event) => {
+  const searchText = event.target.value;
+
+  if (searchText === "") {
+    // 검색어가 비어있을 때 원본 데이터 표시
+    paintSoldierElement(soldierDB);
+    searchResults = []; // 검색 결과 배열 초기화
+    return;
+  }
+
+  // 검색어가 있는 경우 검색 결과 가져오기
+  fetchSearchResults(searchText);
+});
+
 const deleteButton = document.getElementById("delete-soldier");
 let deleteMode = false;
 const selectedIndexes = [];
