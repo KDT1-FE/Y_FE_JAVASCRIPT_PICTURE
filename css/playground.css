@@ -1,0 +1,20 @@
+body{
+  height: 100%;
+  overflow: hidden;
+}
+h1{
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
+.interaction{
+  width: 100vw;
+  height: 100vh;
+}
+.particle {
+  position: absolute;
+  border-radius:50%;
+  left: 0;
+  top: 0;
+}
