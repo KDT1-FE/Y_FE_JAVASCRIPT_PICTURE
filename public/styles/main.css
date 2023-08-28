@@ -485,4 +485,8 @@ body {
   .modal-input-photo img {
     height: 72px;
   }
+  .circle {
+    width: 30px;
+    height: 40px;
+  }
 }
