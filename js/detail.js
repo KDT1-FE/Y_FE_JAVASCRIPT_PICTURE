@@ -62,9 +62,7 @@ const toggleModifyBtn = () => {
 };
 
 // '수정하기' 버튼 클릭 시 정보 수정할 수 있도록 변경
-modifyBtn.addEventListener('click', () => {
-  toggleModifyBtn();
-});
+modifyBtn.addEventListener('click', toggleModifyBtn);
 
 // 수정 '취소하기' 버튼 클릭 시 정보 수정할 수 없도록 변경
 document.querySelector('.cancel-btn').addEventListener('click', e => {
