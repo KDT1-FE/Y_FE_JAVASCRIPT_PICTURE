@@ -5,33 +5,44 @@ body {
   background-color: rgb(240, 240, 240);
 }
 
-#loading:before {
-      content: '';
-      display: block;
-      height: 50px;
-      width: 50px;
-      -webkit-animation: spin .5s infinite linear;
-      animation: spin .5s infinite linear;
-      border: 6px var(--primary) solid;
-      border-left-color: var(--secondary);
-      border-radius: 100%;
-}
-  
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+button {
+  border-radius: 10px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+  outline: none;
 }
 
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+button:after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(.1);
+  transform: scale(.1);
 }
 
+button:hover {
+  color: #fff;
+  border: none;
+  background: transparent;
+}
 
+button:hover:after {
+  background: rgb(0, 3, 255);
+  background: linear-gradient(0deg, rgba(2, 126, 251, 1) 0%, rgba(0, 3, 255, 1)100%);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
 
 .section__customer--management {
   display: flex;

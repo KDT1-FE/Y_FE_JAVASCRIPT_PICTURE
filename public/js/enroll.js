@@ -38,7 +38,7 @@ submitButton.addEventListener("click", function (e) {
         phone.value,
         startDay.value,
         endDay.value,
-        profileImage.msg,
+        profileImage?.msg,
         sessionList.value,
         sessionList.value,
         trainerList.value
@@ -54,7 +54,7 @@ submitButton.addEventListener("click", function (e) {
         phone.value,
         startDay.value,
         endDay.value,
-        profileImage.msg,
+        profileImage?.msg,
         "",
         "",
         ""
