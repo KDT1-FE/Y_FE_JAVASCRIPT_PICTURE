@@ -79,7 +79,7 @@ body {
 }
 
 .villager-info,
-.villager-info-input {
+.villager-info-input-ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -100,28 +100,16 @@ body {
   width: 100%;
 }
 
-.villager-info-name,
-.villager-info-engName,
-.villager-info-birthday,
-.villager-info-sex,
-.villager-info-personality,
-.villager-info-favoriteColor,
-.villager-info-speechHabit {
+.villager-info-input {
   width: 100%;
-  height: 1.8rem;
+  height: 1.9rem;
   border: none;
   border-bottom: solid 1px #547a66;
   background-color: #00ff0000;
   font-size: 1rem;
 }
 
-.villager-info-name:focus,
-.villager-info-engName:focus,
-.villager-info-birthday:focus,
-.villager-info-sex:focus,
-.villager-info-personality:focus,
-.villager-info-favoriteColor:focus,
-.villager-info-speechHabit:focus {
+.villager-info-input:focus {
   outline: none;
   border-bottom: solid 3.5px #547a66;
   transition: 0.3s;
