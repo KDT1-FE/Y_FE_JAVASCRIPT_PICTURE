@@ -9,9 +9,21 @@
   display: grid;
   width: 100%;  
   padding: 0 2rem;
-  grid-template-columns: 1fr 1fr;
 }
 
+@media (max-width: 480px) {
+  .section__enroll--article {
+    grid-template-rows: repeat(2, 0.3fr);
+    padding: 0;
+    justify-items: center;
+  }
+}
+
+@media (min-width: 481px) {
+  .section__enroll--article {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
 .section__enroll--template > ul {
   display: flex;
@@ -28,8 +40,4 @@
 
 .section__enroll--image_button {
   display: flex;
-}
-
-.section__enroll--pt_check {
-  /* display: none; */
 }

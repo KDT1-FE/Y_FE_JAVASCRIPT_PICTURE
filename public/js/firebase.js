@@ -106,9 +106,9 @@ function displayUserData(arr) {
   const userBox = document.getElementsByClassName(
     "section__customer--template"
   )[0];
-
+  console.log(arr);
   if (arr) {
-    arr.forEach((element) => {
+    for (let element in arr) {
       const userInfoFrame = document.createElement("ul");
       const userSelectBox = document.createElement("input");
       const userIndex = document.createElement("li");
@@ -119,7 +119,7 @@ function displayUserData(arr) {
       const userPtCheck = document.createElement("li");
       const userPtSession = document.createElement("li");
       const userTrainer = document.createElement("li");
-      if (element.sessionNumber === "") {
+      if (arr[element].sessionNumber === "") {
         userPtCheck.innerHTML = "X";
       } else {
         userPtCheck.innerHTML = "O";
@@ -127,21 +127,21 @@ function displayUserData(arr) {
       userInfoFrame.className = "section__customer--added";
       userSelectBox.type = "checkbox";
       userSelectBox.className = "section__customer--checkbox";
-      userImage.src = element.imagePath;
+      userImage.src = arr[element].imagePath;
       userImage.style.width = "5vw";
-      userIndex.innerHTML = element.userIdx;
+      userIndex.innerHTML = arr[element].userIdx;
       userIndex.addEventListener("click", function (e) {
-        window.location.href = `detail.html?number=${element.userIdx}`;
+        window.location.href = `detail.html?number=${arr[element].userIdx}`;
       });
-      userName.innerHTML = element.username;
-      userphoneNumber.innerHTML = element.phoneNumber;
-      userDate.innerHTML = `${element.startDate} ~ ${element.endDate}`;
+      userName.innerHTML = arr[element].username;
+      userphoneNumber.innerHTML = arr[element].phoneNumber;
+      userDate.innerHTML = `${arr[element].startDate} ~ ${arr[element].endDate}`;
       userPtSession.innerHTML =
-        element.sessionNumber !== ""
-          ? `${element.leftSessionNumber} / ${element.sessionNumber}`
+        arr[element].sessionNumber !== ""
+          ? `${arr[element].leftSessionNumber} / ${arr[element].sessionNumber}`
           : "-";
       userTrainer.innerHTML =
-        element.trainerName !== "" ? element.trainerName : "-";
+        arr[element].trainerName !== "" ? arr[element].trainerName : "-";
 
       userInfoFrame.append(
         userSelectBox,
@@ -155,7 +155,7 @@ function displayUserData(arr) {
         userTrainer
       );
       userBox.append(userInfoFrame);
-    });
+    }
   }
 }
 
@@ -172,7 +172,6 @@ function writePtData(
 ) {
   const db = getDatabase();
   try {
-    console.log(sessionId, date);
     set(ref(db, `user/${userId}/pt/` + sessionId), {
       sessionIdx: sessionId,
       date: date,

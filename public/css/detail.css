@@ -29,7 +29,19 @@
   align-items: center;
   text-align: center;
   padding: 0 2rem;
-  grid-template-columns: 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr 0.1fr 0.1fr;
+}
+
+@media (max-width: 480px) {
+  .section__detail--pt_template>ul {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 481px) {
+  .section__detail--pt_template>ul {
+    grid-template-columns: 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  }
 }
 
 .section__detail--pt_template>ul>input {
@@ -40,4 +52,5 @@
 textarea {
   width: 100%;
   border: none;
+  resize: none;
 }

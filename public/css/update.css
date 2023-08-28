@@ -1,4 +1,4 @@
-.section__detail--pt_template>ul {
+/* .section__detail--pt_template>ul {
   display: grid;
   list-style: none;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   text-align: center;
   padding: 0 2rem;
   grid-template-columns: 0.1fr 0.1fr 0.1fr 0.2fr 0.1fr 0.1fr 0.1fr 0.1fr;
-}
+} */
 
 .section__detail--pt_template>ul>input {
   text-align: center;
@@ -14,5 +14,6 @@
 
 .section__detail--pt_template>ul>input, textarea {
   width: 100%;
-  border: none;
+  border: solid 1px black;
+  resize: none;
 } 
