@@ -29,13 +29,13 @@ villagerDocRef.get().then((doc) => {
 
     //어떤 구조로 들어갈지
     profileContainer.innerHTML = `
-        <li class="villager-info-name"><p>${name}</p></li>
-        <li class="villager-info-engName"><p>${engName}</p></li>
-        <li class="villager-info-sex"><p>${sex}</p></li>
-        <li class="villager-info-birthday"><p>${birthday}</p></li>
-        <li class="villager-info-personality"><p>${personality}</p></li>
-        <li class="villager-info-favoriteColor"><p>${favoriteColor}</p></li>
-        <li class="villager-info-speechHabit"><p>${speechHabit}</p></li>
+        <li class="villager-info-name villager-info"><p>${name}</p></li>
+        <li class="villager-info-engName villager-info"><p>${engName}</p></li>
+        <li class="villager-info-sex villager-info"><p>${sex}</p></li>
+        <li class="villager-info-birthday villager-info"><p>${birthday}</p></li>
+        <li class="villager-info-personality villager-info"><p>${personality}</p></li>
+        <li class="villager-info-favoriteColor villager-info"><p>${favoriteColor}</p></li>
+        <li class="villager-info-speechHabit villager-info"><p>${speechHabit}</p></li>
     `;
 
     //div 추가
