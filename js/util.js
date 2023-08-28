@@ -11,6 +11,18 @@ export const phoneType = num => {
   return `${num.slice(0, 3)}-${num.slice(3, 7)}-${num.slice(7, 11)}`;
 };
 
+const emailReg = new RegExp(
+  "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+);
+export const emailCheck = email => {
+  return emailReg.test(email);
+};
+
+const phoneReg = /[0-9]{11}/;
+export const phoneCheck = phone => {
+  return phoneReg.test(phone);
+};
+
 // Storage에서 사진 삭제
 export const deleteData = photoUrl => {
   const desertRef = ref(storage, photoUrl);

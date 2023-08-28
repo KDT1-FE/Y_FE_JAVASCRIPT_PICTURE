@@ -3,6 +3,8 @@ import { db } from './firebase';
 import {
   changeAvatar,
   deleteData,
+  emailCheck,
+  phoneCheck,
   preAvatarImg,
   preventEnter,
   removeAvatar,
@@ -80,18 +82,26 @@ imgRemoveBtn.addEventListener('click', e => {
 
 // 수정 완료 버튼 클릭 시 파이어베이스 데이터 수정 요청
 document.querySelector('.submit-btn').addEventListener('click', async e => {
-  if (preAvatarImg) {
-    deleteData(preAvatarImg);
-  }
   e.preventDefault();
-  await setDoc(doc(db, 'customers', coustomerId), {
-    avatar: imgTextInput.value,
-    name: nameInput.value,
-    email: emailInput.value,
-    phone: phoneInput.value,
-    grade: gradeInput.value,
-  });
-  location.href = '/';
+  let emailCheckResult = emailCheck(emailInput.value);
+  let phoneCheckResult = phoneCheck(phoneInput.value);
+  if (emailCheckResult && phoneCheckResult) {
+    if (preAvatarImg) {
+      deleteData(preAvatarImg);
+    }
+    await setDoc(doc(db, 'customers', coustomerId), {
+      avatar: imgTextInput.value,
+      name: nameInput.value,
+      email: emailInput.value,
+      phone: phoneInput.value,
+      grade: gradeInput.value,
+    });
+    location.href = '/';
+  } else if (!emailCheckResult) {
+    alert('이메일을 올바르게 입력해주세요.');
+  } else if (!phoneCheckResult) {
+    alert('휴대폰 번호를 올바르게 입력해주세요.');
+  }
 });
 
 // input 태그에서 엔터 눌러도 submit 막기
