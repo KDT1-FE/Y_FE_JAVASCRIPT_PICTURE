@@ -5,7 +5,9 @@ import Member from './Member';
 export default class MemberList extends Component {
   constructor() {
     super();
-    memberStore.subscribe('members', this.render());
+    memberStore.subscribe('members', () => {
+      this.render();
+    });
   }
   render() {
     this.componentRoot.classList.add('table');
