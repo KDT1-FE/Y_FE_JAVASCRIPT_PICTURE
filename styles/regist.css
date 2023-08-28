@@ -28,7 +28,7 @@
   height: 21.875rem;
   padding: 0.625rem;
 
-  z-index: 10;
+  z-index: -1;
 
   position: absolute;
   left: 0;
@@ -53,6 +53,8 @@
   justify-content: center;
 
   border-radius: 5px;
+
+  background-color: var(--color-white);
 }
 
 .avatar-label,

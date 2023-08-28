@@ -7,7 +7,6 @@ const imageInputEl = document.getElementById('profilePic');
 imageInputEl.addEventListener('change', () =>
   changeAvatar({
     edit: false,
-    coustomerId,
   })
 );
 
