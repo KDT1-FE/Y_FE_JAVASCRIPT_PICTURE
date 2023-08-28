@@ -8,6 +8,6 @@ export default class NotFound extends Component {
 
     const notFoundButton =
       this.componentRoot.querySelector('.not-found-button');
-    notFoundButton.addEventListener('click', () => navigate());
+    notFoundButton.addEventListener('click', navigate);
   }
 }

@@ -11,6 +11,6 @@ export default class Header extends Component {
       '  <div class="title">직원 관리 시스템</div>';
 
     const title = this.componentRoot.querySelector('.title');
-    title.addEventListener('click', () => navigate());
+    title.addEventListener('click', navigate);
   }
 }
