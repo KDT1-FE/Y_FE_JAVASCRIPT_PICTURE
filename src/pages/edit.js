@@ -1,12 +1,10 @@
-import { app } from "../utils/db.js";
+import { firestore, storage } from "../utils/db.js";
 import {
-  getFirestore,
   doc,
   getDoc,
   setDoc
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import {
-  getStorage,
   ref,
   uploadBytes,
   getDownloadURL
@@ -15,9 +13,7 @@ import {
 async function Edit() {
   const path = window.location.pathname.replace("/edit/", "");
 
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-  const docRef = await doc(db, "employee", path);
+  const docRef = await doc(firestore, "employee", path);
   const docSnap = await getDoc(docRef);
   var imageURL;
 
@@ -154,7 +150,7 @@ async function Edit() {
     } else {
       // 확인 알림
       if (confirm("정말 이렇게 수정합니다?")) {
-        setDoc(doc(db, "employee", path), {
+        setDoc(doc(firestore, "employee", path), {
           image: imageURL,
           name: document.querySelector("#name").value.toUpperCase(),
           position: document.querySelector("#position").value.toUpperCase(),

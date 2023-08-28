@@ -1,14 +1,12 @@
-import { app } from "../utils/db.js";
+import { firestore } from "../utils/db.js";
+
 import {
-  getFirestore,
   collection,
-  getDocs,
-  query
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 async function Main() {
-  const db = getFirestore(app);
-  const q = await getDocs(collection(db, "employee"));
+  const q = await getDocs(collection(firestore, "employee"));
 
   const divApp = document.getElementById("app");
   divApp.innerHTML = "";

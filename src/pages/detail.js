@@ -1,22 +1,17 @@
-import { app } from "../utils/db.js";
+import { firestore, storage } from "../utils/db.js";
 import {
-  getFirestore,
   doc,
   getDoc,
   deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import {
-  getStorage,
   ref,
   deleteObject
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
 async function Detail() {
   const path = window.location.pathname.replace("/detail/", "");
-
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-  const docRef = await doc(db, "employee", path);
+  const docRef = await doc(firestore, "employee", path);
   const docSnap = await getDoc(docRef);
 
   const divApp = document.getElementById("app");

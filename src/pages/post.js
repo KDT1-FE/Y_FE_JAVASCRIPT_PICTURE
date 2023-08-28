@@ -1,19 +1,14 @@
-import { app } from "../utils/db.js";
+import { firestore, storage } from "../utils/db.js";
 import {
-  getFirestore,
   collection,
   addDoc
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import {
-  getStorage,
   ref,
-  uploadBytes,
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-storage.js";
 
 async function Post() {
-  const db = getFirestore(app);
-  const storage = getStorage(app);
   let imageURL = "";
 
   const divApp = document.getElementById("app");
@@ -105,7 +100,6 @@ async function Post() {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
-    const uploadTask = await uploadBytes(storageRef, file);
 
     await getDownloadURL(storageRef)
       .then(url => {
@@ -137,7 +131,7 @@ async function Post() {
     } else {
       // 확인 알림
       if (confirm("정말 정말 등록합니다?")) {
-        const add = addDoc(collection(db, "employee"), inputValue)
+        const add = addDoc(collection(firestore, "employee"), inputValue)
           .then(() => {
             window.location.href = "/";
           })
