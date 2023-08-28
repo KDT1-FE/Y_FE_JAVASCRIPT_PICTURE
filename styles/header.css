@@ -45,6 +45,10 @@
   background-color: var(--color-black-hover);
 }
 
+#deleteBtn:disabled {
+  cursor: not-allowed;
+}
+
 @media only screen and (min-width: 1025px) {
   .header-nav {
     width: 1000px;

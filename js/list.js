@@ -85,6 +85,9 @@ const removeCheck = e => {
       item !== e.target.value;
     });
   }
+  deleteList.length !== 0
+    ? (document.getElementById('deleteBtn').disabled = false)
+    : (document.getElementById('deleteBtn').disabled = true);
 };
 // 버튼 클릭하면 삭제 요청
 const deleteBtn = document.getElementById('deleteBtn');
