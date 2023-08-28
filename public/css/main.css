@@ -1,7 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100%
+  height: 100%;
+}
+
+textarea {
+  resize: none;
 }
 
 .section__customer--management {
