@@ -114,7 +114,7 @@ const paintSoldierElement = (dataArray) => {
 
 // 무한 스크롤을 통한 Data fetching
 
-const batchSize = 10; // 한 번에 가져올 데이터 개수
+const size = 10; // 한 번에 가져올 데이터 개수
 let lastVisibleDoc = null; // 마지막으로 보인 문서
 let loading = false; // 데이터를 불러오는 중인지 여부
 
@@ -137,7 +137,7 @@ loadingElement.appendChild(circleElement);
 // 로딩 요소를 body에 추가
 document.body.appendChild(loadingElement);
 
-async function fetchNextBatchWithDelay() {
+async function fetchNextData() {
   if (loading) return; // 이미 데이터를 불러오는 중인 경우 중복 요청 방지
   loading = true;
 
@@ -146,7 +146,7 @@ async function fetchNextBatchWithDelay() {
   await new Promise((resolve) => setTimeout(resolve, 300));
 
   try {
-    let query = db.collection("user").orderBy("timestamp").limit(batchSize);
+    let query = db.collection("user").orderBy("timestamp").limit(size);
 
     if (lastVisibleDoc) {
       query = query.startAfter(lastVisibleDoc);
@@ -171,7 +171,7 @@ async function fetchNextBatchWithDelay() {
 }
 
 // 처음 데이터 가져오기
-fetchNextBatchWithDelay();
+fetchNextData();
 
 // 스크롤 이벤트 감지
 window.addEventListener("scroll", () => {
@@ -179,7 +179,7 @@ window.addEventListener("scroll", () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
     if (scrollTop + clientHeight >= scrollHeight - 10) {
-      fetchNextBatchWithDelay();
+      fetchNextData();
     }
   }
 });
