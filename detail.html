@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>직원 사진 관리 서비스</title>
+</head>
+<body>
+    <header>
+        <span>
+            <a href="./index.html">🏠</a>
+        </span>
+    </header>
+    <div class="wrap">
+        <nav>
+            <ul>
+                <li><a href="./index.html">직원 조회</a></li>
+                <li><a>메뉴 1</a></li>
+                <li><a>메뉴 2</a></li>
+                <li><a>메뉴 3</a></li>
+            </ul>
+        </nav>
+        <div class="contents-wrap">
+            <div class="contents-top">
+                <div class="navigation">
+                    <div class="navigation-title">직원 조회</div>
+                </div>
+            </div>
+            <section class="employee-detail-view">
+                <div class="profile-container">
+                    <div class="detail-image-container">
+                        <div class="detail-image-wrap">
+                            <img class="detail-profile-image">
+                        </div>
+                        <div class="image-update-container">
+                            <label for="image-update" class="label-container">
+                                <div class="image-update-button">사진 변경</div>
+                                <input id="image-update" type="file" accept="image/*">
+                                <button class="image-update-done-button">변경 완료</button>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="information-container">
+                        <div class="information-header">
+                            <h1>인적 사항</h1>
+                        </div>
+                        <div class="information-contents">
+                            <div>
+                                <span class="information-category">이름</span>
+                                <span class="information-profile" id="name"></span>
+                            </div>
+                            <div>
+                                <span class="information-category">이메일</span>
+                                <span class="information-profile" id="email"></span>
+                            </div>
+                            <div>
+                                <span class="information-category">부서</span>
+                                <span class="information-profile" id="department"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="toast-wrap">
+        <p class="toast-message"></p>
+    </div>
+    <div class="loading-animation">
+        <div class="spinner"></div>
+    </div>  
+    <script type="module" src="./js/detail.js"></script>
+</body>
+</html>
