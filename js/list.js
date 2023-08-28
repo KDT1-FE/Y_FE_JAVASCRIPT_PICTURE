@@ -8,7 +8,13 @@ import {
   or,
 } from 'firebase/firestore';
 import { db } from './firebase';
-import { phoneType } from './util';
+
+const createListItem = (key, data) => {
+  const customerItem = document.createElement('span');
+  customerItem.className = `customer-${key}`;
+  customerItem.innerText = data;
+  return customerItem;
+};
 
 // 고객 목록 DOM에 추가해주는 함수
 const inquireListFunc = querySnapshotArray => {
@@ -40,21 +46,10 @@ const inquireListFunc = querySnapshotArray => {
     avatarImg.src = doc.data().avatar;
     avatarBox.appendChild(avatarImg);
 
-    const customerGrade = document.createElement('span');
-    customerGrade.className = 'customer-grade';
-    customerGrade.innerText = doc.data().grade;
-
-    const customerName = document.createElement('span');
-    customerName.className = 'customer-name';
-    customerName.innerText = doc.data().name;
-
-    const customerEmail = document.createElement('span');
-    customerEmail.className = 'customer-email';
-    customerEmail.innerText = doc.data().email;
-
-    const customerPhone = document.createElement('span');
-    customerPhone.className = 'customer-phone';
-    customerPhone.innerText = phoneType(doc.data().phone);
+    const customerGrade = createListItem('grade', doc.data().grade);
+    const customerName = createListItem('name', doc.data().name);
+    const customerEmail = createListItem('email', doc.data().email);
+    const customerPhone = createListItem('phone', doc.data().phone);
 
     boxTag.appendChild(checkTag);
     boxTag.appendChild(avatarBox);
