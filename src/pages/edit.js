@@ -98,11 +98,11 @@ async function Edit() {
   editContentInputwrapper.innerHTML = `
       <div>
       <span>이름</span>
-      <input type="text" name="name" id="name" value="${docSnap.data().name}"/>
+      <input type="text" name="name" id="name" value="${data.name}"/>
       </div>
       <div>
       <span>팀명</span>
-      <input type="text" name="team" id="team" value="${docSnap.data().team}"/>
+      <input type="text" name="team" id="team" value="${data.team}"/>
             </div>
       <div>
       <span>포지션</span>
@@ -148,7 +148,7 @@ async function Edit() {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
-    const uploadTask = await uploadBytes(storageRef, file);
+    await uploadBytes(storageRef, file);
 
     await getDownloadURL(storageRef)
       .then(url => {

@@ -119,6 +119,7 @@ async function Post() {
     const file = document.querySelector("#image").files[0];
 
     const storageRef = ref(storage, "images/" + file.name);
+    await uploadBytes(storageRef, file);
 
     await getDownloadURL(storageRef)
       .then(url => {
@@ -141,10 +142,10 @@ async function Post() {
 
     // 빈 칸이 있는지 먼저 확인
     if (
-      inputValue.name == "" ||
-      inputValue.image == "" ||
-      inputValue.position == "" ||
-      inputValue.team == ""
+      inputValue.name === "" ||
+      inputValue.image === "" ||
+      inputValue.position === "" ||
+      inputValue.team === ""
     ) {
       alert("빈 칸 없이 똑바로 입력해주세요 !");
     } else {
