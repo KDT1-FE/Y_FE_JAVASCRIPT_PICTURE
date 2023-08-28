@@ -17,11 +17,11 @@
 @import "./common/_submitAlert.scss";
 
 // import screens
-@import "./screens/_adminLogin.scss";
-@import "./screens/_driverList.scss";
-@import "./screens/_addDriver.scss";
-@import "./screens/_confirmAccident.scss";
-@import "./screens/_driverProfile.scss";
+@import "./screens/_login.scss";
+@import "./screens/_main.scss";
+@import "./screens/_create.scss";
+@import "./screens/_confirm.scss";
+@import "./screens/_profile.scss";
 
 // import animations
 @import "./animations/_fadeOut.scss";

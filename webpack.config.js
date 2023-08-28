@@ -5,11 +5,11 @@ const Dotenv = require("dotenv-webpack");
 module.exports = {
   // 가 페이지 별 번들링 파일 명시, scss 컴파일 파일의 경우 index.js 파일에 import
   entry: {
-    index: "./src/js/index.js",
-    driverList: "./src/js/driverList.js",
-    addDriver: "./src/js/addDriver.js",
-    driverProfile: "./src/js/driverProfile.js",
-    confirmAccident: "./src/js/confirmAccident.js"
+    login: "./src/js/login/login.js",
+    main: "./src/js/main/main.js",
+    create: "./src/js/create/create.js",
+    profile: "./src/js/profile/profile.js",
+    confirm: "./src/js/confirm/confirm.js"
   },
   // 배포 시, 최종 번들링 파일 용량 개선
   mode: "production",
