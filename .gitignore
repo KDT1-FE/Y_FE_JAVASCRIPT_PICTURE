@@ -8,3 +8,7 @@ dist
 
 .parcel-cache
 .vercel
+
+#api key
+.env
+

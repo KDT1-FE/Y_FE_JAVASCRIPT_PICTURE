@@ -1,5 +1,6 @@
 const path = require('path');
 var _ = require('lodash');
+const Dotenv = require('dotenv-webpack');
 // const confetti = require('canvas-confetti');
 // const MyPromise = require('some-promise-library');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -56,6 +57,9 @@ module.exports = {
 
         // loadash
         new LodashModuleReplacementPlugin(),
+
+        // dotenv
+        new Dotenv(),
     ],
 };
 

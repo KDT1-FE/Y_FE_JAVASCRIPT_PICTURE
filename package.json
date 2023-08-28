@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.",
   "main": "index.js",
-    "dependencies": {
+  "dependencies": {
     "canvas-confetti": "^1.6.0",
     "dotenv": "^7.0.0",
     "dotenv-expand": "^5.1.0",
     "firebase": "^10.1.0"
-    },
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "lodash": "^4.17.21",
