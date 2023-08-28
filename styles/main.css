@@ -132,22 +132,22 @@ main {
 
 .list_container {
     background-clip: content-box;
-    max-width: 1100px;
     overflow: hidden;
     padding: 0 80px;
     margin: 40px auto;
     height: 500px;
     overflow-y: auto; /* 내용이 넘칠 때 수직 스크롤 생성 */
-    overflow-x : auto;
 }
 .material-symbols-outlined{
     cursor: pointer;
 }
 .list {
     display : grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(3,260px);
+    gap: 25px;
     padding: 40px;
+    width: fit-content;
+    margin : 0 auto;
 }
 
 
@@ -186,7 +186,7 @@ main {
     height: 400px;
     position: relative;
     border-radius: 5%;
-    min-width: 260px;
+    max-width: 250px;
     text-align: center;
     justify-content: center;
     display: flex;
@@ -204,7 +204,6 @@ main {
     height: 400px;
     position: relative;
     border-radius: 5%;
-    min-width: 260px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 200;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
