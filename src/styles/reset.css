@@ -118,3 +118,7 @@ input:focus {
   text-decoration: none;
   outline: none;
 }
+input::placeholder {
+  font-size: inherit;
+  font-weight: inherit;
+}
