@@ -1,0 +1,44 @@
+.header-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  z-index: 100;
+  background-color: #ffffff;
+  transition: 0.15s;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.regist-btn {
+  border: none;
+  border-radius: 5px;
+  height: 2rem;
+  padding: 7px 7px;
+  font-size: 0.8rem;
+  background-color: #f0f0f0;
+}
+
+.delete-btn {
+  border: none;
+  border-radius: 5px;
+  height: 2rem;
+  padding: 7px 7px;
+  font-size: 0.8rem;
+}
+
+@media only screen and (min-width: 1025px) {
+  .header-nav {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
