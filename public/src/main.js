@@ -52,8 +52,14 @@ const loadMoreVillagers = () => {
 
           //성별에 따라 글자 색 다르게
           const sexElement = villagerContainer.querySelector(".sex");
-          sexElement.style.color =
-            sex === "여성" ? "#D5A8B8" : sex === "남성" ? "#A8CAD5" : "";
+
+          const colorPalette = {
+            sex: {
+              남성: "#A8CAD5",
+              여성: "#D5A8B8",
+            },
+          };
+          sexElement.style.color = colorPalette.sex[sex];
 
           //"주민 삭제" 버튼 기능
           const deleteButton =
@@ -140,8 +146,13 @@ collectionRef
 
         //성별에 따라 글자 색 다르게
         const sexElement = villagerContainer.querySelector(".sex");
-        sexElement.style.color =
-          sex === "여성" ? "#D5A8B8" : sex === "남성" ? "#A8CAD5" : "";
+        const colorPalette = {
+          sex: {
+            남성: "#A8CAD5",
+            여성: "#D5A8B8",
+          },
+        };
+        sexElement.style.color = colorPalette.sex[sex];
 
         //"주민 삭제" 버튼 기능
         const deleteButton = villagerContainer.querySelector(".delete-button");
