@@ -77,8 +77,6 @@ class Member {
 
   async uploadS3andEditMember() {
     const memberInfo = this.body;
-    console.log('uploadS3andEditMember');
-    console.log(memberInfo);
     try {
       // 기존 이미지 url 가져오기
       const imageUrls = await MemberStorage.getProfileImageUrlsByIds([
@@ -97,8 +95,6 @@ class Member {
 
   async editMember() {
     const memberInfo = this.body;
-    console.log('editMember');
-    console.log(memberInfo);
     try {
       if (memberInfo.isProfileImageDeleted === 'true') {
         // 기존 이미지 url 가져오기
