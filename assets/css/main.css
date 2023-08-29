@@ -47,7 +47,7 @@ textarea {
   .header__myinfo span,
   .header__myinfo a,
   .header__myinfo-sub {
-    width: 60%;
+    width: 90%;
     font-size: 0.9em;
   }
 
@@ -247,7 +247,7 @@ textarea {
   left: 0;
   opacity: 0;
   transition: ease-out 0.1s;
-  z-index: -1;
+  z-index: -2;
   margin-left: 15px;
   background-color: #fff;
 }
@@ -276,6 +276,7 @@ textarea {
   right: -7rem;
   z-index: -1;
   opacity: 0.8;
+  pointer-events: none;
 }
 
 .list {
