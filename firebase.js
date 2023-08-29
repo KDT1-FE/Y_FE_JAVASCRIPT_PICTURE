@@ -10,11 +10,11 @@ const { APPID } = process.env;
 
 const firebaseConfig = {
   apiKey: `${APIKEY}`,
-  authDomain: `${AUTHDOMAIN}`,
+  authDomain: 'member-management-a0113.firebaseapp.com',
   projectId: 'member-management-a0113',
-  storageBucket: `${STORAGEBUCKET}`,
-  messagingSenderId: `${MESSAGINGSENDERID}`,
-  appId: `${APPID}`,
+  storageBucket: 'member-management-a0113.appspot.com',
+  messagingSenderId: '945069285797',
+  appId: '1:945069285797:web:a1a985ee443e896ba5c84c',
 };
 
 initializeApp(firebaseConfig);

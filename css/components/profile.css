@@ -18,9 +18,7 @@
   height: 100%;
   padding: 1em;
 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background: no-repeat center/contain;
 }
 
 .profile__contents {

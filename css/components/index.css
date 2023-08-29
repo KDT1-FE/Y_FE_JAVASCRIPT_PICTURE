@@ -44,6 +44,9 @@
 }
 
 .button--add {
+  display: block;
+  margin: auto;
+
   width: 350px;
   height: 50px;
   font-size: 25px;
