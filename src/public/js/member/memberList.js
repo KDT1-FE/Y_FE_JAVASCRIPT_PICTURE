@@ -43,13 +43,12 @@ function hideLoader() {
   loader.style.display = 'none';
 }
 
-// 함수: 직원 리스트 생성
-function createProfileItem(member, index) {
-  const tr = document.createElement('tr');
+// 함수: 직원 리스트 innerHTML 반환
+function getProfileItemHTML(member, index) {
   const profileImageURL =
     member.profileimageurl || '/asset/image/no-profile-image.png';
 
-  tr.innerHTML = `
+  return `
       <td class="checkbox-cell"><input type="checkbox" data-id="${
         member.id
       }" class="member-checkbox"></td>
@@ -59,6 +58,13 @@ function createProfileItem(member, index) {
       <td>${member.name}</td>
       <td>${getPositionLabel(member.position)}</td>
   `;
+}
+
+// 함수: 직원 리스트 생성
+function createProfileItem(member, index) {
+  const tr = document.createElement('tr');
+
+  tr.innerHTML = getProfileItemHTML(member, index);
 
   tr.addEventListener('click', (event) => {
     const checkbox = tr.querySelector('input[type="checkbox"]');
