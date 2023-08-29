@@ -5,6 +5,8 @@ const firebaseAddUser = document.querySelector(".section__user_add_btn");
 const userAddForm = document.querySelector("#user-add-btn");
 
 const LOCALSTORAGE_DIVISION_VIP = "vip";
+const defaultImage = `<img class='user-list-img' src="./images/user/user.png" alt="" />`;
+const userImage = `<img class='user-list-img' src=${image} alt="" />`;
 
 userAddForm.addEventListener("click", async () => {
   const userEditFormEl = document.querySelector(".section__user-add-box");
@@ -116,11 +118,7 @@ function createListBox(doc_data, doc_id, localData) {
   if (localData === null || localData.division === LOCALSTORAGE_DIVISION_VIP) {
     userData.innerHTML = `
     <input type="checkbox" name="docId" class="doc-id" value="${doc_id}" />
-    ${
-      image === undefined
-        ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
-        : `<img class='user-list-img' src=${image} alt="" />`
-    }
+    ${image === undefined ? defaultImage : userImage}
     <span>${name}</span>
     <span>${email}</span>
     <span>${phone}</span>
@@ -129,11 +127,7 @@ function createListBox(doc_data, doc_id, localData) {
   } else {
     userData.innerHTML = `
     <input type="checkbox" name="docId" class="doc-id" value="${doc_id}" />
-    ${
-      image === undefined
-        ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
-        : `<img class='user-list-img' src=${image} alt="" />`
-    }
+    ${image === undefined ? defaultImage : userImage}
     <span>${name}</span>
     <span>${email}</span>
     <span>${phone}</span>
@@ -154,11 +148,7 @@ function managerPageBox(doc_data) {
   userForm.innerHTML = `
       <div class="section__user_img_container">
         <input style="display: none" name="image" type="file" class="user_imgInput" />
-        ${
-          image === undefined
-            ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
-            : `<img class='user-list-img' src=${image} alt="" />`
-        }
+        ${image === undefined ? defaultImage : userImage}
       </div>
       <input type="text" name="name" class="user_name" value="${name}" placeholder="이름을 입력해주세요." />
       <input type="text" name="phone" class="user_phone" maxlength="14" value="${phone}" placeholder="전화번호를 입력해주세요." />
@@ -199,11 +189,7 @@ function detailPageBox(doc_data, localData) {
     userForm.innerHTML = `
       <div class="section__user_img_container">
         <input style="display: none" name="image" type="file" class="user_imgInput" />
-        ${
-          image === undefined
-            ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
-            : `<img class='user-list-img' src=${image} alt="" />`
-        }
+        ${image === undefined ? defaultImage : userImage}
       </div>
       <input type="text" name="name" class="user_name" value="${name}" placeholder="이름을 입력해주세요." />
       <input type="text" name="phone" class="user_phone" maxlength="14" value="${phone}" placeholder="전화번호를 입력해주세요." />
@@ -261,11 +247,7 @@ function detailPageBox(doc_data, localData) {
           type="file"
           class="user_imgInput"
         />
-        ${
-          image === undefined
-            ? `<img class='user-list-img' src="./images/user/user.png" alt="" />`
-            : `<img class='user-list-img' src=${image} alt="" />`
-        }
+        ${image === undefined ? defaultImage : userImage}
       </div>
       <input
         type="text"
