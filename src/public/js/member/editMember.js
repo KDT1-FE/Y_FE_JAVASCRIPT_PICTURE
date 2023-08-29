@@ -40,9 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 프로필 이미지 삭제
-  imageDeleteBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
+  imageDeleteBtn.addEventListener('click', () => {
     document.querySelector('.profile-image-preview').style.display = 'none';
     document.getElementById('profile-image-input').value = '';
     document.querySelector('.profile-upload-label').style.display = 'flex';
