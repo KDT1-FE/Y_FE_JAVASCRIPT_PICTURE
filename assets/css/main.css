@@ -1,0 +1,637 @@
+html {
+  font-size: 20px;
+}
+
+body,
+input,
+button,
+textarea {
+  font-family: "Gowun Batang", serif;
+  font-size: 15px;
+  background-color: #fffcf3;
+}
+
+.mobile-sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 430px) {
+  html,
+  body {
+    overflow-x: hidden;
+    height: 100%;
+    font-size: 13px;
+  }
+
+  input {
+    font-size: 1.2em;
+  }
+
+  .header {
+    position: relative;
+    margin: 0 auto;
+    z-index: 0;
+  }
+
+  .header__title span {
+    font-size: 2rem !important;
+    white-space: nowrap;
+  }
+
+  .header__myinfo {
+    position: absolute;
+    top: -7rem;
+    right: -3rem;
+    z-index: 1;
+  }
+  .header__myinfo span,
+  .header__myinfo a,
+  .header__myinfo-sub {
+    width: 90%;
+    font-size: 0.9em;
+  }
+
+  .header__myinfo-deco img {
+    position: absolute;
+    width: 60vw;
+    top: 6rem;
+    right: 3rem;
+  }
+  .list__util-search {
+    position: absolute;
+    top: -3em;
+    left: 0;
+    width: 0.7em;
+    z-index: 2;
+  }
+  .list__util-search input {
+    font-size: 0.95em;
+  }
+
+  .btn-regi {
+    position: absolute;
+    top: -3em;
+    right: 0;
+  }
+  .btn-edit {
+    color: #000;
+  }
+
+  .btn-delete {
+    color: #000;
+  }
+
+  .mobile-sidebar {
+    display: block;
+  }
+
+  .mobile-btn-totop {
+    display: block;
+    position: fixed;
+    bottom: 0rem;
+    right: 0rem;
+    z-index: 999;
+  }
+  .mobile-button {
+    border: 0px;
+  }
+
+  .mobile-button img {
+    width: 3em;
+    height: auto;
+  }
+
+  .list__actual {
+    background-image: url("/assets/images/bg_bot.png");
+    background-repeat: no-repeat;
+    border: 1px dashed #c8c8c8;
+    border-radius: 20px;
+    max-width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+  }
+
+  .list__actual th:nth-child(4),
+  .list__actual th:nth-child(5),
+  .list__actual td:nth-child(4),
+  .list__actual td:nth-child(5) {
+    display: none;
+  }
+
+  /* Adjust the remaining columns' widths */
+  .list__actual th,
+  .list__actual td {
+    width: calc(
+      (100% - 2 * 4%) / 4
+    ); /* Assuming there are 4 columns remaining */
+  }
+
+  /* Styles for modal container */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    max-width: 70vw;
+    justify-content: space-between;
+  }
+
+  /* Styles for modal content */
+  .modal-content {
+    background-color: #f7efd2;
+    background-image: url("/assets/images/register_bg.png");
+    background-repeat: no-repeat;
+    border-radius: 8px;
+  }
+
+  .modal-content span {
+    background-color: rgba(255, 229, 116, 0.8);
+    font-size: 2.1em;
+    font-weight: 500;
+    font-style: italic;
+    writing-mode: vertical-rl;
+    padding: 0.2em;
+  }
+
+  .modal-form {
+    text-align: right;
+    padding: 1em;
+  }
+
+  .modal-form label {
+    line-height: 0.8em;
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
+  }
+
+  .modal-form input,
+  .modal-form textarea {
+    border: 1px solid #c8c8c8;
+    font-size: 1.1em;
+  }
+  .modal-form textarea {
+    font-size: 1.1em;
+  }
+}
+
+.header {
+  background-image: url(/assets/images/bg_top.png);
+  max-width: 100%;
+  height: 253px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header__title {
+  padding: 15px;
+  margin: 0 0 0 -10px;
+  position: relative;
+  z-index: 0;
+}
+
+.header__title span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #343434;
+  letter-spacing: -1.5px;
+  rotate: -2.5deg;
+}
+
+.header__title-deco {
+  position: absolute;
+  float: left;
+  top: -25px;
+  left: -70px;
+  z-index: -1;
+}
+
+.header__myinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2em;
+  margin-right: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header__myinfo a {
+  text-decoration: underline;
+  font-size: 1.3em;
+  color: #000000;
+}
+
+.header__myinfo a:hover {
+  color: #6f9605;
+  transition: color 0.1s;
+}
+
+.header__myinfo:hover .header__myinfo-sub {
+  height: 50px;
+  opacity: 1;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.header__myinfo-sub {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  position: absolute;
+  top: 90%;
+  left: 0;
+  opacity: 0;
+  transition: ease-out 0.1s;
+  z-index: -2;
+  margin-left: 15px;
+  background-color: #fff;
+}
+
+.header__myinfo-sub ul li {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.header__myinfo-sub ul li a {
+  text-decoration: none;
+  font-size: 0.9em;
+  letter-spacing: -0.5px;
+}
+
+.header__myinfo-sub ul li img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.header__myinfo-deco {
+  position: absolute;
+  float: right;
+  top: -1rem;
+  right: -7rem;
+  z-index: -1;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.list__util {
+  width: 70vw;
+  height: auto;
+  border-radius: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* 검색창 스타일링 */
+.list__util-search .form {
+  --input-text-color: #505050;
+  --input-bg-color: #fff;
+  --focus-input-bg-color: #fff;
+  --text-color: #949faa;
+  --active-color: #89b806;
+  --width-of-input: 16em;
+  --inline-padding-of-input: 0.7em;
+  --gap: 0.9em;
+}
+/* form style */
+.list__util-search .form {
+  font-size: 1.1em;
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid #c8c8c8;
+  margin-right: 2em;
+  align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+}
+/* a fancy bg for showing background and border when focus. */
+.list__util-search .fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--input-bg-color);
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+/* label styling */
+.list__util-search label {
+  width: 100%;
+  padding: 0.2em;
+  height: 30px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.list__util-search .search,
+.list__util-search .close-btn {
+  position: absolute;
+}
+/* styling search-icon */
+.list__util-search .search {
+  fill: var(--text-color);
+  left: var(--inline-padding-of-input);
+}
+/* svg -- size */
+.list__util-search svg {
+  width: 17px;
+  display: block;
+  cursor: pointer;
+}
+/* styling of close button */
+.list__util-search .close-btn {
+  border: none;
+  right: var(--inline-padding-of-input);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ff8585;
+  opacity: 0;
+  visibility: hidden;
+}
+/* styling of input */
+.list__util-search .input {
+  color: var(--input-text-color);
+  width: 100%;
+  margin-inline: min(2em, calc(var(--inline-padding-of-input) + var(--gap)));
+  background: none;
+  border: none;
+}
+
+.list__util-search .input:focus {
+  outline: none;
+}
+
+.list__util-search .input::placeholder {
+  color: var(--text-color);
+}
+/* input background change in focus */
+.list__util-search .input:focus ~ .fancy-bg {
+  border: 1px solid var(--active-color);
+  background: var(--focus-input-bg-color);
+}
+/* search icon color change in focus */
+.list__util-search .input:focus ~ .search {
+  fill: var(--active-color);
+}
+/* showing close button when typing */
+.list__util-search .input:valid ~ .close-btn {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.2s;
+}
+
+/* 추가 버튼*/
+.btn-regi {
+  width: 7rem;
+  font-size: 1.2em;
+  padding: 0.3em;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border: 1px solid #c8c8c8;
+  z-index: 2;
+}
+
+.btn-regi:hover {
+  background-color: #c9e441;
+  border: 1px solid #c7d69e;
+  transition: background-color 0.3s;
+  transform: translateX(0.1em) translateY(0.1em);
+}
+
+/* 수정 버튼 */
+.btn-edit {
+  width: 2.3rem;
+  font-size: 1em;
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: #ffe167;
+  border: 1px solid #edd77d;
+}
+
+.btn-edit:hover {
+  background: #fbcb0b;
+  border: 1px solid #fbcb0b;
+  transform: translateX(0.1em) translateY(0.1em);
+}
+
+/* 삭제 버튼 */
+.btn-delete {
+  width: 2.3rem;
+  font-size: 1em;
+  padding: 0.2em;
+  cursor: pointer;
+  background-color: #ffa8a8;
+  border: 1px solid #ffa2a2;
+}
+
+.btn-delete:hover {
+  background-color: #ff8888;
+  border: 1px solid #ff8888;
+  transform: translateX(0.1em) translateY(0.1em);
+}
+
+.list__content {
+  max-width: 100%;
+  min-height: 440px;
+  border-radius: 50px;
+}
+
+.list__actual {
+  background-image: url("/assets/images/bg_bot.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  border: 1px dashed #c8c8c8;
+  border-radius: 20px;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  width: 800px;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+.list__actual table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.7);
+  table-layout: fixed;
+}
+
+.list__actual th {
+  font-size: 1.2em;
+  height: 2em;
+  font-weight: 700;
+  background-color: #fcffe8;
+}
+
+.list__actual th,
+.list__actual td {
+  padding: 0.5em 0.5em 0.5em 0;
+  border-bottom: solid 1px #e2e2e2;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.list__actual td {
+  height: 4em;
+  font-size: 1.1em;
+}
+
+.list__actual th:nth-child(1),
+.list__actual td:nth-child(1) {
+  width: 20%;
+}
+
+.list__actual th:nth-child(2),
+.list__actual td:nth-child(2) {
+  width: 8%;
+}
+
+.list__actual th:nth-child(5),
+.list__actual td:nth-child(5) {
+  width: 20%;
+}
+
+.list__actual th:nth-last-child(2),
+.list__actual th:last-child,
+.list__actual td:nth-last-child(2),
+.list__actual td:last-child {
+  width: 6%;
+}
+
+.plant-image {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 15px;
+  border: 1px solid #e1e1e1;
+}
+
+#printImage {
+  width: 8rem;
+  height: 8rem;
+  background-color: #fff;
+}
+
+/* Styles for modal container */
+.modal {
+  display: none;
+  position: fixed;
+  margin: 0 0 10em 0;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Styles for modal content */
+.modal-content {
+  background-color: #f7efd2;
+  background-image: url("/assets/images/register_bg.png");
+  background-repeat: no-repeat;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 6px 8px rgba(88, 88, 88, 0.14);
+  max-width: 100%;
+  width: 450px;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-content span {
+  background-color: rgba(255, 229, 116, 0.8);
+  font-size: 2.1em;
+  font-weight: 500;
+  font-style: italic;
+  writing-mode: vertical-rl;
+  padding: 0.2em;
+}
+
+.modal-form {
+  text-align: right;
+  padding: 1em;
+}
+
+.modal-form label {
+  line-height: 2em;
+  margin-right: 1em;
+}
+
+.modal-form input,
+.modal-form textarea {
+  border: 1px solid #c8c8c8;
+  width: 15em;
+}
+
+.align-right {
+  float: right;
+}
+
+.spacer {
+  height: 7em;
+}
+.save-button {
+  background-color: hsl(76, 100%, 87%);
+  border: 1px solid #c8c8c8;
+  font-size: 1.5em;
+  padding: 0.2em;
+  float: right;
+  cursor: pointer;
+}
+.save-button:hover {
+  transform: translateX(0.1em) translateY(0.1em);
+  background-color: hsl(76, 100%, 80%);
+}
+.close-button {
+  background-color: #fff5f5;
+  border: 1px solid #c8c8c8;
+  font-size: 1.5em;
+  padding: 0.2em;
+  margin-right: 0.5em;
+  float: right;
+  cursor: pointer;
+}
+.close-button:hover {
+  transform: translateX(0.1em) translateY(0.1em);
+  background-color: #ffe0e0;
+}
+/* Styles for the button */
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
