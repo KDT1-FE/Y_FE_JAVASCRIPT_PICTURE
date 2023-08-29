@@ -163,16 +163,16 @@ textarea {
   .modal-form label {
     line-height: 0.8em;
     background-color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
   }
 
   .modal-form input,
   .modal-form textarea {
     border: 1px solid #c8c8c8;
-    width: 9em;
-    font-size: 0.7em;
+    font-size: 1.1em;
   }
   .modal-form textarea {
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
 }
 
