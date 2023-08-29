@@ -1,0 +1,28 @@
+.profile-actions__btn--submit {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.profile-actions__btn--submit:hover {
+  background-color: #45a049;
+}
+
+.profile-upload-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.profile-upload-label:hover {
+  opacity: 0.5;
+}
