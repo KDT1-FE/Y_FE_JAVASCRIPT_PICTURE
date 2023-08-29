@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // 회원 삭제 버튼 이벤트
-  deleteBtn.addEventListener('click', (event) => {
-    event.preventDefault();
+  deleteBtn.addEventListener('click', () => {
     deleteMember(memberId);
   });
 
@@ -73,8 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 돌아가기 버튼 이벤트
-  backBtn.addEventListener('click', (event) => {
-    event.preventDefault();
+  backBtn.addEventListener('click', () => {
     window.location.href = '/';
   });
 });
