@@ -6,8 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { existFile, validateEmail } from '../utils/validate';
 
 export default class Write extends Component {
-  render() {
-    this.componentRoot.innerHTML = `
+  template() {
+    return `
     <section class="write-title">
     직원을 등록해주세요
     </section>
@@ -21,41 +21,41 @@ export default class Write extends Component {
     </div>
     <button class="add-member" type="submit">등록</button>
     </form>
-        `;
-    this.componentRoot.prepend(new Header().componentRoot);
+        ;`;
+  }
+  async getImageUrl(fileData) {
+    return await uploadImage(fileData, uuidv4());
+  }
+  async handleSubmit(event) {
+    event.preventDefault();
 
-    const getImageUrl = async (fileData) => {
-      return await uploadImage(fileData, uuidv4());
+    const formData = new FormData(event.currentTarget);
+
+    if (!existFile(formData.get('file'), true)) return;
+    if (!validateEmail(formData.get('email'))) return;
+    const photoUrl = await this.getImageUrl(formData.get('file'));
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      photoUrl: photoUrl,
     };
 
-    const handleSubmit = async (event) => {
-      event.preventDefault();
+    uploadData(data);
 
-      const formData = new FormData(event.currentTarget);
+    navigate();
+  }
 
-      if (!existFile(formData.get('file'), true)) return;
-      if (!validateEmail(formData.get('email'))) return;
-
-      const photoUrl = await getImageUrl(formData.get('file'));
-
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        photoUrl: photoUrl,
-      };
-
-      uploadData(data);
-
-      navigate();
-    };
-
-    const imageFile = this.componentRoot.querySelector('.file-input');
-    const writeImage = this.componentRoot.querySelector('.write-image');
-
-    imageFile.addEventListener('change', () => {
-      writeImage.value = imageFile.value;
+  setEvent() {
+    this.addEvent('change', '.file-input', (event) => {
+      const writeImage = this.componentRoot.querySelector('.write-image');
+      writeImage.value = event.currentTarget.value;
     });
-    const form = this.componentRoot.querySelector('.write-container');
-    form.addEventListener('submit', handleSubmit);
+    this.addEvent('submit', '.write-container', (event) => {
+      this.handleSubmit(event);
+    });
+  }
+  render() {
+    this.componentRoot.innerHTML = this.template();
+    this.componentRoot.prepend(new Header().componentRoot);
   }
 }
