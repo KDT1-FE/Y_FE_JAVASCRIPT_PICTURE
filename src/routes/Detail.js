@@ -1,12 +1,11 @@
-import { ChildProcess } from 'child_process';
 import Header from '../components/Header';
 import { Component } from '../core/component';
 import { getUrlParam, navigate } from '../core/router';
 import { getMemberDetail } from '../store/memberStore';
 
 export default class Detail extends Component {
-  async render() {
-    this.componentRoot.innerHTML = `
+  templateSkeleton() {
+    return `
     <main class="detail">
     <div class='photo-detail skeleton'></div>
     <section class='information-container'>
@@ -20,12 +19,9 @@ export default class Detail extends Component {
       </p>
       </section>
       </main>`;
-    this.componentRoot.prepend(new Header().componentRoot);
-    const member = await getMemberDetail(getUrlParam());
-    if (!member) {
-      return navigate('/not-found');
-    } // 해당 아이디를 가진 멤버가 존재하지 않을 때
-    this.componentRoot.innerHTML = `
+  }
+  template(member) {
+    return `
     <main class="detail">
       <div class='photo-detail' style="background-image: url(${member.photoUrl})"></div>
       <section class='information-container'>
@@ -43,11 +39,21 @@ export default class Detail extends Component {
         </p>
       </section>
     </main>
-      `;
+  `;
+  }
+  setEvent(member) {
+    this.addEvent('click', 'button', () => navigate(`/edit?id=${member.id}`));
+  }
+
+  async render() {
+    this.componentRoot.innerHTML = this.templateSkeleton();
     this.componentRoot.prepend(new Header().componentRoot);
-    const navigateEditButton = this.componentRoot.querySelector('button');
-    navigateEditButton.addEventListener('click', () =>
-      navigate(`/edit?id=${member.id}`)
-    );
+    const member = await getMemberDetail(getUrlParam());
+    if (!member) {
+      return navigate('/not-found');
+    } // 해당 아이디를 가진 멤버가 존재하지 않을 때
+    this.componentRoot.innerHTML = this.template(member);
+    this.componentRoot.prepend(new Header().componentRoot);
+    this.setEvent(member);
   }
 }
