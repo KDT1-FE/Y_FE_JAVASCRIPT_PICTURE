@@ -11,20 +11,16 @@ export default class MemberList extends Component {
       this.render();
     });
   }
-  render() {
-    this.componentRoot.innerHTML = `<div class="row">  <div class='checkbox-container'>
-        <input class='checkbox' type='checkbox' disabled></input>
-      </div>
-      <p class='photo-title'>PHOTO</p>
-      <p class="name-title">NAME</p>
-      <p class="email-title">EMAIL</p></div>`;
+  template() {
+    return `<div class="row">  <div class='checkbox-container'>
+    <input class='checkbox' type='checkbox' disabled></input>
+  </div>
+  <p class='photo-title'>PHOTO</p>
+  <p class="name-title">NAME</p>
+  <p class="email-title">EMAIL</p></div>`;
+  }
 
-    this.componentRoot.append(
-      ...memberStore.state.members.map(
-        (member) => new Member({ member }).componentRoot
-      )
-    );
-
+  setObserver() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !memberStore.state.search) {
@@ -33,5 +29,14 @@ export default class MemberList extends Component {
       });
     });
     observer.observe(this.componentRoot.lastChild);
+  }
+
+  mounted() {
+    this.componentRoot.append(
+      ...memberStore.state.members.map(
+        (member) => new Member({ member }).componentRoot
+      )
+    );
+    this.setObserver();
   }
 }
