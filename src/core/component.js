@@ -33,8 +33,8 @@ export class Component {
   setEvent() {}
 
   addEvent(eventType, selector, callback) {
-    this.componentRoot.addEventListener(eventType, (event) => {
-      if (!event.target.closest(selector)) return false;
+    const element = this.componentRoot.querySelector(selector);
+    element?.addEventListener(eventType, (event) => {
       callback(event);
     });
   }
