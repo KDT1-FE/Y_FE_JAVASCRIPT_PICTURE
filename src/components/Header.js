@@ -5,12 +5,12 @@ export default class Header extends Component {
   constructor() {
     super({ tagName: 'header', attributes: { class: 'header' } });
   }
-  render() {
-    this.componentRoot.innerHTML =
-      '  <div class="title">직원 관리 시스템</div>';
+  template() {
+    return '  <div class="title">직원 관리 시스템</div>';
+  }
 
-    const title = this.componentRoot.querySelector('.title');
-    title.addEventListener('click', () => {
+  setEvent() {
+    this.addEvent('click', '.title', () => {
       navigate();
     });
   }
