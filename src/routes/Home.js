@@ -9,8 +9,23 @@ import {
 } from '../store/memberStore';
 
 export default class Home extends Component {
-  async render() {
-    this.componentRoot.innerHTML = `<header class="header">
+  async deleteMembers() {
+    const existsDeleteMembers = memberStore.state.deleteMembers.length;
+    if (!existsDeleteMembers) {
+      alert('삭제할 직원을 선택해주세요');
+      return;
+    }
+    await Promise.all(
+      memberStore.state.deleteMembers.map(({ id, photoUrl }) => {
+        deleteData(id, photoUrl);
+      })
+    );
+    memberStore.state.deleteMembers = [];
+    routeRender();
+  }
+
+  template() {
+    return `<header class="header">
     <div class="title">직원 관리 시스템</div>
     <div class="container">
       <input class="search" placeholder="이름으로 검색해주세요"/>
@@ -20,44 +35,28 @@ export default class Home extends Component {
     </header>
     <div class="the-loader"></div>
     `;
+  }
+
+  async mounted() {
     await getMembersData();
     const memberList = new MemberList().componentRoot;
-
     const header = this.componentRoot.querySelector('.header');
     header.after(memberList);
+  }
 
-    const title = this.componentRoot.querySelector('.title');
-    title.addEventListener('click', () => {
+  setEvent() {
+    this.addEvent('click', '.title', () => {
       navigate();
     });
-    /*Home 페이지는 따로 header 분리 X,  
-    why? -> header을 prepend로 삽입했을 때 container는 따로 요소를 생성하고 header의 자식으로 할당하는 과정이 필요
-    이 과정이 더 불필요하다고 생각하기에  
-     */
 
-    const addButton = this.componentRoot.querySelector('#navigate-write');
-    addButton.addEventListener('click', () => navigate('/write'));
+    this.addEvent('click', '#navigate-write', () => {
+      navigate('/write');
+    });
 
-    const deleteMembers = async () => {
-      const existsDeleteMembers = memberStore.state.deleteMembers.length;
-      if (!existsDeleteMembers) {
-        alert('삭제할 직원을 선택해주세요');
-        return;
-      }
-      await Promise.all(
-        memberStore.state.deleteMembers.map(({ id, photoUrl }) => {
-          deleteData(id, photoUrl);
-        })
-      );
-      memberStore.state.deleteData = [];
-      routeRender();
-    };
+    this.addEvent('click', '#delete-members', this.deleteMembers);
 
-    const deleteButton = this.componentRoot.querySelector('#delete-members');
-    deleteButton.addEventListener('click', deleteMembers);
-
-    const searchInput = this.componentRoot.querySelector('.search');
-    searchInput.addEventListener('keydown', (event) => {
+    this.addEvent('keydown', '.search', (event) => {
+      const searchInput = this.componentRoot.querySelector('.search');
       if (event.key === 'Enter' && searchInput.value.trim()) {
         searchData(searchInput.value);
       }
