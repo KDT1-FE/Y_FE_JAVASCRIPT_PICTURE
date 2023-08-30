@@ -8,7 +8,7 @@ async function selectEmployeeRender (){;
     const profile = storageRef.child('image/' +selectEmployeeId+'.jpg');
     const profileImg = await profile.getDownloadURL();
     const array = []
-    selectEmployee = selectEmployee.forEach((item)=>{
+    selectEmployee.forEach((item)=>{
         if(item.data().employeeId == selectEmployeeId){
             array.push(item.data())
             detailForm.insertAdjacentHTML('beforeend',
@@ -40,13 +40,10 @@ selectEmployeeRender()
 
 
 async function renderTotalEmployees () {
-    let totalEmployees = 0;
-    const test = await db.collection('profile').get();
     
-    test.forEach(()=>{
-        totalEmployees++;
-    })
-    document.querySelector('.search__total').innerHTML += totalEmployees    
+    const data = await db.collection('profile').get();
+    let totalEmployees = data.size;
+    document.querySelector('.search__total').insertAdjacentHTML('beforeend',totalEmployees)
 }
 
 renderTotalEmployees();
