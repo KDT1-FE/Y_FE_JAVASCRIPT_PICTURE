@@ -3,13 +3,12 @@ import { memberStore } from '../store/memberStore';
 
 export default class Member extends Component {
   constructor(props) {
-    super({ props, tagName: 'a' });
+    super({ props, tagName: 'a', attributes: { class: 'member' } });
   }
   render() {
     const { member } = this.props;
 
     this.componentRoot.setAttribute('href', `/#/detail?id=${member.id}`);
-    this.componentRoot.classList.add('member');
     this.componentRoot.innerHTML =
       /* html */
       `

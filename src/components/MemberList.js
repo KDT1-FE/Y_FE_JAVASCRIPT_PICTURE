@@ -4,13 +4,14 @@ import Member from './Member';
 
 export default class MemberList extends Component {
   constructor() {
-    super();
+    super({
+      attributes: { class: 'table' },
+    });
     memberStore.subscribe('members', () => {
       this.render();
     });
   }
   render() {
-    this.componentRoot.classList.add('table');
     this.componentRoot.innerHTML = `<div class="row">  <div class='checkbox-container'>
         <input class='checkbox' type='checkbox' disabled></input>
       </div>
