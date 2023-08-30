@@ -39,7 +39,7 @@ export default class Home extends Component {
     addButton.addEventListener('click', () => navigate('/write'));
 
     const deleteMembers = async () => {
-      const existsDeleteMembers = deleteMembers.length;
+      const existsDeleteMembers = memberStore.state.deleteMembers.length;
       if (!existsDeleteMembers) {
         alert('삭제할 직원을 선택해주세요');
         return;
