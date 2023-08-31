@@ -27,46 +27,47 @@ const db = getFirestore(app);
 
 //profile카드 추가하기 관련 선언
 const profileContainer = document.querySelector(".profile-container");
-let template = `
+
+function createProfileElement(data) {
+  const templateTest = `
     <div class="profile-card">
-      <img class="profile-image" src="{{__profile_image__}}" alt="profile image">
+      <img class="profile-image" src="${data.image}" alt="profile image">
       <div class="text-container">
-        <h1>{{__profile_name__}}</h1>
+        <h1>${data.name}</h1>
         <span class="subtitle">🌞 POSITION</span>
-        <span>{{__profile_position__}}</span>
+        <span>${data.position}</span>
         <span class="subtitle">🔥 GITHUB</span>
-        <span>{{__profile_github__}}</span>
+        <span>${data.github}</span>
         <span class="subtitle">📧 EMAIL</span>
-        <span>{{__profile_email__}}</span>
+        <span>${data.email}</span>
       </div>
     </div>
-`;
+  `;
+  return templateTest;
+}
+
 //profile카드 추가하기
 const profileCollection = query(collection(db, "profiles"), orderBy("date"));
 let itemNumber = 0;
 onSnapshot(profileCollection, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
-    //console.log('시작:',doc.data())
     const newProfile = document.createElement("a");
     newProfile.classList.add("item");
     newProfile.setAttribute(
       "href",
       `../pages/moreInfo/moreInfo.html#item${itemNumber}`
-    ); //
-    template = template
-      .replace("{{__profile_image__}}", doc.data().image)
-      .replace("{{__profile_name__}}", doc.data().name)
-      .replace("{{__profile_position__}}", doc.data().position)
-      .replace("{{__profile_github__}}", doc.data().github)
-      .replace("{{__profile_email__}}", doc.data().email);
-    newProfile.innerHTML = template;
+    );
+
+    const profileData = {
+      image: doc.data().image,
+      name: doc.data().name,
+      position: doc.data().position,
+      github: doc.data().github,
+      email: doc.data().email,
+    };
+    newProfile.innerHTML = createProfileElement(profileData);
     profileContainer.append(newProfile);
-    template = template
-      .replace(doc.data().image, "{{__profile_image__}}")
-      .replace(doc.data().name, "{{__profile_name__}}")
-      .replace(doc.data().position, "{{__profile_position__}}")
-      .replace(doc.data().github, "{{__profile_github__}}")
-      .replace(doc.data().email, "{{__profile_email__}}");
+
     itemNumber++;
   });
   //item 개수대로 grid css 제어
