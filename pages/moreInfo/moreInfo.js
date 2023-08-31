@@ -209,25 +209,18 @@ onSnapshot(q, (querySnapshot) => {
       }
     });
     newProfile.prepend(modifyBtn);
-
-    // 해시값 변화 감지
-    window.addEventListener("hashchange", handleHashChange());
   });
 });
-// window.addEventListener("load", function () {
-//   console.log("로드완료");
-// window.addEventListener("hashchange", handleHashChange());
-// });
+// 이미지 로드가 완료되면 해시값 변화 감지해서 스크롤
+window.addEventListener("load", function () {
+  window.addEventListener("hashchange", handleHashChange());
+});
 
 function handleHashChange() {
-  console.log("함수안으로 들어옴!");
   const hash = location.hash;
   const itemId = hash.substring(1);
-  console.log(hash);
   const targetItem = document.getElementById(itemId);
-  console.log(targetItem);
   if (targetItem) {
-    console.log("if문안으로 들어옴!");
     targetItem.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
