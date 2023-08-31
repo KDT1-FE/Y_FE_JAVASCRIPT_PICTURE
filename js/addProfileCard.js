@@ -29,7 +29,7 @@ const db = getFirestore(app);
 const profileContainer = document.querySelector(".profile-container");
 
 function createProfileElement(data) {
-  const templateTest = `
+  const template = `
     <div class="profile-card">
       <img class="profile-image" src="${data.image}" alt="profile image">
       <div class="text-container">
@@ -43,7 +43,7 @@ function createProfileElement(data) {
       </div>
     </div>
   `;
-  return templateTest;
+  return template;
 }
 
 //profile카드 추가하기
