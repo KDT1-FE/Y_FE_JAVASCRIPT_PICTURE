@@ -66,7 +66,7 @@ node_modules/
 .env
 
 # firebase file
-src/js/firebaseKeys.js
+src/js/firebaseConfig.js
 .firebaserc
 firestore.rules
 storage.rules
