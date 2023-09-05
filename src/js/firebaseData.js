@@ -24,9 +24,9 @@ function createEmployee() {
 
     const file = document.querySelector(`input[type="file"]`).files[0];
 
-    let storageRef = storage.ref();
-    let imgUrl = storageRef.child("image/" + file.name);
-    let upload = imgUrl.put(file);
+    const storageRef = storage.ref();
+    const imgUrl = storageRef.child("image/" + file.name);
+    const upload = imgUrl.put(file);
 
     upload.on(
       "state_changed",
@@ -54,7 +54,6 @@ function createEmployee() {
           db.collection("직원")
             .add(employee)
             .then((result) => {
-              console.log(result);
               alert("직원 등록이 완료되었습니다.");
               window.location.href = "./index.html";
             })
@@ -102,7 +101,9 @@ function createEmployeeElement(employee) {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.className = "checkbox";
-  checkbox.onclick = checked(checkbox);
+  checkbox.addEventListener("click", () => {
+    checked(checkbox);
+  });
   inputTd.append(checkbox);
 
   const imgTd = document.createElement("td");
@@ -117,6 +118,7 @@ function createEmployeeElement(employee) {
   tel.innerText = employee.tel;
   const email = document.createElement("td");
   email.innerText = employee.email;
+  email.className = "employee--list__email";
   const dateTime = document.createElement("td");
   dateTime.innerText = employee.date;
 
@@ -189,7 +191,6 @@ function searchEmployee() {
 
 // 직원 상세 모달
 function setModal(employee) {
-  console.log(employee);
   detailModal.style.display = "block";
   const detailImg = document.querySelector(".detail__img");
   detailImg.src = employee.img;
@@ -217,7 +218,6 @@ function updateEmployee(employee) {
       let reader = new FileReader();
 
       reader.onload = function (e) {
-        console.log(e);
         imgBox.src = e.target.result;
       };
       reader.readAsDataURL(fileDom.files[0]);
@@ -261,7 +261,6 @@ function updateEmployee(employee) {
       전화번호: tel.value || tel.placeholder,
       입사날짜: date.value || date.placeholder,
     };
-    console.log(newEmployee);
     db.collection("직원")
       .doc(employee.id)
       .update(newEmployee)
@@ -277,16 +276,18 @@ function deleteDetailEmployee(employee) {
   const deleteBtn = document.querySelector(".delete__button");
 
   deleteBtn.addEventListener("click", () => {
-    db.collection("직원")
-      .get()
-      .then(async () => {
-        await db.collection("직원").doc(employee.id).delete();
-        alert("직원 정보가 삭제되었습니다.");
-        window.location.href = "./index.html";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (confirm("직원을 삭제하시겠습니까?")) {
+      db.collection("직원")
+        .get()
+        .then(async () => {
+          await db.collection("직원").doc(employee.id).delete();
+          alert("직원 정보가 삭제되었습니다.");
+          window.location.href = "./index.html";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   });
 }
 
@@ -300,19 +301,23 @@ function deleteEmployee() {
       return;
     }
 
-    for (let i = 0; i < checkedArr.length; i++) {
-      db.collection("직원")
-        .where("이메일", "==", `${checkedArr[i]}`)
-        .get()
-        .then((result) => {
-          result.forEach(async (doc) => {
-            await db.collection("직원").doc(`${doc.id}`).delete();
-            window.location.href = "./index.html";
+    if (confirm("직원을 삭제하시겠습니까?")) {
+      const arrLength = checkedArr.length;
+
+      for (let i = 0; i < arrLength; i++) {
+        db.collection("직원")
+          .where("이메일", "==", `${checkedArr[i]}`)
+          .get()
+          .then((result) => {
+            result.forEach(async (doc) => {
+              await db.collection("직원").doc(`${doc.id}`).delete();
+              window.location.href = "./index.html";
+            });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      }
     }
   });
 }

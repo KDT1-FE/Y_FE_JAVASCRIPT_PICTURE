@@ -9,14 +9,11 @@
   background: rgba(0, 0, 0, 0.8);
   z-index: 98;
 }
-
 .employee-detail__modal,
 .employee-add__modal {
   width: 800px;
   height: 650px;
-  position: absolute;
-  left: 360px;
-  top: 25px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;

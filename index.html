@@ -31,7 +31,7 @@
         <div class="loading"></div>
         <div id="loading-text">loading</div>
       </div>
-      <a href="./index.html" title="employee-management.com" id="link"
+      <a href="index.html" title="employee-management.com" id="link"
         >employee-management.com</a
       >
     </div>
@@ -41,7 +41,7 @@
       <div class="header">
         <div class="header__icon" onclick="location.href='index.html'">
           <img
-            src="./src/image/free-icon-team-management-6103262.png"
+            src="/src/image/free-icon-team-management-6103262.png"
             alt="메인 아이콘"
             class="main__icon"
             loading="lazy"
@@ -58,9 +58,7 @@
         </div>
         <div class="button__wrapper">
           <button type="button" class="employee-add__button">직원 등록</button>
-          <button type="button" class="employee-delete__button">
-            직원 삭제
-          </button>
+          <button type="button" class="employee-delete__button">직원 삭제</button>
 
         </div>
       </div>
@@ -84,7 +82,7 @@
 
       <!-- 직원 등록 모달 -->
       <div class="modal__background">
-        <modal class="employee-add__modal">
+        <dialog class="employee-add__modal">
           <h1>직원 등록</h1>
           <span class="material-symbols-outlined close-icon">close</span>
           <form id="employee__form">
@@ -93,41 +91,44 @@
               <input class="add-data__file" accept="image/*" type="file" />
             </div>
             <div class="add-data">
-              <label>이름</label>
-              <input
+              <label for="name">이름</label>
+              <input id="name"
                 class="add-data__name"
                 type="text"
                 placeholder="이름을 입력하세요"
+                required
               />
             </div>
             <div class="add-data">
-              <label>이메일</label>
-              <input
+              <label for="email">이메일</label>
+              <input id="email"
                 class="add-data__email"
                 type="email"
                 placeholder="이메일을 입력하세요"
+                required
               />
             </div>
             <div class="add-data">
-              <label>휴대폰 번호</label>
-              <input
+              <label for="tel">휴대폰 번호</label>
+              <input id="tel"
                 class="add-data__tel"
                 type="tel"
-                placeholder="휴대폰 번호를 입력하세요"
+                placeholder="휴대폰 번호를 입력하세요" 
+                required
               />
             </div>
             <div class="add-data">
-              <label>입사날짜</label>
-              <input class="add-data__date" type="date" />
+              <label for="date">입사날짜</label>
+              <input id="date" class="add-data__date" type="date" required />
             </div>
             <button class="submit__button" type="submit">등록</button>
           </form>
-        </modal>
+        </dialog>
       </div>
 
       <!-- 직원 상세 모달 -->
       <div class="detail-modal__background">
-        <modal class="employee-detail__modal">
+        <dialog class="employee-detail__modal">
           <h1>직원 정보</h1>
           <span class="material-symbols-outlined close__icon">close</span>
           <form id="employee__form">
@@ -168,7 +169,7 @@
               <button class="delete__button" type="button">삭제</button>
             </div>
           </form>
-        </modal>
+        </dialog>
       </div>
 
     <script src="./src/js/animation.js"></script>

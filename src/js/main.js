@@ -53,7 +53,7 @@ function checkedAll() {
     const checkboxes = document.querySelectorAll(".checkbox");
 
     if (isChecked) {
-      checkedArr = []; // 배열 초기화
+      checkedArr.length = 0; // 배열 초기화
 
       for (const checkbox of checkboxes) {
         // 전체 체크박스 선택
@@ -93,11 +93,11 @@ export function checked(checkbox) {
     let email = tr.children[3].innerHTML;
 
     // checked에 따라 직원 이메일 배열에 추가 or 삭제
-    checkbox.checked
-      ? checkedArr.push(email)
-      : (checkedArr = checkedArr.filter((element) => element !== email));
-
-    console.log(checkedArr);
+    if (checkbox.checked) {
+      checkedArr.push(email);
+    } else {
+      checkedArr = checkedArr.filter((element) => element !== email);
+    }
 
     // checked에 따라 table row 색상 변화
     tr.style.backgroundColor = checkbox.checked ? "#aaa" : "#fff";
