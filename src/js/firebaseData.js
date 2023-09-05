@@ -1,4 +1,7 @@
 import { checkedArr, checked } from "./main.js";
+import { firebaseConfig } from "./firebaseKeys.js";
+
+firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 const storage = firebase.storage();
