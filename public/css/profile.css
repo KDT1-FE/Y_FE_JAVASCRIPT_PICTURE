@@ -16,6 +16,7 @@ body {
 .profile-wrap {
   width: 70%;
   height: 45rem;
+  min-width: 40rem;
 
   background-color: rgba(252, 241, 224, 0.8);
 
@@ -50,6 +51,8 @@ body {
 }
 
 .profile-left {
+  width: 25%;
+  min-width: 10rem;
   margin: 0 3rem;
 }
 
@@ -81,11 +84,19 @@ body {
 }
 
 .villager-img {
-  width: 15rem;
+  width: 100%;
 }
 
 .profile-right {
   margin: 0 5rem 1rem;
+
+  width: 40%;
+  min-width: 10rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile-info-h2 {
@@ -98,7 +109,7 @@ body {
 
   margin: 2rem 0;
 
-  width: 25rem;
+  width: 100%;
 }
 
 .profile-info-ul {
@@ -123,7 +134,7 @@ body {
 }
 
 .villager-info {
-  margin: 0.85rem 0;
+  margin: 0.77rem 0;
 
   font-size: 1.2rem;
 }
@@ -133,6 +144,11 @@ body {
   font-size: 1.3rem;
 
   margin: 0.8rem;
+}
+
+.villager-info,
+.profile-info-li {
+  white-space: nowrap; /* 줄바꿈 없음 */
 }
 
 .edit-btn {
@@ -150,7 +166,7 @@ body {
 
   cursor: pointer;
 
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .edit-btn:hover {
@@ -165,6 +181,7 @@ body {
   .profile-wrap {
     width: 90%;
     height: auto;
+    min-width: 20rem;
   }
 
   .profile-top-text {
@@ -184,12 +201,17 @@ body {
     margin: 2rem;
   }
 
+  .profile-right {
+    width: 100%;
+    min-width: 25rem;
+  }
+
   .profile-info-hr {
-    width: 20rem;
+    width: 100%;
   }
 
   .profile-info-li {
-    margin: 0.9rem;
+    margin: 0.97rem;
 
     text-align: center;
 
@@ -199,13 +221,7 @@ body {
     margin-right: 2rem;
   }
 
-  .villager-info-name,
-  .villager-info-engName,
-  .villager-info-birthday,
-  .villager-info-sex,
-  .villager-info-personality,
-  .villager-info-favoriteColor,
-  .villager-info-speechHabit {
+  .villager-info {
     font-size: 1.1rem;
 
     margin: 0.9rem 0;
