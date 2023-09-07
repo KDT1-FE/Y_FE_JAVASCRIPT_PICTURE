@@ -497,7 +497,7 @@ form input{
 }
 
 .skeleton{
-  background-color: var(--color-gray);
+  background-color: transparent;
   margin: 0 auto;
   position: absolute;
   top: 0;
