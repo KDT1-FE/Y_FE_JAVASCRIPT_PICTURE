@@ -71,7 +71,6 @@ function createEmployee() {
 
 // 직원 데이터 read
 function readEmployee() {
-  resetEmployee();
   db.collection("직원")
     .orderBy("이름", "asc")
     .get()
@@ -94,6 +93,8 @@ function readEmployee() {
     .catch((err) => {
       console.log(err);
     });
+
+  resetEmployee();
 }
 
 // 직원테이블 엘리먼트 생성
@@ -152,7 +153,6 @@ function searchData(search, field) {
     .where(field, "<=", search + "\uf8ff")
     .get()
     .then((result) => {
-      resetEmployee();
       result.forEach((doc) => {
         const { 이미지, 이름, 이메일, 전화번호, 입사날짜 } = doc.data();
 
@@ -165,6 +165,7 @@ function searchData(search, field) {
           date: 입사날짜,
         };
 
+        resetEmployee();
         createEmployeeElement(employee);
       });
     })
@@ -177,9 +178,10 @@ function searchData(search, field) {
 function searchEmployee() {
   const searchInput = document.querySelector(".employee-search__input");
 
-  searchInput.addEventListener("input", async (e) => {
+  searchInput.addEventListener("input", (e) => {
     let searchString = e.target.value;
     if (searchString === "") {
+      resetEmployee();
       readEmployee();
       return;
     } else if (/[a-zA-Z]/.test(searchString)) {
